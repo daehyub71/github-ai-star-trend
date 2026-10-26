@@ -1,0 +1,5 @@
+# 줄바꿈은 LF 로 고정한다 — 코드가 LF 로 쓰고(core/io.py), 한 번 쓴 주간 파일이 체크아웃 때 바뀌면 안 된다.
+# Windows(core.autocrlf=true)와 맥을 오가도 같은 바이트를 유지한다.
+* text=auto eol=lf
+*.png binary
+*.gz binary

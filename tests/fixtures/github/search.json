@@ -1,0 +1,4 @@
+{
+  "stars:>=1000": ["synth-lab/agent-kit", "synth-web/css-grid-notes", "synth-lab/mcp-files"],
+  "topic:mcp": ["synth-lab/mcp-files"]
+}

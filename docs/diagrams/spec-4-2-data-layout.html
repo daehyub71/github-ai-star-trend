@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="diagram-size" content="1400x760">
+<title>데이터 배치</title>
+<style>
+  html, body { margin: 0; background: #ffffff; }
+  svg { display: block; }
+  text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; fill: #1b1a17; }
+  .code { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+  .muted { fill: #5f5b53; }
+  .title { font-size: 22px; font-weight: 700; }
+  .sub { font-size: 13px; }
+  .tree { font-size: 15px; }
+  .desc { font-size: 13px; }
+  .badge { fill: #ffffff; stroke: #2e7d4f; stroke-width: 1.1; }
+  .badge-t { font-size: 12px; fill: #24623e; }
+  .pill-ok { fill: #eaf6ef; stroke: #2e7d4f; stroke-width: 1; }
+  .pill-no { fill: #fbeaea; stroke: #b3261e; stroke-width: 1; }
+  .small { font-size: 12.5px; }
+</style>
+</head>
+<body>
+<svg width="1400" height="760" viewBox="0 0 1400 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b4a9e"/>
+    </marker>
+    <marker id="arr-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5f5b53"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" class="title">데이터 배치</text>
+  <text x="40" y="68" class="sub muted">SPEC §4-2 — 정본은 git 의 data/ (평문), 원본 근거는 git 밖 Releases. Vercel 빌드는 작은 파생 데이터와 카드만 읽는다</text>
+
+  <!-- git 저장소 패널 -->
+  <rect x="30" y="92" width="850" height="570" rx="14" fill="#f7f8fa" stroke="#c9ced6" stroke-width="1.2"/>
+  <text x="50" y="120" style="font-size:14px;font-weight:700">git 저장소 · 개인 계정 비공개 (결정 23)</text>
+
+  <!-- data/ 강조 띠 -->
+  <rect x="46" y="300" width="820" height="290" rx="10" fill="#eef8f2" stroke="#2e7d4f" stroke-width="1.2"/>
+
+  <!-- 트리 -->
+  <text x="56" y="160" class="tree code" style="font-weight:700">github-ai-star-trend/</text>
+
+  <text x="80" y="192" class="tree code">startrend/</text>
+  <text x="330" y="192" class="desc muted">Python 파이프라인</text>
+  <text x="80" y="224" class="tree code">web/</text>
+  <text x="330" y="224" class="desc muted">Next.js 화면 (Phase 4)</text>
+  <text x="80" y="256" class="tree code">tests/</text>
+  <text x="330" y="256" class="desc muted">합성 픽스처 — 실제 자료 없음</text>
+  <text x="80" y="288" class="tree code">docs/  .github/workflows/</text>
+  <text x="330" y="288" class="desc muted">문서 · 주간 크론 워크플로</text>
+
+  <text x="80" y="324" class="tree code" style="font-weight:700;fill:#2e7d4f">data/</text>
+  <text x="330" y="324" class="desc" style="fill:#2e7d4f;font-weight:700">정본 · 평문 · Actions 가 커밋</text>
+
+  <text x="110" y="356" class="tree code">stars/YYYY/&lt;주&gt;.csv</text>
+  <rect x="470" y="340" width="300" height="23" rx="11.5" class="badge"/>
+  <text x="620" y="356" text-anchor="middle" class="badge-t">주 단위 · 증가 ≥ 10 행만 · 한 번 쓰면 그대로</text>
+
+  <text x="110" y="388" class="tree code">weekly/&lt;주&gt;/</text>
+  <text x="250" y="388" class="desc code muted">rankings.json · briefing.md</text>
+  <rect x="470" y="372" width="96" height="23" rx="11.5" class="badge"/>
+  <text x="518" y="388" text-anchor="middle" class="badge-t">주 단위</text>
+
+  <text x="110" y="420" class="tree code">repos/&lt;하위폴더&gt;/&lt;owner&gt;__&lt;repo&gt;/</text>
+  <rect x="470" y="404" width="290" height="23" rx="11.5" class="badge"/>
+  <text x="615" y="420" text-anchor="middle" class="badge-t">하위 폴더로 나눔 (폴더당 3,000개 제한)</text>
+
+  <text x="140" y="452" class="tree code">meta.json</text>
+  <rect x="470" y="436" width="250" height="23" rx="11.5" class="badge"/>
+  <text x="595" y="452" text-anchor="middle" class="badge-t">내용 해시가 바뀔 때만 다시 쓴다</text>
+
+  <text x="140" y="484" class="tree code">card.md</text>
+  <rect x="470" y="468" width="290" height="23" rx="11.5" class="badge"/>
+  <text x="615" y="484" text-anchor="middle" class="badge-t">AI 저장소만 · 재등장하면 변경분 추가</text>
+
+  <text x="110" y="516" class="tree code">taxonomy.toml</text>
+  <rect x="470" y="500" width="250" height="23" rx="11.5" class="badge"/>
+  <text x="595" y="516" text-anchor="middle" class="badge-t">분류 체계 버전 + 이전→이후 매핑</text>
+
+  <text x="110" y="548" class="tree code">runs/&lt;주&gt;.json</text>
+  <rect x="470" y="532" width="250" height="23" rx="11.5" class="badge"/>
+  <text x="595" y="548" text-anchor="middle" class="badge-t">실행 기록: 시간 · 호출 수 · 비용</text>
+
+  <text x="110" y="580" class="tree code">site/</text>
+  <rect x="470" y="564" width="270" height="23" rx="11.5" class="badge"/>
+  <text x="605" y="580" text-anchor="middle" class="badge-t">파생 — 정본에서 다시 만들 수 있다</text>
+
+  <!-- .work/ -->
+  <rect x="70" y="604" width="560" height="32" rx="8" fill="none" stroke="#8a8f98" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="80" y="626" class="tree code muted">.work/</text>
+  <text x="160" y="626" class="desc muted">작업 파일 · gitignore · 실행마다 새로 생긴다</text>
+
+  <!-- Vercel 패널 -->
+  <rect x="930" y="150" width="440" height="250" rx="12" fill="#f3f0fa" stroke="#5b4a9e" stroke-width="1.6"/>
+  <text x="950" y="182" style="font-size:16px;font-weight:700">Vercel 빌드 (Next.js)</text>
+
+  <rect x="950" y="203" width="56" height="20" rx="10" class="pill-no"/>
+  <text x="978" y="217" text-anchor="middle" style="font-size:11px;fill:#b3261e;font-weight:700">안 읽음</text>
+  <text x="1016" y="217" class="small"><tspan class="code">data/stars/</tspan> — 원시 시계열 (FR-9.2)</text>
+
+  <rect x="950" y="235" width="56" height="20" rx="10" class="pill-ok"/>
+  <text x="978" y="249" text-anchor="middle" style="font-size:11px;fill:#2e7d4f;font-weight:700">읽음</text>
+  <text x="1016" y="249" class="small"><tspan class="code">card.md</tspan> — 카드 본문 (raw HTML 끔)</text>
+
+  <rect x="950" y="267" width="56" height="20" rx="10" class="pill-ok"/>
+  <text x="978" y="281" text-anchor="middle" style="font-size:11px;fill:#2e7d4f;font-weight:700">읽음</text>
+  <text x="1016" y="281" class="small"><tspan class="code">data/site/</tspan> — 랭킹 · 스파크라인 · 카테고리 합계</text>
+
+  <rect x="950" y="299" width="56" height="20" rx="10" class="pill-no"/>
+  <text x="978" y="313" text-anchor="middle" style="font-size:11px;fill:#b3261e;font-weight:700">안 읽음</text>
+  <text x="1016" y="313" class="small"><tspan class="code">.work/</tspan> · 원본 근거 — 저장소에 없다</text>
+
+  <text x="950" y="350" class="small muted">큰 JSON 은 서버 컴포넌트에서만 읽는다 (NFR-6)</text>
+  <text x="950" y="372" class="small muted">페이지는 "심층 카드 + 주간 페이지" 로만 늘어난다</text>
+
+  <!-- 트리 → Vercel 연결선 (교차하지 않게 위에서부터 순서대로) -->
+  <path d="M866 351 C 900 351, 900 213, 946 213" fill="none" stroke="#b3261e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="905" y="290" text-anchor="middle" style="font-size:16px;fill:#b3261e;font-weight:700">✕</text>
+  <path d="M866 479 C 912 479, 912 245, 946 245" fill="none" stroke="#5b4a9e" stroke-width="1.6" marker-end="url(#arr-purple)"/>
+  <path d="M866 575 C 922 575, 922 277, 946 277" fill="none" stroke="#5b4a9e" stroke-width="1.6" marker-end="url(#arr-purple)"/>
+
+  <!-- GitHub Releases -->
+  <path d="M930,486 A220,16 0 0 1 1370,486 V596 A220,16 0 0 1 930,596 Z" fill="#f3f0fa" stroke="#5b4a9e" stroke-width="1.6"/>
+  <ellipse cx="1150" cy="486" rx="220" ry="16" fill="#faf8fd" stroke="#5b4a9e" stroke-width="1.6"/>
+  <text x="1150" y="530" text-anchor="middle" style="font-size:16px;font-weight:700">GitHub Releases · git 밖</text>
+  <text x="1150" y="553" text-anchor="middle" class="code" style="font-size:13px">evidence-&lt;주&gt;.tar.gz · snapshot-&lt;주&gt;.csv.gz</text>
+  <text x="1150" y="574" text-anchor="middle" style="font-size:12.5px">근거 원문 + LLM 로그 · 스타 ≥1,000 전체 스냅샷</text>
+  <text x="1150" y="593" text-anchor="middle" style="font-size:12px" class="muted">파일당 2GiB · 전체 용량 · 대역폭 무제한</text>
+
+  <!-- .work → Releases -->
+  <path d="M632 620 C 790 620, 840 560, 926 560" fill="none" stroke="#5f5b53" stroke-width="1.6" marker-end="url(#arr-gray)"/>
+  <text x="1150" y="636" text-anchor="middle" class="small muted"><tspan class="code">archive</tspan> 가 <tspan class="code">.work/</tspan> 의 원문을 주마다 압축해 올린다</text>
+
+  <!-- 저장 규칙 -->
+  <text x="40" y="700" style="font-size:13.5px;font-weight:700">저장 규칙 (NFR-5)</text>
+  <text x="170" y="700" class="small">① 매주 바뀌는 값(스타 수)은 주간 파일에만  ② 주간 파일은 한 번 쓰면 그대로  ③ 바이너리(SQLite 등)는 커밋하지 않는다</text>
+  <text x="170" y="724" class="small">④ 폴더당 3,000개 제한 → 하위 폴더로 나눈다  ⑤ 크기 가드: 1MB 넘는 파일, 한 커밋에 크게 늘어나는 data/ 변경은 CI 가 막는다</text>
+</svg>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="diagram-size" content="1500x700">
+<title>Phase 의존 그래프</title>
+<style>
+  html, body { margin: 0; background: #ffffff; }
+  svg { display: block; }
+  text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; fill: #1b1a17; }
+  .muted { fill: #5f5b53; }
+  .title { font-size: 22px; font-weight: 700; }
+  .sub { font-size: 13px; }
+  .p-free { fill: #eef3fb; stroke: #2f5d9e; stroke-width: 1.6; }
+  .p-paid { fill: #fdf1e6; stroke: #c46a12; stroke-width: 1.6; }
+  .p-ops { fill: #f0f1f3; stroke: #4a5568; stroke-width: 1.6; }
+  .ph { font-size: 17px; font-weight: 700; }
+  .pt { font-size: 14px; font-weight: 700; }
+  .pm { font-size: 12px; }
+  .blk { fill: #fbeaea; stroke: #b3261e; stroke-width: 1.4; }
+  .bt { font-size: 13px; font-weight: 700; fill: #8f1d16; }
+  .bs { font-size: 11.5px; }
+  .arrow { stroke: #4a5568; stroke-width: 1.8; fill: none; }
+  .done { fill: #eaf6ef; stroke: #2e7d4f; stroke-width: 1.4; }
+  .dt { font-size: 13px; font-weight: 700; fill: #24623e; }
+  .blk-arrow { stroke: #b3261e; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+  .pill-free { fill: #2f5d9e; }
+  .pill-paid { fill: #c46a12; }
+  .pill-t { font-size: 11px; font-weight: 700; fill: #ffffff; }
+</style>
+</head>
+<body>
+<svg width="1500" height="700" viewBox="0 0 1500 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" class="title">Phase 로드맵 — 무엇이 무엇을 막는가</text>
+  <text x="40" y="68" class="sub muted">PLAN 2-1 — 빨간 상자는 외부 블로커(사용자 결정 · 조사 · 합의)라 일찍 시작할수록 좋다. 각 Phase 는 끝날 때 사용자 확인 후 다음으로 간다</text>
+
+  <!-- 블로커 (위) -->
+  <g>
+    <rect x="50" y="104" width="200" height="60" rx="10" class="done"/>
+    <text x="150" y="129" text-anchor="middle" class="dt">GitHub 토큰 ✓</text>
+    <text x="150" y="150" text-anchor="middle" class="bs muted">2026-10-26</text>
+
+    <rect x="290" y="104" width="200" height="60" rx="10" class="done"/>
+    <text x="390" y="129" text-anchor="middle" class="dt">D-2 · D-3 · D-17 ✓</text>
+    <text x="390" y="150" text-anchor="middle" class="bs muted">실측 후 결정 27~29</text>
+
+    <rect x="510" y="104" width="240" height="60" rx="10" class="blk"/>
+    <text x="630" y="129" text-anchor="middle" class="bt">D-15 정답 세트</text>
+    <text x="630" y="150" text-anchor="middle" class="bs muted">작성 방식 (모델·예산·Anthropic 키 ✓)</text>
+    <path d="M630 164 V226" class="blk-arrow" marker-end="url(#arr-red)"/>
+
+    <rect x="770" y="104" width="200" height="60" rx="10" class="blk"/>
+    <text x="870" y="129" text-anchor="middle" class="bt">D-7 · D-8</text>
+    <text x="870" y="150" text-anchor="middle" class="bs muted">웹 검색 · 출처 접근 조사</text>
+    <path d="M870 164 V226" class="blk-arrow" marker-end="url(#arr-red)"/>
+
+    <rect x="1010" y="104" width="200" height="60" rx="10" class="done"/>
+    <text x="1110" y="129" text-anchor="middle" class="dt">Notion 토큰 · D-19 · D-20 ✓</text>
+    <text x="1110" y="150" text-anchor="middle" class="bs muted">결정 38 · 39 · 부모 페이지 연결</text>
+
+    <rect x="1250" y="104" width="200" height="60" rx="10" class="blk"/>
+    <text x="1350" y="129" text-anchor="middle" class="bt">보안 점검 4단계</text>
+    <text x="1350" y="150" text-anchor="middle" class="bs muted">+ 저장소 · Vercel 계정</text>
+    <path d="M1350 164 V226" class="blk-arrow" marker-end="url(#arr-red)"/>
+  </g>
+
+  <!-- Phase 노드 -->
+  <g>
+    <rect x="50" y="230" width="200" height="120" rx="12" class="p-free"/>
+    <text x="150" y="260" text-anchor="middle" class="ph">Phase 0</text>
+    <text x="150" y="284" text-anchor="middle" class="pt">골격 + 실측</text>
+    <text x="150" y="305" text-anchor="middle" class="pm" style="fill:#2e7d4f;font-weight:700">M0 · 실측 완료 ✓</text>
+    <rect x="115" y="318" width="70" height="20" rx="10" class="pill-free"/>
+    <text x="150" y="332" text-anchor="middle" class="pill-t">비용 0</text>
+
+    <rect x="290" y="230" width="200" height="120" rx="12" class="p-free"/>
+    <text x="390" y="260" text-anchor="middle" class="ph">Phase 1</text>
+    <text x="390" y="284" text-anchor="middle" class="pt">데이터 코어</text>
+    <text x="390" y="305" text-anchor="middle" class="pm muted">M1 · 첫 주간 랭킹 + 52주 소급</text>
+    <rect x="355" y="318" width="70" height="20" rx="10" class="pill-free"/>
+    <text x="390" y="332" text-anchor="middle" class="pill-t">비용 0</text>
+
+    <rect x="530" y="230" width="200" height="120" rx="12" class="p-paid"/>
+    <text x="630" y="260" text-anchor="middle" class="ph">Phase 2</text>
+    <text x="630" y="284" text-anchor="middle" class="pt">분류</text>
+    <text x="630" y="305" text-anchor="middle" class="pm muted">M2 · eval 비교 → AI 탭 + 추이</text>
+    <rect x="590" y="318" width="80" height="20" rx="10" class="pill-paid"/>
+    <text x="630" y="332" text-anchor="middle" class="pill-t">첫 과금</text>
+
+    <rect x="770" y="230" width="200" height="120" rx="12" class="p-paid"/>
+    <text x="870" y="260" text-anchor="middle" class="ph">Phase 3</text>
+    <text x="870" y="284" text-anchor="middle" class="pt">근거 · 카드 · 브리핑</text>
+    <text x="870" y="305" text-anchor="middle" class="pm muted">M3 · 카드 품질 사용자 검토</text>
+    <rect x="835" y="318" width="70" height="20" rx="10" class="pill-paid"/>
+    <text x="870" y="332" text-anchor="middle" class="pill-t">과금</text>
+
+    <rect x="1010" y="230" width="200" height="120" rx="12" class="p-paid"/>
+    <text x="1110" y="260" text-anchor="middle" class="ph">Phase 4b</text>
+    <text x="1110" y="284" text-anchor="middle" class="pt">Notion · 블로그 초안</text>
+    <text x="1110" y="305" text-anchor="middle" class="pm muted">M4b · 첫 글 네이버 게시(사용자)</text>
+    <rect x="1070" y="318" width="80" height="20" rx="10" class="pill-paid"/>
+    <text x="1110" y="332" text-anchor="middle" class="pill-t">소량 과금</text>
+
+    <rect x="1250" y="230" width="200" height="120" rx="12" class="p-ops"/>
+    <text x="1350" y="260" text-anchor="middle" class="ph">Phase 5</text>
+    <text x="1350" y="284" text-anchor="middle" class="pt">운영 · 배포</text>
+    <text x="1350" y="305" text-anchor="middle" class="pm muted">M5 · 크론 2주 연속 무인 성공</text>
+    <rect x="1295" y="318" width="110" height="20" rx="10" class="pill-paid"/>
+    <text x="1350" y="332" text-anchor="middle" class="pill-t">주간 예산 이내</text>
+
+    <rect x="870" y="430" width="200" height="120" rx="12" class="p-free"/>
+    <text x="970" y="460" text-anchor="middle" class="ph">Phase 4</text>
+    <text x="970" y="484" text-anchor="middle" class="pt">화면</text>
+    <text x="970" y="505" text-anchor="middle" class="pm muted">M4 · 로컬 사이트</text>
+    <rect x="935" y="518" width="70" height="20" rx="10" class="pill-free"/>
+    <text x="970" y="532" text-anchor="middle" class="pill-t">비용 0</text>
+  </g>
+
+  <!-- Phase 사이 화살표 -->
+  <g>
+    <path d="M250 290 H288" class="arrow" marker-end="url(#arr)"/>
+    <path d="M490 290 H528" class="arrow" marker-end="url(#arr)"/>
+    <path d="M730 290 H768" class="arrow" marker-end="url(#arr)"/>
+    <path d="M970 290 H1008" class="arrow" marker-end="url(#arr)"/>
+    <path d="M1210 290 H1248" class="arrow" marker-end="url(#arr)"/>
+    <path d="M390 350 V490 H868" class="arrow" marker-end="url(#arr)"/>
+    <text x="630" y="481" text-anchor="middle" class="pm muted">랭킹 데이터 모양이 생기면 시안 작업부터 시작</text>
+    <path d="M900 350 V428" class="arrow" marker-end="url(#arr)"/>
+    <text x="908" y="394" class="pm muted">카드 화면</text>
+    <path d="M1070 490 H1350 V352" class="arrow" marker-end="url(#arr)"/>
+    <text x="1210" y="481" text-anchor="middle" class="pm muted">Phase 4 와 4b 는 병행</text>
+  </g>
+
+  <!-- 블로커 (아래, Phase 4) -->
+  <rect x="835" y="590" width="270" height="60" rx="10" class="blk"/>
+  <text x="970" y="615" text-anchor="middle" class="bt">D-9 · D-10</text>
+  <text x="970" y="636" text-anchor="middle" class="bs muted">렌더 방식 · 라이브러리 (DESIGN 합의 ✓)</text>
+  <path d="M970 590 V554" class="blk-arrow" marker-end="url(#arr-red)"/>
+
+  <!-- 범례 -->
+  <g>
+    <rect x="50" y="600" width="24" height="15" rx="4" class="p-free"/>
+    <text x="82" y="612" class="pm">비용 0</text>
+    <rect x="150" y="600" width="24" height="15" rx="4" class="p-paid"/>
+    <text x="182" y="612" class="pm">LLM 과금</text>
+    <rect x="270" y="600" width="24" height="15" rx="4" class="p-ops"/>
+    <text x="302" y="612" class="pm">운영 (주간 예산 상한 안에서 무인 실행)</text>
+    <rect x="50" y="628" width="24" height="15" rx="4" class="blk"/>
+    <text x="82" y="640" class="pm">외부 블로커 — 사용자 결정 · 조사 · 합의 · 준비물</text>
+  </g>
+</svg>
+</body>
+</html>

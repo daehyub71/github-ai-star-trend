@@ -1,0 +1,4 @@
+# ASCII ONLY - see requirements-dev.txt.
+#
+# Runtime dependencies (SPEC decision 21): standard library only until Phase 2,
+# then the Anthropic SDK is added here.

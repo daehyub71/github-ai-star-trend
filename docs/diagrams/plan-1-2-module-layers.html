@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="diagram-size" content="1400x680">
+<title>모듈 의존 층</title>
+<style>
+  html, body { margin: 0; background: #ffffff; }
+  svg { display: block; }
+  text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; fill: #1b1a17; }
+  .code { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+  .muted { fill: #5f5b53; }
+  .title { font-size: 22px; font-weight: 700; }
+  .sub { font-size: 13px; }
+  .band { fill: #f7f8fa; stroke: #c9ced6; stroke-width: 1.2; }
+  .layer { font-size: 17px; font-weight: 700; }
+  .layer-sub { font-size: 12px; }
+  .chip { fill: #eef3fb; stroke: #2f5d9e; stroke-width: 1.3; }
+  .chip-llm { fill: #fdf1e6; stroke: #c46a12; stroke-width: 1.3; }
+  .chip-gray { fill: #f0f1f3; stroke: #6b7280; stroke-width: 1.3; }
+  .chip-red { fill: #fbeaea; stroke: #b3261e; stroke-width: 1.3; }
+  .chip-t { font-size: 13px; }
+  .small { font-size: 12px; }
+</style>
+</head>
+<body>
+<svg width="1400" height="680" viewBox="0 0 1400 680" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" class="title">모듈 의존 — 층 구조</text>
+  <text x="40" y="68" class="sub muted">PLAN 1-2 — 위 층이 아래 층을 쓴다. 순환 없음. 단계끼리는 코드로 서로 부르지 않고, 앞 단계가 남긴 파일만 읽는다</text>
+
+  <!-- 왼쪽 방향 화살표 -->
+  <path d="M74 104 V600" stroke="#8a8f98" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+  <text transform="translate(58,352) rotate(-90)" text-anchor="middle" class="small muted">위가 아래를 쓴다</text>
+
+  <!-- L1 cli -->
+  <rect x="110" y="96" width="1260" height="70" rx="12" class="band"/>
+  <text x="132" y="127" class="layer code">cli</text>
+  <text x="132" y="148" class="layer-sub code muted">__main__.py</text>
+  <text x="330" y="138" class="code" style="font-size:15px">python -m startrend &lt;단계&gt; [--dry-run]</text>
+
+  <!-- L2 stages -->
+  <rect x="110" y="184" width="1260" height="124" rx="12" class="band"/>
+  <text x="132" y="215" class="layer code">stages</text>
+  <text x="132" y="236" class="layer-sub muted">단계 13개</text>
+  <g>
+    <rect x="330" y="204" width="72" height="32" rx="8" class="chip"/>
+    <text x="366" y="225" text-anchor="middle" class="chip-t code">discover</text>
+    <rect x="407" y="204" width="72" height="32" rx="8" class="chip"/>
+    <text x="443" y="225" text-anchor="middle" class="chip-t code">stars</text>
+    <rect x="484" y="204" width="72" height="32" rx="8" class="chip-llm"/>
+    <text x="520" y="225" text-anchor="middle" class="chip-t code">classify</text>
+    <rect x="561" y="204" width="72" height="32" rx="8" class="chip"/>
+    <text x="597" y="225" text-anchor="middle" class="chip-t code">rank</text>
+    <rect x="638" y="204" width="72" height="32" rx="8" class="chip"/>
+    <text x="674" y="225" text-anchor="middle" class="chip-t code">evidence</text>
+    <rect x="715" y="204" width="72" height="32" rx="8" class="chip-llm"/>
+    <text x="751" y="225" text-anchor="middle" class="chip-t code">analyze</text>
+    <rect x="792" y="204" width="72" height="32" rx="8" class="chip-llm"/>
+    <text x="828" y="225" text-anchor="middle" class="chip-t code">brief</text>
+    <rect x="869" y="204" width="72" height="32" rx="8" class="chip"/>
+    <text x="905" y="225" text-anchor="middle" class="chip-t code">export</text>
+    <rect x="946" y="204" width="72" height="32" rx="8" class="chip"/>
+    <text x="982" y="225" text-anchor="middle" class="chip-t code">archive</text>
+    <rect x="1023" y="204" width="72" height="32" rx="8" class="chip-gray"/>
+    <text x="1059" y="225" text-anchor="middle" class="chip-t code">weekly</text>
+    <rect x="1100" y="204" width="72" height="32" rx="8" class="chip-gray"/>
+    <text x="1136" y="225" text-anchor="middle" class="chip-t code">probe</text>
+    <rect x="1177" y="204" width="72" height="32" rx="8" class="chip-gray"/>
+    <text x="1213" y="225" text-anchor="middle" class="chip-t code">contract</text>
+    <rect x="1254" y="204" width="72" height="32" rx="8" class="chip-gray"/>
+    <text x="1290" y="225" text-anchor="middle" class="chip-t code">eval</text>
+  </g>
+  <text x="330" y="268" class="chip-t">단계끼리는 코드로 서로 부르지 않는다 → 앞 단계가 남긴 파일만 읽는다 (PLAN 1-4 파일 계약)</text>
+  <text x="330" y="290" class="small muted">주황 = LLM 을 부르는 단계 · 회색: weekly = 순서대로 실행 · probe = Phase 0 실측 · contract = API 계약 점검 · eval = 평가 하네스</text>
+
+  <!-- L3 gate · budget -->
+  <rect x="110" y="326" width="1260" height="84" rx="12" class="band"/>
+  <text x="132" y="358" class="layer code">gate · budget</text>
+  <text x="132" y="379" class="layer-sub muted">코드가 강제한다</text>
+  <rect x="330" y="341" width="400" height="54" rx="10" class="chip-red"/>
+  <text x="346" y="363" class="chip-t" style="font-weight:700">인용 게이트 <tspan class="code" style="font-weight:400">gate.py</tspan></text>
+  <text x="346" y="383" class="small muted">순수 함수: (본문, 근거 목록) → (통과 본문, 제외 로그)</text>
+  <rect x="746" y="341" width="420" height="54" rx="10" class="chip-red"/>
+  <text x="762" y="363" class="chip-t" style="font-weight:700">예산 계량기 <tspan class="code" style="font-weight:400">budget.py</tspan></text>
+  <text x="762" y="383" class="small muted">모든 LLM 호출이 거친다 — 상한을 넘으면 예외로 그 단계가 멈춘다</text>
+
+  <!-- L4 clients -->
+  <rect x="110" y="428" width="1260" height="104" rx="12" class="band"/>
+  <text x="132" y="460" class="layer code">clients</text>
+  <text x="132" y="481" class="layer-sub muted">인터페이스 · 기본은 mock</text>
+  <rect x="330" y="442" width="228" height="76" rx="10" class="chip"/>
+  <text x="346" y="465" class="code" style="font-size:14px;font-weight:700">GitHubClient</text>
+  <text x="346" y="487" class="small">MockGitHub — 기본 · 테스트</text>
+  <text x="346" y="506" class="small">LiveGitHub — urllib</text>
+  <rect x="570" y="442" width="228" height="76" rx="10" class="chip-llm"/>
+  <text x="586" y="465" class="code" style="font-size:14px;font-weight:700">LLMClient</text>
+  <text x="586" y="487" class="small">MockLLM — 기본 · 테스트</text>
+  <text x="586" y="506" class="small">Claude — Anthropic SDK</text>
+  <rect x="810" y="442" width="228" height="76" rx="10" class="chip-llm"/>
+  <text x="826" y="465" class="code" style="font-size:14px;font-weight:700">DecisionClient</text>
+  <text x="826" y="487" class="small">MockDecider — 기본 · 테스트</text>
+  <text x="826" y="506" class="small">Claude · JEV · 혼합 (D-16)</text>
+  <rect x="1050" y="442" width="228" height="76" rx="10" class="chip"/>
+  <text x="1066" y="465" class="code" style="font-size:14px;font-weight:700">EvidenceSource</text>
+  <text x="1066" y="487" class="small">출처별 mock — 기본 · 테스트</text>
+  <text x="1066" y="506" class="small">HN · Reddit · 웹 · 패키지 · 국내</text>
+
+  <!-- L5 core -->
+  <rect x="110" y="550" width="1260" height="70" rx="12" class="band"/>
+  <text x="132" y="582" class="layer code">core</text>
+  <text x="132" y="603" class="layer-sub muted">외부 의존 없음</text>
+  <g>
+    <rect x="330" y="568" width="140" height="34" rx="8" class="chip"/>
+    <text x="400" y="590" text-anchor="middle" class="chip-t code">config</text>
+    <rect x="480" y="568" width="150" height="34" rx="8" class="chip"/>
+    <text x="555" y="590" text-anchor="middle" class="chip-t"><tspan class="code">week</tspan> · 일~토</text>
+    <rect x="640" y="568" width="190" height="34" rx="8" class="chip"/>
+    <text x="735" y="590" text-anchor="middle" class="chip-t"><tspan class="code">io</tspan> · 원자적 쓰기 · 불변</text>
+    <rect x="840" y="568" width="140" height="34" rx="8" class="chip"/>
+    <text x="910" y="590" text-anchor="middle" class="chip-t code">hashing</text>
+    <rect x="990" y="568" width="140" height="34" rx="8" class="chip"/>
+    <text x="1060" y="590" text-anchor="middle" class="chip-t code">models</text>
+    <rect x="1140" y="568" width="140" height="34" rx="8" class="chip"/>
+    <text x="1210" y="590" text-anchor="middle" class="chip-t code">log</text>
+  </g>
+
+  <text x="110" y="652" class="sub muted">외부 의존(GitHub · LLM · 근거 출처)은 clients 의 인터페이스 뒤에만 있다. 기본 테스트 게이트는 mock 으로 네트워크 0 · API 키 0 · 비용 0 (NFR-1).</text>
+</svg>
+</body>
+</html>

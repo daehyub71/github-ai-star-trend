@@ -1,0 +1,44 @@
+[
+  {
+    "id": 900001,
+    "full_name": "synth-lab/agent-kit",
+    "description": "합성 픽스처: LLM agent framework",
+    "topics": ["llm", "agents"],
+    "language": "Python",
+    "stargazers_count": 48210,
+    "forks_count": 3120,
+    "open_issues_count": 210,
+    "created_at": "2025-03-02T10:00:00Z",
+    "pushed_at": "2026-10-24T08:00:00Z",
+    "archived": false,
+    "fork": false
+  },
+  {
+    "id": 900002,
+    "full_name": "synth-lab/mcp-files",
+    "description": "Synthetic fixture: MCP server for local files",
+    "topics": ["mcp"],
+    "language": "TypeScript",
+    "stargazers_count": 1830,
+    "forks_count": 95,
+    "open_issues_count": 12,
+    "created_at": "2026-10-06T03:00:00Z",
+    "pushed_at": "2026-10-25T01:00:00Z",
+    "archived": false,
+    "fork": false
+  },
+  {
+    "id": 900003,
+    "full_name": "synth-web/css-grid-notes",
+    "description": "Synthetic fixture: non-AI curated list",
+    "topics": [],
+    "language": null,
+    "stargazers_count": 12040,
+    "forks_count": 800,
+    "open_issues_count": 3,
+    "created_at": "2019-01-15T00:00:00Z",
+    "pushed_at": null,
+    "archived": true,
+    "fork": false
+  }
+]

@@ -1,0 +1,7 @@
+# ASCII ONLY - pip reads this file with the locale encoding (cp949 on Korean
+# Windows) unless PYTHONUTF8=1 is set. Non-ASCII comments crash pip.
+#
+# Verification tools only (SPEC decision 21).
+pytest>=8,<9
+ruff>=0.6,<1
+mypy>=1.11,<2

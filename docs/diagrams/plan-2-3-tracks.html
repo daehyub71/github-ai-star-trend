@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="diagram-size" content="1400x552">
+<title>병렬 트랙</title>
+<style>
+  html, body { margin: 0; background: #ffffff; }
+  svg { display: block; }
+  text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; fill: #1b1a17; }
+  .muted { fill: #5f5b53; }
+  .title { font-size: 22px; font-weight: 700; }
+  .sub { font-size: 13px; }
+  .lane { fill: #f7f8fa; stroke: #c9ced6; stroke-width: 1.2; }
+  .lane-t { font-size: 16px; font-weight: 700; }
+  .lane-s { font-size: 12px; }
+  .guide { stroke: #c9ced6; stroke-width: 1.2; stroke-dasharray: 4 4; }
+  .p-free { fill: #eef3fb; stroke: #2f5d9e; stroke-width: 1.4; }
+  .p-paid { fill: #fdf1e6; stroke: #c46a12; stroke-width: 1.4; }
+  .p-ops { fill: #f0f1f3; stroke: #4a5568; stroke-width: 1.4; }
+  .p-light { fill: #f6f9fd; stroke: #2f5d9e; stroke-width: 1.2; stroke-dasharray: 5 3; }
+  .pt { font-size: 13.5px; font-weight: 700; }
+  .ps { font-size: 11.5px; }
+  .arrow { stroke: #4a5568; stroke-width: 1.6; fill: none; }
+  .dia { fill: #fff4e5; stroke: #b7791f; stroke-width: 1.5; }
+  .dia-t { font-size: 12.5px; font-weight: 700; }
+</style>
+</head>
+<body>
+<svg width="1400" height="552" viewBox="0 0 1400 552" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" class="title">병렬 트랙</text>
+  <text x="40" y="68" class="sub muted">PLAN 2-3 — 세 트랙은 서로를 기다리지 않는다. 세로 점선은 각 Phase 가 시작하는 지점이다 (순서만 나타내고 날짜 비례는 아니다)</text>
+
+  <!-- 레인 -->
+  <rect x="30" y="96" width="1340" height="160" rx="12" class="lane"/>
+  <rect x="30" y="268" width="1340" height="80" rx="12" class="lane"/>
+  <rect x="30" y="360" width="1340" height="116" rx="12" class="lane"/>
+
+  <text x="48" y="130" class="lane-t">A · 코드</text>
+  <text x="48" y="150" class="lane-s muted">Claude</text>
+  <text x="48" y="302" class="lane-t">B · 조사</text>
+  <text x="48" y="322" class="lane-s muted">Claude 조사 + 사용자 판단</text>
+  <text x="48" y="394" class="lane-t">C · 사용자</text>
+  <text x="48" y="414" class="lane-s muted">준비물 · 결정 · 합의</text>
+
+  <!-- 가이드 선 -->
+  <g>
+    <line x1="240" y1="96" x2="240" y2="464" class="guide"/>
+    <line x1="420" y1="96" x2="420" y2="464" class="guide"/>
+    <line x1="600" y1="96" x2="600" y2="464" class="guide"/>
+    <line x1="780" y1="96" x2="780" y2="464" class="guide"/>
+    <line x1="870" y1="96" x2="870" y2="476" class="guide"/>
+    <line x1="975" y1="96" x2="975" y2="476" class="guide"/>
+    <line x1="1180" y1="96" x2="1180" y2="464" class="guide"/>
+  </g>
+
+  <!-- A 레인 1행: 0 → 1 → 2 → 3 → 4b → 5 -->
+  <g>
+    <rect x="240" y="116" width="170" height="54" rx="10" class="p-free"/>
+    <text x="325" y="139" text-anchor="middle" class="pt">Phase 0</text>
+    <text x="325" y="157" text-anchor="middle" class="ps muted">골격 + 실측</text>
+    <rect x="420" y="116" width="170" height="54" rx="10" class="p-free"/>
+    <text x="505" y="139" text-anchor="middle" class="pt">Phase 1</text>
+    <text x="505" y="157" text-anchor="middle" class="ps muted">데이터 코어</text>
+    <rect x="600" y="116" width="170" height="54" rx="10" class="p-paid"/>
+    <text x="685" y="139" text-anchor="middle" class="pt">Phase 2</text>
+    <text x="685" y="157" text-anchor="middle" class="ps muted">분류</text>
+    <rect x="780" y="116" width="170" height="54" rx="10" class="p-paid"/>
+    <text x="865" y="139" text-anchor="middle" class="pt">Phase 3</text>
+    <text x="865" y="157" text-anchor="middle" class="ps muted">근거 · 카드 · 브리핑</text>
+    <rect x="1180" y="116" width="170" height="54" rx="10" class="p-ops"/>
+    <text x="1265" y="139" text-anchor="middle" class="pt">Phase 5</text>
+    <text x="1265" y="157" text-anchor="middle" class="ps muted">운영 · 배포</text>
+
+    <path d="M410 143 H418" class="arrow" marker-end="url(#arr)"/>
+    <path d="M590 143 H598" class="arrow" marker-end="url(#arr)"/>
+    <path d="M770 143 H778" class="arrow" marker-end="url(#arr)"/>
+    <rect x="975" y="116" width="180" height="54" rx="10" class="p-paid"/>
+    <text x="1065" y="139" text-anchor="middle" class="pt">Phase 4b</text>
+    <text x="1065" y="157" text-anchor="middle" class="ps muted">Notion · 블로그 초안</text>
+    <path d="M950 143 H973" class="arrow" marker-end="url(#arr)"/>
+    <path d="M1155 143 H1178" class="arrow" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- A 레인 2행: Phase 4 (시안 → 화면 구현) -->
+  <g>
+    <rect x="600" y="190" width="260" height="50" rx="10" class="p-light"/>
+    <text x="730" y="211" text-anchor="middle" class="pt">Phase 4 · 시안</text>
+    <text x="730" y="228" text-anchor="middle" class="ps muted">랭킹 데이터 모양으로 먼저 시작</text>
+    <rect x="870" y="190" width="290" height="50" rx="10" class="p-free"/>
+    <text x="1015" y="211" text-anchor="middle" class="pt">Phase 4 · 화면 구현</text>
+    <text x="1015" y="228" text-anchor="middle" class="ps muted">카드 화면은 Phase 3 결과 필요</text>
+
+    <path d="M505 170 V215 H598" class="arrow" marker-end="url(#arr)"/>
+    <path d="M860 215 H868" class="arrow" marker-end="url(#arr)"/>
+    <path d="M1160 215 C 1172 215, 1172 160, 1178 160" class="arrow" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- B 레인 -->
+  <rect x="240" y="292" width="540" height="34" rx="8" fill="#eef3fb" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="510" y="314" text-anchor="middle" style="font-size:13px">언제든: D-7 · D-8 출처 접근 · D-2 대조 출처 · R12 Vercel 설정 · JEV API</text>
+  <line x1="780" y1="284" x2="780" y2="334" stroke="#b3261e" stroke-width="2.4"/>
+  <text x="790" y="314" style="font-size:12.5px;fill:#b3261e;font-weight:700">Phase 3 착수 전까지</text>
+  <rect x="935" y="292" width="235" height="34" rx="8" fill="#eef3fb" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="1052" y="314" text-anchor="middle" style="font-size:12.5px">Notion API · 네이버 붙여 넣기 서식</text>
+  <line x1="1175" y1="284" x2="1175" y2="334" stroke="#b3261e" stroke-width="2.4"/>
+
+  <!-- C 레인: 마름모 = 그 시점까지 필요 -->
+  <g>
+    <polygon points="240,394 254,408 240,422 226,408" class="dia"/>
+    <text x="240" y="444" text-anchor="middle" class="dia-t" style="fill:#2e7d4f">GitHub 토큰 ✓</text>
+    <polygon points="420,394 434,408 420,422 406,408" class="dia"/>
+    <text x="420" y="444" text-anchor="middle" class="dia-t" style="fill:#2e7d4f">D-2 · D-3 결정 ✓</text>
+    <polygon points="600,394 614,408 600,422 586,408" class="dia"/>
+    <text x="600" y="444" text-anchor="middle" class="dia-t">키 · 정답 세트 검수</text>
+    <polygon points="870,394 884,408 870,422 856,408" class="dia"/>
+    <text x="870" y="444" text-anchor="middle" class="dia-t" style="fill:#2e7d4f">DESIGN 합의 ✓</text>
+    <polygon points="975,394 989,408 975,422 961,408" class="dia"/>
+    <text x="975" y="444" text-anchor="middle" class="dia-t" style="fill:#2e7d4f">Notion 토큰 ✓</text>
+    <text x="975" y="462" text-anchor="middle" class="dia-t" style="fill:#2e7d4f">D-19 · D-20 ✓</text>
+    <polygon points="1180,394 1194,408 1180,422 1166,408" class="dia"/>
+    <text x="1180" y="444" text-anchor="middle" class="dia-t">저장소 · Vercel 계정</text>
+  </g>
+
+  <text x="40" y="512" class="sub muted">B · C 트랙은 언제든 시작할 수 있고, 막는 시점만 지키면 된다 — 토큰(✓)은 Phase 0, 키 · 정답 세트는 Phase 2, DESIGN(✓)은 화면 구현, Notion 토큰(✓)은 Phase 4b, 계정은 Phase 5 전까지.</text>
+  <text x="40" y="534" class="sub muted">마름모 = 그 지점까지 사용자에게서 필요한 것.</text>
+</svg>
+</body>
+</html>
