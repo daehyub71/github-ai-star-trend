@@ -3,17 +3,26 @@
 DecisionClient 뒤에 Claude · JEV · 혼합 구현을 둔다(D-16). LLMDecider 는 LLMClient(예산 계량기로 감싼 것)를
 받아 정해진 형식으로 묻고, **결과 검증은 코드가 한다** — 형식이 틀리거나 분류 체계에 없는 값이면
 무엇이 틀렸는지 알려 주고 한 번 더 묻고, 그래도 안 되면 "미분류"로 둔다(FR-3.6).
+
+묶음 판정(classify_many, FR-3.7): 1차 Batch → 형식이 틀린 건만 2차 Batch 로 다시 묻는다. 거절(refusal)과
+Batch 오류는 일반 호출(대체 모델 — FR-3.10 ③)로 다시 보낸다. 판정이 하나 끝날 때마다 on_decision 으로 알려
+부른 쪽이 바로 저장한다 — 다음 묶음이 예산에 걸려도 이미 돈을 낸 결과는 남는다.
 """
 
 import hashlib
 import json
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from string import Template
 from typing import Any, Protocol
 
-from startrend.clients.llm import LLMClient, LLMRequest
+from startrend.clients.llm import BatchItem, LLMClient, LLMRequest
 from startrend.core.taxonomy import Taxonomy
+
+# (custom_id → 요청, 묶음 번호) → custom_id → 결과. 예산·상태 파일은 부른 쪽(budget.run_batch)이 맡는다
+BatchRunner = Callable[[dict[str, LLMRequest], str], dict[str, BatchItem]]
+OnDecision = Callable[["RepoInput", "Decision"], None]
 
 PROMPT_FILE = Path(__file__).resolve().parents[1] / "prompts" / "classify.md"
 README_CHARS = 4000          # 판정 입력에 넣는 README 앞부분 (MEASURE §7)
@@ -51,6 +60,19 @@ class DecisionClient(Protocol):
 
     def classify(self, item: RepoInput) -> Decision: ...
 
+    def classify_many(self, items: Sequence[RepoInput], *, batch: BatchRunner | None = None,
+                      on_decision: OnDecision | None = None) -> dict[int, Decision]: ...
+
+
+def _one_by_one(decider: DecisionClient, items: Sequence[RepoInput],
+                on_decision: OnDecision | None) -> dict[int, Decision]:
+    out: dict[int, Decision] = {}
+    for it in items:
+        out[it.repo_id] = d = decider.classify(it)
+        if on_decision:
+            on_decision(it, d)
+    return out
+
 
 class MockDecider:
     """표에 있는 판정을 돌려준다. 없으면 미분류."""
@@ -66,6 +88,10 @@ class MockDecider:
     def classify(self, item: RepoInput) -> Decision:
         self.asked.append(item.repo_id)
         return self.table.get(item.repo_id, Decision(status="unclassified", error="mock: 표에 없음"))
+
+    def classify_many(self, items: Sequence[RepoInput], *, batch: BatchRunner | None = None,
+                      on_decision: OnDecision | None = None) -> dict[int, Decision]:
+        return _one_by_one(self, items, on_decision)
 
 
 def user_message(item: RepoInput) -> str:
@@ -104,14 +130,19 @@ class LLMDecider:
     def fingerprint(self) -> str:
         return f"{self.prompt_hash}:{self.llm.model}:{self.effort}"
 
-    def classify(self, item: RepoInput) -> Decision:
+    def request(self, item: RepoInput, *, error: str = "") -> LLMRequest:
+        """판정 요청. error 가 있으면 두 번째 질문 — 무엇이 틀렸는지 알려 준다."""
         user = user_message(item)
+        if error:
+            user = (f"{user}\n\nYour previous answer was rejected: {error}. "
+                    "Answer again with valid values only.")
+        return LLMRequest(system=self.system, user=user, max_tokens=self.max_tokens, effort=self.effort,
+                          schema=self.schema, purpose="classify")
+
+    def classify(self, item: RepoInput) -> Decision:
         error = ""
         for attempt in (1, 2):
-            text = user if attempt == 1 else (
-                f"{user}\n\nYour previous answer was rejected: {error}. Answer again with valid values only.")
-            resp = self.llm.complete(LLMRequest(system=self.system, user=text, max_tokens=self.max_tokens,
-                                                effort=self.effort, schema=self.schema, purpose="classify"))
+            resp = self.llm.complete(self.request(item, error=error))
             if resp.stop_reason == "refusal":
                 return Decision(status="refused", attempts=attempt, error="refusal")
             try:
@@ -119,6 +150,46 @@ class LLMDecider:
             except ValueError as e:
                 error = str(e)
         return Decision(status="unclassified", attempts=2, error=error)
+
+    def classify_many(self, items: Sequence[RepoInput], *, batch: BatchRunner | None = None,
+                      on_decision: OnDecision | None = None) -> dict[int, Decision]:
+        if batch is None:
+            return _one_by_one(self, items, on_decision)
+        done: dict[int, Decision] = {}
+
+        def finish(it: RepoInput, d: Decision) -> None:
+            done[it.repo_id] = d
+            if on_decision:
+                on_decision(it, d)
+
+        by_id = {it.repo_id: it for it in items}
+        normal: list[RepoInput] = []    # 거절·Batch 오류 → 일반 호출로 (FR-3.10 ③)
+        reask: dict[int, str] = {}
+        first = batch({f"r{it.repo_id}-1": self.request(it) for it in items}, "1")
+        for it in items:
+            res = first.get(f"r{it.repo_id}-1")
+            if res is None or res.response is None or res.response.stop_reason == "refusal":
+                normal.append(it)
+                continue
+            try:
+                finish(it, self._validate(res.response.text, 1))
+            except ValueError as e:
+                reask[it.repo_id] = str(e)
+        if reask:
+            second = batch({f"r{rid}-2": self.request(by_id[rid], error=err)
+                            for rid, err in reask.items()}, "2")
+            for rid in reask:
+                it, res = by_id[rid], second.get(f"r{rid}-2")
+                if res is None or res.response is None or res.response.stop_reason == "refusal":
+                    normal.append(it)
+                    continue
+                try:
+                    finish(it, self._validate(res.response.text, 2))
+                except ValueError as e:
+                    finish(it, Decision(status="unclassified", attempts=2, error=str(e)))
+        for it in normal:
+            finish(it, self.classify(it))
+        return done
 
     def _validate(self, text: str, attempt: int) -> Decision:
         try:

@@ -3,20 +3,25 @@
 FR-3.1·3.5·3.6, 결정 30.
 """
 
+import json
 from datetime import date
+from pathlib import Path
 
 import pytest
 
 from startrend.budget import BudgetExceeded
 from startrend.clients import decision as dc
+from startrend.clients import llm
 from startrend.clients.github_mock import MockGitHub
 from startrend.core import io, meta, weekfile
+from startrend.core import taxonomy as tx
 from startrend.core.weekfile import WeekRow
 from startrend.stages import classify as cl
 from tests import synth
 
 W = date(2026, 10, 18)
 OLD = date(2020, 1, 1)
+TAX = tx.load(Path(__file__).resolve().parents[1] / "data" / "taxonomy.toml")
 
 
 # --- 다음에 판정할 묶음 ---
@@ -102,6 +107,34 @@ def test_classify_run_stops_on_budget_and_keeps_progress(tmp_path):
                             log=lambda m: None)
     assert stats["stopped"] == "budget" and stats["decided"] == 2
     assert meta.load(tmp_path, 12) is not None and meta.load(tmp_path, 11) is not None
+
+
+def test_classify_run_sends_each_round_as_one_batch(tmp_path):
+    # FR-3.7 — 판정 후보를 묶음마다 모아 Batch 한 번으로 보낸다.
+    # 상태 파일 이름이 겹치지 않게 묶음 번호를 붙인다
+    gh = _setup(tmp_path)
+    calls: list[tuple[str, list[str]]] = []
+
+    def runner(reqs: dict[str, llm.LLMRequest], tag: str) -> dict[str, llm.BatchItem]:
+        calls.append((tag, sorted(reqs)))
+        out = {}
+        for cid in reqs:
+            rid = int(cid[1:].split("-")[0])
+            body = ({"is_ai": True, "type": "도구/라이브러리", "category": "rag"} if rid % 2 == 0
+                    else {"is_ai": False, "type": "교육자료", "category": "none"})
+            text = json.dumps({**body, "secondary": "none", "reason": "x"}, ensure_ascii=False)
+            resp = llm.LLMResponse(text, "end_turn", llm.Usage(1000, 50), "claude-opus-5-5")
+            out[cid] = llm.BatchItem(resp)
+        return out
+
+    decider = dc.LLMDecider(llm.MockLLM([]), TAX)        # 일반 호출은 없어야 한다
+    stats = cl.run_classify(gh, decider, data_dir=tmp_path, weeks=[W], need=3, ratio=0.5, batch=runner,
+                            log=lambda m: None)
+    assert calls == [("1-1", sorted(f"r{i}-1" for i in range(7, 13)))]
+    assert stats["decided"] == 6 and stats["rounds"] == 1
+    m = meta.load(tmp_path, 12)
+    assert m is not None and m["classify"]["category"] == "rag"
+    assert m["classify"]["fingerprint"] == decider.fingerprint
 
 
 def test_classify_unclassified_is_not_retried_and_does_not_count_as_ai(tmp_path):

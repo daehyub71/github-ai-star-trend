@@ -15,7 +15,15 @@ from pathlib import Path
 from typing import Any
 
 from startrend.budget import BudgetExceeded
-from startrend.clients.decision import MAX_TOKENS, README_CHARS, DecisionClient, RepoInput, user_message
+from startrend.clients.decision import (
+    MAX_TOKENS,
+    README_CHARS,
+    BatchRunner,
+    Decision,
+    DecisionClient,
+    RepoInput,
+    user_message,
+)
 from startrend.clients.github import GitHubClient, GitHubError
 from startrend.clients.llm import Usage, cost, estimate_tokens
 from startrend.core import hashing, io, meta, week, weekfile
@@ -76,21 +84,47 @@ def _known_from(c: Mapping[str, Any]) -> bool | None:
     return bool(c.get("is_ai")) if c.get("status") == "ok" else None
 
 
+def _numbered(batch: BatchRunner | None, n: int) -> BatchRunner | None:
+    """Batch 차수 앞에 classify 묶음 번호를 붙인다 — 상태 파일 이름이 묶음마다 다르게."""
+    if batch is None:
+        return None
+
+    def runner(reqs: dict[str, Any], tag: str) -> dict[str, Any]:
+        return batch(reqs, f"{n}-{tag}")
+    return runner
+
+
 def run_classify(gh: GitHubClient, decider: DecisionClient, *, data_dir: Path, weeks: Sequence[date],
                  need: int = NEED, ratio: float = EXPECTED_AI_RATIO, today: date | None = None,
-                 log: Callable[[str], None] = print) -> dict[str, Any]:
+                 batch: BatchRunner | None = None, log: Callable[[str], None] = print) -> dict[str, Any]:
+    """batch 가 있으면 묶음마다 판정 후보를 모아 Batch 로 보낸다(FR-3.7). 없으면 한 건씩."""
     pools = load_pools(data_dir, weeks)
     names = names_for(data_dir, weeks)
     known: dict[int, bool | None] = {}
     stats: dict[str, Any] = {"rounds": 0, "decided": 0, "reused": 0, "github_calls": 0, "stopped": None,
                              "unclassified": [], "missing": []}
     stamp = (today or date.today()).isoformat()
+    hashes: dict[int, str] = {}
+
+    def save(item: RepoInput, d: Decision) -> None:
+        # 판정이 끝나는 대로 저장한다 — 다음 Batch 가 예산에 걸려도 이미 받은 결과는 남는다
+        record = {"status": d.status, "is_ai": d.is_ai, "type": d.type, "category": d.category,
+                  "secondary": d.secondary, "reason": d.reason, "attempts": d.attempts, "error": d.error,
+                  "confidence": d.confidence, "input_hash": hashes[item.repo_id],
+                  "fingerprint": decider.fingerprint, "at": stamp}
+        meta.save(data_dir, {"id": item.repo_id, "full_name": item.full_name, "classify": record})
+        known[item.repo_id] = _known_from(record)
+        stats["decided"] += 1
+        if d.status != "ok":
+            stats["unclassified"].append(item.full_name)
+
     for _ in range(MAX_ROUNDS):
         ids = next_round(pools, known, need=need, ratio=ratio)
         if not ids:
             break
         stats["rounds"] += 1
-        log(f"  묶음 {stats['rounds']}: 판정 후보 {len(ids)}개")
+        n = stats["rounds"]
+        pending: list[RepoInput] = []
         for rid in ids:
             name = names.get(rid)
             try:
@@ -111,21 +145,15 @@ def run_classify(gh: GitHubClient, decider: DecisionClient, *, data_dir: Path, w
                 known[rid] = _known_from(old)
                 stats["reused"] += 1
                 continue
-            try:
-                d = decider.classify(item)
-            except BudgetExceeded as e:
-                stats["stopped"] = "budget"
-                log(f"  예산 상한 — 여기서 멈춘다: {e}")
-                return stats
-            record = {"status": d.status, "is_ai": d.is_ai, "type": d.type, "category": d.category,
-                      "secondary": d.secondary, "reason": d.reason, "attempts": d.attempts, "error": d.error,
-                      "confidence": d.confidence, "input_hash": h, "fingerprint": decider.fingerprint,
-                      "at": stamp}
-            meta.save(data_dir, {"id": rid, "full_name": repo.full_name, "classify": record})
-            known[rid] = _known_from(record)
-            stats["decided"] += 1
-            if d.status != "ok":
-                stats["unclassified"].append(repo.full_name)
+            pending.append(item)
+            hashes[rid] = h
+        log(f"  묶음 {n}: 판정 후보 {len(ids)}개 — 새로 판정 {len(pending)}개")
+        try:
+            decider.classify_many(pending, batch=_numbered(batch, n), on_decision=save)
+        except BudgetExceeded as e:
+            stats["stopped"] = "budget"
+            log(f"  예산 상한 — 여기서 멈춘다: {e}")
+            return stats
     return stats
 
 
