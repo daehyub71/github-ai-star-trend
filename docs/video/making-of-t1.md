@@ -684,20 +684,21 @@
 ## 5. 화면 캡처 목록 (`sT1_*`)
 
 > 공개 영상이다. **토큰·키 값은 어떤 화면에도 나오지 않게** 한다(환경변수 창을 열어 둔 채 찍지 않는다). 아래 "가릴 것"은 찍은 뒤 흐림 처리.
+> **✅ 표시 7장은 이미 만들어 두었다** — `docs/video/captures/sT1_*.png`(3200×1800, 개인 경로 없음). 데이터가 바뀌면 `scripts/make_video_captures.py` 를 다시 돌린다. 나머지 4장(Notion · 디자인 캔버스 · 라벨링 화면 · Console)은 브라우저에서 직접 찍는다.
 
 | 파일 | 무엇을 | 어디서 | 가릴 것 |
 |---|---|---|---|
-| sT1_task.png | 진도율 대시보드 | `docs/TASK.md` 위쪽(마크다운 미리보기) | 없음 |
-| sT1_measure.png | 짐작 vs 실측 표 | `docs/MEASURE.md` §2·§12 | 없음 |
-| sT1_discover.png | 첫 발굴 결과 | `.work/2026-10-18/discover.json` 또는 MEASURE §12 표 | 없음 |
-| sT1_tests.png | 테스트 통과 | 터미널 `pytest -q` 마지막 줄(293 passed) | 사용자 폴더 경로 |
-| sT1_rank.png | 첫 랭킹 | 시험 소급 랭킹 JSON 또는 디자인 시안 | 없음 |
+| ✅ sT1_task.png | 진도율 대시보드 | `docs/TASK.md` 위쪽(마크다운 미리보기) | 없음 |
+| ✅ sT1_measure.png | 짐작 vs 실측 표 | `docs/MEASURE.md` §2·§12 | 없음 |
+| ✅ sT1_discover.png | 첫 발굴 결과 | `.work/2026-10-18/discover.json` 또는 MEASURE §12 표 | 없음 |
+| ✅ sT1_tests.png | 테스트 통과 | 터미널 `pytest -q` 마지막 줄(293 passed) | 사용자 폴더 경로 |
+| ✅ sT1_rank.png | 첫 랭킹 | 시험 소급 랭킹 JSON 또는 디자인 시안 | 없음 |
 | sT1_design.png | 핵심 3화면 시안 | Claude Design 캔버스(DESIGN.md 의 링크) | 계정 표시 |
 | sT1_notion.png | 시험 A · B 페이지 | Notion 부모 페이지 「깃허브 AI 트렌드」 | 워크스페이스 이름·사이드바 |
 | sT1_label.png | 정답 세트 라벨링 화면 | 라벨링 Artifact 페이지 | 계정 표시 |
-| sT1_log.png | 레이트 리밋 대기·재시작 로그 | `.work/backfill-full2.log` | 사용자 폴더 경로 |
+| ✅ sT1_log.png | 레이트 리밋 대기·재시작 로그 | `.work/backfill-full2.log` | 사용자 폴더 경로 |
 | sT1_console.png | 월 지출 한도 $50 | Claude Console → 지출 한도 | 조직 이름·잔액·이름 |
-| sT1_search.png | 검색 결과 비교 | MEASURE §15 표 | 없음 |
+| ✅ sT1_search.png | 검색 결과 비교 | MEASURE §15 표 | 없음 |
 
 **공개 전 확인**
 - 예제 저장소 `github-ai-star-trend` 는 비공개다. 영상에서 주소를 말하거나 링크를 걸려면 먼저 공개 여부를 정한다(공개 시 README 영·한 두 벌 — 워크스페이스 규칙).

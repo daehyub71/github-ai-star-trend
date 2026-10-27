@@ -71,14 +71,24 @@ def render(html: Path, png: Path, browser: str) -> None:
 
 def main(argv: list[str]) -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]
+    # --src 폴더 --out 폴더 (저장소 루트 기준) — 기본은 docs/diagrams → docs/img
+    src, out = SRC, OUT
+    for flag in ("--src", "--out"):
+        if flag in argv:
+            i = argv.index(flag)
+            if flag == "--src":
+                src = ROOT / argv[i + 1]
+            else:
+                out = ROOT / argv[i + 1]
+            argv = argv[:i] + argv[i + 2:]
     browser = find_browser()
-    sources = sorted(SRC.glob("*.html"))
+    sources = sorted(src.glob("*.html"))
     if argv:
         sources = [s for s in sources if any(a in s.stem for a in argv)]
     for html in sources:
-        png = OUT / f"{html.stem}.png"
+        png = out / f"{html.stem}.png"
         render(html, png, browser)
-        print(f"{html.name} -> docs/img/{png.name} ({png.stat().st_size // 1024} KB)")
+        print(f"{html.name} -> {png.relative_to(ROOT).as_posix()} ({png.stat().st_size // 1024} KB)")
     return 0
 
 

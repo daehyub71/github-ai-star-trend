@@ -1,0 +1,31 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="diagram-size" content="1600x900"><title>첫 실제 실행 — 641개가 사라졌다</title><style>
+html, body { margin: 0; background: #ffffff; }
+body { width: 1600px; height: 900px; box-sizing: border-box; padding: 56px 72px;
+       font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; color: #1b1a17; position: relative; }
+h1 { font-size: 44px; margin: 0 0 6px; letter-spacing: -0.5px; }
+.sub { font-size: 21px; color: #5f5b53; margin: 0 0 30px; }
+.src { position: absolute; right: 72px; bottom: 30px; font-size: 16px; color: #8a8f98; }
+.mono { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+.coral { color: #c4532f; } .teal { color: #0e7c78; } .blue { color: #2f5d9e; } .muted { color: #5f5b53; }
+.card { background: #f4f5f7; border: 1px solid #e3e6eb; border-radius: 18px; padding: 26px 30px; }
+.chip { display: inline-block; font-size: 16px; padding: 3px 10px; border-radius: 8px; margin: 2px 4px 2px 0;
+        background: #fff4d6; color: #7a5200; border: 1px solid #f0d58c; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: 9px 10px; border-bottom: 1px solid #e3e6eb; font-size: 21px; text-align: left; }
+th { font-size: 17px; color: #5f5b53; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+</style></head><body><h1>첫 실제 실행 — 641개가 사라졌다</h1><p class="sub">discover · 2026-10-26 · 2026-10-18 주 스냅샷</p>
+<div style="display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:start">
+ <div class="card"><div class="muted" style="font-size:22px">첫 실행 — 에러 메시지 없이</div>
+  <div style="font-size:150px;font-weight:800;line-height:1.05" class="coral">641</div>
+  <div style="font-size:26px">개가 비어 있었다</div>
+  <table style="margin-top:22px"><tr><td>Search 요청</td><td class="num">1,167회 · 57분</td></tr>
+   <tr><td>기대 (스타 ≥1,000)</td><td class="num">65,924개</td></tr>
+   <tr><td>고친 뒤</td><td class="num teal" style="font-weight:700">65,921개 · 누락 3 (0.005%)</td></tr>
+   <tr><td>전체 스냅샷</td><td class="num">82,590개</td></tr></table></div>
+ <div><div style="font-size:24px;font-weight:700;margin-bottom:14px">세 가지 원인 → 고친 것</div>
+  <div class="card" style="margin-bottom:14px;font-size:21px">① 99개만 온 쪽에서 멈췄다<br><span class="teal">→ 빈 쪽에서만 멈춘다</span></div>
+  <div class="card" style="margin-bottom:14px;font-size:21px">② 시간 초과로 일부만 온 응답이 캐시에 남았다<br><span class="teal">→ 저장하지 않고 한 번 더 받는다</span></div>
+  <div class="card" style="font-size:21px">③ 스타 수가 같으면 쪽 경계가 흔들렸다<br><span class="teal">→ 100개 이하로 쪼개 한 쪽에 받는다</span></div>
+  <div style="font-size:20px;margin-top:16px" class="muted">고치기 전에 재현 테스트부터(RED → GREEN)</div></div>
+</div><div class="src">출처: docs/MEASURE.md §12</div></body></html>

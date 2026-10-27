@@ -1,0 +1,32 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="diagram-size" content="1600x900"><title>짐작 대신 줄자</title><style>
+html, body { margin: 0; background: #ffffff; }
+body { width: 1600px; height: 900px; box-sizing: border-box; padding: 56px 72px;
+       font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; color: #1b1a17; position: relative; }
+h1 { font-size: 44px; margin: 0 0 6px; letter-spacing: -0.5px; }
+.sub { font-size: 21px; color: #5f5b53; margin: 0 0 30px; }
+.src { position: absolute; right: 72px; bottom: 30px; font-size: 16px; color: #8a8f98; }
+.mono { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+.coral { color: #c4532f; } .teal { color: #0e7c78; } .blue { color: #2f5d9e; } .muted { color: #5f5b53; }
+.card { background: #f4f5f7; border: 1px solid #e3e6eb; border-radius: 18px; padding: 26px 30px; }
+.chip { display: inline-block; font-size: 16px; padding: 3px 10px; border-radius: 8px; margin: 2px 4px 2px 0;
+        background: #fff4d6; color: #7a5200; border: 1px solid #f0d58c; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: 9px 10px; border-bottom: 1px solid #e3e6eb; font-size: 21px; text-align: left; }
+th { font-size: 17px; color: #5f5b53; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+</style></head><body><h1>짐작 대신 줄자</h1><p class="sub">probe 실측 · 2026-10-26</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:34px">
+ <div class="card"><div class="muted" style="font-size:22px">후보 저장소 (스타 1,000 이상)</div>
+  <div style="font-size:30px;margin-top:22px">짐작 <span class="muted">약 2만 개</span></div>
+  <div style="font-size:24px;margin:10px 0" class="muted">↓ 비용 0 실측</div>
+  <div style="font-size:64px;font-weight:700" class="coral">65,922개</div>
+  <div class="muted" style="font-size:19px;margin-top:14px">500 이상 125,024 · 100 이상 486,361</div></div>
+ <div class="card"><div class="muted" style="font-size:22px">매주 스타 변화를 모으는 방법</div>
+  <table style="margin-top:18px">
+   <tr><th>방법</th><th class="num">요청</th><th class="num">시간</th></tr>
+   <tr><td>저장소마다 히스토리</td><td class="num">65,922회</td><td class="num coral" style="font-weight:700">13.2시간</td></tr>
+   <tr><td>Search 스냅샷</td><td class="num">660쪽</td><td class="num teal" style="font-weight:700">22분</td></tr>
+  </table>
+  <div style="font-size:24px;margin-top:22px">→ 스냅샷 차이 + <b>상위만</b> 히스토리</div></div>
+</div>
+<div style="font-size:26px;margin-top:36px">원칙 — <b>측정 전에 설계를 확정하지 않는다.</b> 비용 0 으로 잴 수 있는 단계를 먼저 만든다.</div><div class="src">출처: docs/MEASURE.md §0 · §1 · §2</div></body></html>

@@ -1,0 +1,27 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="diagram-size" content="1600x900"><title>누가 검색하나</title><style>
+html, body { margin: 0; background: #ffffff; }
+body { width: 1600px; height: 900px; box-sizing: border-box; padding: 56px 72px;
+       font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; color: #1b1a17; position: relative; }
+h1 { font-size: 44px; margin: 0 0 6px; letter-spacing: -0.5px; }
+.sub { font-size: 21px; color: #5f5b53; margin: 0 0 30px; }
+.src { position: absolute; right: 72px; bottom: 30px; font-size: 16px; color: #8a8f98; }
+.mono { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+.coral { color: #c4532f; } .teal { color: #0e7c78; } .blue { color: #2f5d9e; } .muted { color: #5f5b53; }
+.card { background: #f4f5f7; border: 1px solid #e3e6eb; border-radius: 18px; padding: 26px 30px; }
+.chip { display: inline-block; font-size: 16px; padding: 3px 10px; border-radius: 8px; margin: 2px 4px 2px 0;
+        background: #fff4d6; color: #7a5200; border: 1px solid #f0d58c; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: 9px 10px; border-bottom: 1px solid #e3e6eb; font-size: 21px; text-align: left; }
+th { font-size: 17px; color: #5f5b53; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+</style></head><body><h1>누가 검색하나</h1><p class="sub">D-7 실측 · 2026-10-27 · 승인 상한 $3 중 $0.91 사용</p>
+<div style="display:grid;grid-template-columns:1.25fr 1fr;gap:30px;align-items:start">
+ <div class="card"><div style="font-size:22px;font-weight:700">① Claude 에게 검색까지 (서버 쪽 웹 검색)</div>
+  <table style="margin-top:10px"><tr><th>저장소</th><th class="num">입력 토큰</th><th class="num">출처</th><th class="num">비용</th></tr><tr><td class='mono' style='font-size:17px'>cloudflare/security-audit-skill</td><td class='num'>29,055</td><td class='num coral' style='font-weight:700'>0</td><td class='num'>$0.156</td></tr><tr><td class='mono' style='font-size:17px'>Graphify-Labs/graphify</td><td class='num'>29,290</td><td class='num coral' style='font-weight:700'>0</td><td class='num'>$0.157</td></tr><tr><td class='mono' style='font-size:17px'>debpalash/VoiceStudio</td><td class='num'>29,251</td><td class='num coral' style='font-weight:700'>0</td><td class='num'>$0.159</td></tr><tr><td class='mono' style='font-size:17px'>stablyai/orca</td><td class='num'>29,110</td><td class='num coral' style='font-weight:700'>0</td><td class='num'>$0.156</td></tr><tr><td class='mono' style='font-size:17px'>google-research/harness2</td><td class='num'>21,213</td><td class='num coral' style='font-weight:700'>0</td><td class='num'>$0.122</td></tr></table>
+  <div style="font-size:19px;margin-top:12px" class="muted">검색 3번씩 · 합계 $0.75 · 원인: 검색 코드 오류 + 같은 검색어 반복 → 횟수 제한</div></div>
+ <div class="card"><div style="font-size:22px;font-weight:700">② 우리 코드가 검색 (Tavily)</div>
+  <div class="mono" style="font-size:18px;margin:8px 0 6px">Graphify-Labs/graphify</div>
+  <div style="font-size:34px;font-weight:700" class="teal">1크레딧 · 1.7초 · 6건</div><div style='font-size:20px;margin:6px 0'>✓ wavect.io — 리뷰</div><div style='font-size:20px;margin:6px 0'>✓ kevinkinnett.com — 사용기</div><div style='font-size:20px;margin:6px 0'>✓ augmentcode.com — 기사</div><div style='font-size:20px;margin:6px 0'>✓ youtube.com — 영상</div><div style='font-size:20px;margin:6px 0'>✓ dev.to — 튜토리얼</div><div style='font-size:20px;margin:6px 0'>✓ pub.towardsai.net — 비교</div>
+  <div style="font-size:18px;margin-top:8px" class="muted">+ 저장소 자체 1건 · 무관 1건 (Claude 판정이 거름)</div></div>
+</div>
+<div style="font-size:23px;margin-top:22px">결정 46 — <b>검색은 우리 코드가, 판정·요약은 Claude 가</b> (근거 목록 파일 → 인용 게이트)</div><div class="src">출처: docs/MEASURE.md §15</div></body></html>

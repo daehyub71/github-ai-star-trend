@@ -1,0 +1,34 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="diagram-size" content="1600x900"><title>52주 소급 — 끊기면 멈추고, 이어 돌린다</title><style>
+html, body { margin: 0; background: #ffffff; }
+body { width: 1600px; height: 900px; box-sizing: border-box; padding: 56px 72px;
+       font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; color: #1b1a17; position: relative; }
+h1 { font-size: 44px; margin: 0 0 6px; letter-spacing: -0.5px; }
+.sub { font-size: 21px; color: #5f5b53; margin: 0 0 30px; }
+.src { position: absolute; right: 72px; bottom: 30px; font-size: 16px; color: #8a8f98; }
+.mono { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+.coral { color: #c4532f; } .teal { color: #0e7c78; } .blue { color: #2f5d9e; } .muted { color: #5f5b53; }
+.card { background: #f4f5f7; border: 1px solid #e3e6eb; border-radius: 18px; padding: 26px 30px; }
+.chip { display: inline-block; font-size: 16px; padding: 3px 10px; border-radius: 8px; margin: 2px 4px 2px 0;
+        background: #fff4d6; color: #7a5200; border: 1px solid #f0d58c; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: 9px 10px; border-bottom: 1px solid #e3e6eb; font-size: 21px; text-align: left; }
+th { font-size: 17px; color: #5f5b53; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+</style></head><body><h1>52주 소급 — 끊기면 멈추고, 이어 돌린다</h1><p class="sub">1회성 · 비용 0 · GitHub 시간당 5,000회 한도</p>
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:start">
+ <div class="card" style="font-size:21px;line-height:1.75">
+  <b>10-26 16:21</b> 52주 소급 시작 — 저장소 82,590개 · 약 15만 번<br>
+  <b>10-27 06:40</b> <span class="coral">14시간째 · 36,000개에서 종료</span><br>
+  &nbsp;&nbsp;&nbsp;상대 서버가 응답 없이 연결을 끊음 (RemoteDisconnected)<br>
+  &nbsp;&nbsp;&nbsp;주간 파일은 0개 — 반쯤 쓴 파일 없음<br>
+  <b>06:45</b> <span class="teal">고친 코드로 이어 돌리기</span> — 받은 응답은 캐시에서<br>
+  <b>14:05 → 14:36</b> 시간당 한도(5,000회) 대기 31분 — 정상<br></div>
+ <div><div style="font-size:22px;font-weight:700;margin-bottom:10px">고친 것</div>
+  <div class="card" style="font-size:20px;margin-bottom:14px">연결이 끊기면 2·4·8 … 64초 간격으로 6번 다시</div>
+  <div class="card" style="font-size:20px;margin-bottom:14px">그래도 안 되면 <b>건너뛰지 않고 멈춘다</b><br><span class="muted">건너뛰면 한 번 쓰면 못 고치는 주간 파일에 구멍</span></div>
+  <div class="card" style="font-size:20px">대기마다 이유를 로그에 남긴다</div></div>
+</div>
+<pre class="mono" style="background:#1e1f22;color:#d4d4d4;border-radius:14px;padding:18px 24px;font-size:20px;margin-top:24px">59000/82590 · 히스토리 117997회
+60000/82590 · 히스토리 119997회
+61000/82590 · 히스토리 121997회
+62000/82590 · 히스토리 123995회</pre><div class="src">출처: docs/MEASURE.md §14 · 소급 로그</div></body></html>

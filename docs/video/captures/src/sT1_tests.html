@@ -1,0 +1,27 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="diagram-size" content="1600x900"><title>테스트가 지키는 규칙</title><style>
+html, body { margin: 0; background: #ffffff; }
+body { width: 1600px; height: 900px; box-sizing: border-box; padding: 56px 72px;
+       font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', sans-serif; color: #1b1a17; position: relative; }
+h1 { font-size: 44px; margin: 0 0 6px; letter-spacing: -0.5px; }
+.sub { font-size: 21px; color: #5f5b53; margin: 0 0 30px; }
+.src { position: absolute; right: 72px; bottom: 30px; font-size: 16px; color: #8a8f98; }
+.mono { font-family: Consolas, 'SF Mono', Menlo, monospace; }
+.coral { color: #c4532f; } .teal { color: #0e7c78; } .blue { color: #2f5d9e; } .muted { color: #5f5b53; }
+.card { background: #f4f5f7; border: 1px solid #e3e6eb; border-radius: 18px; padding: 26px 30px; }
+.chip { display: inline-block; font-size: 16px; padding: 3px 10px; border-radius: 8px; margin: 2px 4px 2px 0;
+        background: #fff4d6; color: #7a5200; border: 1px solid #f0d58c; }
+table { border-collapse: collapse; width: 100%; }
+td, th { padding: 9px 10px; border-bottom: 1px solid #e3e6eb; font-size: 21px; text-align: left; }
+th { font-size: 17px; color: #5f5b53; font-weight: 600; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+</style></head><body><h1>테스트가 지키는 규칙</h1><p class="sub">커밋 전 검사: ruff → mypy → pytest → 크기 가드</p><pre class='mono' style='background:#1e1f22;border-radius:16px;padding:30px 34px;font-size:22px;line-height:1.5;margin:0'><span style='color:#9cdcfe'>PS github-ai-star-trend&gt; ruff check .</span>
+<span style='color:#6ad38e'>All checks passed!</span>
+<span style='color:#9cdcfe'>PS github-ai-star-trend&gt; mypy startrend tests scripts</span>
+<span style='color:#6ad38e'>Success: no issues found in 69 source files</span>
+<span style='color:#9cdcfe'>PS github-ai-star-trend&gt; pytest -q</span>
+<span style='color:#d4d4d4'>........................................................................ [ 24%]</span>
+<span style='color:#d4d4d4'>........................................................................ [ 49%]</span>
+<span style='color:#d4d4d4'>........................................................................ [ 73%]</span>
+<span style='color:#d4d4d4'>........................................................................ [ 98%]</span>
+<span style='color:#d4d4d4'>.....                                                                    [100%]</span>
+<span style='color:#6ad38e'>293 passed, 4 deselected in 5.73s</span></pre><div style='font-size:22px;margin-top:22px'>기본 테스트는 <b>인터넷 · 키 · 돈 없이</b> 통과한다 · 실제 호출 4개는 <span class='mono'>-m live</span> 로만</div><div class="src">출처: 커밋 전 훅 출력 (2026-10-27)</div></body></html>
