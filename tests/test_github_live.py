@@ -196,3 +196,32 @@ def test_github_live_real_api_history_and_count():
     assert count > 0
     assert 0 < len(weeks) <= 30
     assert weeks[0].week >= weeks[-1].week  # 최신 주 먼저 (문서)
+
+
+def test_github_live_reports_each_rate_wait():
+    # 2026-10-27 소급이 14:06 부터 응답 없이 쉬었는데 이유가 로그에 없었다 — 대기마다 시간과 이유를 알린다
+    events: list[tuple[float, str]] = []
+    clock = FakeClock(now=1_000.0)
+    primary = err(403, {"x-ratelimit-remaining": "0", "x-ratelimit-reset": "1060"})
+    secondary = err(429, {"retry-after": "30"})
+    gh, _, _ = make([primary, secondary, ok({"count": 1})], clock=clock,
+                    on_wait=lambda s, why: events.append((s, why)))
+    assert gh.star_count("a/b") == 1
+    assert events == [(61.0, "403 primary limit — reset"), (30.0, "429 retry-after")]
+
+
+def test_github_live_secondary_limit_403_without_headers_waits():
+    # GitHub 문서: 2차 레이트 리밋은 retry-after 없이 403 으로도 온다 — 최소 1분 기다린다.
+    # 예전에는 권한 오류처럼 GitHubError 가 되어, 소급에서 그 저장소가 불변 주간 파일에서 빠질 수 있었다
+    body = b'{"message": "You have exceeded a secondary rate limit. Please wait a few minutes."}'
+    gh, _, clock = make([err(403, {}, body), ok({"count": 4})])
+    assert gh.star_count("a/b") == 4
+    assert clock.slept == [60.0]
+
+
+def test_github_live_permission_403_is_still_an_error():
+    body = b'{"message": "Resource not accessible by personal access token"}'
+    gh, _, clock = make([err(403, {}, body)])
+    with pytest.raises(GitHubError):
+        gh.star_count("a/b")
+    assert clock.slept == []

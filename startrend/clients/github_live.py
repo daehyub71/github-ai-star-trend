@@ -54,6 +54,7 @@ class LiveGitHub:
         max_rate_wait: float = 900.0,
         max_rate_waits: int = 5,
         max_transport_retries: int = 6,
+        on_wait: Callable[[float, str], None] | None = None,
     ):
         self._token = token
         self._transport = transport or UrllibTransport()
@@ -66,6 +67,7 @@ class LiveGitHub:
         self._max_rate_wait = max_rate_wait
         self._max_rate_waits = max_rate_waits
         self._max_transport_retries = max_transport_retries
+        self._on_wait = on_wait  # 레이트 리밋 대기마다 (초, 이유) — 로그용
         self.stats = CallStats()
         self.last_rate_limit: RateLimit | None = None
 
@@ -142,11 +144,14 @@ class LiveGitHub:
             if resp.status == 404:
                 raise NotFound(f"{endpoint}: {path} 없음", status=404)
 
-            wait = self._rate_limit_wait(resp)
-            if wait is not None:
+            waited = self._rate_limit_wait(resp)
+            if waited is not None:
+                wait, why = waited
                 reset_at = parse_rate_limit(resp.headers).reset_at
                 if wait > self._max_rate_wait or rate_waits >= self._max_rate_waits:
                     raise RateLimited(f"{endpoint}: 레이트 리밋 — {wait:.0f}초를 기다려야 한다", reset_at)
+                if self._on_wait is not None:
+                    self._on_wait(wait, why)
                 self._sleep(wait)
                 self.stats.rate_waits += wait
                 rate_waits += 1
@@ -160,17 +165,20 @@ class LiveGitHub:
             snippet = resp.body[:200].decode("utf-8", errors="replace")
             raise GitHubError(f"{endpoint}: {path} HTTP {resp.status} {snippet}", status=resp.status)
 
-    def _rate_limit_wait(self, resp: HttpResponse) -> float | None:
+    def _rate_limit_wait(self, resp: HttpResponse) -> tuple[float, str] | None:
+        """(기다릴 초, 이유). 기다려도 풀리지 않는 응답이면 None."""
         if resp.status not in (403, 429):
             return None
         retry_after = resp.headers.get("retry-after")
         if retry_after:
-            return float(retry_after)
+            return float(retry_after), f"{resp.status} retry-after"
         if resp.headers.get("x-ratelimit-remaining") == "0":
             reset = int(resp.headers.get("x-ratelimit-reset") or 0)
-            return max(reset - self._clock(), 0.0) + 1.0
+            return max(reset - self._clock(), 0.0) + 1.0, f"{resp.status} primary limit — reset"
         if resp.status == 429:
-            return _SECONDARY_DEFAULT_WAIT
+            return _SECONDARY_DEFAULT_WAIT, "429 secondary limit — default wait"
+        if b"secondary rate limit" in resp.body.lower():  # 헤더 없는 403 2차 리밋 — 최소 1분(GitHub 문서)
+            return _SECONDARY_DEFAULT_WAIT, "403 secondary limit — default wait"
         return None  # 권한 문제 등 — 기다려도 풀리지 않는다
 
 

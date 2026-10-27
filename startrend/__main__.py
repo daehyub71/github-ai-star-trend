@@ -100,11 +100,15 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     return 2
 
 
+def _log_wait(seconds: float, why: str) -> None:
+    print(f"  레이트 리밋 대기 {seconds:.0f}초 — {why}", flush=True)
+
+
 def _probe(settings: Settings, token: str, args: argparse.Namespace) -> int:
     today = date.today()
     out = settings.work_dir / "probe" / today.isoformat()
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "probe" / "cache", cacheable_response)
-    gh = LiveGitHub(token, transport=cache)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
     report = probe.run_probe(
         gh,
         fetch_html=lambda url: fetch_trending(cache, "weekly"),
@@ -132,7 +136,7 @@ def _discover(settings: Settings, token: str, args: argparse.Namespace) -> int:
     # 캐시는 그 주 안에서만 다시 쓴다 — 다음 주에 오래된 값이 섞이지 않게
     week =wk.week_name(wk.previous_week(wk.week_start(today)))
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / week, cacheable_response)
-    gh = LiveGitHub(token, transport=cache)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
     result = discover.discover(gh, today=today, pool_min=args.pool_min, new_days=args.new_days,
                                new_min=args.new_min, log=lambda m: print(m, flush=True))
     snap = settings.work_dir / "snapshots" / f"{week}.csv"
@@ -170,7 +174,7 @@ def _stars(settings: Settings, token: str, args: argparse.Namespace) -> int:
     prev = snapshot.read(prev_path) if prev_path.exists() else None
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / wk.week_name(w),
                              cacheable_response)
-    gh = LiveGitHub(token, transport=cache)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
     tracked = rank.tracked_names(settings.data_dir, w - timedelta(days=7))
     stats = stars.run_stars(gh, cur=snapshot.read(cur_path), prev=prev, week_start=w, today=today,
                             data_dir=settings.data_dir, tracked=tracked,
@@ -203,7 +207,7 @@ def _backfill(settings: Settings, token: str, args: argparse.Namespace) -> int:
     # 같은 주 안에서는 이어 돌린다 — 캐시를 대상 주 단위로 둔다
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / f"backfill-{wk.week_name(w)}",
                              cacheable_response)
-    gh = LiveGitHub(token, transport=cache, max_rate_wait=3700.0, max_rate_waits=100)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache, max_rate_wait=3700.0, max_rate_waits=100)
     stats = backfill.run_backfill(gh, rows=rows, today=today, weeks_back=args.weeks,
                                   data_dir=settings.data_dir,
                                   log=lambda m: print(m, flush=True))
@@ -222,7 +226,7 @@ def _rank(settings: Settings, token: str, args: argparse.Namespace) -> int:
     else:
         weeks = [_week_arg(args.week, today)]
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "rank", cacheable_response)
-    gh = LiveGitHub(token, transport=cache)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
     for w in weeks:
         if not weekfile.week_path(settings.data_dir, w).exists():
             print(f"주간 파일이 없다: {w}", file=sys.stderr)
