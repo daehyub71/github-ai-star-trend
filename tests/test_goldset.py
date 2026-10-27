@@ -146,6 +146,17 @@ def test_goldset_run_draft_writes_a_prediction_row_per_candidate(tmp_path):
     assert rows[2]["status"] == "unclassified"
 
 
+def test_goldset_run_draft_writes_nothing_when_the_budget_stops_before_any_decision(tmp_path):
+    # 회귀(2026-10-27): 제출 전에 예산으로 막히면 빈 초안 파일이 남았다 — 판정이 없으면 쓰지 않는다
+    class Blocked(dc.MockDecider):
+        def classify_many(self, items, *, batch=None, on_decision=None):
+            raise BudgetExceeded("classify 2건: 최악 $3.04 — 남은 예산 $3.00")
+
+    out = tmp_path / "drafts.jsonl"
+    stats = gs.run_draft(_gh([1, 2]), Blocked({}), _cands(2), out=out, log=lambda m: None)
+    assert stats["stopped"] == "budget" and stats["decided"] == 0 and not out.exists()
+
+
 def test_goldset_run_draft_keeps_what_was_decided_when_the_budget_stops(tmp_path):
     class Capped(dc.MockDecider):
         def classify(self, item):

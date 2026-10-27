@@ -189,8 +189,9 @@ def run_draft(gh: GitHubClient, decider: DecisionClient, candidates: Sequence[Ma
         stats["stopped"] = "budget"
         log(f"  예산 상한 — 여기서 멈춘다: {e}")
     finally:
-        order = [int(c["repo_id"]) for c in candidates]
-        io.write_jsonl(out, [rows[i] for i in order if i in rows])
+        if rows:  # 판정이 하나도 없으면(제출 전에 막힘) 빈 파일을 남기지 않는다
+            order = [int(c["repo_id"]) for c in candidates]
+            io.write_jsonl(out, [rows[i] for i in order if i in rows])
     stats["decided"] = len(rows)
     stats["not_ok"] = sum(1 for r in rows.values() if r["status"] != "ok")
     return stats

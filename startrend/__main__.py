@@ -408,7 +408,8 @@ def _goldset_draft(settings: Settings, args: argparse.Namespace) -> int:
     seconds = time.monotonic() - t0
     report = None
     blind_path = settings.data_dir / "eval" / "goldset_blind_labels.jsonl"
-    if blind_path.exists() and out.exists():   # 블라인드 30 대 초안 — 초안 편향을 잰다 (FR-14.1)
+    # 블라인드 30 대 초안 — 초안 편향을 잰다 (FR-14.1). 이번 실행에서 판정한 것이 없으면 기록하지 않는다
+    if blind_path.exists() and out.exists() and stats["decided"]:
         result = evaluate.score(evaluate.load_labels(blind_path, tax), evaluate.load_predictions(out))
         md = evaluate.report_md(result, title="블라인드 30 대 Claude 초안", tax=tax, notes=[
             "정답: 블라인드 30 — 사용자가 다른 AI 의 분류를 검토해 옮긴 라벨(FR-14.1)",
