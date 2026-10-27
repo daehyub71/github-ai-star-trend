@@ -1,0 +1,22 @@
+{
+  "created": "2026-08-13",
+  "description": "DSHDesktop：DeepSeek Harness Desktop / DeepSeek Harness 桌面版",
+  "first_seen": "2026-08-23",
+  "full_name": "dataelement/dsh-desktop",
+  "id": 1333165619,
+  "language": "JavaScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "agent",
+    "apps",
+    "deepseek",
+    "deepseek-harness",
+    "deepseek-harness-desktop",
+    "desktop",
+    "dsh-desktop",
+    "dsh-plugin",
+    "dsh-plugin-desktop",
+    "dshdesktop",
+    "harness"
+  ]
+}

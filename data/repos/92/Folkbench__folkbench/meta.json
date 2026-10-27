@@ -1,0 +1,25 @@
+{
+  "created": "2026-10-02",
+  "description": "AI API 中转站评测排行与切换工具：实测可用率、延迟与价格 · Open-source AI API relay benchmark, rankings & switcher for Claude Code / Codex",
+  "first_seen": "2026-10-18",
+  "full_name": "Folkbench/folkbench",
+  "id": 1401469171,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ai",
+    "api-relay",
+    "api-relay-pricing",
+    "benchmark",
+    "benchmarks",
+    "claude",
+    "claude-code",
+    "codex",
+    "folkbench",
+    "llm",
+    "model-evaluation",
+    "openai-api",
+    "reliability",
+    "tauri"
+  ]
+}

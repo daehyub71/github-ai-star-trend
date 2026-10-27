@@ -1,0 +1,21 @@
+{
+  "created": "2026-02-06",
+  "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
+  "first_seen": "2026-07-26",
+  "full_name": "firecrawl/pdf-inspector",
+  "id": 1151702019,
+  "language": "Rust",
+  "last_seen": "2026-08-02",
+  "topics": [
+    "markdown",
+    "nodejs",
+    "ocr-routing",
+    "pdf",
+    "pdf-classification",
+    "pdf-extraction",
+    "pdf-parser",
+    "python",
+    "rust",
+    "text-extraction"
+  ]
+}

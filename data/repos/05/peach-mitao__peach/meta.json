@@ -1,0 +1,18 @@
+{
+  "created": "2026-08-19",
+  "description": "Peach: Local-first video metadata scraper and media manager.",
+  "first_seen": "2026-10-18",
+  "full_name": "peach-mitao/peach",
+  "id": 1339970099,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "local-first",
+    "media-library",
+    "media-manager",
+    "python",
+    "react",
+    "self-hosted",
+    "video-player"
+  ]
+}

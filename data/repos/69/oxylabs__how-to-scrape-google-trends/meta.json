@@ -1,0 +1,25 @@
+{
+  "created": "2024-08-06",
+  "description": "Learn step-by-step how to scrape Google Trends data and make a result comparison using Python and Oxylabs SERP API. Extract keywords, their popularity, breakdown by region, related queries, and more.",
+  "first_seen": "2025-11-09",
+  "full_name": "oxylabs/how-to-scrape-google-trends",
+  "id": 838876627,
+  "language": "Python",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "google",
+    "google-trend",
+    "google-trend-api",
+    "google-trend-strategy",
+    "google-trends",
+    "google-trends-api",
+    "google-trends-crawler",
+    "google-trends-scraper",
+    "python",
+    "scraper",
+    "scraper-api",
+    "scraping",
+    "scraping-api",
+    "web-scraping"
+  ]
+}

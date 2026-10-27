@@ -1,0 +1,31 @@
+{
+  "created": "2025-10-19",
+  "description": "380 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 380+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
+  "first_seen": "2026-03-08",
+  "full_name": "alirezarezvani/claude-skills",
+  "id": 1079084637,
+  "language": "Python",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "agent-plugins",
+    "agent-skills",
+    "agentic-ai",
+    "ai-coding-agent",
+    "anthropic-claude",
+    "claude-ai",
+    "claude-code",
+    "claude-code-plugins",
+    "claude-code-skills",
+    "claude-skills",
+    "codex-skills",
+    "coding-agent-plugins",
+    "cursor-skills",
+    "developer-tools",
+    "gemini-cli-skills",
+    "openai-codex",
+    "openclaw",
+    "openclaw-plugins",
+    "openclaw-skills",
+    "prompt-engineering"
+  ]
+}

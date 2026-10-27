@@ -1,0 +1,28 @@
+{
+  "created": "2026-02-24",
+  "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+  "first_seen": "2026-03-01",
+  "full_name": "Panniantong/Agent-Reach",
+  "id": 1165277268,
+  "language": "Python",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "agent-infrastructure",
+    "ai-agent",
+    "ai-search",
+    "automation",
+    "bilibili",
+    "claude-code",
+    "cli",
+    "cursor",
+    "free-api",
+    "llm-tools",
+    "mcp",
+    "python",
+    "reddit-scraper",
+    "twitter-scraper",
+    "web-scraper",
+    "xiaohongshu",
+    "youtube-transcript"
+  ]
+}

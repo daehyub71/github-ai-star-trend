@@ -1,0 +1,10 @@
+{
+  "created": "2026-03-30",
+  "description": "Use Codex from Claude Code to review code or delegate tasks.",
+  "first_seen": "2026-03-29",
+  "full_name": "openai/codex-plugin-cc",
+  "id": 1196321162,
+  "language": "JavaScript",
+  "last_seen": "2026-04-19",
+  "topics": []
+}

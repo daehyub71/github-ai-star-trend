@@ -1,0 +1,26 @@
+{
+  "created": "2026-03-03",
+  "description": "The full-stack TypeScript framework to build, test, and deploy production-ready MCP servers and AI-native apps.",
+  "first_seen": "2026-07-19",
+  "full_name": "nitrocloudofficial/nitrostack",
+  "id": 1171376163,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agentic-ai",
+    "ai",
+    "chatgpt",
+    "chatgpt-apps",
+    "claude",
+    "claude-apps",
+    "mcp",
+    "mcp-client",
+    "mcp-server",
+    "mcp-servers",
+    "mcp-tools",
+    "mcpagents",
+    "mcpapps",
+    "model-context-protocol",
+    "modelcontextprotocol"
+  ]
+}

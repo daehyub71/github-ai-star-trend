@@ -1,0 +1,21 @@
+{
+  "created": "2023-06-11",
+  "description": "Resume builder for academics and engineers",
+  "first_seen": "2025-12-21",
+  "full_name": "rendercv/rendercv",
+  "id": 652229784,
+  "language": "Python",
+  "last_seen": "2025-12-21",
+  "topics": [
+    "cv",
+    "cv-builder",
+    "cv-generator",
+    "cv-template",
+    "python",
+    "resume",
+    "resume-builder",
+    "resume-generator",
+    "resume-template",
+    "typst"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "created": "2024-07-10",
+  "description": "🚀 QQ聊天记录、表情包导出工具 | 自动化提取图片/文字/图片消息，支持TXT/JSON导出，高效备份，支持NT QQ ",
+  "first_seen": "2025-12-14",
+  "full_name": "shuakami/qq-chat-exporter",
+  "id": 826579501,
+  "language": "Rust",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "chat-exports",
+    "electron",
+    "export",
+    "exporter",
+    "javascript",
+    "qq",
+    "qq-expoter",
+    "qq-nt",
+    "qqnt"
+  ]
+}

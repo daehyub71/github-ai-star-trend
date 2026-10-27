@@ -1,0 +1,26 @@
+{
+  "created": "2025-04-13",
+  "description": "Deploy Your Frontend in a Single Command. Claude Code Skills supported.",
+  "first_seen": "2025-12-14",
+  "full_name": "glitternetwork/pinme",
+  "id": 965360470,
+  "language": "TypeScript",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "ai-tools",
+    "claude-code-skill",
+    "claude-skills",
+    "deployment",
+    "deployment-tools",
+    "frontend",
+    "frontend-deployment",
+    "hosting",
+    "serverless",
+    "skills",
+    "static-site",
+    "static-site-deploy",
+    "static-site-hosting",
+    "web-hosting",
+    "zero-configuration"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "created": "2026-08-10",
+  "description": "Best headless browser for AI agents. Lite, Fast, High-Compatibility. Built in Rust",
+  "first_seen": "2026-09-27",
+  "full_name": "lexmount/moli",
+  "id": 1329849289,
+  "language": "Rust",
+  "last_seen": "2026-10-04",
+  "topics": [
+    "ai-agents",
+    "ai-tools",
+    "browser",
+    "browser-automation",
+    "cloud-browser",
+    "headless",
+    "headless-browser",
+    "kitesurf",
+    "playwright",
+    "puppeteer",
+    "rust",
+    "servo",
+    "web-crawler",
+    "web-crawling",
+    "web-scraper",
+    "web-scraping"
+  ]
+}

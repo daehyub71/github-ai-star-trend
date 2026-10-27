@@ -1,0 +1,18 @@
+{
+  "created": "2026-02-15",
+  "description": "High-performance browser automation bridge and multi-instance orchestrator with advanced stealth injection and real-time dashboard.",
+  "first_seen": "2026-03-01",
+  "full_name": "pinchtab/pinchtab",
+  "id": 1158432527,
+  "language": "Go",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "browser-automation",
+    "cdp",
+    "golang",
+    "headless-chrome",
+    "orchestrator",
+    "stealth",
+    "web-scraping"
+  ]
+}

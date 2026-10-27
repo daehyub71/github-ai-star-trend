@@ -1,0 +1,10 @@
+{
+  "created": "2024-12-11",
+  "description": "A security-focused library OS supporting kernel- and user-mode execution",
+  "first_seen": "2026-02-08",
+  "full_name": "microsoft/litebox",
+  "id": 901607132,
+  "language": "Rust",
+  "last_seen": "2026-02-08",
+  "topics": []
+}

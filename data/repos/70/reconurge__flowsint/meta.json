@@ -1,0 +1,15 @@
+{
+  "created": "2025-01-31",
+  "description": "A modern platform for visual, flexible, and extensible graph-based investigations. For cybersecurity analysts and investigators.",
+  "first_seen": "2026-05-31",
+  "full_name": "reconurge/flowsint",
+  "id": 925273833,
+  "language": "TypeScript",
+  "last_seen": "2026-05-31",
+  "topics": [
+    "investigation",
+    "osint",
+    "python",
+    "recon"
+  ]
+}

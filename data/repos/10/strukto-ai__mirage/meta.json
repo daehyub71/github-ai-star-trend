@@ -1,0 +1,27 @@
+{
+  "created": "2026-05-06",
+  "description": "The World's First Virtual Terminal for AI Agents",
+  "first_seen": "2026-05-24",
+  "full_name": "strukto-ai/mirage",
+  "id": 1231135337,
+  "language": "TypeScript",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "agent-sandbox",
+    "agent-tools",
+    "ai-agents",
+    "bash",
+    "claude-code",
+    "dsh",
+    "dsh-plugin",
+    "fuse",
+    "llm-agents",
+    "openai-agents",
+    "python",
+    "ssh",
+    "typescript",
+    "vfs",
+    "virtual-filesystem",
+    "virtual-terminal"
+  ]
+}

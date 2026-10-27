@@ -1,0 +1,10 @@
+{
+  "created": "2026-03-18",
+  "description": "给你的本机 Agent（如 Claude Code、Grok Bot 等）装上完整联网能力的 Skill：三层通道调度 + 浏览器 CDP + 并行分治，自动积累站点经验，不断优化联网效率",
+  "first_seen": "2026-03-29",
+  "full_name": "eze-is/web-access",
+  "id": 1184985738,
+  "language": "JavaScript",
+  "last_seen": "2026-03-29",
+  "topics": []
+}

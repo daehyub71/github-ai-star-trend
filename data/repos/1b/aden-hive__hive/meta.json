@@ -1,0 +1,25 @@
+{
+  "created": "2026-01-12",
+  "description": "Multi-Agent Harness for Production AI",
+  "first_seen": "2026-01-25",
+  "full_name": "aden-hive/hive",
+  "id": 1132431999,
+  "language": "Python",
+  "last_seen": "2026-02-01",
+  "topics": [
+    "agent",
+    "agent-framework",
+    "agent-skills",
+    "anthropic",
+    "automation",
+    "autonomous-agents",
+    "claude",
+    "harness",
+    "harness-engineering",
+    "human-in-the-loop",
+    "openai",
+    "python",
+    "self-hosted",
+    "self-improving"
+  ]
+}

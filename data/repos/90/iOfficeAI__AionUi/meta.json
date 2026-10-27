@@ -1,0 +1,31 @@
+{
+  "created": "2025-08-07",
+  "description": "Open-source 24/7 Cowork app for OpenClaw, Hermes, Claude Code, Codex, OpenCode and 20+ more CLI Agent | Customize your assistants | Team them up｜Star if you like it!",
+  "first_seen": "2026-01-11",
+  "full_name": "iOfficeAI/AionUi",
+  "id": 1033778670,
+  "language": "TypeScript",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "acp",
+    "agent-team",
+    "ai",
+    "ai-agent",
+    "chat",
+    "chatbot",
+    "claude-code",
+    "clawdbot",
+    "codex",
+    "cowork",
+    "gemini",
+    "gemini-cli",
+    "hermes",
+    "llm",
+    "nano-banana",
+    "office",
+    "openclaw",
+    "opencode",
+    "skills",
+    "webui"
+  ]
+}

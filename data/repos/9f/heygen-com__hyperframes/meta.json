@@ -1,0 +1,26 @@
+{
+  "created": "2026-03-10",
+  "description": "Write HTML. Render video. Built for agents.",
+  "first_seen": "2026-04-19",
+  "full_name": "heygen-com/hyperframes",
+  "id": 1177402105,
+  "language": "TypeScript",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "animation",
+    "claude-code",
+    "ffmpeg",
+    "framework",
+    "gsap",
+    "html",
+    "html-to-video",
+    "mcp",
+    "motion-graphics",
+    "puppeteer",
+    "rendering",
+    "typescript",
+    "video-editor"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "created": "2026-01-18",
+  "description": "Agent skill that removes signs of AI-generated writing from text",
+  "first_seen": "2026-02-08",
+  "full_name": "blader/humanizer",
+  "id": 1136666433,
+  "language": "Python",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "agent-skills",
+    "ai-humanizer",
+    "ai-writing",
+    "chatgpt",
+    "claude",
+    "claude-code",
+    "codex",
+    "cursor",
+    "humanize-ai-text",
+    "humanizer",
+    "llm",
+    "prompt-engineering",
+    "writing-tools"
+  ]
+}

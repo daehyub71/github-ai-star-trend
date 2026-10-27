@@ -1,0 +1,29 @@
+{
+  "created": "2026-06-29",
+  "description": "Open-source auth gateway connecting 1500+ SaaS providers to AI agents through SDK, CLI, MCP, HTTP, and OpenAPI.",
+  "first_seen": "2026-07-12",
+  "full_name": "oomol-lab/open-connector",
+  "id": 1283907968,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agent-tools",
+    "ai-agents",
+    "api-gateway",
+    "automation",
+    "cli",
+    "cloudflare-workers",
+    "connectors",
+    "integration-platform",
+    "mcp",
+    "model-context-protocol",
+    "oauth",
+    "oomol",
+    "openapi",
+    "openconnector",
+    "saas-integrations",
+    "sdk",
+    "self-hosted",
+    "typescript"
+  ]
+}

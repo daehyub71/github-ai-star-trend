@@ -1,0 +1,10 @@
+{
+  "created": "2026-03-04",
+  "description": "Local MTProto proxy server for partial bypassing of Telegram loading",
+  "first_seen": "2026-03-15",
+  "full_name": "Flowseal/tg-ws-proxy",
+  "id": 1172617973,
+  "language": "Python",
+  "last_seen": "2026-03-15",
+  "topics": []
+}

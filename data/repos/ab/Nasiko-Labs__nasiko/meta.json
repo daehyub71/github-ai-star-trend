@@ -1,0 +1,22 @@
+{
+  "created": "2026-02-12",
+  "description": "The Open Runtime for AI Agents",
+  "first_seen": "2026-06-21",
+  "full_name": "Nasiko-Labs/nasiko",
+  "id": 1156170875,
+  "language": "Rust",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "agent-security",
+    "ai",
+    "ai-agents",
+    "cli",
+    "hacktoberfest",
+    "llms",
+    "mcp-gateway",
+    "multi-agent",
+    "rust",
+    "tokenomics",
+    "tokenops"
+  ]
+}

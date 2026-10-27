@@ -1,0 +1,18 @@
+{
+  "created": "2025-03-25",
+  "description": "Collection of beautifully crafted open-source layouts UI built with shadcn/ui.",
+  "first_seen": "2025-12-07",
+  "full_name": "zerostaticthemes/square-ui",
+  "id": 954589318,
+  "language": "TypeScript",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "admin-dashboard",
+    "admin-template",
+    "dashboard-ui",
+    "shadcn-admin",
+    "shadcn-components",
+    "shadcn-dashboard",
+    "shadcn-ui"
+  ]
+}

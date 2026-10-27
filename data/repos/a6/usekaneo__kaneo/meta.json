@@ -1,0 +1,22 @@
+{
+  "created": "2024-12-31",
+  "description": "⚡ Project management that doesn't become the project. Boards, Gantt charts, and GitHub integration. Self-host it or use Kaneo Cloud.",
+  "first_seen": "2026-07-26",
+  "full_name": "usekaneo/kaneo",
+  "id": 910422636,
+  "language": "TypeScript",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "hono",
+    "issue-management",
+    "issue-tracker",
+    "jira-alternative",
+    "kanban",
+    "linear-alternative",
+    "mcp",
+    "project-management",
+    "react",
+    "self-hosted",
+    "typescript"
+  ]
+}

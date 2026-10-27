@@ -1,0 +1,30 @@
+{
+  "created": "2024-04-15",
+  "description": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+  "first_seen": "2026-07-05",
+  "full_name": "firecrawl/firecrawl",
+  "id": 787076358,
+  "language": "TypeScript",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "ai-crawler",
+    "ai-scraping",
+    "ai-search",
+    "crawler",
+    "data-extraction",
+    "html-to-markdown",
+    "llm",
+    "markdown",
+    "scraper",
+    "scraping",
+    "web-crawler",
+    "web-data",
+    "web-data-extraction",
+    "web-scraper",
+    "web-scraping",
+    "web-search",
+    "webscraping"
+  ]
+}

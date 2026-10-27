@@ -1,0 +1,20 @@
+{
+  "created": "2026-09-21",
+  "description": "The chat decision assistant: before you reply, Jev reads the chat, judges intent and risk, and drafts replies you fill in with one tap. You press send. Android · Windows · macOS · iOS | 聊天辅助决策工具：先看懂对方再回复，发不发由你。",
+  "first_seen": "2026-09-20",
+  "full_name": "jev-chat/jev-chat-jarvis",
+  "id": 1379574728,
+  "language": "Kotlin",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "accessibility-service",
+    "ai-assistant",
+    "android",
+    "chat-assistant",
+    "chat-copilot",
+    "llm",
+    "ocr",
+    "qq",
+    "whatsapp"
+  ]
+}

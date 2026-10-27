@@ -1,0 +1,20 @@
+{
+  "created": "2026-06-16",
+  "description": "The Open Framework for Building Agents",
+  "first_seen": "2026-06-21",
+  "full_name": "vercel/eve",
+  "id": 1271113810,
+  "language": "TypeScript",
+  "last_seen": "2026-07-05",
+  "topics": [
+    "agent",
+    "framework",
+    "harness",
+    "javascript",
+    "markdown",
+    "sandbox",
+    "typescript",
+    "vercel",
+    "workflows"
+  ]
+}

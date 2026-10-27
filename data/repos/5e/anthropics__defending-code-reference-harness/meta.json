@@ -1,0 +1,12 @@
+{
+  "created": "2026-05-22",
+  "description": "Skills for threat modeling, scanning, triage, patching, plus an autonomous scanning harness you can /customize",
+  "first_seen": "2026-05-31",
+  "full_name": "anthropics/defending-code-reference-harness",
+  "id": 1246839757,
+  "language": "Python",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "security"
+  ]
+}

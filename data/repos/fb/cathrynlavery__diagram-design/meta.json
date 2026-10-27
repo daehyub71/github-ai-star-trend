@@ -1,0 +1,19 @@
+{
+  "created": "2026-04-16",
+  "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 45 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+  "first_seen": "2026-08-09",
+  "full_name": "cathrynlavery/diagram-design",
+  "id": 1212769188,
+  "language": "HTML",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "data-visualization",
+    "diagrams",
+    "drawio",
+    "mermaid",
+    "svg"
+  ]
+}

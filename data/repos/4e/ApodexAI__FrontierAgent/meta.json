@@ -1,0 +1,19 @@
+{
+  "created": "2026-08-22",
+  "description": "🧩 FrontierAgent, our agent framework, open-sourced alongside it — native command-line TUI, ReAct and Agent Team modes, one command on macOS and Linux, no preinstall, no hard Docker dependency.",
+  "first_seen": "2026-09-06",
+  "full_name": "ApodexAI/FrontierAgent",
+  "id": 1342461518,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "agent-orchestration",
+    "agentic-ai",
+    "agentic-framework",
+    "ai-agents",
+    "harness",
+    "multi-agent",
+    "terminal-agent",
+    "tui"
+  ]
+}

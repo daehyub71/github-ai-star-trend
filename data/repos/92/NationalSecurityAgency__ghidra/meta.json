@@ -1,0 +1,14 @@
+{
+  "created": "2019-03-01",
+  "description": "Ghidra is a software reverse engineering (SRE) framework",
+  "first_seen": "2026-10-11",
+  "full_name": "NationalSecurityAgency/ghidra",
+  "id": 173228436,
+  "language": "Java",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "disassembler",
+    "reverse-engineering",
+    "software-analysis"
+  ]
+}

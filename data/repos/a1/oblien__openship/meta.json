@@ -1,0 +1,15 @@
+{
+  "created": "2026-03-05",
+  "description": "Self-hosted deployment platform",
+  "first_seen": "2026-07-19",
+  "full_name": "oblien/openship",
+  "id": 1173848034,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agents",
+    "ai",
+    "deployments",
+    "self-hosted"
+  ]
+}

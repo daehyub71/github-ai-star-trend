@@ -1,0 +1,28 @@
+{
+  "created": "2026-07-03",
+  "description": "The open-source AI workbench for scientific research",
+  "first_seen": "2026-07-12",
+  "full_name": "synthetic-sciences/openscience",
+  "id": 1288402762,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agent",
+    "ai",
+    "ai-agent",
+    "ai-scientist",
+    "bioinformatics",
+    "bun",
+    "cli",
+    "co-scientist",
+    "llm",
+    "ml",
+    "ml-engineering",
+    "open-source",
+    "opensource",
+    "research",
+    "research-tools",
+    "science",
+    "scientific-computing"
+  ]
+}

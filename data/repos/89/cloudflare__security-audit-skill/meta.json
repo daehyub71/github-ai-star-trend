@@ -1,0 +1,10 @@
+{
+  "created": "2026-06-18",
+  "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+  "first_seen": "2026-09-13",
+  "full_name": "cloudflare/security-audit-skill",
+  "id": 1273427276,
+  "language": "JavaScript",
+  "last_seen": "2026-10-18",
+  "topics": []
+}

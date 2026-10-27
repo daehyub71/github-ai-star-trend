@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-14",
+  "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+  "first_seen": "2026-10-04",
+  "full_name": "morluto/rea",
+  "id": 1209966933,
+  "language": "TypeScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "binary-analysis",
+    "claude-code",
+    "cli",
+    "codex",
+    "cordis",
+    "decompiler",
+    "developer-tools",
+    "dsh",
+    "dsh-plugin",
+    "ghidra",
+    "hopper",
+    "llm",
+    "mcp",
+    "model-context-protocol",
+    "rea",
+    "reverse-engineering",
+    "static-analysis",
+    "touhou"
+  ]
+}

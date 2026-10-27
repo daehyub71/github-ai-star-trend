@@ -1,0 +1,20 @@
+{
+  "created": "2026-04-22",
+  "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
+  "first_seen": "2026-05-10",
+  "full_name": "NVIDIA/cuda-rust",
+  "id": 1218231004,
+  "language": "Rust",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "async",
+    "compiler-backend",
+    "cuda",
+    "gpu",
+    "heterogeneous-computing",
+    "high-performance-computing",
+    "nvidia",
+    "programming-languages",
+    "rust"
+  ]
+}

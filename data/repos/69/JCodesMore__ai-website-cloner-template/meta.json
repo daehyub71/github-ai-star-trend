@@ -1,0 +1,30 @@
+{
+  "created": "2026-03-13",
+  "description": "Clone any website with one command using AI coding agents",
+  "first_seen": "2026-03-29",
+  "full_name": "JCodesMore/ai-website-cloner-template",
+  "id": 1180745961,
+  "language": "TypeScript",
+  "last_seen": "2026-03-29",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "ai-tools",
+    "automation",
+    "boilerplate",
+    "claude",
+    "claude-code",
+    "clone",
+    "developer-tools",
+    "nextjs",
+    "react",
+    "reverse-engineering",
+    "shadcn-ui",
+    "skills",
+    "tailwindcss",
+    "template",
+    "typescript",
+    "web-scraping",
+    "website-clone"
+  ]
+}

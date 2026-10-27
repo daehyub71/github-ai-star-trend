@@ -1,0 +1,23 @@
+{
+  "created": "2026-01-08",
+  "description": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+  "first_seen": "2026-02-08",
+  "full_name": "koala73/worldmonitor",
+  "id": 1130564872,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agent",
+    "ai",
+    "dashboard",
+    "geopolitics",
+    "mcp",
+    "mcp-server",
+    "monitoring",
+    "news",
+    "opensource",
+    "osint",
+    "palantir",
+    "situation"
+  ]
+}

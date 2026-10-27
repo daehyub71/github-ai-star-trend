@@ -1,0 +1,21 @@
+{
+  "created": "2026-09-19",
+  "description": "Native MLX runtime for Laya typed decision models — 7–14 ms short decisions on M3 Max. No text generation, PyTorch, or cloud API.",
+  "first_seen": "2026-09-20",
+  "full_name": "mizorewww/laya-mlx",
+  "id": 1377211520,
+  "language": "Python",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "apple-silicon",
+    "decision-model",
+    "inference",
+    "laya",
+    "local-ai",
+    "machine-learning",
+    "mlx",
+    "modernbert",
+    "system-one",
+    "typed-decisions"
+  ]
+}

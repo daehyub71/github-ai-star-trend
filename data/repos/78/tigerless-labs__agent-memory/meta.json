@@ -1,0 +1,23 @@
+{
+  "created": "2026-09-01",
+  "description": "Long-term memory runtime for AI agents — plain Markdown as the source of truth, local ranked retrieval, and an independent sleep-time Manage layer. Claude Code and Codex share one store. No API key.",
+  "first_seen": "2026-09-27",
+  "full_name": "tigerless-labs/agent-memory",
+  "id": 1354059245,
+  "language": "Python",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "agent-memory",
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "llm",
+    "local-first",
+    "long-term-memory",
+    "markdown",
+    "mcp",
+    "python",
+    "retrieval",
+    "sqlite"
+  ]
+}

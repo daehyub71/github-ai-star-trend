@@ -1,0 +1,19 @@
+{
+  "created": "2026-07-16",
+  "description": "Data visualization Skill for AI Agents, turning data into polished, interactive HTML charts. 面向 AI Agents 的数据可视化 Skill，将数据快速生成精致、可交互的 HTML 图表。",
+  "first_seen": "2026-08-30",
+  "full_name": "larashero3-dotcom/lieflat-charts",
+  "id": 1302690078,
+  "language": "HTML",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "agent-skills",
+    "charts",
+    "claude-code",
+    "codex",
+    "data-visualization",
+    "html",
+    "moxt",
+    "svg"
+  ]
+}

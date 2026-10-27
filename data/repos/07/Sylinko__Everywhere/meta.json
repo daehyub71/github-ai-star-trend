@@ -1,0 +1,27 @@
+{
+  "created": "2025-04-23",
+  "description": "On-screen aware AI assistant for your desktop. Uses current app context, multiple LLMs, and MCP tools to help you act across apps.",
+  "first_seen": "2025-11-02",
+  "full_name": "Sylinko/Everywhere",
+  "id": 971243074,
+  "language": "C#",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "ai-assistant",
+    "avalonia",
+    "claude",
+    "deepseek",
+    "desktop-app",
+    "flow-state",
+    "gemini",
+    "hermes-agent",
+    "mcp",
+    "on-screen-awareness",
+    "openai",
+    "openclaw",
+    "personal",
+    "skills"
+  ]
+}

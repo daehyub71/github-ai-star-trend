@@ -1,0 +1,21 @@
+{
+  "created": "2026-09-30",
+  "description": "Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos.",
+  "first_seen": "2026-10-04",
+  "full_name": "rehan-remade/universal-modder",
+  "id": 1397016507,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "age-of-empires",
+    "claude-code",
+    "claude-code-plugin",
+    "fal",
+    "game-assets",
+    "game-modding",
+    "mcp",
+    "modding",
+    "reverse-engineering",
+    "tmodloader"
+  ]
+}

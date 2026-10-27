@@ -1,0 +1,31 @@
+{
+  "created": "2025-08-04",
+  "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
+  "first_seen": "2026-04-26",
+  "full_name": "farion1231/cc-switch",
+  "id": 1031912724,
+  "language": "Rust",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "ai-tools",
+    "claude-code",
+    "codex",
+    "desktop-app",
+    "grok",
+    "grokbuild",
+    "hermes",
+    "hermes-agent",
+    "mcp",
+    "open-source",
+    "openclaw",
+    "openclaw-ui",
+    "opencode",
+    "pi",
+    "provider-management",
+    "rust",
+    "skills",
+    "skills-management",
+    "tauri",
+    "wsl-support"
+  ]
+}

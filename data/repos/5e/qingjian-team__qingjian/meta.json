@@ -1,0 +1,25 @@
+{
+  "created": "2026-09-07",
+  "description": "青简 Qingjian：用 Rust 写的拼音输入法，候选词旁多一条正在学的语言的译词",
+  "first_seen": "2026-09-27",
+  "full_name": "qingjian-team/qingjian",
+  "id": 1359963149,
+  "language": "Rust",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "chinese",
+    "chinese-input-method",
+    "english-learning",
+    "ime",
+    "input-method",
+    "japanese-learning",
+    "language-learning",
+    "language-model",
+    "macos",
+    "offline",
+    "pinyin",
+    "rust",
+    "shuangpin",
+    "windows"
+  ]
+}

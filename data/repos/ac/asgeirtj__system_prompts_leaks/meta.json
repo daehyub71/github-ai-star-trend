@@ -1,0 +1,31 @@
+{
+  "created": "2025-05-03",
+  "description": "Documented system prompts from Anthropic - Claude Fable 5.1, Opus 5.5, Claude Design, Claude Code. OpenAI - ChatGPT GPT-6-Astra, Codex. Google - Gemini 3.8 Flash, 3.1 Pro, Antigravity. xAI - Grok, Grok Bot, Cursor, Kimi and more! Updated regularly.",
+  "first_seen": "2026-01-25",
+  "full_name": "asgeirtj/system_prompts_leaks",
+  "id": 976921297,
+  "language": "Python",
+  "last_seen": "2026-07-05",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "ai-prompts",
+    "anthropic",
+    "chatbot",
+    "chatgpt",
+    "claude",
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini",
+    "generative-ai",
+    "google",
+    "grok",
+    "llm",
+    "openai",
+    "prompt",
+    "prompt-engineering",
+    "system-prompt",
+    "system-prompts"
+  ]
+}

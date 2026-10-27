@@ -1,0 +1,21 @@
+{
+  "created": "2026-04-16",
+  "description": "The fastest browser for AI agents to run browser automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
+  "first_seen": "2026-07-26",
+  "full_name": "citrolabs/ego-lite",
+  "id": 1212503250,
+  "language": "JavaScript",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "agent-skills",
+    "ai-agent",
+    "automation",
+    "browser",
+    "browser-automation",
+    "claude-code",
+    "codex",
+    "hermes-agent",
+    "skills",
+    "skills-sh"
+  ]
+}

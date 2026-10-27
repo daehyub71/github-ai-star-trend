@@ -1,0 +1,31 @@
+{
+  "created": "2025-01-31",
+  "description": "Polyglot document intelligence with a Rust core: extract text, metadata, images, tables, and structured data from 106 formats across 140 file extensions, plus code intelligence for 371 languages. Fifteen bindings, with CLI, REST API, and MCP server.",
+  "first_seen": "2026-01-11",
+  "full_name": "xberg-io/xberg",
+  "id": 925434317,
+  "language": "Rust",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "bun",
+    "csharp",
+    "document-intelligence",
+    "elixir",
+    "ffi",
+    "golang",
+    "java",
+    "metadata-extraction",
+    "node",
+    "pdf-extraction",
+    "pdfium",
+    "php",
+    "python",
+    "rag",
+    "ruby",
+    "rust",
+    "table-extraction",
+    "tesseract",
+    "text-extraction",
+    "wasm"
+  ]
+}

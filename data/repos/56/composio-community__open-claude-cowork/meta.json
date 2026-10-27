@@ -1,0 +1,19 @@
+{
+  "created": "2026-01-13",
+  "description": "Open Source version of Claude Cowork with 500+ SaaS app integrations",
+  "first_seen": "2026-01-25",
+  "full_name": "composio-community/open-claude-cowork",
+  "id": 1133210524,
+  "language": "JavaScript",
+  "last_seen": "2026-01-25",
+  "topics": [
+    "aiagents",
+    "anthropic",
+    "anthropic-claude",
+    "claude-code",
+    "claude-cowork",
+    "eclectron-app",
+    "opencode",
+    "workflow-automation"
+  ]
+}

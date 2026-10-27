@@ -1,0 +1,15 @@
+{
+  "created": "2023-03-24",
+  "description": "Visualize, collaborate, and evolve the software architecture with always actual and live diagrams from your code",
+  "first_seen": "2026-02-01",
+  "full_name": "likec4/likec4",
+  "id": 618351200,
+  "language": "TypeScript",
+  "last_seen": "2026-02-01",
+  "topics": [
+    "architecture",
+    "architecture-as-code",
+    "c4",
+    "diagrams"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2026-05-18",
+  "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+  "first_seen": "2026-05-31",
+  "full_name": "alibaba/open-code-review",
+  "id": 1241960226,
+  "language": "Go",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "agent",
+    "agent-skills",
+    "code-review",
+    "code-review-assistant",
+    "harness",
+    "repository-level-context"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "created": "2026-04-27",
+  "description": "A Domain-Fronting Relay that routes traffic though GAS (Google Apps Script) and forwards it to Cloudflare Workers. Designed to bypass DPI.",
+  "first_seen": "2026-05-03",
+  "full_name": "denuitt1/mhr-cfw",
+  "id": 1222975902,
+  "language": "Python",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "cloudflare-workers",
+    "domain-fronting",
+    "dpi",
+    "dpi-bypass",
+    "google-apps-script",
+    "http",
+    "mitm",
+    "proxy",
+    "sni"
+  ]
+}

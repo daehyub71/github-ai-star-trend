@@ -1,0 +1,13 @@
+{
+  "created": "2025-11-13",
+  "description": "Chrome extension & CLI to let agents control your browser. Runs Playwright snippets in a stateful sandbox. Available as CLI or MCP",
+  "first_seen": "2026-01-11",
+  "full_name": "remorses/playwriter",
+  "id": 1095948794,
+  "language": "TypeScript",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "mcp",
+    "playwright"
+  ]
+}

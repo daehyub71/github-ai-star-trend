@@ -1,0 +1,18 @@
+{
+  "created": "2026-08-17",
+  "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
+  "first_seen": "2026-08-30",
+  "full_name": "CopilotKit/OpenBot",
+  "id": 1336502227,
+  "language": "TypeScript",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "ag-ui",
+    "agent-governance",
+    "ai-agents",
+    "browser-automation",
+    "copilotkit",
+    "generative-ui",
+    "mcp"
+  ]
+}

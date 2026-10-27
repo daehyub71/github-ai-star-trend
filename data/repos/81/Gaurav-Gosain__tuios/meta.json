@@ -1,0 +1,31 @@
+{
+  "created": "2025-09-06",
+  "description": "A terminal window manager that knows what your agents are doing. Tiling panes, workspaces, sessions that survive restarts, and one Inbox for every coding agent. Official only at tuios.dev and this repo. tuios has no X/Twitter account.",
+  "first_seen": "2025-11-09",
+  "full_name": "Gaurav-Gosain/tuios",
+  "id": 1051789550,
+  "language": "Go",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai-agents",
+    "bubbletea",
+    "charm",
+    "claude-code",
+    "codex",
+    "coding-agents",
+    "developer-tools",
+    "go",
+    "golang",
+    "multiplexer",
+    "omarchy",
+    "ssh",
+    "terminal",
+    "terminal-emulator",
+    "terminal-multiplexer",
+    "tiling-window-manager",
+    "tmux-alternative",
+    "tui",
+    "window-manager",
+    "zellij-alternative"
+  ]
+}

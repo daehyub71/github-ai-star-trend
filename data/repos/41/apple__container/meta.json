@@ -1,0 +1,10 @@
+{
+  "created": "2025-05-30",
+  "description": "A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon. ",
+  "first_seen": "2026-06-07",
+  "full_name": "apple/container",
+  "id": 993475914,
+  "language": "Swift",
+  "last_seen": "2026-06-07",
+  "topics": []
+}

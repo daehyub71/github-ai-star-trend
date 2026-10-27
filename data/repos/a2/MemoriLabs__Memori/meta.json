@@ -1,0 +1,29 @@
+{
+  "created": "2025-07-24",
+  "description": "Memori is agent-native memory infrastructure. A LLM-agnostic layer that turns agent execution and conversation into structured, persistent state for production systems. Built for enterprise, Memori works with the data infrastructure you already run, no rip-and-replace, and deploys across managed cloud, single-tenant cloud, VPC, and on-premises.",
+  "first_seen": "2025-11-09",
+  "full_name": "MemoriLabs/Memori",
+  "id": 1025381911,
+  "language": "Python",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "agent",
+    "agent-memory",
+    "agenticai",
+    "ai",
+    "ai-memory",
+    "claude-code",
+    "enterprise",
+    "hermes",
+    "llm",
+    "long-short-term-memory",
+    "memory",
+    "memory-management",
+    "openclaw",
+    "python",
+    "rag",
+    "state-management",
+    "stateful",
+    "typescript"
+  ]
+}

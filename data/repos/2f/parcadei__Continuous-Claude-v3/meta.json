@@ -1,0 +1,20 @@
+{
+  "created": "2025-12-23",
+  "description": "Context management for Claude Code. Hooks maintain state via ledgers and handoffs. MCP execution without context pollution. Agent orchestration with isolated context windows.",
+  "first_seen": "2026-01-04",
+  "full_name": "parcadei/Continuous-Claude-v3",
+  "id": 1121405464,
+  "language": "Python",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "agents",
+    "claude-code",
+    "claude-code-cli",
+    "claude-code-hooks",
+    "claude-code-mcp",
+    "claude-code-skills",
+    "claude-code-subagents",
+    "claude-skills",
+    "mcp"
+  ]
+}

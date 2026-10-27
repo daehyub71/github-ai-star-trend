@@ -1,0 +1,20 @@
+{
+  "created": "2025-08-27",
+  "description": "Autonomous AI development loop for Claude Code with intelligent exit detection",
+  "first_seen": "2026-01-11",
+  "full_name": "frankbria/ralph-claude-code",
+  "id": 1045721921,
+  "language": "Shell",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "ai",
+    "ai-agent",
+    "ai-agents",
+    "ai-development",
+    "ai-development-tools",
+    "claude-code",
+    "claude-code-cli",
+    "development-tools",
+    "development-workflow"
+  ]
+}

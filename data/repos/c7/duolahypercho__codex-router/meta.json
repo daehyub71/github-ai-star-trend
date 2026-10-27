@@ -1,0 +1,16 @@
+{
+  "created": "2026-07-19",
+  "description": "External-model router for Codex with guided Kimi OAuth/API, DeepSeek, safe migration, and rollback.",
+  "first_seen": "2026-08-09",
+  "full_name": "duolahypercho/codex-router",
+  "id": 1306065843,
+  "language": "JavaScript",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "codex",
+    "deepseek",
+    "kimi",
+    "litellm",
+    "model-router"
+  ]
+}

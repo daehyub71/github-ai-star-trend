@@ -1,0 +1,28 @@
+{
+  "created": "2025-10-17",
+  "description": "A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
+  "first_seen": "2025-11-09",
+  "full_name": "ComposioHQ/awesome-claude-skills",
+  "id": 1078079172,
+  "language": "Python",
+  "last_seen": "2026-01-25",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "antigravity",
+    "automation",
+    "claude",
+    "claude-code",
+    "codex",
+    "composio",
+    "cursor",
+    "developer-tools",
+    "gemini-cli",
+    "mcp",
+    "openai-codex",
+    "rube",
+    "saas",
+    "skill",
+    "workflow-automation"
+  ]
+}

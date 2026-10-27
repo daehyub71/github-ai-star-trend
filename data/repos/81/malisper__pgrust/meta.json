@@ -1,0 +1,16 @@
+{
+  "created": "2026-04-20",
+  "description": "Postgres rewritten in Rust, now faster than Postgres and Clickhouse",
+  "first_seen": "2026-07-12",
+  "full_name": "malisper/pgrust",
+  "id": 1215569807,
+  "language": "Rust",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "ai-assisted-development",
+    "database",
+    "postgres",
+    "postgresql",
+    "rust"
+  ]
+}

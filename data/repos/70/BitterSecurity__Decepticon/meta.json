@@ -1,0 +1,23 @@
+{
+  "created": "2025-06-06",
+  "description": "Autonomous Hacking Agent for Red Team",
+  "first_seen": "2026-04-12",
+  "full_name": "BitterSecurity/Decepticon",
+  "id": 997390194,
+  "language": "Python",
+  "last_seen": "2026-04-12",
+  "topics": [
+    "agent",
+    "ai",
+    "ai-penetration-testing",
+    "autonomous-exploit-testing",
+    "cybersecurity",
+    "generative-ai",
+    "hacking",
+    "langchain",
+    "langgraph",
+    "llm",
+    "pentest",
+    "pentesting"
+  ]
+}

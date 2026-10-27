@@ -1,0 +1,27 @@
+{
+  "created": "2026-07-17",
+  "description": "Bento, the office suite that fits in a file",
+  "first_seen": "2026-07-26",
+  "full_name": "nyblnet/bento",
+  "id": 1304207622,
+  "language": "TypeScript",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "mit-license",
+    "office",
+    "office-365",
+    "office-suite",
+    "office-tools",
+    "office365",
+    "open-source",
+    "powerpoint",
+    "self-hosted",
+    "single-page-app",
+    "slides",
+    "slideshare",
+    "slideshow",
+    "slideshow-gallery",
+    "slideshow-maker",
+    "slideshows"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2024-02-05",
+  "description": "A high-performance Postgres replication engine written in Rust. Embed it in your Rust application or run it as a standalone binary.",
+  "first_seen": "2025-11-02",
+  "full_name": "supabase/etl",
+  "id": 752940677,
+  "language": "Rust",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "logical-replication",
+    "postgres",
+    "postgresql",
+    "replication",
+    "rust",
+    "rust-lang"
+  ]
+}

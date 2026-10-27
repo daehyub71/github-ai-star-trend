@@ -1,0 +1,20 @@
+{
+  "created": "2026-03-15",
+  "description": "Fully autonomous & self-evolving research from idea to paper. Chat an Idea. Get a Paper. 🦞",
+  "first_seen": "2026-03-15",
+  "full_name": "aiming-lab/AutoResearchClaw",
+  "id": 1182108611,
+  "language": "Python",
+  "last_seen": "2026-04-05",
+  "topics": [
+    "autonomous-research",
+    "citation-verification",
+    "llm-agents",
+    "metaclaw",
+    "multi-agent-debate",
+    "openclaw",
+    "paper-generation",
+    "scientific-discovery",
+    "self-evolving"
+  ]
+}

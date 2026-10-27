@@ -1,0 +1,23 @@
+{
+  "created": "2026-03-02",
+  "description": "AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10.",
+  "first_seen": "2026-05-24",
+  "full_name": "microsoft/agent-governance-toolkit",
+  "id": 1171111467,
+  "language": "Python",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "agent-framework",
+    "ai-agents",
+    "ai-safety",
+    "compliance",
+    "governance",
+    "microsoft",
+    "owasp",
+    "policy-engine",
+    "python",
+    "security",
+    "trust",
+    "zero-trust"
+  ]
+}

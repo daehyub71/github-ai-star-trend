@@ -1,0 +1,19 @@
+{
+  "created": "2026-02-24",
+  "description": "Open-source Agent Operating System",
+  "first_seen": "2026-02-22",
+  "full_name": "RightNow-AI/openfang",
+  "id": 1166139870,
+  "language": "Rust",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "agent-framework",
+    "ai-agents",
+    "llm",
+    "mcp",
+    "open-source",
+    "openclaw",
+    "operating-system",
+    "rust"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2026-04-11",
+  "description": "Keyboard-first local Markdown notes with Vim motions, diagrams, and MCP integration.",
+  "first_seen": "2026-06-14",
+  "full_name": "ZenNotes/zennotes",
+  "id": 1207965399,
+  "language": "TypeScript",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "electron",
+    "local-first",
+    "markdown",
+    "mcp",
+    "notes",
+    "vim"
+  ]
+}

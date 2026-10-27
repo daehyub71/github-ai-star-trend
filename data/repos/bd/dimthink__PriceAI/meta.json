@@ -1,0 +1,21 @@
+{
+  "created": "2026-05-08",
+  "description": "AI 订阅卡网渠道比价工具：聚合100+卡网渠道包含 ChatGPT、Claude、Gemini、Grok 等多渠道报价，展示有货最低价、库存状态和原站购买链接。",
+  "first_seen": "2026-07-12",
+  "full_name": "dimthink/PriceAI",
+  "id": 1233142602,
+  "language": "TypeScript",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "ai",
+    "ai-subscription",
+    "chatgpt",
+    "claude",
+    "gemini",
+    "grok",
+    "nextjs",
+    "price-comparison",
+    "price-tracker",
+    "supabase"
+  ]
+}

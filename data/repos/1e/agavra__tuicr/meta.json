@@ -1,0 +1,15 @@
+{
+  "created": "2026-01-08",
+  "description": "a code review TUI with vim keybindings",
+  "first_seen": "2026-07-26",
+  "full_name": "agavra/tuicr",
+  "id": 1130139388,
+  "language": "Rust",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "ai-tools",
+    "code-review",
+    "rust",
+    "tui"
+  ]
+}

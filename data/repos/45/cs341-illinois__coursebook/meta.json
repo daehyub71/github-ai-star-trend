@@ -1,0 +1,18 @@
+{
+  "created": "2018-01-26",
+  "description": "Open Source Introductory Systems Programming Textbook for the University of Illinois",
+  "first_seen": "2026-09-27",
+  "full_name": "cs341-illinois/coursebook",
+  "id": 119068473,
+  "language": "TeX",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "awesome",
+    "c",
+    "latex",
+    "linux",
+    "posix",
+    "system-programming",
+    "wikibook"
+  ]
+}

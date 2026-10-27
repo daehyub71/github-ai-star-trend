@@ -1,0 +1,22 @@
+{
+  "created": "2025-09-28",
+  "description": "CodeMachine is an open-source tool that orchestrates AI coding agents into repeatable, long-running workflows. ⚡️",
+  "first_seen": "2025-11-23",
+  "full_name": "moazbuilds/CodeMachine-CLI",
+  "id": 1065865385,
+  "language": "TypeScript",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "ai",
+    "automation",
+    "cli",
+    "cli-tool",
+    "code-generation",
+    "developer-tools",
+    "generative-ai",
+    "multi-agent-systems",
+    "orchestration",
+    "scaffolding",
+    "workflow-automation"
+  ]
+}

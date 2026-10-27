@@ -1,0 +1,15 @@
+{
+  "created": "2025-11-28",
+  "description": "STEP-GUI: The top GUI agent solution in the galaxy.  Developed by the StepFun-GELab team and powered by StepFun’s cutting-edge research capabilities.",
+  "first_seen": "2025-12-14",
+  "full_name": "stepfun-ai/gelab-zero",
+  "id": 1106046293,
+  "language": "Python",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "agent",
+    "gui-agents",
+    "phone-use-agent",
+    "pua"
+  ]
+}

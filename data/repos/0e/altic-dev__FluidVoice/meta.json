@@ -1,0 +1,17 @@
+{
+  "created": "2025-09-21",
+  "description": "Fastest and only macOS Dictation app with on-device STT and custom trained AI enhancement model. Windows, iOS testflight!  Android, Linux waitlist open! A local Wispr Flow alternative. Follow https://x.com/fluidvoiceapp for more",
+  "first_seen": "2026-06-28",
+  "full_name": "altic-dev/FluidVoice",
+  "id": 1061327311,
+  "language": "Swift",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "ai",
+    "dictation",
+    "ios",
+    "llama-cpp",
+    "macos",
+    "swift"
+  ]
+}

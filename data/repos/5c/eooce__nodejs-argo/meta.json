@@ -1,0 +1,18 @@
+{
+  "created": "2023-09-27",
+  "description": "nodejs-argo是一个强大的Argo隧道部署工具，专为PaaS平台和游戏玩具平台设计。它支持多种代理协议(VLESS、VMess、Trojan)等，有直连协议(Socks5、Hysteria2、Reality)可选开启，并集成了哪吒探针功能",
+  "first_seen": "2025-11-09",
+  "full_name": "eooce/nodejs-argo",
+  "id": 697196736,
+  "language": "JavaScript",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "argo",
+    "cfip",
+    "trojan-ws-tls",
+    "tunnel",
+    "vless-ws-tls",
+    "vmess-ws-tls",
+    "xray"
+  ]
+}

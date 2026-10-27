@@ -1,0 +1,19 @@
+{
+  "created": "2026-01-11",
+  "description": "Write like a high-level language, run like C.",
+  "first_seen": "2026-01-11",
+  "full_name": "Zuhaitz-dev/zenc-lang",
+  "id": 1132223692,
+  "language": "C",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "c",
+    "compiler",
+    "lsp",
+    "open-source",
+    "programming-languages",
+    "repl",
+    "transpiler",
+    "zen-c"
+  ]
+}

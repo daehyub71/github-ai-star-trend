@@ -1,0 +1,14 @@
+{
+  "created": "2026-09-17",
+  "description": "Jev-like family of decision models built on top of Qwen3.5/3.8 you can train and run on your own",
+  "first_seen": "2026-09-20",
+  "full_name": "jaredpalmer/kev",
+  "id": 1375069862,
+  "language": "Python",
+  "last_seen": "2026-10-04",
+  "topics": [
+    "decision-model",
+    "jev",
+    "qwen3"
+  ]
+}

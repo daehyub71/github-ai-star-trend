@@ -1,0 +1,21 @@
+{
+  "created": "2026-09-15",
+  "description": "Speed up downloads by combining multiple network connections in parallel",
+  "first_seen": "2026-10-11",
+  "full_name": "anmolkapil/plexo",
+  "id": 1371220575,
+  "language": "TypeScript",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "bandwidth-aggregation",
+    "cross-platform",
+    "desktop-app",
+    "downloader",
+    "downloadmanager",
+    "linux",
+    "macos",
+    "multiconnection",
+    "parallel-downloads",
+    "windows"
+  ]
+}

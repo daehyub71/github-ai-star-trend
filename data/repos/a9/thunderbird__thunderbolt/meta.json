@@ -1,0 +1,15 @@
+{
+  "created": "2025-07-23",
+  "description": "AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.",
+  "first_seen": "2026-04-19",
+  "full_name": "thunderbird/thunderbolt",
+  "id": 1025121037,
+  "language": "TypeScript",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "llms",
+    "on-device-ai"
+  ]
+}

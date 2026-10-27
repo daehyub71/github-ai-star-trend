@@ -1,0 +1,20 @@
+{
+  "created": "2026-05-29",
+  "description": "https://arxiv.org/abs/2606.28344. The end of web parsing. The beginning of scalable pixel-native search. link: https://pixelrag.ai/",
+  "first_seen": "2026-06-21",
+  "full_name": "StarTrail-org/PixelRAG",
+  "id": 1253138201,
+  "language": "Python",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "agent",
+    "ai",
+    "memory",
+    "multimodal",
+    "rag",
+    "search",
+    "searchengine",
+    "vision",
+    "vlm"
+  ]
+}

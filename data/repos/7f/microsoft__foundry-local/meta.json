@@ -1,0 +1,21 @@
+{
+  "created": "2025-03-31",
+  "description": null,
+  "first_seen": "2025-12-07",
+  "full_name": "microsoft/foundry-local",
+  "id": 958239663,
+  "language": "C++",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "ai-sdk",
+    "chat-completions",
+    "foundry-local",
+    "gpu-acceleration",
+    "local-ai",
+    "microsoft",
+    "on-device-inference",
+    "onnx-runtime",
+    "speech-to-text",
+    "whisper"
+  ]
+}

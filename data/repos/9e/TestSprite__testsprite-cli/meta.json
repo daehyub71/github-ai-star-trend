@@ -1,0 +1,18 @@
+{
+  "created": "2026-06-11",
+  "description": "Official TestSprite CLI — AI-powered automated testing from your terminal",
+  "first_seen": "2026-06-28",
+  "full_name": "TestSprite/testsprite-cli",
+  "id": 1266125334,
+  "language": "TypeScript",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "ai",
+    "cli",
+    "e2e-testing",
+    "playwright",
+    "qa",
+    "test-automation",
+    "testing"
+  ]
+}

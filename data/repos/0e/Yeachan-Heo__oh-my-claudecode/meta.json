@@ -1,0 +1,21 @@
+{
+  "created": "2026-01-09",
+  "description": "Teams-first Multi-agent orchestration for Claude Code",
+  "first_seen": "2026-01-18",
+  "full_name": "Yeachan-Heo/oh-my-claudecode",
+  "id": 1130809465,
+  "language": "TypeScript",
+  "last_seen": "2026-01-25",
+  "topics": [
+    "agentic-coding",
+    "ai-agents",
+    "automation",
+    "claude",
+    "claude-code",
+    "multi-agent-systems",
+    "oh-my-opencode",
+    "opencode",
+    "parallel-execution",
+    "vibe-coding"
+  ]
+}

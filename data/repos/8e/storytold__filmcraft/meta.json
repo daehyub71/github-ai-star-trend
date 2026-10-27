@@ -1,0 +1,17 @@
+{
+  "created": "2026-09-30",
+  "description": "FilmCraft: An open-source, nonlinear video editor written by scratch in pure Rust",
+  "first_seen": "2026-10-04",
+  "full_name": "storytold/filmcraft",
+  "id": 1398091865,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "art",
+    "rust",
+    "video",
+    "video-editing",
+    "video-editor",
+    "video-processing"
+  ]
+}

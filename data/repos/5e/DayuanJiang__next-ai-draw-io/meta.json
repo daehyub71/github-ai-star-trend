@@ -1,0 +1,25 @@
+{
+  "created": "2025-03-23",
+  "description": "Draw and edit draw.io diagrams by chatting with an AI. Web app, desktop app, and an MCP server for Claude Code, Cursor, Codex and VS Code.",
+  "first_seen": "2025-11-30",
+  "full_name": "DayuanJiang/next-ai-draw-io",
+  "id": 953521037,
+  "language": "TypeScript",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "ai",
+    "architecture-diagram",
+    "claude-code",
+    "diagram-generator",
+    "diagrams",
+    "draw-io",
+    "drawio",
+    "electron",
+    "flowchart",
+    "gemini-cli-extension",
+    "llm",
+    "mcp",
+    "mcp-server",
+    "nextjs"
+  ]
+}

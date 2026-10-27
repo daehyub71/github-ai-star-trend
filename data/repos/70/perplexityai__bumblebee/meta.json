@@ -1,0 +1,14 @@
+{
+  "created": "2026-05-20",
+  "description": "Read-only developer endpoint scanner for on-disk package, extension, and developer-tool metadata, built to check exposure to known software supply-chain compromises.",
+  "first_seen": "2026-05-24",
+  "full_name": "perplexityai/bumblebee",
+  "id": 1244911834,
+  "language": "Go",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "golang",
+    "package-inventory",
+    "supply-chain-security"
+  ]
+}

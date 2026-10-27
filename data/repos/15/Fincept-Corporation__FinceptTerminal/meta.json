@@ -1,0 +1,28 @@
+{
+  "created": "2024-08-29",
+  "description": "FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.",
+  "first_seen": "2026-02-08",
+  "full_name": "Fincept-Corporation/FinceptTerminal",
+  "id": 849406496,
+  "language": "C++",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "ai-agents",
+    "algorithmic-trading",
+    "bloomberg-terminal",
+    "cpp",
+    "finance",
+    "financial-markets",
+    "fintech",
+    "good-first-issue",
+    "investment",
+    "investment-research",
+    "machine-learning",
+    "opensource",
+    "python",
+    "qt",
+    "quantitative-finance",
+    "stock-market",
+    "trading"
+  ]
+}

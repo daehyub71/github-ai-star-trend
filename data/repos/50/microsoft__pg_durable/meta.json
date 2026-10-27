@@ -1,0 +1,17 @@
+{
+  "created": "2026-02-13",
+  "description": "PostgreSQL in-database durable execution",
+  "first_seen": "2026-06-07",
+  "full_name": "microsoft/pg_durable",
+  "id": 1157361127,
+  "language": "Rust",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "ai-pipelines",
+    "ai-workflows",
+    "durable-execution",
+    "durable-functions",
+    "durable-workflows",
+    "postgresql"
+  ]
+}

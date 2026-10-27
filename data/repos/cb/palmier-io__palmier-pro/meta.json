@@ -1,0 +1,18 @@
+{
+  "created": "2026-04-07",
+  "description": "macOS video editor built for AI",
+  "first_seen": "2026-06-21",
+  "full_name": "palmier-io/palmier-pro",
+  "id": 1203468533,
+  "language": "Swift",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "ai-video",
+    "claude",
+    "macos",
+    "mcp",
+    "seedance2",
+    "swift",
+    "video-editor"
+  ]
+}

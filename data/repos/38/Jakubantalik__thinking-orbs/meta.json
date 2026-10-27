@@ -1,0 +1,17 @@
+{
+  "created": "2026-07-21",
+  "description": "Dotted thought-orb loading indicators for AI & agent UIs, 9 tuned types, two sizes, auto dark/light",
+  "first_seen": "2026-08-02",
+  "full_name": "Jakubantalik/thinking-orbs",
+  "id": 1307383231,
+  "language": "TypeScript",
+  "last_seen": "2026-08-02",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "chat",
+    "loader",
+    "ui",
+    "ux"
+  ]
+}

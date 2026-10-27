@@ -1,0 +1,25 @@
+{
+  "created": "2026-06-10",
+  "description": "Open-source vacuum robot cleaner",
+  "first_seen": "2026-06-28",
+  "full_name": "makerspet/oomwoo",
+  "id": 1264722786,
+  "language": "Python",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "3d-printing",
+    "arduino",
+    "diy-electronics",
+    "diy-project",
+    "esp32",
+    "esp32-arduino",
+    "home-assistant",
+    "lidar",
+    "lidar-slam",
+    "raspberry-pi",
+    "ros2",
+    "slam",
+    "vacuum-cleaner",
+    "vacuum-robot"
+  ]
+}

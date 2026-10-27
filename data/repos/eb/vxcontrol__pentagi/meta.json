@@ -1,0 +1,29 @@
+{
+  "created": "2025-01-06",
+  "description": "Fully autonomous AI Agents system capable of performing complex penetration testing tasks",
+  "first_seen": "2026-02-15",
+  "full_name": "vxcontrol/pentagi",
+  "id": 913030762,
+  "language": "Go",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "ai-agents",
+    "ai-security-tool",
+    "anthropic",
+    "autonomous-agents",
+    "golang",
+    "gpt",
+    "graphql",
+    "multi-agent-system",
+    "offensive-security",
+    "open-source",
+    "openai",
+    "penetration-testing",
+    "penetration-testing-tools",
+    "react",
+    "security-automation",
+    "security-testing",
+    "security-tools",
+    "self-hosted"
+  ]
+}

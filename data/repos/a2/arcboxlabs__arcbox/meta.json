@@ -1,0 +1,21 @@
+{
+  "created": "2026-01-04",
+  "description": "Run AI agents on real and isolated machines — own kernel, filesystem, and network — with <100ms boot. Local first, OCI compatible, pure Rust.",
+  "first_seen": "2026-09-06",
+  "full_name": "arcboxlabs/arcbox",
+  "id": 1127761357,
+  "language": "Rust",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "ai-agents",
+    "computer-use",
+    "containers",
+    "docker",
+    "firecracker",
+    "microvm",
+    "rust",
+    "sandbox",
+    "virtual-machine",
+    "virtualization"
+  ]
+}

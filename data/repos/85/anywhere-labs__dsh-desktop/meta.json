@@ -1,0 +1,19 @@
+{
+  "created": "2026-08-13",
+  "description": "为 DeepSeek Harness (DSH) 插件生态打造的现代化桌面端解决方案。万物皆「插件」，桌面本身也是「插件」。",
+  "first_seen": "2026-08-09",
+  "full_name": "anywhere-labs/dsh-desktop",
+  "id": 1333321333,
+  "language": "TypeScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "cordis",
+    "cordis-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "desktop",
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugin-desktop"
+  ]
+}

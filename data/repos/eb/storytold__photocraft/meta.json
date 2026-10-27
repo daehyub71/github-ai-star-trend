@@ -1,0 +1,18 @@
+{
+  "created": "2026-09-30",
+  "description": "PhotoCraft: An open-source, photo editor written by scratch in pure Rust",
+  "first_seen": "2026-10-04",
+  "full_name": "storytold/photocraft",
+  "id": 1398080271,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "art",
+    "image-editing",
+    "image-editing-software",
+    "image-editor",
+    "images",
+    "photo-editing",
+    "rust"
+  ]
+}

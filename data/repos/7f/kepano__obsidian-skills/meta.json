@@ -1,0 +1,28 @@
+{
+  "created": "2026-01-02",
+  "description": "Agent skills for Obsidian. Teach your agent to use Obsidian CLI and open formats including Markdown, Bases, JSON Canvas.",
+  "first_seen": "2026-01-04",
+  "full_name": "kepano/obsidian-skills",
+  "id": 1126947080,
+  "language": null,
+  "last_seen": "2026-01-25",
+  "topics": [
+    "agents",
+    "agentskills",
+    "bases",
+    "claude",
+    "clawdbot",
+    "cli",
+    "codex",
+    "defuddle",
+    "hermes",
+    "jsoncanvas",
+    "knap",
+    "markdown",
+    "md",
+    "obsidian",
+    "openclaw",
+    "opencode",
+    "skills"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "created": "2026-05-06",
+  "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
+  "first_seen": "2026-05-03",
+  "full_name": "antirez/ds4",
+  "id": 1231148626,
+  "language": "C",
+  "last_seen": "2026-05-24",
+  "topics": []
+}

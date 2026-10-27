@@ -1,0 +1,16 @@
+{
+  "created": "2018-11-14",
+  "description": "Collection of publicly available IPTV channels from all over the world",
+  "first_seen": "2025-11-16",
+  "full_name": "iptv-org/iptv",
+  "id": 157616880,
+  "language": "TypeScript",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "iptv",
+    "m3u",
+    "playlist",
+    "streams",
+    "tv"
+  ]
+}

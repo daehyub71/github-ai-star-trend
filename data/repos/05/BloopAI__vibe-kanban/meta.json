@@ -1,0 +1,16 @@
+{
+  "created": "2025-06-14",
+  "description": "Get 10X more out of Claude Code, Codex or any coding agent",
+  "first_seen": "2025-12-28",
+  "full_name": "BloopAI/vibe-kanban",
+  "id": 1002125012,
+  "language": "Rust",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "agent",
+    "ai-agents",
+    "kanban",
+    "management",
+    "task-manager"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "created": "2026-03-02",
+  "description": "Structured multi-perspective deliberation for hard decisions. Run full councils, focused triads, or duo debates across Claude Code, Codex, Gemini CLI, and OpenCode.",
+  "first_seen": "2026-06-28",
+  "full_name": "0xNyk/council-of-high-intelligence",
+  "id": 1170548091,
+  "language": "Shell",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "agent-skill",
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "decision-making",
+    "deliberation",
+    "gemini-cli",
+    "llm-routing",
+    "multi-agent-systems",
+    "multi-llm",
+    "open-source",
+    "opencode",
+    "prompt-engineering",
+    "structured-debate"
+  ]
+}

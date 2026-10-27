@@ -1,0 +1,26 @@
+{
+  "created": "2026-05-27",
+  "description": "🪧 Claude Code / Codex skill — generate Xiaohongshu carousels & WeChat 21:9+1:1 cover pairs. Editorial × Swiss visual systems, 28 layouts, 10 themes, single-file HTML → PNG. 小红书图文 + 公众号封面对",
+  "first_seen": "2026-05-31",
+  "full_name": "op7418/guizang-social-card-skill",
+  "id": 1251263546,
+  "language": "HTML",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "agent-skill",
+    "ai-agent",
+    "anthropic",
+    "claude-code",
+    "claude-skill",
+    "codex",
+    "editorial-design",
+    "html-template",
+    "image-generation",
+    "playwright",
+    "rednote",
+    "social-cards",
+    "swiss-design",
+    "wechat",
+    "xiaohongshu"
+  ]
+}

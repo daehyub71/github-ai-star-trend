@@ -1,0 +1,13 @@
+{
+  "created": "2026-02-21",
+  "description": "An open-source Collaborative Multi-Agent OS for transparent, human-in-the-loop task coordination via Matrix rooms.",
+  "first_seen": "2026-03-08",
+  "full_name": "agentscope-ai/AgentTeams",
+  "id": 1163358617,
+  "language": "Go",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "agent-teams",
+    "openclaw"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "created": "2026-03-24",
+  "description": "Persistent memory for Claude Code, Codex and 6 other AI agents, stored as plain markdown in your Obsidian vault. New: Crew, one shared logbook so Claude Code, Codex, Cursor and Grok Bot know what each other did. 48 commands: semantic search, self-rewriting notes, key-less research, scheduled agents.",
+  "first_seen": "2026-05-31",
+  "full_name": "eugeniughelbur/obsidian-second-brain",
+  "id": 1190557545,
+  "language": "Python",
+  "last_seen": "2026-05-31",
+  "topics": [
+    "agent-memory",
+    "agent-skills",
+    "ai-agents",
+    "ai-note-taking",
+    "ai-second-brain",
+    "claude",
+    "claude-code",
+    "claude-code-skill",
+    "claude-memory",
+    "claude-plugin",
+    "claude-skill",
+    "codex",
+    "karpathy-llm-wiki",
+    "knowledge-graph",
+    "knowledge-management",
+    "obsidian",
+    "obsidian-md",
+    "personal-knowledge-management",
+    "pkm",
+    "second-brain"
+  ]
+}

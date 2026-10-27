@@ -1,0 +1,10 @@
+{
+  "created": "2026-07-01",
+  "description": "Run frontier MoE models on hardware you already own — pure C, zero deps, experts streamed from disk. Tiny engine, immense model. 🐦",
+  "first_seen": "2026-07-05",
+  "full_name": "JustVugg/colibri",
+  "id": 1286080397,
+  "language": "C",
+  "last_seen": "2026-09-13",
+  "topics": []
+}

@@ -1,0 +1,31 @@
+{
+  "created": "2026-08-01",
+  "description": "A 2.78-trillion-parameter Kimi K3 running inference on a single CPU in 8.24 GB of RAM. Portable C99: no BLAS, no framework, no GPU.",
+  "first_seen": "2026-08-09",
+  "full_name": "FareedKhan-dev/kimi-k3-in-c",
+  "id": 1319154759,
+  "language": "C",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "avx2",
+    "c99",
+    "cpu-inference",
+    "deep-learning",
+    "from-scratch",
+    "inference-engine",
+    "kimi-k3",
+    "linear-attention",
+    "llm",
+    "llm-inference",
+    "machine-learning",
+    "memory-efficient",
+    "mixture-of-experts",
+    "moe",
+    "mxfp4",
+    "quantization",
+    "simd",
+    "systems-programming",
+    "transformer",
+    "zero-dependencies"
+  ]
+}

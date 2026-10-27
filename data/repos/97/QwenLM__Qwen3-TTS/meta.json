@@ -1,0 +1,10 @@
+{
+  "created": "2026-01-21",
+  "description": "Qwen3-TTS is an open-source series of TTS models developed by the Qwen team at Alibaba Cloud, supporting stable, expressive, and streaming speech generation, free-form voice design, and vivid voice cloning.",
+  "first_seen": "2026-01-25",
+  "full_name": "QwenLM/Qwen3-TTS",
+  "id": 1138817132,
+  "language": "Python",
+  "last_seen": "2026-02-08",
+  "topics": []
+}

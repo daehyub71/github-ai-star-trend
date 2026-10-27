@@ -1,0 +1,24 @@
+{
+  "created": "2026-05-01",
+  "description": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+  "first_seen": "2026-05-24",
+  "full_name": "virgiliojr94/book-to-skill",
+  "id": 1226123343,
+  "language": "Python",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "book-to-skill",
+    "context-engineering",
+    "document-processing",
+    "edtech",
+    "knowledge-base",
+    "knowledge-management",
+    "llm",
+    "pdf-to-markdown",
+    "rag",
+    "self-study",
+    "study-tools"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "created": "2025-12-14",
+  "description": "A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.",
+  "first_seen": "2026-01-11",
+  "full_name": "gsd-build/get-shit-done",
+  "id": 1116260703,
+  "language": "JavaScript",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "claude-code",
+    "context-engineering",
+    "meta-prompting",
+    "spec-driven-development"
+  ]
+}

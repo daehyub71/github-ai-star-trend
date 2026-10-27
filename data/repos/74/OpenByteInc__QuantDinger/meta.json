@@ -1,0 +1,30 @@
+{
+  "created": "2025-12-28",
+  "description": "Open-source AI Trading OS, agent trading, and vibe trading, with Jev System One integration. Research, build Python strategies, backtest, and paper/live trade across crypto, stocks, and forex. Launch your own multi-tenant trading SaaS with built-in user management, billing, payments, and settlement.",
+  "first_seen": "2026-04-19",
+  "full_name": "OpenByteInc/QuantDinger",
+  "id": 1124295269,
+  "language": "Python",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "agent",
+    "backtesting",
+    "binance",
+    "crypto",
+    "exchange",
+    "finance",
+    "fintech",
+    "forex",
+    "jev",
+    "mcp-server",
+    "python",
+    "quant",
+    "quantitative-finance",
+    "saas",
+    "stocks",
+    "strategy",
+    "stripe",
+    "trade",
+    "typesafe-ai"
+  ]
+}

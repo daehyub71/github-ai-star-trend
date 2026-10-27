@@ -1,0 +1,24 @@
+{
+  "created": "2026-05-01",
+  "description": "macOS menu bar app that tells you, in plain English, what each USB-C cable plugged into your Mac can actually do",
+  "first_seen": "2026-05-03",
+  "full_name": "darrylmorley/whatcable",
+  "id": 1226286910,
+  "language": "Swift",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "apple-silicon",
+    "hardware-info",
+    "iokit",
+    "mac-app",
+    "macos",
+    "menubar",
+    "menubar-app",
+    "swift",
+    "swiftui",
+    "thunderbolt",
+    "usb-c",
+    "usb-power-delivery",
+    "utility"
+  ]
+}

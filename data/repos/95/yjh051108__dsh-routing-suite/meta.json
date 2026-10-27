@@ -1,0 +1,16 @@
+{
+  "created": "2026-08-14",
+  "description": "dsh-routing-suite — injector + router-standard kit: install the runtime injector first, then the task-aware reasoning-mode router preset (measured P1-P23).",
+  "first_seen": "2026-08-16",
+  "full_name": "yjh051108/dsh-routing-suite",
+  "id": 1334586481,
+  "language": "JavaScript",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "ai-agents",
+    "cordis",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin"
+  ]
+}

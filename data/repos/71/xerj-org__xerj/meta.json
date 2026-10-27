@@ -1,0 +1,31 @@
+{
+  "created": "2026-06-30",
+  "description": "Local-first search engine and MCP server for AI agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora.",
+  "first_seen": "2026-10-11",
+  "full_name": "xerj-org/xerj",
+  "id": 1284653133,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "agent-memory",
+    "ai-agents",
+    "bm25",
+    "claude-code",
+    "cli",
+    "code-search",
+    "cursor",
+    "elasticsearch",
+    "elasticsearch-alternative",
+    "full-text-search",
+    "hybrid-search",
+    "jsonl",
+    "local-first",
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "rag",
+    "rust",
+    "search-engine",
+    "vector-search"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "created": "2025-02-13",
+  "description": "A free, open source, and extensible speech-to-text application that works completely offline.",
+  "first_seen": "2025-10-26",
+  "full_name": "cjpais/Handy",
+  "id": 931888694,
+  "language": "Rust",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "accessibility",
+    "cross-platform",
+    "speech-to-text",
+    "tauri-v2"
+  ]
+}

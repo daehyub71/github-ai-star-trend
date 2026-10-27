@@ -1,0 +1,17 @@
+{
+  "created": "2023-04-07",
+  "description": "Enterprise-level backend architecture solution with fastapi、sqlalchemy,、celery、pydantic、grafana、docker...",
+  "first_seen": "2025-11-30",
+  "full_name": "fastapi-practices/fastapi-best-architecture",
+  "id": 624721291,
+  "language": "Python",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "celery",
+    "fastapi",
+    "fastapi-template",
+    "fba",
+    "grafana",
+    "sqlalchemy"
+  ]
+}

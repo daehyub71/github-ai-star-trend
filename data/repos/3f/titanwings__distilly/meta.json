@@ -1,0 +1,30 @@
+{
+  "created": "2026-03-30",
+  "description": "Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.",
+  "first_seen": "2026-04-05",
+  "full_name": "titanwings/distilly",
+  "id": 1195828337,
+  "language": "Python",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "agent-skills",
+    "agentic-ai",
+    "ai-agent",
+    "ai-agents",
+    "ai-assistants",
+    "ai-persona",
+    "claude-code",
+    "claude-skills",
+    "codex",
+    "codex-skills",
+    "deepseek-harness",
+    "digital-human",
+    "dsh-plugin",
+    "hermes-agent",
+    "knowledge-distillation",
+    "llm-agent",
+    "meta-skill",
+    "openclaw",
+    "personal-agent"
+  ]
+}

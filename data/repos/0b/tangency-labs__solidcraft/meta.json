@@ -1,0 +1,20 @@
+{
+  "created": "2026-10-07",
+  "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
+  "first_seen": "2026-10-18",
+  "full_name": "tangency-labs/solidcraft",
+  "id": 1409246014,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "3d-modeling",
+    "brep",
+    "cad",
+    "egui",
+    "mcp",
+    "parametric-cad",
+    "rust",
+    "step",
+    "wasm"
+  ]
+}

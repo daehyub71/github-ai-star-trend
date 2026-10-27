@@ -1,0 +1,17 @@
+{
+  "created": "2026-10-05",
+  "description": "Renders Mermaid diagrams faster than you'd run from a volcano! 🌋 ",
+  "first_seen": "2026-10-18",
+  "full_name": "obsidianmd/pele",
+  "id": 1406482535,
+  "language": "TypeScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "charts",
+    "diagramming",
+    "diagrams",
+    "mermaid",
+    "mermaid-diagrams",
+    "mermaidjs"
+  ]
+}

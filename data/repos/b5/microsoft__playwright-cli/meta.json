@@ -1,0 +1,12 @@
+{
+  "created": "2020-06-19",
+  "description": "CLI for common Playwright actions. Record and generate Playwright code, inspect selectors and take screenshots.",
+  "first_seen": "2026-01-25",
+  "full_name": "microsoft/playwright-cli",
+  "id": 273562379,
+  "language": "TypeScript",
+  "last_seen": "2026-01-25",
+  "topics": [
+    "playwright"
+  ]
+}

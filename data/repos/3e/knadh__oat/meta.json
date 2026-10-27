@@ -1,0 +1,22 @@
+{
+  "created": "2026-01-15",
+  "description": "Ultra-lightweight, zero dependency, semantic HTML, CSS, JS UI library. ~10KB min+gz.",
+  "first_seen": "2026-02-15",
+  "full_name": "knadh/oat",
+  "id": 1134729753,
+  "language": "CSS",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "component-library",
+    "css",
+    "css-framework",
+    "dashboard-design",
+    "semantic-html",
+    "semantic-web",
+    "ui-components",
+    "ui-design",
+    "web-ui",
+    "web-ui-framework",
+    "webcomponents"
+  ]
+}

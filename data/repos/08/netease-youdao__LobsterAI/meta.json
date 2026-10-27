@@ -1,0 +1,28 @@
+{
+  "created": "2026-02-12",
+  "description": "Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real desktop and takes commands from your phone via WeChat, Feishu, DingTalk & Telegram.",
+  "first_seen": "2026-02-22",
+  "full_name": "netease-youdao/LobsterAI",
+  "id": 1156137396,
+  "language": "TypeScript",
+  "last_seen": "2026-02-22",
+  "topics": [
+    "agent",
+    "ai-agent",
+    "ai-assistant",
+    "automation",
+    "autonomous-agents",
+    "chatbot",
+    "copilot",
+    "cross-platform",
+    "desktop-app",
+    "electron",
+    "llm",
+    "mcp",
+    "office-automation",
+    "openclaw",
+    "productivity",
+    "react",
+    "tyepscript"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "created": "2025-07-04",
+  "description": "bluetooth mesh chat, IRC vibes",
+  "first_seen": "2026-07-26",
+  "full_name": "permissionlesstech/bitchat",
+  "id": 1013830656,
+  "language": "Swift",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "bluetooth",
+    "bluetooth-le",
+    "decentralized",
+    "e2e-encryption",
+    "ios",
+    "macos",
+    "mesh-network",
+    "messaging",
+    "nostr",
+    "swift"
+  ]
+}

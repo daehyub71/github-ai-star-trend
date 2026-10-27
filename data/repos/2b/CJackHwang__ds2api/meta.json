@@ -1,0 +1,25 @@
+{
+  "created": "2026-01-21",
+  "description": "DeepSeek-Compatible Middleware Interface: A technical exploration project in Go, focusing on high-concurrency protocol adaptation. It serves as a reference implementation for converting diverse web protocols into standardized formats.",
+  "first_seen": "2026-04-26",
+  "full_name": "CJackHwang/ds2api",
+  "id": 1139136822,
+  "language": "Go",
+  "last_seen": "2026-04-26",
+  "topics": [
+    "api",
+    "claude-api",
+    "deepseek",
+    "deepseek-api",
+    "docker",
+    "freeapi",
+    "go",
+    "openai-api",
+    "proxy",
+    "proxy-server",
+    "react",
+    "vercel",
+    "vercel-deployment",
+    "zeabur"
+  ]
+}

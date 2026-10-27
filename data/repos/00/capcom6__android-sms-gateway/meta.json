@@ -1,0 +1,23 @@
+{
+  "created": "2022-06-15",
+  "description": "The SMS Gateway for Android™ app enables sending and receiving SMS messages through an API that can be accessed directly on the device or via a cloud server when direct device access is not possible.",
+  "first_seen": "2026-04-05",
+  "full_name": "capcom6/android-sms-gateway",
+  "id": 503827141,
+  "language": "Kotlin",
+  "last_seen": "2026-04-05",
+  "topics": [
+    "android",
+    "api",
+    "encryption",
+    "gateway",
+    "httpsms",
+    "sim",
+    "simcard",
+    "sms",
+    "sms-gateway",
+    "smsgate",
+    "textbee",
+    "ttl"
+  ]
+}

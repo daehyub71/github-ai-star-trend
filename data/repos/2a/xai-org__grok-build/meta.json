@@ -1,0 +1,10 @@
+{
+  "created": "2026-07-14",
+  "description": "SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible.",
+  "first_seen": "2026-07-12",
+  "full_name": "xai-org/grok-build",
+  "id": 1300902838,
+  "language": "Rust",
+  "last_seen": "2026-08-02",
+  "topics": []
+}

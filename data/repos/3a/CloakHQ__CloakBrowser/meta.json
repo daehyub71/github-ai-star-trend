@@ -1,0 +1,31 @@
+{
+  "created": "2026-02-22",
+  "description": "Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 50+ tests passed.",
+  "first_seen": "2026-05-03",
+  "full_name": "CloakHQ/CloakBrowser",
+  "id": 1163834030,
+  "language": "Python",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "ai-agents",
+    "anti-detect",
+    "antidetect-browser",
+    "bot-detection",
+    "browser-automation",
+    "captcha-bypass",
+    "chromium",
+    "cloudflare",
+    "cloudflare-bypass",
+    "fingerprint",
+    "headless-browser",
+    "playwright",
+    "puppeteer",
+    "python",
+    "recaptcha",
+    "selenium",
+    "stealth-browser",
+    "undetected",
+    "web-scraping",
+    "webscraping"
+  ]
+}

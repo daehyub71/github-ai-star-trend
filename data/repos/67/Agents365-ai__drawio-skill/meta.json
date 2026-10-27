@@ -1,0 +1,31 @@
+{
+  "created": "2026-03-03",
+  "description": "Agent skill that turns natural language, code, Terraform/K8s, SQL, OpenAPI, AsyncAPI, Protobuf and GraphQL sources into editable, tested draw.io architecture diagrams: incremental sync, multi-view projection, drift diff, CI architecture tests, whiteboard derasterize, interactive HTML/PPTX/Mermaid exports.",
+  "first_seen": "2026-06-14",
+  "full_name": "Agents365-ai/drawio-skill",
+  "id": 1171833693,
+  "language": "Python",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "agent-skills",
+    "architecture",
+    "architecture-diagram",
+    "asyncapi",
+    "bpmn",
+    "c4-model",
+    "claude-code",
+    "diagram",
+    "diagrams-as-code",
+    "drawio",
+    "flowchart",
+    "github-actions",
+    "graphql",
+    "image-to-diagram",
+    "kubernetes",
+    "mcp-server",
+    "protobuf",
+    "sysml",
+    "terraform",
+    "uml"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "created": "2025-09-04",
+  "description": "The most powerful local music generation model that outperforms almost all commercial alternatives, supporting Mac, AMD, Intel, and CUDA devices.",
+  "first_seen": "2026-02-01",
+  "full_name": "ace-step/ACE-Step-1.5",
+  "id": 1050131556,
+  "language": "Python",
+  "last_seen": "2026-02-01",
+  "topics": [
+    "text2music"
+  ]
+}

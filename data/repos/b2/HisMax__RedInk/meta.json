@@ -1,0 +1,23 @@
+{
+  "created": "2025-11-25",
+  "description": "Red Ink - A one-stop Xiaohongshu image-and-text generator based on the 🍌Nano Banana Pro🍌, \"One Sentence, One Image: Generate Xiaohongshu Text and Images.\"",
+  "first_seen": "2025-11-23",
+  "full_name": "HisMax/RedInk",
+  "id": 1103772881,
+  "language": "Python",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "ai",
+    "aigc",
+    "content-generator",
+    "docker",
+    "flask",
+    "gemini",
+    "nano-banana-pro",
+    "python",
+    "social-media",
+    "text-to-image",
+    "vue",
+    "xiaohongshu"
+  ]
+}

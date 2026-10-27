@@ -1,0 +1,18 @@
+{
+  "created": "2024-11-13",
+  "description": "Python tool for converting files and office documents to Markdown.",
+  "first_seen": "2026-04-05",
+  "full_name": "microsoft/markitdown",
+  "id": 888092115,
+  "language": "Python",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "autogen",
+    "autogen-extension",
+    "langchain",
+    "markdown",
+    "microsoft-office",
+    "openai",
+    "pdf"
+  ]
+}

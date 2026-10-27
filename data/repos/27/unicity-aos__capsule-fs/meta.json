@@ -1,0 +1,10 @@
+{
+  "created": "2026-03-16",
+  "description": "Filesystem tools for agents. Read, write, replace, grep, list, create, delete, move via VFS airlock. Part of Unicity AOS.",
+  "first_seen": "2026-07-19",
+  "full_name": "unicity-aos/capsule-fs",
+  "id": 1183205919,
+  "language": "Rust",
+  "last_seen": "2026-07-19",
+  "topics": []
+}

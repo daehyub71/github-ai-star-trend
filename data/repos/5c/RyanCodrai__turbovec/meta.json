@@ -1,0 +1,26 @@
+{
+  "created": "2026-03-26",
+  "description": "A vector index built on TurboQuant, written in Rust with Python bindings",
+  "first_seen": "2026-06-07",
+  "full_name": "RyanCodrai/turbovec",
+  "id": 1192555574,
+  "language": "Rust",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "ann",
+    "avx512",
+    "embedding",
+    "embeddings",
+    "faiss",
+    "nearest-neighbor",
+    "neon",
+    "python",
+    "quant",
+    "quantization",
+    "rag",
+    "rust",
+    "simd",
+    "turboquant",
+    "vector-search"
+  ]
+}

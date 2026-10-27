@@ -1,0 +1,16 @@
+{
+  "created": "2026-04-26",
+  "description": "Decentralized P2P mesh for autonomous AI agents — self-sovereign identity, peer-to-peer chat, and on-device AI that negotiates tasks on your behalf. No central server.",
+  "first_seen": "2026-09-20",
+  "full_name": "allenpeng0705/EnvoyMesh",
+  "id": 1221340426,
+  "language": "TypeScript",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "ai-agents",
+    "decentralized-ai",
+    "decentralized-exchange",
+    "decentralized-identity",
+    "decentralized-storage"
+  ]
+}

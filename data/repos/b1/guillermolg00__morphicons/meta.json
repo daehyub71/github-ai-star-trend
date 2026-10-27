@@ -1,0 +1,17 @@
+{
+  "created": "2026-08-01",
+  "description": "Any icon morphs into any other — universal morphing for stroke-based icons with spring physics. Zero dependencies, ~7 KB gzip.",
+  "first_seen": "2026-08-16",
+  "full_name": "guillermolg00/morphicons",
+  "id": 1319103484,
+  "language": "TypeScript",
+  "last_seen": "2026-08-16",
+  "topics": [
+    "animation",
+    "icons",
+    "morphing",
+    "react",
+    "svg",
+    "typescript"
+  ]
+}

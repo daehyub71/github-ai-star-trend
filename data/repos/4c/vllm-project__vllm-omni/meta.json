@@ -1,0 +1,21 @@
+{
+  "created": "2025-09-11",
+  "description": "A framework for efficient model inference with omni-modality models",
+  "first_seen": "2025-12-21",
+  "full_name": "vllm-project/vllm-omni",
+  "id": 1054512829,
+  "language": "Python",
+  "last_seen": "2025-12-21",
+  "topics": [
+    "audio-generation",
+    "diffusion",
+    "image-generation",
+    "inference",
+    "model-serving",
+    "multimodal",
+    "pytorch",
+    "transformer",
+    "video-generation",
+    "world-model"
+  ]
+}

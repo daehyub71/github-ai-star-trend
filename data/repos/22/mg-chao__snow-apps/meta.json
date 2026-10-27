@@ -1,0 +1,16 @@
+{
+  "created": "2025-02-26",
+  "description": "Snow Apps repository, providing source code for Snow Shot and Snow Image Viewer.",
+  "first_seen": "2025-11-02",
+  "full_name": "mg-chao/snow-apps",
+  "id": 939207877,
+  "language": "C++",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "image-viewer",
+    "ocr",
+    "screen-recorder",
+    "screenshot",
+    "tools"
+  ]
+}

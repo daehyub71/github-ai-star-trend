@@ -1,0 +1,21 @@
+{
+  "created": "2024-07-20",
+  "description": "A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨",
+  "first_seen": "2025-11-30",
+  "full_name": "psviderski/uncloud",
+  "id": 831373509,
+  "language": "Go",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "containers",
+    "deployment",
+    "devops",
+    "docker",
+    "docker-compose",
+    "golang",
+    "kubernetes",
+    "orchestration",
+    "self-hosted",
+    "uncloud"
+  ]
+}

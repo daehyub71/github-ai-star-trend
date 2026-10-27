@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-14",
+  "description": "Claude skills for LinkedIn. 12 Claude Code and Codex skills that write human-sounding LinkedIn posts, craft comments that get noticed, analyze your feed, and build a publishing cadence, all from your terminal. Content engineering by Creative Content Crafts. MIT.",
+  "first_seen": "2026-09-06",
+  "full_name": "sergebulaev/linkedin-skills",
+  "id": 1210670063,
+  "language": "Python",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "agent-skill",
+    "agent-skills",
+    "ai-agents",
+    "ai-content",
+    "ai-marketing",
+    "anthropic",
+    "awesome-claude",
+    "claude-code",
+    "claude-skills",
+    "content-creation",
+    "content-engineering",
+    "linkedin",
+    "linkedin-automation",
+    "linkedin-engineering",
+    "llm-tools",
+    "openclaw-skill",
+    "personal-branding",
+    "prompt-engineering",
+    "skill-md",
+    "social-media-automation"
+  ]
+}

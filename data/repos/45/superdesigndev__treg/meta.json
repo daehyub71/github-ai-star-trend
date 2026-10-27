@@ -1,0 +1,22 @@
+{
+  "created": "2026-07-15",
+  "description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
+  "first_seen": "2026-09-20",
+  "full_name": "superdesigndev/treg",
+  "id": 1301657572,
+  "language": "Python",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "agents",
+    "api-keys",
+    "cli",
+    "credentials",
+    "developer-tools",
+    "dsh-plugin",
+    "mcp",
+    "proxy",
+    "python",
+    "registry",
+    "secrets"
+  ]
+}

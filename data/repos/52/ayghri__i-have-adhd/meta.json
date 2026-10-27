@@ -1,0 +1,17 @@
+{
+  "created": "2026-05-13",
+  "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+  "first_seen": "2026-07-19",
+  "full_name": "ayghri/i-have-adhd",
+  "id": 1238120057,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "adhd",
+    "claude-",
+    "claude-code-plugin",
+    "claude-skills",
+    "developer-tools",
+    "productivity"
+  ]
+}

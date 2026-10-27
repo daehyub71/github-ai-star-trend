@@ -1,0 +1,10 @@
+{
+  "created": "2026-02-28",
+  "description": "Training neural networks on Apple Neural Engine via reverse-engineered private APIs",
+  "first_seen": "2026-03-01",
+  "full_name": "maderix/ANE",
+  "id": 1169170504,
+  "language": "Objective-C",
+  "last_seen": "2026-03-01",
+  "topics": []
+}

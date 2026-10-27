@@ -1,0 +1,21 @@
+{
+  "created": "2025-12-16",
+  "description": "A powerful cross-platform port management tool for developers. Monitor ports, manage Kubernetes port forwards, integrate Cloudflare Tunnels, and kill processes with one click.",
+  "first_seen": "2025-12-14",
+  "full_name": "productdevbook/port-killer",
+  "id": 1117208510,
+  "language": "Swift",
+  "last_seen": "2026-01-04",
+  "topics": [
+    "developer-tools",
+    "kubernetes",
+    "macos",
+    "macos-app",
+    "menu-bar",
+    "port-killer",
+    "process-manager",
+    "swift",
+    "swiftui",
+    "windows"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "created": "2026-03-12",
+  "description": "A framework for building agentic apps",
+  "first_seen": "2026-06-21",
+  "full_name": "BuilderIO/agent-native",
+  "id": 1179959183,
+  "language": "TypeScript",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "agent-native",
+    "agents",
+    "ai",
+    "react",
+    "typescript"
+  ]
+}

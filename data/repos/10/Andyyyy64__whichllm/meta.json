@@ -1,0 +1,12 @@
+{
+  "created": "2026-03-04",
+  "description": "Find the local LLM that actually runs and performs best on your hardware. Ranked by real, recency-aware benchmarks, not parameter count. One command, run it instantly.",
+  "first_seen": "2026-06-07",
+  "full_name": "Andyyyy64/whichllm",
+  "id": 1172574522,
+  "language": "Python",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "localllm"
+  ]
+}

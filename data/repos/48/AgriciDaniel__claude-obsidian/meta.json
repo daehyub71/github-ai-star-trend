@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-07",
+  "description": "Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude reads, links, and files it into one connected knowledge graph of plain Markdown you own. AI note-taking, personal knowledge management (PKM), and an open-source Notion alternative. Based on Karpathy's LLM Wiki pattern.",
+  "first_seen": "2026-04-19",
+  "full_name": "AgriciDaniel/claude-obsidian",
+  "id": 1203670949,
+  "language": "Python",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "agent-skills",
+    "ai-note-taking",
+    "ai-second-brain",
+    "claude-code",
+    "claude-code-skill",
+    "claude-memory",
+    "claude-plugin",
+    "karpathy-llm-wiki",
+    "knowledge-graph",
+    "knowledge-management",
+    "note-taking",
+    "notion-alternative",
+    "obsidian",
+    "obsidian-ai",
+    "obsidian-plugin",
+    "obsidian-second-brain",
+    "open-source",
+    "personal-knowledge-management",
+    "pkm",
+    "second-brain"
+  ]
+}

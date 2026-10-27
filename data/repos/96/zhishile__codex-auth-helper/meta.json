@@ -1,0 +1,10 @@
+{
+  "created": "2026-06-02",
+  "description": "Codex登陆助手：安全地在本地导出您的已登录 ChatGPT 会话配置，生成符合 Codex 规范的 auth.json 本地备份文件。",
+  "first_seen": "2026-07-19",
+  "full_name": "zhishile/codex-auth-helper",
+  "id": 1256690992,
+  "language": "CSS",
+  "last_seen": "2026-07-19",
+  "topics": []
+}

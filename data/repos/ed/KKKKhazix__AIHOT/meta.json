@@ -1,0 +1,23 @@
+{
+  "created": "2026-09-28",
+  "description": "一个自己找热点、自己写日报的网站框架。把信源和精选标准换成你的，它就是你的行业热点站。",
+  "first_seen": "2026-09-27",
+  "full_name": "KKKKhazix/AIHOT",
+  "id": 1393965829,
+  "language": "TypeScript",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "ai",
+    "chinese",
+    "content-curation",
+    "daily-digest",
+    "docker-compose",
+    "llm",
+    "mcp",
+    "news-aggregator",
+    "postgresql",
+    "rss",
+    "self-hosted",
+    "typescript"
+  ]
+}

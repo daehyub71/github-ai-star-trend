@@ -1,0 +1,19 @@
+{
+  "created": "2026-01-18",
+  "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+  "first_seen": "2026-01-18",
+  "full_name": "affaan-m/ECC",
+  "id": 1136590548,
+  "language": "JavaScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ai-agents",
+    "anthropic",
+    "claude",
+    "claude-code",
+    "developer-tools",
+    "llm",
+    "mcp",
+    "productivity"
+  ]
+}

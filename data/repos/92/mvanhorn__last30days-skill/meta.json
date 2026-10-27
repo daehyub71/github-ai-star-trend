@@ -1,0 +1,31 @@
+{
+  "created": "2026-01-23",
+  "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+  "first_seen": "2026-03-22",
+  "full_name": "mvanhorn/last30days-skill",
+  "id": 1140843380,
+  "language": "Python",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "ai-prompts",
+    "ai-skill",
+    "bluesky",
+    "claude",
+    "claude-code",
+    "clawhub",
+    "deep-research",
+    "hackernews",
+    "instagram",
+    "openclaw",
+    "polymarket",
+    "recency",
+    "reddit",
+    "research",
+    "social-media",
+    "tiktok",
+    "trends",
+    "twitter",
+    "web-search",
+    "youtube"
+  ]
+}

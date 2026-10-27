@@ -1,0 +1,19 @@
+{
+  "created": "2021-07-08",
+  "description": "Warp is an agentic development environment, born out of the terminal.",
+  "first_seen": "2026-04-26",
+  "full_name": "warpdotdev/warp",
+  "id": 384219990,
+  "language": "Rust",
+  "last_seen": "2026-04-26",
+  "topics": [
+    "bash",
+    "linux",
+    "macos",
+    "rust",
+    "shell",
+    "terminal",
+    "wasm",
+    "zsh"
+  ]
+}

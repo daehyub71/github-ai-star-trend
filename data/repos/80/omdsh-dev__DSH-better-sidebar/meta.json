@@ -1,0 +1,17 @@
+{
+  "created": "2026-08-07",
+  "description": "开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/侧边对话/Git/子代理页面 ｜ Open sidebar foundation, supports third-party extensions to register new sidebar pages. Built-in file rendering/editing, terminal, side chat, Git, and sub-agent pages.",
+  "first_seen": "2026-08-16",
+  "full_name": "omdsh-dev/DSH-better-sidebar",
+  "id": 1326893710,
+  "language": "TypeScript",
+  "last_seen": "2026-08-16",
+  "topics": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-better-sidebar",
+    "dsh-plugin",
+    "sidebar"
+  ]
+}

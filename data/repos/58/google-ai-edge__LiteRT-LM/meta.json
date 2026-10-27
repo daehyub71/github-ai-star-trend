@@ -1,0 +1,14 @@
+{
+  "created": "2025-04-14",
+  "description": "LiteRT-LM is Google's production-ready, high-performance, open-source inference framework for deploying Large Language Models on edge devices.",
+  "first_seen": "2026-04-05",
+  "full_name": "google-ai-edge/LiteRT-LM",
+  "id": 966386486,
+  "language": "C++",
+  "last_seen": "2026-04-05",
+  "topics": [
+    "edge-ai",
+    "on-device-ai",
+    "on-device-llm"
+  ]
+}

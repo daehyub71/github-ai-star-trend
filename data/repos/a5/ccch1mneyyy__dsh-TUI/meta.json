@@ -1,0 +1,20 @@
+{
+  "created": "2026-08-13",
+  "description": "DSH's officially top-recommended TUI plugin — high performance, low overhead, cute pixel whale, smooth mouse interaction. One-command install via npm. / DSH 官方首推的 TUI 插件，高性能低占用，可爱像素鲸鱼，流畅鼠标交互，npm 一键安装",
+  "first_seen": "2026-08-16",
+  "full_name": "ccch1mneyyy/dsh-TUI",
+  "id": 1333111893,
+  "language": "TypeScript",
+  "last_seen": "2026-08-16",
+  "topics": [
+    "claude-code",
+    "coding-agent",
+    "deepseek",
+    "deepseek-harness",
+    "dsh-plugin",
+    "ink",
+    "react",
+    "terminal",
+    "tui"
+  ]
+}

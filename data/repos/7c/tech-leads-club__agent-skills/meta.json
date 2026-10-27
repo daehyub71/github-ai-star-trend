@@ -1,0 +1,18 @@
+{
+  "created": "2026-01-19",
+  "description": "The secure, validated skill registry for professional AI coding agents. Extend Antigravity, Claude Code, Cursor, Copilot and more with absolute confidence.",
+  "first_seen": "2026-05-17",
+  "full_name": "tech-leads-club/agent-skills",
+  "id": 1137515077,
+  "language": "TypeScript",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "agent",
+    "ai",
+    "antigravity",
+    "claude-code",
+    "copilot",
+    "cursor",
+    "skills"
+  ]
+}

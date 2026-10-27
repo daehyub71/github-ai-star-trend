@@ -1,0 +1,24 @@
+{
+  "created": "2025-07-22",
+  "description": "The agent that grows with you",
+  "first_seen": "2026-03-08",
+  "full_name": "NousResearch/hermes-agent",
+  "id": 1024554267,
+  "language": "Python",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "ai",
+    "ai-agent",
+    "ai-agents",
+    "anthropic",
+    "chatgpt",
+    "claude",
+    "claude-code",
+    "codex",
+    "hermes",
+    "hermes-agent",
+    "llm",
+    "nous-research",
+    "openai"
+  ]
+}

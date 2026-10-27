@@ -1,0 +1,17 @@
+{
+  "created": "2026-03-19",
+  "description": "The open source AI research agent.",
+  "first_seen": "2026-04-05",
+  "full_name": "Companion-Inc/feynman",
+  "id": 1186559664,
+  "language": "TypeScript",
+  "last_seen": "2026-04-05",
+  "topics": [
+    "ai-agent",
+    "arxiv",
+    "cli",
+    "literature-review",
+    "pi-coding-agent",
+    "research"
+  ]
+}

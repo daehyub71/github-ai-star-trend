@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-04",
+  "description": "Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover letter, get interview prep and a job application tracker. It helps you fill in each application; you press Submit. Runs locally in your AI coding CLI (Claude Code, Codex, OpenCode and more).",
+  "first_seen": "2026-04-05",
+  "full_name": "career-ops-hq/career-ops",
+  "id": 1201476594,
+  "language": "JavaScript",
+  "last_seen": "2026-04-26",
+  "topics": [
+    "agent-skills",
+    "ai-agent",
+    "ai-job-search",
+    "ats",
+    "career",
+    "career-ops",
+    "claude-code",
+    "cover-letter",
+    "cv",
+    "good-first-issue",
+    "interview-preparation",
+    "interview-questions",
+    "job-application",
+    "job-hunting",
+    "job-search",
+    "job-search-tools",
+    "latex",
+    "local-first",
+    "open-source",
+    "resume"
+  ]
+}

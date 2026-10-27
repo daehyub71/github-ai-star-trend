@@ -1,0 +1,14 @@
+{
+  "created": "2026-04-10",
+  "description": "Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents.",
+  "first_seen": "2026-05-03",
+  "full_name": "TencentCloud/CubeSandbox",
+  "id": 1206553433,
+  "language": "Go",
+  "last_seen": "2026-05-03",
+  "topics": [
+    "agents",
+    "container",
+    "sandbox"
+  ]
+}

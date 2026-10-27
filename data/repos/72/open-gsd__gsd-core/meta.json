@@ -1,0 +1,15 @@
+{
+  "created": "2026-05-22",
+  "description": "Git. Ship. Done - Core",
+  "first_seen": "2026-05-31",
+  "full_name": "open-gsd/gsd-core",
+  "id": 1246625636,
+  "language": "JavaScript",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "claude-code",
+    "context-engineering",
+    "meta-prompting",
+    "spec-driven-development"
+  ]
+}

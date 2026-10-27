@@ -1,0 +1,23 @@
+{
+  "created": "2021-04-14",
+  "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
+  "first_seen": "2025-11-30",
+  "full_name": "oven-sh/bun",
+  "id": 357728969,
+  "language": "Rust",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "bun",
+    "bundler",
+    "javascript",
+    "javascriptcore",
+    "jsx",
+    "nodejs",
+    "npm",
+    "react",
+    "rust",
+    "rust-lang",
+    "transpiler",
+    "typescript"
+  ]
+}

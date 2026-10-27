@@ -1,0 +1,31 @@
+{
+  "created": "2025-10-19",
+  "description": "Local persistent memory store for LLM applications including claude desktop, github copilot, codex, antigravity, etc.",
+  "first_seen": "2025-11-09",
+  "full_name": "CaviraOSS/LongMemory",
+  "id": 1079345325,
+  "language": "TypeScript",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "ai-infrastructure",
+    "ai-memory",
+    "artificial-intelligence",
+    "cognitive-architecture",
+    "embeddings",
+    "gemini",
+    "llm",
+    "long-term-memory",
+    "longmemory",
+    "memory",
+    "memory-engine",
+    "memory-retrieval",
+    "ollama",
+    "one-line",
+    "openai",
+    "rag",
+    "supermemory",
+    "vector-database"
+  ]
+}

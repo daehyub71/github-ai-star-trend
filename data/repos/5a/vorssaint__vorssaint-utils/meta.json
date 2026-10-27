@@ -1,0 +1,27 @@
+{
+  "created": "2026-06-12",
+  "description": "Free and open-source macOS menu bar toolkit.",
+  "first_seen": "2026-06-28",
+  "full_name": "vorssaint/vorssaint-utils",
+  "id": 1267485499,
+  "language": "Swift",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "alt-tab",
+    "app-uninstaller",
+    "appkit",
+    "finder",
+    "free",
+    "keep-awake",
+    "mac-os",
+    "menu-bar",
+    "menubar",
+    "open-source",
+    "swift",
+    "swift-ui",
+    "system-monitor",
+    "uninstaller",
+    "volume-mixer",
+    "window-switcher"
+  ]
+}

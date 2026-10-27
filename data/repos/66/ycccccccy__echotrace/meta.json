@@ -1,0 +1,16 @@
+{
+  "created": "2025-10-17",
+  "description": "EchoTrace 是一个本地、安全的微信聊天记录导出、分析与年度报告生成工具 | EchoTrace is a local, secure tool for exporting, analyzing, and generating annual reports of WeChat chat records",
+  "first_seen": "2026-01-04",
+  "full_name": "ycccccccy/echotrace",
+  "id": 1078317722,
+  "language": null,
+  "last_seen": "2026-01-04",
+  "topics": [
+    "annual-reports",
+    "chat-history",
+    "data-analysis",
+    "data-visualization",
+    "wechat"
+  ]
+}

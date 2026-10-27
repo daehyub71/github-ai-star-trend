@@ -1,0 +1,26 @@
+{
+  "created": "2026-01-16",
+  "description": "Self-evolving agent: grows skill tree from 3.3K-line seed, achieving full system control with 6x less token consumption",
+  "first_seen": "2026-04-19",
+  "full_name": "lsdefine/GenericAgent",
+  "id": 1135791677,
+  "language": "Python",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "ai-agent",
+    "automation",
+    "autonomous-agent",
+    "browser-automation",
+    "claude",
+    "computer-control",
+    "desktop-automation",
+    "gemini",
+    "lightweight",
+    "llm-agent",
+    "memory-system",
+    "python",
+    "self-evolving",
+    "skill-tree",
+    "task-automation"
+  ]
+}

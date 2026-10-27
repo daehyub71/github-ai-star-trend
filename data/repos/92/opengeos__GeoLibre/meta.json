@@ -1,0 +1,21 @@
+{
+  "created": "2026-05-27",
+  "description": "A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.",
+  "first_seen": "2026-07-26",
+  "full_name": "opengeos/GeoLibre",
+  "id": 1251648409,
+  "language": "TypeScript",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "cesium",
+    "data-science",
+    "duckdb",
+    "geolibre",
+    "geospatial",
+    "gis",
+    "mapbox",
+    "maplibre",
+    "maplibre-gl-js",
+    "tauri-app"
+  ]
+}

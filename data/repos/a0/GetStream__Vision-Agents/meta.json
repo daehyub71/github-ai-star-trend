@@ -1,0 +1,22 @@
+{
+  "created": "2025-08-11",
+  "description": "Open Vision Agents by Stream. Build voice and vision agents quickly with any model or video provider. Uses Stream's edge network for ultra-low latency.",
+  "first_seen": "2025-11-23",
+  "full_name": "GetStream/Vision-Agents",
+  "id": 1036205124,
+  "language": "Python",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "agentic-ai",
+    "agents",
+    "ai",
+    "ai-agents",
+    "realtime",
+    "stt",
+    "tts",
+    "video-agents",
+    "video-ai",
+    "vision-ai",
+    "voice-ai"
+  ]
+}

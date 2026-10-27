@@ -1,0 +1,22 @@
+{
+  "created": "2024-06-15",
+  "description": "Generative UI SDK for React",
+  "first_seen": "2025-12-21",
+  "full_name": "tambo-ai/tambo",
+  "id": 815634288,
+  "language": "TypeScript",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "agent",
+    "agents",
+    "ai",
+    "assistant",
+    "assistant-chat-bots",
+    "generative-ui",
+    "js",
+    "react",
+    "reactjs",
+    "ui",
+    "ui-components"
+  ]
+}

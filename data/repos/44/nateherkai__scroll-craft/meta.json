@@ -1,0 +1,26 @@
+{
+  "created": "2026-08-22",
+  "description": "An agent skill for building premium, immersive, scroll-driven websites. Works with Codex, Claude Code, and other coding agents. Also available as a Claude Code plugin.",
+  "first_seen": "2026-08-30",
+  "full_name": "nateherkai/scroll-craft",
+  "id": 1342930695,
+  "language": "JavaScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "accessibility",
+    "agent-skills",
+    "ai-web-design",
+    "anthropic",
+    "claude-code",
+    "claude-code-plugin",
+    "creative-coding",
+    "design-system",
+    "frontend",
+    "interaction-design",
+    "landing-page",
+    "scroll-animation",
+    "scrollytelling",
+    "typography",
+    "web-design"
+  ]
+}

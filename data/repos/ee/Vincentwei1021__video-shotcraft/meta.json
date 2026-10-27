@@ -1,0 +1,25 @@
+{
+  "created": "2026-07-19",
+  "description": "AI video skill for Claude Code & Codex — cinematic product videos with Remotion: 152 shot recipe cards, 209 motion previews, a production-ready template",
+  "first_seen": "2026-07-26",
+  "full_name": "Vincentwei1021/video-shotcraft",
+  "id": 1305663861,
+  "language": "TypeScript",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "ai-video",
+    "claude-code",
+    "claude-code-skills",
+    "claude-skills",
+    "codex",
+    "motion-design",
+    "motion-graphics",
+    "product-video",
+    "promo-video",
+    "remotion",
+    "video-generation",
+    "video-production"
+  ]
+}

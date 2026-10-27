@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-12",
+  "description": "The go-to web for your AI coding agent — local-first search, fetch, crawl & research over MCP. No API keys, no cloud, $0/query. Public beta.",
+  "first_seen": "2026-07-19",
+  "full_name": "KnockOutEZ/wigolo",
+  "id": 1208642537,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agent",
+    "ai",
+    "ai-agent",
+    "claude",
+    "developer-tools",
+    "exa-alternative",
+    "firecrawl-alternative",
+    "local-first",
+    "mcp",
+    "mcp-server",
+    "metasearch",
+    "model-context-protocol",
+    "privacy",
+    "rag",
+    "search",
+    "search-engine",
+    "tavily-alternative",
+    "web-crawler",
+    "web-scraping",
+    "web-search"
+  ]
+}

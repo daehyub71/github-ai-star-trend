@@ -1,0 +1,25 @@
+{
+  "created": "2025-10-20",
+  "description": "Personal AI Notebooks. Organize files & webpages and generate notes from them. Open source, local & open data, open model choice (incl. local).",
+  "first_seen": "2025-10-26",
+  "full_name": "deta/surf",
+  "id": 1079906817,
+  "language": "TypeScript",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "claude",
+    "deepseek",
+    "gemma",
+    "knowledge-base",
+    "knowledge-management",
+    "llm",
+    "local",
+    "local-llm",
+    "ollama",
+    "openai",
+    "productivity",
+    "rust",
+    "svelte",
+    "typescript"
+  ]
+}

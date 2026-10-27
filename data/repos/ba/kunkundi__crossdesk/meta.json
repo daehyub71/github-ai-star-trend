@@ -1,0 +1,26 @@
+{
+  "created": "2023-11-20",
+  "description": "A lightweight, cross-platform remote desktop software with support for Web Client access | 一款支持 Web 客户端访问的轻量级跨平台远程桌面软件。",
+  "first_seen": "2025-11-30",
+  "full_name": "kunkundi/crossdesk",
+  "id": 720999514,
+  "language": "C++",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "audio-streaming",
+    "codec",
+    "cplusplus",
+    "cross-platform",
+    "kcp",
+    "libdatachannel",
+    "remote-control",
+    "remote-desktop",
+    "rtc",
+    "rtp",
+    "sdl3",
+    "video-streaming",
+    "web-client",
+    "webrtc",
+    "xmake"
+  ]
+}

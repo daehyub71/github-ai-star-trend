@@ -1,0 +1,21 @@
+{
+  "created": "2025-02-24",
+  "description": "A curated collection of practical AI projects implementing OCR systems, RAG, AI agents, and other AI use cases.",
+  "first_seen": "2026-06-07",
+  "full_name": "Sumanth077/Hands-On-AI-Engineering",
+  "id": 938322627,
+  "language": "Python",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "agents",
+    "ai",
+    "ai-agents",
+    "ai-engineering",
+    "generative-ai",
+    "llms",
+    "mcp",
+    "ocr",
+    "python",
+    "rag"
+  ]
+}

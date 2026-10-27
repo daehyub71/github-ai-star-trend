@@ -1,0 +1,26 @@
+{
+  "created": "2025-12-03",
+  "description": "OmO: Just type \"mass ulw\" keyword with your prompt. Now you are the master of graph engineering.",
+  "first_seen": "2025-12-21",
+  "full_name": "code-yeongyu/oh-my-openagent",
+  "id": 1108837393,
+  "language": "TypeScript",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "anthropic",
+    "chatgpt",
+    "claude",
+    "claude-skills",
+    "codex",
+    "cursor",
+    "gemini",
+    "ide",
+    "openai",
+    "opencode",
+    "orchestration",
+    "tui",
+    "typescript"
+  ]
+}

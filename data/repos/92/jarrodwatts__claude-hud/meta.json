@@ -1,0 +1,18 @@
+{
+  "created": "2026-01-02",
+  "description": "A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress",
+  "first_seen": "2026-03-15",
+  "full_name": "jarrodwatts/claude-hud",
+  "id": 1126473386,
+  "language": "JavaScript",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "anthropic",
+    "claude",
+    "claude-code",
+    "cli",
+    "plugin",
+    "statusline",
+    "typescript"
+  ]
+}

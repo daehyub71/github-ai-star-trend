@@ -1,0 +1,29 @@
+{
+  "created": "2025-10-14",
+  "description": "Connect your users to their apps",
+  "first_seen": "2026-06-07",
+  "full_name": "corsairdev/corsair",
+  "id": 1076362809,
+  "language": "TypeScript",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "agentic-ai",
+    "agents",
+    "ai",
+    "ai-agents",
+    "aiagents",
+    "api-integration",
+    "corsair",
+    "developer-tools",
+    "function-calling",
+    "integrations",
+    "javascript",
+    "llm",
+    "managed-oauth",
+    "mcp",
+    "oauth",
+    "oauth2",
+    "typescript",
+    "unified-api"
+  ]
+}

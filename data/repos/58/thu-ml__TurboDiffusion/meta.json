@@ -1,0 +1,21 @@
+{
+  "created": "2025-12-06",
+  "description": "TurboDiffusion: 100–200× Acceleration for Video Diffusion Models",
+  "first_seen": "2025-12-21",
+  "full_name": "thu-ml/TurboDiffusion",
+  "id": 1110932933,
+  "language": "Python",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "ai-infra",
+    "consistency-model",
+    "diffusion-models",
+    "distillation",
+    "inference-acceleration",
+    "mlsystem",
+    "rcm",
+    "sageattention",
+    "sparse-linear-attention",
+    "video-generation"
+  ]
+}

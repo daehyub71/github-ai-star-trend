@@ -1,0 +1,23 @@
+{
+  "created": "2026-03-18",
+  "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
+  "first_seen": "2026-07-05",
+  "full_name": "ai-job-search-dev/ai-job-search",
+  "id": 1185389803,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "career",
+    "claude-code",
+    "cover-letter",
+    "cv",
+    "interview-preparation",
+    "job-application",
+    "job-hunting",
+    "job-search",
+    "latex",
+    "resume"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2024-02-21",
+  "description": "🛜 TUI for managing bluetooth on Linux",
+  "first_seen": "2025-11-02",
+  "full_name": "pythops/bluetui",
+  "id": 761482022,
+  "language": "Rust",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "bluetooth",
+    "bluez",
+    "linux",
+    "ratatui",
+    "rust",
+    "tui"
+  ]
+}

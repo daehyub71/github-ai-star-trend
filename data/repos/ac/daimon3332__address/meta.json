@@ -1,0 +1,16 @@
+{
+  "created": "2026-07-15",
+  "description": "A self-hosted address and synthetic test-profile generator for 27 countries and regions, built from real open-data streets, administrative areas, coordinates, and postcodes. Supports multilingual output, IP-nearby generation, map previews, and API access. 基于真实开放数据的自托管地址与合成测试资料生成器，覆盖 27 个国家和地区，支持多语言地址、IP 附近生成、地图预览与 API 调用",
+  "first_seen": "2026-08-23",
+  "full_name": "daimon3332/address",
+  "id": 1301041197,
+  "language": "JavaScript",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "address",
+    "address-generation",
+    "address-generator",
+    "mock-data",
+    "mock-data-generator"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "created": "2026-03-29",
+  "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+  "first_seen": "2026-04-12",
+  "full_name": "calesthio/OpenMontage",
+  "id": 1195360525,
+  "language": "Python",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "agent",
+    "agentic-ai",
+    "ai",
+    "claude",
+    "copilot",
+    "cursor",
+    "elevenlabs",
+    "ffmpeg",
+    "flux",
+    "image-generation",
+    "open-source",
+    "openai",
+    "python",
+    "remotion",
+    "stable-diffusion",
+    "text-to-speech",
+    "text-to-video",
+    "video-generation",
+    "video-production"
+  ]
+}

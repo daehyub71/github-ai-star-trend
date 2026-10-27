@@ -1,0 +1,18 @@
+{
+  "created": "2020-03-06",
+  "description": "A fast usermode x86 and x86-64 emulator for Arm64 Linux",
+  "first_seen": "2025-11-09",
+  "full_name": "FEX-Emu/FEX",
+  "id": 245352386,
+  "language": "C++",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "arm64",
+    "cpp",
+    "emulation",
+    "emulator",
+    "linux",
+    "x86",
+    "x86-64"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "created": "2026-03-24",
+  "description": "The free AI already on your Mac. CLI tool, OpenAI-compatible server, and interactive chat — all on-device via Apple Intelligence. No API keys, no cloud, no downloads.",
+  "first_seen": "2026-04-05",
+  "full_name": "Arthur-Ficial/apfel",
+  "id": 1190938188,
+  "language": "Swift",
+  "last_seen": "2026-04-05",
+  "topics": [
+    "apple-intelligence",
+    "apple-silicon",
+    "cli",
+    "foundationmodels",
+    "homebrew",
+    "llm",
+    "macos",
+    "macos-26",
+    "on-device",
+    "openai-compatible",
+    "swift",
+    "tool-calling",
+    "unix"
+  ]
+}

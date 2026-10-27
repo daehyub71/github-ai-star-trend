@@ -1,0 +1,26 @@
+{
+  "created": "2025-10-13",
+  "description": "Orchestrate multiple coding agents from desktop and mobile",
+  "first_seen": "2026-04-12",
+  "full_name": "getpaseo/paseo",
+  "id": 1075381375,
+  "language": "TypeScript",
+  "last_seen": "2026-04-12",
+  "topics": [
+    "ade",
+    "agents",
+    "android",
+    "claude-code",
+    "codex",
+    "copilot",
+    "developer-tools",
+    "hermes",
+    "ios",
+    "linux",
+    "mobile",
+    "opencode",
+    "orchestration",
+    "pi",
+    "windows"
+  ]
+}

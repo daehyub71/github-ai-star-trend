@@ -1,0 +1,19 @@
+{
+  "created": "2026-04-30",
+  "description": "Unified real-time search engine skill for AI agents. Supports general web search, vertical domain search, parallel batch search, and full-page content extraction.",
+  "first_seen": "2026-05-24",
+  "full_name": "anysearch-ai/anysearch-skill",
+  "id": 1225178950,
+  "language": "Python",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "ai-search",
+    "anysearch",
+    "hermes",
+    "openclaw",
+    "skill",
+    "skills",
+    "web-search",
+    "websearch"
+  ]
+}

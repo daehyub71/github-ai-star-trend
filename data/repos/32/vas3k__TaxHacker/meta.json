@@ -1,0 +1,23 @@
+{
+  "created": "2025-03-10",
+  "description": "Self-hosted AI accounting app. LLM analyzer for receipts, invoices, transactions with custom prompts and categories",
+  "first_seen": "2026-03-15",
+  "full_name": "vas3k/TaxHacker",
+  "id": 946010740,
+  "language": "TypeScript",
+  "last_seen": "2026-03-29",
+  "topics": [
+    "accounting",
+    "ai-analysis",
+    "currency-exchange",
+    "expenses",
+    "gemini",
+    "invoices",
+    "llm",
+    "ocr-recognition",
+    "ollama",
+    "openai",
+    "self-hosted",
+    "taxes"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "created": "2025-10-22",
+  "description": "Open-source AI trading arena. A full reproduction of NOF1 Alpha Arena for running and comparing LLM agents.",
+  "first_seen": "2025-10-26",
+  "full_name": "wquguru/nof0",
+  "id": 1081336463,
+  "language": "Go",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "agentic-ai",
+    "ai",
+    "ai-agents",
+    "crypto",
+    "golang",
+    "hyperliquid",
+    "llm",
+    "llm-trading",
+    "nextjs",
+    "trading",
+    "trading-bot"
+  ]
+}

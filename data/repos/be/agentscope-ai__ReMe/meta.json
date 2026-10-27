@@ -1,0 +1,21 @@
+{
+  "created": "2024-08-29",
+  "description": "ReMe: Memory Management Kit for Agents - Remember Me, Refine Me.",
+  "first_seen": "2026-03-01",
+  "full_name": "agentscope-ai/ReMe",
+  "id": 849121458,
+  "language": "Python",
+  "last_seen": "2026-03-01",
+  "topics": [
+    "agent",
+    "ai-agents",
+    "dsh-plugin",
+    "hermes-plugin",
+    "memory",
+    "memoryscope",
+    "openclaw-plugin",
+    "qwenpaw",
+    "rag",
+    "reme"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "created": "2025-10-26",
+  "description": "Wi-Fi CSI motion sensing for ESP32. C++ SDK, ESPHome, Native, and Matter frontends, browser tools, and a CLI for the full device lifecycle. GPLv3 and commercial licensing.",
+  "first_seen": "2025-11-16",
+  "full_name": "francescopace/espectre",
+  "id": 1083590674,
+  "language": "Python",
+  "last_seen": "2025-11-16",
+  "topics": [
+    "csi",
+    "diy",
+    "embedded",
+    "esp-32",
+    "espectre",
+    "espressif",
+    "home-assistant",
+    "matter",
+    "motion-detection",
+    "wifi",
+    "wifi-sensing",
+    "wifisensing"
+  ]
+}

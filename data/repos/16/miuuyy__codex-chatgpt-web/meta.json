@@ -1,0 +1,21 @@
+{
+  "created": "2026-07-26",
+  "description": "Use ChatGPT Web (including Pro) as a native model in Codex — with context, tools, streaming and images, without using Codex quota.",
+  "first_seen": "2026-08-23",
+  "full_name": "miuuyy/codex-chatgpt-web",
+  "id": 1312807575,
+  "language": "TypeScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "chatgpt",
+    "chatgpt-pro",
+    "codex",
+    "free-ai",
+    "mcp",
+    "openai",
+    "playwright",
+    "quickstart",
+    "responses-api",
+    "typescript"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "created": "2026-01-08",
+  "description": "Transform your favorite cities into beautiful, minimalist designs. MapToPoster lets you create and export visually striking map posters with code.",
+  "first_seen": "2026-01-18",
+  "full_name": "originalankur/maptoposter",
+  "id": 1130381422,
+  "language": "Python",
+  "last_seen": "2026-01-25",
+  "topics": [
+    "design",
+    "maps",
+    "matplotlib-pyplot",
+    "openstreetmap",
+    "osmnx",
+    "poster",
+    "python",
+    "visualdesign"
+  ]
+}

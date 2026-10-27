@@ -1,0 +1,17 @@
+{
+  "created": "2025-01-12",
+  "description": "A straightforward method for training your LLM, from downloading data to generating text.",
+  "first_seen": "2026-05-31",
+  "full_name": "FareedKhan-dev/train-llm-from-scratch",
+  "id": 915520679,
+  "language": "Python",
+  "last_seen": "2026-05-31",
+  "topics": [
+    "gemini",
+    "large-language-models",
+    "llm",
+    "openai",
+    "training",
+    "transformers"
+  ]
+}

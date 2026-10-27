@@ -1,0 +1,26 @@
+{
+  "created": "2026-08-25",
+  "description": "The truly free, open-source, local-first, cross-platform CapCut replacement. Scriptable through a JSON-RPC API & MCP.",
+  "first_seen": "2026-09-13",
+  "full_name": "jub0t/Concat",
+  "id": 1346499044,
+  "language": "Rust",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "ffmpeg",
+    "free-video-editor",
+    "model-context-protocol",
+    "non-linear-editor",
+    "offline-first",
+    "open-source-video-editor",
+    "self-hosted",
+    "video-editing",
+    "video-editing-automation",
+    "video-editing-software",
+    "video-editing-tools",
+    "video-editor",
+    "voice-cloning",
+    "youtube-automation",
+    "youtube-shorts"
+  ]
+}

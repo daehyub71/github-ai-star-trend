@@ -1,0 +1,31 @@
+{
+  "created": "2026-05-21",
+  "description": "The Harness of Harnesses • built for RSI: a trusted, persistent, self-evolving multi-agent ecosystem for all-domain collaboration.",
+  "first_seen": "2026-07-12",
+  "full_name": "EverMind-AI/Raven",
+  "id": 1245465729,
+  "language": "Python",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "anthropic",
+    "chatgpt",
+    "claude",
+    "codex",
+    "evermind",
+    "hermes",
+    "hermes-agent",
+    "llm",
+    "multi-agent",
+    "multi-agent-systems",
+    "openai",
+    "openclaw",
+    "openhuman",
+    "recursive-self-improvement",
+    "rsi",
+    "rsi-ai",
+    "self-evolving",
+    "self-improving"
+  ]
+}

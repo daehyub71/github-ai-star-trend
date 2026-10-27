@@ -1,0 +1,30 @@
+{
+  "created": "2026-03-06",
+  "description": "🎭 277 个即插即用的 AI 专家角色 — 支持 Claude Code/Cursor/Copilot 等 20 种工具，覆盖工程/设计/营销/金融等 20 个部门。含 64 个中国市场原创智能体（小红书/抖音/微信/飞书/钉钉/Qt 上位机/机械设计）。搭配编排器 agency-orchestrator，一句话即可让多位专家按 DAG 自动协作。",
+  "first_seen": "2026-03-22",
+  "full_name": "jnMetaCode/agency-agents-zh",
+  "id": 1174369519,
+  "language": "Shell",
+  "last_seen": "2026-03-22",
+  "topics": [
+    "agency-orchestrator",
+    "agent-definitions",
+    "ai-agents",
+    "ai-roles",
+    "chinese",
+    "claude",
+    "claude-code",
+    "copilot-agent",
+    "cursor-rules",
+    "deepseek",
+    "hermes-agent",
+    "llm",
+    "multi-agent",
+    "no-code",
+    "prompt-engineering",
+    "qwen",
+    "system-prompt",
+    "workbuddy",
+    "workflow"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2026-04-05",
+  "description": "The best-benchmarked open-source AI memory system. And it's free.",
+  "first_seen": "2026-04-05",
+  "full_name": "MemPalace/mempalace",
+  "id": 1201656210,
+  "language": "Python",
+  "last_seen": "2026-04-26",
+  "topics": [
+    "ai",
+    "chromadb",
+    "llm",
+    "mcp",
+    "memory",
+    "python"
+  ]
+}

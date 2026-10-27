@@ -1,0 +1,29 @@
+{
+  "created": "2025-10-17",
+  "description": "Convert documentation websites, GitHub repositories, and PDFs into Claude AI skills with automatic conflict detection",
+  "first_seen": "2025-10-26",
+  "full_name": "yusufkaraaslan/Skill_Seekers",
+  "id": 1078319457,
+  "language": "Python",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai-tools",
+    "ast-parser",
+    "automation",
+    "claude-ai",
+    "claude-skills",
+    "code-analysis",
+    "conflict-detection",
+    "documentation",
+    "documentation-generator",
+    "github",
+    "github-scraper",
+    "mcp",
+    "mcp-server",
+    "multi-source",
+    "ocr",
+    "pdf",
+    "python",
+    "web-scraping"
+  ]
+}

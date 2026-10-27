@@ -1,0 +1,19 @@
+{
+  "created": "2026-02-20",
+  "description": "📡 Your own AI-powered news radar. Generates daily briefings in English & Chinese. | 用 AI 构建你专属的新闻雷达",
+  "first_seen": "2026-05-03",
+  "full_name": "Thysrael/Horizon",
+  "id": 1162410458,
+  "language": "Python",
+  "last_seen": "2026-05-03",
+  "topics": [
+    "aggregator",
+    "feishu-bot",
+    "llm",
+    "mcp",
+    "news",
+    "openclaw",
+    "python",
+    "webhook"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "created": "2026-07-29",
+  "description": "Clone any viral video with AI agents. Not just a script, the whole workflow: swap the face, the words, the B-roll, ship 100 variants in one command, and get your 100M views.",
+  "first_seen": "2026-09-13",
+  "full_name": "hypit-ai/hypit",
+  "id": 1316470719,
+  "language": "TypeScript",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "agentic-ai",
+    "ai",
+    "ai-agents",
+    "ai-video",
+    "compiler",
+    "dsl",
+    "ffmpeg",
+    "generative-ai",
+    "llm",
+    "markup-language",
+    "monorepo",
+    "plugin-system",
+    "programming-language",
+    "text-to-video",
+    "typescript",
+    "video",
+    "video-automation",
+    "video-clone",
+    "video-editing",
+    "video-generation"
+  ]
+}

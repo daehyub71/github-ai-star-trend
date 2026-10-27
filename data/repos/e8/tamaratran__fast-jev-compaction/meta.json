@@ -1,0 +1,10 @@
+{
+  "created": "2026-09-17",
+  "description": "Claude Code plugin that replaces the compaction summary with Jev decisions: every tool call and result is scored in one fast request, stale ones are dropped or truncated, everything kept stays verbatim.",
+  "first_seen": "2026-09-13",
+  "full_name": "tamaratran/fast-jev-compaction",
+  "id": 1374005005,
+  "language": "TypeScript",
+  "last_seen": "2026-10-04",
+  "topics": []
+}

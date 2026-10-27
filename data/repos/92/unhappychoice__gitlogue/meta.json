@@ -1,0 +1,31 @@
+{
+  "created": "2025-11-08",
+  "description": "A cinematic Git commit replay tool for the terminal, turning your Git history into a living, animated story.",
+  "first_seen": "2025-11-23",
+  "full_name": "unhappychoice/gitlogue",
+  "id": 1092562478,
+  "language": "Rust",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "cli",
+    "cli-tool",
+    "code-animation",
+    "commit-history",
+    "developer-tools",
+    "git",
+    "git-history",
+    "git-visualization",
+    "productivity",
+    "ratatui",
+    "rust",
+    "screensaver",
+    "syntax-highlighting",
+    "terminal",
+    "terminal-app",
+    "terminal-based",
+    "terminal-screensaver",
+    "tree-sitter",
+    "tui",
+    "visualization"
+  ]
+}

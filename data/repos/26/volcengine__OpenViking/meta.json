@@ -1,0 +1,22 @@
+{
+  "created": "2026-01-05",
+  "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+  "first_seen": "2026-02-15",
+  "full_name": "volcengine/OpenViking",
+  "id": 1128123594,
+  "language": "Python",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "agent-context",
+    "agent-memory",
+    "agent-plugins",
+    "agentic-rag",
+    "context-database",
+    "dsh-plugin",
+    "knowledge-base",
+    "memory",
+    "memory-management",
+    "self-evolving",
+    "vector-database"
+  ]
+}

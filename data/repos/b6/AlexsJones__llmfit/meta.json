@@ -1,0 +1,17 @@
+{
+  "created": "2026-02-15",
+  "description": "Hundreds of models & providers. One command to find what runs on your hardware.",
+  "first_seen": "2026-02-22",
+  "full_name": "AlexsJones/llmfit",
+  "id": 1158588224,
+  "language": "Rust",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "gguf",
+    "llm",
+    "localai",
+    "mlx",
+    "skill",
+    "unsloth"
+  ]
+}

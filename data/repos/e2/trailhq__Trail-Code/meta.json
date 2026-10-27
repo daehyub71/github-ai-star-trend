@@ -1,0 +1,28 @@
+{
+  "created": "2026-07-03",
+  "description": "Turbocharge Claude Code, Cursor, Codex, Gemini & every coding agent: faster, cheaper, with contextual understanding specific to your codebase.",
+  "first_seen": "2026-08-09",
+  "full_name": "trailhq/Trail-Code",
+  "id": 1288325627,
+  "language": "TypeScript",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "ai-agents",
+    "anthropic",
+    "claude-code",
+    "cli",
+    "code-graph",
+    "codex",
+    "context-engineering",
+    "cursor",
+    "developer-tools",
+    "gemini",
+    "knowledge-graph",
+    "llm",
+    "mcp",
+    "mcp-server",
+    "open-source",
+    "openai",
+    "tree-sitter"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "created": "2025-09-09",
+  "description": "Open source voice AI platform. Self-hosted alternative to Vapi and Retell. On Prem, BYOK across  Speech to Speech or LLM/STT/TTS, with a visual workflow builder, MCP native and telephony support.",
+  "first_seen": "2026-05-17",
+  "full_name": "dograh-hq/dograh",
+  "id": 1053292493,
+  "language": "Python",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "ai-calling",
+    "asterisk-ari",
+    "conversational-ai",
+    "inbound-calls",
+    "local-llm",
+    "no-code",
+    "on-prem-voice-agent-platform",
+    "open-source",
+    "open-source-voice-ai",
+    "outbound-calls",
+    "pipecat",
+    "python",
+    "self-hosted",
+    "speech-to-speech",
+    "speech-to-text",
+    "telephony",
+    "text-to-speech",
+    "vapi-alternative",
+    "voice-agents",
+    "voice-ai-platform"
+  ]
+}

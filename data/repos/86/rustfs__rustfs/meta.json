@@ -1,0 +1,23 @@
+{
+  "created": "2023-11-23",
+  "description": "RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.",
+  "first_seen": "2025-11-30",
+  "full_name": "rustfs/rustfs",
+  "id": 722597620,
+  "language": "Rust",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "ai-native",
+    "ai-storage",
+    "amazon-s3",
+    "bigdata",
+    "cloud-native",
+    "filesystem",
+    "minio",
+    "multi-cloud",
+    "object-storage",
+    "objectstorage",
+    "rust",
+    "s3"
+  ]
+}

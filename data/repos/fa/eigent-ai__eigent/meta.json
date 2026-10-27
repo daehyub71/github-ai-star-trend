@@ -1,0 +1,20 @@
+{
+  "created": "2025-07-29",
+  "description": "Eigent: The Open Source Cowork Desktop - Local and Free Alternative to Claude Cowork and Codex",
+  "first_seen": "2026-01-11",
+  "full_name": "eigent-ai/eigent",
+  "id": 1028492186,
+  "language": "TypeScript",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "agent-framework",
+    "agent-skills",
+    "agentic-ai",
+    "agentic-workflow",
+    "claude-cowork",
+    "claude-cowork-alternative",
+    "claude-cowork-free",
+    "desktop-agent",
+    "multi-agent-systems"
+  ]
+}

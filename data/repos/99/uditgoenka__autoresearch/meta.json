@@ -1,0 +1,20 @@
+{
+  "created": "2026-03-13",
+  "description": "Claude Autoresearch Skill — Autonomous goal-directed iteration for Claude Code. Inspired by Karpathy's autoresearch. Modify → Verify → Keep/Discard → Repeat forever.",
+  "first_seen": "2026-03-22",
+  "full_name": "uditgoenka/autoresearch",
+  "id": 1180917769,
+  "language": "Shell",
+  "last_seen": "2026-03-22",
+  "topics": [
+    "ai",
+    "autonomous-agent",
+    "autoresearch",
+    "claude",
+    "claude-code",
+    "iteration",
+    "karpathy",
+    "productivity",
+    "skill"
+  ]
+}

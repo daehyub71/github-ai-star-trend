@@ -1,0 +1,10 @@
+{
+  "created": "2026-03-16",
+  "description": "Cross-session memory. Reads local memory state and injects it into the system prompt through hooks. Part of Unicity AOS.",
+  "first_seen": "2026-07-19",
+  "full_name": "unicity-aos/capsule-memory",
+  "id": 1183206070,
+  "language": "Rust",
+  "last_seen": "2026-07-19",
+  "topics": []
+}

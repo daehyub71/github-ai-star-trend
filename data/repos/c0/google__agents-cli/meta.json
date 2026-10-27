@@ -1,0 +1,19 @@
+{
+  "created": "2026-04-08",
+  "description": "The CLI and skills that turn any coding assistant into an expert at creating, evaluating, and deploying AI agents on Google Cloud.",
+  "first_seen": "2026-06-28",
+  "full_name": "google/agents-cli",
+  "id": 1205137520,
+  "language": "Python",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "adk",
+    "agent-development-kit",
+    "agents",
+    "coding-agent",
+    "gemini",
+    "gemini-enterprise-agent-platform",
+    "generative-ai",
+    "google-cloud"
+  ]
+}

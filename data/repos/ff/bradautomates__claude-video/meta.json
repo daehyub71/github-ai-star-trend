@@ -1,0 +1,10 @@
+{
+  "created": "2026-04-24",
+  "description": "Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude.",
+  "first_seen": "2026-07-05",
+  "full_name": "bradautomates/claude-video",
+  "id": 1219644159,
+  "language": "Python",
+  "last_seen": "2026-07-05",
+  "topics": []
+}

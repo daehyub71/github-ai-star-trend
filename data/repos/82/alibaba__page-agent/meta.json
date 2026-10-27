@@ -1,0 +1,19 @@
+{
+  "created": "2025-09-23",
+  "description": "JavaScript in-page GUI agent. Control web interfaces with natural language.",
+  "first_seen": "2026-03-08",
+  "full_name": "alibaba/page-agent",
+  "id": 1062458369,
+  "language": "TypeScript",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "agent",
+    "ai",
+    "ai-agents",
+    "browser-automation",
+    "javascript",
+    "mcp",
+    "typescript",
+    "web"
+  ]
+}

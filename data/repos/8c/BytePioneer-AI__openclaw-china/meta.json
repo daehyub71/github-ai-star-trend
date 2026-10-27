@@ -1,0 +1,17 @@
+{
+  "created": "2026-01-28",
+  "description": "OpenClaw中国插件：支持飞书，钉钉，QQ，企业微信，微信",
+  "first_seen": "2026-03-01",
+  "full_name": "BytePioneer-AI/openclaw-china",
+  "id": 1143968677,
+  "language": "TypeScript",
+  "last_seen": "2026-03-01",
+  "topics": [
+    "openclaw",
+    "openclaw-china",
+    "openclaw-dingding",
+    "openclaw-feishu",
+    "openclaw-qq",
+    "openclaw-weixin"
+  ]
+}

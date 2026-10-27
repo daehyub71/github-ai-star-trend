@@ -1,0 +1,29 @@
+{
+  "created": "2026-03-27",
+  "description": "the runtime your coding agents live on",
+  "first_seen": "2026-06-28",
+  "full_name": "herdrdev/herdr",
+  "id": 1193909050,
+  "language": "Rust",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "agent",
+    "agent-orchestration",
+    "ai",
+    "ai-agents",
+    "claude-code",
+    "cli",
+    "codex",
+    "coding-agents",
+    "developer-tools",
+    "devtools",
+    "multiplexer",
+    "rust",
+    "terminal",
+    "terminal-multiplexer",
+    "terminal-ui",
+    "tmux",
+    "tui",
+    "workspace-manager"
+  ]
+}

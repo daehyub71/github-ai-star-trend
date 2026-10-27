@@ -1,0 +1,29 @@
+{
+  "created": "2016-10-21",
+  "description": "List of Computer Science courses with video lectures.",
+  "first_seen": "2026-02-15",
+  "full_name": "Developer-Y/cs-video-courses",
+  "id": 71583602,
+  "language": null,
+  "last_seen": "2026-02-15",
+  "topics": [
+    "algorithms",
+    "bioinformatics",
+    "computational-biology",
+    "computational-physics",
+    "computer-architecture",
+    "computer-science",
+    "computer-vision",
+    "database-systems",
+    "databases",
+    "deep-learning",
+    "embedded-systems",
+    "machine-learning",
+    "quantum-computing",
+    "reinforcement-learning",
+    "robotics",
+    "security",
+    "systems",
+    "web-development"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "created": "2026-04-21",
+  "description": "A reliable coding agent for complex software engineering tasks.",
+  "first_seen": "2026-05-17",
+  "full_name": "esengine/DeepSeek-Reasonix",
+  "id": 1216785679,
+  "language": "Go",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "agent",
+    "agent-framework",
+    "ai-agent",
+    "ai-coding",
+    "cli",
+    "coding-agent",
+    "deepseek",
+    "developer-tools",
+    "dsh",
+    "dsh-plugin",
+    "ink",
+    "llm",
+    "prompt-caching",
+    "r1",
+    "terminal",
+    "tool-use",
+    "tui",
+    "typescript"
+  ]
+}

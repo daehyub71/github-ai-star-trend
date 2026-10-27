@@ -1,0 +1,31 @@
+{
+  "created": "2025-11-18",
+  "description": "Lightning-Fast, On-Device, Multilingual TTS — running natively via ONNX.",
+  "first_seen": "2025-11-30",
+  "full_name": "supertone-oss-archive/supertonic",
+  "id": 1098852899,
+  "language": "Swift",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "cpp",
+    "csharp",
+    "flutter",
+    "go",
+    "ios",
+    "java",
+    "lightweight",
+    "multilingual",
+    "nodejs",
+    "on-device",
+    "onnx",
+    "onnxruntime",
+    "python",
+    "rust",
+    "speech-synthesis",
+    "swift",
+    "text-to-speech",
+    "tts",
+    "web",
+    "webgpu"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "created": "2023-09-06",
+  "description": "Machine Learning Systems: Foundations, Scaling, Agentic AI, and Physical AI (Vols I–IV) • Harvard CS249r | https://mlsysbook.ai",
+  "first_seen": "2025-10-26",
+  "full_name": "harvard-edge/cs249r_book",
+  "id": 688164459,
+  "language": "Python",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "agentic-ai",
+    "ai-agents",
+    "artificial-intelligence",
+    "cloud-ml",
+    "computer-systems",
+    "courseware",
+    "deep-learning",
+    "edge-machine-learning",
+    "embedded-ml",
+    "embodied-ai",
+    "machine-learning",
+    "machine-learning-systems",
+    "mlsys",
+    "mobile-ml",
+    "physical-ai",
+    "robotics",
+    "textbook",
+    "tinyml"
+  ]
+}

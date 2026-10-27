@@ -1,0 +1,16 @@
+{
+  "created": "2025-03-10",
+  "description": "OpenAgents - The collaboration OS for AI agents",
+  "first_seen": "2026-03-29",
+  "full_name": "openagents-org/openagents",
+  "id": 946278572,
+  "language": "TypeScript",
+  "last_seen": "2026-03-29",
+  "topics": [
+    "agents",
+    "ai",
+    "collaboration",
+    "llm",
+    "network"
+  ]
+}

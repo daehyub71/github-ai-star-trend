@@ -1,0 +1,19 @@
+{
+  "created": "2023-11-17",
+  "description": "General purpose 3D and 2D game engine using Go (golang) and Vulkan with built in editor",
+  "first_seen": "2025-12-07",
+  "full_name": "KaijuEngine/kaiju",
+  "id": 720186073,
+  "language": "Go",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "game-engine",
+    "game-engine-2d",
+    "game-engine-3d",
+    "game-engine-development",
+    "game-engine-framework",
+    "gameengine",
+    "go",
+    "golang"
+  ]
+}

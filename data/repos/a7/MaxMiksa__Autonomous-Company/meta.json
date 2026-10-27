@@ -1,0 +1,21 @@
+{
+  "created": "2026-02-12",
+  "description": "An autonomous company working 24/7 on your own PC - Windows/Linux/macOS.",
+  "first_seen": "2026-07-19",
+  "full_name": "MaxMiksa/Autonomous-Company",
+  "id": 1156645601,
+  "language": "Python",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agentic-workflows",
+    "ai-agents",
+    "autonomous-agents",
+    "claude-code",
+    "codex",
+    "dashboard",
+    "llm",
+    "multi-agent",
+    "self-hosted",
+    "workflow-automation"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "created": "2026-02-03",
+  "description": "IronClaw is an Agent OS focused on privacy, security and extensibility",
+  "first_seen": "2026-02-15",
+  "full_name": "nearai/ironclaw",
+  "id": 1148615527,
+  "language": "Rust",
+  "last_seen": "2026-03-01",
+  "topics": [
+    "codeact",
+    "openclaw",
+    "rlm",
+    "rust",
+    "wasm"
+  ]
+}

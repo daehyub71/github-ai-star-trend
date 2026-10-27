@@ -1,0 +1,31 @@
+{
+  "created": "2026-08-29",
+  "description": "Free SEO MCP server + open-source SEO and GEO skills for Claude: keyword research, rank tracking, audits, backlinks, AI visibility on your real GSC/GA4/ads data. claude mcp add ryze --transport http https://connector.get-ryze.ai/mcp",
+  "first_seen": "2026-09-20",
+  "full_name": "Ryze-AI-Adgent/open-seo-mcp-skills",
+  "id": 1350978527,
+  "language": "Shell",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "ai-seo",
+    "ai-visibility",
+    "backlinks",
+    "claude",
+    "claude-code",
+    "claude-skills",
+    "dataforseo",
+    "generative-engine-optimization",
+    "geo",
+    "geo-mcp",
+    "keyword-research",
+    "llm-seo",
+    "mcp",
+    "mcp-server",
+    "open-source-seo",
+    "rank-tracking",
+    "seo",
+    "seo-audit",
+    "seo-mcp",
+    "seo-mcp-server"
+  ]
+}

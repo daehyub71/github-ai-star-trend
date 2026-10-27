@@ -1,0 +1,17 @@
+{
+  "created": "2014-06-27",
+  "description": "The definitive list that answers \"I want to do X in Python, which tool should I use?\"",
+  "first_seen": "2025-10-26",
+  "full_name": "vinta/awesome-python",
+  "id": 21289110,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "awesome",
+    "awesome-list",
+    "python",
+    "python-frameworks",
+    "python-libraries",
+    "python-tools"
+  ]
+}

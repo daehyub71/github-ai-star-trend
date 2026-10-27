@@ -1,0 +1,17 @@
+{
+  "created": "2026-08-28",
+  "description": "ChatGPT thinks. Codex works. Use ChatGPT as the planning brain while keeping the Codex harness.",
+  "first_seen": "2026-09-06",
+  "full_name": "XiaoDuoYa/codex-with-chatgpt",
+  "id": 1349601607,
+  "language": "TypeScript",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "ai-agents",
+    "chatgpt",
+    "codex",
+    "mcp",
+    "model-context-protocol",
+    "oauth"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "created": "2026-06-10",
+  "description": "An AI-agent skill that generates browser-editable presentations from multiple visual themes, exportable to HTML, PDF, and PPTX.",
+  "first_seen": "2026-07-12",
+  "full_name": "chuspeeism/dashi-ppt-skill",
+  "id": 1264811161,
+  "language": "JavaScript",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "agent-skill",
+    "ai-agent",
+    "ai-ppt",
+    "claude",
+    "claude-code",
+    "dashial",
+    "html-presentation",
+    "ppt",
+    "pptx",
+    "presentation",
+    "presentation-generator",
+    "skill",
+    "slide-generator",
+    "slides"
+  ]
+}

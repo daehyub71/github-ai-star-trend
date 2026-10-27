@@ -1,0 +1,18 @@
+{
+  "created": "2026-08-25",
+  "description": "Bridge between QQ (SnowLuma OneBot v11) and DeepSeek Harness agents: social simulation, safe MCP tools, slang learning and more.",
+  "first_seen": "2026-10-18",
+  "full_name": "Derpyu520/qq-bridge",
+  "id": 1345838715,
+  "language": "JavaScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ai-agent",
+    "chatbot",
+    "deepseek-harness",
+    "dsh",
+    "onebot",
+    "qq-bot",
+    "snowluma"
+  ]
+}

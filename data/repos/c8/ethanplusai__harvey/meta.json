@@ -1,0 +1,18 @@
+{
+  "created": "2026-03-12",
+  "description": "Autonomous AI sales agent powered by Claude Code or Codex. Finds prospects, writes cold emails, sends campaigns, handles replies, books meetings. No API keys needed — runs on your Claude or Codex subscriptions.",
+  "first_seen": "2026-10-18",
+  "full_name": "ethanplusai/harvey",
+  "id": 1179388779,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ai-agent",
+    "autonomous-agent",
+    "claude",
+    "cold-email",
+    "prospecting",
+    "python",
+    "sales-automation"
+  ]
+}

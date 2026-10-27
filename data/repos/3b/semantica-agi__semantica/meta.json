@@ -1,0 +1,31 @@
+{
+  "created": "2025-06-25",
+  "description": "Graph-Native Infrastructure for Context and Accountable AI Systems",
+  "first_seen": "2026-08-09",
+  "full_name": "semantica-agi/semantica",
+  "id": 1008304614,
+  "language": "Python",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "agent-memory",
+    "ai",
+    "ai-governance",
+    "ai-infrastructure",
+    "artificial-intelligence",
+    "context-engineering",
+    "context-graphs",
+    "data-engineering",
+    "decision-intelligence",
+    "developer-tools",
+    "explainable-ai",
+    "generative-ai",
+    "graph-rag",
+    "knowledge-graph",
+    "llm",
+    "ontology",
+    "provenance",
+    "python",
+    "reasoning",
+    "semantic-search"
+  ]
+}

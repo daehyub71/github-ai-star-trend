@@ -1,0 +1,30 @@
+{
+  "created": "2026-06-11",
+  "description": "A free, open-source Windows desktop organizer with native-feeling WinUI 3 widgets.",
+  "first_seen": "2026-08-30",
+  "full_name": "Tianyu199509/DeskBox",
+  "id": 1266135511,
+  "language": "C#",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "desktop-cleanup",
+    "desktop-organizer",
+    "desktop-widget",
+    "desktop-widgets",
+    "dotnet10",
+    "file-management",
+    "file-organization",
+    "file-organizer",
+    "open-source",
+    "productivity",
+    "tray-app",
+    "windows",
+    "windows-11",
+    "windows-app-sdk",
+    "windows-desktop",
+    "windows-tool",
+    "winui",
+    "winui-3",
+    "winui3"
+  ]
+}

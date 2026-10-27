@@ -1,0 +1,27 @@
+{
+  "created": "2026-02-24",
+  "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
+  "first_seen": "2026-03-01",
+  "full_name": "agentscope-ai/QwenPaw",
+  "id": 1165324947,
+  "language": "TypeScript",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "agent",
+    "agent-harness",
+    "agentscope",
+    "ai-agent",
+    "ai-agents",
+    "chatbot",
+    "harness-engineering",
+    "llm-tools",
+    "llms",
+    "loop-engineering",
+    "mcp",
+    "personal-ai-assistant",
+    "self-hosted",
+    "skills",
+    "super-agent",
+    "webui"
+  ]
+}

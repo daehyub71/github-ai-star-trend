@@ -1,0 +1,10 @@
+{
+  "created": "2025-02-22",
+  "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+  "first_seen": "2026-01-04",
+  "full_name": "anthropics/claude-code",
+  "id": 937253475,
+  "language": "TypeScript",
+  "last_seen": "2026-03-29",
+  "topics": []
+}

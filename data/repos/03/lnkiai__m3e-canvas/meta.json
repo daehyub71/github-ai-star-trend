@@ -1,0 +1,19 @@
+{
+  "created": "2026-09-02",
+  "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
+  "first_seen": "2026-08-30",
+  "full_name": "lnkiai/m3e-canvas",
+  "id": 1354310030,
+  "language": "TypeScript",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "design-tool",
+    "material-3-expressive",
+    "material-design",
+    "material3",
+    "nextjs",
+    "prompt",
+    "react",
+    "vibe-coding"
+  ]
+}

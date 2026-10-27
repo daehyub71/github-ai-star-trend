@@ -1,0 +1,10 @@
+{
+  "created": "2026-06-12",
+  "description": "Open source inference engine that tunes its kernels on your hardware to find the fastest way to run each model. 2x faster than Ollama. Works on Apple Silicon, NVIDIA, AMD, Intel, or just a CPU.",
+  "first_seen": "2026-08-30",
+  "full_name": "magnitudedev/magnitude",
+  "id": 1267145484,
+  "language": "Rust",
+  "last_seen": "2026-08-30",
+  "topics": []
+}

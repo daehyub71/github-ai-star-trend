@@ -1,0 +1,24 @@
+{
+  "created": "2026-09-18",
+  "description": "Non-autoregressive System 1 decision engine. Typed choice, score and yes/no decisions over any text in a single forward pass, in 100+ languages, with a router that picks the right checkpoint per request.",
+  "first_seen": "2026-09-20",
+  "full_name": "NandhaKishorM/laya",
+  "id": 1375382253,
+  "language": "Python",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "calibration",
+    "classification",
+    "decision-model",
+    "huggingface",
+    "jev",
+    "modernbert",
+    "multilingual",
+    "nlp",
+    "python",
+    "pytorch",
+    "routing",
+    "typed-decisions",
+    "zero-shot"
+  ]
+}

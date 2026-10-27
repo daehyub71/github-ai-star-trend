@@ -1,0 +1,22 @@
+{
+  "created": "2026-01-13",
+  "description": "Build your own AI SRE agents. The open source toolkit for the AI era.",
+  "first_seen": "2026-04-19",
+  "full_name": "Tracer-Cloud/opensre",
+  "id": 1133141258,
+  "language": "Python",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "ai-sre",
+    "alerting",
+    "datadog",
+    "grafana",
+    "incident-management",
+    "observability",
+    "remediation",
+    "root-cause-analysis",
+    "site-reliability-engineering",
+    "slack",
+    "sre"
+  ]
+}

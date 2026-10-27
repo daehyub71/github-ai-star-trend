@@ -1,0 +1,21 @@
+{
+  "created": "2025-08-17",
+  "description": "Own your AI. The native macOS harness for AI agents -- any model, persistent memory, autonomous execution, cryptographic identity. Built in Swift. Fully offline. Open source.",
+  "first_seen": "2025-12-14",
+  "full_name": "osaurus-ai/osaurus",
+  "id": 1039587768,
+  "language": "Swift",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "anthropic",
+    "apple-foundation-models",
+    "apple-intelligence",
+    "apple-neural-engine",
+    "llm",
+    "mcp",
+    "mcp-server",
+    "mlx",
+    "openai",
+    "swift"
+  ]
+}

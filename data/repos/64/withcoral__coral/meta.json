@@ -1,0 +1,10 @@
+{
+  "created": "2026-04-03",
+  "description": "The execution layer for AI agents. Act across more of your systems with precise controls: safer, faster and more efficient than MCP tools and gateways.",
+  "first_seen": "2026-05-17",
+  "full_name": "withcoral/coral",
+  "id": 1200798950,
+  "language": "Rust",
+  "last_seen": "2026-05-17",
+  "topics": []
+}

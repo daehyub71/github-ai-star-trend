@@ -1,0 +1,17 @@
+{
+  "created": "2026-09-30",
+  "description": "LightCraft: An open-source non-destructive photo editor written by scratch in pure Rust",
+  "first_seen": "2026-10-04",
+  "full_name": "storytold/lightcraft",
+  "id": 1398185212,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "art",
+    "photography",
+    "raw",
+    "raw-editor",
+    "raw-processing",
+    "rust"
+  ]
+}

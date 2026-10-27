@@ -1,0 +1,15 @@
+{
+  "created": "2025-08-16",
+  "description": "An MCP server plus a CLI tool that indexes local code into a graph database to provide context to AI assistants.",
+  "first_seen": "2026-03-08",
+  "full_name": "CodeGraphContext/CodeGraphContext",
+  "id": 1039237865,
+  "language": "Python",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "codegraph",
+    "codegraphcontext",
+    "hacktoberfest2025",
+    "social-winter-of-code"
+  ]
+}

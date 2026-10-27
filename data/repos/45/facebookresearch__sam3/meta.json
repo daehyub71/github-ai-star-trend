@@ -1,0 +1,10 @@
+{
+  "created": "2025-07-17",
+  "description": "The repository provides code for running inference and finetuning with the Meta Segment Anything Model 3 (SAM 3), links for downloading the trained model checkpoints, and example notebooks that show how to use the model.",
+  "first_seen": "2025-11-16",
+  "full_name": "facebookresearch/sam3",
+  "id": 1021587722,
+  "language": "Python",
+  "last_seen": "2025-11-23",
+  "topics": []
+}

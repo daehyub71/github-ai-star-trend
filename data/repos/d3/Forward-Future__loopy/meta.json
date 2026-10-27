@@ -1,0 +1,17 @@
+{
+  "created": "2026-06-12",
+  "description": "A library of practical AI-agent loops and an installable skill for finding, adapting, and designing repeatable agent workflows.",
+  "first_seen": "2026-07-05",
+  "full_name": "Forward-Future/loopy",
+  "id": 1267442907,
+  "language": "JavaScript",
+  "last_seen": "2026-07-05",
+  "topics": [
+    "agent-skills",
+    "agentic-workflows",
+    "ai-agents",
+    "automation",
+    "codex",
+    "prompt-engineering"
+  ]
+}

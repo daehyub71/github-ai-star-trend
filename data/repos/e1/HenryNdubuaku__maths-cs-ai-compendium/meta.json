@@ -1,0 +1,30 @@
+{
+  "created": "2026-02-03",
+  "description": "Become a cracked AI/ML researcher/engineer with this unconventional textbook covering maths, computing, and ML with intuition.",
+  "first_seen": "2026-03-22",
+  "full_name": "HenryNdubuaku/maths-cs-ai-compendium",
+  "id": 1149023093,
+  "language": "TypeScript",
+  "last_seen": "2026-03-22",
+  "topics": [
+    "ai-textbook",
+    "algorithms",
+    "artificial-intelligence",
+    "computer-science",
+    "computer-vision",
+    "deep-learning",
+    "jax",
+    "linear-algebra",
+    "machine-learning",
+    "machine-learning-algorithms",
+    "math",
+    "mathematics",
+    "multimodal-learning",
+    "nlp",
+    "probability",
+    "python",
+    "reinforcement-learning",
+    "speech-processing",
+    "statistics"
+  ]
+}

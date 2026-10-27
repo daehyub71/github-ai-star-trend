@@ -1,0 +1,14 @@
+{
+  "created": "2024-10-07",
+  "description": "⚡ A fast Git hook manager written in Rust, designed as a drop-in alternative to pre-commit, reimagined.",
+  "first_seen": "2026-02-01",
+  "full_name": "j178/prek",
+  "id": 868811259,
+  "language": "Rust",
+  "last_seen": "2026-02-01",
+  "topics": [
+    "git",
+    "git-hooks",
+    "pre-commit"
+  ]
+}

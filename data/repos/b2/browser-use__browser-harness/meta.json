@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-17",
+  "description": "Let Claude Code, Codex or Cursor use your real Chrome, logged in as you. One prompt to set up. Open source, MIT.",
+  "first_seen": "2026-04-19",
+  "full_name": "browser-use/browser-harness",
+  "id": 1213049020,
+  "language": "Python",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "ai-agent",
+    "browser-agent",
+    "browser-automation",
+    "browser-use",
+    "browser-use-box",
+    "browser-use-cloud",
+    "cdp",
+    "chrome",
+    "chrome-devtools-protocol",
+    "claude-code",
+    "cloud-browser",
+    "codex",
+    "cursor",
+    "llm",
+    "mcp",
+    "persistent-browser",
+    "real-browser",
+    "telegram-agent",
+    "vps-agent",
+    "web-automation"
+  ]
+}

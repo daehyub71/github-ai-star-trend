@@ -1,0 +1,31 @@
+{
+  "created": "2021-01-25",
+  "description": "⚠️ Browser fingerprinting via favicon!",
+  "first_seen": "2025-11-16",
+  "full_name": "jonasstrehle/supercookie",
+  "id": 332757634,
+  "language": "HTML",
+  "last_seen": "2025-11-16",
+  "topics": [
+    "browser",
+    "browser-fingerprint",
+    "browser-fingerprinting",
+    "chrome",
+    "cookie",
+    "edge",
+    "express",
+    "favicon",
+    "fingerprint",
+    "firefox",
+    "html",
+    "identification",
+    "javascript",
+    "nodejs",
+    "privacy",
+    "safari",
+    "security",
+    "supercookie",
+    "tracking",
+    "typescript"
+  ]
+}

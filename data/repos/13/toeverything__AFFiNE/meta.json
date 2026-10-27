@@ -1,0 +1,29 @@
+{
+  "created": "2022-07-31",
+  "description": "There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. ",
+  "first_seen": "2025-10-26",
+  "full_name": "toeverything/AFFiNE",
+  "id": 519859998,
+  "language": "TypeScript",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "app",
+    "crdt",
+    "editor",
+    "electron",
+    "knowledge-base",
+    "markdown",
+    "miro",
+    "notes",
+    "notion",
+    "notion-alternative",
+    "rust",
+    "rust-lang",
+    "rust-language",
+    "table",
+    "tableview",
+    "whiteboard",
+    "wiki",
+    "workspace"
+  ]
+}

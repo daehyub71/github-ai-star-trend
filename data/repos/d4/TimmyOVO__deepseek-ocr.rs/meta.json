@@ -1,0 +1,16 @@
+{
+  "created": "2025-10-25",
+  "description": "Rust multi‑backend OCR/VLM engine (DeepSeek‑OCR-1/2, PaddleOCR‑VL, DotsOCR) with DSQ quantization and an OpenAI‑compatible server & CLI – run locally without Python.",
+  "first_seen": "2025-11-16",
+  "full_name": "TimmyOVO/deepseek-ocr.rs",
+  "id": 1083171672,
+  "language": "Rust",
+  "last_seen": "2025-11-16",
+  "topics": [
+    "candle",
+    "ocr",
+    "ocr-recognition",
+    "openai",
+    "rust"
+  ]
+}

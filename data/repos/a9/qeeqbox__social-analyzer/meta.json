@@ -1,0 +1,30 @@
+{
+  "created": "2020-11-30",
+  "description": "API, CLI, and Web App for analyzing and finding a person's profile in 1000 social media \\ websites",
+  "first_seen": "2025-10-26",
+  "full_name": "qeeqbox/social-analyzer",
+  "id": 317319347,
+  "language": "JavaScript",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "analysis",
+    "analyzer",
+    "cli",
+    "information-gathering",
+    "javascript",
+    "nodejs",
+    "nodejs-cli",
+    "osint",
+    "pentest",
+    "pentesting",
+    "person-profile",
+    "profile",
+    "python",
+    "reconnaissance",
+    "security-tools",
+    "social-analyzer",
+    "social-media",
+    "sosint",
+    "username"
+  ]
+}

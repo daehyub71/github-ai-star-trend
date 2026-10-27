@@ -1,0 +1,18 @@
+{
+  "created": "2026-06-14",
+  "description": "Minimal Coding Agent Harness on MCP for ChatGPT, Claude, Hermes, Grok Bot, OpenClaw",
+  "first_seen": "2026-06-21",
+  "full_name": "Waishnav/devspace",
+  "id": 1269395331,
+  "language": "TypeScript",
+  "last_seen": "2026-07-05",
+  "topics": [
+    "agent-orchestration",
+    "chatgpt",
+    "claude",
+    "claude-code",
+    "codex",
+    "dyanmic-workflow",
+    "pi-coding-agent"
+  ]
+}

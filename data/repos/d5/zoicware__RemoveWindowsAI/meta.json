@@ -1,0 +1,26 @@
+{
+  "created": "2024-06-07",
+  "description": "Force Remove Copilot, Recall and More in Windows 11",
+  "first_seen": "2025-12-07",
+  "full_name": "zoicware/RemoveWindowsAI",
+  "id": 811675345,
+  "language": "PowerShell",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "ai",
+    "ai-blocker",
+    "anti-ai",
+    "bloatware",
+    "bloatware-removal",
+    "copilot",
+    "debloat",
+    "generative-ai",
+    "no-ai",
+    "optimizer",
+    "powershell",
+    "privacy",
+    "recall",
+    "security",
+    "windows"
+  ]
+}

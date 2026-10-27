@@ -1,0 +1,26 @@
+{
+  "created": "2025-01-13",
+  "description": "AI coworker with memory and collaboration",
+  "first_seen": "2026-02-08",
+  "full_name": "rowboatlabs/rowboat",
+  "id": 916009087,
+  "language": "TypeScript",
+  "last_seen": "2026-02-08",
+  "topics": [
+    "agents",
+    "agents-sdk",
+    "ai",
+    "ai-agents",
+    "ai-agents-automation",
+    "chatgpt",
+    "claude-code",
+    "claude-cowork",
+    "generative-ai",
+    "llm",
+    "multiagent",
+    "opeani",
+    "open-source",
+    "orchestration",
+    "productivity"
+  ]
+}

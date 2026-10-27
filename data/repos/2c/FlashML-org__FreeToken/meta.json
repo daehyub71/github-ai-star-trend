@@ -1,0 +1,19 @@
+{
+  "created": "2026-07-20",
+  "description": "FreeToken brings datacenter-scale model serving to your desktop. Run massive models locally, fast and efficiently.",
+  "first_seen": "2026-08-23",
+  "full_name": "FlashML-org/FreeToken",
+  "id": 1307001698,
+  "language": "Python",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "deepseek-v4",
+    "edge",
+    "glm",
+    "inference",
+    "minimax",
+    "moe",
+    "qwen",
+    "transformer"
+  ]
+}

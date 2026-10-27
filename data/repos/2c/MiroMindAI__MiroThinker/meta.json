@@ -1,0 +1,21 @@
+{
+  "created": "2025-08-07",
+  "description": "MiroThinker is a deep research agent optimized for complex research and prediction tasks. Our latest models, MiroThinker-1.7, achieves 74.0 and 75.3 on the BrowseComp and BrowseComp Zh, respectively.",
+  "first_seen": "2026-01-04",
+  "full_name": "MiroMindAI/MiroThinker",
+  "id": 1033873680,
+  "language": "Python",
+  "last_seen": "2026-01-04",
+  "topics": [
+    "agent",
+    "agent-framework",
+    "browsecomp",
+    "deep-research",
+    "futurex",
+    "gaia",
+    "hle",
+    "research-agent",
+    "search-agent",
+    "xbench"
+  ]
+}

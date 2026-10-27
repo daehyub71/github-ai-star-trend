@@ -1,0 +1,15 @@
+{
+  "created": "2025-11-16",
+  "description": "Show usage stats for OpenAI Codex and Claude Code, without having to login.",
+  "first_seen": "2026-01-04",
+  "full_name": "steipete/CodexBar",
+  "id": 1097695258,
+  "language": "Swift",
+  "last_seen": "2026-02-01",
+  "topics": [
+    "ai",
+    "claude-code",
+    "codex",
+    "swift"
+  ]
+}

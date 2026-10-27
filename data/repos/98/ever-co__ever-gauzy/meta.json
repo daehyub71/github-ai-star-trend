@@ -1,0 +1,31 @@
+{
+  "created": "2019-06-02",
+  "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
+  "first_seen": "2026-09-13",
+  "full_name": "ever-co/ever-gauzy",
+  "id": 189829392,
+  "language": "TypeScript",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "accounting",
+    "billing",
+    "bookkeeping",
+    "crm",
+    "crm-platform",
+    "erp",
+    "expenses",
+    "hr",
+    "human-resources",
+    "invoices",
+    "invoicing",
+    "issue-tracker",
+    "payroll",
+    "productivity",
+    "project-management",
+    "salary",
+    "team-management",
+    "time-tracker",
+    "time-tracking",
+    "timetracking"
+  ]
+}

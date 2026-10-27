@@ -1,0 +1,14 @@
+{
+  "created": "2025-07-21",
+  "description": "OpenTUI is a library to build terminal user interfaces (TUI)",
+  "first_seen": "2025-11-02",
+  "full_name": "anomalyco/opentui",
+  "id": 1023522611,
+  "language": "TypeScript",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "opencode",
+    "opentui",
+    "tui"
+  ]
+}

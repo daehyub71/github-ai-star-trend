@@ -1,0 +1,17 @@
+{
+  "created": "2026-09-30",
+  "description": "VectorCraft: An open-source, vector art tool written by scratch in pure Rust",
+  "first_seen": "2026-10-11",
+  "full_name": "storytold/vectorcraft",
+  "id": 1398097510,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "art",
+    "rust",
+    "rust-lang",
+    "svg",
+    "svg-editor",
+    "vector-graphics"
+  ]
+}

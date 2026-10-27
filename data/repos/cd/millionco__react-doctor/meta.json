@@ -1,0 +1,16 @@
+{
+  "created": "2026-02-13",
+  "description": "Your agent writes bad React. This catches it",
+  "first_seen": "2026-02-15",
+  "full_name": "millionco/react-doctor",
+  "id": 1156960719,
+  "language": "TypeScript",
+  "last_seen": "2026-02-22",
+  "topics": [
+    "agents",
+    "code-review",
+    "doctor",
+    "react",
+    "skill"
+  ]
+}

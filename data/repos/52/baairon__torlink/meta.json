@@ -1,0 +1,18 @@
+{
+  "created": "2026-06-25",
+  "description": "👾 A sleek, zero-setup torrent finder and downloader that lives right in your terminal.",
+  "first_seen": "2026-06-28",
+  "full_name": "baairon/torlink",
+  "id": 1280278993,
+  "language": "TypeScript",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "crossplatform",
+    "downloader",
+    "magnet-links",
+    "p2p",
+    "torrent",
+    "torrent-client",
+    "zero-configuration"
+  ]
+}

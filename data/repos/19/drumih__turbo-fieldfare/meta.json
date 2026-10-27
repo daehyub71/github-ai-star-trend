@@ -1,0 +1,24 @@
+{
+  "created": "2026-07-17",
+  "description": "Gemma 4 26B-A4B inference in ~2 GB of RAM on any M-series MacBook",
+  "first_seen": "2026-07-26",
+  "full_name": "drumih/turbo-fieldfare",
+  "id": 1304159264,
+  "language": "Swift",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "apple-silicon",
+    "gemma",
+    "gemma4",
+    "gemma4-26b-a4b",
+    "gpgpu",
+    "llm",
+    "llm-inference",
+    "local-ai",
+    "macos",
+    "metal",
+    "on-device-ai",
+    "on-device-llm",
+    "swift"
+  ]
+}

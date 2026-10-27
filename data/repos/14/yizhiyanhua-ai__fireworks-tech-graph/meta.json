@@ -1,0 +1,17 @@
+{
+  "created": "2026-04-10",
+  "description": "Generate production-quality SVG+PNG technical diagrams from natural language. 7 styles, UML support, and AI/Agent workflow patterns.",
+  "first_seen": "2026-04-12",
+  "full_name": "yizhiyanhua-ai/fireworks-tech-graph",
+  "id": 1207091162,
+  "language": "Python",
+  "last_seen": "2026-05-03",
+  "topics": [
+    "agent-workflows",
+    "ai",
+    "claude-code",
+    "developer-tools",
+    "diagrams",
+    "svg"
+  ]
+}

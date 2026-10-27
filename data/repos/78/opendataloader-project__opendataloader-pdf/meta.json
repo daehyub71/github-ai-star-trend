@@ -1,0 +1,31 @@
+{
+  "created": "2025-05-13",
+  "description": "PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.",
+  "first_seen": "2026-03-15",
+  "full_name": "opendataloader-project/opendataloader-pdf",
+  "id": 982587624,
+  "language": "Java",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "a11y",
+    "accessibility",
+    "ai",
+    "bounding-box",
+    "document-parsing",
+    "eaa",
+    "html",
+    "json",
+    "markdown",
+    "ocr",
+    "ocr-recognition",
+    "pdf",
+    "pdf-accessibility",
+    "pdf-converter",
+    "pdf-extraction",
+    "pdf-parser",
+    "pdf-ua",
+    "rag",
+    "tables",
+    "tagged-pdf"
+  ]
+}

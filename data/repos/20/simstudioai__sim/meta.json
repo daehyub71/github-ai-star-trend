@@ -1,0 +1,29 @@
+{
+  "created": "2025-01-05",
+  "description": "Sim is the collaborative workspace to build, deploy, and monitor AI agents and workflows. Used by 100,000+ builders.",
+  "first_seen": "2025-12-14",
+  "full_name": "simstudioai/sim",
+  "id": 912559512,
+  "language": "TypeScript",
+  "last_seen": "2025-12-14",
+  "topics": [
+    "agent-workflow",
+    "agentic-workflow",
+    "agents",
+    "ai",
+    "aiagents",
+    "anthropic",
+    "artificial-intelligence",
+    "automation",
+    "chatbot",
+    "deepseek",
+    "gemini",
+    "low-code",
+    "nextjs",
+    "no-code",
+    "openai",
+    "rag",
+    "react",
+    "typescript"
+  ]
+}

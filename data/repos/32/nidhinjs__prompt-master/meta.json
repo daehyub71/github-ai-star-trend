@@ -1,0 +1,15 @@
+{
+  "created": "2026-03-11",
+  "description": "A Claude skill that writes the accurate prompts for any AI tool. Zero tokens or credits wasted. Full context and memory retention",
+  "first_seen": "2026-03-22",
+  "full_name": "nidhinjs/prompt-master",
+  "id": 1179046874,
+  "language": null,
+  "last_seen": "2026-03-22",
+  "topics": [
+    "claude-ai",
+    "claude-skills",
+    "llm",
+    "prompt-engineering"
+  ]
+}

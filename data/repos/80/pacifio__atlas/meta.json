@@ -1,0 +1,26 @@
+{
+  "created": "2026-05-14",
+  "description": "Source control for agents. Use multiple coding agents, track their changes and query them in one place",
+  "first_seen": "2026-08-30",
+  "full_name": "pacifio/atlas",
+  "id": 1238992253,
+  "language": "TypeScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "ai",
+    "ai-coding-assistant",
+    "claude-code",
+    "codex",
+    "coding-agents",
+    "git",
+    "gitops",
+    "kilo-code",
+    "mcp",
+    "mcp-client",
+    "opencode",
+    "opencode-ai",
+    "opencode-skills",
+    "self-hosted",
+    "skills"
+  ]
+}

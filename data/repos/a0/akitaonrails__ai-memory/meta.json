@@ -1,0 +1,10 @@
+{
+  "created": "2026-05-21",
+  "description": "Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors",
+  "first_seen": "2026-08-16",
+  "full_name": "akitaonrails/ai-memory",
+  "id": 1246148135,
+  "language": "Rust",
+  "last_seen": "2026-08-16",
+  "topics": []
+}

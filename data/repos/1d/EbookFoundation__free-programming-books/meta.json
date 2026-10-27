@@ -1,0 +1,16 @@
+{
+  "created": "2013-10-11",
+  "description": ":books: Freely available programming books",
+  "first_seen": "2025-10-26",
+  "full_name": "EbookFoundation/free-programming-books",
+  "id": 13491895,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "books",
+    "education",
+    "hacktoberfest",
+    "list",
+    "resource"
+  ]
+}

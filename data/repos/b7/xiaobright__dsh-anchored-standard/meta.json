@@ -1,0 +1,15 @@
+{
+  "created": "2026-08-14",
+  "description": "Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99)",
+  "first_seen": "2026-08-30",
+  "full_name": "xiaobright/dsh-anchored-standard",
+  "id": 1334245678,
+  "language": "JavaScript",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh-plugin",
+    "llm-agent"
+  ]
+}

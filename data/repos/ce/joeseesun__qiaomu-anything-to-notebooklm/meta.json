@@ -1,0 +1,16 @@
+{
+  "created": "2026-01-25",
+  "description": "Claude Skill: Multi-source content processor for NotebookLM. Supports WeChat articles, web pages, YouTube, PDF, Markdown, search queries → Podcast/PPT/MindMap/Quiz etc.",
+  "first_seen": "2026-05-10",
+  "full_name": "joeseesun/qiaomu-anything-to-notebooklm",
+  "id": 1141853351,
+  "language": "Python",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "automation",
+    "claude",
+    "mcp",
+    "notebooklm",
+    "skill"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "created": "2026-07-16",
+  "description": "跨平台 P2P 虚拟局域网(VirtualLAN)工具，让异地设备像在同一局域网中互联。支持 NAT 穿透、IPv6 直连、房间组网与 Relay 回退，覆盖 Windows / macOS / Linux / Android。",
+  "first_seen": "2026-09-27",
+  "full_name": "yhan-sun/p2wlan",
+  "id": 1302202700,
+  "language": "Rust",
+  "last_seen": "2026-09-27",
+  "topics": []
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2013-05-24",
+  "description": "The library for web and native user interfaces.",
+  "first_seen": "2025-10-26",
+  "full_name": "react/react",
+  "id": 10270250,
+  "language": "JavaScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "declarative",
+    "frontend",
+    "javascript",
+    "library",
+    "react",
+    "ui"
+  ]
+}

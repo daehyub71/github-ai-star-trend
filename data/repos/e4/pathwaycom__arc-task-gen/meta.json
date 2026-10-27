@@ -1,0 +1,10 @@
+{
+  "created": "2026-08-04",
+  "description": "Generates original ARC-AGI-1-style tasks distribution-matched to the public eval set.",
+  "first_seen": "2026-08-16",
+  "full_name": "pathwaycom/arc-task-gen",
+  "id": 1322954467,
+  "language": "Python",
+  "last_seen": "2026-08-23",
+  "topics": []
+}

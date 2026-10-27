@@ -1,0 +1,19 @@
+{
+  "created": "2025-09-02",
+  "description": "Perplexity Scraper Track brand mentions, analyze rankings, and gain competitor intelligence from Perplexity. Get started in minutes.",
+  "first_seen": "2025-11-09",
+  "full_name": "oxylabs/perplexity-scraper",
+  "id": 1049100067,
+  "language": "Java",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai-scraper",
+    "llm-api",
+    "llm-scraper",
+    "llm-scraping",
+    "perplexity",
+    "perplexity-api",
+    "perplexity-scraper",
+    "proxy-scraper"
+  ]
+}

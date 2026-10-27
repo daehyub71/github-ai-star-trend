@@ -1,0 +1,24 @@
+{
+  "created": "2026-01-22",
+  "description": "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies",
+  "first_seen": "2026-02-22",
+  "full_name": "rtk-ai/rtk",
+  "id": 1139971460,
+  "language": "Rust",
+  "last_seen": "2026-05-03",
+  "topics": [
+    "agentic-coding",
+    "ai-coding",
+    "anthropic",
+    "claude-code",
+    "cli",
+    "command-line-tool",
+    "cost-reduction",
+    "developer-tools",
+    "llm",
+    "open-source",
+    "productivity",
+    "rust",
+    "token-optimization"
+  ]
+}

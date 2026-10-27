@@ -1,0 +1,14 @@
+{
+  "created": "2025-09-21",
+  "description": "Fully automatic censorship removal for language models",
+  "first_seen": "2025-11-16",
+  "full_name": "p-e-w/heretic",
+  "id": 1061041576,
+  "language": "Python",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "abliteration",
+    "llm",
+    "transformer"
+  ]
+}

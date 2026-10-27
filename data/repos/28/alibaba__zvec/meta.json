@@ -1,0 +1,26 @@
+{
+  "created": "2025-12-05",
+  "description": "A lightweight, lightning-fast, in-process vector database",
+  "first_seen": "2026-02-15",
+  "full_name": "alibaba/zvec",
+  "id": 1110443421,
+  "language": "C++",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "agent-skills",
+    "db",
+    "embedded",
+    "faiss",
+    "fts",
+    "fulltext-search",
+    "hnsw",
+    "llm-memory",
+    "local",
+    "rag",
+    "search-engine",
+    "semantic-search",
+    "similarity-search",
+    "vector-database",
+    "vector-db"
+  ]
+}

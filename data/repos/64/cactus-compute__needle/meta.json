@@ -1,0 +1,19 @@
+{
+  "created": "2026-02-24",
+  "description": "Automation foundation model for tiny devices: 2-bit, 8-29 MB, tool calls, ASR, structured extraction and embeddings on phones, wearables, smart homes, robots, cars and microcontrollers.",
+  "first_seen": "2026-08-09",
+  "full_name": "cactus-compute/needle",
+  "id": 1165361576,
+  "language": "Python",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "cactus",
+    "edge-ai",
+    "foundation-model",
+    "function-calling",
+    "llm",
+    "on-device-ai",
+    "tinyml",
+    "tool-calling"
+  ]
+}

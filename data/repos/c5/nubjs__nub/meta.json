@@ -1,0 +1,16 @@
+{
+  "created": "2026-06-03",
+  "description": "The fast all-in-one Node.js toolkit",
+  "first_seen": "2026-06-21",
+  "full_name": "nubjs/nub",
+  "id": 1258607058,
+  "language": "Rust",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "javascript-runtime",
+    "node-version-manager",
+    "nodejs",
+    "package-manager",
+    "script-runner"
+  ]
+}

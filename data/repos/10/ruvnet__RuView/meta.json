@@ -1,0 +1,31 @@
+{
+  "created": "2025-06-07",
+  "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+  "first_seen": "2025-12-21",
+  "full_name": "ruvnet/RuView",
+  "id": 997737944,
+  "language": "Rust",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "awesome",
+    "claude",
+    "densepose",
+    "esp32",
+    "firmware",
+    "home-assistant",
+    "home-automation",
+    "iot",
+    "monitoring",
+    "networking",
+    "npm",
+    "pose-estimation",
+    "react",
+    "rf",
+    "self-learning",
+    "skills",
+    "spatial-intelligence",
+    "typescript",
+    "wifi",
+    "wifi-security"
+  ]
+}

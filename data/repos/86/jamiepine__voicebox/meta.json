@@ -1,0 +1,19 @@
+{
+  "created": "2026-01-25",
+  "description": "The open-source AI voice studio. Clone, dictate, create.",
+  "first_seen": "2026-02-15",
+  "full_name": "jamiepine/voicebox",
+  "id": 1141782198,
+  "language": "Python",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "ai",
+    "cuda",
+    "mlx",
+    "qwen3-tts",
+    "qwen3-tts-ui",
+    "voice-ai",
+    "voice-clone",
+    "whisper"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "created": "2026-03-09",
+  "description": "🦞 Just talk to your agent — it learns and EVOLVES 🧬.",
+  "first_seen": "2026-03-15",
+  "full_name": "aiming-lab/MetaClaw",
+  "id": 1176898834,
+  "language": "Python",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "agent",
+    "ai-agent",
+    "continual-learning",
+    "fine-tuning",
+    "llm",
+    "lora",
+    "meta-learning",
+    "metaclaw",
+    "online-learning",
+    "openclaw",
+    "reinforcement-learning",
+    "skill-learning",
+    "tinker"
+  ]
+}

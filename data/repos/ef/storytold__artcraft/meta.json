@@ -1,0 +1,16 @@
+{
+  "created": "2022-03-31",
+  "description": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+  "first_seen": "2026-10-04",
+  "full_name": "storytold/artcraft",
+  "id": 476507964,
+  "language": "Rust",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "3d-graphics",
+    "ai",
+    "aivideo",
+    "filmmaking",
+    "imagegeneration"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "created": "2026-08-27",
+  "description": "Spotify, native and fast. One lightweight Rust app for your whole library, local playback, and Spotify Connect on Linux, macOS, and Windows.",
+  "first_seen": "2026-09-06",
+  "full_name": "crmne/spotifast",
+  "id": 1348483831,
+  "language": "Rust",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "audio",
+    "cross-platform",
+    "desktop-app",
+    "egui",
+    "gui",
+    "librespot",
+    "linux",
+    "macos",
+    "mpris",
+    "music",
+    "music-player",
+    "rust",
+    "spotify",
+    "spotify-client",
+    "spotify-connect",
+    "windows"
+  ]
+}

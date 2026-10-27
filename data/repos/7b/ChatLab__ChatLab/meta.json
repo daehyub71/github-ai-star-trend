@@ -1,0 +1,17 @@
+{
+  "created": "2025-11-26",
+  "description": "Local-first chat history analyzer with AI. | 本地优先的 AI 聊天记录分析工具",
+  "first_seen": "2026-01-18",
+  "full_name": "ChatLab/ChatLab",
+  "id": 1104370536,
+  "language": "TypeScript",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "ai-agent",
+    "chat-analyzer",
+    "chat-history",
+    "data-analysis",
+    "data-visualization",
+    "harness"
+  ]
+}

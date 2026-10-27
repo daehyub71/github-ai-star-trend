@@ -1,0 +1,17 @@
+{
+  "created": "2026-06-16",
+  "description": "You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.",
+  "first_seen": "2026-09-13",
+  "full_name": "latent-spaces/brag",
+  "id": 1271560627,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "agent-skills",
+    "claude-code",
+    "claude-skills",
+    "hyperframes",
+    "launch-video",
+    "video-generation"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "created": "2025-10-29",
+  "description": "Fara1.5 – A family of frontier computer use agent models",
+  "first_seen": "2025-11-30",
+  "full_name": "microsoft/fara",
+  "id": 1085876386,
+  "language": "Python",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "agent",
+    "browser-use",
+    "computer-use",
+    "computer-use-agent",
+    "cua"
+  ]
+}

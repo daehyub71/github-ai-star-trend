@@ -1,0 +1,20 @@
+{
+  "created": "2025-12-28",
+  "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
+  "first_seen": "2026-01-04",
+  "full_name": "HKUDS/DeepTutor",
+  "id": 1124219907,
+  "language": "Python",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "ai-agents",
+    "ai-tutor",
+    "clawbot",
+    "cli-tool",
+    "deepresearch",
+    "interactive-learning",
+    "learning",
+    "multi-agent-systems",
+    "rag"
+  ]
+}

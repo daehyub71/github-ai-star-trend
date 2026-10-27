@@ -1,0 +1,21 @@
+{
+  "created": "2026-02-18",
+  "description": "Light, fluffy, and always free - The AWS Local Emulator alternative",
+  "first_seen": "2026-05-10",
+  "full_name": "floci-io/floci",
+  "id": 1160497244,
+  "language": "Java",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "aws",
+    "aws-emulation",
+    "devops",
+    "docker",
+    "ec2",
+    "ecs",
+    "localstack",
+    "s3",
+    "sqs",
+    "testcontainers"
+  ]
+}

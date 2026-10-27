@@ -1,0 +1,28 @@
+{
+  "created": "2025-10-28",
+  "description": "Your AI trading terminal assistant for US stocks, commodities, forex, and crypto.",
+  "first_seen": "2025-10-26",
+  "full_name": "NoFxAiOS/nofx",
+  "id": 1084802670,
+  "language": "Go",
+  "last_seen": "2025-11-16",
+  "topics": [
+    "agentictrading",
+    "ai",
+    "ai-trading",
+    "arbitrage",
+    "binance",
+    "bitcoin",
+    "commodities",
+    "exchange",
+    "forex",
+    "hyperliquid",
+    "metals",
+    "perp-dex",
+    "stocks",
+    "trading",
+    "us-stocks",
+    "x402",
+    "x402-agent"
+  ]
+}

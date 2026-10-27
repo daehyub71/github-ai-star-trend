@@ -1,0 +1,21 @@
+{
+  "created": "2026-04-01",
+  "description": "\"Vibe-Trading: Your Personal Trading Agent\"",
+  "first_seen": "2026-04-12",
+  "full_name": "HKUDS/Vibe-Trading",
+  "id": 1198306812,
+  "language": "Python",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "ai-agent",
+    "algorithmic-trading",
+    "backtesting",
+    "fintech",
+    "llm",
+    "mcp",
+    "multi-agent",
+    "python",
+    "quantitative-finance",
+    "trading"
+  ]
+}

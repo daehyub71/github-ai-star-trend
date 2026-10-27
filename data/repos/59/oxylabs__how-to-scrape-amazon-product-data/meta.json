@@ -1,0 +1,17 @@
+{
+  "created": "2024-09-03",
+  "description": "The process of extracting product data from Amazon using Python, including titles, ratings, prices, images, and descriptions. ",
+  "first_seen": "2025-11-09",
+  "full_name": "oxylabs/how-to-scrape-amazon-product-data",
+  "id": 851644708,
+  "language": null,
+  "last_seen": "2025-11-09",
+  "topics": [
+    "amazon",
+    "amazon-scraper",
+    "python",
+    "web-scraper",
+    "web-scraping",
+    "web-scraping-python"
+  ]
+}

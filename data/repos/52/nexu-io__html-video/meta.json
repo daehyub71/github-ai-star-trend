@@ -1,0 +1,26 @@
+{
+  "created": "2026-05-27",
+  "description": "Programmatic video for coding agents — HTML to video on your laptop. Turn HTML, CSS & data into real MP4s with pluggable render engines, 21 templates, AI soundtrack. Apache-2.0, no per-render fees. An official project by the Open Design team.",
+  "first_seen": "2026-06-07",
+  "full_name": "nexu-io/html-video",
+  "id": 1250822765,
+  "language": "HTML",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "ai-agent",
+    "apache-2",
+    "coding-agent",
+    "css",
+    "ffmpeg",
+    "html",
+    "html-to-video",
+    "hyperframes",
+    "mp4",
+    "open-design",
+    "open-source",
+    "programmatic-video",
+    "video",
+    "video-as-code",
+    "video-generation"
+  ]
+}

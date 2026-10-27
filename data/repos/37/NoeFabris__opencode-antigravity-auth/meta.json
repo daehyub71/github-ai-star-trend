@@ -1,0 +1,15 @@
+{
+  "created": "2025-12-09",
+  "description": "Enable Opencode to authenticate against Antigravity (Google's IDE) via OAuth so you can use Antigravity rate limits and access models like gemini-3-pro and claude-opus-4-5-thinking with your Google credentials.",
+  "first_seen": "2026-01-11",
+  "full_name": "NoeFabris/opencode-antigravity-auth",
+  "id": 1113403973,
+  "language": "TypeScript",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "claude",
+    "gemini",
+    "google",
+    "opencode"
+  ]
+}

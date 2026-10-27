@@ -1,0 +1,31 @@
+{
+  "created": "2025-12-20",
+  "description": "Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI. ",
+  "first_seen": "2025-12-28",
+  "full_name": "pranshuparmar/witr",
+  "id": 1120195677,
+  "language": "Go",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "cli",
+    "containers",
+    "devops",
+    "docker",
+    "freebsd",
+    "go",
+    "golang",
+    "incident-response",
+    "kubernetes",
+    "linux",
+    "macos",
+    "monitoring",
+    "observability",
+    "process-management",
+    "sysadmin",
+    "systemd",
+    "terminal",
+    "troubleshooting",
+    "tui",
+    "windows"
+  ]
+}

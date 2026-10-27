@@ -1,0 +1,31 @@
+{
+  "created": "2026-09-29",
+  "description": "Free, open-source file converter. Convert 263 formats offline by drag & drop — images, PDF, Word, Excel, PowerPoint, HWP/HWPX, video, audio, e-books and archives. No upload, no Office needed.",
+  "first_seen": "2026-10-18",
+  "full_name": "KnifeLemon/Filee",
+  "id": 1396526702,
+  "language": "C#",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "audio-converter",
+    "avalonia",
+    "batch-conversion",
+    "converter",
+    "csharp",
+    "document-converter",
+    "docx-to-pdf",
+    "dotnet",
+    "drag-and-drop",
+    "file-conversion",
+    "file-converter",
+    "heic-converter",
+    "hwp",
+    "hwpx",
+    "image-converter",
+    "linux",
+    "macos",
+    "pdf-converter",
+    "video-converter",
+    "windows"
+  ]
+}

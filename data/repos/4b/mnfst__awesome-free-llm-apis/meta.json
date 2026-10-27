@@ -1,0 +1,24 @@
+{
+  "created": "2026-03-21",
+  "description": "List of Permanent Free LLM API  (API Keys)",
+  "first_seen": "2026-04-19",
+  "full_name": "mnfst/awesome-free-llm-apis",
+  "id": 1188180267,
+  "language": "JavaScript",
+  "last_seen": "2026-04-19",
+  "topics": [
+    "ai-agents",
+    "anthropic",
+    "awesome",
+    "awesome-list",
+    "gemini",
+    "llm",
+    "llm-router",
+    "llm-routing",
+    "ollama",
+    "openai",
+    "openclaw",
+    "openclaw-plugin",
+    "router"
+  ]
+}

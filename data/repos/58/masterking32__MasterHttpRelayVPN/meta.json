@@ -1,0 +1,20 @@
+{
+  "created": "2026-04-20",
+  "description": "Domain-fronted HTTP/SOCKS5 proxy tunneling traffic through Google Apps Script with MITM TLS interception, HTTP/1-2 multiplexing, and DPI evasion.",
+  "first_seen": "2026-04-26",
+  "full_name": "masterking32/MasterHttpRelayVPN",
+  "id": 1215868605,
+  "language": "Python",
+  "last_seen": "2026-04-26",
+  "topics": [
+    "dpi",
+    "google",
+    "http",
+    "masterhttprelayvpn",
+    "mitm",
+    "proxy",
+    "relay",
+    "sni",
+    "vpn"
+  ]
+}

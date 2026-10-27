@@ -1,0 +1,28 @@
+{
+  "created": "2026-06-09",
+  "description": "Practical patterns, starters & CLI tools for loop engineering with AI coding agents. Design systems that prompt and orchestrate agents (inspired by Addy Osmani and Boris Cherny). Includes loop-audit, loop-init, loop-cost.",
+  "first_seen": "2026-06-21",
+  "full_name": "cobusgreyling/loop-engineering",
+  "id": 1263648864,
+  "language": "TypeScript",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "agentic-ai",
+    "ai-agents",
+    "ai-coding",
+    "anthropic",
+    "automation",
+    "claude",
+    "claude-code",
+    "codex",
+    "coding-agents",
+    "devops-automation",
+    "devtools",
+    "github-actions",
+    "grok",
+    "llm",
+    "loop-engineering",
+    "mcp",
+    "prompt-engineering"
+  ]
+}

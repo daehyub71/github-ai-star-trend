@@ -1,0 +1,29 @@
+{
+  "created": "2026-01-28",
+  "description": "Open source Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents. Built for multitasking, organization, and programmability.",
+  "first_seen": "2026-02-22",
+  "full_name": "manaflow-ai/cmux",
+  "id": 1144115288,
+  "language": "Swift",
+  "last_seen": "2026-02-22",
+  "topics": [
+    "amp",
+    "claude-code",
+    "cli",
+    "codex",
+    "coding-agents",
+    "gemini",
+    "ghostty",
+    "macos",
+    "multiplexer",
+    "multitasking",
+    "opencode",
+    "organization",
+    "parallel-agents",
+    "programmability",
+    "terminal",
+    "terminal-multiplexer",
+    "tmux",
+    "workspace-manager"
+  ]
+}

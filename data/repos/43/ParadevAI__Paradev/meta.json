@@ -1,0 +1,31 @@
+{
+  "created": "2025-10-21",
+  "description": "Paradev (formerly Superset) is an agentic IDE to orchestrate 100+ coding agents in parallel. Run any agent with your own subscription.",
+  "first_seen": "2026-03-01",
+  "full_name": "ParadevAI/Paradev",
+  "id": 1080370450,
+  "language": "TypeScript",
+  "last_seen": "2026-03-01",
+  "topics": [
+    "ade",
+    "agent",
+    "agent-orchestration",
+    "ai-agents",
+    "ai-coding",
+    "claude-code",
+    "cli",
+    "codex",
+    "coding-agents",
+    "cursor-agent",
+    "developer-tools",
+    "devtools",
+    "ide",
+    "macos",
+    "opencode",
+    "orchestration",
+    "parallel-agents",
+    "terminal",
+    "worktrees",
+    "yc-backed"
+  ]
+}

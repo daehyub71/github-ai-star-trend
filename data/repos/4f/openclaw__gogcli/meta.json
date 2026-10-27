@@ -1,0 +1,16 @@
+{
+  "created": "2025-12-12",
+  "description": "Google Workspace in your terminal.",
+  "first_seen": "2026-02-08",
+  "full_name": "openclaw/gogcli",
+  "id": 1115161703,
+  "language": "Go",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "gcal",
+    "gcontacts",
+    "gdrive",
+    "gmail",
+    "google"
+  ]
+}

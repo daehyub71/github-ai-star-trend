@@ -1,0 +1,10 @@
+{
+  "created": "2025-11-10",
+  "description": "PyTorch implementation of JiT https://arxiv.org/abs/2511.13720",
+  "first_seen": "2025-11-23",
+  "full_name": "LTH14/JiT",
+  "id": 1093830329,
+  "language": "Python",
+  "last_seen": "2025-11-30",
+  "topics": []
+}

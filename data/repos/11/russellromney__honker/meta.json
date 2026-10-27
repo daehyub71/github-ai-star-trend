@@ -1,0 +1,10 @@
+{
+  "created": "2026-04-18",
+  "description": "SQLite extension + bindings for Postgres NOTIFY/LISTEN semantics with durable queues, streams, pub/sub, and scheduler",
+  "first_seen": "2026-05-24",
+  "full_name": "russellromney/honker",
+  "id": 1214645274,
+  "language": "Rust",
+  "last_seen": "2026-05-24",
+  "topics": []
+}

@@ -1,0 +1,31 @@
+{
+  "created": "2026-03-17",
+  "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+  "first_seen": "2026-06-21",
+  "full_name": "stablyai/orca",
+  "id": 1183888342,
+  "language": "TypeScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ade",
+    "agent-ide",
+    "ai-agents",
+    "automation",
+    "bot",
+    "claude-code",
+    "codex",
+    "ghostty",
+    "grok-bot",
+    "hermes-agent",
+    "mobile-app",
+    "muse",
+    "openclaw",
+    "opencode",
+    "orchestration",
+    "pi",
+    "runtime",
+    "terminal",
+    "worktrees",
+    "yc-backed"
+  ]
+}

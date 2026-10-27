@@ -1,0 +1,31 @@
+{
+  "created": "2025-08-05",
+  "description": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
+  "first_seen": "2025-11-02",
+  "full_name": "usestrix/strix",
+  "id": 1032808806,
+  "language": "Python",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "agents",
+    "ai-hacking",
+    "ai-penetration-testing",
+    "ai-pentesting",
+    "ai-security",
+    "artificial-intelligence",
+    "bug-bounty",
+    "code-quality",
+    "ctf-tools",
+    "cybersecurity",
+    "cybersecurity-tools",
+    "ethical-hacking",
+    "hacking",
+    "llm-security",
+    "offensive-security",
+    "penetration-testing",
+    "pentesting-tools",
+    "red-teaming",
+    "security",
+    "security-automation"
+  ]
+}

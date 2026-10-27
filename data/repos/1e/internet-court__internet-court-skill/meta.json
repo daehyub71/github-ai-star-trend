@@ -1,0 +1,31 @@
+{
+  "created": "2026-06-16",
+  "description": "The trust layer for agent-to-agent commerce — natural-language mandates, ERC-7710 delegated permissions, x402 payments, escrow, and dispute resolution as one open, catch-all Agent Skill / Claude Code plugin.",
+  "first_seen": "2026-08-16",
+  "full_name": "internet-court/internet-court-skill",
+  "id": 1271239690,
+  "language": "TypeScript",
+  "last_seen": "2026-08-16",
+  "topics": [
+    "a2a",
+    "adjudication",
+    "agent-payments",
+    "agent-skills",
+    "agentic-commerce",
+    "ai-agents",
+    "claude-code",
+    "claude-plugin",
+    "claude-skill",
+    "codex",
+    "dispute-resolution",
+    "erc-7710",
+    "erc-8004",
+    "escrow",
+    "genlayer",
+    "hermes-agent",
+    "openclaw",
+    "opencode",
+    "web3",
+    "x402"
+  ]
+}

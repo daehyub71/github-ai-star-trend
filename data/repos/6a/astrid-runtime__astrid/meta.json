@@ -1,0 +1,21 @@
+{
+  "created": "2026-02-15",
+  "description": "Astrid is a portable, capability-secure operating system for composable software.",
+  "first_seen": "2026-05-31",
+  "full_name": "astrid-runtime/astrid",
+  "id": 1158799392,
+  "language": "Rust",
+  "last_seen": "2026-05-31",
+  "topics": [
+    "agent-runtime",
+    "ai-agents",
+    "capability-security",
+    "llm",
+    "mcp",
+    "microkernel",
+    "rust",
+    "sandbox",
+    "wasm",
+    "webassembly"
+  ]
+}

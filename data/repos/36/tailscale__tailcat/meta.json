@@ -1,0 +1,10 @@
+{
+  "created": "2024-10-29",
+  "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
+  "first_seen": "2026-08-30",
+  "full_name": "tailscale/tailcat",
+  "id": 880414192,
+  "language": "Go",
+  "last_seen": "2026-08-30",
+  "topics": []
+}

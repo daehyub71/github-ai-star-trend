@@ -1,0 +1,13 @@
+{
+  "created": "2020-06-17",
+  "description": "Automatic quad remeshing tool",
+  "first_seen": "2026-07-05",
+  "full_name": "huxingyi/autoremesher",
+  "id": 273084732,
+  "language": "C++",
+  "last_seen": "2026-07-05",
+  "topics": [
+    "quadremesh",
+    "retopology"
+  ]
+}

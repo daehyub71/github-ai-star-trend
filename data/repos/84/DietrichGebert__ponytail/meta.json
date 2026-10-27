@@ -1,0 +1,21 @@
+{
+  "created": "2026-06-12",
+  "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+  "first_seen": "2026-06-14",
+  "full_name": "DietrichGebert/ponytail",
+  "id": 1266797999,
+  "language": "JavaScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "claude",
+    "claude-code",
+    "claude-code-plugin",
+    "cursor-rules",
+    "developer-tools",
+    "llm",
+    "prompt-engineering",
+    "yagni"
+  ]
+}

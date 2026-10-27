@@ -1,0 +1,31 @@
+{
+  "created": "2026-03-22",
+  "description": "Open-source agentic workspace enterprises can make their own. Connect the systems you already run — 100+ integrations, MCP, chat tools, apps, browser, local files — with shared memory. Any agent (Claude Code, Codex), any model, or BYOK. Set up in clicks, not months. Local-first: your data never leaves your machines.",
+  "first_seen": "2026-04-12",
+  "full_name": "holaboss-ai/holaOS",
+  "id": 1188521544,
+  "language": "TypeScript",
+  "last_seen": "2026-04-12",
+  "topics": [
+    "agent",
+    "agent-harness",
+    "agent-os",
+    "agentic",
+    "ai",
+    "ai-agent",
+    "ai-agents",
+    "artificial-intelligence",
+    "claude-code",
+    "codex",
+    "electron",
+    "holaboss",
+    "holaos",
+    "llm",
+    "mcp",
+    "memory",
+    "model-context-protocol",
+    "runtime",
+    "typescript",
+    "workspace"
+  ]
+}

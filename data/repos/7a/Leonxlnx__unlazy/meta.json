@@ -1,0 +1,18 @@
+{
+  "created": "2026-08-09",
+  "description": "Anti-laziness skill for AI agents. Core: the Depth Tree method, which splits a task N layers deep and gives every leaf the full time budget of the whole task, so effort multiplies with depth. Grounded in 2025-2026 research on model laziness, underthinking and premature completion.",
+  "first_seen": "2026-08-23",
+  "full_name": "Leonxlnx/unlazy",
+  "id": 1329272295,
+  "language": "JavaScript",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "ai-agents",
+    "claude",
+    "claude-code",
+    "llm",
+    "productivity",
+    "prompt-engineering",
+    "skill"
+  ]
+}

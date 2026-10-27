@@ -1,0 +1,10 @@
+{
+  "created": "2026-03-16",
+  "description": "System prompt builder. Assembles agent identity from workspace config and spark.toml. Part of Unicity AOS.",
+  "first_seen": "2026-07-19",
+  "full_name": "unicity-aos/capsule-identity",
+  "id": 1183206048,
+  "language": "Rust",
+  "last_seen": "2026-07-19",
+  "topics": []
+}

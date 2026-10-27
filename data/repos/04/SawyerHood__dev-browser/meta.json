@@ -1,0 +1,14 @@
+{
+  "created": "2025-12-02",
+  "description": "A Claude Skill to give your agent the ability to use a web browser",
+  "first_seen": "2025-12-28",
+  "full_name": "SawyerHood/dev-browser",
+  "id": 1108682714,
+  "language": "TypeScript",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "claude-code",
+    "playwright",
+    "skills"
+  ]
+}

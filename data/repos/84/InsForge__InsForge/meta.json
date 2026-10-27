@@ -1,0 +1,24 @@
+{
+  "created": "2025-07-29",
+  "description": "The all-in-one, open-source backend platform for agentic coding. InsForge gives your coding agent database, auth, storage, compute, hosting, and AI gateway to ship full-stack apps end-to-end.",
+  "first_seen": "2026-03-08",
+  "full_name": "InsForge/InsForge",
+  "id": 1028159967,
+  "language": "TypeScript",
+  "last_seen": "2026-03-08",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "coding",
+    "deno",
+    "embeddings",
+    "insforge",
+    "nextjs",
+    "oauth2",
+    "pgvector",
+    "postgresql",
+    "realtime",
+    "vectors",
+    "websockets"
+  ]
+}

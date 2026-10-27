@@ -1,0 +1,15 @@
+{
+  "created": "2026-08-12",
+  "description": "Opinionated Oxlint rules for rejecting low-evidence TypeScript and JavaScript patterns",
+  "first_seen": "2026-08-16",
+  "full_name": "dmmulroy/anti-slop",
+  "id": 1332080070,
+  "language": "TypeScript",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "agent-skills",
+    "linting",
+    "oxlint",
+    "typescript"
+  ]
+}

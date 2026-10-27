@@ -1,0 +1,20 @@
+{
+  "created": "2024-08-07",
+  "description": "Build voice agents with open-source models",
+  "first_seen": "2026-07-26",
+  "full_name": "huggingface/speech-to-speech",
+  "id": 839428333,
+  "language": "Python",
+  "last_seen": "2026-07-26",
+  "topics": [
+    "ai",
+    "assistant",
+    "language-model",
+    "machine-learning",
+    "python",
+    "speech",
+    "speech-synthesis",
+    "speech-to-text",
+    "speech-translation"
+  ]
+}

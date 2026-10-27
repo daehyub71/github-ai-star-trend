@@ -1,0 +1,25 @@
+{
+  "created": "2026-01-19",
+  "description": "Open-source agent for the terminal written in Rust. Use any provider or model. Issues & PRs always welcome",
+  "first_seen": "2026-05-03",
+  "full_name": "codewhale-hq/Codewhale",
+  "id": 1137711311,
+  "language": "Rust",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "agent-orchestration",
+    "ai-agent",
+    "cli",
+    "codewhale",
+    "coding-agent",
+    "developer-tools",
+    "local-first",
+    "mcp",
+    "multi-agent",
+    "multi-model",
+    "open-source",
+    "rust",
+    "terminal",
+    "tui"
+  ]
+}

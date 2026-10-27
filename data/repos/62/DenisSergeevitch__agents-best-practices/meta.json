@@ -1,0 +1,23 @@
+{
+  "created": "2026-05-15",
+  "description": "Provider-neutral Agent Skill for Codex, Claude Code, and agentic harness design.",
+  "first_seen": "2026-05-31",
+  "full_name": "DenisSergeevitch/agents-best-practices",
+  "id": 1240191065,
+  "language": null,
+  "last_seen": "2026-05-31",
+  "topics": [
+    "agent-skill",
+    "agent-skills",
+    "agentic-workflows",
+    "agents",
+    "ai-agents",
+    "anthropic",
+    "claude",
+    "claude-code",
+    "codex",
+    "codex-skill",
+    "mcp",
+    "prompt-engineering"
+  ]
+}

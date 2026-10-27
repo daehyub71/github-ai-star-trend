@@ -1,0 +1,18 @@
+{
+  "created": "2026-02-09",
+  "description": "A fast, helpful, and open-source document parser",
+  "first_seen": "2026-03-22",
+  "full_name": "run-llama/liteparse",
+  "id": 1153982569,
+  "language": "Rust",
+  "last_seen": "2026-03-22",
+  "topics": [
+    "document-ocr",
+    "document-processing",
+    "ocr",
+    "ocr-recognition",
+    "pdf",
+    "pdf-parser",
+    "text-extraction"
+  ]
+}

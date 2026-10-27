@@ -1,0 +1,14 @@
+{
+  "created": "2025-10-12",
+  "description": "Beads - A memory upgrade for your coding agent",
+  "first_seen": "2025-10-26",
+  "full_name": "gastownhall/beads",
+  "id": 1074561042,
+  "language": "Go",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "agents",
+    "claude-code",
+    "coding"
+  ]
+}

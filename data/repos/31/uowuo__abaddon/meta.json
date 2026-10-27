@@ -1,0 +1,21 @@
+{
+  "created": "2020-08-16",
+  "description": "An alternative Discord client with voice support made with C++ and GTK 3",
+  "first_seen": "2025-12-21",
+  "full_name": "uowuo/abaddon",
+  "id": 288042656,
+  "language": "C++",
+  "last_seen": "2025-12-21",
+  "topics": [
+    "alternative",
+    "client",
+    "cpp",
+    "discord",
+    "discord-client",
+    "gtk",
+    "gtk3",
+    "gtkmm",
+    "voice",
+    "voice-chat"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "created": "2024-02-06",
+  "description": "Daytona is a Secure and Elastic Infrastructure for Running AI-Generated Code",
+  "first_seen": "2025-11-02",
+  "full_name": "daytonaio/daytona",
+  "id": 753490180,
+  "language": null,
+  "last_seen": "2025-11-16",
+  "topics": [
+    "agentic-workflow",
+    "ai",
+    "ai-agents",
+    "ai-runtime",
+    "ai-sandboxes",
+    "code-execution",
+    "code-interpreter",
+    "developer-tools"
+  ]
+}

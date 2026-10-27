@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-28",
+  "description": "Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA). Open alternative to Kommo, Octadesk & Intercom for any business that sells by chat. MCP-ready, multi-tenant, LGPD.",
+  "first_seen": "2026-09-13",
+  "full_name": "melgarafael/DeskcommCRM",
+  "id": 1223939135,
+  "language": "TypeScript",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "chatbot",
+    "crm",
+    "customer-support",
+    "ecommerce",
+    "lgpd",
+    "mcp",
+    "multi-tenant",
+    "nextjs",
+    "nuvemshop",
+    "open-source",
+    "rag",
+    "sales-automation",
+    "self-hosted",
+    "supabase",
+    "typescript",
+    "waha",
+    "whatsapp",
+    "whatsapp-api"
+  ]
+}

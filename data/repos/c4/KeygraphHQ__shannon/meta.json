@@ -1,0 +1,31 @@
+{
+  "created": "2025-09-27",
+  "description": "Shannon is an AI pentester for web applications and APIs. It analyzes your source code, identifies attack vectors, and executes real exploits to prove vulnerabilities before they reach production.",
+  "first_seen": "2025-12-14",
+  "full_name": "KeygraphHQ/shannon",
+  "id": 1065059442,
+  "language": "TypeScript",
+  "last_seen": "2026-03-01",
+  "topics": [
+    "ai-penetration-testing",
+    "ai-security",
+    "api-security",
+    "appsec",
+    "ci-cd",
+    "cybersecurity",
+    "devsecops",
+    "ethical-hacking",
+    "offensive-security",
+    "owasp",
+    "penetration-testing",
+    "pentesting",
+    "pentesting-tools",
+    "red-teaming",
+    "sarif",
+    "security",
+    "security-audit",
+    "security-automation",
+    "security-testing",
+    "security-tools"
+  ]
+}

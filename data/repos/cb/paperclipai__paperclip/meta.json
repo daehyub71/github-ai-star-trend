@@ -1,0 +1,31 @@
+{
+  "created": "2026-03-02",
+  "description": "The open-source app everyone uses to manage agents at work",
+  "first_seen": "2026-03-01",
+  "full_name": "paperclipai/paperclip",
+  "id": 1170821064,
+  "language": "TypeScript",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "acpx",
+    "agent-orchestration",
+    "agent-skills",
+    "agentic-ai",
+    "ai-agents",
+    "ai-engineering",
+    "ai-governance",
+    "ai-tools",
+    "autonomous-agents",
+    "claude",
+    "claude-code",
+    "claude-skills",
+    "codex",
+    "hermes",
+    "llm",
+    "mcp",
+    "multi-agent",
+    "openclaw",
+    "project-management",
+    "workflow-automation"
+  ]
+}

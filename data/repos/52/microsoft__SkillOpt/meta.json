@@ -1,0 +1,13 @@
+{
+  "created": "2026-05-08",
+  "description": "SkillOpt is a text-space optimizer that trains reusable natural-language skills for frozen LLM agents through trajectory-driven edits, validation-gated updates, and deployable best_skill.md artifacts.",
+  "first_seen": "2026-05-24",
+  "full_name": "microsoft/SkillOpt",
+  "id": 1232669890,
+  "language": "Python",
+  "last_seen": "2026-05-31",
+  "topics": [
+    "agent-skills",
+    "self-evolving-agents"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "created": "2024-11-02",
+  "description": "An user interface for the nginx web server, aimed at developers and enthusiasts that don't want to manage configuration files manually",
+  "first_seen": "2025-11-30",
+  "full_name": "lucasdillmann/nginx-ignition",
+  "id": 882358520,
+  "language": "Go",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "golang",
+    "gui",
+    "nginx",
+    "nginx-proxy",
+    "proxy",
+    "react",
+    "ui",
+    "user-interface"
+  ]
+}

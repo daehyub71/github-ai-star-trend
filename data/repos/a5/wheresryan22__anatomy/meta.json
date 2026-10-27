@@ -1,0 +1,15 @@
+{
+  "created": "2026-10-08",
+  "description": "An agent skill for creating detailed, interactive isometric illustrations of real-world machines and complex systems. Generates polished SVGs with optional WebGL shaders and 3D effects.",
+  "first_seen": "2026-10-11",
+  "full_name": "wheresryan22/anatomy",
+  "id": 1410124849,
+  "language": "JavaScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "agent-skill",
+    "open-source",
+    "svg",
+    "vizualization"
+  ]
+}

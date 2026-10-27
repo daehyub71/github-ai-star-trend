@@ -1,0 +1,14 @@
+{
+  "created": "2025-11-20",
+  "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+  "first_seen": "2026-01-04",
+  "full_name": "anthropics/claude-plugins-official",
+  "id": 1100776768,
+  "language": "Python",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "claude-code",
+    "mcp",
+    "skills"
+  ]
+}

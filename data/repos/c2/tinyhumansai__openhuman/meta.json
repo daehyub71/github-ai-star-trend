@@ -1,0 +1,23 @@
+{
+  "created": "2026-02-18",
+  "description": "The fastest, cheapest, most efficient open-source agent harness. Run more than 500 agents on a $10 VPS.",
+  "first_seen": "2026-05-10",
+  "full_name": "tinyhumansai/openhuman",
+  "id": 1161163182,
+  "language": "Rust",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "agent-orchestration",
+    "ai-agents",
+    "ai-assistant",
+    "desktop",
+    "llm",
+    "local-first",
+    "mcp",
+    "personal-ai",
+    "privacy",
+    "rust",
+    "second-brain",
+    "tauri"
+  ]
+}

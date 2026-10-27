@@ -1,0 +1,19 @@
+{
+  "created": "2026-08-31",
+  "description": "Infrastructure for continually self‑improving agents",
+  "first_seen": "2026-09-13",
+  "full_name": "Human-Agent-Society/reef",
+  "id": 1351879111,
+  "language": "Python",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "agent-infrastructure",
+    "ai-agents",
+    "continual-learning",
+    "inference",
+    "llm",
+    "llm-training",
+    "reinforcement-learning",
+    "self-improving-agents"
+  ]
+}

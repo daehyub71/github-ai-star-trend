@@ -1,0 +1,23 @@
+{
+  "created": "2026-05-27",
+  "description": "倪海厦中医课程资料的 Agent Skill：支持课程检索、方证穴位辨析、学习笔记整理与板书截图证据索引。 |  An Agent Skill for Ni Haisha TCM course study, formula-pattern lookup, acupoint reference, and screenshot evidence indexing.",
+  "first_seen": "2026-07-12",
+  "full_name": "JuneYaooo/nihaisha-nishi-tcm",
+  "id": 1250818845,
+  "language": "Python",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "acupuncture",
+    "agent-skills",
+    "claude-code-skills",
+    "codex-skill",
+    "nihaisha",
+    "nihaixia",
+    "nishi",
+    "shennong",
+    "tcm",
+    "tcmcp",
+    "traditional-chinese-medicine",
+    "traditional-chinese-medicine-healthcare"
+  ]
+}

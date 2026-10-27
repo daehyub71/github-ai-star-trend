@@ -1,0 +1,25 @@
+{
+  "created": "2026-04-09",
+  "description": "Convert Claude Code or Codex into the most intelligent Deep Research Agent. Collect, search, and synthesize web research into a persistent, searchable wiki that builds on itself. Hosted API + MCP: hyperresearch.ai",
+  "first_seen": "2026-09-06",
+  "full_name": "jordan-gibbs/hyperresearch",
+  "id": 1206357666,
+  "language": "Python",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "agents",
+    "agentskills",
+    "citations",
+    "claude-code",
+    "codex",
+    "codex-plugin",
+    "codex-skill",
+    "deep-research",
+    "deep-research-agent",
+    "deepresearch",
+    "mcp-server",
+    "research",
+    "research-agent",
+    "research-tools"
+  ]
+}

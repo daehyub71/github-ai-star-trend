@@ -1,0 +1,17 @@
+{
+  "created": "2024-11-17",
+  "description": "Advanced UX and interoperability extension for Wand (WeMod) app",
+  "first_seen": "2026-07-05",
+  "full_name": "k1tbyte/Wand-Enhancer",
+  "id": 890017796,
+  "language": "C#",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "csharp",
+    "wand",
+    "wand-enhancer",
+    "wand-pro",
+    "wemod",
+    "wpf"
+  ]
+}

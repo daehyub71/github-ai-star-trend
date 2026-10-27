@@ -1,0 +1,21 @@
+{
+  "created": "2026-07-15",
+  "description": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D.",
+  "first_seen": "2026-07-19",
+  "full_name": "img2threejs/img2threejs",
+  "id": 1301140808,
+  "language": "Python",
+  "last_seen": "2026-08-02",
+  "topics": [
+    "3d",
+    "ai-agents",
+    "claude-code",
+    "computer-graphics",
+    "generative",
+    "image-to-3d",
+    "procedural-generation",
+    "threejs",
+    "typescript",
+    "webgl"
+  ]
+}

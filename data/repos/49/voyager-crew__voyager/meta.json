@@ -1,0 +1,24 @@
+{
+  "created": "2025-10-04",
+  "description": "Enhancement suite for Gemini, AI Studio, Claude, ChatGPT & DeepSeek — plus a prompt manager for any website, DeepSeek Harness included. / 面向 Gemini、AI Studio、Claude、ChatGPT 与 DeepSeek 的增强套件；其中的提示词管理器可用于任意网站，如 DeepSeek Harness。",
+  "first_seen": "2026-01-18",
+  "full_name": "voyager-crew/voyager",
+  "id": 1069943001,
+  "language": "TypeScript",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "ai-studio",
+    "browser-extension",
+    "bun",
+    "chat-management",
+    "chatgpt",
+    "chrome-extension",
+    "claude-ai",
+    "deepseek",
+    "dsh",
+    "edge-addon",
+    "firefox-addons",
+    "gemini",
+    "safari-extension"
+  ]
+}

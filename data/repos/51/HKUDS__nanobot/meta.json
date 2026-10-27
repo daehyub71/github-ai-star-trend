@@ -1,0 +1,31 @@
+{
+  "created": "2026-02-01",
+  "description": "Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with WebUI, tools, memory, MCP, multi-agent workflows, automation, and chat apps",
+  "first_seen": "2026-02-01",
+  "full_name": "HKUDS/nanobot",
+  "id": 1147094660,
+  "language": "Python",
+  "last_seen": "2026-02-22",
+  "topics": [
+    "agent-framework",
+    "ai-agent",
+    "ai-agents",
+    "chatbot",
+    "chatops",
+    "discord-bot",
+    "llm-agents",
+    "llms",
+    "local-llm",
+    "mcp",
+    "model-context-protocol",
+    "multi-agent",
+    "openai-compatible",
+    "openclaw",
+    "personal-ai-assistant",
+    "python",
+    "self-hosted",
+    "telegram-bot-ai-assistant",
+    "webui",
+    "workflow-automation"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2023-02-08",
+  "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+  "first_seen": "2025-10-26",
+  "full_name": "langflow-ai/langflow",
+  "id": 599320067,
+  "language": "Python",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "agents",
+    "chatgpt",
+    "generative-ai",
+    "large-language-models",
+    "multiagent",
+    "react-flow"
+  ]
+}

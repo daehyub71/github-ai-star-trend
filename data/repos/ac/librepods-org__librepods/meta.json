@@ -1,0 +1,21 @@
+{
+  "created": "2024-09-26",
+  "description": "AirPods liberated from Apple's ecosystem.",
+  "first_seen": "2025-11-16",
+  "full_name": "librepods-org/librepods",
+  "id": 863717537,
+  "language": "Kotlin",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "accessiblity",
+    "airpods",
+    "android",
+    "battery-monitor",
+    "conversational-awareness",
+    "ear-detection",
+    "hearing-aid",
+    "hearing-aids",
+    "linux",
+    "reverse-engineering"
+  ]
+}

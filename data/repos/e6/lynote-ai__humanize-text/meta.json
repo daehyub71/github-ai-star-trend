@@ -1,0 +1,31 @@
+{
+  "created": "2026-05-18",
+  "description": "Open-source AI humanizer: rewrite AI-generated text into natural, human-sounding prose. LLM rewriting + multi-engine translation, with step-by-step traces. Python CLI, n8n & Docker.",
+  "first_seen": "2026-09-13",
+  "full_name": "lynote-ai/humanize-text",
+  "id": 1242316635,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "ai-humanizer",
+    "ai-humanizer-api",
+    "ai-rewriter",
+    "ai-text-humanizer",
+    "ai-tools",
+    "ai-writing",
+    "ai-writing-assistant",
+    "deepseek",
+    "humanize-ai-text",
+    "humanize-text",
+    "humanizer-api",
+    "llm",
+    "n8n",
+    "nlp",
+    "paraphrasing",
+    "python",
+    "text-humanizer",
+    "text-processing",
+    "text-rewriting",
+    "undetectable-ai-alternative"
+  ]
+}

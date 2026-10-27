@@ -1,0 +1,16 @@
+{
+  "created": "2026-06-09",
+  "description": "Autoharness — a self-learning skill layer for Claude Code — distills skills from your real sessions, updates them as you work, and prunes the ones that stop getting used. No daemon, no benchmark.",
+  "first_seen": "2026-09-06",
+  "full_name": "tigerless-labs/autoharness",
+  "id": 1264396304,
+  "language": "Python",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "agent-skills",
+    "claude-code",
+    "claude-code-plugin",
+    "llm-agents",
+    "python"
+  ]
+}

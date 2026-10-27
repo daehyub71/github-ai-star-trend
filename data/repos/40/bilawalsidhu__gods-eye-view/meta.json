@@ -1,0 +1,23 @@
+{
+  "created": "2026-06-22",
+  "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+  "first_seen": "2026-08-23",
+  "full_name": "bilawalsidhu/gods-eye-view",
+  "id": 1277471539,
+  "language": "JavaScript",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "3d-globe",
+    "cesium",
+    "flight-tracking",
+    "geospatial",
+    "geospatial-intelligence",
+    "gis",
+    "osint",
+    "photogrammetry",
+    "satellite-tracking",
+    "spatial-intelligence",
+    "webgl",
+    "worldview"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "created": "2025-09-20",
+  "description": "Agent-ready RPA suite with out-of-the-box automation tools. Built for individuals and enterprises.",
+  "first_seen": "2025-10-26",
+  "full_name": "iflytek/astron-rpa",
+  "id": 1060619404,
+  "language": "Python",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "agent",
+    "ai",
+    "astron",
+    "automation",
+    "data-privacy",
+    "enterprise",
+    "iflytek-astron",
+    "llm",
+    "low-code",
+    "mcp",
+    "no-code",
+    "on-premise",
+    "python",
+    "rpa",
+    "security-compliance",
+    "self-hosted"
+  ]
+}

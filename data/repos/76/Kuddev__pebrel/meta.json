@@ -1,0 +1,28 @@
+{
+  "created": "2026-07-05",
+  "description": "AI-native, GPU-accelerated terminal emulator for Windows with SSH, persistent sessions, split panes, and first-class AI CLI workflows.",
+  "first_seen": "2026-09-13",
+  "full_name": "Kuddev/pebrel",
+  "id": 1289958986,
+  "language": "Rust",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "ai-cli",
+    "ai-terminal",
+    "claude-code",
+    "codex",
+    "conpty",
+    "developer-tools",
+    "gpu-accelerated",
+    "opengl",
+    "powershell",
+    "rust",
+    "session-persistence",
+    "split-panes",
+    "ssh",
+    "ssh-client",
+    "terminal",
+    "terminal-emulator",
+    "windows"
+  ]
+}

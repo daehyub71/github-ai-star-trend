@@ -1,0 +1,24 @@
+{
+  "created": "2025-12-07",
+  "description": "A phone number can reveal whether a device is active, in standby or offline (and more). This PoC demonstrates how delivery receipts + RTT timing leak sensitive device-activity patterns. (WhatsApp / Signal)",
+  "first_seen": "2025-12-28",
+  "full_name": "gommzystudio/device-activity-tracker",
+  "id": 1111742998,
+  "language": "TypeScript",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "baileys",
+    "exploit",
+    "messenger",
+    "nodejs",
+    "phone-number",
+    "poc",
+    "privacy",
+    "react",
+    "signal",
+    "tracking",
+    "typescript",
+    "vulnerability",
+    "whatsapp"
+  ]
+}

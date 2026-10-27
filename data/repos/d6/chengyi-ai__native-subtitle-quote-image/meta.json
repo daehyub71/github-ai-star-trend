@@ -1,0 +1,16 @@
+{
+  "created": "2026-08-16",
+  "description": "保留视频内嵌字幕，精确取帧并生成 3:4 社交长图的 Agent Skill",
+  "first_seen": "2026-10-04",
+  "full_name": "chengyi-ai/native-subtitle-quote-image",
+  "id": 1335823455,
+  "language": "Python",
+  "last_seen": "2026-10-04",
+  "topics": [
+    "agent-skills",
+    "codex",
+    "social-media",
+    "subtitles",
+    "video-processing"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "created": "2026-08-11",
+  "description": "A privacy-first app that strips AI watermarks from content you own.",
+  "first_seen": "2026-08-09",
+  "full_name": "guillaumemeyer/watermarks-remover",
+  "id": 1331135699,
+  "language": "Python",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "agent-skill",
+    "ai",
+    "anthropic",
+    "c2pa",
+    "chatgpt",
+    "claude",
+    "gemini",
+    "openai",
+    "provenance",
+    "synthid",
+    "watermark",
+    "watermark-detection",
+    "watermark-tools",
+    "watermarking",
+    "watermarks"
+  ]
+}

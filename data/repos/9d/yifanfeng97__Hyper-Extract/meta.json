@@ -1,0 +1,21 @@
+{
+  "created": "2026-01-07",
+  "description": "Hypergraph is more powerful. Transform unstructured text into structured knowledge with LLMs. Graphs, hypergraphs, and spatio-temporal extractions — with one command.",
+  "first_seen": "2026-06-14",
+  "full_name": "yifanfeng97/Hyper-Extract",
+  "id": 1129583447,
+  "language": "Python",
+  "last_seen": "2026-06-14",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "cli",
+    "hypergraph",
+    "information-extraction",
+    "knowledge",
+    "knowledge-graph",
+    "llm",
+    "python",
+    "rag"
+  ]
+}

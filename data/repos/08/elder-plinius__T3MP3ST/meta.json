@@ -1,0 +1,16 @@
+{
+  "created": "2026-07-02",
+  "description": "autonomous red teaming platform; multi-agent offensive-security meta-harness",
+  "first_seen": "2026-07-05",
+  "full_name": "elder-plinius/T3MP3ST",
+  "id": 1287460663,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agents",
+    "ai",
+    "multi-agent",
+    "offensive-security",
+    "redteam"
+  ]
+}

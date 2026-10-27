@@ -1,0 +1,15 @@
+{
+  "created": "2023-05-28",
+  "description": "A secure Python sandbox, written in Rust, for code written by AI.",
+  "first_seen": "2026-02-08",
+  "full_name": "pydantic/monty",
+  "id": 646426100,
+  "language": "Rust",
+  "last_seen": "2026-02-08",
+  "topics": [
+    "python",
+    "rust",
+    "sandbox",
+    "sandboxing"
+  ]
+}

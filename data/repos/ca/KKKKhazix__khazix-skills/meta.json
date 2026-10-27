@@ -1,0 +1,20 @@
+{
+  "created": "2026-04-06",
+  "description": "数字生命卡兹克开源的 AI Skills 合集 | Agent Skills: leader（帮你定义目标）, neat-freak 洁癖, hv-analysis, khazix-writer & more — Claude Code, Codex & 40+ agents",
+  "first_seen": "2026-04-12",
+  "full_name": "KKKKhazix/khazix-skills",
+  "id": 1202599845,
+  "language": "Python",
+  "last_seen": "2026-04-26",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "claude",
+    "claude-code",
+    "codex",
+    "developer-tools",
+    "llm",
+    "skills",
+    "vibe-coding"
+  ]
+}

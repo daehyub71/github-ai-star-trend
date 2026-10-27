@@ -1,0 +1,15 @@
+{
+  "created": "2026-04-01",
+  "description": "EmDash is a full-stack TypeScript CMS based on Astro; the spiritual successor to WordPress",
+  "first_seen": "2026-04-12",
+  "full_name": "emdash-cms/emdash",
+  "id": 1198246700,
+  "language": "TypeScript",
+  "last_seen": "2026-04-12",
+  "topics": [
+    "astro",
+    "cms",
+    "emdash",
+    "typescript"
+  ]
+}

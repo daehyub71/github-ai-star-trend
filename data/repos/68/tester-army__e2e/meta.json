@@ -1,0 +1,18 @@
+{
+  "created": "2026-07-22",
+  "description": "Next generation e2e testing framework for web and mobile apps.",
+  "first_seen": "2026-10-04",
+  "full_name": "tester-army/e2e",
+  "id": 1308631234,
+  "language": "TypeScript",
+  "last_seen": "2026-10-04",
+  "topics": [
+    "e2e",
+    "e2e-testing",
+    "end-to-end-testing",
+    "mobile",
+    "mobile-testing",
+    "playwright",
+    "web"
+  ]
+}

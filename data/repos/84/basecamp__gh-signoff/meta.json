@@ -1,0 +1,12 @@
+{
+  "created": "2024-11-10",
+  "description": "Local CI. Sign off on your own work.",
+  "first_seen": "2026-06-21",
+  "full_name": "basecamp/gh-signoff",
+  "id": 886068815,
+  "language": "Shell",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "gh-extension"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "created": "2026-07-08",
+  "description": "A smarter, self-hosted AI assistant — multi-user, multi-agent.",
+  "first_seen": "2026-09-13",
+  "full_name": "TencentCloud/Octop",
+  "id": 1293600453,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "agent",
+    "agentic-ai",
+    "ai",
+    "ai-agent",
+    "ai-agents",
+    "local-first",
+    "long-term-memory"
+  ]
+}

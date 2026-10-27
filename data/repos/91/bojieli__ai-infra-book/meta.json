@@ -1,0 +1,26 @@
+{
+  "created": "2026-08-22",
+  "description": "《深入理解 AI Infra：量化分析与系统设计》（李博杰 著）开源书稿：从硬件约束和模型架构出发，量化推导 LLM 推理与训练系统设计。含全书正文、PDF、配套计算工具与实验",
+  "first_seen": "2026-09-13",
+  "full_name": "bojieli/ai-infra-book",
+  "id": 1342935078,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "accelerator",
+    "ai-infra",
+    "ai-infrastructure",
+    "book",
+    "datacenter-network",
+    "deepseek",
+    "distributed-systems",
+    "gpu",
+    "kv-cache",
+    "llm",
+    "llm-inference",
+    "llm-serving",
+    "llm-training",
+    "mixture-of-experts",
+    "performance-engineering"
+  ]
+}

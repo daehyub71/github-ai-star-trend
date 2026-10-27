@@ -1,0 +1,31 @@
+{
+  "created": "2026-01-14",
+  "description": "AAS Core is the local, agent-first control plane for complete catalog discovery, agent-owned selection, stack validation, and planning, backed by 2,750+ agentic skills. Includes CLI, local MCP, catalog, plugins, and Workbench.",
+  "first_seen": "2026-01-25",
+  "full_name": "sickn33/agentic-awesome-skills",
+  "id": 1134426800,
+  "language": "Python",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "agent-skills",
+    "agentic-skills",
+    "ai-agent-skills",
+    "ai-agents",
+    "ai-coding",
+    "ai-workflows",
+    "antigravity",
+    "antigravity-skills",
+    "claude-code",
+    "claude-code-skills",
+    "codex-cli",
+    "codex-skills",
+    "cursor",
+    "cursor-skills",
+    "developer-tools",
+    "gemini-cli",
+    "gemini-skills",
+    "kiro",
+    "mcp",
+    "skill-library"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "created": "2026-04-23",
+  "description": "AI-agent Skill for generating polished HTML slide decks: editorial magazine and Swiss layouts, image prompts, social covers, and a WebGL/low-power presentation runtime.",
+  "first_seen": "2026-05-03",
+  "full_name": "op7418/guizang-ppt-skill",
+  "id": 1219042200,
+  "language": "HTML",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "ai-agent",
+    "claude-code",
+    "codex",
+    "html-deck",
+    "image-generation",
+    "ppt",
+    "presentation",
+    "skill",
+    "skills",
+    "swiss-design",
+    "web-ppt"
+  ]
+}

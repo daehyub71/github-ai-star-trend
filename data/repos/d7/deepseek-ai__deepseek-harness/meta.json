@@ -1,0 +1,15 @@
+{
+  "created": "2026-08-13",
+  "description": "DeepSeek Harness: Everything is a Plugin.",
+  "first_seen": "2026-08-09",
+  "full_name": "deepseek-ai/deepseek-harness",
+  "id": 1333065091,
+  "language": "TypeScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "ai-agents",
+    "cordis",
+    "dsh",
+    "dsh-plugin"
+  ]
+}

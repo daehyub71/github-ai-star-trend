@@ -1,0 +1,31 @@
+{
+  "created": "2026-03-22",
+  "description": "A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering",
+  "first_seen": "2026-09-06",
+  "full_name": "HakanSeven12/OpenCADStudio",
+  "id": 1188652883,
+  "language": "Rust",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "cad",
+    "dwg",
+    "dwg-compatible",
+    "dwg-editor",
+    "dwg-files",
+    "dwg-parser",
+    "dwg-reader",
+    "dwg-support",
+    "dwg-viewer",
+    "dwg-writer",
+    "dxf",
+    "dxf-compatible",
+    "dxf-editor",
+    "dxf-files",
+    "dxf-parser",
+    "dxf-reader",
+    "dxf-support",
+    "dxf-viewer",
+    "dxf-writer",
+    "rust"
+  ]
+}

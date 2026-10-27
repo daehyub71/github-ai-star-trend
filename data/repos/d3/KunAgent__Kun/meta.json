@@ -1,0 +1,30 @@
+{
+  "created": "2026-05-21",
+  "description": "Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.",
+  "first_seen": "2026-06-07",
+  "full_name": "KunAgent/Kun",
+  "id": 1245699721,
+  "language": "TypeScript",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "agentic-workflow",
+    "ai-agent",
+    "ai-assistant",
+    "ai-design",
+    "automation",
+    "coding-agent",
+    "deepseek",
+    "desktop-app",
+    "electron",
+    "llm",
+    "local-first",
+    "mcp",
+    "multi-agent",
+    "openai-compatible",
+    "productivity",
+    "react",
+    "tui",
+    "typescript",
+    "writing-assistant"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "created": "2026-10-03",
+  "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
+  "first_seen": "2026-10-11",
+  "full_name": "Jakeschincariol/replica-skill",
+  "id": 1403115747,
+  "language": "Python",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "agent",
+    "agent-skills",
+    "app-clone",
+    "claude",
+    "claude-code",
+    "claude-skills",
+    "indie-hacker",
+    "reverse-engineering",
+    "saas"
+  ]
+}

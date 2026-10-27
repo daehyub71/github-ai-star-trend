@@ -1,0 +1,19 @@
+{
+  "created": "2025-09-17",
+  "description": "Crawl a website starting from a URL, find relevant pages, and extract data – all guided by your natural language prompt.",
+  "first_seen": "2025-11-09",
+  "full_name": "oxylabs/ai-crawler-py",
+  "id": 1058850200,
+  "language": null,
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "ai-crawler",
+    "ai-scraping",
+    "ai-studio",
+    "ai-web-crawler",
+    "crawl-agent",
+    "web-crawler"
+  ]
+}

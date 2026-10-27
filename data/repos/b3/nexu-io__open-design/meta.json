@@ -1,0 +1,31 @@
+{
+  "created": "2026-04-28",
+  "description": "The 1st Collaborative AI Design Agent Workspace. Local-first and open source. Create motion, prototypes, websites, apps, dashboards, presentations, images, and videos with your team and AI agents. Share work, exchange feedback, and iterate together in one workspace.",
+  "first_seen": "2026-04-26",
+  "full_name": "nexu-io/open-design",
+  "id": 1223170290,
+  "language": "TypeScript",
+  "last_seen": "2026-05-17",
+  "topics": [
+    "agent-skills",
+    "ai-design",
+    "byok",
+    "claude-code-for-design",
+    "claude-design",
+    "codex-design",
+    "cursor-design",
+    "deepseek",
+    "deepseek-harness",
+    "design-systems",
+    "desktop-app",
+    "desktop-apps",
+    "dsh",
+    "dsh-plugin",
+    "figma-alternative",
+    "hermes-agent",
+    "local-first",
+    "prototyping",
+    "ui-generator",
+    "vibe-coding"
+  ]
+}

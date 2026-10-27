@@ -1,0 +1,14 @@
+{
+  "created": "2024-04-10",
+  "description": "Verifiable inference on Bittensor",
+  "first_seen": "2025-12-07",
+  "full_name": "inference-labs-inc/subnet-2",
+  "id": 784941054,
+  "language": "Rust",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "bittensor",
+    "zk",
+    "zkml"
+  ]
+}

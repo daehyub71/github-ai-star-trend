@@ -1,0 +1,18 @@
+{
+  "created": "2026-01-10",
+  "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+  "first_seen": "2026-01-18",
+  "full_name": "ZhuLinsen/daily_stock_analysis",
+  "id": 1131513930,
+  "language": "Python",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "a-stock",
+    "ai-agent",
+    "aigc",
+    "llm",
+    "quant",
+    "quantitative-finance",
+    "quantitative-trading"
+  ]
+}

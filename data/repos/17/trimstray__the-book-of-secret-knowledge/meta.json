@@ -1,0 +1,30 @@
+{
+  "created": "2018-06-23",
+  "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
+  "first_seen": "2026-05-17",
+  "full_name": "trimstray/the-book-of-secret-knowledge",
+  "id": 138393139,
+  "language": null,
+  "last_seen": "2026-06-07",
+  "topics": [
+    "awesome",
+    "awesome-list",
+    "bsd",
+    "cheatsheets",
+    "devops",
+    "guidelines",
+    "hacking",
+    "hacks",
+    "howtos",
+    "linux",
+    "lists",
+    "manuals",
+    "one-liners",
+    "pentesters",
+    "resources",
+    "search-engines",
+    "security",
+    "security-researchers",
+    "sysops"
+  ]
+}

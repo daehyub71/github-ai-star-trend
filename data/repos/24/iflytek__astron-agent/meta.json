@@ -1,0 +1,30 @@
+{
+  "created": "2025-09-19",
+  "description": "Enterprise-grade, commercial-friendly agentic workflow platform for building next-generation SuperAgents.",
+  "first_seen": "2025-10-26",
+  "full_name": "iflytek/astron-agent",
+  "id": 1060001762,
+  "language": "Java",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "agent",
+    "agentic-ai",
+    "agentic-workflow",
+    "ai",
+    "enterprise",
+    "enterprise-automation",
+    "iflytek-astron",
+    "llm",
+    "llm-ops",
+    "low-code",
+    "mcp",
+    "multi-agent",
+    "next-gen",
+    "orchestration",
+    "python",
+    "rpa",
+    "superagent",
+    "workflow",
+    "workflow-engine"
+  ]
+}

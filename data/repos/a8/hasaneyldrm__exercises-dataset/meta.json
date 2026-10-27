@@ -1,0 +1,21 @@
+{
+  "created": "2026-03-18",
+  "description": "1,324-exercise fitness dataset — animation GIFs, 180×180 thumbnails, muscle-group & equipment data, and step-by-step instructions in 6 languages. The exercise data layer behind the LogPress app.",
+  "first_seen": "2026-06-28",
+  "full_name": "hasaneyldrm/exercises-dataset",
+  "id": 1184892122,
+  "language": "HTML",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "dataset",
+    "exercise-database",
+    "exercises",
+    "fitness",
+    "fitness-app",
+    "gym",
+    "json",
+    "logpress",
+    "react-native",
+    "workout"
+  ]
+}

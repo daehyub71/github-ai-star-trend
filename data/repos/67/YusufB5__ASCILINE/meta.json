@@ -1,0 +1,10 @@
+{
+  "created": "2026-05-01",
+  "description": "A high-performance ASCII video rendering engine featuring real-time WebSocket binary streaming and an isolated compiler for serverless static generation. Built for low-latency 30 FPS playback on HTML5 Canvas.",
+  "first_seen": "2026-06-14",
+  "full_name": "YusufB5/ASCILINE",
+  "id": 1226660215,
+  "language": "Python",
+  "last_seen": "2026-06-14",
+  "topics": []
+}

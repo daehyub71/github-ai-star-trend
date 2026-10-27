@@ -1,0 +1,14 @@
+{
+  "created": "2026-03-11",
+  "description": "A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work for long periods of time autonomously without losing track of the big picture",
+  "first_seen": "2026-03-15",
+  "full_name": "gsd-build/gsd-2",
+  "id": 1178493295,
+  "language": "TypeScript",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "context-engineering",
+    "meta-prompting",
+    "spec-driven-development"
+  ]
+}

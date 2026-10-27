@@ -1,0 +1,20 @@
+{
+  "created": "2026-07-24",
+  "description": "现代化可灵活嵌入的任务面板，支持 Codex、DeepSeek Harness",
+  "first_seen": "2026-08-09",
+  "full_name": "chuspeeism/dashi-taskboard",
+  "id": 1311108439,
+  "language": "JavaScript",
+  "last_seen": "2026-08-09",
+  "topics": [
+    "claude-code",
+    "cli",
+    "codex",
+    "codex-app",
+    "codex-desktop",
+    "codex-plugin",
+    "dsh",
+    "dsh-plugin",
+    "skills"
+  ]
+}

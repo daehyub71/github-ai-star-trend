@@ -1,0 +1,19 @@
+{
+  "created": "2026-09-30",
+  "description": "PdfCraft: An open-source PDF reader and editor written by scratch in pure Rust",
+  "first_seen": "2026-10-04",
+  "full_name": "storytold/pdfcraft",
+  "id": 1398086162,
+  "language": "Rust",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "document-processing",
+    "documents",
+    "pdf",
+    "pdf-generation",
+    "pdf-processing",
+    "pdf-tools",
+    "pdf-viewer",
+    "rust"
+  ]
+}

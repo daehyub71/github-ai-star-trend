@@ -1,0 +1,30 @@
+{
+  "created": "2022-09-29",
+  "description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
+  "first_seen": "2026-09-20",
+  "full_name": "dream-num/univer",
+  "id": 543101941,
+  "language": "TypeScript",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "board",
+    "collaboration",
+    "data-table",
+    "doc",
+    "docx",
+    "excel",
+    "grid",
+    "pdf",
+    "ppt",
+    "pptx",
+    "presentation",
+    "sdk",
+    "sheet",
+    "slides",
+    "spreadsheet",
+    "table",
+    "word",
+    "wordprocessor",
+    "xlsx"
+  ]
+}
