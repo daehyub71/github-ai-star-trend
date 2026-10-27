@@ -108,7 +108,8 @@ def run_one(client: Any, name: str, desc: str | None) -> dict[str, Any]:
     except ValueError:
         sources = None
     return {"repo": name, "usage": total, "cost_usd": round(cost(total), 4), "stop_reasons": stops,
-            "sources": sources, "raw_text": None if sources is not None else text[:2000]}
+            "sources": sources, "raw_text": None if sources is not None else text[:2000],
+            "blocks": [b.model_dump(mode="json") for b in resp.content]}
 
 
 def main() -> int:
@@ -116,6 +117,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", action="store_true", help="실제로 호출한다 (과금)")
     ap.add_argument("--budget", type=float, default=3.0, help="누적 비용 상한(달러)")
+    ap.add_argument("--only", help="이 저장소 하나만 (진단용)")
     args = ap.parse_args()
     descs = descriptions()
     lo, hi = estimate()
@@ -139,7 +141,7 @@ def main() -> int:
     client = anthropic.Anthropic(api_key=key)
     results: list[dict[str, Any]] = []
     spent = 0.0
-    for name in REPOS:
+    for name in [args.only] if args.only else REPOS:
         if spent >= args.budget:
             print(f"상한 ${args.budget:.2f} 도달 — 멈춘다")
             break
@@ -151,7 +153,8 @@ def main() -> int:
         print(f"{name:34} 입력 {u['input_tokens']:>7,} · 출력 {u['output_tokens']:>6,} · 검색 "
               f"{u['web_search_requests']} · fetch {u['web_fetch_requests']} · 출처 {found}"
               f" · ${r['cost_usd']:.3f} · {'/'.join(r['stop_reasons'])}")
-    out = ROOT / ".work" / "measure" / f"web_search-{date.today().isoformat()}.json"
+    tag = "-" + args.only.replace("/", "__") if args.only else ""
+    out = ROOT / ".work" / "measure" / f"web_search-{date.today().isoformat()}{tag}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"model": MODEL, "tools": TOOLS, "results": results,
                                "total_usd": round(spent, 4)}, ensure_ascii=False, indent=2), encoding="utf-8")

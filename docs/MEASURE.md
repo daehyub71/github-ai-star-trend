@@ -223,3 +223,20 @@
 | 고친 것 | 연결 오류를 2·4·…·64초로 6번 재시도, 그래도 안 되면 실행을 멈춘다(저장소 하나의 실패로 넘기지 않는다). 회귀 테스트 3개(NFR-10) |
 | 2차 실행 | 2026-10-27 06:45 캐시로 이어 돌리기 — 남은 약 4.7만 개는 최근 저장소가 많아 저장소당 1~2회 |
 
+## 15. D-7 웹 검색 실측 (2026-10-27, `scripts/measure_web_search.py`)
+
+원자료: `.work/measure/web_search-2026-10-27*.json`. 모델 `claude-opus-5-5`(effort 기본 medium), 도구 `web_search_20260209`(max_uses 3) + `web_fetch_20260209`(max_uses 3, max_content_tokens 8000), Batch 아님. 사용자 승인 상한 $3 — **실제 지출 $0.91**(5개 $0.75 + 진단 1개 $0.16).
+
+| 저장소 | 입력 토큰 | 출력 | 검색 | fetch | 출처 | 비용 |
+|---|---:|---:|---:|---:|---:|---:|
+| cloudflare/security-audit-skill | 29,055 | 485 | 3 | 0 | 0 | $0.156 |
+| Graphify-Labs/graphify | 29,290 | 499 | 3 | 0 | 0 | $0.157 |
+| debpalash/VoiceStudio | 29,251 | 605 | 3 | 0 | 0 | $0.159 |
+| stablyai/orca | 29,110 | 499 | 3 | 0 | 0 | $0.156 |
+| google-research/harness2 | 21,213 | 347 | 3 | 0 | 0 | $0.122 |
+
+- **비용:** 저장소당 약 $0.15(검색 3회 $0.03 + 입력 약 2.9만 토큰). Batch 면 토큰 50% → 약 $0.09. 주 15~45개면 **주 $1.4~4.2(Batch)** — 주 예산 $10(결정 31)의 상당 부분이다.
+- **품질: 5개 모두 출처 0개.** 그러나 외부 글은 있다(별도 검색으로 graphify 리뷰 dev.to·CodeConductor, security-audit-skill 뉴스·소개 글 확인).
+- **원인(graphify 진단 실행):** 동적 필터링판은 모델이 코드로 검색을 돌린다. 첫 코드가 결과 파싱 오류로 죽고, 같은 검색어를 두 번 써서 `max_uses` 3 에 걸렸다("Server tool use limit exceeded during code execution"). 받은 결과에 제3자 글(gopenai 블로그, clskillshub 블로그, skillselion 가이드 등)이 있었는데도 최종 답은 `[]` 였다.
+- **뜻:** 서버 쪽 검색은 결과가 흔들리고(같은 입력에 같은 실패), 무엇을 봤는지 우리 쪽에 남지 않아 인용 게이트의 근거 목록(FR-5.6)과 맞추기 어렵다. 설정을 바꿔 다시 재거나, 검색은 우리 코드가 하고 Claude 는 판정·요약만 하는 구성을 비교해야 한다 → D-7 선택지.
+
