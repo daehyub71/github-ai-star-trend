@@ -233,13 +233,7 @@
           ],
           "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 82.9%",
-              "value": 82.9
-            }
-          ],
+          "flags": [],
           "forks": 55672,
           "full_name": "ZhuLinsen/daily_stock_analysis",
           "gain": 1392,
@@ -804,18 +798,7 @@
           ],
           "description": "A lightweight alternative to OpenClaw that runs in containers for security. Connects to WhatsApp, Telegram, Slack, Discord, Gmail and other messaging apps,, has memory, scheduled jobs, and runs directly on Anthropic's Agents SDK",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.0%",
-              "value": 41.0
-            }
-          ],
+          "flags": [],
           "forks": 12708,
           "full_name": "nanocoai/nanoclaw",
           "gain": 5870,
@@ -976,13 +959,7 @@
           ],
           "description": "The most powerful local music generation model that outperforms almost all commercial alternatives, supporting Mac, AMD, Intel, and CUDA devices.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 750배",
-              "value": 750.5
-            }
-          ],
+          "flags": [],
           "forks": 1856,
           "full_name": "ace-step/ACE-Step-1.5",
           "gain": 4497,
@@ -1305,13 +1282,7 @@
           ],
           "description": "Visualize, collaborate, and evolve the software architecture with always actual and live diagrams from your code",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 409,
           "full_name": "likec4/likec4",
           "gain": 956,
@@ -1418,13 +1389,7 @@
           ],
           "description": "一个基于 Next.js 16 构建的现代化视频聚合播放平台。采用独特的 \"Liquid Glass\" 设计语言，提供流畅的视觉体验和强大的视频搜索功能。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 171.4%",
-              "value": 171.4
-            }
-          ],
+          "flags": [],
           "forks": 7218,
           "full_name": "KuekHaoYang/KVideo",
           "gain": 567,
@@ -1451,18 +1416,7 @@
           ],
           "description": "Multi-Agent Harness for Production AI",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 9.8%",
-              "value": 9.8
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 50.8%",
-              "value": 50.8
-            }
-          ],
+          "flags": [],
           "forks": 5647,
           "full_name": "aden-hive/hive",
           "gain": 1796,
@@ -1943,13 +1897,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 90,

@@ -81,13 +81,7 @@
           ],
           "description": "MiMo Code: Where Models and Agents Co-Evolve",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.5%",
-              "value": 8.5
-            }
-          ],
+          "flags": [],
           "forks": 1451,
           "full_name": "XiaomiMiMo/MiMo-Code",
           "gain": 2012,
@@ -311,13 +305,7 @@
           ],
           "description": "Omnigent is an open-source AI agent framework and meta-harness: orchestrate Claude Code, Codex, Cursor, Pi, and custom agents — swap harnesses without rewriting, enforce policies and sandboxing, and collaborate in real time from any device.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 22.6%",
-              "value": 22.6
-            }
-          ],
+          "flags": [],
           "forks": 1811,
           "full_name": "omnigent-ai/omnigent",
           "gain": 3500,
@@ -431,13 +419,7 @@
           ],
           "description": "Task-oriented AI Agent productivity platform",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.9%",
-              "value": 3.9
-            }
-          ],
+          "flags": [],
           "forks": 541,
           "full_name": "OpenBMB/PilotDeck",
           "gain": 291,
@@ -913,13 +895,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 5610,
@@ -1266,13 +1242,7 @@
           ],
           "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 480배",
-              "value": 479.7
-            }
-          ],
+          "flags": [],
           "forks": 1963,
           "full_name": "NVIDIA/SkillSpector",
           "gain": 4075,
@@ -1677,13 +1647,7 @@
           ],
           "description": "Keyboard-first local Markdown notes with Vim motions, diagrams, and MCP integration.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.7%",
-              "value": 3.7
-            }
-          ],
+          "flags": [],
           "forks": 152,
           "full_name": "ZenNotes/zennotes",
           "gain": 384,
@@ -2104,13 +2068,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 70,

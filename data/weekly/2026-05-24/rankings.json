@@ -16,13 +16,7 @@
           ],
           "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.5%",
-              "value": 3.5
-            }
-          ],
+          "flags": [],
           "forks": 2338,
           "full_name": "antirez/ds4",
           "gain": 973,
@@ -76,13 +70,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 71.6%",
-              "value": 71.6
-            }
-          ],
+          "flags": [],
           "forks": 5159,
           "full_name": "FULU-Foundation/OrcaSlicer-bambulab",
           "gain": 253,
@@ -809,13 +797,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 9253,
@@ -2031,13 +2013,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 82,

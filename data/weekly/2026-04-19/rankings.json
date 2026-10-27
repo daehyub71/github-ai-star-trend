@@ -16,13 +16,7 @@
           ],
           "description": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 55.2%",
-              "value": 55.2
-            }
-          ],
+          "flags": [],
           "forks": 107697,
           "full_name": "ultraworkers/claw-code",
           "gain": 2519,
@@ -287,13 +281,7 @@
           ],
           "description": "原汁原昧 Claude Code 可运行,可构建, 可调试版; 生产级工程化, 企业级可靠性; 安全无毒, 内存泄露修复",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 71.4%",
-              "value": 71.4
-            }
-          ],
+          "flags": [],
           "forks": 16457,
           "full_name": "claude-code-best/claude-code",
           "gain": 649,
@@ -427,13 +415,7 @@
           ],
           "description": "Research on Coding Agents",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 157.5%",
-              "value": 157.5
-            }
-          ],
+          "flags": [],
           "forks": 19374,
           "full_name": "sanbuphy/learn-coding-agent",
           "gain": 63,
@@ -592,13 +574,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 16822,
@@ -1013,13 +989,7 @@
           ],
           "description": "Archived — ML Intern is no longer maintained. Continue with HuggingChat.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 392배",
-              "value": 392.1
-            }
-          ],
+          "flags": [],
           "forks": 1194,
           "full_name": "huggingface/ml-intern",
           "gain": 6257,
@@ -1239,13 +1209,7 @@
           ],
           "description": "AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 3,919배",
-              "value": 3919.0
-            }
-          ],
+          "flags": [],
           "forks": 334,
           "full_name": "thunderbird/thunderbolt",
           "gain": 2260,
@@ -1419,13 +1383,7 @@
           ],
           "description": "아래한글 hwp viewer and editor by rust and wasm",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 9.2%",
-              "value": 9.2
-            }
-          ],
+          "flags": [],
           "forks": 782,
           "full_name": "edwardkim/rhwp",
           "gain": 1143,
@@ -2076,13 +2034,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 95,

@@ -264,11 +264,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 51%",
               "value": 51
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
             }
           ],
           "forks": 1929,
@@ -579,11 +574,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 126배",
               "value": 125.9
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.1%",
-              "value": 10.1
             }
           ],
           "forks": 4829,
@@ -757,13 +747,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 6071,
@@ -816,11 +800,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 51%",
               "value": 51
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
             }
           ],
           "forks": 1929,
@@ -1011,13 +990,7 @@
           ],
           "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3225,
           "full_name": "agentscope-ai/QwenPaw",
           "gain": 4820,
@@ -1428,11 +1401,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 126배",
               "value": 125.9
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.1%",
-              "value": 10.1
             }
           ],
           "forks": 4829,
@@ -2079,13 +2047,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 95,

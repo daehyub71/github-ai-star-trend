@@ -413,13 +413,7 @@
           ],
           "description": "Here is a dlssg for RTX30 Series GPU ",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.3%",
-              "value": 4.3
-            }
-          ],
+          "flags": [],
           "forks": 254,
           "full_name": "sdli1995/dlssg_for_sm86",
           "gain": 1318,
@@ -446,13 +440,7 @@
           ],
           "description": "Unofficial source-oriented reconstruction and extension of Grok Bot 0.18.0 for macOS",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 103.3%",
-              "value": 103.3
-            }
-          ],
+          "flags": [],
           "forks": 3655,
           "full_name": "b-nnett/grok-bot-0.18-reconstructed",
           "gain": 14,
@@ -948,13 +936,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5580,
@@ -1229,13 +1211,7 @@
           ],
           "description": "A smarter, self-hosted AI assistant — multi-user, multi-agent.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1441,
           "full_name": "TencentCloud/Octop",
           "gain": 2651,
@@ -1357,13 +1333,7 @@
           ],
           "description": "AI-native, GPU-accelerated terminal emulator for Windows with SSH, persistent sessions, split panes, and first-class AI CLI workflows.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.6%",
-              "value": 4.6
-            }
-          ],
+          "flags": [],
           "forks": 208,
           "full_name": "Kuddev/pebrel",
           "gain": 876,
@@ -1499,13 +1469,7 @@
           ],
           "description": "Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA). Open alternative to Kommo, Octadesk & Intercom for any business that sells by chat. MCP-ready, multi-tenant, LGPD.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.2%",
-              "value": 7.2
-            }
-          ],
+          "flags": [],
           "forks": 1360,
           "full_name": "melgarafael/DeskcommCRM",
           "gain": 1400,
@@ -1553,13 +1517,7 @@
           ],
           "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.6%",
-              "value": 4.6
-            }
-          ],
+          "flags": [],
           "forks": 1304,
           "full_name": "ever-co/ever-gauzy",
           "gain": 3254,
@@ -2100,13 +2058,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 193,

@@ -475,13 +475,7 @@
           ],
           "description": "Minimal CLI coding agent by Mistral",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.2%",
-              "value": 8.2
-            }
-          ],
+          "flags": [],
           "forks": 748,
           "full_name": "mistralai/mistral-vibe",
           "gain": 105,
@@ -884,13 +878,7 @@
           ],
           "description": "Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools. Built with Tauri v2 + React (Rust).专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.3%",
-              "value": 5.3
-            }
-          ],
+          "flags": [],
           "forks": 3496,
           "full_name": "lbjlaq/Antigravity-Manager",
           "gain": 3188,
@@ -1307,13 +1295,7 @@
           ],
           "description": "Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools. Built with Tauri v2 + React (Rust).专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.3%",
-              "value": 5.3
-            }
-          ],
+          "flags": [],
           "forks": 3496,
           "full_name": "lbjlaq/Antigravity-Manager",
           "gain": 3188,
@@ -1489,13 +1471,7 @@
           ],
           "description": "This Repository Contain All the Artificial Intelligence Projects such as Machine Learning, Deep Learning and Generative AI that I have done while understanding Advanced Techniques & Concepts.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 35배",
-              "value": 35.5
-            }
-          ],
+          "flags": [],
           "forks": 1375,
           "full_name": "KalyanM45/AI-Project-Gallery",
           "gain": 712,
@@ -1968,13 +1944,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 49,

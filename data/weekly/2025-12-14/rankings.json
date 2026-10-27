@@ -319,13 +319,7 @@
           ],
           "description": "s&box is a modern game engine, built on Valve's Source 2 and the latest .NET technology, it provides a modern intuitive editor for creating games",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 36.2%",
-              "value": 36.2
-            }
-          ],
+          "flags": [],
           "forks": 692,
           "full_name": "Facepunch/sbox-public",
           "gain": 75,
@@ -356,13 +350,7 @@
           ],
           "description": "Native Proxy Experience Built for macOS",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 263,
           "full_name": "666OS/ClashMac",
           "gain": 433,
@@ -526,18 +514,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,095배",
-              "value": 1095.2
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.5%",
-              "value": 3.5
-            }
-          ],
+          "flags": [],
           "forks": 1350,
           "full_name": "a2ui-project/a2ui",
           "gain": 5471,
@@ -1201,13 +1178,7 @@
           ],
           "description": "The personal finance app for everyone (by everyone)",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.4%",
-              "value": 7.4
-            }
-          ],
+          "flags": [],
           "forks": 692,
           "full_name": "we-promise/sure",
           "gain": 944,
@@ -1396,18 +1367,7 @@
           ],
           "description": "Terminal based IDE & text editor: easy, powerful and fast",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 800배",
-              "value": 800.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.1%",
-              "value": 4.1
-            }
-          ],
+          "flags": [],
           "forks": 368,
           "full_name": "sinelaw/fresh",
           "gain": 782,
@@ -1993,13 +1953,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 69,

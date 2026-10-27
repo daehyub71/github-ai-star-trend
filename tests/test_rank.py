@@ -59,49 +59,56 @@ def test_rank_total_axis_can_include_low_gain_totals():
 
 def test_rank_flag_peak_day_share():
     r = row(1, 22556, 22017, created=date(2026, 10, 16), days=(0, 3, 15264, 3401, 1601, 1076, 672))
-    flags = rank.flags_for(r, {1: r}, None, W)
+    flags = rank.flags_for(r, {1: r}, W)
     assert {"kind": "peak_day", "label": "하루 몰림 69%", "value": 69} in flags
 
 
 def test_rank_flag_peak_day_needs_meaningful_gain():
     r = row(1, 100, 20, days=(20, 0, 0, 0, 0, 0, 0))
-    assert rank.flags_for(r, {1: r}, None, W) == []
+    assert rank.flags_for(r, {1: r}, W) == []
 
 
 def test_rank_flag_same_owner_new_repos():
     rows = {i: row(i, 5000 + i, 100, created=date(2026, 10, 1), name=f"same/r{i}") for i in range(1, 5)}
-    flags = rank.flags_for(rows[1], rows, None, W)
+    flags = rank.flags_for(rows[1], rows, W)
     assert {"kind": "same_owner_new", "label": "같은 계정 새 저장소 4개", "value": 4} in flags
-
-
-def test_rank_flag_issue_and_fork_ratio_from_repo_info():
-    r = row(1, 72917, 6058)
-    info = {"forks": 12923, "open_issues": 3127, "stars": 72917}
-    kinds = {f["kind"]: f["label"] for f in rank.flags_for(r, {1: r}, info, W)}
-    assert kinds == {"issue_ratio": "열린 이슈 4.3%"}  # 포크 17.7% 는 기준(30%) 아래
 
 
 def test_rank_flag_dormant_burst():
     # 시험 소급(MEASURE §13)의 morluto/rea — 2026-04 생성, 4주 동안 396 → 379,884
     r = row(1, 379_884, 69_361, created=date(2026, 4, 14))
-    flags = rank.flags_for(r, {1: r}, None, W, prior_gain=145 + 77_992 + 231_990)
+    flags = rank.flags_for(r, {1: r}, W, prior_gain=145 + 77_992 + 231_990)
     assert flags == [{"kind": "dormant_burst", "label": "잠잠하다 4주 만에 959배", "value": 959.3}]
 
 
 def test_rank_flag_dormant_burst_skips_young_repo():
     # 생성 60일 미만은 원래 폭발적으로 큰다 — 같은 계정·하루 몰림 표시가 따로 본다
     r = row(1, 32_520, 32_023, created=date(2026, 10, 17))
-    assert rank.flags_for(r, {1: r}, None, W, prior_gain=497) == []
+    assert rank.flags_for(r, {1: r}, W, prior_gain=497) == []
 
 
 def test_rank_flag_dormant_burst_skips_large_start():
     r = row(1, 80_000, 30_000, created=date(2025, 1, 1))  # 4주 전 5,000 이상
-    assert rank.flags_for(r, {1: r}, None, W, prior_gain=40_000) == []
+    assert rank.flags_for(r, {1: r}, W, prior_gain=40_000) == []
+
+
+def test_rank_flag_dormant_burst_skips_launch_from_zero():
+    # 결정 49: 4주 전 스타가 100 미만이면 만들어 두었다가 공개·출시한 경우가 대부분이다
+    # (MEASURE §16 — andrewyng/context-hub 0 → 11,125 · cloudflare · facebook · NVIDIA …)
+    r = row(1, 11_125, 9_000, created=date(2025, 10, 30))
+    assert rank.flags_for(r, {1: r}, W, prior_gain=2_125) == []
+
+
+def test_rank_flag_dormant_burst_start_boundary_100():
+    r = row(1, 5_000, 3_000, created=date(2025, 1, 1))
+    assert rank.flags_for(r, {1: r}, W, prior_gain=1_901) == []  # 4주 전 99
+    hit = rank.flags_for(r, {1: r}, W, prior_gain=1_900)  # 4주 전 100 → 50배
+    assert hit == [{"kind": "dormant_burst", "label": "잠잠하다 4주 만에 50배", "value": 50.0}]
 
 
 def test_rank_flag_dormant_burst_needs_full_window():
     r = row(1, 379_884, 69_361, created=date(2026, 4, 14))
-    assert rank.flags_for(r, {1: r}, None, W) == []  # 지난 3주 값이 없으면 판단하지 않는다
+    assert rank.flags_for(r, {1: r}, W) == []  # 지난 3주 값이 없으면 판단하지 않는다
 
 
 def test_rank_prior_gains_none_when_a_week_file_is_missing(tmp_path):
@@ -162,6 +169,19 @@ def test_rank_run_marks_dormant_burst_with_full_window(tmp_path):
     rank.run_rank(_gh({1: cur}), week_start=W, data_dir=tmp_path, log=lambda m: None)
     entry = io.read_json(rank.rankings_path(tmp_path, W))["axes"]["gain"]["all"][0]
     assert [f["kind"] for f in entry["flags"]] == ["dormant_burst"]
+
+
+def test_rank_run_keeps_issue_and_fork_counts_without_flags(tmp_path):
+    # 결정 49: 이슈·포크 비율은 52주에서 정상 저장소가 대부분(MEASURE §16) — 수치만 남기고 표시하지 않는다
+    r = row(1, 2694, 900)
+    weekfile.write(weekfile.week_path(tmp_path, W), [r])
+    gh = MockGitHub()
+    raw = synth.repo(r.full_name, id=1, stars=2694)
+    raw["open_issues_count"], raw["forks_count"] = 975, 2233  # 36% · 83%
+    gh.add_repo(raw)
+    rank.run_rank(gh, week_start=W, data_dir=tmp_path, log=lambda m: None)
+    e = io.read_json(rank.rankings_path(tmp_path, W))["axes"]["gain"]["all"][0]
+    assert e["flags"] == [] and (e["open_issues"], e["forks"]) == (975, 2233)
 
 
 def test_rank_tracked_names_from_rankings(tmp_path):

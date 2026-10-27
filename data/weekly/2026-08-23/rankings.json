@@ -742,13 +742,7 @@
           ],
           "description": "FreeToken brings datacenter-scale model serving to your desktop. Run massive models locally, fast and efficiently.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.2%",
-              "value": 3.2
-            }
-          ],
+          "flags": [],
           "forks": 1496,
           "full_name": "FlashML-org/FreeToken",
           "gain": 7203,
@@ -784,13 +778,7 @@
           ],
           "description": "Free and open-source macOS menu bar toolkit.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.1%",
-              "value": 4.1
-            }
-          ],
+          "flags": [],
           "forks": 1445,
           "full_name": "vorssaint/vorssaint-utils",
           "gain": 6672,
@@ -834,13 +822,7 @@
           ],
           "description": "Beautiful, Modern & Opinionated Linux",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.7%",
-              "value": 12.7
-            }
-          ],
+          "flags": [],
           "forks": 5742,
           "full_name": "omacom/omarchy",
           "gain": 6494,
@@ -867,13 +849,7 @@
           ],
           "description": "Lightweight coding agent that runs in your terminal",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 19.1%",
-              "value": 19.1
-            }
-          ],
+          "flags": [],
           "forks": 20704,
           "full_name": "openai/codex",
           "gain": 5878,
@@ -900,13 +876,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5522,
@@ -954,13 +924,7 @@
           ],
           "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 31.4%",
-              "value": 31.4
-            }
-          ],
+          "flags": [],
           "forks": 20671,
           "full_name": "ai-job-search-dev/ai-job-search",
           "gain": 5216,
@@ -1154,13 +1118,7 @@
           ],
           "description": "FreeToken brings datacenter-scale model serving to your desktop. Run massive models locally, fast and efficiently.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.2%",
-              "value": 3.2
-            }
-          ],
+          "flags": [],
           "forks": 1496,
           "full_name": "FlashML-org/FreeToken",
           "gain": 7203,
@@ -1231,13 +1189,7 @@
           ],
           "description": "Open-source framework for the research and development of foundation models.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 330,
           "full_name": "marin-community/marin",
           "gain": 1612,
@@ -1425,13 +1377,7 @@
           ],
           "description": "Free and open-source macOS menu bar toolkit.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.1%",
-              "value": 4.1
-            }
-          ],
+          "flags": [],
           "forks": 1445,
           "full_name": "vorssaint/vorssaint-utils",
           "gain": 6672,
@@ -1502,13 +1448,7 @@
           ],
           "description": "Apache Maka (Incubating) is a high-performance agent workspace that keeps a complete record of everything it did.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.1%",
-              "value": 7.1
-            }
-          ],
+          "flags": [],
           "forks": 566,
           "full_name": "apache/maka",
           "gain": 1885,
@@ -2152,13 +2092,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 102,

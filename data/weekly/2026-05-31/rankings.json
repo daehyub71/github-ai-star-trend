@@ -70,13 +70,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 71.6%",
-              "value": 71.6
-            }
-          ],
+          "flags": [],
           "forks": 5159,
           "full_name": "FULU-Foundation/OrcaSlicer-bambulab",
           "gain": 143,
@@ -608,13 +602,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 11060,
@@ -814,18 +802,7 @@
           ],
           "description": "Astrid is a portable, capability-secure operating system for composable software.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 641배",
-              "value": 640.8
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.6%",
-              "value": 3.6
-            }
-          ],
+          "flags": [],
           "forks": 146,
           "full_name": "astrid-runtime/astrid",
           "gain": 7678,
@@ -1297,13 +1274,7 @@
           ],
           "description": "OpenSquilla — Token-Efficient AI Agent with same budget, higher intelligence density",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.0%",
-              "value": 4.0
-            }
-          ],
+          "flags": [],
           "forks": 586,
           "full_name": "TokenRhythm/opensquilla",
           "gain": 1213,
@@ -1342,13 +1313,7 @@
           ],
           "description": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.9%",
-              "value": 4.9
-            }
-          ],
+          "flags": [],
           "forks": 2491,
           "full_name": "t8y2/dbx",
           "gain": 1482,
@@ -2017,13 +1982,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 72,

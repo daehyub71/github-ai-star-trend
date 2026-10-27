@@ -431,13 +431,7 @@
           ],
           "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 82.9%",
-              "value": 82.9
-            }
-          ],
+          "flags": [],
           "forks": 55672,
           "full_name": "ZhuLinsen/daily_stock_analysis",
           "gain": 2549,
@@ -1329,13 +1323,7 @@
           ],
           "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 82.9%",
-              "value": 82.9
-            }
-          ],
+          "flags": [],
           "forks": 55672,
           "full_name": "ZhuLinsen/daily_stock_analysis",
           "gain": 2549,
@@ -1423,11 +1411,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 3개",
               "value": 3
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
             }
           ],
           "forks": 3167,
@@ -1947,13 +1930,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 157,

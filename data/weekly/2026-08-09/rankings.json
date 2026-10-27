@@ -108,13 +108,7 @@
           ],
           "description": "Multiplayer agent harness for work.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1929,
           "full_name": "yc-software/qm",
           "gain": 1070,
@@ -690,13 +684,7 @@
           ],
           "description": "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 4,022배",
-              "value": 4022.2
-            }
-          ],
+          "flags": [],
           "forks": 2484,
           "full_name": "PrimeIntellect-ai/prime-agent",
           "gain": 6885,
@@ -765,13 +753,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5830,
@@ -1482,13 +1464,7 @@
           ],
           "description": "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 4,022배",
-              "value": 4022.2
-            }
-          ],
+          "flags": [],
           "forks": 2484,
           "full_name": "PrimeIntellect-ai/prime-agent",
           "gain": 6885,
@@ -1554,13 +1530,7 @@
           ],
           "description": "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.3%",
-              "value": 10.3
-            }
-          ],
+          "flags": [],
           "forks": 706,
           "full_name": "vitali87/code-graph-rag",
           "gain": 1719,
@@ -2133,13 +2103,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 114,

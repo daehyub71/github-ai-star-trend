@@ -197,18 +197,7 @@
           ],
           "description": "A lightweight alternative to OpenClaw that runs in containers for security. Connects to WhatsApp, Telegram, Slack, Discord, Gmail and other messaging apps,, has memory, scheduled jobs, and runs directly on Anthropic's Agents SDK",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.0%",
-              "value": 41.0
-            }
-          ],
+          "flags": [],
           "forks": 12708,
           "full_name": "nanocoai/nanoclaw",
           "gain": 2127,
@@ -1054,13 +1043,7 @@
           ],
           "description": "A secure Python sandbox, written in Rust, for code written by AI.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 5,112배",
-              "value": 5112.0
-            }
-          ],
+          "flags": [],
           "forks": 476,
           "full_name": "pydantic/monty",
           "gain": 3022,
@@ -1200,13 +1183,7 @@
           ],
           "description": "from vibe coding to agentic engineering - practice makes claude perfect",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 27배",
-              "value": 27.3
-            }
-          ],
+          "flags": [],
           "forks": 6781,
           "full_name": "shanraisshan/claude-code-best-practice",
           "gain": 1140,
@@ -1254,18 +1231,7 @@
           ],
           "description": "A security-focused library OS supporting kernel- and user-mode execution",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 515배",
-              "value": 515.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.7%",
-              "value": 4.7
-            }
-          ],
+          "flags": [],
           "forks": 183,
           "full_name": "microsoft/litebox",
           "gain": 882,
@@ -1925,13 +1891,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 72,

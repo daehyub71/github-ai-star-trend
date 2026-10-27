@@ -97,13 +97,7 @@
           ],
           "description": "Multiplayer agent harness for work.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1929,
           "full_name": "yc-software/qm",
           "gain": 7115,
@@ -612,13 +606,7 @@
           ],
           "description": "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 2,301배",
-              "value": 2301.0
-            }
-          ],
+          "flags": [],
           "forks": 2484,
           "full_name": "PrimeIntellect-ai/prime-agent",
           "gain": 9200,
@@ -645,13 +633,7 @@
           ],
           "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 2914,
           "full_name": "TencentCloud/TencentDB-Agent-Memory",
           "gain": 7864,
@@ -688,13 +670,7 @@
           ],
           "description": "Multiplayer agent harness for work.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1929,
           "full_name": "yc-software/qm",
           "gain": 7115,
@@ -758,11 +734,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 51%",
               "value": 51
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 6,762배",
-              "value": 6762.0
             }
           ],
           "forks": 1411,
@@ -791,13 +762,7 @@
           ],
           "description": "Give your agent a computer 👾",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 132배",
-              "value": 132.0
-            }
-          ],
+          "flags": [],
           "forks": 576,
           "full_name": "cloudflare/computer",
           "gain": 6537,
@@ -1133,13 +1098,7 @@
           ],
           "description": "Multiplayer agent harness for work.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1929,
           "full_name": "yc-software/qm",
           "gain": 7115,
@@ -1246,13 +1205,7 @@
           ],
           "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 2914,
           "full_name": "TencentCloud/TencentDB-Agent-Memory",
           "gain": 7864,
@@ -1343,18 +1296,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,924배",
-              "value": 1924.0
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 88.9%",
-              "value": 88.9
-            }
-          ],
+          "flags": [],
           "forks": 1710,
           "full_name": "dimmas893/github-runner-organizations",
           "gain": 787,
@@ -1381,18 +1323,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 175배",
-              "value": 175.4
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 88.7%",
-              "value": 88.7
-            }
-          ],
+          "flags": [],
           "forks": 1713,
           "full_name": "dimmas893/pos-frontend",
           "gain": 789,
@@ -1419,18 +1350,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,939배",
-              "value": 1939.0
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 87.5%",
-              "value": 87.5
-            }
-          ],
+          "flags": [],
           "forks": 1697,
           "full_name": "dimmas893/github-runner-single",
           "gain": 788,
@@ -1457,18 +1377,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 138배",
-              "value": 138.1
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 87.7%",
-              "value": 87.7
-            }
-          ],
+          "flags": [],
           "forks": 1696,
           "full_name": "dimmas893/pos-backend",
           "gain": 784,
@@ -1495,18 +1404,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,956배",
-              "value": 1956.0
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 87.4%",
-              "value": 87.4
-            }
-          ],
+          "flags": [],
           "forks": 1711,
           "full_name": "dimmas893/kasir",
           "gain": 793,
@@ -1990,13 +1888,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 105,

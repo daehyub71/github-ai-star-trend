@@ -284,13 +284,7 @@
           ],
           "description": "The Open Framework for Building Agents",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 13.8%",
-              "value": 13.8
-            }
-          ],
+          "flags": [],
           "forks": 630,
           "full_name": "vercel/eve",
           "gain": 248,
@@ -450,13 +444,7 @@
           ],
           "description": "Free and open-source macOS menu bar toolkit.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.1%",
-              "value": 4.1
-            }
-          ],
+          "flags": [],
           "forks": 1445,
           "full_name": "vorssaint/vorssaint-utils",
           "gain": 334,
@@ -505,13 +493,7 @@
           ],
           "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 31.4%",
-              "value": 31.4
-            }
-          ],
+          "flags": [],
           "forks": 20671,
           "full_name": "ai-job-search-dev/ai-job-search",
           "gain": 15836,
@@ -1081,13 +1063,7 @@
           ],
           "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 31.4%",
-              "value": 31.4
-            }
-          ],
+          "flags": [],
           "forks": 20671,
           "full_name": "ai-job-search-dev/ai-job-search",
           "gain": 15836,
@@ -1265,13 +1241,7 @@
           ],
           "description": "Advanced UX and interoperability extension for Wand (WeMod) app",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 258.5%",
-              "value": 258.5
-            }
-          ],
+          "flags": [],
           "forks": 85561,
           "full_name": "k1tbyte/Wand-Enhancer",
           "gain": 3181,
@@ -1955,13 +1925,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 76,

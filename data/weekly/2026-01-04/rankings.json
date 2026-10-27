@@ -799,13 +799,7 @@
           ],
           "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.2%",
-              "value": 10.2
-            }
-          ],
+          "flags": [],
           "forks": 26052,
           "full_name": "anthropics/claude-code",
           "gain": 3906,
@@ -859,13 +853,7 @@
           ],
           "description": "Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools. Built with Tauri v2 + React (Rust).专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.3%",
-              "value": 5.3
-            }
-          ],
+          "flags": [],
           "forks": 3496,
           "full_name": "lbjlaq/Antigravity-Manager",
           "gain": 3266,
@@ -1542,13 +1530,7 @@
           ],
           "description": "Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools. Built with Tauri v2 + React (Rust).专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.3%",
-              "value": 5.3
-            }
-          ],
+          "flags": [],
           "forks": 3496,
           "full_name": "lbjlaq/Antigravity-Manager",
           "gain": 3266,
@@ -1953,13 +1935,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 68,

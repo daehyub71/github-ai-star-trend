@@ -21,11 +21,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.3%",
-              "value": 4.3
             }
           ],
           "forks": 12931,
@@ -204,16 +199,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.7%",
-              "value": 11.7
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 38.2%",
-              "value": 38.2
             }
           ],
           "forks": 6844,
@@ -256,16 +241,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.9%",
-              "value": 10.9
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.8%",
-              "value": 41.8
             }
           ],
           "forks": 6825,
@@ -306,11 +281,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.1%",
-              "value": 11.1
             }
           ],
           "forks": 4389,
@@ -377,16 +347,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.2%",
-              "value": 8.2
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 38.5%",
-              "value": 38.5
             }
           ],
           "forks": 5655,
@@ -475,16 +435,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.3%",
-              "value": 8.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 48.9%",
-              "value": 48.9
             }
           ],
           "forks": 5235,
@@ -557,13 +507,7 @@
           ],
           "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 32.2%",
-              "value": 32.2
-            }
-          ],
+          "flags": [],
           "forks": 1312,
           "full_name": "tangency-labs/solidcraft",
           "gain": 5691,
@@ -867,13 +811,7 @@
           ],
           "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 31.4%",
-              "value": 31.4
-            }
-          ],
+          "flags": [],
           "forks": 20671,
           "full_name": "ai-job-search-dev/ai-job-search",
           "gain": 14281,
@@ -960,13 +898,7 @@
           ],
           "description": "Peach: Local-first video metadata scraper and media manager.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 2,245배",
-              "value": 2244.8
-            }
-          ],
+          "flags": [],
           "forks": 1488,
           "full_name": "peach-mitao/peach",
           "gain": 11040,
@@ -1001,13 +933,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 9647,
@@ -1280,13 +1206,7 @@
           ],
           "description": "DeepSeek Harness 破甲：让所有模型都能破甲，不同模型可换不同提示词；默认提示词面向国模「小码酱」。Jailbreak for every model — swap prompts per model. 求 Star 收藏 ⭐ 如要二开，请查看署名要求部分",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 8,297배",
-              "value": 8297.0
-            }
-          ],
+          "flags": [],
           "forks": 2146,
           "full_name": "YuJunZhiXue/dsh-purge",
           "gain": 6634,
@@ -1493,13 +1413,7 @@
           ],
           "description": "A self-hosted UPI & COD payment gateway with zero per-transaction platform fees, universal JavaScript checkout integration, dynamic QR payments, WhatsApp OTP authentication, and automated payment verification.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 34.8%",
-              "value": 34.8
-            }
-          ],
+          "flags": [],
           "forks": 915,
           "full_name": "youpi-pg/YouPI-PG",
           "gain": 1454,
@@ -1574,13 +1488,7 @@
           ],
           "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 32.2%",
-              "value": 32.2
-            }
-          ],
+          "flags": [],
           "forks": 1312,
           "full_name": "tangency-labs/solidcraft",
           "gain": 5691,
@@ -1800,13 +1708,7 @@
           ],
           "description": "基于项目PC2005-cloud/dsh-pet.git，将桌宠移植到Windows、Linux和MacOS上，现在可以随时看到蓝色大肥鱼了：），本项目还额外实现了其他交互功能，欢迎体验",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.2%",
-              "value": 3.2
-            }
-          ],
+          "flags": [],
           "forks": 169,
           "full_name": "MerZlin/dsh-pet-indesktop",
           "gain": 1021,

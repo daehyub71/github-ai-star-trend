@@ -97,13 +97,7 @@
           ],
           "description": "Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 4987,
           "full_name": "zeroclaw-labs/zeroclaw",
           "gain": 4517,
@@ -139,18 +133,7 @@
           ],
           "description": "A lightweight alternative to OpenClaw that runs in containers for security. Connects to WhatsApp, Telegram, Slack, Discord, Gmail and other messaging apps,, has memory, scheduled jobs, and runs directly on Anthropic's Agents SDK",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.0%",
-              "value": 41.0
-            }
-          ],
+          "flags": [],
           "forks": 12708,
           "full_name": "nanocoai/nanoclaw",
           "gain": 5284,
@@ -409,13 +392,7 @@
           ],
           "description": "Vite plugin that reimplements the Next.js API surface — deploy anywhere",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 460,
           "full_name": "cloudflare/vinext",
           "gain": 4619,
@@ -469,13 +446,7 @@
           ],
           "description": "IronClaw is an Agent OS focused on privacy, security and extensibility",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.3%",
-              "value": 12.3
-            }
-          ],
+          "flags": [],
           "forks": 1487,
           "full_name": "nearai/ironclaw",
           "gain": 1024,
@@ -1082,18 +1053,7 @@
           ],
           "description": "A lightweight alternative to OpenClaw that runs in containers for security. Connects to WhatsApp, Telegram, Slack, Discord, Gmail and other messaging apps,, has memory, scheduled jobs, and runs directly on Anthropic's Agents SDK",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.0%",
-              "value": 41.0
-            }
-          ],
+          "flags": [],
           "forks": 12708,
           "full_name": "nanocoai/nanoclaw",
           "gain": 5284,
@@ -1261,13 +1221,7 @@
           ],
           "description": "Open source Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents. Built for multitasking, organization, and programmability.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 13.2%",
-              "value": 13.2
-            }
-          ],
+          "flags": [],
           "forks": 2589,
           "full_name": "manaflow-ai/cmux",
           "gain": 1735,
@@ -1527,13 +1481,7 @@
           ],
           "description": "Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real desktop and takes commands from your phone via WeChat, Feishu, DingTalk & Telegram.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 977,
           "full_name": "netease-youdao/LobsterAI",
           "gain": 1395,
@@ -1709,13 +1657,7 @@
           ],
           "description": "The first AI that can earn its own existence, replicate, and evolve — without needing a human",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.6%",
-              "value": 3.6
-            }
-          ],
+          "flags": [],
           "forks": 1729,
           "full_name": "Conway-Research/automaton",
           "gain": 1047,
@@ -2058,13 +2000,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 101,

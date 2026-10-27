@@ -16,13 +16,7 @@
           ],
           "description": "Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 4987,
           "full_name": "zeroclaw-labs/zeroclaw",
           "gain": 2919,
@@ -208,13 +202,7 @@
           ],
           "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3225,
           "full_name": "agentscope-ai/QwenPaw",
           "gain": 6600,
@@ -258,13 +246,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 8506,
@@ -411,13 +393,7 @@
           ],
           "description": "Vite plugin that reimplements the Next.js API surface — deploy anywhere",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 460,
           "full_name": "cloudflare/vinext",
           "gain": 1470,
@@ -851,13 +827,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 8506,
@@ -1121,13 +1091,7 @@
           ],
           "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3225,
           "full_name": "agentscope-ai/QwenPaw",
           "gain": 6600,
@@ -1176,13 +1140,7 @@
           ],
           "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3225,
           "full_name": "agentscope-ai/QwenPaw",
           "gain": 6600,
@@ -1331,13 +1289,7 @@
           ],
           "description": "Paradev (formerly Superset) is an agentic IDE to orchestrate 100+ coding agents in parallel. Run any agent with your own subscription.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.8%",
-              "value": 6.8
-            }
-          ],
+          "flags": [],
           "forks": 1385,
           "full_name": "ParadevAI/Paradev",
           "gain": 2963,
@@ -1675,13 +1627,7 @@
           ],
           "description": "IronClaw is an Agent OS focused on privacy, security and extensibility",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.3%",
-              "value": 12.3
-            }
-          ],
+          "flags": [],
           "forks": 1487,
           "full_name": "nearai/ironclaw",
           "gain": 3087,
@@ -2138,13 +2084,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 159,

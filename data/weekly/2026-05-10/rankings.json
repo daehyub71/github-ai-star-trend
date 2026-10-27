@@ -244,13 +244,7 @@
           ],
           "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.5%",
-              "value": 3.5
-            }
-          ],
+          "flags": [],
           "forks": 2338,
           "full_name": "antirez/ds4",
           "gain": 5032,
@@ -422,13 +416,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 71.6%",
-              "value": 71.6
-            }
-          ],
+          "flags": [],
           "forks": 5159,
           "full_name": "FULU-Foundation/OrcaSlicer-bambulab",
           "gain": 5352,
@@ -622,13 +610,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 12319,
@@ -696,13 +678,7 @@
           ],
           "description": "The fastest, cheapest, most efficient open-source agent harness. Run more than 500 agents on a $10 VPS.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 130배",
-              "value": 130.0
-            }
-          ],
+          "flags": [],
           "forks": 4192,
           "full_name": "tinyhumansai/openhuman",
           "gain": 10143,
@@ -958,13 +934,7 @@
           ],
           "description": "Open-source agent for the terminal written in Rust. Use any provider or model. Issues & PRs always welcome",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,082배",
-              "value": 1082.1
-            }
-          ],
+          "flags": [],
           "forks": 3566,
           "full_name": "codewhale-hq/Codewhale",
           "gain": 7014,
@@ -1526,13 +1496,7 @@
           ],
           "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.5%",
-              "value": 3.5
-            }
-          ],
+          "flags": [],
           "forks": 2338,
           "full_name": "antirez/ds4",
           "gain": 5032,
@@ -1624,13 +1588,7 @@
           ],
           "description": "Unlimited FREE AI coding. Connect Claude Code, Codex, Cursor, Cline, Copilot, Antigravity to FREE Claude/GPT/Gemini via 40+ providers. Auto-fallback, RTK -40% tokens, never hit limits.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.6%",
-              "value": 8.6
-            }
-          ],
+          "flags": [],
           "forks": 6113,
           "full_name": "decolua/9router",
           "gain": 4347,
@@ -1714,13 +1672,7 @@
           ],
           "description": "NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 335,
           "full_name": "NVIDIA/cuda-rust",
           "gain": 674,
@@ -2144,13 +2096,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 103,

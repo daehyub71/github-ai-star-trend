@@ -184,13 +184,7 @@
           ],
           "description": "s&box is a modern game engine, built on Valve's Source 2 and the latest .NET technology, it provides a modern intuitive editor for creating games",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 36.2%",
-              "value": 36.2
-            }
-          ],
+          "flags": [],
           "forks": 692,
           "full_name": "Facepunch/sbox-public",
           "gain": 92,
@@ -260,13 +254,7 @@
           ],
           "description": "iOS /iPadOS 16.0 - 26.1, An ultimate customization tool, uilitizing the bug that makes TrollRestore possible. ",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.1%",
-              "value": 8.1
-            }
-          ],
+          "flags": [],
           "forks": 187,
           "full_name": "straight-tamago/misaka26",
           "gain": 100,
@@ -418,13 +406,7 @@
           ],
           "description": "Native Proxy Experience Built for macOS",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 263,
           "full_name": "666OS/ClashMac",
           "gain": 318,
@@ -490,13 +472,7 @@
           ],
           "description": "Minimal CLI coding agent by Mistral",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.2%",
-              "value": 8.2
-            }
-          ],
+          "flags": [],
           "forks": 748,
           "full_name": "mistralai/mistral-vibe",
           "gain": 1804,
@@ -1336,13 +1312,7 @@
           ],
           "description": "MoonTV/LunaTV源配置，每日自动检测API状态，可在CF部署CORSAPI中转被墙API，本人提供的CORSAPI仅为测试使用，请勿滥用！",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 37.7%",
-              "value": 37.7
-            }
-          ],
+          "flags": [],
           "forks": 1678,
           "full_name": "hafrey1/LunaTV-config",
           "gain": 502,
@@ -1369,13 +1339,7 @@
           ],
           "description": "Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 2,497배",
-              "value": 2497.0
-            }
-          ],
+          "flags": [],
           "forks": 3200,
           "full_name": "siddharthvaddem/openscreen",
           "gain": 760,
@@ -1435,13 +1399,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.4%",
-              "value": 5.4
-            }
-          ],
+          "flags": [],
           "forks": 377,
           "full_name": "microsoft/foundry-local",
           "gain": 519,
@@ -1571,13 +1529,7 @@
           ],
           "description": "privacy-first Android music player built with Material 3 Expressive. Play offline, sync lyrics, fine-tune with equalizer presets, and cast to your devices.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 9.7%",
-              "value": 9.7
-            }
-          ],
+          "flags": [],
           "forks": 558,
           "full_name": "PixelPlayerHQ/PixelPlayer",
           "gain": 404,
@@ -1886,13 +1838,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 80,

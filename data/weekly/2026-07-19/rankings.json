@@ -605,11 +605,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 75배",
               "value": 74.7
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.1%",
-              "value": 10.1
             }
           ],
           "forks": 4829,
@@ -731,11 +726,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 54%",
               "value": 54
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 3,690배",
-              "value": 3690.0
             }
           ],
           "forks": 20,
@@ -769,11 +759,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 52%",
               "value": 52
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 3,671배",
-              "value": 3671.0
             }
           ],
           "forks": 19,
@@ -840,11 +825,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 52%",
               "value": 52
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 3,616배",
-              "value": 3616.0
             }
           ],
           "forks": 15,
@@ -873,13 +853,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 7083,
@@ -927,13 +901,7 @@
           ],
           "description": "Self-hosted deployment platform",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 300배",
-              "value": 300.4
-            }
-          ],
+          "flags": [],
           "forks": 1355,
           "full_name": "oblien/openship",
           "gain": 6688,
@@ -1132,13 +1100,7 @@
           ],
           "description": "Self-hosted deployment platform",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 300배",
-              "value": 300.4
-            }
-          ],
+          "flags": [],
           "forks": 1355,
           "full_name": "oblien/openship",
           "gain": 6688,
@@ -1170,13 +1132,7 @@
           ],
           "description": "The go-to web for your AI coding agent — local-first search, fetch, crawl & research over MCP. No API keys, no cloud, $0/query. Public beta.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 295배",
-              "value": 294.7
-            }
-          ],
+          "flags": [],
           "forks": 449,
           "full_name": "KnockOutEZ/wigolo",
           "gain": 2206,
@@ -1304,11 +1260,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 14배",
               "value": 13.6
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 58.4%",
-              "value": 58.4
             }
           ],
           "forks": 1478,
@@ -1626,13 +1577,7 @@
           ],
           "description": "JiuwenSwarm is an intelligent AI Agent built on openJiuwen. It extends the powerful capabilities of large language models directly to your fingertips through various communication apps you use daily.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 22.8%",
-              "value": 22.8
-            }
-          ],
+          "flags": [],
           "forks": 1132,
           "full_name": "openJiuwen-ai/jiuwenswarm",
           "gain": 487,
@@ -2046,13 +1991,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 116,

@@ -108,13 +108,7 @@
           ],
           "description": "MiMo Code: Where Models and Agents Co-Evolve",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.5%",
-              "value": 8.5
-            }
-          ],
+          "flags": [],
           "forks": 1451,
           "full_name": "XiaomiMiMo/MiMo-Code",
           "gain": 849,
@@ -292,13 +286,7 @@
           ],
           "description": "Omnigent is an open-source AI agent framework and meta-harness: orchestrate Claude Code, Codex, Cursor, Pi, and custom agents — swap harnesses without rewriting, enforce policies and sandboxing, and collaborate in real time from any device.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 22.6%",
-              "value": 22.6
-            }
-          ],
+          "flags": [],
           "forks": 1811,
           "full_name": "omnigent-ai/omnigent",
           "gain": 911,
@@ -374,11 +362,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 57%",
               "value": 57
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.8%",
-              "value": 3.8
             }
           ],
           "forks": 887,
@@ -797,13 +780,7 @@
           ],
           "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 82.9%",
-              "value": 82.9
-            }
-          ],
+          "flags": [],
           "forks": 55672,
           "full_name": "ZhuLinsen/daily_stock_analysis",
           "gain": 6908,
@@ -919,13 +896,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 6080,
@@ -1002,13 +973,7 @@
           ],
           "description": "Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory with small models for free",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 3429,
           "full_name": "topoteretes/cognee",
           "gain": 5486,
@@ -1203,11 +1168,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 21배",
               "value": 20.6
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.0%",
-              "value": 5.0
             }
           ],
           "forks": 1382,
@@ -1263,13 +1223,7 @@
           ],
           "description": "macOS video editor built for AI",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 301배",
-              "value": 301.3
-            }
-          ],
+          "flags": [],
           "forks": 1152,
           "full_name": "palmier-io/palmier-pro",
           "gain": 5359,
@@ -1521,13 +1475,7 @@
           ],
           "description": "The Open Framework for Building Agents",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 13.8%",
-              "value": 13.8
-            }
-          ],
+          "flags": [],
           "forks": 630,
           "full_name": "vercel/eve",
           "gain": 901,
@@ -1603,13 +1551,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 2606,
@@ -2044,13 +1986,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 72,

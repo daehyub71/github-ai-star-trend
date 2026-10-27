@@ -418,13 +418,7 @@
           ],
           "description": "Unofficial source-oriented reconstruction and extension of Grok Bot 0.18.0 for macOS",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 103.3%",
-              "value": 103.3
-            }
-          ],
+          "flags": [],
           "forks": 3655,
           "full_name": "b-nnett/grok-bot-0.18-reconstructed",
           "gain": 18,
@@ -867,13 +861,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5097,
@@ -1521,13 +1509,7 @@
           ],
           "description": "A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 424,
           "full_name": "HakanSeven12/OpenCADStudio",
           "gain": 652,
@@ -2138,13 +2120,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 135,

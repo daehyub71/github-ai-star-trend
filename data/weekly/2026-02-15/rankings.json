@@ -131,13 +131,7 @@
           ],
           "description": "Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 4987,
           "full_name": "zeroclaw-labs/zeroclaw",
           "gain": 13784,
@@ -173,18 +167,7 @@
           ],
           "description": "A lightweight alternative to OpenClaw that runs in containers for security. Connects to WhatsApp, Telegram, Slack, Discord, Gmail and other messaging apps,, has memory, scheduled jobs, and runs directly on Anthropic's Agents SDK",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.0%",
-              "value": 41.0
-            }
-          ],
+          "flags": [],
           "forks": 12708,
           "full_name": "nanocoai/nanoclaw",
           "gain": 2782,
@@ -554,13 +537,7 @@
           ],
           "description": "Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 4987,
           "full_name": "zeroclaw-labs/zeroclaw",
           "gain": 13784,
@@ -743,13 +720,7 @@
           ],
           "description": "A lightweight, lightning-fast, in-process vector database",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 234배",
-              "value": 233.6
-            }
-          ],
+          "flags": [],
           "forks": 1013,
           "full_name": "alibaba/zvec",
           "gain": 4834,
@@ -1101,13 +1072,7 @@
           ],
           "description": "Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 4987,
           "full_name": "zeroclaw-labs/zeroclaw",
           "gain": 13784,
@@ -1179,13 +1144,7 @@
           ],
           "description": "A lightweight, lightning-fast, in-process vector database",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 234배",
-              "value": 233.6
-            }
-          ],
+          "flags": [],
           "forks": 1013,
           "full_name": "alibaba/zvec",
           "gain": 4834,
@@ -1360,13 +1319,7 @@
           ],
           "description": "IronClaw is an Agent OS focused on privacy, security and extensibility",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.3%",
-              "value": 12.3
-            }
-          ],
+          "flags": [],
           "forks": 1487,
           "full_name": "nearai/ironclaw",
           "gain": 1447,
@@ -1965,13 +1918,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 67,

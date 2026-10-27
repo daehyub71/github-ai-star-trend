@@ -81,13 +81,7 @@
           ],
           "description": "MiMo Code: Where Models and Agents Co-Evolve",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.5%",
-              "value": 8.5
-            }
-          ],
+          "flags": [],
           "forks": 1451,
           "full_name": "XiaomiMiMo/MiMo-Code",
           "gain": 504,
@@ -147,13 +141,7 @@
           ],
           "description": "Omnigent is an open-source AI agent framework and meta-harness: orchestrate Claude Code, Codex, Cursor, Pi, and custom agents — swap harnesses without rewriting, enforce policies and sandboxing, and collaborate in real time from any device.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 22.6%",
-              "value": 22.6
-            }
-          ],
+          "flags": [],
           "forks": 1811,
           "full_name": "omnigent-ai/omnigent",
           "gain": 1092,
@@ -427,13 +415,7 @@
           ],
           "description": "The Open Framework for Building Agents",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 13.8%",
-              "value": 13.8
-            }
-          ],
+          "flags": [],
           "forks": 630,
           "full_name": "vercel/eve",
           "gain": 368,
@@ -734,11 +716,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 53%",
               "value": 53
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 908배",
-              "value": 908.2
             }
           ],
           "forks": 55,
@@ -775,11 +752,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 53%",
               "value": 53
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 4,048배",
-              "value": 4048.0
             }
           ],
           "forks": 33,
@@ -1022,13 +994,7 @@
           ],
           "description": "AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。| AI-era Berkshire: a value investing research framework built for Claude Code / Codex. 4 masters' methodologies + multi-agent adversarial analysis.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 283배",
-              "value": 283.3
-            }
-          ],
+          "flags": [],
           "forks": 2482,
           "full_name": "xbtlin/ai-berkshire",
           "gain": 5175,
@@ -1076,13 +1042,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 4936,
@@ -1123,18 +1083,7 @@
           ],
           "description": "An open source design system that's fully customizable and agent ready",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 5,390배",
-              "value": 5390.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 1131,
           "full_name": "facebook/astryx",
           "gain": 4795,
@@ -1268,13 +1217,7 @@
           ],
           "description": "AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。| AI-era Berkshire: a value investing research framework built for Claude Code / Codex. 4 masters' methodologies + multi-agent adversarial analysis.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 283배",
-              "value": 283.3
-            }
-          ],
+          "flags": [],
           "forks": 2482,
           "full_name": "xbtlin/ai-berkshire",
           "gain": 5175,
@@ -1322,13 +1265,7 @@
           ],
           "description": "Free and open-source macOS menu bar toolkit.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.1%",
-              "value": 4.1
-            }
-          ],
+          "flags": [],
           "forks": 1445,
           "full_name": "vorssaint/vorssaint-utils",
           "gain": 1170,
@@ -1372,13 +1309,7 @@
           ],
           "description": "一款以电影镜头、粒子视觉和歌词舞台为核心的沉浸式音乐播放器。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.8%",
-              "value": 3.8
-            }
-          ],
+          "flags": [],
           "forks": 887,
           "full_name": "XxHuberrr/Mineradio-paused",
           "gain": 3708,
@@ -1580,13 +1511,7 @@
           ],
           "description": "Official TestSprite CLI — AI-powered automated testing from your terminal",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.4%",
-              "value": 4.4
-            }
-          ],
+          "flags": [],
           "forks": 271,
           "full_name": "TestSprite/testsprite-cli",
           "gain": 607,
@@ -1648,13 +1573,7 @@
           ],
           "description": "AI agent to evaluate and score resumes.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.0%",
-              "value": 5.0
-            }
-          ],
+          "flags": [],
           "forks": 1382,
           "full_name": "interviewstreet/hiring-agent",
           "gain": 1619,
@@ -2150,13 +2069,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 75,

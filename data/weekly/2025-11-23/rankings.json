@@ -76,13 +76,7 @@
           ],
           "description": "Depth Anything 3",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 724,
           "full_name": "ByteDance-Seed/Depth-Anything-3",
           "gain": 407,
@@ -193,13 +187,7 @@
           ],
           "description": "s&box is a modern game engine, built on Valve's Source 2 and the latest .NET technology, it provides a modern intuitive editor for creating games",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 36.2%",
-              "value": 36.2
-            }
-          ],
+          "flags": [],
           "forks": 692,
           "full_name": "Facepunch/sbox-public",
           "gain": 2694,
@@ -230,13 +218,7 @@
           ],
           "description": "iOS /iPadOS 16.0 - 26.1, An ultimate customization tool, uilitizing the bug that makes TrollRestore possible. ",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.1%",
-              "value": 8.1
-            }
-          ],
+          "flags": [],
           "forks": 187,
           "full_name": "straight-tamago/misaka26",
           "gain": 406,
@@ -503,13 +485,7 @@
           ],
           "description": "⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 +  RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 +  AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 39.4%",
-              "value": 39.4
-            }
-          ],
+          "flags": [],
           "forks": 24895,
           "full_name": "sansan0/TrendRadar",
           "gain": 7836,
@@ -660,13 +636,7 @@
           ],
           "description": "s&box is a modern game engine, built on Valve's Source 2 and the latest .NET technology, it provides a modern intuitive editor for creating games",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 36.2%",
-              "value": 36.2
-            }
-          ],
+          "flags": [],
           "forks": 692,
           "full_name": "Facepunch/sbox-public",
           "gain": 2694,
@@ -1226,18 +1196,7 @@
           ],
           "description": "The repository provides code for running inference and finetuning with the Meta Segment Anything Model 3 (SAM 3), links for downloading the trained model checkpoints, and example notebooks that show how to use the model.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,154배",
-              "value": 1154.5
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 1828,
           "full_name": "facebookresearch/sam3",
           "gain": 1394,
@@ -1291,13 +1250,7 @@
           ],
           "description": "TailAdmin is a Next.js and Tailwind CSS free, open-source admin dashboard template. Provides developers with the necessary tools, components, pages to build a full-featured back-end, dashboard, or admin panel for any web project.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 33.9%",
-              "value": 33.9
-            }
-          ],
+          "flags": [],
           "forks": 877,
           "full_name": "TailAdmin/free-nextjs-admin-dashboard",
           "gain": 555,
@@ -1467,13 +1420,7 @@
           ],
           "description": "⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 +  RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 +  AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 39.4%",
-              "value": 39.4
-            }
-          ],
+          "flags": [],
           "forks": 24895,
           "full_name": "sansan0/TrendRadar",
           "gain": 7836,
@@ -1595,13 +1542,7 @@
           ],
           "description": "SAM 3D Objects",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 4,087배",
-              "value": 4087.0
-            }
-          ],
+          "flags": [],
           "forks": 895,
           "full_name": "facebookresearch/sam-3d-objects",
           "gain": 989,
@@ -1937,13 +1878,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 78,

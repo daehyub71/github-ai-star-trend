@@ -135,13 +135,7 @@
           ],
           "description": "Your AI trading terminal assistant for US stocks, commodities, forex, and crypto.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.9%",
-              "value": 3.9
-            }
-          ],
+          "flags": [],
           "forks": 3062,
           "full_name": "NoFxAiOS/nofx",
           "gain": 413,
@@ -424,13 +418,7 @@
           ],
           "description": "A curated list of Claude Skills.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.9%",
-              "value": 4.9
-            }
-          ],
+          "flags": [],
           "forks": 1842,
           "full_name": "BehiSecc/awesome-claude-skills",
           "gain": 190,
@@ -577,13 +565,7 @@
           ],
           "description": "⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 +  RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 +  AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 39.4%",
-              "value": 39.4
-            }
-          ],
+          "flags": [],
           "forks": 24895,
           "full_name": "sansan0/TrendRadar",
           "gain": 8724,
@@ -1214,13 +1196,7 @@
           ],
           "description": "⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 +  RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 +  AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 39.4%",
-              "value": 39.4
-            }
-          ],
+          "flags": [],
           "forks": 24895,
           "full_name": "sansan0/TrendRadar",
           "gain": 8724,
@@ -1418,13 +1394,7 @@
           ],
           "description": "A fast usermode x86 and x86-64 emulator for Arm64 Linux",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 415,
           "full_name": "FEX-Emu/FEX",
           "gain": 1650,
@@ -1701,13 +1671,7 @@
           ],
           "description": "nodejs-argo是一个强大的Argo隧道部署工具，专为PaaS平台和游戏玩具平台设计。它支持多种代理协议(VLESS、VMess、Trojan)等，有直连协议(Socks5、Hysteria2、Reality)可选开启，并集成了哪吒探针功能",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 160.9%",
-              "value": 160.9
-            }
-          ],
+          "flags": [],
           "forks": 13559,
           "full_name": "eooce/nodejs-argo",
           "gain": 820,
@@ -2024,13 +1988,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 76,

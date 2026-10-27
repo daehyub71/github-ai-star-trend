@@ -21,11 +21,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 50%",
               "value": 50
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 55.2%",
-              "value": 55.2
             }
           ],
           "forks": 107697,
@@ -168,13 +163,7 @@
           ],
           "description": "Run agents like Hermes, LangChain Deep Agents, and OpenClaw more securely inside NVIDIA OpenShell with managed inference",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.6%",
-              "value": 3.6
-            }
-          ],
+          "flags": [],
           "forks": 3173,
           "full_name": "NVIDIA/NemoClaw",
           "gain": 961,
@@ -275,13 +264,7 @@
           ],
           "description": "原汁原昧 Claude Code 可运行,可构建, 可调试版; 生产级工程化, 企业级可靠性; 安全无毒, 内存泄露修复",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 71.4%",
-              "value": 71.4
-            }
-          ],
+          "flags": [],
           "forks": 16457,
           "full_name": "claude-code-best/claude-code",
           "gain": 13252,
@@ -429,11 +412,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 79%",
               "value": 79
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 157.5%",
-              "value": 157.5
             }
           ],
           "forks": 19374,
@@ -509,11 +487,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 50%",
               "value": 50
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 55.2%",
-              "value": 55.2
             }
           ],
           "forks": 107697,
@@ -569,13 +542,7 @@
           ],
           "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.2%",
-              "value": 10.2
-            }
-          ],
+          "flags": [],
           "forks": 26052,
           "full_name": "anthropics/claude-code",
           "gain": 24510,
@@ -744,13 +711,7 @@
           ],
           "description": "原汁原昧 Claude Code 可运行,可构建, 可调试版; 生产级工程化, 企业级可靠性; 安全无毒, 内存泄露修复",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 71.4%",
-              "value": 71.4
-            }
-          ],
+          "flags": [],
           "forks": 16457,
           "full_name": "claude-code-best/claude-code",
           "gain": 13252,
@@ -875,11 +836,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 79%",
               "value": 79
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 157.5%",
-              "value": 157.5
             }
           ],
           "forks": 19374,
@@ -962,13 +918,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 9599,
@@ -1118,13 +1068,7 @@
           ],
           "description": "The official Lark/飞书 CLI tool, maintained by the larksuite team — built for humans and AI Agents. Covers core business domains including Messenger, Docs, Base, Sheets, Calendar, Mail, Tasks, Meetings, and more, with 200+ commands and 20+ AI Agent Skills.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.0%",
-              "value": 4.0
-            }
-          ],
+          "flags": [],
           "forks": 1356,
           "full_name": "larksuite/cli",
           "gain": 4347,
@@ -1497,11 +1441,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 12배",
               "value": 12.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
             }
           ],
           "forks": 56451,
@@ -1931,13 +1870,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 96,

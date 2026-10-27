@@ -70,13 +70,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 6093,
@@ -201,13 +195,7 @@
           ],
           "description": "Run agents like Hermes, LangChain Deep Agents, and OpenClaw more securely inside NVIDIA OpenShell with managed inference",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.6%",
-              "value": 3.6
-            }
-          ],
+          "flags": [],
           "forks": 3173,
           "full_name": "NVIDIA/NemoClaw",
           "gain": 2497,
@@ -689,13 +677,7 @@
           ],
           "description": "Project NOMAD is an offline-first knowledge and education server. Wikipedia, thousands of books, courses, maps, and optional local AI, all running on hardware you own with no internet required.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 944배",
-              "value": 944.0
-            }
-          ],
+          "flags": [],
           "forks": 4159,
           "full_name": "Crosstalk-Solutions/project-nomad",
           "gain": 11771,
@@ -1202,13 +1184,7 @@
           ],
           "description": "Project NOMAD is an offline-first knowledge and education server. Wikipedia, thousands of books, courses, maps, and optional local AI, all running on hardware you own with no internet required.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 944배",
-              "value": 944.0
-            }
-          ],
+          "flags": [],
           "forks": 4159,
           "full_name": "Crosstalk-Solutions/project-nomad",
           "gain": 11771,
@@ -1578,11 +1554,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 13배",
               "value": 13.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
             }
           ],
           "forks": 56451,
@@ -2049,13 +2020,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 87,

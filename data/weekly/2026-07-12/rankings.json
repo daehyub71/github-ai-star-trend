@@ -793,13 +793,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5440,
@@ -1192,13 +1186,7 @@
           ],
           "description": "Distributed AI/LLM for the people. Share compute privately or publicly to power your agents and chat.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.1%",
-              "value": 5.1
-            }
-          ],
+          "flags": [],
           "forks": 454,
           "full_name": "Mesh-LLM/mesh-llm",
           "gain": 1334,
@@ -1511,13 +1499,7 @@
           ],
           "description": "Advanced UX and interoperability extension for Wand (WeMod) app",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 258.5%",
-              "value": 258.5
-            }
-          ],
+          "flags": [],
           "forks": 85561,
           "full_name": "k1tbyte/Wand-Enhancer",
           "gain": 2829,
@@ -1976,13 +1958,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 97,

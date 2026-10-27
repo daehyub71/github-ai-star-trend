@@ -70,13 +70,7 @@
           ],
           "description": "MiMo Code: Where Models and Agents Co-Evolve",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.5%",
-              "value": 8.5
-            }
-          ],
+          "flags": [],
           "forks": 1451,
           "full_name": "XiaomiMiMo/MiMo-Code",
           "gain": 7650,
@@ -719,13 +713,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 7958,
@@ -766,13 +754,7 @@
           ],
           "description": "MiMo Code: Where Models and Agents Co-Evolve",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.5%",
-              "value": 8.5
-            }
-          ],
+          "flags": [],
           "forks": 1451,
           "full_name": "XiaomiMiMo/MiMo-Code",
           "gain": 7650,
@@ -1106,13 +1088,7 @@
           ],
           "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 4,560배",
-              "value": 4560.0
-            }
-          ],
+          "flags": [],
           "forks": 1963,
           "full_name": "NVIDIA/SkillSpector",
           "gain": 3306,
@@ -1198,13 +1174,7 @@
           ],
           "description": "Local-first healthcare AI: clinical NER and HIPAA PII de-identification on hardware you control. 2,200+ medical models, 35 model-backed PII languages, and Python, MLX, Android and browser runtimes. Apache-2.0 SDK.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.9%",
-              "value": 10.9
-            }
-          ],
+          "flags": [],
           "forks": 729,
           "full_name": "maziyarpanahi/openmed",
           "gain": 2022,
@@ -1568,13 +1538,7 @@
           ],
           "description": "PostgreSQL in-database durable execution",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 963배",
-              "value": 963.0
-            }
-          ],
+          "flags": [],
           "forks": 80,
           "full_name": "microsoft/pg_durable",
           "gain": 725,
@@ -2099,13 +2063,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 70,

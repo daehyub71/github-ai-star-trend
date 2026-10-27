@@ -362,13 +362,7 @@
           ],
           "description": "Native Proxy Experience Built for macOS",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 263,
           "full_name": "666OS/ClashMac",
           "gain": 159,
@@ -473,13 +467,7 @@
           ],
           "description": "Minimal CLI coding agent by Mistral",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.2%",
-              "value": 8.2
-            }
-          ],
+          "flags": [],
           "forks": 748,
           "full_name": "mistralai/mistral-vibe",
           "gain": 141,
@@ -876,13 +864,7 @@
           ],
           "description": "Professional Antigravity Account Manager & Switcher. One-click seamless account switching for Antigravity Tools. Built with Tauri v2 + React (Rust).专业的 Antigravity 账号管理与切换工具。为 Antigravity 提供一键无缝账号切换功能。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.3%",
-              "value": 5.3
-            }
-          ],
+          "flags": [],
           "forks": 3496,
           "full_name": "lbjlaq/Antigravity-Manager",
           "gain": 2950,
@@ -993,18 +975,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,507배",
-              "value": 1506.6
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.5%",
-              "value": 3.5
-            }
-          ],
+          "flags": [],
           "forks": 1350,
           "full_name": "a2ui-project/a2ui",
           "gain": 2057,
@@ -1198,18 +1169,7 @@
           ],
           "description": "A framework for efficient model inference with omni-modality models",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 148배",
-              "value": 147.9
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 24.3%",
-              "value": 24.3
-            }
-          ],
+          "flags": [],
           "forks": 1985,
           "full_name": "vllm-project/vllm-omni",
           "gain": 760,
@@ -1529,13 +1489,7 @@
           ],
           "description": "An alternative Discord client with voice support made with C++ and GTK 3",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.0%",
-              "value": 5.0
-            }
-          ],
+          "flags": [],
           "forks": 98,
           "full_name": "uowuo/abaddon",
           "gain": 619,
@@ -1608,13 +1562,7 @@
           ],
           "description": "A compact implementation of SGLang, designed to demystify the complexities of modern LLM serving systems.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 1,244배",
-              "value": 1244.5
-            }
-          ],
+          "flags": [],
           "forks": 948,
           "full_name": "sgl-project/mini-sglang",
           "gain": 759,
@@ -1923,13 +1871,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 67,

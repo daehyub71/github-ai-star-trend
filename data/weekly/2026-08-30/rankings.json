@@ -367,13 +367,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.6%",
-              "value": 12.6
-            }
-          ],
+          "flags": [],
           "forks": 618,
           "full_name": "HEJustinSun/my-girlfriend-jingtian-latex",
           "gain": 198,
@@ -787,13 +781,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5458,
@@ -1000,13 +988,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 4045,
@@ -1174,11 +1156,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 52%",
               "value": 52
-            },
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 32배",
-              "value": 32.1
             }
           ],
           "forks": 375,
@@ -1424,13 +1401,7 @@
           ],
           "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 3,180배",
-              "value": 3179.5
-            }
-          ],
+          "flags": [],
           "forks": 385,
           "full_name": "tailscale/tailcat",
           "gain": 2669,
@@ -2148,13 +2119,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 100,

@@ -154,13 +154,7 @@
           ],
           "description": "Depth Anything 3",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 724,
           "full_name": "ByteDance-Seed/Depth-Anything-3",
           "gain": 262,
@@ -187,13 +181,7 @@
           ],
           "description": "s&box is a modern game engine, built on Valve's Source 2 and the latest .NET technology, it provides a modern intuitive editor for creating games",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 36.2%",
-              "value": 36.2
-            }
-          ],
+          "flags": [],
           "forks": 692,
           "full_name": "Facepunch/sbox-public",
           "gain": 433,
@@ -308,13 +296,7 @@
           ],
           "description": "iOS /iPadOS 16.0 - 26.1, An ultimate customization tool, uilitizing the bug that makes TrollRestore possible. ",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.1%",
-              "value": 8.1
-            }
-          ],
+          "flags": [],
           "forks": 187,
           "full_name": "straight-tamago/misaka26",
           "gain": 182,
@@ -407,13 +389,7 @@
           ],
           "description": "Native Proxy Experience Built for macOS",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 263,
           "full_name": "666OS/ClashMac",
           "gain": 1624,
@@ -559,13 +535,7 @@
           ],
           "description": "⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 +  RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 +  AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 39.4%",
-              "value": 39.4
-            }
-          ],
+          "flags": [],
           "forks": 24895,
           "full_name": "sansan0/TrendRadar",
           "gain": 4848,
@@ -609,13 +579,7 @@
           ],
           "description": "Kanban as it should be. Not as it has been.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 4,627배",
-              "value": 4627.0
-            }
-          ],
+          "flags": [],
           "forks": 1209,
           "full_name": "basecamp/fizzy",
           "gain": 4627,
@@ -912,13 +876,7 @@
           ],
           "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 9.8%",
-              "value": 9.8
-            }
-          ],
+          "flags": [],
           "forks": 5169,
           "full_name": "oven-sh/bun",
           "gain": 1956,
@@ -1945,13 +1903,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 73,

@@ -43,13 +43,7 @@
           ],
           "description": "Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.3%",
-              "value": 3.3
-            }
-          ],
+          "flags": [],
           "forks": 4987,
           "full_name": "zeroclaw-labs/zeroclaw",
           "gain": 2712,
@@ -85,13 +79,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 14219,
@@ -340,13 +328,7 @@
           ],
           "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3225,
           "full_name": "agentscope-ai/QwenPaw",
           "gain": 2030,
@@ -709,13 +691,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 14219,
@@ -1284,18 +1260,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 2,289배",
-              "value": 2289.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 4840,
@@ -1336,13 +1301,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 14219,
@@ -1593,13 +1552,7 @@
           ],
           "description": "An MCP server plus a CLI tool that indexes local code into a graph database to provide context to AI assistants.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.2%",
-              "value": 4.2
-            }
-          ],
+          "flags": [],
           "forks": 843,
           "full_name": "CodeGraphContext/CodeGraphContext",
           "gain": 912,
@@ -1631,13 +1584,7 @@
           ],
           "description": "An open-source Collaborative Multi-Agent OS for transparent, human-in-the-loop task coordination via Matrix rooms.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.6%",
-              "value": 4.6
-            }
-          ],
+          "flags": [],
           "forks": 726,
           "full_name": "agentscope-ai/AgentTeams",
           "gain": 825,
@@ -2095,13 +2042,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 131,

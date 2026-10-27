@@ -644,13 +644,7 @@
           ],
           "description": "Warp is an agentic development environment, born out of the terminal.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.4%",
-              "value": 8.4
-            }
-          ],
+          "flags": [],
           "forks": 5715,
           "full_name": "warpdotdev/warp",
           "gain": 25739,
@@ -761,13 +755,7 @@
           ],
           "description": "The agent that grows with you",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 20.0%",
-              "value": 20.0
-            }
-          ],
+          "flags": [],
           "forks": 56451,
           "full_name": "NousResearch/hermes-agent",
           "gain": 12912,
@@ -1307,13 +1295,7 @@
           ],
           "description": "DeepSeek-Compatible Middleware Interface: A technical exploration project in Go, focusing on high-concurrency protocol adaptation. It serves as a reference implementation for converting diverse web protocols into standardized formats.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 34.8%",
-              "value": 34.8
-            }
-          ],
+          "flags": [],
           "forks": 1643,
           "full_name": "CJackHwang/ds2api",
           "gain": 1546,
@@ -1355,13 +1337,7 @@
           ],
           "description": "Warp is an agentic development environment, born out of the terminal.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.4%",
-              "value": 8.4
-            }
-          ],
+          "flags": [],
           "forks": 5715,
           "full_name": "warpdotdev/warp",
           "gain": 25739,
@@ -1461,13 +1437,7 @@
           ],
           "description": "Desktop app to manage markdown knowledge bases",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 8,575배",
-              "value": 8575.0
-            }
-          ],
+          "flags": [],
           "forks": 1400,
           "full_name": "refactoringhq/tolaria",
           "gain": 3758,
@@ -2146,13 +2116,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 236,

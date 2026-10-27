@@ -111,13 +111,7 @@
           ],
           "description": "Qwen3.8-Flash-Next on any consumer hardware: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3523,
           "full_name": "Niko1221/Strata",
           "gain": 8565,
@@ -175,13 +169,7 @@
           ],
           "description": "Z.ai's coding agent harness. Powerful, intelligent, extensible.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 30.9%",
-              "value": 30.9
-            }
-          ],
+          "flags": [],
           "forks": 2564,
           "full_name": "zai-org/ZCode",
           "gain": 547,
@@ -458,13 +446,7 @@
           ],
           "description": "Every agent's model. One place. Codex on DeepSeek, Claude Code on Kimi, from the menu bar.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.3%",
-              "value": 8.3
-            }
-          ],
+          "flags": [],
           "forks": 1713,
           "full_name": "yetone/magpie",
           "gain": 3366,
@@ -609,13 +591,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 8996,
@@ -663,13 +639,7 @@
           ],
           "description": "Qwen3.8-Flash-Next on any consumer hardware: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3523,
           "full_name": "Niko1221/Strata",
           "gain": 8565,
@@ -793,13 +763,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 5591,
@@ -1105,13 +1069,7 @@
           ],
           "description": "Every agent's model. One place. Codex on DeepSeek, Claude Code on Kimi, from the menu bar.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.3%",
-              "value": 8.3
-            }
-          ],
+          "flags": [],
           "forks": 1713,
           "full_name": "yetone/magpie",
           "gain": 3366,
@@ -1189,18 +1147,7 @@
           ],
           "description": "Tool for automatic PS5 executables porting to Linux and Windows",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 3,274배",
-              "value": 3274.0
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.4%",
-              "value": 3.4
-            }
-          ],
+          "flags": [],
           "forks": 4548,
           "full_name": "boykopovar/AnyPS5",
           "gain": 1818,
@@ -1511,13 +1458,7 @@
           ],
           "description": "跨平台 P2P 虚拟局域网(VirtualLAN)工具，让异地设备像在同一局域网中互联。支持 NAT 穿透、IPv6 直连、房间组网与 Relay 回退，覆盖 Windows / macOS / Linux / Android。",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 121배",
-              "value": 121.4
-            }
-          ],
+          "flags": [],
           "forks": 131,
           "full_name": "yhan-sun/p2wlan",
           "gain": 689,
@@ -2078,13 +2019,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 64,

@@ -192,13 +192,7 @@
           ],
           "description": "Your AI trading terminal assistant for US stocks, commodities, forex, and crypto.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.9%",
-              "value": 3.9
-            }
-          ],
+          "flags": [],
           "forks": 3062,
           "full_name": "NoFxAiOS/nofx",
           "gain": 4207,
@@ -451,13 +445,7 @@
           ],
           "description": "Beads - A memory upgrade for your coding agent",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 5.5%",
-              "value": 5.5
-            }
-          ],
+          "flags": [],
           "forks": 1903,
           "full_name": "gastownhall/beads",
           "gain": 185,
@@ -488,13 +476,7 @@
           ],
           "description": "[Archived] Legacy Python Kimi CLI, no longer maintained. Please use Kimi Code CLI: https://github.com/MoonshotAI/kimi-code",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1328,
           "full_name": "MoonshotAI/kimi-cli",
           "gain": 1041,
@@ -521,13 +503,7 @@
           ],
           "description": "A curated list of Claude Skills.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.9%",
-              "value": 4.9
-            }
-          ],
+          "flags": [],
           "forks": 1842,
           "full_name": "BehiSecc/awesome-claude-skills",
           "gain": 236,
@@ -618,13 +594,7 @@
           ],
           "description": "Your AI trading terminal assistant for US stocks, commodities, forex, and crypto.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.9%",
-              "value": 3.9
-            }
-          ],
+          "flags": [],
           "forks": 3062,
           "full_name": "NoFxAiOS/nofx",
           "gain": 4207,
@@ -1310,13 +1280,7 @@
           ],
           "description": "[Archived] Legacy Python Kimi CLI, no longer maintained. Please use Kimi Code CLI: https://github.com/MoonshotAI/kimi-code",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.9%",
-              "value": 6.9
-            }
-          ],
+          "flags": [],
           "forks": 1328,
           "full_name": "MoonshotAI/kimi-cli",
           "gain": 1041,
@@ -1592,13 +1556,7 @@
           ],
           "description": null,
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 51.2%",
-              "value": 51.2
-            }
-          ],
+          "flags": [],
           "forks": 8459,
           "full_name": "byJoey/cfnew",
           "gain": 1122,
@@ -1671,13 +1629,7 @@
           ],
           "description": "LEGACY: The open-source alternative to Google Drive. ",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 9.2%",
-              "value": 9.2
-            }
-          ],
+          "flags": [],
           "forks": 132,
           "full_name": "linagora/twake-drive-legacy",
           "gain": 556,
@@ -1704,18 +1656,7 @@
           ],
           "description": "A payments protocol for the internet. Built on HTTP.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.9%",
-              "value": 10.9
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 33.1%",
-              "value": 33.1
-            }
-          ],
+          "flags": [],
           "forks": 2240,
           "full_name": "x402-foundation/x402",
           "gain": 978,
@@ -2024,13 +1965,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 64,

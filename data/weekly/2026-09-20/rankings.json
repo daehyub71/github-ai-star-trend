@@ -210,11 +210,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 58%",
               "value": 58
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 30.9%",
-              "value": 30.9
             }
           ],
           "forks": 2564,
@@ -661,13 +656,7 @@
           ],
           "description": "The open-source app everyone uses to manage agents at work",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.1%",
-              "value": 6.1
-            }
-          ],
+          "flags": [],
           "forks": 17839,
           "full_name": "paperclipai/paperclip",
           "gain": 6834,
@@ -752,11 +741,6 @@
               "kind": "peak_day",
               "label": "하루 몰림 58%",
               "value": 58
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 30.9%",
-              "value": 30.9
             }
           ],
           "forks": 2564,
@@ -853,13 +837,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 6263,
@@ -945,13 +923,7 @@
           ],
           "description": "HydraDB - fast graph database on object storage",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.3%",
-              "value": 41.3
-            }
-          ],
+          "flags": [],
           "forks": 5395,
           "full_name": "hydra-db/hydradb",
           "gain": 5684,
@@ -978,13 +950,7 @@
           ],
           "description": "High-performance AI pipeline engine with a C++ core and 50+ Python-extensible nodes. Build, debug, and scale LLM workflows with 13+ model providers, 8+ vector databases, and agent orchestration, all from your IDE. Includes VS Code extension, TypeScript/Python SDKs, and Docker deployment.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 42.3%",
-              "value": 42.3
-            }
-          ],
+          "flags": [],
           "forks": 7491,
           "full_name": "rocketride-org/rocketride-server",
           "gain": 5414,
@@ -1169,13 +1135,7 @@
           ],
           "description": "HydraDB - fast graph database on object storage",
           "exact": true,
-          "flags": [
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.3%",
-              "value": 41.3
-            }
-          ],
+          "flags": [],
           "forks": 5395,
           "full_name": "hydra-db/hydradb",
           "gain": 5684,
@@ -1236,13 +1196,7 @@
           ],
           "description": "Decentralized P2P mesh for autonomous AI agents — self-sovereign identity, peer-to-peer chat, and on-device AI that negotiates tasks on your behalf. No central server.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "dormant_burst",
-              "label": "잠잠하다 4주 만에 677배",
-              "value": 677.0
-            }
-          ],
+          "flags": [],
           "forks": 14,
           "full_name": "allenpeng0705/EnvoyMesh",
           "gain": 1658,
@@ -1388,13 +1342,7 @@
           ],
           "description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.0%",
-              "value": 3.0
-            }
-          ],
+          "flags": [],
           "forks": 542,
           "full_name": "superdesigndev/treg",
           "gain": 1798,
@@ -1508,13 +1456,7 @@
           ],
           "description": "Agent Substrate: the core system",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 16.3%",
-              "value": 16.3
-            }
-          ],
+          "flags": [],
           "forks": 631,
           "full_name": "agent-substrate/substrate",
           "gain": 1852,
@@ -2033,13 +1975,7 @@
           ],
           "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 6.0%",
-              "value": 6.0
-            }
-          ],
+          "flags": [],
           "forks": 20675,
           "full_name": "996icu/996.ICU",
           "gain": 85,

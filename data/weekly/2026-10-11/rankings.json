@@ -21,11 +21,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.3%",
-              "value": 4.3
             }
           ],
           "forks": 12931,
@@ -103,13 +98,7 @@
           ],
           "description": "Qwen3.8-Flash-Next on any consumer hardware: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.1%",
-              "value": 3.1
-            }
-          ],
+          "flags": [],
           "forks": 3523,
           "full_name": "Niko1221/Strata",
           "gain": 6143,
@@ -179,16 +168,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.7%",
-              "value": 11.7
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 38.2%",
-              "value": 38.2
             }
           ],
           "forks": 6844,
@@ -258,13 +237,7 @@
           ],
           "description": "Every agent's model. One place. Codex on DeepSeek, Claude Code on Kimi, from the menu bar.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.3%",
-              "value": 8.3
-            }
-          ],
+          "flags": [],
           "forks": 1713,
           "full_name": "yetone/magpie",
           "gain": 6614,
@@ -330,16 +303,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 10.9%",
-              "value": 10.9
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 41.8%",
-              "value": 41.8
             }
           ],
           "forks": 6825,
@@ -380,11 +343,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.1%",
-              "value": 11.1
             }
           ],
           "forks": 4389,
@@ -418,16 +376,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.2%",
-              "value": 8.2
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 38.5%",
-              "value": 38.5
             }
           ],
           "forks": 5655,
@@ -549,16 +497,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.3%",
-              "value": 8.3
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 48.9%",
-              "value": 48.9
             }
           ],
           "forks": 5235,
@@ -658,11 +596,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 4.3%",
-              "value": 4.3
             }
           ],
           "forks": 12931,
@@ -860,11 +793,6 @@
               "kind": "dormant_burst",
               "label": "잠잠하다 4주 만에 274배",
               "value": 274.5
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 3.4%",
-              "value": 3.4
             }
           ],
           "forks": 4548,
@@ -933,11 +861,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.1%",
-              "value": 11.1
             }
           ],
           "forks": 4389,
@@ -1038,16 +961,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.7%",
-              "value": 11.7
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 38.2%",
-              "value": 38.2
             }
           ],
           "forks": 6844,
@@ -1125,13 +1038,7 @@
           ],
           "description": "Every agent's model. One place. Codex on DeepSeek, Claude Code on Kimi, from the menu bar.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 8.3%",
-              "value": 8.3
-            }
-          ],
+          "flags": [],
           "forks": 1713,
           "full_name": "yetone/magpie",
           "gain": 6614,
@@ -1165,13 +1072,7 @@
           ],
           "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
           "exact": true,
-          "flags": [
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 7.9%",
-              "value": 7.9
-            }
-          ],
+          "flags": [],
           "forks": 6710,
           "full_name": "stablyai/orca",
           "gain": 6503,
@@ -1229,11 +1130,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.1%",
-              "value": 11.1
             }
           ],
           "forks": 4389,
@@ -1403,16 +1299,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 18.9%",
-              "value": 18.9
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 46.4%",
-              "value": 46.4
             }
           ],
           "forks": 3034,
@@ -1446,16 +1332,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 13.4%",
-              "value": 13.4
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 43.7%",
-              "value": 43.7
             }
           ],
           "forks": 2988,
@@ -1489,16 +1365,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.2%",
-              "value": 12.2
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 57.2%",
-              "value": 57.2
             }
           ],
           "forks": 2448,
@@ -1559,16 +1425,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 12.8%",
-              "value": 12.8
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 62.3%",
-              "value": 62.3
             }
           ],
           "forks": 2349,
@@ -1772,16 +1628,6 @@
               "kind": "same_owner_new",
               "label": "같은 계정 새 저장소 14개",
               "value": 14
-            },
-            {
-              "kind": "issue_ratio",
-              "label": "열린 이슈 11.7%",
-              "value": 11.7
-            },
-            {
-              "kind": "fork_ratio",
-              "label": "포크 38.2%",
-              "value": 38.2
             }
           ],
           "forks": 6844,
