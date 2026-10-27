@@ -1,8 +1,12 @@
 """clients.transport.CachingTransport — probe 를 중간에 끊어도 이미 받은 응답은 다시 부르지 않는다."""
 
+import http.client
+import urllib.request
 from collections.abc import Mapping
 
-from startrend.clients.transport import CachingTransport, HttpResponse
+import pytest
+
+from startrend.clients.transport import CachingTransport, HttpResponse, TransportError, UrllibTransport
 
 
 class Counting:
@@ -13,6 +17,16 @@ class Counting:
     def __call__(self, method: str, url: str, headers: Mapping[str, str], timeout: float) -> HttpResponse:
         self.calls += 1
         return HttpResponse(self.status, {"x-ratelimit-remaining": "10"}, f"body:{url}".encode())
+
+
+def test_transport_urllib_wraps_dropped_connection(monkeypatch):
+    # 회귀(2026-10-27): http.client.RemoteDisconnected 는 URLError 가 아니라 그대로 새어 나갔다
+    def drop(*args, **kwargs):
+        raise http.client.RemoteDisconnected("Remote end closed connection without response")
+
+    monkeypatch.setattr(urllib.request, "urlopen", drop)
+    with pytest.raises(TransportError):
+        UrllibTransport()("GET", "https://api.github.com/x?q=1", {}, 5.0)
 
 
 def test_transport_cache_hit_skips_network(tmp_path):

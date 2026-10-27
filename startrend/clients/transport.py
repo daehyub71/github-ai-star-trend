@@ -6,6 +6,7 @@ HTTP 오류 상태도 예외가 아니라 응답으로 돌려준다. 재시도 �
 
 import base64
 import hashlib
+import http.client
 import json
 import time
 import urllib.error
@@ -24,7 +25,7 @@ class HttpResponse:
 
 
 class TransportError(Exception):
-    """연결 자체가 실패했다 (DNS·타임아웃 등)."""
+    """연결 자체가 실패했다 (DNS·타임아웃·응답 없이 끊긴 연결 등)."""
 
 
 class Transport(Protocol):
@@ -39,7 +40,8 @@ class UrllibTransport:
                 return HttpResponse(resp.status, _lower(resp.headers.items()), resp.read())
         except urllib.error.HTTPError as e:
             return HttpResponse(e.code, _lower(e.headers.items()), e.read())
-        except (urllib.error.URLError, TimeoutError) as e:
+        # RemoteDisconnected·IncompleteRead 는 URLError 가 아니다 — http.client 예외와 OSError 도 잡는다
+        except (urllib.error.URLError, http.client.HTTPException, OSError) as e:
             raise TransportError(f"{method} {url.split('?', 1)[0]}: {e}") from e
 
 

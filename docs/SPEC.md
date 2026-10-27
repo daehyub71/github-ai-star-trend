@@ -1,6 +1,6 @@
 # SPEC.md — github-ai-star-trend
 
-> **v0.6 (2026-10-26) — 초안.** 사용자 토론(아이디어 검토 4회차 + 저장공간 검토 2회 + 미해결 결정 1회차 + 하네스·JEV 검토 + Phase 0 실측 결정 + Notion·블로그 발행 + 블로그 형식 견본)을 반영했다.
+> **v0.8 (2026-10-27) — 초안.** 사용자 토론(아이디어 검토 4회차 + 저장공간 검토 2회 + 미해결 결정 1회차 + 하네스·JEV 검토 + Phase 0 실측 결정 + Notion·블로그 발행 + 블로그 형식 견본 + 시험 소급 뒤 결정 40~43 + 조사 뒤 결정 44)을 반영했다.
 > §2 는 확정, §9 는 미확정이다. §9 의 남은 결정은 각각 막는 Phase 가 정해져 있다. **PLAN 이 나오기 전에는 구현하지 않는다.**
 > 배경·조사 출처: `../ideas/2026-10-26-github-trend-tracer.md`
 
@@ -60,7 +60,7 @@ GitHub 스타 동향으로 AI 개발 흐름을 보려면 지금은 이렇게 해
 | 6 | 트렌드 종합 | **주간 브리핑 + 카테고리 추이** | |
 | 7 | 발굴 방식 | **실측 후 확정** | 후보군 + 히스토리 API 로 시작하고 빠지는 비율을 잰다(§5, D-2) |
 | 8 | 과거 기간 | **랭킹만 소급** | 히스토리 API 로 비용 0. 지금 살아 있는 저장소만 남는 편향이 있다 |
-| 9 | 활용사례 출처 | **HN·Reddit · 블로그/튜토리얼(웹 검색) · 의존 저장소/패키지 다운로드 · 국내 커뮤니티(GeekNews 등)** | 출처별 접근 조건은 D-8 |
+| 9 | 활용사례 출처 | **HN · 블로그/튜토리얼(웹 검색) · 패키지 다운로드·의존 수 · 국내 커뮤니티(GeekNews)** (Reddit 은 결정 44 로 제외) | 출처별 접근은 결정 44 |
 | 10 | 카테고리 체계 | **고정 분류 + 분기별 재검토** | 15개 안팎. 추이가 끊기지 않게 버전과 매핑을 남긴다(FR-3.4) |
 | 11 | 열람 방식 | **Vercel 비공개 배포** | Hobby 에서도 "All Deployments" + Vercel Authentication 으로 운영 도메인까지 비공개. 열람 시 Vercel 로그인 필요 |
 | 12 | 실행 방식 | **GitHub Actions 크론** | 주간 예산 상한 필수(NFR-3). 로컬 테스트가 통과한 뒤 마지막에 켠다 |
@@ -89,6 +89,11 @@ GitHub 스타 동향으로 AI 개발 흐름을 보려면 지금은 이렇게 해
 | 37 | 블로그 글 단위 | **주간 1편** — 브리핑 바탕, 랭킹 요약 + 주목할 저장소 2~3개 | 형식은 결정 39 |
 | 38 | Notion 데이터베이스 만들기 (D-19) | **`notion-setup` 이 사용자가 지정한 부모 페이지 아래 3개를 만든다** | 속성 이름·형식이 코드와 정확히 맞고, 필요하면 다시 만들 수 있다 |
 | 39 | 블로그 형식 (D-20) | **사용자 견본을 따른다** — 본문 `docs/ref/blog-sample.md` · 사진 배치 `docs/ref/blog-sample-images.md` (사용자의 기존 네이버 연재 글) | 시리즈 이름 "깃허브 AI 트렌드 주간 동향" · 합쇼체 · 평문 소제목 · 고정 틀 · 사진 배치 문서 따로 (FR-16.5~16.8) |
+| 40 | 급등 패턴 보완 — 휴면 후 폭증 | **표시 추가: 생성 60일 이상 · 4주 전 스타 5,000 미만 · 4주 동안 10배 이상 → "잠잠하다 4주 만에 N배"** | 시험 소급 4주에서 걸린 3개가 모두 수상했다(MEASURE §13). "지난 주 대비 10배 급가속"은 정상 화제 저장소(php-src·Apollo-11 등)가 걸려 넣지 않았다. 결정 28 처럼 표시만 한다. 기준값은 52주 소급 뒤 다시 잰다 |
+| 41 | 정답 세트 작성 (D-15) | **Claude 초안 → 사용자 검수, 200개 중 30개는 초안을 가린 블라인드** | 정답 세트가 Claude 대 JEV 비교의 기준이라 초안이 Claude 쪽으로 기울 수 있다 — 블라인드 30개와 검수 결과의 차이로 그 편향을 잰다. 초안 비용 약 $1~3(Batch) |
+| 42 | Next.js 렌더 (D-9) | **Vercel 기본 빌드** | 서버 기능(ISR·라우트 핸들러)을 나중에 쓸 수 있다. 조건: 데이터는 빌드 때 `data/site/` 에서 읽고, 라우트 핸들러·미들웨어·서버 액션을 더하면 그때마다 보안 점검 대상(NFR-8). 비공개는 Vercel Authentication |
+| 43 | 화면 라이브러리 (D-10) | **차트 라이브러리 + react-markdown(+ remark-gfm)** | 차트 라이브러리 이름은 Phase 4 착수 때 패키지 추가 확인과 함께 정한다(후보 Recharts). 마크다운은 raw HTML 을 끈 채로만 — `rehype-raw` 금지, 테스트로 강제(FR-9) |
+| 44 | 근거 출처 접근 (D-8) | **HN(Algolia) · GeekNews(`/past` 날짜별 목록 HTML, 가볍게) · PyPI(pypistats)·npm 다운로드 · "패키지 의존 수"(ecosyste.ms, deps.dev 보조). Reddit 은 제외** | Reddit 은 2025-10부터 API 사전 승인 필수·비인증 차단(부록 C-2). 승인 신청은 나중에 따로 정한다. GitHub "Used by" 는 공식 API 가 없어 다른 이름의 수치로 보여 준다 — 출처(CC-BY-SA·CC-BY) 표기 |
 | 33 | 화면 시안 (D-13) | **핵심 3화면 합의** — 이번 주(브리핑 위 크게 + 4축 랭킹 카드 목록, 탭은 AI → 전체·기본 AI) · 저장소 카드(8개 섹션 + 옆 목차) · 카테고리 추이(선 그래프 + 표, ALL 포함) · 반응형 | `docs/DESIGN.md` §6. 아카이브·소개 시안은 Phase 4 안에서 따로 합의 |
 | 25 | 하네스 (2026-10-26) | **평가 하네스 · 규칙의 코드 강제 · API 계약 테스트** 추가 | FR-14 · NFR-14 · FR-11.6. 세션 하네스(doctor·대시보드 자동 계산·작업 단위 커밋)는 채택하지 않았다 |
 
@@ -146,7 +151,7 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 | ID | 요구사항 |
 |---|---|
 | FR-4.5 | 각 축을 전체 탭과 AI 탭으로 나눠 랭킹표 8개를 만든다(`data/weekly/<주>/rankings.json`). 표마다 15개, 화면 기본 노출 5개(결정 28) |
-| FR-4.6 | **급등 패턴 표시** — 스타 계정 정보는 볼 수 없으므로 근거 수치(최대일 비중, 스타 대비 포크·이슈 비율, 같은 계정의 동시 생성 저장소 수)를 붙여 "확인 필요"로 표시한다. **어느 축에서도 자동 제외하지 않는다**(결정 28) — 일별 곡선 하나로는 출시 급등을 오탐한다(MEASURE §5) |
+| FR-4.6 | **급등 패턴 표시** — 스타 계정 정보는 볼 수 없으므로 근거 수치(최대일 비중, 스타 대비 포크·이슈 비율, 같은 계정의 동시 생성 저장소 수, 휴면 후 폭증 배수 — 결정 40)를 붙여 "확인 필요"로 표시한다. **어느 축에서도 자동 제외하지 않는다**(결정 28) — 일별 곡선 하나로는 출시 급등을 오탐한다(MEASURE §5) |
 | FR-4.7 | 랭킹은 결정론적이다. 같은 입력이면 같은 결과가 나와야 한다 |
 
 ### FR-5 근거 수집 (`evidence`)
@@ -156,10 +161,10 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 | ID | 출처 | 모으는 것 |
 |---|---|---|
 | FR-5.1 | GitHub | README, 최근 릴리스, 저장소 메타(라이선스·기여자 수·이슈 처리·릴리스 주기) |
-| FR-5.2 | HN·Reddit | 저장소 URL·이름이 언급된 글과 댓글. 스타가 몰린 날짜 앞뒤 기간을 우선한다 |
+| FR-5.2 | HN | Algolia HN Search 로 저장소 URL 이 걸린 글 + 이름이 언급된 댓글, 지난 7일(스타가 몰린 날짜 앞뒤 우선). **Reddit 은 제외**(결정 44 — API 사전 승인 필수) |
 | FR-5.3 | 웹 검색 | 블로그·튜토리얼·사용 후기 (방식은 D-7) |
-| FR-5.4 | 패키지·의존 | PyPI·npm 다운로드 수, 의존 저장소 수 (접근 방식은 D-8) |
-| FR-5.5 | 국내 커뮤니티 | GeekNews 등 (접근 방식은 D-8) |
+| FR-5.4 | 패키지·의존 | 저장소 → 패키지는 ecosyste.ms 조회(이름 일치로 거르기, deps.dev 보조). PyPI 는 pypistats, npm 은 다운로드 API(4일 지연·0 인 날은 그대로 믿지 않는다). 의존 수는 **"패키지 의존 수"**(ecosyste.ms·deps.dev)라는 이름으로 — GitHub "Used by" 와 다른 수치다. 출처 표기(결정 44) |
+| FR-5.5 | 국내 커뮤니티 | GeekNews `/past?day=` 날짜별 목록 7일 × 몇 쪽(주 15~25회)에서 github.com 링크를 찾는다. 식별 가능한 User-Agent, 요청 사이 간격. 약관의 "과도한 부하" 금지를 지킨다(결정 44) |
 
 | ID | 요구사항 |
 |---|---|
@@ -245,7 +250,7 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 
 | ID | 요구사항 |
 |---|---|
-| FR-14.1 | **분류 정답 세트** `data/eval/goldset_classify.jsonl` — `{repo_id, full_name, is_ai, type, category}` 100~200개. AI·비AI, 유형, 카테고리가 고루 섞이게 뽑는다. 작성 방식은 D-15 |
+| FR-14.1 | **분류 정답 세트** `data/eval/goldset_classify.jsonl` — `{repo_id, full_name, is_ai, type, category}` 100~200개. AI·비AI, 유형, 카테고리가 고루 섞이게 뽑는다. **200개 — Claude 초안을 사용자가 검수하고, 30개는 초안을 가린 블라인드로 직접 라벨한다**(결정 41). 블라인드와 검수 라벨의 차이를 리포트에 남긴다 |
 | FR-14.2 | 분류 지표: 필드별 정확도, 카테고리 macro-F1, **보정 오차**(확률 구간별 표명 확신 대비 실제 정확도 — 확률을 주는 구현만), 1건당 비용·지연 |
 | FR-14.3 | **비교 모드** `--mode claude / jev / hybrid` — 같은 정답 세트로 돌려 결정 24 의 비교표를 만든다. hybrid 는 확신 기준값별로 정확도·비용 곡선을 낸다 |
 | FR-14.4 | **카드 품질 검사** — 코드 검사(8개 섹션 존재, 인용 게이트 통과율, 카드 숫자 = FR-2·FR-4 값)와 사용자 평가(카드 5개 시범, P3-13)를 함께 기록한다 |
@@ -262,7 +267,7 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 | FR-15.3 | **같은 주·같은 저장소는 다시 만들지 않고 고친다.** 주·저장소 ID 와 Notion 페이지 ID 의 대응을 `data/notion/index.json` 에 남긴다 |
 | FR-15.4 | **상태가 "초안"이 아닌 페이지는 내용을 바꾸지 않는다**(NFR-16). 바뀐 데이터가 있으면 로그에만 남긴다 |
 | FR-15.5 | 데이터베이스는 `notion-setup` 이 사용자가 지정한 부모 페이지 아래에 만든다(결정 38). 한 번만 |
-| FR-15.6 | Notion API 는 초당 약 3회, 블록은 요청당 100개, 글자 요소는 2,000자까지 — 넘으면 나눠 보낸다. `--dry-run` 은 보낼 페이지·블록 수만 보여 준다 |
+| FR-15.6 | **`Notion-Version: 2026-03-11`** 로 고정한다. 본문은 마크다운 API(`PATCH /v1/pages/{id}/markdown` `replace_content`)로 넣고 이미지는 파일 업로드(파일당 5 MiB)로 붙인다. 연결당 분당 180회 — 초당 3회 미만으로 보내고 429 는 `Retry-After` 를 따른다. 블록 API 를 쓸 때는 요청당 100개·rich_text 2,000자로 나눈다. `--dry-run` 은 보낼 페이지·블록 수만 보여 준다(부록 C-3) |
 
 ### FR-16 블로그 초안 (`blog`, 결정 36·37)
 
@@ -280,7 +285,7 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 ### FR-13 화면 (Next.js)
 
 §1-3 의 화면. 범위와 시안은 `docs/DESIGN.md` 에서 합의한다(D-13). **합의 전 화면 구현 금지.**
-렌더 방식은 D-9, 차트·마크다운 라이브러리는 D-10.
+렌더는 Vercel 기본 빌드(결정 42), 차트는 라이브러리 · 마크다운은 react-markdown(raw HTML 끔, 결정 43).
 
 ---
 
@@ -300,7 +305,7 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 [GitHub Actions 주간 크론 — Python]
   discover ─▶ stars ─▶ classify ─▶ rank ─▶ evidence ─▶ analyze ─▶ brief ─▶ export ─▶ archive
   (Search·      (히스토리   (규칙 +     (4축×2탭,  (GitHub·HN·  (카드,     (브리핑,   (파생      (근거 원문 +
-   추적 목록)    API)       LLM 보조)    의심 표시)  Reddit·웹·   LLM)       LLM)       데이터)     LLM 로그)
+   추적 목록)    API)       LLM 보조)    의심 표시)  GeekNews·웹· LLM)       LLM)       데이터)     LLM 로그)
                                                     패키지·국내)    └─ FR-7 인용 게이트 ─┘
        │                                                                        │          │
        ▼                                                                        ▼          ▼
@@ -317,7 +322,7 @@ LLM 을 쓰는 단계는 `classify`(보조)·`analyze`·`brief` 셋뿐이다.
 |---|---|---|
 | `GitHubClient` | `MockGitHub`(기본·테스트), `LiveGitHub` | discover · stars · evidence · archive |
 | `LLMClient` | `MockLLM`(기본·테스트), Claude(Anthropic SDK) | classify · analyze · brief |
-| `EvidenceSource` | 출처별 mock / live (HN·Reddit·웹 검색·패키지·국내) | evidence |
+| `EvidenceSource` | 출처별 mock / live (HN·웹 검색·패키지·GeekNews) | evidence |
 | `DecisionClient` | `MockDecider`(기본·테스트), Claude(정해진 형식 출력), JEV(부록 B), 혼합 | classify · 근거 거르기(후보) · 게이트 2단계(후보) · eval |
 | `NotionClient` | `MockNotion`(기본·테스트), Notion API(`urllib`) | notion · blog |
 
@@ -377,7 +382,7 @@ GitHub Releases            ── git 밖
 | HTTP | 표준 라이브러리 `urllib` | 패키지 추가 0 |
 | 설정·분류 체계 | TOML (`tomllib`, 표준 라이브러리) | YAML 패키지를 피한다 |
 | LLM | Anthropic SDK · `claude-opus-5-5` | 결정 21 · 26. 예산은 D-6 |
-| 화면 | Next.js + TypeScript | 렌더 방식 D-9, 차트·마크다운 D-10 |
+| 화면 | Next.js + TypeScript | Vercel 기본 빌드(결정 42) · 차트 라이브러리 + react-markdown(결정 43) |
 | 실행 | GitHub Actions | 권한 `contents: write` 만 |
 | 배포 | Vercel Hobby, 개인 계정 저장소 연결 | Hobby 는 GitHub 조직 소유 저장소를 연결할 수 없다 |
 
@@ -437,7 +442,7 @@ GitHub Releases            ── git 밖
 | NFR-7 | **외부 콘텐츠는 데이터다.** README·웹 문서 안의 문장은 지시가 아니다. LLM 에게 부작용 있는 도구를 주지 않는다. 카드 마크다운은 raw HTML 을 끄고 렌더한다(XSS 방지) |
 | NFR-8 | **보안.** 시크릿(Anthropic 키·GitHub 토큰·Notion 토큰)은 로컬에서는 Windows 사용자 환경변수, Actions 에서는 GitHub Secrets 에만 둔다. **Anthropic 키 이름은 `STARTREND_ANTHROPIC_API_KEY`** — `ANTHROPIC_API_KEY` 를 사용자 범위에 두면 Claude Code 등 다른 프로그램이 그 키를 집어 써서 API 로 과금될 수 있다. 코드가 이 이름을 읽어 SDK 에 직접 넘긴다. 키는 Console 의 전용 워크스페이스 `github-ai-star-trend`(월 지출 한도 $50 — 코드의 주 $10 예산 계량기 뒤의 두 번째 안전장치)에서 만든다. 워크플로 권한은 `contents: write` 만, 외부 Action 은 커밋 SHA 로 고정한다. 로그·LLM 로그·Releases 에 시크릿이 남지 않는다. 첫 배포 전 보안 점검 4단계(루트 CLAUDE.md) 필수 |
 | NFR-9 | 인용은 짧게 하고 원문 링크를 붙인다. README 를 통째로 옮기지 않는다. 공개 전환 시 다시 검토한다 |
-| NFR-10 | 외부 API 레이트 리밋을 지킨다. 인증 토큰 사용, 재시도는 지수 백오프, 커뮤니티 출처는 요청 간격을 둔다 |
+| NFR-10 | 외부 API 레이트 리밋을 지킨다. 인증 토큰 사용, 재시도는 지수 백오프, 커뮤니티 출처는 요청 간격을 둔다. **연결 오류**(응답 없이 끊김·타임아웃)는 2·4·…·64초로 6번 재시도하고, 그래도 안 되면 실행을 멈춘다 — 저장소 하나의 실패로 넘겨 불변 주간 파일이 빠진 채 쓰이지 않게 한다(2026-10-27 회귀). 멈춘 실행은 응답 캐시로 이어 돌린다 |
 | NFR-11 | 사이트에 "자체 산출값"이라는 점과 편향(생존 편향·가짜 스타 의심 판정의 한계·스타 ≠ 사용량)을 밝힌다 |
 | NFR-12 | 한국어 Windows(cp949) 대응: 진입점 stdout 재설정, 파일 입출력 `encoding=` 명시. 리포 파일명은 ASCII 만(Vercel 배포) |
 | NFR-13 | 외부 패키지는 최소. 표준 라이브러리로 되면 그것을 쓴다. 추가는 사용자 확인 후 |
@@ -460,10 +465,10 @@ GitHub Releases            ── git 밖
 | R6 | README·웹 문서를 통한 프롬프트 인젝션 | NFR-7 (데이터 취급, 부작용 도구 없음, raw HTML 렌더 금지) |
 | R7 | 페이지가 늘어 빌드가 45분을 넘는다 | NFR-6, 빌드 시간 기록·20분 경고, 필요하면 ISR 또는 오래된 주 정리 |
 | R8 | git 히스토리가 불어난다 | NFR-5 저장 규칙 + 크기 가드 |
-| R9 | Reddit·GeekNews 등 출처의 접근 정책이 막힌다 | 출처를 끼웠다 뺄 수 있게 만들고, 하나가 실패해도 실행은 계속(FR-5.7). D-8 |
+| R9 | 출처의 접근 정책이 막힌다 — Reddit 은 실제로 막혔다(2025-10 사전 승인제) | 출처를 끼웠다 뺄 수 있게 만들고, 하나가 실패해도 실행은 계속(FR-5.7). Reddit 은 제외(결정 44), GeekNews 는 HTML 이 바뀌면 깨진다 — 실패를 "수집 실패"로 남긴다 |
 | R10 | 분기 재검토로 카테고리가 바뀌면 추이가 끊긴다 | 분류 체계 버전 + 이전→이후 매핑(FR-3.4) |
 | R11 | GitHub Trending 은 공식 API 가 없다 | `probe` 대조용으로만 쓰고 운영 의존으로 두지 않는 안(D-2) |
-| R12 | Vercel 루트 디렉토리를 `web/` 으로 두면 `../data` 를 못 읽을 수 있다 | 설정 확인, 안 되면 빌드 전 복사 단계(결정 23) |
+| R12 | Vercel 루트 디렉토리를 `web/` 으로 두면 `../data` 를 못 읽을 수 있다 — 공식 문서끼리 다르다(부록 C-4) | **미리보기 배포로 실제 확인**. 안 되면 Root Directory 를 저장소 루트로 두고 `cd web && …`, 또는 빌드 전 복사 단계(결정 23) |
 | R13 | 주 경계가 UTC 와 맞지 않는다 | API 의 주를 그대로 쓴다(결정 18). 경계가 닫히는 시각을 Phase 0 에서 잰다(FR-12.7) |
 | R14 | Hobby 제약(비상업 개인 용도, 개인 계정 저장소만) | 개인 계정 비공개 저장소. 광고·유료화 시 Pro 로 전환 |
 | R15 | 전수 LLM 분류의 첫 실행 비용이 크다(후보 + 52주 소급 후보 전부) | dry-run 으로 규모·금액을 먼저 제시, 판정 입력 해시로 이후엔 증분만, Batch API 검토(D-6) |
@@ -474,6 +479,7 @@ GitHub Releases            ── git 밖
 | R22 | 네이버에 공식 글쓰기 API 가 없거나 바뀐다 | 자동 게시를 처음부터 하지 않는다(결정 36). Notion → 네이버 붙여 넣기에서 서식이 유지되는지는 확인 필요 — 안 되면 `data/blog/<주>.md` 를 네이버 편집기에 맞는 형태로 따로 낸다 |
 | R23 | Notion API 의 버전·데이터베이스 구조가 바뀐다(2025-09 "data source" 도입 등) | `NotionClient` 뒤에 두고, 주간 실행 전 계약 점검에 Notion 도 넣는다(Phase 5) |
 | R24 | 파이프라인이 사용자가 검토 중인 Notion 페이지를 덮어쓴다 | NFR-16 — 상태가 초안인 페이지만 고친다. 회귀 테스트로 고정한다 |
+| R25 | Notion 무료 워크스페이스의 블록 한도 — 구성원 2명 이상이면 평생 1,000블록(2026-09-01부터 API 에도 적용, 부록 C-3). 주간·카드·블로그 페이지로 몇 주 만에 찬다 | 워크스페이스 요금제·구성원 수를 Phase 4b 전에 확인. 1인 무료(무제한)이거나 유료면 그대로, 아니면 본문을 줄이거나(카드 요약 + 사이트 링크) 전용 1인 워크스페이스를 쓴다 — **해소(2026-10-27): 워크스페이스 구성원 1명(1인 무료는 무제한)** |
 | R21 | Opus 5.5 안전 분류기가 보안·공격 도구 저장소 분석을 거절한다 | FR-3.10 ③ — 대체 모델로 다시 받고, 끝내 거절되면 "미분류(거절)"로 표시. 거절 건수를 실행 기록에 남긴다 |
 | R20 | 정답 세트가 작거나 치우쳐 비교 결과를 믿기 어렵다 | 100~200개를 범주별로 고루 뽑고, 카테고리별 개수를 리포트에 함께 적는다 |
 
@@ -483,14 +489,10 @@ GitHub Releases            ── git 밖
 
 | ID | 결정할 것 | 선택지 · 제안 | 막는 범위 |
 |---|---|---|---|
-| D-7 | 웹 검색 방식 | Claude API 서버 도구(웹 검색) / 별도 검색 API. 비용·제약 확인 후 | evidence |
-| D-8 | 출처별 접근 | Reddit API 정책, GeekNews RSS·API, GitHub 의존 저장소(공식 API 여부), PyPI·npm 다운로드 API — 각각 확인 | evidence |
-| D-9 | Next.js 렌더 방식 | 정적 export(제안 — 서버 함수 0, 다른 호스팅으로 옮기기 쉬움) / Vercel 기본 빌드 | 화면 |
-| D-10 | 화면 라이브러리 | 차트(직접 SVG / 라이브러리), 마크다운 렌더(raw HTML 끄기 필수) | 화면 |
-| D-15 | 정답 세트 작성 방식 | Claude 가 초안 라벨 → 사용자 검수(제안) / 사용자가 직접 라벨 | eval · Phase 2 |
+| D-7 | 웹 검색 방식 | Claude 서버 도구(web_search·web_fetch, Batch 가능) / 별도 검색 API(Brave·Tavily·Exa 무료 한도)로 URL 수집 + web_fetch. **저장소 5개로 결과 토큰 실측 후**(부록 C-1) | evidence |
 | D-16 | JEV 채택 범위 | 분류 / 게이트 2단계 / 근거 거르기 각각에 대해 Claude · JEV · 혼합 중 선택. FR-14 결과로 정한다 | classify(Phase 2) · evidence·gate(Phase 3) — **eval 결과 대기** |
 
-해결됨(2026-10-26): D-1 → 결정 18·32 · D-2 → 결정 27 · D-3 → 결정 28 · D-4 → 결정 19 · D-5 → 결정 20 · D-6 → 결정 26·31 · D-11 → 결정 21 · D-12 → 결정 22 · D-14 → 결정 23 · D-13 → 결정 33 · D-17 → 결정 29 · D-18 → 결정 30 · D-19 → 결정 38 · D-20 → 결정 39.
+해결됨(2026-10-26): D-1 → 결정 18·32 · D-2 → 결정 27 · D-3 → 결정 28 · D-4 → 결정 19 · D-5 → 결정 20 · D-6 → 결정 26·31 · D-11 → 결정 21 · D-12 → 결정 22 · D-14 → 결정 23 · D-13 → 결정 33 · D-17 → 결정 29 · D-18 → 결정 30 · D-19 → 결정 38 · D-20 → 결정 39 · D-15 → 결정 41 · D-9 → 결정 42 · D-10 → 결정 43 · D-8 → 결정 44.
 ID 는 다시 매기지 않는다.
 
 ---
@@ -523,7 +525,7 @@ AI 저장소에 붙이는 카테고리 15개. 분기마다 재검토한다(FR-3.
 
 ## 부록 B. JEV 조사 (2026-10-26)
 
-결정 24 의 근거. 수치는 공개 자료 기준이고 **우리 데이터로는 아직 재지 않았다.**
+결정 24 의 근거. 수치는 공개 자료 기준이고 **우리 데이터로는 아직 재지 않았다.** API·정책은 2026-10-26 2차 조사(🅑)에서 공식 문서로 확인했다 — 2차 자료뿐인 값은 그렇게 표시한다.
 
 | 항목 | 내용 |
 |---|---|
@@ -532,11 +534,91 @@ AI 저장소에 붙이는 카테고리 15개. 분기마다 재검토한다(FR-3.
 | 사용 패턴 | "LLM 이 쓰고, Jev 가 판정하고, 코드가 실행한다". 확신이 낮으면 더 큰 모델로 넘기는 구성이 흔하다 |
 | 가격 | 입력 100만 토큰당 $0.042, 출력 무료 |
 | 지연 | 중앙값 약 0.3초 (공개 측정) |
-| 한도 | 요청당 64K 토큰(상태 + 가장 긴 질문 32K), 분당 1,200 요청 |
+| 한도 | 요청당 64K 토큰(상태 + 가장 긴 질문 32K, 긴 컨텍스트 헤더로 262K 까지 — 느리고 덜 정확). 분당 1,200 요청은 **2차 자료뿐** — 공식 문서는 조직별 한도를 콘솔에 보여 준다 |
 | 언어 | 영어 우선. 다른 언어는 정확도가 낮다고 밝힘 |
-| 보정 | 독립 검증에서 과신 관측 — 최상위 확신 구간 표명 99.4% 대 실제 90.2%, 전체 표명 91.4% 대 실제 76.1% |
+| 보정 | (2차 자료 — 공식 문서에는 없고 임계값을 도메인에 맞춰 조정하라고만 한다) 독립 검증에서 과신 관측 — 최상위 확신 구간 표명 99.4% 대 실제 90.2%, 전체 표명 91.4% 대 실제 76.1% |
 | 못 하는 것 | 글·코드 작성, 이유 설명, 산수·정규식, 열린 답 (선택지를 미리 줘야 한다) |
-| API | 자체 엔드포인트 + OpenAI 호환 API 라는 자료가 있다. Python SDK 유무는 자료마다 다르다 — **확인 필요**(OpenAI 호환이면 `urllib` 로 부를 수 있어 패키지 추가 0) |
-| 데이터 정책 | 고객 요청·응답으로 학습하지 않는다고 밝힘. 보관 정책은 **확인 필요** |
+| API | **자체 엔드포인트 하나** `POST https://api.typesafe.ai/v1/systemone`(Bearer 키) — **OpenAI 호환 아님**(공식 OpenAPI 0.2.0: `/v1/models`·`/v1/systemone` 뿐). 본문 `{model, state, questions:{이름:{type, instructions, criteria}}}`, type 은 `noul`·`choice`(선택지 1~255)·`score`(1~10 단계). choice 는 선택·confidence·선택지별 확률을 준다. 모델 `jev-1.14.0`(2026-10-14). 공식 Python SDK `typesafe-sdk` 가 있지만 엔드포인트가 하나라 **`urllib` 로 충분 — 패키지 추가 0**. OpenRouter 도 같은 형식(`/api/v1/systemone`, 수수료 약 5.5%) |
+| 데이터 정책 | 입력으로 학습하지 않는다(개인정보처리방침 2025-11-19, 미국 호스팅). 보관 기간은 "필요한 기간"으로만 적혀 있다(DPA 2026-04-24). ZDR 은 엔터프라이즈 문의만 |
+| 공식 문서가 밝힌 약점 | 지시를 문자 그대로 읽는다 · 선택지 순서에 영향 · 셈·날짜 비교 약함 · 무관한 내용이 섞이면 정확도 하락 · **프롬프트 주입에 취약** → 근거 거르기(FR-5.9)에 쓸 때 외부 글을 그대로 넣지 않는다 |
+| 가입 | console.typesafe.ai — 신규 가입 가능 여부·무료 크레딧은 2차 자료끼리 다르다(**미확인**). 막히면 OpenRouter 키로 같은 형식을 쓴다 |
 
 출처: [Jev Engineering 가이드(aibuilderclub)](https://www.aibuilderclub.com/blog/jev-engineering-guide) · [Jev 설명(Daily Dose of DS)](https://blog.dailydoseofds.com/p/jev-clearly-explained) · [JEV as a judge(FutureAGI)](https://futureagi.com/blog/jev-as-a-judge-for-agent-evals/) · [Requesty 모델 페이지](https://www.requesty.ai/model/typesafe/jev) · [OpenRouter 모델 페이지](https://openrouter.ai/~typesafe/jev-latest)
+
+공식 문서(2026-10-26 확인): [System One API](https://docs.typesafe.ai/api/system-one.md) · [OpenAPI](https://api.typesafe.ai/openapi.json) · [confidence 계산](https://docs.typesafe.ai/confidence.md) · [모델](https://docs.typesafe.ai/models.md) · [약점(jev-1.13)](https://docs.typesafe.ai/model-jaggedness/jev-1.13.md) · [Python SDK](https://docs.typesafe.ai/sdk/python.md) · [개인정보처리방침](https://typesafe.ai/legal/privacy-policy) · [DPA](https://typesafe.ai/legal/data-processing) · [OpenRouter 경유](https://openrouter.ai/docs/guides/community/typesafe-sdk.md)
+
+## 부록 C. 조사 트랙 결과 (🅑, 2026-10-26)
+
+공식 문서 기준. 2차 자료뿐인 값과 확인 못 한 값은 그렇게 적는다. **결정은 아니다** — 각 D-n 의 선택지를 정하는 근거다.
+
+### C-1. 웹 검색 (D-7)
+
+| 방식 | 가격 | 무료 한도 | 조건·제약 | 판단 |
+|---|---|---|---|---|
+| **Claude 서버 도구** `web_search_20260318` · `web_fetch_20260318` | 검색 1,000회당 $10 + 결과는 입력 토큰. fetch 는 토큰만(웹페이지 1개 약 2,500 토큰) | 없음 | Opus 5.5 지원 · **Batch 에서 사용 가능**(검색 요금 동일, 반복 한도면 `pause_turn` → 이어서 요청) · `allowed_domains`/`blocked_domains` 중 하나 · `max_uses` · 검색 인용 자동(`cited_text` 150자 — 인용 게이트와 맞음) · **fetch 는 대화에 이미 나온 URL 만** 읽는다 · Console Capabilities 에서 기본 켜짐 | 후보 1 |
+| Brave Search API | 1,000회당 $5 | 월 $5 크레딧(약 1,000회) | 결과 저장은 "storage rights" 플랜 필요 — 카드에 URL·짧은 인용을 남기는 것이 되는지 **미확인** | 후보 2 |
+| Tavily | 크레딧당 $0.008 (basic 1크레딧) | 월 1,000크레딧 | 쿼리 데이터 활용은 설정에서 끔 | 후보 2 |
+| Exa | 1,000회당 $4~12 (2026-03 개편) | 월 $10 크레딧 | Starter 는 쿼리가 학습에 쓰일 수 있다(2차 자료) | 후보 2 |
+| Serper (Google 결과) | 5만 회 $50, 6개월 만료 | 가입 시 2,500회 1번 | 결과 저장 조건 **미확인** | 제외 권장 |
+| Google Programmable Search | — | — | 신규 고객 불가, 2027-01-01 종료, 전체 웹 검색 폐지 | 제외 |
+| Bing Search API | — | — | 2025-08-11 종료 | 제외 |
+
+- 우리 규모(주 30~135회 검색)에서 검색 요금은 Claude 주 $0.30~1.35, 별도 API 는 무료 한도 안 $0.
+- **결과 토큰 비용은 아직 재지 않았다.** 저장소당 1만~4만 토큰이면 Batch 로 주 $0.3~3.6 (가정). D-7 은 **저장소 5개로 결과 토큰을 실측한 뒤** 정한다(Phase 3 전).
+- 구성 메모: `max_uses` 검색 3 · fetch 5, fetch 에 `max_content_tokens` 와 인용 켜기, 스팸 도메인은 `blocked_domains`. HN·Reddit·GitHub 에서 모은 URL 을 프롬프트에 넣어야 fetch 가 읽을 수 있다.
+- 출처: [web search tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool) · [web fetch tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool) · [server tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools) · [Brave](https://brave.com/search/api/) · [Tavily](https://docs.tavily.com/documentation/api-credits) · [Exa](https://exa.ai/pricing) · [Serper](https://serper.dev/) · [Google CSE](https://developers.google.com/custom-search/v1/overview) · [Bing 종료](https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement)
+
+### C-2. 근거 출처별 접근 (D-8)
+
+| 출처 | 2026-10 상태 | 권장 방식 (조사 기준, 결정 아님) | 위험 |
+|---|---|---|---|
+| **HN** (Algolia HN Search) | **쓸 수 있다.** 인증 없음·무료·IP 당 시간당 1만 회. `search_by_date?query=github.com/OWNER/REPO&restrictSearchableAttributes=url&tags=story&numericFilters=created_at_i>T0`, 댓글은 `tags=comment` (직접 호출 확인) | URL 로 글 + 이름으로 댓글, 지난 7일. 주 약 90회 | YC 약관의 "scraping" 금지가 이 API 에도 해당하는지 미확인. Actions 러너는 IP 를 공유한다(추론) |
+| **Reddit** | **사실상 불가.** Responsible Builder Policy(2025-10-28, 2026-10-05 수정) — API 접근 전 **사전 승인 필수**. 비인증 `.json` 은 403(직접 확인), robots 전면 금지, 삭제 콘텐츠 제거·48시간 안 삭제 권장 | 1단계에서 **제외**. 넣으려면 승인 신청 → OAuth script 앱, 카드에는 링크·수치만 | 승인 여부·기간 불확실, 저장·재표시 제한 |
+| **GeekNews** | 공식 API 없음. RSS 는 50건(약 19시간 분량)이라 주 1회로는 대부분 놓친다. 검색은 브라우저에서 그린다. `/past?day=YYYY-MM-DD&page=N` HTML 에 원문 URL 이 있다. robots 는 `/past` 허용, 약관(2026-08-16)은 "과도한 부하" 자동 접근 금지 | `/past` 7일 × 몇 쪽(주 15~25회)에서 github.com 링크를 찾는다. 식별 가능한 UA + 요청 간격 | HTML 이 바뀌면 깨진다. 약관 해석에 기댄다 |
+| **PyPI** | pypistats `/api/packages/{pkg}/recent` — 인증 없음, 하루 1회 이상 받지 말라는 권고, 180일 보관, `X-Ratelimit-Limit: 60`(창 길이 미확인). BigQuery 는 GCP 인증이 필요해 제외 | 패키지당 주 1회, 결과 저장 | 한도 창 미확인 |
+| **npm** | `api.npmjs.org/downloads/point/last-week/{pkg}` — 인증 없음, 스코프 없는 패키지 128개 묶음 | 주 1회 | **4일 지연, 일별 0 인 날이 섞인다**(직접 확인) — 0 을 그대로 믿지 않는다 |
+| 저장소 → 패키지 | ecosyste.ms `packages/lookup?repository_url=…`(다운로드·의존 수를 함께, 익명 한도 5,000, CC-BY-SA-4.0) · deps.dev(포크 패키지가 섞임) · pyproject/package.json 직접 읽기 | ecosyste.ms + 이름 일치로 거르기, deps.dev 보조 | 포크 패키지 혼입, 출처 표기 필요 |
+| **GitHub dependents** | **공식 API 없음**(dependency graph API 는 그 저장소가 *쓰는* 쪽뿐). 웹 `/network/dependents` 는 robots 로 막힘 | "Used by" 대신 ecosyste.ms·deps.dev(v3alpha `:dependents`, CC-BY 4.0) 값을 **"패키지 의존 수"** 라는 다른 이름으로 | GitHub 화면 수치와 다르다. v3alpha 는 바뀔 수 있다 |
+
+→ FR-5.2(HN·Reddit)는 **HN 만으로 시작하는 것**이 현실적이고, FR-5.4 의 "의존 저장소 수"는 "패키지 의존 수"로 이름과 뜻을 바꿔야 한다. 둘 다 D-8 에서 정한다.
+
+출처: [HN Search API](https://hn.algolia.com/api) · [YC legal](https://www.ycombinator.com/legal) · [Reddit Responsible Builder Policy](https://support.reddithelp.com/hc/articles/42728983564564) · [Reddit Data API Wiki](https://support.reddithelp.com/hc/articles/16160319875092) · [Reddit Data API Terms](https://redditinc.com/policies/data-api-terms) · [GeekNews 약관](https://news.hada.io/terms) · [pypistats API](https://pypistats.org/api/) · [npm downloads API](https://github.com/npm/registry/blob/main/docs/download-counts.md) · [ecosyste.ms packages](https://packages.ecosyste.ms/docs) · [deps.dev API](https://docs.deps.dev/api/v3alpha/) · [libraries.io API](https://libraries.io/api)
+
+### C-3. Notion API (Phase 4b)
+
+| 항목 | 내용 |
+|---|---|
+| 버전 | **`Notion-Version: 2026-03-11`** (2025-09-03 이후 유일한 새 버전, 2026-10-22 변경 이력 기준). 바뀐 점: 블록 추가 위치는 `position`(`after_block`/`start`/`end`), `archived` → `in_trash`, `transcription` → `meeting_notes` |
+| DB 만들기 | `POST /v1/databases` 한 번 — `parent:{type:"page_id"}` + `title` + `initial_data_source.properties`. **status 속성도 API 로 만든다**(2026-03-19부터). relation 은 대상 `data_source_id` 가 먼저 있어야 한다 |
+| 페이지 | `POST /v1/pages` 에 `parent:{data_source_id}`. 속성 수정 `PATCH /v1/pages/{id}` |
+| **마크다운 본문** | 2026-02-26 추가. 만들 때 `markdown` 필드, 고칠 때 `PATCH /v1/pages/{id}/markdown` 의 `replace_content`(전체 교체)·`update_content`(찾아 바꾸기). 하위 페이지를 지우게 되는 교체는 기본 거부(`allow_deleting_content`), 큰 쓰기는 `allow_async`. 페이지가 약 2만 레코드를 넘으면 400 — **본문 갱신은 블록 API 보다 이쪽이 단순하다** |
+| 블록 제한 | 요청당 블록 100개·중첩 2단계·rich_text 2,000자·요청 전체 1,000블록/500KB. 블록은 옮길 수 없다 |
+| 파일 업로드 | 무료 워크스페이스는 **파일당 5 MiB**(PNG 지원). 업로드 객체 → 전송 → 이미지 블록에 `file_upload` id. **1시간 안에 붙이지 않으면 보관 처리**. 마크다운 안에서 업로드 파일을 가리킬 수 있는지는 미확인 — 이미지 블록을 따로 붙인다 |
+| 요청 한도 | 연결당 60초 창 — 무료·Plus 분당 180회(평균 초당 3회). 429 는 `Retry-After`(헤더, 2026-09-24부터 본문 `additional_data.retry_after` 도)만큼 쉬고, 이어지면 지터 섞은 지수 백오프 5~6회 |
+| **무료 블록 한도** | 2026-09-01부터 REST API 에도 적용 — **구성원 2명 이상 무료 워크스페이스는 평생 1,000블록**, 1인 무료는 무제한(R25) |
+| 검색 지연 | 공유 직후 검색에 안 나올 수 있다고 문서에 있다(2026-10-26 실제로 겪음). 만든 DB·페이지 ID 는 응답에서 받아 `data/notion/index.json` 에 남기고 검색에 기대지 않는다 |
+
+출처: [2026-03-11 업그레이드 가이드](https://developers.notion.com/guides/get-started/upgrade-guide-2026-03-11) · [변경 이력](https://developers.notion.com/page/changelog) · [create database](https://developers.notion.com/reference/create-database.md) · [마크다운](https://developers.notion.com/guides/data-apis/working-with-markdown-content.md) · [update page markdown](https://developers.notion.com/reference/update-page-markdown.md) · [파일](https://developers.notion.com/guides/data-apis/working-with-files-and-media) · [요청 한도](https://developers.notion.com/reference/request-limits) · [블록 한도](https://developers.notion.com/reference/workspace-block-limits) · [검색 한계](https://developers.notion.com/reference/search-optimizations-and-limitations)
+
+### C-4. Vercel (R12, Phase 4·5)
+
+- **루트 밖 `../data` 읽기: 공식 문서끼리 다르다.** Monorepo FAQ(2026-08-11)는 "Include source files outside of the Root Directory in the Build Step"(2020-08 이후 프로젝트는 기본 켜짐)로 된다고 하고, 빌드 설정 문서(2026-08-28)는 `..` 불가라고 한다 → **미리보기 배포로 실제 확인**. 막히면 Root Directory 를 저장소 루트로 두고 `cd web && …`, 또는 빌드 전에 `data/site/` 를 `web/` 안으로 복사(결정 23).
+- 클론 깊이: `git clone --depth=10`.
+- Hobby: 배포당 빌드 45분 · 하루 100회 · 동시 1개. **GitHub 조직 소유 저장소와는 연결할 수 없다** — 개인 계정 저장소여야 한다(결정 23 과 맞음).
+- **"All Deployments" + Vercel Authentication 이 모든 플랜에서 무료**(2026-09-09, production 포함). 기본값 Standard Protection 은 production 을 보호하지 않으니 직접 바꾼다. Password Protection 은 Hobby 불가.
+- (참고) 정적 export 였다면 못 쓰는 것: rewrites/redirects/headers, 미들웨어, ISR, Server Actions — 결정 42(기본 빌드)로 해당 없음.
+
+출처: [Monorepo FAQ](https://vercel.com/docs/monorepos/monorepo-faq) · [빌드 설정](https://vercel.com/docs/builds/configure-a-build) · [한도](https://vercel.com/docs/limits) · [무료 production 보호](https://vercel.com/changelog/protect-production-deployments-for-free-on-every-plan) · [배포 보호](https://vercel.com/docs/deployment-protection)
+
+### C-5. 대조 출처 (D-2 보조)
+
+| 출처 | 2026-10 상태 | 판단 |
+|---|---|---|
+| GitHub Trending 주간 | 정상("stars this week"). 공식 API 없음 — HTML | **유일하게 쓸 수 있는 대조 출처**(probe 에서 이미 사용 — MEASURE §3 포함률 100%) |
+| GH Archive `WatchEvent` | 시간별 파일은 계속 올라오지만 스타 포착률이 2025-05 약 80% → 2026 년 중반 약 1% 수준(업스트림 공개 Events API 손실, 이슈 #320). 표본: 시간당 WatchEvent 2026-05-31 2,512건 → 10-25 187건 | 대조 불가 |
+| OSS Insight API | `/v1/trends/repos` 가 `unavailable_since: 2026-03-01`("이벤트 포착이 기준선의 약 0.3%") 로 빈 결과, 스타 추이는 HTTP 500 | 대조 불가 |
+
+→ 우리 방식(GitHub API 로 직접 찍는 주간 스냅샷 차이 + 히스토리 API)이 2026 년에는 사실상 유일하게 믿을 수 있는 방법이다. 결정 27 을 다시 뒷받침한다.
+
+출처: [GH Archive #320](https://github.com/igrigorik/gharchive.org/issues/320) · [#323](https://github.com/igrigorik/gharchive.org/issues/323) · [community #178788](https://github.com/orgs/community/discussions/178788) · [Events API 페이로드 변경](https://github.blog/changelog/2025-08-08-upcoming-changes-to-github-events-api-payloads/) · [OSS Insight API](https://ossinsight.io/docs/api/)
+

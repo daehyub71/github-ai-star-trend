@@ -4,6 +4,9 @@
 - 1차 레이트 리밋(remaining=0)은 reset 시각까지, 2차 레이트 리밋(retry-after·429)은 지정 시간만큼 기다린다.
   기다릴 시간이 상한을 넘으면 RateLimited 를 올린다 — 무인 실행이 몇 시간씩 멈추지 않게.
 - 5xx 는 1·2·4초 지수 백오프로 재시도한다. 422(히스토리 API: 검증 실패 또는 과도한 호출)는 재시도하지 않는다.
+- 연결 오류(TransportError)는 2·4·…·64초로 6번 재시도하고, 그래도 안 되면 TransportError 를 그대로 올려
+  실행을 멈춘다. 저장소 하나의 실패(GitHubError)로 넘기면 불변 주간 파일이 빠진 채 쓰인다
+  — 멈춘 뒤 캐시로 이어 돌린다.
 """
 
 import json
@@ -26,7 +29,7 @@ from startrend.clients.github_parse import (
     parse_repo,
     parse_search_page,
 )
-from startrend.clients.transport import HttpResponse, Transport, UrllibTransport
+from startrend.clients.transport import HttpResponse, Transport, TransportError, UrllibTransport
 from startrend.core.models import HistoryWeek, RateLimit, Repo, SearchPage
 
 API_VERSION = "2026-03-10"  # 지원 버전 중 최신 (2026-10 기준 공식 문서)
@@ -50,6 +53,7 @@ class LiveGitHub:
         max_retries: int = 3,
         max_rate_wait: float = 900.0,
         max_rate_waits: int = 5,
+        max_transport_retries: int = 6,
     ):
         self._token = token
         self._transport = transport or UrllibTransport()
@@ -61,6 +65,7 @@ class LiveGitHub:
         self._max_retries = max_retries
         self._max_rate_wait = max_rate_wait
         self._max_rate_waits = max_rate_waits
+        self._max_transport_retries = max_transport_retries
         self.stats = CallStats()
         self.last_rate_limit: RateLimit | None = None
 
@@ -117,9 +122,17 @@ class LiveGitHub:
         }
         retries = 0
         rate_waits = 0
+        drops = 0
         while True:
             started = self._clock()
-            resp = self._transport("GET", url, headers, self._timeout)
+            try:
+                resp = self._transport("GET", url, headers, self._timeout)
+            except TransportError:
+                if drops >= self._max_transport_retries:
+                    raise
+                drops += 1
+                self._sleep(2.0**drops)
+                continue
             self.stats.record(endpoint, self._clock() - started)
             if any(k.startswith("x-ratelimit-") for k in resp.headers):
                 self.last_rate_limit = parse_rate_limit(resp.headers)

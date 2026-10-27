@@ -81,6 +81,37 @@ def test_rank_flag_issue_and_fork_ratio_from_repo_info():
     assert kinds == {"issue_ratio": "열린 이슈 4.3%"}  # 포크 17.7% 는 기준(30%) 아래
 
 
+def test_rank_flag_dormant_burst():
+    # 시험 소급(MEASURE §13)의 morluto/rea — 2026-04 생성, 4주 동안 396 → 379,884
+    r = row(1, 379_884, 69_361, created=date(2026, 4, 14))
+    flags = rank.flags_for(r, {1: r}, None, W, prior_gain=145 + 77_992 + 231_990)
+    assert flags == [{"kind": "dormant_burst", "label": "잠잠하다 4주 만에 959배", "value": 959.3}]
+
+
+def test_rank_flag_dormant_burst_skips_young_repo():
+    # 생성 60일 미만은 원래 폭발적으로 큰다 — 같은 계정·하루 몰림 표시가 따로 본다
+    r = row(1, 32_520, 32_023, created=date(2026, 10, 17))
+    assert rank.flags_for(r, {1: r}, None, W, prior_gain=497) == []
+
+
+def test_rank_flag_dormant_burst_skips_large_start():
+    r = row(1, 80_000, 30_000, created=date(2025, 1, 1))  # 4주 전 5,000 이상
+    assert rank.flags_for(r, {1: r}, None, W, prior_gain=40_000) == []
+
+
+def test_rank_flag_dormant_burst_needs_full_window():
+    r = row(1, 379_884, 69_361, created=date(2026, 4, 14))
+    assert rank.flags_for(r, {1: r}, None, W) == []  # 지난 3주 값이 없으면 판단하지 않는다
+
+
+def test_rank_prior_gains_none_when_a_week_file_is_missing(tmp_path):
+    for w, g in ((date(2026, 10, 4), 77_992), (date(2026, 10, 11), 231_990)):
+        weekfile.write(weekfile.week_path(tmp_path, w), [row(1, 1000, g)])
+    assert rank.prior_gains(tmp_path, W) is None  # 09-27 주 파일이 없다
+    weekfile.write(weekfile.week_path(tmp_path, date(2026, 9, 27)), [row(1, 1000, 145), row(2, 50, 12)])
+    assert rank.prior_gains(tmp_path, W) == {1: 145 + 77_992 + 231_990, 2: 12}
+
+
 # --- 실행 ---
 
 
@@ -119,6 +150,18 @@ def test_rank_run_reads_previous_week_for_rank_change(tmp_path):
     assert [(e["id"], e["rank"], e["prev_rank"]) for e in gain] == [(2, 1, 2), (1, 2, 1)]
     m = meta.load(tmp_path, 1)
     assert m is not None and m["first_seen"] == "2026-10-11"
+
+
+def test_rank_run_marks_dormant_burst_with_full_window(tmp_path):
+    created = date(2026, 4, 14)
+    for w, end, g in ((date(2026, 9, 27), 541, 145), (date(2026, 10, 4), 78_533, 77_992),
+                      (date(2026, 10, 11), 310_523, 231_990)):
+        weekfile.write(weekfile.week_path(tmp_path, w), [row(1, end, g, created=created)])
+    cur = row(1, 379_884, 69_361, created=created)
+    weekfile.write(weekfile.week_path(tmp_path, W), [cur])
+    rank.run_rank(_gh({1: cur}), week_start=W, data_dir=tmp_path, log=lambda m: None)
+    entry = io.read_json(rank.rankings_path(tmp_path, W))["axes"]["gain"]["all"][0]
+    assert [f["kind"] for f in entry["flags"]] == ["dormant_burst"]
 
 
 def test_rank_tracked_names_from_rankings(tmp_path):

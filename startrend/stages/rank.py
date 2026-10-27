@@ -28,6 +28,11 @@ PEAK_SHARE = 0.5          # 하루에 주간 증가의 50% 이상
 SAME_OWNER_MIN = 3        # 같은 계정의 30일 이내 새 저장소(스타 ≥ 1,000) 3개 이상
 ISSUE_RATIO = 0.03        # 열린 이슈 / 스타 3% 이상 (보통 1% 미만)
 FORK_RATIO = 0.30         # 포크 / 스타 30% 이상
+# 휴면 후 폭증 (결정 40) — 오래된 저장소가 4주 만에 몇 배로. 근거: MEASURE §13
+DORMANT_WEEKS = 4         # 이번 주 포함 4주 창
+DORMANT_MIN_AGE = 60      # 생성 60일 이상 (새 저장소는 원래 폭발적으로 큰다)
+DORMANT_MAX_START = 5000  # 4주 전 스타 5,000 미만
+DORMANT_MULT = 10         # 4주 동안 10배 이상
 
 
 def rankings_path(data_dir: Path, week_start: date) -> Path:
@@ -52,8 +57,24 @@ def compute_axes(rows: dict[int, WeekRow], week_start: date, *, top: int = TOP,
     }
 
 
-def flags_for(r: WeekRow, rows: dict[int, WeekRow], info: dict[str, int] | None, week_start: date
-              ) -> list[dict[str, Any]]:
+def prior_gains(data_dir: Path, week_start: date, weeks: int = DORMANT_WEEKS - 1) -> dict[int, int] | None:
+    """지난 weeks 주의 증가 합(저장소별). 그 주 파일이 하나라도 없으면 None — 창을 채울 수 없다.
+
+    주간 파일에 없는 저장소는 그 주 증가가 10 미만이었다 — 0 으로 본다(4주 전 스타를 조금 크게 잡는 쪽).
+    """
+    total: dict[int, int] = {}
+    for k in range(1, weeks + 1):
+        p = weekfile.week_path(data_dir, week_start - timedelta(days=7 * k))
+        if not p.exists():
+            return None
+        for rid, r in weekfile.read(p).items():
+            total[rid] = total.get(rid, 0) + r.gain
+    return total
+
+
+def flags_for(r: WeekRow, rows: dict[int, WeekRow], info: dict[str, int] | None, week_start: date,
+              *, prior_gain: int | None = None) -> list[dict[str, Any]]:
+    """prior_gain: 지난 3주의 증가 합. None 이면 휴면 후 폭증은 판단하지 않는다."""
     flags: list[dict[str, Any]] = []
     if r.days and r.gain >= PEAK_MIN_GAIN:
         share = max(r.days) / r.gain
@@ -67,6 +88,13 @@ def flags_for(r: WeekRow, rows: dict[int, WeekRow], info: dict[str, int] | None,
     if len(same) >= SAME_OWNER_MIN and r in same:
         n = len(same)
         flags.append({"kind": "same_owner_new", "label": f"같은 계정 새 저장소 {n}개", "value": n})
+    if prior_gain is not None and (week_end - r.created).days >= DORMANT_MIN_AGE:
+        start = r.stars_end - r.gain - prior_gain  # 4주 전 스타
+        if (start < DORMANT_MAX_START and r.gain + prior_gain >= PEAK_MIN_GAIN
+                and r.stars_end >= DORMANT_MULT * max(start, 1)):
+            mult = r.stars_end / max(start, 1)
+            flags.append({"kind": "dormant_burst", "label": f"잠잠하다 4주 만에 {mult:,.0f}배",
+                          "value": round(mult, 1)})
     if info:
         stars = info.get("stars") or r.stars_end
         if stars >= 1000:
@@ -119,6 +147,7 @@ def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = T
         })
 
     prev = _prev_ranks(data_dir, week_start)
+    prior = prior_gains(data_dir, week_start)
     out_axes: dict[str, dict[str, Any]] = {}
     for a, rs in axes.items():
         entries = []
@@ -133,7 +162,8 @@ def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = T
                 "growth": round(r.gain / start, 4) if start > 0 else None,
                 "exact": r.exact, "days": list(r.days) if r.days else None,
                 "forks": info.get("forks"), "open_issues": info.get("open_issues"),
-                "flags": flags_for(r, rows, info or None, week_start),
+                "flags": flags_for(r, rows, info or None, week_start,
+                                   prior_gain=None if prior is None else prior.get(r.id, 0)),
                 "prev_rank": prev.get(a, {}).get(r.id),
             })
         out_axes[a] = {"all": entries, "ai": None}

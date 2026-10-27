@@ -12,20 +12,23 @@ import pytest
 
 from startrend.clients.github import GitHubError, NotFound, RateLimited
 from startrend.clients.github_live import LiveGitHub
-from startrend.clients.transport import HttpResponse
+from startrend.clients.transport import HttpResponse, TransportError
 from tests import synth
 
 TOKEN = "ghp_test_token_value"
 
 
 class FakeTransport:
-    def __init__(self, responses: list[HttpResponse]):
+    def __init__(self, responses: list[HttpResponse | Exception]):
         self.responses = list(responses)
         self.requests: list[tuple[str, str, dict[str, str]]] = []
 
     def __call__(self, method: str, url: str, headers: Mapping[str, str], timeout: float) -> HttpResponse:
         self.requests.append((method, url, dict(headers)))
-        return self.responses.pop(0)
+        r = self.responses.pop(0)
+        if isinstance(r, Exception):
+            raise r
+        return r
 
 
 class FakeClock:
@@ -133,6 +136,22 @@ def test_github_live_gives_up_after_max_retries():
     with pytest.raises(GitHubError) as e:
         gh.star_count("a/b")
     assert e.value.status == 500
+
+
+def test_github_live_retries_connection_drop_then_succeeds():
+    # 회귀(2026-10-27 52주 소급 14시간째): 응답 없이 끊긴 연결(RemoteDisconnected) 하나로 실행 전체가 멈췄다
+    drops = [TransportError("GET /x: Remote end closed"), TransportError("again")]
+    gh, t, clock = make([*drops, ok({"count": 5})])
+    assert gh.star_count("a/b") == 5
+    assert clock.slept == [2.0, 4.0]
+
+
+def test_github_live_connection_errors_exhausted_stop_the_run():
+    # 계속 끊기면 저장소 하나의 실패(GitHubError)로 넘기지 않는다 — 불변 주간 파일이 빠진 채 쓰이면 안 된다
+    gh, t, clock = make([TransportError("down")] * 7)
+    with pytest.raises(TransportError):
+        gh.star_count("a/b")
+    assert len(t.requests) == 7 and clock.slept == [2.0, 4.0, 8.0, 16.0, 32.0, 64.0]
 
 
 def test_github_live_422_is_not_retried():

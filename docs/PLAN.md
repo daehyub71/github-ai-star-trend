@@ -1,7 +1,7 @@
 # PLAN.md — github-ai-star-trend
 
-> 최종 갱신: 2026-10-26 · **사용자 확인 완료(2026-10-26), Phase 0 완료 대기(사용자 확인).** SPEC v0.6 기준(실측 결정 27~32, Notion·블로그 결정 34~39 반영).
-> 남은 결정: D-15(Phase 2 전) · D-16(eval 결과 대기) · D-7·D-8(Phase 3 전) · D-9·D-10(Phase 4 전). 실측 결과는 `docs/MEASURE.md`.
+> 최종 갱신: 2026-10-26 · **사용자 확인 완료(2026-10-26), Phase 0 완료 대기(사용자 확인).** SPEC v0.8 기준(실측 결정 27~32, Notion·블로그 결정 34~39, 시험 소급 뒤 결정 40~43, 조사 뒤 결정 44 반영).
+> 남은 결정: D-16(eval 결과 대기) · D-7(Phase 3 전, 결과 토큰 실측 후). 실측 결과는 `docs/MEASURE.md`.
 > 그림은 `docs/img/*.png`(원본 `docs/diagrams/*.html`, `scripts/render_diagrams.py` 로 다시 만든다).
 > 그림 아래 접힌 "텍스트 버전"(Mermaid·텍스트)이 기준이다.
 
@@ -140,14 +140,10 @@ flowchart LR
     P4B --> P5
     P2 & P3 & P4 --> P5["Phase 5<br/>운영·배포"]
 
-    D6["D-15 정답 세트"] --> P2
-    D78["D-7 · D-8<br/>출처 접근 조사"] --> P3
-    DS["D-9 · D-10 · D-13<br/>DESIGN 합의"] --> P4
+    D78["D-7 웹 검색<br/>결과 토큰 실측"] --> P3
     SEC["보안 점검 4단계"] --> P5
 
-    style D6 fill:#f7e2e1,stroke:#c73635,color:#1b1a17
     style D78 fill:#f7e2e1,stroke:#c73635,color:#1b1a17
-    style DS fill:#f7e2e1,stroke:#c73635,color:#1b1a17
     style SEC fill:#f7e2e1,stroke:#c73635,color:#1b1a17
 ```
 
@@ -163,9 +159,9 @@ Phase 4 화면은 Phase 1 의 랭킹 데이터 모양만 있으면 시안 작업
 |---|---|---|---|
 | **0 골격 + 실측** | `.venv`·도구 설정 · core(week·io·hashing·config) · `GitHubClient`(mock + live) · 합성 픽스처 · **규칙 강제(네트워크 차단·층 규칙·커밋 전 훅·크기 가드, NFR-14)** · **GitHub 계약 점검(FR-11.6)** · `probe`(FR-12.1~12.4, 12.6, 12.7) | GitHub 토큰(사용자) | ruff·mypy·pytest GREEN(외부 의존 0) · **SPEC §5 표가 채워짐** · D-2·D-3 확정 · D-6 금액 제시 🏁**M0** |
 | **1 데이터 코어** | discover(Search 분할 열거 ≥1,000 + 새 저장소 30일) · stars(스냅샷 차이 + 상위 후보 히스토리, 증가 ≥10 행만 git) · backfill 52주(로컬 1회) · meta(해시 기반 쓰기·샤딩·이름 변경) · rank 전체 탭 · 급등 패턴 표시 · contract 토요일 반영 경고 · 크기 가드 기준값 | 결정 27~29·32 ✅ | 합성 픽스처 GREEN · 실제 1주 + 52주 소급 실행 · 전체 탭 랭킹 4개가 나옴 🏁**M1** |
-| **2 분류** | `LLMClient`(mock + Claude Opus 5.5) · 예산 계량기(주 $10) · Batch API 경로 · `DecisionClient` · taxonomy v1 · classify(**랭킹 후보만 — 축마다 AI 15개까지**, 검증·재질문·미분류·거절 처리·증분·dry-run) · **정답 세트 + `eval`(분류)** · **Claude / JEV / 혼합 비교 → D-16(분류)** · AI 탭 랭킹 · 카테고리 추이 + ALL | D-15, Anthropic 키(사용자) · JEV 키(비교 시) | mock GREEN · **정답 세트 비교표를 사용자가 검토하고 분류 구현을 고름** · dry-run 금액 승인 후 첫 전수 분류 · 랭킹 8개 + 추이 🏁**M2** |
-| **3 근거·카드·브리핑** | `EvidenceSource`(출처별 mock + live) · 출처 실패 격리 · 인용 게이트 · 급등일 탐지 · analyze(신규·재등장) · brief · 프롬프트 인젝션 방어 · **카드 품질 검사(FR-14.4)** · **게이트 2단계·근거 거르기 후보 비교 → D-16** | D-7·D-8, D-6 | mock GREEN(게이트 우회 불가 테스트 포함) · **카드 5개 시범을 사용자가 검토** → 템플릿 조정 → 1주 전체 🏁**M3** |
-| **4 화면** | **선행: `/design` 시안 합의 → `docs/DESIGN.md`** · export · Next.js 골격 · 5년치 합성 데이터 빌드 시간(FR-12.5) · 화면 5종 | D-9·D-10·D-13, npm 패키지 확인 | `npm run lint/test/build` GREEN · 실제 데이터로 로컬 사이트 확인 · raw HTML 꺼짐 확인 🏁**M4** |
+| **2 분류** | `LLMClient`(mock + Claude Opus 5.5) · 예산 계량기(주 $10) · Batch API 경로 · `DecisionClient` · taxonomy v1 · classify(**랭킹 후보만 — 축마다 AI 15개까지**, 검증·재질문·미분류·거절 처리·증분·dry-run) · **정답 세트 + `eval`(분류)** · **Claude / JEV / 혼합 비교 → D-16(분류)** · AI 탭 랭킹 · 카테고리 추이 + ALL | 정답 세트 검수(사용자, 결정 41) · JEV 키(비교 시) — Anthropic 키 ✅ | mock GREEN · **정답 세트 비교표를 사용자가 검토하고 분류 구현을 고름** · dry-run 금액 승인 후 첫 전수 분류 · 랭킹 8개 + 추이 🏁**M2** |
+| **3 근거·카드·브리핑** | `EvidenceSource`(출처별 mock + live) · 출처 실패 격리 · 인용 게이트 · 급등일 탐지 · analyze(신규·재등장) · brief · 프롬프트 인젝션 방어 · **카드 품질 검사(FR-14.4)** · **게이트 2단계·근거 거르기 후보 비교 → D-16** | D-7 — D-6·D-8 ✅(결정 26·44) | mock GREEN(게이트 우회 불가 테스트 포함) · **카드 5개 시범을 사용자가 검토** → 템플릿 조정 → 1주 전체 🏁**M3** |
+| **4 화면** | **선행: `/design` 시안 합의 → `docs/DESIGN.md`** · export · Next.js 골격 · 5년치 합성 데이터 빌드 시간(FR-12.5) · 화면 5종 | npm 패키지 확인(차트 라이브러리 이름 포함) — D-9·D-10·D-13 ✅ 결정 42·43·33 | `npm run lint/test/build` GREEN · 실제 데이터로 로컬 사이트 확인 · raw HTML 꺼짐 확인 🏁**M4** |
 | **4b Notion·블로그 초안** | `NotionClient`(mock + live) · `notion-setup`(데이터베이스 3개) · 주간·카드 페이지 발행(초안만 고침, 대응표) · `blog` 초안(Opus 5.5, 견본 형식, 인용 게이트, dry-run) · 사진 배치 문서·이미지 PNG · 블로그 초안 발행 · 네이버 붙여 넣기 서식 확인 | Phase 3(브리핑·카드) — Notion 토큰·부모 페이지 ✅ | mock GREEN("초안 아닌 페이지는 안 고친다" 회귀 테스트 포함) · **실제 1주가 Notion 에서 검토 가능 · 사용자가 첫 글을 네이버에 게시** 🏁**M4b** |
 | **5 운영·배포** | archive(Releases·시크릿 검사) · **스냅샷 Releases 올리기·받기** · weekly(**첫 단계 계약 점검**·예산 상한·dry-run·실행 기록, 월 00:00 UTC, **blog·notion 포함**) · 비공개 저장소 · Actions 워크플로 · Vercel 연결·보호 | 보안 점검 4단계, 저장소·Vercel 계정(사용자) | 첫 배포 · Vercel 로그인 없이는 열리지 않음 확인 · **크론 2주 연속 무인 성공** 🏁**M5** |
 
@@ -218,8 +214,8 @@ FR-12.5(5년치 합성 데이터 빌드 시간)는 Next.js 골격이 필요해 P
 | PR3 | 전수 분류 첫 실행 비용이 예상보다 크다 | 표본 분류로 정확도와 1건 비용을 먼저 재고, dry-run 금액 승인 후에만 전수 실행 |
 | PR4 | 카드 품질을 Phase 3 끝에서야 알게 된다 | 카드 5개 시범을 Phase 3 안에서 먼저 돌려 사용자 검토 → 템플릿·프롬프트 조정 |
 | PR5 | 디자인 합의가 늦어져 Phase 4 가 막힌다 | Phase 1 직후 랭킹 데이터 모양으로 시안을 먼저 시작한다 |
-| PR6 | 출처 하나(Reddit 등)가 막혀 Phase 3 가 멈춘다 | 출처는 끼웠다 뺄 수 있게 만들고, 막힌 출처 없이도 완료로 본다(FR-5.7) |
-| PR7 | 정답 세트를 만드는 데 사용자 시간이 많이 든다 | Claude 가 초안 라벨을 달고 사용자는 검수만 하는 안(D-15). 애매한 것만 표시해 검수 범위를 줄인다 |
+| PR6 | 출처 하나가 막혀 Phase 3 가 멈춘다 (Reddit 은 실제로 막혀 제외 — 결정 44) | 출처는 끼웠다 뺄 수 있게 만들고, 막힌 출처 없이도 완료로 본다(FR-5.7) |
+| PR7 | 정답 세트를 만드는 데 사용자 시간이 많이 든다 | Claude 가 초안 라벨을 달고 사용자는 검수만 한다(결정 41, 블라인드 30개로 편향 측정). 애매한 것만 표시해 검수 범위를 줄인다 |
 
 ---
 
