@@ -55,7 +55,7 @@
 - [x] Anthropic API 키 — Console 워크스페이스 `github-ai-star-trend` 전용 키 → 사용자 환경변수 `STARTREND_ANTHROPIC_API_KEY`(NFR-8), 모델 목록 API 로 확인(`claude-opus-5-5` 사용 가능) — 2026-10-26 · 워크스페이스 월 지출 한도 $50 설정 ✅(매월 1일 UTC 초기화)
 - [x] D-6 모델·예산 — Opus 5.5(결정 26) · 주 $10(결정 31) (2026-10-26)
 - [x] D-15 정답 세트 작성 방식 → 결정 41: Claude 초안 → 검수, 200개 중 30개 블라인드 (2026-10-26)
-- [~] 정답 세트 검수(블라인드 30개 직접 라벨 + 초안 170개 검수, 1~2시간) — Phase 2 비교 전 (P2-11) — 블라인드 30개 라벨링 화면 준비 ✅ (https://claude.ai/artifact/QG66TemkHkga95DmBWFckP, 공유 저장소 `labels`), 사용자 라벨 진행 · 2026-10-27 블라인드 30개 라벨 저장 → `data/eval/goldset_blind_labels.jsonl`(AI 19 · 비AI 11). 유형 빈칸 4개·사용자 정리 문서(`docs/github_ai_repository_classification_30.md`)와 다른 3개 확인 대기
+- [~] 정답 세트 검수(블라인드 30개 직접 라벨 + 초안 170개 검수, 1~2시간) — Phase 2 비교 전 (P2-11) — 블라인드 30개 라벨링 화면 준비 ✅ (https://claude.ai/artifact/QG66TemkHkga95DmBWFckP, 공유 저장소 `labels`), 사용자 라벨 진행 · 2026-10-27 블라인드 30개 라벨 저장 → `data/eval/goldset_blind_labels.jsonl`(AI 19 · 비AI 11). **블라인드 30개 완료**(빈칸 없음, 2026-10-27) — 남은 것은 Phase 2 의 초안 170개 검수
 - [x] D-9 렌더 → 결정 42 Vercel 기본 빌드 · D-10 → 결정 43 차트 라이브러리 + react-markdown (2026-10-26)
 - [ ] 검색 API 키 — Tavily(무료 월 1,000크레딧, 카드 불필요) → 사용자 환경변수 `STARTREND_TAVILY_API_KEY` — Phase 3 전 (결정 46)
 - [ ] JEV API 키 (비교 실측 때만) — Phase 2 중
