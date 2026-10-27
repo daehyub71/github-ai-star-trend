@@ -19,6 +19,7 @@ from startrend.core.weekfile import WeekRow
 
 AXES = ("gain", "fresh", "growth", "total")
 TOP = 15
+POOL = 200  # 축마다 남기는 후보 순서 — classify 가 AI 15개를 채울 때까지 내려간다(결정 30)
 FRESH_DAYS = 30
 MIN_START = 1000
 
@@ -117,7 +118,7 @@ def _prev_ranks(data_dir: Path, week_start: date) -> dict[str, dict[int, int]]:
     return {a: {e["id"]: e["rank"] for e in (axes.get(a, {}).get("all") or [])} for a in AXES}
 
 
-def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = TOP,
+def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = TOP, pool: int = POOL,
              extra_totals: dict[int, WeekRow] | None = None,
              log: Callable[[str], None] = print) -> dict[str, Any]:
     wname = week.week_name(week_start)
@@ -170,7 +171,10 @@ def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = T
     doc = {
         "week": wname, "week_end": week.week_end(week_start).isoformat(), "top": top, "axes": out_axes,
         "notes": {"total": "주간 파일(증가 ≥ 10)과 스냅샷이 있으면 그 값 기준",
-                  "ai": "Phase 2 분류 뒤에 채운다"},
+                  "ai": "Phase 2 분류 뒤에 채운다",
+                  "pool": f"축마다 상위 {pool}개 ID — classify 가 위에서부터 AI 15개까지 판정(결정 30)"},
+        "pool": {a: [r.id for r in rs]
+                 for a, rs in compute_axes(rows, week_start, top=pool, extra_totals=extra_totals).items()},
     }
     path = rankings_path(data_dir, week_start)
     written = io.write_if_changed(path, io.dumps_json(doc))

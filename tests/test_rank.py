@@ -170,3 +170,15 @@ def test_rank_tracked_names_from_rankings(tmp_path):
     rank.run_rank(_gh(rows), week_start=W, data_dir=tmp_path, log=lambda m: None)
     assert rank.tracked_names(tmp_path, W) == ["o1/r1", "o2/r2"]
     assert rank.tracked_names(tmp_path, date(2026, 10, 11)) == []
+
+
+def test_rank_run_writes_deeper_candidate_pool_per_axis(tmp_path):
+    # classify 는 축마다 위에서부터 AI 15개가 찰 때까지 내려간다(결정 30) — rank 가 더 깊은 순서를 남긴다
+    rows = {i: row(i, 2000 + i * 10, 100 + i) for i in range(1, 21)}
+    weekfile.write(weekfile.week_path(tmp_path, W), list(rows.values()))
+    rank.run_rank(_gh(rows), week_start=W, data_dir=tmp_path, top=3, pool=10, log=lambda m: None)
+    out = io.read_json(rank.rankings_path(tmp_path, W))
+    gain_pool = out["pool"]["gain"]
+    assert gain_pool == list(range(20, 10, -1))                      # 증가 큰 순 10개
+    assert [e["id"] for e in out["axes"]["gain"]["all"]] == gain_pool[:3]
+    assert set(out["pool"]) == set(rank.AXES)
