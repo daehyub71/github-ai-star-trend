@@ -1,7 +1,7 @@
 # PLAN.md — github-ai-star-trend
 
 > 최종 갱신: 2026-10-26 · **사용자 확인 완료(2026-10-26), Phase 0 완료 대기(사용자 확인).** SPEC v1.0 기준(실측 결정 27~32, Notion·블로그 결정 34~39, 시험 소급 뒤 결정 40~43, 조사 뒤 결정 44, 블라인드 라벨 뒤 결정 45, 웹 검색 실측 뒤 결정 46 반영).
-> 남은 결정: D-16(eval 결과 대기) · D-22(X 근거 출처, Phase 3 뒤). 실측 결과는 `docs/MEASURE.md`.
+> 남은 결정: D-16(eval 결과 대기) · D-22(X 근거 출처, Phase 3 뒤) · D-23(공개 저장소에 카드·브리핑을 둘지, Phase 3 커밋 전). 실측 결과는 `docs/MEASURE.md`.
 > 그림은 `docs/img/*.png`(원본 `docs/diagrams/*.html`, `scripts/render_diagrams.py` 로 다시 만든다).
 > 그림 아래 접힌 "텍스트 버전"(Mermaid·텍스트)이 기준이다.
 
@@ -163,7 +163,7 @@ Phase 4 화면은 Phase 1 의 랭킹 데이터 모양만 있으면 시안 작업
 | **3 근거·카드·브리핑** | `EvidenceSource`(출처별 mock + live) · 출처 실패 격리 · 인용 게이트 · 급등일 탐지 · analyze(신규·재등장) · brief · 프롬프트 인젝션 방어 · **카드 품질 검사(FR-14.4)** · **게이트 2단계·근거 거르기 후보 비교 → D-16** | D-7 — D-6·D-8 ✅(결정 26·44) | mock GREEN(게이트 우회 불가 테스트 포함) · **카드 5개 시범을 사용자가 검토** → 템플릿 조정 → 1주 전체 🏁**M3** |
 | **4 화면** | **선행: `/design` 시안 합의 → `docs/DESIGN.md`** · export · Next.js 골격 · 5년치 합성 데이터 빌드 시간(FR-12.5) · 화면 5종 | npm 패키지 확인(차트 라이브러리 이름 포함) — D-9·D-10·D-13 ✅ 결정 42·43·33 | `npm run lint/test/build` GREEN · 실제 데이터로 로컬 사이트 확인 · raw HTML 꺼짐 확인 🏁**M4** |
 | **4b Notion·블로그 초안** | `NotionClient`(mock + live) · `notion-setup`(데이터베이스 3개) · 주간·카드 페이지 발행(초안만 고침, 대응표) · `blog` 초안(Opus 5.5, 견본 형식, 인용 게이트, dry-run) · 사진 배치 문서·이미지 PNG · 블로그 초안 발행 · 네이버 붙여 넣기 서식 확인 | Phase 3(브리핑·카드) — Notion 토큰·부모 페이지 ✅ | mock GREEN("초안 아닌 페이지는 안 고친다" 회귀 테스트 포함) · **실제 1주가 Notion 에서 검토 가능 · 사용자가 첫 글을 네이버에 게시** 🏁**M4b** |
-| **5 운영·배포** | archive(Releases·시크릿 검사) · **스냅샷 Releases 올리기·받기** · weekly(**첫 단계 계약 점검**·예산 상한·dry-run·실행 기록, 월 00:00 UTC, **blog·notion 포함**) · 비공개 저장소 · Actions 워크플로 · Vercel 연결·보호 | 보안 점검 4단계, 저장소·Vercel 계정(사용자) | 첫 배포 · Vercel 로그인 없이는 열리지 않음 확인 · **크론 2주 연속 무인 성공** 🏁**M5** |
+| **5 운영·배포** | archive(Releases·시크릿 검사) · **스냅샷 Releases 올리기·받기** · weekly(**첫 단계 계약 점검**·예산 상한·dry-run·실행 기록, 월 00:00 UTC, **blog·notion 포함**) · 공개 저장소(결정 47 — 무엇을 커밋하는지는 D-23) · Actions 워크플로 · Vercel 연결·보호 | 보안 점검 4단계, 저장소·Vercel 계정(사용자) | 첫 배포 · Vercel 로그인 없이는 열리지 않음 확인 · **크론 2주 연속 무인 성공** 🏁**M5** |
 
 FR-12.5(5년치 합성 데이터 빌드 시간)는 Next.js 골격이 필요해 Phase 4 첫 작업으로 옮겼다. 나머지 실측은 Phase 0 이다.
 

@@ -1,6 +1,6 @@
 # TASK.md — github-ai-star-trend
 
-> 최종 갱신: 2026-10-26. Phase 정의는 `PLAN.md`, 요구사항 ID 는 `SPEC.md`.
+> 최종 갱신: 2026-10-27. Phase 정의는 `PLAN.md`, 요구사항 ID 는 `SPEC.md`.
 > 체크할 때마다 아래 대시보드를 함께 갱신하고, **Phase 종료 시 사용자 확인 후 다음 Phase 로**(루트 SDD 규칙 3·7).
 > 모듈 구현 전에 테스트를 먼저 쓴다(Red → Green → Refactor). 테스트 이름은 `test_{module}_{scenario}`.
 
@@ -14,11 +14,11 @@
 | Phase 0 골격 + 실측     | `██████████` | 19/19 (100%)    | ✅ 2026-10-26 — 🏁 M0 실측 완료 · **다음 Phase 는 사용자 확인 후**                 |
 | Phase 1 데이터 코어 | `████░░░░░░` | 4/10 (40%) | 🔄 진행 중 4개(stars·backfill·rank·급등 표시) — 52주 전체 소급 실행 중(임시 폴더, 약 30시간) |
 | Phase 2 분류 | `███░░░░░░░` | 4/14 (29%) | 🔄 과금 없는 기초를 앞당겨 진행(사용자 승인 2026-10-27) — 진행 중 3개. 실제 분류(과금)는 Phase 1 확인 뒤 |
-| Phase 3 근거·카드·브리핑 | `░░░░░░░░░░` | 0/15 (0%) | 🔜 Phase 2 뒤 — D-7·D-8 ✅(결정 46·44) · Tavily 키 ✅ |
+| Phase 3 근거·카드·브리핑 | `░░░░░░░░░░` | 0/15 (0%) | 🔜 Phase 2 뒤 — D-7·D-8 ✅(결정 46·44) · Tavily 키 ✅ · D-23(카드 공개 범위) 대기 |
 | Phase 4 화면          | `█░░░░░░░░░` | 1/11 (9%)       | 🔄 핵심 3화면 시안 합의 ✅ · D-9·D-10 ✅(결정 42·43) — 구현은 Phase 1 뒤             |
 | Phase 4b Notion·블로그 | `░░░░░░░░░░` | 0/7 (0%)        | 🔜 Phase 3 대기 (D-19·D-20·Notion 토큰 ✅)                                |
-| Phase 5 운영·배포 | `█░░░░░░░░░` | 1/11 (9%) | 🔜 보안 점검 대기 — 첫 푸시만 앞당겨 완료(백업) |
-| **전체 (M5)** | `████░░░░░░` | **35/93 (38%)** | 🔄 착수 전과 Phase 0~5 합계(🅑·🅒 제외) |
+| Phase 5 운영·배포 | `██░░░░░░░░` | 2/12 (17%) | 🔄 첫 푸시·저장소 공개를 앞당겨 완료 — 보안 점검은 시크릿 점검만 ✅, 나머지는 배포 전 |
+| **전체 (M5)** | `████░░░░░░` | **36/94 (38%)** | 🔄 착수 전과 Phase 0~5 합계(🅑·🅒 제외) |
 
 > 진도는 완료(`[x]`)만 센다. 진행 중(`[~]`)은 상태 칸에 적는다 (2026-10-26부터 — 그 전 Phase 1 의 6/10 은 진행 중을 절반으로 센 값).
 
@@ -62,7 +62,7 @@
 - [x] DESIGN 시안 합의 — 핵심 3화면 (2026-10-26, 결정 33)
 - [x] Notion 연결(API 토큰 방식) `github-ai-star-trend` → 사용자 환경변수 `NOTION_TOKEN`, 부모 페이지 "깃허브 AI 트렌드"(ID `405cb5c3-2bc1-80d1-a8d1-d7da9d11b4c6`, 워크스페이스 최상위)를 연결에 공유 — 2026-10-26 API 확인 (`users/me`·`search`)
 - [x] D-19 Notion 데이터베이스 만드는 방식 → 결정 38 `notion-setup` · D-20 블로그 형식 → 결정 39 사용자 견본(`docs/ref/blog-sample*.md`) — 2026-10-26
-- [~] 개인 계정 비공개 GitHub 저장소 생성, Vercel 계정 연결 — Phase 5 전 — 저장소 `daehyub71/github-ai-star-trend`(Private) 생성·푸시 2026-10-27 (Vercel 연결은 Phase 5)
+- [~] 개인 계정 GitHub 저장소 생성, Vercel 계정 연결 — Phase 5 전 — 저장소 `daehyub71/github-ai-star-trend` 생성·푸시 2026-10-27, 같은 날 공개로 전환(결정 47) (Vercel 연결은 Phase 5)
 
 ---
 
@@ -127,6 +127,7 @@
 ## Phase 3 — 근거·카드·브리핑
 
 > 완료 기준: mock GREEN(게이트 우회 불가 테스트 포함) · 카드 5개 시범 사용자 검토 → 1주 전체 🏁M3
+> 막는 결정: **D-23** — 저장소가 공개라(결정 47) 카드·브리핑을 `data/` 에 처음 커밋하기 전에 정한다
 
 - [ ] P3-1 `EvidenceSource` 인터페이스 + 출처별 mock + 근거 목록(URL·시각·해시) (FR-5.6)
 - [ ] P3-2 GitHub 근거: README·릴리스·메타 (FR-5.1)
@@ -180,12 +181,13 @@
 
 - [ ] P5-1 archive → GitHub Release, 업로드 전 시크릿 검사 (FR-10)
 - [ ] P5-2 weekly: 순서 실행, 예산 상한, `--dry-run`, 실행 기록 (FR-11.1~11.3·11.5)
-- [x] P5-3 비공개 GitHub 저장소 첫 푸시 (사용자 확인 후) — `daehyub71/github-ai-star-trend` 2026-10-27 (백업용으로 앞당김)
+- [x] P5-3 GitHub 저장소 첫 푸시 (사용자 확인 후) — `daehyub71/github-ai-star-trend` 2026-10-27 (백업용으로 앞당김, 그때는 비공개)
 - [ ] P5-4 Actions 워크플로: `contents: write` 만, 외부 Action SHA 고정, Secrets, 크론 시각 (FR-11.4, NFR-8)
 - [ ] P5-5 Vercel 연결, All Deployments + Vercel Authentication, 루트 디렉토리 확인 (R12)
-- [ ] P5-6 **배포 전 보안 점검 4단계** — security-review · 시크릿 점검(코드·히스토리·로그·Releases) · CI 권한 · 발견 사항 해소
+- [~] P5-6 **배포 전 보안 점검 4단계** — security-review · 시크릿 점검(코드·히스토리·로그·Releases) · CI 권한 · 발견 사항 해소 — 저장소 공개 전 시크릿 점검(코드·커밋 히스토리 전체: 토큰 패턴 0건·개인 경로 0건) ✅ 2026-10-27 · security-review·CI 권한·Releases 는 첫 배포 전
 - [ ] P5-7 첫 배포 + 수동 실행(workflow_dispatch) 1회
 - [ ] P5-8 크론 활성화 → 2주 연속 무인 성공
 - [ ] P5-9 weekly 첫 단계로 `contract` 실행, 오류면 아무것도 쓰지 않고 중단 (FR-11.6)
 - [ ] P5-10 전체 스냅샷 Releases 올리기·받기로 전환(`.work/snapshots/` → `snapshot-<주>.csv.gz`) (FR-11.7, 결정 29)
 - [ ] P5-11 weekly 에 blog·notion 단계 + `NOTION_TOKEN` Secrets + 계약 점검에 Notion 포함 (FR-15·16, R23)
+- [x] P5-12 저장소 공개 전환(사용자, 결정 47) + README 두 벌(`README.md` 영어 · `README_KO.md` 한국어, 서로 링크, 스크린샷) — 공개 전 시크릿 점검 뒤 2026-10-27. 라이선스는 미정
