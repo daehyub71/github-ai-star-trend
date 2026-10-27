@@ -67,7 +67,7 @@ Python 은 프로젝트 루트(`.venv/`), Next.js 는 `web/`. **npm 명령은 `w
 ### GitHub 토큰
 `GITHUB_TOKEN` 은 Windows **사용자 환경변수**에 있다(공개 저장소 읽기 전용 fine-grained). VS Code 를 다시 켜기 전에는 프로세스에 보이지 않으므로, 그때는 PowerShell 에서 `$env:GITHUB_TOKEN = [Environment]::GetEnvironmentVariable("GITHUB_TOKEN", "User")` 로 그 명령에만 넘긴다. **값을 출력·기록하지 않는다.**
 
-같은 방식으로 `NOTION_TOKEN`(Notion 연결 `github-ai-star-trend`, 부모 페이지 "깃허브 AI 트렌드")과 `STARTREND_ANTHROPIC_API_KEY`(Console 워크스페이스 `github-ai-star-trend` 의 전용 키)도 사용자 환경변수에 있다. **`ANTHROPIC_API_KEY` 라는 이름은 쓰지 않는다** — Claude Code 가 집어 쓰면 API 로 과금될 수 있다(NFR-8). 키·토큰 값이 든 파일 줄을 선택한 채로 대화하지 않는다.
+같은 방식으로 `NOTION_TOKEN`(Notion 연결 `github-ai-star-trend`, 부모 페이지 "깃허브 AI 트렌드")과 `STARTREND_ANTHROPIC_API_KEY`(Console 워크스페이스 `github-ai-star-trend` 의 전용 키), `STARTREND_TAVILY_API_KEY`(검색 API, 결정 46)도 사용자 환경변수에 있다. **`ANTHROPIC_API_KEY` 라는 이름은 쓰지 않는다** — Claude Code 가 집어 쓰면 API 로 과금될 수 있다(NFR-8). 키·토큰 값이 든 파일 줄을 선택한 채로 대화하지 않는다.
 
 ## 검증 명령
 
