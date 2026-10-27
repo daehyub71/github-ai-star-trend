@@ -79,6 +79,71 @@ def test_claude_request_without_schema_has_no_format():
     assert beta.kwargs["output_config"] == {"effort": "medium"}
 
 
+# --- Batch (FR-3.7) ---
+
+
+class FakeBatches:
+    def __init__(self, status: str = "ended", results: list[Any] | None = None):
+        self.created: dict[str, Any] = {}
+        self.status = status
+        self._results = results or []
+        self.asked: list[str] = []
+
+    def create(self, **kwargs: Any) -> Any:
+        self.created = kwargs
+        return SimpleNamespace(id="msgbatch_01", processing_status="in_progress")
+
+    def retrieve(self, batch_id: str) -> Any:
+        self.asked.append(batch_id)
+        return SimpleNamespace(id=batch_id, processing_status=self.status)
+
+    def results(self, batch_id: str) -> Any:
+        self.asked.append(batch_id)
+        return iter(self._results)
+
+
+def batch_client(batches: FakeBatches) -> SimpleNamespace:
+    return SimpleNamespace(messages=SimpleNamespace(batches=batches))
+
+
+def test_claude_batch_submit_uses_the_same_request_shape_without_fallbacks():
+    fb = FakeBatches()
+    bid = claude.ClaudeBatch("k", client=batch_client(fb)).submit({"r1-1": REQ})
+    assert bid == "msgbatch_01"
+    (only,) = fb.created["requests"]
+    assert only["custom_id"] == "r1-1"
+    assert only["params"] == claude.ClaudeLLM("k", client=object()).params(REQ)   # 단건과 같은 모양
+    assert "fallbacks" not in only["params"] and "betas" not in fb.created       # Batch 는 fallbacks 불가
+
+
+def test_claude_batch_ended_reads_processing_status():
+    assert claude.ClaudeBatch("k", client=batch_client(FakeBatches("ended"))).ended("b") is True
+    assert claude.ClaudeBatch("k", client=batch_client(FakeBatches("in_progress"))).ended("b") is False
+    assert claude.ClaudeBatch("k", client=batch_client(FakeBatches("canceling"))).ended("b") is False
+
+
+def test_claude_batch_results_map_success_refusal_and_errors():
+    ok = message([SimpleNamespace(type="text", text='{"a":1}')])
+    refused = message([], stop="refusal")
+    err = SimpleNamespace(type="errored", error=SimpleNamespace(type="error",
+                                                                error=SimpleNamespace(type="overloaded_error")))
+    rows = [SimpleNamespace(custom_id="a", result=SimpleNamespace(type="succeeded", message=ok)),
+            SimpleNamespace(custom_id="b", result=SimpleNamespace(type="succeeded", message=refused)),
+            SimpleNamespace(custom_id="c", result=err),
+            SimpleNamespace(custom_id="d", result=SimpleNamespace(type="expired"))]
+    out = claude.ClaudeBatch("k", client=batch_client(FakeBatches(results=rows))).results("b")
+    assert out["a"].response is not None and out["a"].response.text == '{"a":1}'
+    assert out["a"].response.usage == llm.Usage(120, 30, 5, 0)
+    assert out["b"].response is not None and out["b"].response.stop_reason == "refusal"
+    assert out["c"].response is None and out["c"].error == "errored:overloaded_error"
+    assert out["d"].response is None and out["d"].error == "expired"
+
+
+def test_claude_batch_is_a_batch_client():
+    b: llm.BatchLLM = claude.ClaudeBatch("k", client=batch_client(FakeBatches()))
+    assert b.model == "claude-opus-5-5"
+
+
 @pytest.mark.live
 def test_claude_live_tiny_structured_call():
     key = os.environ.get("STARTREND_ANTHROPIC_API_KEY")

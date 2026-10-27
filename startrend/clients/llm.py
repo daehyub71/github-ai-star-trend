@@ -4,7 +4,7 @@
 """
 
 import math
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
@@ -47,6 +47,28 @@ class LLMClient(Protocol):
     def complete(self, req: LLMRequest) -> LLMResponse: ...
 
 
+@dataclass(frozen=True)
+class BatchItem:
+    """Batch 결과 한 건. response 가 없으면 error 에 이유(errored:… · canceled · expired)."""
+    response: LLMResponse | None
+    error: str | None = None
+
+
+class BatchLLM(Protocol):
+    """Message Batches (FR-3.7) — 요청을 묶어 보내고(50% 할인), 끝나면 결과를 받는다.
+
+    직접 부르지 않는다 — budget.run_batch 가 예산·상태 파일과 함께 부른다.
+    """
+    @property
+    def model(self) -> str: ...
+
+    def submit(self, reqs: Mapping[str, LLMRequest]) -> str: ...
+
+    def ended(self, batch_id: str) -> bool: ...
+
+    def results(self, batch_id: str) -> dict[str, BatchItem]: ...
+
+
 def cost(model: str, usage: Usage, *, batch: bool = False) -> float:
     p = PRICES[model]
     usd = (usage.input_tokens * p["input"] + usage.output_tokens * p["output"]
@@ -75,3 +97,32 @@ class MockLLM:
             return self.script(req)
         assert self.script, "MockLLM: 준비한 응답보다 많이 불렀다"
         return self.script.pop(0)
+
+
+@dataclass
+class MockBatchLLM:
+    """함수로 답하는 가짜 Batch. 함수가 문자열을 돌려주면 그 이유로 실패한 건이다.
+
+    묶음마다 polls_until_end 번째 확인에서 끝난다. 제출한 묶음을 남긴다.
+    """
+    answer: Callable[[LLMRequest], LLMResponse | str]
+    model: str = "claude-opus-5-5"
+    polls_until_end: int = 1
+    submitted: dict[str, dict[str, LLMRequest]] = field(default_factory=dict)
+    polls: dict[str, int] = field(default_factory=dict)
+
+    def submit(self, reqs: Mapping[str, LLMRequest]) -> str:
+        bid = f"msgbatch_mock_{len(self.submitted) + 1}"
+        self.submitted[bid] = dict(reqs)
+        return bid
+
+    def ended(self, batch_id: str) -> bool:
+        self.polls[batch_id] = self.polls.get(batch_id, 0) + 1
+        return self.polls[batch_id] >= self.polls_until_end
+
+    def results(self, batch_id: str) -> dict[str, BatchItem]:
+        out: dict[str, BatchItem] = {}
+        for cid, r in self.submitted[batch_id].items():
+            a = self.answer(r)
+            out[cid] = BatchItem(a) if isinstance(a, LLMResponse) else BatchItem(None, a)
+        return out
