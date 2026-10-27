@@ -17,6 +17,7 @@ class Settings:
     data_dir: Path
     work_dir: Path
     github_token: str | None = field(default=None, repr=False)
+    anthropic_key: str | None = field(default=None, repr=False)
 
     def require_github_token(self) -> str:
         if not self.github_token:
@@ -26,13 +27,24 @@ class Settings:
             )
         return self.github_token
 
+    def require_anthropic_key(self) -> str:
+        if not self.anthropic_key:
+            raise ConfigError(
+                "STARTREND_ANTHROPIC_API_KEY 환경변수가 없다. Console 의 github-ai-star-trend "
+                "워크스페이스 키를 사용자 환경변수로 설정한다 — ANTHROPIC_API_KEY 이름은 쓰지 않는다 (NFR-8)."
+            )
+        return self.anthropic_key
+
 
 def load_settings(env: Mapping[str, str] | None = None, root: Path | None = None) -> Settings:
     env = os.environ if env is None else env
     root = PROJECT_ROOT if root is None else root
     token = env.get("GITHUB_TOKEN", "").strip() or None
+    # ANTHROPIC_API_KEY 는 읽지 않는다 — 다른 프로그램이 집어 써서 과금될 수 있다 (NFR-8)
+    key = env.get("STARTREND_ANTHROPIC_API_KEY", "").strip() or None
     return Settings(
         data_dir=Path(env["STARTREND_DATA_DIR"]) if env.get("STARTREND_DATA_DIR") else root / "data",
         work_dir=Path(env["STARTREND_WORK_DIR"]) if env.get("STARTREND_WORK_DIR") else root / ".work",
         github_token=token,
+        anthropic_key=key,
     )

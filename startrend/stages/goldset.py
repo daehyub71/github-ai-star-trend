@@ -12,9 +12,15 @@
 
 import random
 import re
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping, Sequence
+from datetime import date
+from pathlib import Path
 from typing import Any
 
+from startrend.budget import BudgetExceeded
+from startrend.clients.decision import README_CHARS, BatchRunner, Decision, DecisionClient, RepoInput
+from startrend.clients.github import GitHubClient, GitHubError
+from startrend.core import io
 from startrend.core.models import Repo
 
 GROUPS = ("ranked", "strong", "weak", "none")
@@ -131,3 +137,60 @@ def sample(repos: Mapping[int, Repo], *, ranked: set[int], new: set[int], n: int
                 "band": band(r.stars), "new": r.id in new, "blind": r.id in blind_ids,
             })
     return sorted(out, key=lambda p: p["repo_id"])
+
+
+# --- 초안 (P2-11, 결정 41) — 과금 단계. CLI 가 dry-run 을 먼저 보인다 ---
+
+
+def draft_inputs(gh: GitHubClient, candidates: Sequence[Mapping[str, Any]],
+                 log: Callable[[str], None] = print) -> tuple[list[RepoInput], list[str]]:
+    """판정 입력 — classify 와 같은 모양(저장소 정보 + README 앞부분). 받을 수 없는 저장소는 이름만 남긴다."""
+    items: list[RepoInput] = []
+    missing: list[str] = []
+    for c in candidates:
+        name = str(c["full_name"])
+        try:
+            repo = gh.get_repo(name)
+            readme = gh.readme(name) or ""
+        except GitHubError:
+            missing.append(name)
+            continue
+        items.append(RepoInput(repo.id, repo.full_name, repo.description, tuple(repo.topics), repo.language,
+                               readme[:README_CHARS]))
+    log(f"  판정 입력 {len(items)}개 · 받지 못함 {len(missing)}개")
+    return items, missing
+
+
+def run_draft(gh: GitHubClient, decider: DecisionClient, candidates: Sequence[Mapping[str, Any]], *,
+              out: Path, batch: BatchRunner | None = None, today: date | None = None,
+              log: Callable[[str], None] = print) -> dict[str, Any]:
+    """후보 전부(블라인드 포함)를 판정해 초안 파일(판정 결과 형식)로 남긴다.
+
+    블라인드 30개의 초안은 사용자 라벨과 맞대어 초안 편향을 잰다(FR-14.1). 예산 상한에 걸려도
+    그때까지 판정한 것은 파일에 남는다.
+    """
+    items, missing = draft_inputs(gh, candidates, log)
+    stamp = (today or date.today()).isoformat()
+    blind = {int(c["repo_id"]): bool(c.get("blind")) for c in candidates}
+    rows: dict[int, dict[str, Any]] = {}
+
+    def save(item: RepoInput, d: Decision) -> None:
+        rows[item.repo_id] = {
+            "repo_id": item.repo_id, "full_name": item.full_name, "blind": blind.get(item.repo_id, False),
+            "status": d.status, "is_ai": d.is_ai, "type": d.type, "category": d.category,
+            "secondary": d.secondary, "reason": d.reason, "attempts": d.attempts, "error": d.error,
+            "confidence": d.confidence, "fingerprint": decider.fingerprint, "at": stamp}
+
+    stats: dict[str, Any] = {"candidates": len(candidates), "inputs": len(items), "missing": missing,
+                             "decided": 0, "stopped": None}
+    try:
+        decider.classify_many(items, batch=batch, on_decision=save)
+    except BudgetExceeded as e:
+        stats["stopped"] = "budget"
+        log(f"  예산 상한 — 여기서 멈춘다: {e}")
+    finally:
+        order = [int(c["repo_id"]) for c in candidates]
+        io.write_jsonl(out, [rows[i] for i in order if i in rows])
+    stats["decided"] = len(rows)
+    stats["not_ok"] = sum(1 for r in rows.values() if r["status"] != "ok")
+    return stats

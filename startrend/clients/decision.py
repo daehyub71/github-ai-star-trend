@@ -17,7 +17,7 @@ from pathlib import Path
 from string import Template
 from typing import Any, Protocol
 
-from startrend.clients.llm import BatchItem, LLMClient, LLMRequest
+from startrend.clients.llm import BatchItem, LLMClient, LLMRequest, estimate_tokens
 from startrend.core.taxonomy import Taxonomy
 
 # (custom_id → 요청, 묶음 번호) → custom_id → 결과. 예산·상태 파일은 부른 쪽(budget.run_batch)이 맡는다
@@ -27,6 +27,7 @@ OnDecision = Callable[["RepoInput", "Decision"], None]
 PROMPT_FILE = Path(__file__).resolve().parents[1] / "prompts" / "classify.md"
 README_CHARS = 4000          # 판정 입력에 넣는 README 앞부분 (MEASURE §7)
 MAX_TOKENS = 1024            # 사고 + JSON 약 60 토큰 — effort low 기준, FR-14 로 조정
+TYPICAL_OUTPUT = 150         # dry-run 하한 가정: 사고 + JSON (effort low) — 실측 전 값
 NONE = "none"
 
 
@@ -99,6 +100,12 @@ def user_message(item: RepoInput) -> str:
     return (f"<repository>\nname: {item.full_name}\ndescription: {item.description or '(none)'}\n"
             f"topics: {topics}\nlanguage: {item.language or '(unknown)'}\n</repository>\n"
             f"<readme_head>\n{item.readme_head[:README_CHARS]}\n</readme_head>")
+
+
+def typical_input_tokens(system: str) -> int:
+    """dry-run 용 1건 입력 토큰 — README 를 꽉 채운 보수적 견본으로 잰다."""
+    sample = RepoInput(0, "owner/repository-name", "x" * 120, ("topic",) * 6, "Python", "x" * README_CHARS)
+    return estimate_tokens(system) + estimate_tokens(user_message(sample))
 
 
 class LLMDecider:

@@ -9,7 +9,10 @@
 - rank     : 주간 파일 → data/weekly/<주>/rankings.json · 메타 (FR-4)
 - goldset  : 분류 정답 세트 후보 200개 → data/eval/goldset_candidates.jsonl (FR-14.1, 결정 41)
              캐시된 Search 응답에서 설명·토픽을 읽는다 — 네트워크 0, 토큰 불필요
-- classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). 실제 판정은 P2-2 뒤
+- classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). 실제 판정은 P2-9 승인 뒤
+- eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
+- goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
+             --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
 """
 
 import argparse
@@ -17,22 +20,26 @@ import base64
 import io as _stdio
 import json
 import sys
+import time
 from collections.abc import Mapping
 from datetime import date, timedelta
 from pathlib import Path
+from typing import Any
 
+from startrend.budget import BudgetMeter, run_batch
+from startrend.clients.claude import ClaudeBatch, ClaudeLLM
 from startrend.clients.decision import LLMDecider
 from startrend.clients.github_live import LiveGitHub, cacheable_response
 from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_search_page
-from startrend.clients.llm import MockLLM
+from startrend.clients.llm import BatchItem, LLMRequest, MockLLM
 from startrend.clients.transport import CachingTransport, UrllibTransport
 from startrend.clients.trending import fetch_trending
 from startrend.core import snapshot, taxonomy, weekfile
 from startrend.core import week as wk
 from startrend.core.config import PROJECT_ROOT, ConfigError, Settings, load_settings
-from startrend.core.io import dumps_json, read_json, write_json, write_jsonl
+from startrend.core.io import dumps_json, read_json, read_jsonl, write_json, write_jsonl
 from startrend.core.models import Repo
-from startrend.stages import backfill, classify, contract, discover, goldset, probe, rank, stars
+from startrend.stages import backfill, classify, contract, discover, evaluate, goldset, probe, rank, stars
 
 
 def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) -> int:
@@ -69,6 +76,15 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="랭킹이 있는 모든 주")
     p.add_argument("--run", action="store_true", help="실제 판정(과금) — dry-run 금액 승인 뒤")
+    p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
+    p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
+    p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
+    p.add_argument("--name", default="eval", help="실행 기록 이름 → data/eval/runs/<날짜>-<이름>")
+    p = sub.add_parser("goldset-draft", help="정답 세트 후보 Claude 초안 — 기본은 dry-run(호출 0)")
+    p.add_argument("--run", action="store_true", help="실제 판정(과금, Batch) — dry-run 금액 승인 뒤")
+    p.add_argument("--cap", type=float, default=3.0,
+                   help="이번 실행 예산 상한(달러) — 제출 전에 최악 비용으로 막는다")
+    p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
     args = ap.parse_args(argv)
 
     settings = load_settings(env=env)
@@ -76,6 +92,10 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _goldset(settings, args)
     if args.cmd == "classify":
         return _classify(settings, args)
+    if args.cmd == "eval":
+        return _eval(settings, args)
+    if args.cmd == "goldset-draft":
+        return _goldset_draft(settings, args)
     try:
         token = settings.require_github_token()
     except ConfigError as e:
@@ -295,23 +315,114 @@ def _goldset(settings: Settings, args: argparse.Namespace) -> int:
     return 0
 
 
+def _load_taxonomy(settings: Settings) -> taxonomy.Taxonomy:
+    # 분류 체계는 데이터 폴더에 있으면 그것, 없으면(시험·임시 폴더) 저장소의 정본을 쓴다
+    tax_file = settings.data_dir / "taxonomy.toml"
+    return taxonomy.load(tax_file if tax_file.exists() else PROJECT_ROOT / "data" / "taxonomy.toml")
+
+
 def _classify(settings: Settings, args: argparse.Namespace) -> int:
     if args.run:
-        print("실제 판정은 아직 열지 않았다 — Claude 연결(P2-2)과 dry-run 금액 승인(P2-9) 뒤에 연다",
-              file=sys.stderr)
+        print("실제 판정은 아직 열지 않았다 — 정답 세트 비교(D-16)와 dry-run 금액 승인(P2-9) 뒤에 연다 "
+              "(Batch 경로 P2-2 는 준비됨)", file=sys.stderr)
         return 2
     if args.all:
         files = sorted((settings.data_dir / "weekly").glob("*/rankings.json"))
         weeks = [wk.parse_week(f.parent.name) for f in files]
     else:
         weeks = [_week_arg(args.week, date.today())]
-    # 분류 체계는 데이터 폴더에 있으면 그것, 없으면(시험·임시 폴더) 저장소의 정본을 쓴다
-    tax_file = settings.data_dir / "taxonomy.toml"
-    tax = taxonomy.load(tax_file if tax_file.exists() else PROJECT_ROOT / "data" / "taxonomy.toml")
+    tax = _load_taxonomy(settings)
     system = LLMDecider(MockLLM([]), tax).system
     est = classify.dry_run(data_dir=settings.data_dir, weeks=weeks, system_prompt=system)
     print(dumps_json({"dry_run": True, "weeks": [wk.week_name(w) for w in weeks], **est}), end="")
     return 0
+
+
+def _eval_summary(r: Mapping[str, Any], run: Path) -> dict[str, Any]:
+    return {"run": str(run), "n": r["n"], "answered": r["answered"], "unanswered": r["unanswered"],
+            "is_ai_accuracy": r["is_ai"]["accuracy"], "is_ai_accuracy_strict": r["is_ai"]["accuracy_strict"],
+            "type_accuracy": r["type"]["accuracy"], "category_accuracy": r["category"]["accuracy"],
+            "category_macro_f1": r["category"]["macro_f1"], "calibration_error": r["calibration_error"],
+            "disagreements": len(r["disagreements"])}
+
+
+def _eval(settings: Settings, args: argparse.Namespace) -> int:
+    tax = _load_taxonomy(settings)
+    gold_path = Path(args.gold) if args.gold else settings.data_dir / "eval" / "goldset_classify.jsonl"
+    if not gold_path.exists():
+        print(f"정답 파일이 없다: {gold_path} — --gold 로 지정한다", file=sys.stderr)
+        return 2
+    gold = evaluate.load_labels(gold_path, tax)
+    if not args.predictions:
+        est = evaluate.dry_run(n_items=len(gold), system_prompt=LLMDecider(MockLLM([]), tax).system)
+        print(dumps_json({"dry_run": True, "gold": str(gold_path), **est}), end="")
+        return 0
+    pred_path = Path(args.predictions)
+    result = evaluate.score(gold, evaluate.load_predictions(pred_path))
+    md = evaluate.report_md(result, title=f"분류 평가 — {args.name}", tax=tax,
+                            notes=[f"정답: `{gold_path.name}` ({len(gold)}개)", f"판정: `{pred_path.name}`"])
+    run = evaluate.write_run(settings.data_dir, args.name,
+                             {"gold": gold_path.name, "predictions": pred_path.name, **result}, md)
+    print(dumps_json(_eval_summary(result, run)), end="")
+    return 0
+
+
+def _goldset_draft(settings: Settings, args: argparse.Namespace) -> int:
+    cand_path = settings.data_dir / "eval" / "goldset_candidates.jsonl"
+    if not cand_path.exists():
+        print(f"후보 파일이 없다 — 먼저 goldset: {cand_path}", file=sys.stderr)
+        return 2
+    candidates = list(read_jsonl(cand_path))
+    tax = _load_taxonomy(settings)
+    out = settings.data_dir / "eval" / "goldset_drafts.jsonl"
+    if not args.run:
+        est = evaluate.dry_run(n_items=len(candidates), system_prompt=LLMDecider(MockLLM([]), tax).system)
+        print(dumps_json({"dry_run": True, "candidates": len(candidates),
+                          "blind": sum(1 for c in candidates if c.get("blind")),
+                          "github_calls": 2 * len(candidates), "cap_usd": args.cap, "out": str(out), **est}),
+              end="")
+        return 0
+    try:
+        token = settings.require_github_token()
+        key = settings.require_anthropic_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+
+    def log(m: str) -> None:
+        print(m, flush=True)
+
+    cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "goldset", cacheable_response)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
+    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)   # 일반 호출(거절 → 대체 모델)도 같은 상한
+    decider = LLMDecider(meter, tax)
+    batch_client = ClaudeBatch(key)
+    states = settings.work_dir / "batches"
+
+    def runner(reqs: dict[str, LLMRequest], tag: str) -> dict[str, BatchItem]:
+        return run_batch(meter, batch_client, reqs, state=states / f"goldset-draft-{tag}.json",
+                         poll_seconds=args.poll, log=log)
+
+    t0 = time.monotonic()
+    stats = goldset.run_draft(gh, decider, candidates, out=out, batch=runner, log=log)
+    seconds = time.monotonic() - t0
+    report = None
+    blind_path = settings.data_dir / "eval" / "goldset_blind_labels.jsonl"
+    if blind_path.exists() and out.exists():   # 블라인드 30 대 초안 — 초안 편향을 잰다 (FR-14.1)
+        result = evaluate.score(evaluate.load_labels(blind_path, tax), evaluate.load_predictions(out))
+        md = evaluate.report_md(result, title="블라인드 30 대 Claude 초안", tax=tax, notes=[
+            "정답: 블라인드 30 — 사용자가 다른 AI 의 분류를 검토해 옮긴 라벨(FR-14.1)",
+            f"판정: Claude 초안 `{out.name}` · 판정기 `{decider.fingerprint}`",
+            f"이번 실행 전체 비용 ${meter.spent:.2f} (후보 {len(candidates)}개, Batch)"])
+        report = evaluate.write_run(settings.data_dir, "blind30-vs-claude-draft",
+                                    {"gold": blind_path.name, "predictions": out.name, **result}, md)
+    summary = {**stats, "spent_usd": round(meter.spent, 4), "calls": meter.calls,
+               "batch_calls": sum(1 for e in meter.ledger if e["batch"]), "seconds": round(seconds),
+               "out": str(out), "blind_report": str(report) if report else None}
+    write_json(settings.work_dir / "goldset-draft" / f"{date.today().isoformat()}.json",
+               {**summary, "ledger": meter.ledger})
+    print(dumps_json(summary), end="")
+    return 0 if stats["stopped"] is None else 3
 
 
 if __name__ == "__main__":

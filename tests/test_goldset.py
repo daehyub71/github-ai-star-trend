@@ -1,10 +1,15 @@
 """stages.goldset — 분류 정답 세트 후보 뽑기 (FR-14.1, 결정 41). 비용 0, 결정론."""
 
 from collections import Counter
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 
+from startrend.budget import BudgetExceeded
+from startrend.clients import decision as dc
+from startrend.clients.github_mock import MockGitHub
+from startrend.core import io
 from startrend.core.models import Repo
 from startrend.stages import goldset as gs
+from tests import synth
 
 T0 = datetime(2023, 1, 1, tzinfo=UTC)
 
@@ -102,3 +107,53 @@ def test_goldset_record_fields():
     p = gs.sample(_population(), ranked=set(), new={3}, seed=1)[0]
     assert set(p) == {"repo_id", "full_name", "description", "topics", "language", "stars", "created",
                       "group", "signal", "band", "new", "blind"}
+
+
+# --- 초안 (P2-11, 결정 41) — 판정은 mock, 저장소 정보는 MockGitHub ---
+
+
+def _cands(n: int) -> list[dict[str, object]]:
+    return [{"repo_id": i, "full_name": f"o/r{i}", "blind": i <= 2} for i in range(1, n + 1)]
+
+
+def _gh(ids: list[int]) -> MockGitHub:
+    gh = MockGitHub()
+    for i in ids:
+        gh.add_repo(synth.repo(f"o/r{i}", id=i, stars=1000 + i, description=f"d{i}", topics=["llm"]))
+        gh.add_readme(f"o/r{i}", f"# r{i}")
+    return gh
+
+
+def test_goldset_draft_inputs_fetch_repo_and_readme():
+    items, missing = gs.draft_inputs(_gh([1, 2]), _cands(3), log=lambda m: None)
+    assert [it.repo_id for it in items] == [1, 2] and missing == ["o/r3"]   # 지운 저장소는 빼고 기록
+    assert items[0].readme_head == "# r1" and items[0].description == "d1" and items[0].topics == ("llm",)
+
+
+def test_goldset_run_draft_writes_a_prediction_row_per_candidate(tmp_path):
+    ai = dc.Decision(status="ok", is_ai=True, type="도구/라이브러리", category="rag", reason="r", attempts=1)
+    decider = dc.MockDecider({1: ai, 2: dc.Decision(status="ok", is_ai=False, type="교육자료"),
+                              3: dc.Decision(status="unclassified", error="x")})
+    out = tmp_path / "drafts.jsonl"
+    stats = gs.run_draft(_gh([1, 2, 3]), decider, _cands(3), out=out, today=date(2026, 10, 27),
+                         log=lambda m: None)
+    rows = list(io.read_jsonl(out))
+    assert [r["repo_id"] for r in rows] == [1, 2, 3] and stats["decided"] == 3 and stats["stopped"] is None
+    assert rows[0] == {"repo_id": 1, "full_name": "o/r1", "blind": True, "status": "ok", "is_ai": True,
+                       "type": "도구/라이브러리", "category": "rag", "secondary": None, "reason": "r",
+                       "attempts": 1, "error": None, "confidence": None, "fingerprint": "mock",
+                       "at": "2026-10-27"}
+    assert rows[2]["status"] == "unclassified"
+
+
+def test_goldset_run_draft_keeps_what_was_decided_when_the_budget_stops(tmp_path):
+    class Capped(dc.MockDecider):
+        def classify(self, item):
+            if len(self.asked) >= 1:
+                raise BudgetExceeded("cap")
+            return super().classify(item)
+
+    out = tmp_path / "drafts.jsonl"
+    table = {i: dc.Decision(status="ok", is_ai=False, type="기타") for i in (1, 2)}
+    stats = gs.run_draft(_gh([1, 2]), Capped(table), _cands(2), out=out, log=lambda m: None)
+    assert stats["stopped"] == "budget" and [r["repo_id"] for r in io.read_jsonl(out)] == [1]

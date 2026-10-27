@@ -49,6 +49,21 @@ def test_config_require_token_returns_token(tmp_path):
     assert s.require_github_token() == "ghp_secret"
 
 
+def test_config_reads_only_the_project_anthropic_key(tmp_path):
+    # NFR-8: ANTHROPIC_API_KEY 는 다른 프로그램(Claude Code 등)이 집어 쓸 수 있어 이 프로젝트는 읽지 않는다
+    other = config.load_settings(env={"ANTHROPIC_API_KEY": "sk-ant-other"}, root=tmp_path)
+    assert other.anthropic_key is None
+    s = config.load_settings(env={"STARTREND_ANTHROPIC_API_KEY": " sk-ant-mine "}, root=tmp_path)
+    assert s.require_anthropic_key() == "sk-ant-mine"
+    assert "sk-ant-mine" not in repr(s) and "sk-ant-mine" not in str(s)
+
+
+def test_config_require_anthropic_key_names_the_variable(tmp_path):
+    with pytest.raises(config.ConfigError) as e:
+        config.load_settings(env={}, root=tmp_path).require_anthropic_key()
+    assert "STARTREND_ANTHROPIC_API_KEY" in str(e.value)
+
+
 def test_config_default_root_is_project_root():
     s = config.load_settings(env={})
     assert (s.data_dir.parent / "pyproject.toml").exists()

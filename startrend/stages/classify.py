@@ -18,19 +18,19 @@ from startrend.budget import BudgetExceeded
 from startrend.clients.decision import (
     MAX_TOKENS,
     README_CHARS,
+    TYPICAL_OUTPUT,
     BatchRunner,
     Decision,
     DecisionClient,
     RepoInput,
-    user_message,
+    typical_input_tokens,
 )
 from startrend.clients.github import GitHubClient, GitHubError
-from startrend.clients.llm import Usage, cost, estimate_tokens
+from startrend.clients.llm import Usage, cost
 from startrend.core import hashing, io, meta, week, weekfile
 
 NEED = 15
 EXPECTED_AI_RATIO = 0.4   # 묶음 크기를 정하는 가정 — 정답 세트·첫 실행으로 실측해 바꾼다
-TYPICAL_OUTPUT = 150      # dry-run 하한 가정: 사고 + JSON (effort low) — 실측 전 값
 MODEL = "claude-opus-5-5"
 MAX_ROUNDS = 20
 
@@ -168,8 +168,7 @@ def dry_run(*, data_dir: Path, weeks: Sequence[date], system_prompt: str, need: 
             known[rid] = _known_from(c)
     first = next_round(pools, known, need=need, ratio=ratio)
     upper = len({i for ids in pools.values() for i in ids if i not in known})
-    sample = RepoInput(0, "owner/repository-name", "x" * 120, ("topic",) * 6, "Python", "x" * README_CHARS)
-    tokens_in = estimate_tokens(system_prompt) + estimate_tokens(user_message(sample))
+    tokens_in = typical_input_tokens(system_prompt)
     lo = cost(MODEL, Usage(tokens_in, TYPICAL_OUTPUT), batch=batch)
     hi = cost(MODEL, Usage(tokens_in, MAX_TOKENS), batch=batch)
     return {
