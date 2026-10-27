@@ -9,6 +9,7 @@
 - rank     : 주간 파일 → data/weekly/<주>/rankings.json · 메타 (FR-4)
 - goldset  : 분류 정답 세트 후보 200개 → data/eval/goldset_candidates.jsonl (FR-14.1, 결정 41)
              캐시된 Search 응답에서 설명·토픽을 읽는다 — 네트워크 0, 토큰 불필요
+- classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). 실제 판정은 P2-2 뒤
 """
 
 import argparse
@@ -20,16 +21,18 @@ from collections.abc import Mapping
 from datetime import date, timedelta
 from pathlib import Path
 
+from startrend.clients.decision import LLMDecider
 from startrend.clients.github_live import LiveGitHub, cacheable_response
 from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_search_page
+from startrend.clients.llm import MockLLM
 from startrend.clients.transport import CachingTransport, UrllibTransport
 from startrend.clients.trending import fetch_trending
-from startrend.core import snapshot, weekfile
+from startrend.core import snapshot, taxonomy, weekfile
 from startrend.core import week as wk
-from startrend.core.config import ConfigError, Settings, load_settings
+from startrend.core.config import PROJECT_ROOT, ConfigError, Settings, load_settings
 from startrend.core.io import dumps_json, read_json, write_json, write_jsonl
 from startrend.core.models import Repo
-from startrend.stages import backfill, contract, discover, goldset, probe, rank, stars
+from startrend.stages import backfill, classify, contract, discover, goldset, probe, rank, stars
 
 
 def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) -> int:
@@ -62,11 +65,17 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="스냅샷 주(일요일). 기본은 막 끝난 주")
     p.add_argument("--ranked-from", help="랭킹 진입 저장소를 읽을 데이터 폴더. 기본은 데이터 폴더")
     p.add_argument("--seed", type=int, default=20261027)
+    p = sub.add_parser("classify", help="AI 여부·유형·카테고리 판정 — 기본은 dry-run(호출 0)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--all", action="store_true", help="랭킹이 있는 모든 주")
+    p.add_argument("--run", action="store_true", help="실제 판정(과금) — dry-run 금액 승인 뒤")
     args = ap.parse_args(argv)
 
     settings = load_settings(env=env)
     if args.cmd == "goldset":  # 네트워크를 쓰지 않는다 — 토큰 없이 돈다
         return _goldset(settings, args)
+    if args.cmd == "classify":
+        return _classify(settings, args)
     try:
         token = settings.require_github_token()
     except ConfigError as e:
@@ -279,6 +288,25 @@ def _goldset(settings: Settings, args: argparse.Namespace) -> int:
     print(dumps_json({"snapshot": len(snap), "with_meta": len(repos), "ranked_pool": len(ranked & set(repos)),
                       "picked": len(picks), "groups": groups, "blind": sum(p["blind"] for p in picks),
                       "out": str(out)}), end="")
+    return 0
+
+
+def _classify(settings: Settings, args: argparse.Namespace) -> int:
+    if args.run:
+        print("실제 판정은 아직 열지 않았다 — Claude 연결(P2-2)과 dry-run 금액 승인(P2-9) 뒤에 연다",
+              file=sys.stderr)
+        return 2
+    if args.all:
+        files = sorted((settings.data_dir / "weekly").glob("*/rankings.json"))
+        weeks = [wk.parse_week(f.parent.name) for f in files]
+    else:
+        weeks = [_week_arg(args.week, date.today())]
+    # 분류 체계는 데이터 폴더에 있으면 그것, 없으면(시험·임시 폴더) 저장소의 정본을 쓴다
+    tax_file = settings.data_dir / "taxonomy.toml"
+    tax = taxonomy.load(tax_file if tax_file.exists() else PROJECT_ROOT / "data" / "taxonomy.toml")
+    system = LLMDecider(MockLLM([]), tax).system
+    est = classify.dry_run(data_dir=settings.data_dir, weeks=weeks, system_prompt=system)
+    print(dumps_json({"dry_run": True, "weeks": [wk.week_name(w) for w in weeks], **est}), end="")
     return 0
 
 

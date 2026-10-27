@@ -45,6 +45,10 @@ class Decision:
 
 
 class DecisionClient(Protocol):
+    # 판정에 영향을 주는 것(프롬프트·모델·effort)의 지문. 바뀌면 이전 판정을 다시 쓰지 않는다(FR-3.5)
+    @property
+    def fingerprint(self) -> str: ...
+
     def classify(self, item: RepoInput) -> Decision: ...
 
 
@@ -54,6 +58,10 @@ class MockDecider:
     def __init__(self, table: dict[int, Decision]):
         self.table = table
         self.asked: list[int] = []
+
+    @property
+    def fingerprint(self) -> str:
+        return "mock"
 
     def classify(self, item: RepoInput) -> Decision:
         self.asked.append(item.repo_id)
@@ -91,6 +99,10 @@ class LLMDecider:
             "required": ["is_ai", "type", "category", "secondary", "reason"],
             "additionalProperties": False,
         }
+
+    @property
+    def fingerprint(self) -> str:
+        return f"{self.prompt_hash}:{self.llm.model}:{self.effort}"
 
     def classify(self, item: RepoInput) -> Decision:
         user = user_message(item)

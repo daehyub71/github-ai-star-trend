@@ -100,3 +100,28 @@ def test_cli_goldset_reads_cached_search_without_token(tmp_path):
     lines = [json.loads(x) for x in out.read_text(encoding="utf-8").splitlines()]
     assert sorted(p["repo_id"] for p in lines) == [1, 2, 3, 4, 5]  # 모집단이 200 보다 작으면 전부
     assert {p["signal"] for p in lines} == {"strong", "none"}
+
+
+def test_cli_classify_defaults_to_dry_run_without_token(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+    from startrend.core import weekfile
+    from startrend.core.weekfile import WeekRow
+
+    w = date(2026, 10, 18)
+    env = {"STARTREND_DATA_DIR": str(tmp_path / "d"), "STARTREND_WORK_DIR": str(tmp_path / "w")}
+    rows = [WeekRow(i, f"o/r{i}", date(2024, 1, 1), 5000 + i, 100 + i, False, None) for i in range(1, 9)]
+    weekfile.write(weekfile.week_path(tmp_path / "d", w), rows)
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "pool": {"gain": list(range(8, 0, -1))}})
+    assert main(["classify", "--week", w.isoformat()], env=env) == 0   # 토큰 없이 — 호출 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["first_round"] == 8 and out["upper_bound"] == 8   # 저장소 8개뿐 — 15개 기준이면 전부
+    assert out["dry_run"] is True
+
+
+def test_cli_classify_run_is_not_open_yet(tmp_path, capsys):
+    env = {"STARTREND_DATA_DIR": str(tmp_path / "d"), "STARTREND_WORK_DIR": str(tmp_path / "w")}
+    assert main(["classify", "--run", "--week", "2026-10-18"], env=env) == 2
+    assert "P2-2" in capsys.readouterr().err
