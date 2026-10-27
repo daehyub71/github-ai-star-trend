@@ -1,7 +1,7 @@
 # PLAN.md — github-ai-star-trend
 
-> 최종 갱신: 2026-10-26 · **사용자 확인 완료(2026-10-26), Phase 0 완료 대기(사용자 확인).** SPEC v0.8 기준(실측 결정 27~32, Notion·블로그 결정 34~39, 시험 소급 뒤 결정 40~43, 조사 뒤 결정 44 반영).
-> 남은 결정: D-16(eval 결과 대기) · D-7(Phase 3 전, 결과 토큰 실측 후). 실측 결과는 `docs/MEASURE.md`.
+> 최종 갱신: 2026-10-26 · **사용자 확인 완료(2026-10-26), Phase 0 완료 대기(사용자 확인).** SPEC v1.0 기준(실측 결정 27~32, Notion·블로그 결정 34~39, 시험 소급 뒤 결정 40~43, 조사 뒤 결정 44, 블라인드 라벨 뒤 결정 45, 웹 검색 실측 뒤 결정 46 반영).
+> 남은 결정: D-16(eval 결과 대기) · D-22(X 근거 출처, Phase 3 뒤). 실측 결과는 `docs/MEASURE.md`.
 > 그림은 `docs/img/*.png`(원본 `docs/diagrams/*.html`, `scripts/render_diagrams.py` 로 다시 만든다).
 > 그림 아래 접힌 "텍스트 버전"(Mermaid·텍스트)이 기준이다.
 
@@ -140,7 +140,7 @@ flowchart LR
     P4B --> P5
     P2 & P3 & P4 --> P5["Phase 5<br/>운영·배포"]
 
-    D78["D-7 웹 검색<br/>결과 토큰 실측"] --> P3
+    D78["검색 API 키<br/>(Tavily)"] --> P3
     SEC["보안 점검 4단계"] --> P5
 
     style D78 fill:#f7e2e1,stroke:#c73635,color:#1b1a17
