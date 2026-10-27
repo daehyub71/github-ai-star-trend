@@ -2,7 +2,8 @@
 
 막는 것:
 - 1MB 를 넘는 파일 (GitHub 권장 상한. 원본 근거를 실수로 커밋하는 것을 막는다)
-- 한 커밋에 data/ 가 너무 많이 늘어나는 것 (기준값은 Phase 1 실측 후 조정 — TASK P1-8)
+  — 주간 스타 파일(data/stars/**.csv)만 2MB (결정 48: 최근 주 1.2~1.3MB, MEASURE §14)
+- 한 커밋에 data/ 가 5MB 넘게 늘어나는 것 (주간 실행 한 번은 약 1.5MB)
 - ASCII 가 아닌 파일명 (루트 규칙: NFD/NFC 차이로 Vercel 배포 실패 사례)
 
     .\\.venv\\Scripts\\python.exe scripts\\size_guard.py --staged
@@ -16,7 +17,8 @@ from pathlib import Path
 
 MB = 1_048_576
 MAX_FILE = MB
-MAX_DATA_GROWTH = 5 * MB  # 가정값 — 주간 정본 증가량을 실측한 뒤 조정한다
+MAX_STAR_FILE = 2 * MB  # 결정 48 — 증가 ≥ 10 행을 모두 두는 주간 스타 파일
+MAX_DATA_GROWTH = 5 * MB  # 주간 실행 한 번(스타 파일 + 랭킹 + 메타)은 약 1.5MB — MEASURE §14
 
 
 @dataclass(frozen=True)
@@ -27,19 +29,26 @@ class Entry:
 
 
 def check(entries: list[Entry], max_file: int = MAX_FILE,
-          max_data_growth: int = MAX_DATA_GROWTH) -> list[str]:
+          max_data_growth: int = MAX_DATA_GROWTH, max_star_file: int = MAX_STAR_FILE) -> list[str]:
     violations = []
     for e in entries:
         if not e.path.isascii():
             violations.append(f"{e.path}: 파일명은 ASCII 만 쓴다")
-        if e.new_size > max_file:
-            violations.append(f"{e.path}: {e.new_size / MB:.2f}MB — 1MB 를 넘는 파일은 커밋하지 않는다")
+        limit = max_star_file if _is_star_file(e.path) else max_file
+        if e.new_size > limit:
+            violations.append(
+                f"{e.path}: {e.new_size / MB:.2f}MB — {limit / MB:g}MB 를 넘는 파일은 커밋하지 않는다"
+            )
     growth = sum(e.new_size - e.old_size for e in entries if e.path.startswith("data/"))
     if growth > max_data_growth:
         violations.append(
             f"data/ 가 이번 커밋에서 {growth / MB:.2f}MB 늘어난다 — 기준 {max_data_growth / MB:.0f}MB 초과"
         )
     return violations
+
+
+def _is_star_file(path: str) -> bool:
+    return path.startswith("data/stars/") and path.endswith(".csv")
 
 
 def staged_entries(repo: Path) -> list[Entry]:

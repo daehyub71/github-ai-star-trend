@@ -25,6 +25,26 @@ def test_size_guard_exactly_1mb_is_allowed():
     assert sg.check([sg.Entry("data/x.json", 0, MB)]) == []
 
 
+def test_size_guard_star_file_allows_up_to_2mb():
+    # 결정 48: 주간 스타 파일은 증가 ≥ 10 행을 모두 둔다 — 최근 주 1.2~1.3MB(MEASURE §14)라 한도 2MB
+    assert sg.check([sg.Entry("data/stars/2026/2026-10-18.csv", 0, 2 * MB)]) == []
+
+
+def test_size_guard_star_file_rejects_over_2mb():
+    v = sg.check([sg.Entry("data/stars/2026/2026-10-18.csv", 0, 2 * MB + 1)])
+    assert len(v) == 1 and "data/stars/2026/2026-10-18.csv" in v[0] and "2MB" in v[0]
+
+
+def test_size_guard_star_limit_is_only_for_star_csv():
+    # 같은 크기라도 주간 스타 CSV 가 아니면 1MB 규칙 그대로
+    entries = [
+        sg.Entry("data/weekly/2026-10-18/rankings.json", 0, MB + 1),
+        sg.Entry("data/stars/2026/notes.json", 0, MB + 1),
+        sg.Entry("docs/stars/2026/2026-10-18.csv", 0, MB + 1),
+    ]
+    assert len(sg.check(entries)) == 3
+
+
 def test_size_guard_rejects_large_data_growth():
     entries = [sg.Entry(f"data/repos/{i}.json", 0, 600_000) for i in range(10)]  # 합계 약 5.7MB
     v = sg.check(entries, max_data_growth=5 * MB)
