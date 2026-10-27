@@ -66,3 +66,37 @@ def test_cli_select_rows_default_is_all_by_id_with_limit():
     rows = [_s(3, 1), _s(1, 2), _s(2, 3)]
     assert [r.id for r in select_rows(rows)] == [1, 2, 3]
     assert [r.id for r in select_rows(rows, limit=2)] == [1, 2]
+
+
+def _cache_search(cache_dir, items):
+    """CachingTransport 가 남긴 Search 응답 파일을 흉내 낸다."""
+    import base64
+    import hashlib
+    import json
+
+    url = "https://api.github.com/search/repositories?q=stars%3A1000..2000&page=1"
+    body = json.dumps({"total_count": len(items), "incomplete_results": False, "items": items}).encode()
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    name = hashlib.sha256(f"GET {url}".encode()).hexdigest() + ".json"
+    (cache_dir / name).write_text(json.dumps({"status": 200, "headers": {}, "url": url,
+                                              "body": base64.b64encode(body).decode()}), encoding="utf-8")
+
+
+def test_cli_goldset_reads_cached_search_without_token(tmp_path):
+    import json
+
+    from startrend.core import snapshot
+    from tests import synth
+
+    w = date(2026, 10, 18)
+    env = {"STARTREND_DATA_DIR": str(tmp_path / "d"), "STARTREND_WORK_DIR": str(tmp_path / "w")}
+    rows = [SnapRow(i, f"o/r{i}", 1500 + i, 1, 1, date(2024, 1, 1), ("pool",)) for i in range(1, 6)]
+    snapshot.write(tmp_path / "w" / "snapshots" / "2026-10-18.csv", rows)
+    items = [synth.repo(f"o/r{i}", id=i, stars=1500 + i, description="LLM tool" if i % 2 else "web server")
+             for i in range(1, 6)]
+    _cache_search(tmp_path / "w" / "cache" / "2026-10-18", items)
+    assert main(["goldset", "--week", w.isoformat()], env=env) == 0  # 토큰 없이 — 네트워크를 쓰지 않는다
+    out = tmp_path / "d" / "eval" / "goldset_candidates.jsonl"
+    lines = [json.loads(x) for x in out.read_text(encoding="utf-8").splitlines()]
+    assert sorted(p["repo_id"] for p in lines) == [1, 2, 3, 4, 5]  # 모집단이 200 보다 작으면 전부
+    assert {p["signal"] for p in lines} == {"strong", "none"}

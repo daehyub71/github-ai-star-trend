@@ -1,4 +1,5 @@
 # ASCII ONLY - see requirements-dev.txt.
 #
-# Runtime dependencies (SPEC decision 21): standard library only until Phase 2,
-# then the Anthropic SDK is added here.
+# Runtime dependencies (SPEC decision 21): standard library plus the Anthropic SDK.
+# 1.x on purpose: the bundled SDK docs used here target 1.x (2.x is unverified).
+anthropic>=1.17,<2

@@ -17,8 +17,8 @@
 | Phase 3 근거·카드·브리핑 | `░░░░░░░░░░` | 0/15 (0%) | 🔜 D-7(결과 토큰 실측 후) 대기 — D-8 ✅(결정 44) |
 | Phase 4 화면          | `█░░░░░░░░░` | 1/11 (9%)       | 🔄 핵심 3화면 시안 합의 ✅ · D-9·D-10 ✅(결정 42·43) — 구현은 Phase 1 뒤             |
 | Phase 4b Notion·블로그 | `░░░░░░░░░░` | 0/7 (0%)        | 🔜 Phase 3 대기 (D-19·D-20·Notion 토큰 ✅)                                |
-| Phase 5 운영·배포       | `░░░░░░░░░░` | 0/11 (0%)       | 🔜 보안 점검 대기                                                          |
-| **전체 (M5)** | `███░░░░░░░` | **30/93 (32%)** | 🔄 착수 전과 Phase 0~5 합계(🅑·🅒 제외) |
+| Phase 5 운영·배포 | `█░░░░░░░░░` | 1/11 (9%) | 🔜 보안 점검 대기 — 첫 푸시만 앞당겨 완료(백업) |
+| **전체 (M5)** | `███░░░░░░░` | **31/93 (33%)** | 🔄 착수 전과 Phase 0~5 합계(🅑·🅒 제외) |
 
 > 진도는 완료(`[x]`)만 센다. 진행 중(`[~]`)은 상태 칸에 적는다 (2026-10-26부터 — 그 전 Phase 1 의 6/10 은 진행 중을 절반으로 센 값).
 
@@ -46,7 +46,7 @@
 - [x] JEV: API 형식(OpenAI 호환 여부·판정 형식 지정 방법), Python SDK 유무, 데이터 보관 정책 — D-16 (Phase 2 비교 전) → 자체 엔드포인트 하나·OpenAI 호환 아님·`urllib` 로 충분·학습 안 함·보관 기간 미명시 (SPEC 부록 B, 2026-10-26)
 - [x] Notion API 현재 버전(2025-09 "data source" 구조 이후)과 데이터베이스·페이지 만들기 형식 — Phase 4b 전 → `2026-03-11`, 마크다운 본문 API, status 생성 가능 (부록 C-3, 2026-10-26)
 - [x] Notion 워크스페이스 요금제·구성원 수 확인 — 구성원 1명 → 블록 한도 없음, R25 해소 (2026-10-27 사용자)
-- [ ] Notion → 네이버 블로그 편집기 붙여 넣기에서 제목·목록·링크·표 서식이 유지되는지 — Phase 4b (R22)
+- [~] Notion → 네이버 블로그 편집기 붙여 넣기에서 제목·목록·링크·표 서식이 유지되는지 — Phase 4b (R22) — 2026-10-27 견본으로 Notion 시험 페이지 A(평문)·B(제목·링크) 생성(마크다운 API `2026-03-11` 동작 확인), 사용자 붙여 넣기 결과 대기
 
 ## 🅒 사용자 준비물·결정
 
@@ -54,13 +54,13 @@
 - [x] Anthropic API 키 — Console 워크스페이스 `github-ai-star-trend` 전용 키 → 사용자 환경변수 `STARTREND_ANTHROPIC_API_KEY`(NFR-8), 모델 목록 API 로 확인(`claude-opus-5-5` 사용 가능) — 2026-10-26 · 워크스페이스 월 지출 한도 $50 설정 ✅(매월 1일 UTC 초기화)
 - [x] D-6 모델·예산 — Opus 5.5(결정 26) · 주 $10(결정 31) (2026-10-26)
 - [x] D-15 정답 세트 작성 방식 → 결정 41: Claude 초안 → 검수, 200개 중 30개 블라인드 (2026-10-26)
-- [ ] 정답 세트 검수(블라인드 30개 직접 라벨 + 초안 170개 검수, 1~2시간) — Phase 2 비교 전 (P2-11)
+- [~] 정답 세트 검수(블라인드 30개 직접 라벨 + 초안 170개 검수, 1~2시간) — Phase 2 비교 전 (P2-11) — 블라인드 30개 라벨링 화면 준비 ✅ (https://claude.ai/artifact/QG66TemkHkga95DmBWFckP, 공유 저장소 `labels`), 사용자 라벨 진행 · 2026-10-27 블라인드 30개 라벨 저장 → `data/eval/goldset_blind_labels.jsonl`(AI 19 · 비AI 11). 유형 빈칸 4개·사용자 정리 문서(`docs/github_ai_repository_classification_30.md`)와 다른 3개 확인 대기
 - [x] D-9 렌더 → 결정 42 Vercel 기본 빌드 · D-10 → 결정 43 차트 라이브러리 + react-markdown (2026-10-26)
 - [ ] JEV API 키 (비교 실측 때만) — Phase 2 중
 - [x] DESIGN 시안 합의 — 핵심 3화면 (2026-10-26, 결정 33)
 - [x] Notion 연결(API 토큰 방식) `github-ai-star-trend` → 사용자 환경변수 `NOTION_TOKEN`, 부모 페이지 "깃허브 AI 트렌드"(ID `405cb5c3-2bc1-80d1-a8d1-d7da9d11b4c6`, 워크스페이스 최상위)를 연결에 공유 — 2026-10-26 API 확인 (`users/me`·`search`)
 - [x] D-19 Notion 데이터베이스 만드는 방식 → 결정 38 `notion-setup` · D-20 블로그 형식 → 결정 39 사용자 견본(`docs/ref/blog-sample*.md`) — 2026-10-26
-- [ ] 개인 계정 비공개 GitHub 저장소 생성, Vercel 계정 연결 — Phase 5 전
+- [~] 개인 계정 비공개 GitHub 저장소 생성, Vercel 계정 연결 — Phase 5 전 — 저장소 `daehyub71/github-ai-star-trend`(Private) 생성·푸시 2026-10-27 (Vercel 연결은 Phase 5)
 
 ---
 
@@ -108,7 +108,7 @@
 > 완료 기준: mock GREEN · 정답 세트 비교표 사용자 검토 → 분류 구현 선택(D-16) · dry-run 금액 승인 후 첫 전수 분류 · 랭킹 8개 + 추이 🏁M2
 
 - [ ] P2-1 `LLMClient` 인터페이스 + `MockLLM` + 예산 계량기 (NFR-3, PLAN 1-5)
-- [ ] P2-2 Claude 구현(Anthropic SDK 설치 — 결정 21, `claude-opus-5-5` — 결정 26) + Batch API 경로 (FR-3.7) + 정해진 형식 출력·거절 처리 (FR-3.10)
+- [~] P2-2 Claude 구현(Anthropic SDK 설치 — 결정 21, `claude-opus-5-5` — 결정 26) + Batch API 경로 (FR-3.7) + 정해진 형식 출력·거절 처리 (FR-3.10) — SDK `anthropic` 1.17.0 설치·고정(`>=1.17,<2` — 스킬 문서가 1.x 기준, 2.x 미검증) 2026-10-27
 - [ ] P2-3 `data/taxonomy.toml` v1(부록 A) + 버전·매핑 구조 (FR-3.3·3.4)
 - [ ] P2-4 classify: 프롬프트, 응답 검증·재질문·미분류, **판정 범위 = 축마다 AI 15개가 찰 때까지** (FR-3.1·3.2·3.5·3.6, 결정 30)
 - [ ] P2-5 classify: 판정 입력 해시 증분 + `--dry-run` (FR-3.5, NFR-2)
@@ -117,7 +117,7 @@
 - [ ] P2-8 정답 세트로 표본 분류(소액) → 사용자 검토 → 프롬프트 조정
 - [ ] P2-9 dry-run 금액 제시 → 승인 → 첫 전수 분류 live
 - [ ] P2-10 `DecisionClient` 인터페이스 + `MockDecider` + Claude 구현(정해진 형식 출력) (FR-3.8)
-- [ ] P2-11 정답 세트 `data/eval/goldset_classify.jsonl` 200개 — 층화 추출 → 블라인드 30개 직접 라벨 → 나머지 170개 Claude 초안(Batch) → 검수, 블라인드 대 초안 차이 기록 (FR-14.1, 결정 41)
+- [~] P2-11 정답 세트 `data/eval/goldset_classify.jsonl` 200개 — 층화 추출 → 블라인드 30개 직접 라벨 → 나머지 170개 Claude 초안(Batch) → 검수, 블라인드 대 초안 차이 기록 (FR-14.1, 결정 41) — 2026-10-27 앞당김: `goldset` 명령(캐시된 Search 응답에서 설명·토픽, 호출 0, 테스트 12개) → `data/eval/goldset_candidates.jsonl` 200개(랭킹 60 · 신호 강 60 · 약 40 · 없음 40, 블라인드 30). 랭킹 진입은 시험 소급 4주 기준
 - [ ] P2-12 `eval` 분류: 필드별 정확도·macro-F1·보정 오차·비용·지연, 리포트, `--dry-run` (FR-14.2·14.6·14.7)
 - [ ] P2-13 JEV 구현(가능하면 `urllib`) + live 테스트 — 🅑 JEV 조사 후 (NFR-15)
 - [ ] P2-14 `eval --mode claude/jev/hybrid` 비교표 → 사용자 결정 D-16(분류) → 카테고리 변경 기준값(FR-3.9) (FR-14.3)
@@ -178,7 +178,7 @@
 
 - [ ] P5-1 archive → GitHub Release, 업로드 전 시크릿 검사 (FR-10)
 - [ ] P5-2 weekly: 순서 실행, 예산 상한, `--dry-run`, 실행 기록 (FR-11.1~11.3·11.5)
-- [ ] P5-3 비공개 GitHub 저장소 첫 푸시 (사용자 확인 후)
+- [x] P5-3 비공개 GitHub 저장소 첫 푸시 (사용자 확인 후) — `daehyub71/github-ai-star-trend` 2026-10-27 (백업용으로 앞당김)
 - [ ] P5-4 Actions 워크플로: `contents: write` 만, 외부 Action SHA 고정, Secrets, 크론 시각 (FR-11.4, NFR-8)
 - [ ] P5-5 Vercel 연결, All Deployments + Vercel Authentication, 루트 디렉토리 확인 (R12)
 - [ ] P5-6 **배포 전 보안 점검 4단계** — security-review · 시크릿 점검(코드·히스토리·로그·Releases) · CI 권한 · 발견 사항 해소

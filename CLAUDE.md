@@ -14,7 +14,7 @@ Python 파이프라인이 GitHub Actions 크론으로 매주 데이터를 만들
 
 **SPEC v0.8 · Phase 0 완료(2026-10-26, 🏁 M0) · Phase 1 진행 중 — 52주 소급은 임시 폴더 `.work/backfill-data` 로 실행 중, 주간 파일 형식은 실측 후 확정(MEASURE §13).**
 읽는 순서: `docs/SPEC.md` → `docs/PLAN.md` → `docs/TASK.md`(진도율 대시보드). 화면은 `docs/DESIGN.md`(핵심 3화면 합의, 결정 33).
-`docs/SPEC.md` §9 에 남은 결정은 D-16(eval 결과 대기), D-7(Phase 3 전, 결과 토큰 실측 후)이다. 실측 결과는 `docs/MEASURE.md` — 숫자는 거기서만 가져온다.
+`docs/SPEC.md` §9 에 남은 결정은 D-16(eval 결과 대기), D-7(Phase 3 전, 결과 토큰 실측 후), D-21(AI 저장소의 경계 — 정답 세트 라벨 뒤)이다. 실측 결과는 `docs/MEASURE.md` — 숫자는 거기서만 가져온다.
 
 ## 이 프로젝트에서 지키는 규칙
 

@@ -7,23 +7,29 @@
 - stars    : 스냅샷 차이 + 상위 후보 히스토리 → data/stars/YYYY/<주>.csv (FR-2)
 - backfill : 52주 소급 → 주간 파일들 (FR-2.4, 1회성 · 이어 돌리기)
 - rank     : 주간 파일 → data/weekly/<주>/rankings.json · 메타 (FR-4)
+- goldset  : 분류 정답 세트 후보 200개 → data/eval/goldset_candidates.jsonl (FR-14.1, 결정 41)
+             캐시된 Search 응답에서 설명·토픽을 읽는다 — 네트워크 0, 토큰 불필요
 """
 
 import argparse
+import base64
 import io as _stdio
+import json
 import sys
 from collections.abc import Mapping
 from datetime import date, timedelta
 from pathlib import Path
 
 from startrend.clients.github_live import LiveGitHub, cacheable_response
+from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_search_page
 from startrend.clients.transport import CachingTransport, UrllibTransport
 from startrend.clients.trending import fetch_trending
 from startrend.core import snapshot, weekfile
 from startrend.core import week as wk
 from startrend.core.config import ConfigError, Settings, load_settings
-from startrend.core.io import dumps_json, write_json
-from startrend.stages import backfill, contract, discover, probe, rank, stars
+from startrend.core.io import dumps_json, read_json, write_json, write_jsonl
+from startrend.core.models import Repo
+from startrend.stages import backfill, contract, discover, goldset, probe, rank, stars
 
 
 def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) -> int:
@@ -52,9 +58,15 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p = sub.add_parser("rank", help="주간 파일 → 4축 랭킹 (비용 0)")
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="주간 파일이 있는 모든 주를 오래된 순으로")
+    p = sub.add_parser("goldset", help="분류 정답 세트 후보 200개 (캐시만 읽는다 — 비용 0, 호출 0)")
+    p.add_argument("--week", help="스냅샷 주(일요일). 기본은 막 끝난 주")
+    p.add_argument("--ranked-from", help="랭킹 진입 저장소를 읽을 데이터 폴더. 기본은 데이터 폴더")
+    p.add_argument("--seed", type=int, default=20261027)
     args = ap.parse_args(argv)
 
     settings = load_settings(env=env)
+    if args.cmd == "goldset":  # 네트워크를 쓰지 않는다 — 토큰 없이 돈다
+        return _goldset(settings, args)
     try:
         token = settings.require_github_token()
     except ConfigError as e:
@@ -215,6 +227,58 @@ def _rank(settings: Settings, token: str, args: argparse.Namespace) -> int:
                               log=lambda m: print(m, flush=True))
         print(f"{stats['week']}: 랭킹 진입 {stats['entrants']}개 · 저장소 조회 {stats['repo_calls']}회",
               flush=True)
+    return 0
+
+
+def cached_repos(cache_dir: Path, wanted: set[int]) -> dict[int, Repo]:
+    """CachingTransport 가 남긴 Search·저장소 응답에서 wanted 저장소의 메타를 꺼낸다 (호출 0)."""
+    found: dict[int, Repo] = {}
+    for f in sorted(cache_dir.glob("*.json")) if cache_dir.exists() else []:
+        d = json.loads(f.read_text(encoding="utf-8"))
+        url = str(d.get("url", ""))
+        if d.get("status") != 200:
+            continue
+        try:
+            body = json.loads(base64.b64decode(d["body"]))
+            if "/search/repositories" in url:
+                repos = list(parse_search_page(body).items)
+            elif "/repos/" in url and url.count("/") == 5:  # https://api.github.com/repos/{owner}/{repo}
+                repos = [parse_repo(body)]
+            else:
+                continue
+        except (ValueError, GitHubFormatError):
+            continue
+        found.update((r.id, r) for r in repos if r.id in wanted)
+    return found
+
+
+def ranked_ids(data_dir: Path) -> set[int]:
+    ids: set[int] = set()
+    for f in sorted((data_dir / "weekly").glob("*/rankings.json")):
+        for axis in read_json(f).get("axes", {}).values():
+            ids.update(e["id"] for e in (axis.get("all") or []))
+    return ids
+
+
+def _goldset(settings: Settings, args: argparse.Namespace) -> int:
+    w = _week_arg(args.week, date.today())
+    snap_path = _snapshot_path(settings, w)
+    if not snap_path.exists():
+        print(f"스냅샷이 없다 — 먼저 discover: {snap_path}", file=sys.stderr)
+        return 2
+    snap = snapshot.read(snap_path)
+    repos = cached_repos(settings.work_dir / "cache" / wk.week_name(w), set(snap))
+    ranked = ranked_ids(Path(args.ranked_from) if args.ranked_from else settings.data_dir)
+    new = {rid for rid, r in snap.items() if "new" in r.sources}
+    picks = goldset.sample(repos, ranked=ranked, new=new, seed=args.seed)
+    out = settings.data_dir / "eval" / "goldset_candidates.jsonl"
+    write_jsonl(out, picks)
+    groups: dict[str, int] = {}
+    for p in picks:
+        groups[p["group"]] = groups.get(p["group"], 0) + 1
+    print(dumps_json({"snapshot": len(snap), "with_meta": len(repos), "ranked_pool": len(ranked & set(repos)),
+                      "picked": len(picks), "groups": groups, "blind": sum(p["blind"] for p in picks),
+                      "out": str(out)}), end="")
     return 0
 
 

@@ -111,3 +111,17 @@ def test_size_guard_pre_commit_hook_runs_full_gate():
     hook = (PROJECT_ROOT / "scripts" / "hooks" / "pre-commit").read_text(encoding="utf-8")
     for cmd in ("ruff check", "mypy", "pytest", "size_guard.py --staged"):
         assert cmd in hook, cmd
+
+
+def test_measure_web_search_cost_formula():
+    # scripts/measure_web_search.py — Opus 5.5 단가(MEASURE §9)와 검색 1회 $0.01
+    import importlib.util
+    from pathlib import Path
+
+    spec = importlib.util.spec_from_file_location(
+        "measure_web_search", Path(__file__).resolve().parents[1] / "scripts" / "measure_web_search.py")
+    assert spec and spec.loader
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    c = m.cost({"input_tokens": 1_000_000, "output_tokens": 100_000, "web_search_requests": 3})
+    assert round(c, 4) == round(4.0 + 2.0 + 0.03, 4)
