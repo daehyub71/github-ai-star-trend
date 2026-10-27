@@ -41,6 +41,18 @@ def test_architecture_detects_network_from_import():
     assert len(v) == 1 and "네트워크 모듈" in v[0]
 
 
+def test_architecture_detects_llm_sdk_outside_claude_client():
+    # Anthropic SDK 도 네트워크에 닿는다 — clients/claude.py 한 곳에서만 쓴다 (예산 계량기를 우회하지 못하게)
+    v = check_sources({"startrend/stages/classify.py": "import anthropic\n"})
+    assert len(v) == 1 and "LLM SDK" in v[0]
+    v = check_sources({"startrend/clients/llm.py": "from anthropic import Anthropic\n"})
+    assert len(v) == 1 and "LLM SDK" in v[0]
+
+
+def test_architecture_allows_llm_sdk_in_claude_client():
+    assert check_sources({"startrend/clients/claude.py": "import anthropic\n"}) == []
+
+
 def test_architecture_detects_relative_import():
     v = check_sources({"startrend/core/x.py": "from . import week\n"})
     assert len(v) == 1 and "상대 import" in v[0]

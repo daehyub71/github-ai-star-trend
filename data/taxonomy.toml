@@ -1,0 +1,88 @@
+# 분류 체계 (SPEC FR-3.2·3.3·3.4, 결정 20 · 부록 A)
+# - id 는 바뀌지 않는 ASCII 키다. 화면·라벨에는 name 을 쓴다.
+# - 카테고리를 나누거나 합칠 때는 version 을 올리고 [mapping] 에 "v<이전>:<이전 id>" = "<지금 id>" 를 남긴다.
+#   그래야 카테고리 추이 그래프가 끊기지 않는다(FR-3.4).
+# - desc 는 라벨 기준이다(2026-10-27 정답 세트 라벨링 화면과 같다). AI 저장소의 경계는 결정 45.
+
+version = 1
+
+# 유형 라벨 (FR-3.2) — 북마크형 스타(목록·교육자료)를 도구와 구분해 보여 주기 위함
+types = ["도구/라이브러리", "큐레이션 목록", "교육자료", "모델/데이터", "기타"]
+
+[[category]]
+id = "agent-framework"
+name = "에이전트 프레임워크"
+desc = "에이전트를 만드는 라이브러리·런타임, 오케스트레이션, 멀티에이전트"
+
+[[category]]
+id = "coding-agent"
+name = "코딩 에이전트·IDE"
+desc = "코드를 쓰는 에이전트, AI 코딩 CLI·IDE·확장"
+
+[[category]]
+id = "mcp-tools"
+name = "MCP 서버·도구"
+desc = "MCP 서버, 에이전트가 부르는 도구·연결 모음"
+
+[[category]]
+id = "agent-skills"
+name = "에이전트 스킬·프롬프트"
+desc = "스킬·프롬프트·규칙 파일·지침 모음"
+
+[[category]]
+id = "inference"
+name = "추론·서빙"
+desc = "모델 추론 엔진, 서빙 서버, 가속·양자화 실행"
+
+[[category]]
+id = "local-llm"
+name = "로컬 LLM 실행"
+desc = "개인 PC·기기에서 모델을 돌리는 앱·런처"
+
+[[category]]
+id = "models"
+name = "모델·가중치"
+desc = "모델 자체 — 가중치·체크포인트 공개"
+
+[[category]]
+id = "training"
+name = "학습·파인튜닝"
+desc = "학습·미세조정·강화학습 프레임워크와 레시피"
+
+[[category]]
+id = "rag"
+name = "RAG·검색"
+desc = "검색 증강 생성, 지식 검색 파이프라인"
+
+[[category]]
+id = "vectordb-memory"
+name = "벡터DB·메모리"
+desc = "벡터 저장소, 에이전트 장기 기억"
+
+[[category]]
+id = "llmops"
+name = "평가·관측(LLMOps)"
+desc = "평가·벤치마크, 트레이싱·모니터링, 게이트웨이·라우팅"
+
+[[category]]
+id = "multimodal"
+name = "멀티모달(이미지·음성·영상)"
+desc = "이미지·음성·영상 생성과 인식"
+
+[[category]]
+id = "computer-use"
+name = "브라우저·컴퓨터 사용 자동화"
+desc = "브라우저·데스크톱을 조작하는 에이전트"
+
+[[category]]
+id = "doc-parsing"
+name = "문서·데이터 파싱"
+desc = "PDF·문서·웹 페이지를 LLM 입력으로 바꾸기"
+
+[[category]]
+id = "other-ai"
+name = "기타 AI"
+desc = "위에 없는 AI 저장소"
+
+[mapping]
+# v1 이 첫 버전이라 비어 있다

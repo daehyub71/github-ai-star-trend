@@ -22,6 +22,9 @@ ALLOWED: dict[str, set[str]] = {
 # 네트워크에 직접 닿는 표준 라이브러리 모듈. clients 의 전송 계층에서만 쓴다
 NETWORK_MODULES = {"socket", "ssl", "http.client", "urllib.request", "ftplib", "smtplib"}
 NETWORK_ALLOWED_FILES = {"startrend/clients/transport.py"}
+# LLM SDK 도 네트워크에 닿는다. Claude 구현 한 파일에서만 쓴다 — 예산 계량기를 우회하는 호출을 막는다
+LLM_SDK_MODULES = {"anthropic"}
+LLM_SDK_ALLOWED_FILES = {"startrend/clients/claude.py"}
 
 
 class NetworkBlocked(RuntimeError):
@@ -69,6 +72,8 @@ def check_sources(sources: Mapping[str, str]) -> list[str]:
             full = {mod} | {f"{mod}.{n}" for n in names}
             if full & NETWORK_MODULES and relpath not in NETWORK_ALLOWED_FILES:
                 violations.append(f"{where} 네트워크 모듈은 clients/transport.py 에서만 ({mod})")
+            if mod.split(".")[0] in LLM_SDK_MODULES and relpath not in LLM_SDK_ALLOWED_FILES:
+                violations.append(f"{where} LLM SDK 는 clients/claude.py 에서만 ({mod})")
             # 층 규칙
             if mod != PACKAGE and not mod.startswith(PACKAGE + "."):
                 continue
