@@ -14,6 +14,7 @@ import json
 import re
 import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -107,15 +108,21 @@ def discover() -> None:
          body, "docs/MEASURE.md §12")
 
 
+def _run(*args: str) -> list[str]:
+    """검사를 실제로 돌려 출력 줄을 돌려준다 — 캡처 숫자가 녹화 시점과 어긋나지 않게."""
+    out = subprocess.run([sys.executable, "-m", *args], cwd=ROOT, capture_output=True, text=True,
+                         encoding="utf-8", errors="replace")
+    return [ln.rstrip() for ln in (out.stdout + out.stderr).splitlines() if ln.strip()]
+
+
 def tests() -> None:
-    # 2026-10-27 커밋 0218cc3 의 커밋 전 검사 출력 (경로는 프로젝트 이름만)
-    dots = "." * 72
-    lines = [("cmd", "PS github-ai-star-trend> ruff check ."), ("ok", "All checks passed!"),
-             ("cmd", "PS github-ai-star-trend> mypy startrend tests scripts"),
-             ("ok", "Success: no issues found in 69 source files"),
+    ruff = _run("ruff", "check", ".")[-1:]
+    mypy = _run("mypy", "startrend", "tests", "scripts")[-1:]
+    py = [ln for ln in _run("pytest", "-q", "-p", "no:cacheprovider") if ln.startswith(".") or "passed" in ln]
+    lines = [("cmd", "PS github-ai-star-trend> ruff check ."), *[("ok", x) for x in ruff],
+             ("cmd", "PS github-ai-star-trend> mypy startrend tests scripts"), *[("ok", x) for x in mypy],
              ("cmd", "PS github-ai-star-trend> pytest -q"),
-             ("", f"{dots} [ 24%]"), ("", f"{dots} [ 49%]"), ("", f"{dots} [ 73%]"), ("", f"{dots} [ 98%]"),
-             ("", f"{'.' * 5:<72} [100%]"), ("ok", "293 passed, 4 deselected in 5.73s")]
+             *[("ok" if "passed" in x else "", x) for x in py]]
     color = {"cmd": "#9cdcfe", "ok": "#6ad38e", "": "#d4d4d4"}
     pre = "\n".join(f"<span style='color:{color[k]}'>{html.escape(t)}</span>" for k, t in lines)
     body = (f"<pre class='mono' style='background:#1e1f22;border-radius:16px;padding:30px 34px;font-size:22px;"
@@ -123,11 +130,25 @@ def tests() -> None:
             "<div style='font-size:22px;margin-top:22px'>기본 테스트는 <b>인터넷 · 키 · 돈 없이</b> 통과한다 · "
             "실제 호출 4개는 <span class='mono'>-m live</span> 로만</div>")
     page("sT1_tests", "테스트가 지키는 규칙", "커밋 전 검사: ruff → mypy → pytest → 크기 가드", body,
-         "커밋 전 훅 출력 (2026-10-27)")
+         f"검사 실행 출력 ({date.today().isoformat()})")
 
 
 def ranking() -> None:
-    p = ROOT / ".work" / "trial-data2" / "weekly" / "2026-10-18" / "rankings.json"
+    _ranking_page("sT1_rank", ROOT / ".work" / "trial-data2" / "weekly" / "2026-10-18" / "rankings.json",
+                  "첫 랭킹 — 2026-10-18 주", "시험 소급 4주 · 저장소 3,495개 · 21분 · 비용 0 (전체 탭)",
+                  "시험 소급 랭킹 rankings.json · docs/MEASURE.md §13")
+
+
+def ranking52() -> None:
+    """52주 실제 소급이 끝나 랭킹이 생겼을 때만."""
+    p = ROOT / ".work" / "backfill-data" / "weekly" / "2026-10-18" / "rankings.json"
+    if p.exists():
+        _ranking_page("sT1_rank52", p, "52주 실제 데이터 — 2026-10-18 주",
+                      "52주 소급 · 스타 1,000 이상 + 새 저장소 82,590개 (전체 탭)",
+                      "52주 소급 랭킹 rankings.json · docs/MEASURE.md §14")
+
+
+def _ranking_page(name: str, p: Path, title: str, sub: str, source: str) -> None:
     d = json.loads(p.read_text(encoding="utf-8"))
 
     def table(axis: str, metric: str) -> str:
@@ -146,13 +167,22 @@ def ranking() -> None:
  <div><div style="font-size:24px;font-weight:700;margin-bottom:6px">새로 뜨는 (30일 이내) TOP 5 · 누적 스타</div>{table("fresh", "stars")}</div>
 </div>
 <div style="font-size:21px;margin-top:20px">노란 표시는 <b>순위에서 빼지 않고</b> 근거 숫자만 붙인다 (결정 28 · 40)</div>"""
-    page("sT1_rank", "첫 랭킹 — 2026-10-18 주", "시험 소급 4주 · 저장소 3,495개 · 21분 · 비용 0 (전체 탭)",
-         body, "시험 소급 랭킹 rankings.json · docs/MEASURE.md §13")
+    page(name, title, sub, body, source)
 
 
 def backfill_log() -> None:
     log = (ROOT / ".work" / "backfill-full2.log").read_text(encoding="utf-8-sig")
-    progress = [ln.strip() for ln in log.splitlines() if "/82590" in ln][-4:]
+    lines = [ln.strip() for ln in log.splitlines()]
+    progress = [ln for ln in lines if "/82590" in ln or "레이트 리밋 대기" in ln][-4:]
+    done = next((ln for ln in reversed(lines) if ln.startswith("backfill exit: 0")), None)
+    finish = ""
+    if done:  # "backfill exit: 0 at 2026-10-27T22:10:05"
+        when = done.split(" at ")[-1].replace("T", " ")[5:16]
+        stats = json.loads((ROOT / ".work" / "2026-10-18" / "backfill.json").read_text(encoding="utf-8"))
+        failed = len(stats.get("failed") or [])
+        finish = (f"  <b>{html.escape(when)}</b> <span class='teal'>완료 — 주간 파일 {stats.get('weeks_written', 0)}개"
+                  f" · 실패 {failed}개</span><br>\n")
+        progress = [*progress[-3:], done]
     pre = "\n".join(html.escape(x) for x in progress)
     # 타임라인 — MEASURE §14 · 캐시된 응답 헤더(레이트 리밋 창)
     body = f"""
@@ -163,7 +193,8 @@ def backfill_log() -> None:
   &nbsp;&nbsp;&nbsp;상대 서버가 응답 없이 연결을 끊음 (RemoteDisconnected)<br>
   &nbsp;&nbsp;&nbsp;주간 파일은 0개 — 반쯤 쓴 파일 없음<br>
   <b>06:45</b> <span class="teal">고친 코드로 이어 돌리기</span> — 받은 응답은 캐시에서<br>
-  <b>14:05 → 14:36</b> 시간당 한도(5,000회) 대기 31분 — 정상<br></div>
+  <b>14:05 → 14:36</b> 시간당 한도(5,000회) 대기 31분 — 정상<br>
+{finish}</div>
  <div><div style="font-size:22px;font-weight:700;margin-bottom:10px">고친 것</div>
   <div class="card" style="font-size:20px;margin-bottom:14px">연결이 끊기면 2·4·8 … 64초 간격으로 6번 다시</div>
   <div class="card" style="font-size:20px;margin-bottom:14px">그래도 안 되면 <b>건너뛰지 않고 멈춘다</b><br><span class="muted">건너뛰면 한 번 쓰면 못 고치는 주간 파일에 구멍</span></div>
@@ -202,7 +233,7 @@ def search() -> None:
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]
-    for make in (task_dashboard, measure, discover, tests, ranking, backfill_log, search):
+    for make in (task_dashboard, measure, discover, tests, ranking, ranking52, backfill_log, search):
         make()
     return subprocess.call([sys.executable, str(ROOT / "scripts" / "render_diagrams.py"),
                             "--src", "docs/video/captures/src", "--out", "docs/video/captures"])
