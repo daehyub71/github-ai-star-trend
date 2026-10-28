@@ -382,7 +382,8 @@ def _fill_empty(body: str) -> str:
     out.append(parts[0])
     for head, text in zip(parts[1::2], parts[2::2], strict=True):
         name = head[3:]
-        if name.startswith(gate.CARD_CITED) and not re.search(r"(?m)^\s*- ", text):
+        if (name.startswith(gate.CARD_CITED) and not re.search(r"(?m)^\s*- ", text)
+                and NO_ITEMS not in text):
             text = f"\n{NO_ITEMS}\n" + text.lstrip("\n")
             text = text if text.endswith("\n\n") else text + "\n"
         out.append(head + text)
@@ -470,6 +471,165 @@ def check_week(data_dir: Path, work_dir: Path, week_start: date) -> dict[str, di
     return out
 
 
+# --- 카드 보관소와 재등장 (P3-10, FR-6.1) ---
+
+
+@dataclass
+class StoredCard:
+    markdown: str
+    meta: dict[str, Any]
+
+
+class CardStore:
+    """저장소마다 최신 카드와 그때의 상태(스타·README 해시·릴리스·근거 URL)를 둔다. 열쇠는 저장소 숫자 ID.
+
+    어디에 둘지는 결정 53(공개 저장소 밖)에 따라 Phase 5 에서 정한다 — 그때까지 `.work/cards/`.
+    """
+
+    def __init__(self, root: Path):
+        self.root = root
+
+    def load(self, repo_id: int) -> StoredCard | None:
+        md, meta = self.root / f"{repo_id}.md", self.root / f"{repo_id}.json"
+        if not (md.exists() and meta.exists()):
+            return None
+        return StoredCard(io.read_text(md), io.read_json(meta))
+
+    def save(self, repo_id: int, markdown: str, meta: Mapping[str, Any]) -> None:
+        io.write_text_atomic(self.root / f"{repo_id}.md", markdown)
+        io.write_json(self.root / f"{repo_id}.json", dict(meta))
+
+
+def _tag(d: ev.Evidence) -> str:
+    return str(d.extra.get("tag") or d.url.rsplit("/tag/", 1)[-1])
+
+
+def _readme_hash(ci: CardInput) -> str | None:
+    return next((d.content_hash for d in ci.docs if d.source == "github" and d.kind == "repo"), None)
+
+
+def snapshot(ci: CardInput, *, verified_repos: Sequence[str], fingerprint: str,
+             today: date) -> dict[str, Any]:
+    """새 카드의 상태 — 다음에 다시 등장했을 때 무엇이 바뀌었는지 비교하는 기준."""
+    t = ci.target
+    return {"repo_id": t.repo_id, "full_name": t.full_name, "first_week": t.since.isoformat(),
+            "week": t.since.isoformat(), "as_of": t.until.isoformat(), "generated": today.isoformat(),
+            "fingerprint": fingerprint, "readme_hash": _readme_hash(ci),
+            "release_tags": [_tag(d) for d in ci.docs if d.kind == "release"],
+            "stars_end": ci.entry.get("stars_end"), "allowed_urls": sorted({d.url for d in ci.docs}),
+            "verified_repos": list(verified_repos),
+            "history": [{"date": today.isoformat(), "week": t.since.isoformat(), "kind": "created"}]}
+
+
+def _replace_section(md: str, head: str, body: str) -> str:
+    pat = re.compile(rf"(?ms)^(## {re.escape(head)}\n)(.*?)(?=^## |\Z)")
+    return pat.sub(lambda m: m.group(1) + body, md, count=1)
+
+
+def _section(md: str, head: str) -> str:
+    m = re.search(rf"(?ms)^## {re.escape(head)}\n(.*?)(?=^## |\Z)", md)
+    return m.group(1) if m else ""
+
+
+def _change_lines(stored: StoredCard, ci: CardInput, today: date) -> list[str]:
+    meta, t = stored.meta, ci.target
+    prev, now = meta.get("stars_end"), ci.entry.get("stars_end")
+    parts = [f"- {today.isoformat()} 다시 등장 — 기준일 {t.until.isoformat()}"]
+    if isinstance(prev, int) and isinstance(now, int):
+        parts.append(f"누적 스타 {prev:,} → {now:,} ({now - prev:+,})")
+    if ci.ranks:
+        parts.append("AI 탭 " + " · ".join(f"{AXIS_LABEL[a]} {r}위" for a, r in ci.ranks))
+    new_hash, old_hash = _readme_hash(ci), meta.get("readme_hash")
+    if new_hash and old_hash and new_hash != old_hash:
+        parts.append("README 바뀜")
+    old_tags = set(meta.get("release_tags") or [])
+    releases = [d for d in ci.docs if d.kind == "release" and _tag(d) not in old_tags]
+    seen = {k for u in meta.get("allowed_urls") or [] if (k := ev.normalize_url(u))}
+    fresh = [d for d in ci.docs if d.source != "github" and d.key not in seen]
+    if releases:
+        parts.append(f"새 릴리스 {len(releases)}개")
+    if fresh:
+        parts.append(f"새 근거 {len(fresh)}건")
+    lines = [" · ".join(parts)]
+    if releases:
+        lines.append("  - 새 릴리스: " + " · ".join(f"[{_tag(d)}]({d.url})" for d in releases[:MAX_LISTED]))
+    for d in fresh[:MAX_LISTED]:
+        title = re.sub(r"[\[\]\n]", " ", d.title).strip() or d.url
+        day = f" · {d.published_at[:10]}" if d.published_at else ""
+        lines.append(f"  - 새 근거: [{title}]({d.url}) — {_label(d)}{day}")
+    return lines
+
+
+MAX_LISTED = 5     # 변경 기록에 링크로 남기는 새 릴리스·새 근거 수
+
+
+def update_card(stored: StoredCard, ci: CardInput, *, names: Mapping[str, str],
+                today: date) -> tuple[str, gate.GateResult, dict[str, Any]]:
+    """다시 들어온 저장소 — LLM 없이 ② 숫자·⑦ 사실 표를 새 주 값으로 바꾸고 ⑧ 에 변경 기록을 덧붙인다(비용 0).
+
+    나머지 글(①③④⑤⑥ 과 ⑦ 해석)은 처음 카드 그대로다(FR-6.1). 새 근거 링크도 인용 게이트를 지난다.
+    """
+    meta, t = stored.meta, ci.target
+    md = stored.markdown.replace("\r\n", "\n")
+    body = md.split("---\n", 2)[2] if md.startswith("---\n") else md
+    body = _replace_section(body, "② 숫자", "\n".join(_numbers(ci, names)) + "\n\n")
+    # GitHub 수집이 실패했으면 ⑦ 사실 표는 예전 것 그대로 둔다
+    if any(d.source == "github" and d.kind == "repo" for d in ci.docs):
+        old = _section(body, "⑦ 한계·리스크").splitlines(keepends=True)
+        rest = "".join(old[next((i for i, ln in enumerate(old) if not ln.startswith("|")), len(old)):])
+        body = _replace_section(body, "⑦ 한계·리스크", "\n".join(_facts(ci)) + "\n" + rest)
+    log = _section(body, "⑧ 변경 기록").rstrip("\n")
+    entry = "\n".join(_change_lines(stored, ci, today))
+    body = _replace_section(body, "⑧ 변경 기록", f"{log}\n{entry}\n\n")
+    allowed = sorted(set(meta.get("allowed_urls") or []) | {d.url for d in ci.docs})
+    verified = list(meta.get("verified_repos") or [])
+    res = gate.check(body, allowed, repos=[t.full_name, *verified], cited=gate.CARD_CITED)
+    old_front = _front(md)
+    front = ["---", f"repo: {t.full_name}", f"repo_id: {t.repo_id}", f"week: {t.since.isoformat()}",
+             f"as_of: {t.until.isoformat()}", f"generated: {old_front.get('generated', '')}",
+             f"updated: {today.isoformat()}", f"fingerprint: {old_front.get('fingerprint', '')}",
+             f"evidence: {len(ci.docs)}", f"gate_checked: {res.checked}",
+             f"gate_excluded: {len(res.excluded)}", "---", ""]
+    new_tags = list(meta.get("release_tags") or [])
+    new_tags += [tg for d in ci.docs if d.kind == "release" and (tg := _tag(d)) not in new_tags]
+    new_meta = {**meta, "full_name": t.full_name, "week": t.since.isoformat(), "as_of": t.until.isoformat(),
+                "updated": today.isoformat(), "readme_hash": _readme_hash(ci) or meta.get("readme_hash"),
+                "release_tags": new_tags, "stars_end": ci.entry.get("stars_end", meta.get("stars_end")),
+                "allowed_urls": allowed,
+                "history": [*(meta.get("history") or []),
+                            {"date": today.isoformat(), "week": t.since.isoformat(), "kind": "update"}]}
+    return "\n".join(front) + _fill_empty(res.body), res, new_meta
+
+
+def adopt_week(data_dir: Path, work_dir: Path, week_start: date, store: CardStore) -> list[str]:
+    """그 주에 쓴 카드를 보관소에 넣는다(호출 0) — 보관소 전에 만든 카드도 다음에 "다시 등장"으로 이어지게.
+    이미 보관소에 있는 저장소는 덮지 않는다."""
+    inputs = {ci.target.repo_id: ci for ci in load_inputs(data_dir, work_dir, week_start)}
+    adopted: list[str] = []
+    for p in sorted(card_dir(work_dir, week_start).glob("*.md")):
+        md = io.read_text(p).replace("\r\n", "\n")
+        front = _front(md)
+        rid = int(front["repo_id"]) if front.get("repo_id", "").isdigit() else None
+        if rid is None or rid not in inputs or store.load(rid) is not None:
+            continue
+        g = p.with_suffix(".gate.json")
+        verified = list(io.read_json(g).get("verified_repos") or []) if g.exists() else []
+        made = date.fromisoformat(front["generated"]) if front.get("generated") else week_start
+        store.save(rid, md, snapshot(inputs[rid], verified_repos=verified,
+                                     fingerprint=front.get("fingerprint", ""), today=made))
+        adopted.append(front.get("repo", inputs[rid].target.full_name))
+    return adopted
+
+
+def plan_kind(store: CardStore | None, ci: CardInput, *, force_new: bool = False) -> str:
+    """new(LLM 으로 새 카드) · update(변경 기록만, 비용 0) · skip(이미 이번 주 또는 더 최근 카드)."""
+    stored = store.load(ci.target.repo_id) if store else None
+    if stored is None or force_new:
+        return "new"
+    week_iso = ci.target.since.isoformat()
+    return "update" if str(stored.meta.get("week", "")) < week_iso else "skip"
+
+
 # --- 실행 ---
 
 
@@ -481,14 +641,50 @@ def _slug(full_name: str) -> str:
     return full_name.replace("/", "__")
 
 
+def _write_week(out_dir: Path, name: str, markdown: str, res: gate.GateResult, ci: CardInput,
+                 extra: Mapping[str, Any], stats: dict[str, Any]) -> dict[str, Any]:
+    slug = _slug(name)
+    io.write_text_atomic(out_dir / f"{slug}.md", markdown)
+    io.write_json(out_dir / f"{slug}.gate.json",
+                  {"repo": name, "checked": res.checked, "kept_links": res.kept_links, "excluded": res.log(),
+                   **extra})
+    q = check_card(markdown, row=ci.row)
+    io.write_json(out_dir / f"{slug}.check.json", q)
+    stats["excluded_claims"] += len(res.excluded)
+    stats["quality_ok"] += int(q["ok"])
+    if not q["ok"] or q["llm_numbers"]:
+        stats["quality_notes"].append(name)
+    return q
+
+
 def run_analyze(writer: CardWriter, inputs: Sequence[CardInput], *, work_dir: Path, week_start: date,
                 names: Mapping[str, str], repo_exists: Callable[[str], bool], today: date,
+                store: CardStore | None = None, force_new: bool = False,
                 log: Callable[[str], None] = print) -> dict[str, Any]:
+    """새 저장소는 LLM 으로 카드를 쓰고, 보관소에 카드가 있으면 변경 기록만 덧붙인다(P3-10, 비용 0).
+
+    그 주 결과는 `.work/<주>/cards/` 에, 최신 카드와 상태는 보관소(store)에 남긴다.
+    """
     out_dir = card_dir(work_dir, week_start)
-    stats: dict[str, Any] = {"cards": 0, "failed": [], "excluded_claims": 0, "stopped": None,
-                             "quality_ok": 0, "quality_notes": []}
+    stats: dict[str, Any] = {"cards": 0, "updated": 0, "skipped": 0, "failed": [], "excluded_claims": 0,
+                             "stopped": None, "quality_ok": 0, "quality_notes": []}
     for i, ci in enumerate(inputs, 1):
         name = ci.target.full_name
+        kind = plan_kind(store, ci, force_new=force_new)
+        if kind == "skip":
+            stats["skipped"] += 1
+            log(f"  [{i}/{len(inputs)}] {name}: 이미 이번 주(또는 더 최근) 카드가 있다 — 건너뜀")
+            continue
+        if kind == "update" and store is not None:
+            stored = store.load(ci.target.repo_id)
+            assert stored is not None
+            md, res, meta = update_card(stored, ci, names=names, today=today)
+            q = _write_week(out_dir, name, md, res, ci, {"kind": "update"}, stats)
+            store.save(ci.target.repo_id, md, meta)
+            stats["updated"] += 1
+            log(f"  [{i}/{len(inputs)}] {name}: 다시 등장 — 변경 기록만 덧붙임"
+                + ("" if q["ok"] else " · 품질 검사 실패"))
+            continue
         try:
             dr = writer.draft(ci)
         except BudgetExceeded as e:
@@ -504,36 +700,37 @@ def run_analyze(writer: CardWriter, inputs: Sequence[CardInput], *, work_dir: Pa
         verified = [r for r in sorted(candidates) if repo_exists(r)]
         card = render_card(ci, dr, names=names, verified_repos=verified, fingerprint=writer.fingerprint,
                            generated=today)
-        slug = _slug(name)
-        io.write_text_atomic(out_dir / f"{slug}.md", card.markdown)
-        io.write_json(out_dir / f"{slug}.gate.json",
-                      {"repo": name, "checked": card.gate.checked, "kept_links": card.gate.kept_links,
-                       "excluded": card.gate.log(), "verified_repos": verified,
-                       "unverified_repos": sorted(candidates - set(verified))})
-        io.write_json(out_dir / f"{slug}.draft.json", asdict(dr))
-        q = check_card(card.markdown, row=ci.row)
-        io.write_json(out_dir / f"{slug}.check.json", q)
+        q = _write_week(out_dir, name, card.markdown, card.gate, ci,
+                        {"kind": "new", "verified_repos": verified,
+                         "unverified_repos": sorted(candidates - set(verified))}, stats)
+        io.write_json(out_dir / f"{_slug(name)}.draft.json", asdict(dr))
+        if store is not None:
+            store.save(ci.target.repo_id, card.markdown,
+                       snapshot(ci, verified_repos=verified, fingerprint=writer.fingerprint, today=today))
         stats["cards"] += 1
-        stats["excluded_claims"] += len(card.gate.excluded)
-        stats["quality_ok"] += int(q["ok"])
-        if not q["ok"] or q["llm_numbers"]:
-            stats["quality_notes"].append(name)
         log(f"  [{i}/{len(inputs)}] {name}: 카드 작성 — 게이트 제외 {len(card.gate.excluded)}건"
             + ("" if q["ok"] else " · 품질 검사 실패"))
     return stats
 
 
-def dry_run(writer: CardWriter, inputs: Sequence[CardInput], *, batch: bool = False) -> dict[str, Any]:
-    """호출 0 — 실제로 보낼 요청을 만들어 입력 토큰을 재고 비용 범위를 낸다(FR-6.6)."""
+def dry_run(writer: CardWriter, inputs: Sequence[CardInput], *, batch: bool = False,
+            store: CardStore | None = None, force_new: bool = False) -> dict[str, Any]:
+    """호출 0 — 새 카드만 실제로 보낼 요청을 만들어 입력 토큰을 재고 비용 범위를 낸다(FR-6.6).
+    다시 들어온 저장소는 변경 기록만 덧붙이므로(P3-10) 비용이 없다."""
+    kinds = {ci.target.repo_id: plan_kind(store, ci, force_new=force_new) for ci in inputs}
+    new = [ci for ci in inputs if kinds[ci.target.repo_id] == "new"]
     typ = cons = 0
-    for ci in inputs:
+    for ci in new:
         req = writer.request(ci)
         typ += request_tokens(req.system, req.user, schema=True, typical=True)
         cons += request_tokens(req.system, req.user, schema=True)
-    n = len(inputs)
+    n = len(new)
     lo = cost(MODEL, Usage(typ, TYPICAL_OUTPUT * n), batch=batch)
     hi = cost(MODEL, Usage(cons, writer.max_tokens * n), batch=batch)
-    return {"cards": n, "llm_calls": n, "repos": [ci.target.full_name for ci in inputs],
+    return {"cards": n, "llm_calls": n, "repos": [ci.target.full_name for ci in new],
+            "updates": sum(1 for k in kinds.values() if k == "update"),
+            "update_repos": [ci.target.full_name for ci in inputs if kinds[ci.target.repo_id] == "update"],
+            "skipped": sum(1 for k in kinds.values() if k == "skip"),
             "input_tokens": [typ, cons], "total_usd": [round(lo, 4), round(hi, 4)],
             "per_card_usd": [round(lo / n, 4), round(hi / n, 4)] if n else [0, 0],
             "assumptions": {"model": MODEL, "effort": writer.effort, "batch": batch,

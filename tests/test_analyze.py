@@ -379,6 +379,125 @@ def test_analyze_budget_meter_wraps_card_calls(tmp_path):
     assert stats["stopped"] == "budget" and meter.calls == 0
 
 
+# --- 재등장 (P3-10, FR-6.1) ---
+
+
+W2 = date(2026, 11, 1)
+
+
+def _next_week_input(ci: an.CardInput, *, readme: str = "# Agent Kit\nBuild agents fast.") -> an.CardInput:
+    """2주 뒤 다시 들어온 같은 저장소 — 스타가 늘고, 새 릴리스와 새 글이 생겼다."""
+    t = Target(1, "o/r", since=W2, until=date(2026, 11, 7))
+    docs = [d for d in _docs(readme) if d.kind != "release"]
+    docs += [ev.make(url="https://github.com/o/r/releases/tag/v1.1", source="github", kind="release",
+                     title="o/r v1.1", text="Faster tools.", fetched_at=T,
+                     published_at="2026-11-03T00:00:00Z", extra={"tag": "v1.1"}),
+             ev.make(url="https://github.com/o/r/releases/tag/v1.0", source="github", kind="release",
+                     title="o/r v1.0", text="First stable release.", fetched_at=T,
+                     published_at="2026-10-19T00:00:00Z", extra={"tag": "v1.0"}),
+             ev.make(url="https://news.ycombinator.com/item?id=2", source="hn", kind="story",
+                     title="Agent Kit 1.1", text="Agent Kit 1.1", fetched_at=T,
+                     published_at="2026-11-04T00:00:00Z")]
+    entry = {**ENTRY, "stars_end": 30000, "gain": 6000, "start_stars": 24000, "rank": 2, "flags": []}
+    return an.CardInput(target=t, entry=entry, ranks=[("gain", 2)], docs=docs, row=None)
+
+
+def _first_card(tmp_path: Path) -> tuple[Path, an.CardStore, an.CardInput]:
+    work = tmp_path / "w"
+    store = an.CardStore(tmp_path / "cards")
+    ci = _input()
+    ci.docs[1] = ev.make(url="https://github.com/o/r/releases/tag/v1.0", source="github", kind="release",
+                         title="o/r v1.0", text="First stable release.", fetched_at=T,
+                         published_at="2026-10-19T00:00:00Z", extra={"tag": "v1.0"})
+    w, _ = _writer([resp(draft())])
+    an.run_analyze(w, [ci], work_dir=work, week_start=W, names=NAMES, repo_exists=lambda r: True,
+                   today=date(2026, 10, 28), store=store, log=lambda m: None)
+    return work, store, ci
+
+
+def test_analyze_store_keeps_the_card_and_a_snapshot(tmp_path):
+    _, store, _ = _first_card(tmp_path)
+    stored = store.load(1)
+    assert stored is not None and stored.meta["full_name"] == "o/r" and stored.meta["week"] == "2026-10-18"
+    assert stored.meta["stars_end"] == 19218 and stored.meta["release_tags"] == ["v1.0"]
+    assert "https://news.ycombinator.com/item?id=1" in stored.meta["allowed_urls"]
+    assert stored.meta["history"] == [{"date": "2026-10-28", "week": "2026-10-18", "kind": "created"}]
+    assert "## ⑧ 변경 기록" in stored.markdown and store.load(999) is None
+
+
+def test_analyze_reentry_appends_a_change_log_without_calling_the_llm(tmp_path):
+    work, store, _ = _first_card(tmp_path)
+    w, m = _writer([])                                   # 부르면 실패한다
+    stats = an.run_analyze(w, [_next_week_input(_input(), readme="# Agent Kit\nNow with v1.1.")],
+                           work_dir=work, week_start=W2, names=NAMES, repo_exists=lambda r: True,
+                           today=date(2026, 11, 9), store=store, log=lambda m: None)
+    assert m.requests == [] and stats["updated"] == 1 and stats["cards"] == 0
+    md = (work / "2026-11-01" / "cards" / "o__r.md").read_text(encoding="utf-8")
+    log = md.split("## ⑧ 변경 기록")[1].split("## 근거")[0]
+    assert "- 2026-10-28 처음 작성" in log
+    assert ("- 2026-11-09 다시 등장 — 기준일 2026-11-07 · 누적 스타 19,218 → 30,000 (+10,782) · "
+            "AI 탭 지금 뜨는 2위 · README 바뀜 · 새 릴리스 1개 · 새 근거 1건") in log
+    assert "[v1.1](https://github.com/o/r/releases/tag/v1.1)" in log
+    assert "[Agent Kit 1.1](https://news.ycombinator.com/item?id=2)" in log
+    assert "| 누적 스타 | 30,000 (2026-11-07 기준) |" in md and "| 이번 주 증가 | +6,000 |" in md
+    assert "as_of: 2026-11-07" in md and "updated: 2026-11-09" in md and "generated: 2026-10-28" in md
+    assert "에이전트를 빠르게 만드는 라이브러리다." in md      # 글은 그대로
+    assert "gate_excluded: 0" in md and an.check_card(md, row=None)["missing_sections"] == []
+    stored = store.load(1)
+    assert stored is not None and stored.meta["week"] == "2026-11-01"
+    assert stored.meta["release_tags"] == ["v1.0", "v1.1"] and len(stored.meta["history"]) == 2
+
+
+def test_analyze_reentry_with_nothing_new_still_records_the_return(tmp_path):
+    work, store, ci = _first_card(tmp_path)
+    same = _next_week_input(ci)
+    same = an.CardInput(**{**same.__dict__, "docs": [d for d in same.docs
+                                                     if d.url not in ("https://github.com/o/r/releases/tag/v1.1",
+                                                                      "https://news.ycombinator.com/item?id=2")]})
+    an.run_analyze(_writer([])[0], [same], work_dir=work, week_start=W2, names=NAMES,
+                   repo_exists=lambda r: True, today=date(2026, 11, 9), store=store, log=lambda m: None)
+    md = (work / "2026-11-01" / "cards" / "o__r.md").read_text(encoding="utf-8")
+    assert "누적 스타 19,218 → 30,000 (+10,782) · AI 탭 지금 뜨는 2위\n" in md
+    assert "새 릴리스" not in md.split("## ⑧")[1] and "README 바뀜" not in md
+
+
+def test_analyze_same_week_rerun_is_skipped_unless_forced(tmp_path):
+    work, store, ci = _first_card(tmp_path)
+    w, m = _writer([resp(draft(summary={"what": "다시 쓴 요약", "why_now": "x", "meaning": "y"}))])
+    stats = an.run_analyze(w, [ci], work_dir=work, week_start=W, names=NAMES, repo_exists=lambda r: True,
+                           today=date(2026, 10, 29), store=store, log=lambda m: None)
+    assert stats["skipped"] == 1 and m.requests == []
+    stats = an.run_analyze(w, [ci], work_dir=work, week_start=W, names=NAMES, repo_exists=lambda r: True,
+                           today=date(2026, 10, 29), store=store, force_new=True, log=lambda m: None)
+    assert stats["cards"] == 1 and len(m.requests) == 1
+    stored = store.load(1)
+    assert stored is not None and "다시 쓴 요약" in stored.markdown
+
+
+def test_analyze_adopt_week_moves_existing_cards_into_the_store(tmp_path):
+    # 보관소가 생기기 전에 만든 카드(2026-10-28 시범 5장)도 다음 주에 "다시 등장"으로 이어지게 한다 — 호출 0
+    data, work = _week_files(tmp_path)
+    w, _ = _writer([resp(draft())])
+    an.run_analyze(w, an.load_inputs(data, work, W), work_dir=work, week_start=W, names=NAMES,
+                   repo_exists=lambda r: True, today=date(2026, 10, 28), log=lambda m: None)    # 보관소 없이
+    store = an.CardStore(tmp_path / "cards")
+    assert an.adopt_week(data, work, W, store) == ["o/r"]
+    stored = store.load(1)
+    assert stored is not None and stored.meta["week"] == "2026-10-18"
+    assert stored.meta["generated"] == "2026-10-28"
+    assert stored.meta["verified_repos"] == ["langchain-ai/langchain"] and stored.meta["stars_end"] == 19218
+    assert an.adopt_week(data, work, W, store) == []                   # 이미 있으면 덮지 않는다
+
+
+def test_analyze_dry_run_prices_only_new_cards(tmp_path):
+    work, store, ci = _first_card(tmp_path)
+    w, _ = _writer([])
+    other = an.CardInput(**{**ci.__dict__, "target": Target(2, "o/new", since=W2, until=date(2026, 11, 7))})
+    est = an.dry_run(w, [_next_week_input(ci), other], store=store)
+    assert est["cards"] == 1 and est["updates"] == 1 and est["llm_calls"] == 1
+    assert est["repos"] == ["o/new"] and est["update_repos"] == ["o/r"]
+
+
 # --- dry-run ---
 
 

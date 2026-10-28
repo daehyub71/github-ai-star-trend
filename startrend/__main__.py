@@ -127,6 +127,11 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
                    help="이번 실행 예산 상한(달러) — 부르기 전 최악 비용으로 막는다")
     p.add_argument("--effort", default=analyze.EFFORT, choices=["low", "medium", "high"])
     p.add_argument("--check", action="store_true", help="그 주에 쓴 카드의 품질 검사만(호출 0, FR-14.4)")
+    p.add_argument("--adopt", action="store_true",
+                   help="그 주에 쓴 카드를 최신 카드 보관소에 넣기만(호출 0) — "
+                        "다음 주에 '다시 등장'으로 이어진다")
+    p.add_argument("--force-new", action="store_true",
+                   help="보관소에 카드가 있어도 새로 쓴다(과금). 기본은 다시 등장하면 변경 기록만(비용 0)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -524,8 +529,15 @@ def _analyze(settings: Settings, args: argparse.Namespace) -> int:
               file=sys.stderr)
         return 2
     names = {c.id: c.name for c in _load_taxonomy(settings).categories}
+    # 최신 카드 보관소 — 결정 53(공개 저장소 밖), 자리는 Phase 5 에서 정한다
+    store = analyze.CardStore(settings.work_dir / "cards")
+    if args.adopt:
+        adopted = analyze.adopt_week(settings.data_dir, settings.work_dir, w, store)
+        print(dumps_json({"week": wk.week_name(w), "adopted": adopted, "store": str(store.root)}), end="")
+        return 0
     if not args.run:
-        est = analyze.dry_run(analyze.CardWriter(MockLLM([]), effort=args.effort, names=names), inputs)
+        est = analyze.dry_run(analyze.CardWriter(MockLLM([]), effort=args.effort, names=names), inputs,
+                              store=store, force_new=args.force_new)
         print(dumps_json({"dry_run": True, "week": wk.week_name(w), "cap_usd": args.cap, **est}), end="")
         return 0
     try:
@@ -550,8 +562,8 @@ def _analyze(settings: Settings, args: argparse.Namespace) -> int:
     writer = analyze.CardWriter(meter, effort=args.effort, names=names)
     t0 = time.monotonic()
     stats = analyze.run_analyze(writer, inputs, work_dir=settings.work_dir, week_start=w, names=names,
-                                repo_exists=repo_exists, today=date.today(),
-                                log=lambda m: print(m, flush=True))
+                                repo_exists=repo_exists, today=date.today(), store=store,
+                                force_new=args.force_new, log=lambda m: print(m, flush=True))
     summary = {**stats, "week": wk.week_name(w), "spent_usd": round(meter.spent, 4), "cap_usd": args.cap,
                "calls": meter.calls, "seconds": round(time.monotonic() - t0),
                "fingerprint": writer.fingerprint, "dir": str(analyze.card_dir(settings.work_dir, w))}
