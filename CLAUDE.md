@@ -12,9 +12,9 @@ Python 파이프라인이 GitHub Actions 크론으로 매주 데이터를 만들
 
 ## 현재 상태
 
-**SPEC v1.0 · Phase 0 완료(2026-10-26, 🏁 M0) · Phase 1 진행 중 — 52주 소급은 임시 폴더 `.work/backfill-data` 로 실행 중, 주간 파일 형식은 실측 후 확정(MEASURE §13).**
+**SPEC v1.0 · Phase 0·2 완료 · Phase 1 은 첫 실제 주간 실행(11-02 뒤)만 남음 · Phase 3 근거·카드·브리핑 13/15 · Phase 4 화면 진행 중(2026-10-28).** 진도는 `docs/TASK.md` 대시보드.
 읽는 순서: `docs/SPEC.md` → `docs/PLAN.md` → `docs/TASK.md`(진도율 대시보드). 화면은 `docs/DESIGN.md`(핵심 3화면 합의, 결정 33).
-`docs/SPEC.md` §9 에 남은 결정은 D-22(X 근거 출처 — Phase 3 뒤 소량 실측), D-23(공개 저장소에 카드·브리핑을 둘지 — Phase 3 커밋 전)이다. 판정은 Claude 단독(결정 51, JEV 쓰지 않음). **저장소는 공개다(결정 47, 2026-10-27)** — 커밋하는 모든 것이 바로 공개된다. AI 저장소의 경계는 결정 45(넓게). 실측 결과는 `docs/MEASURE.md` — 숫자는 거기서만 가져온다.
+`docs/SPEC.md` §9 에 남은 결정은 D-22(X 근거 출처 — Phase 3 뒤 소량 실측)다. **카드·브리핑은 공개 저장소에 커밋하지 않는다(결정 53)** — `.work/cards/`(최신 카드 보관소)·`.work/<주>/`·`.work/site-private/`(사이트용 사본)에만 두고, 크기 가드가 `data/` 아래 card·briefing 을 막는다. 사이트(`web/`)는 `../data/site`(공개)와 `../.work/site-private`(비공개)를 읽는다 — `STARTREND_SITE_DIR`·`STARTREND_PRIVATE_DIR` 로 바꿀 수 있다. 판정은 Claude 단독(결정 51, JEV 쓰지 않음). **저장소는 공개다(결정 47, 2026-10-27)** — 커밋하는 모든 것이 바로 공개된다. AI 저장소의 경계는 결정 45(넓게). 실측 결과는 `docs/MEASURE.md` — 숫자는 거기서만 가져온다.
 
 ## 이 프로젝트에서 지키는 규칙
 
