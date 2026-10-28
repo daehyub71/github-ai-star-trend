@@ -84,11 +84,17 @@ def test_web_results_become_evidence_without_the_repo_itself():
     ("https://www.reddit.com/r/LocalLLaMA/comments/1x9gfnb/google_open_sources_harness2", False),
     ("https://old.reddit.com/r/x/comments/1", False),
     ("https://redd.it/1x9gfnb", False),
+    ("https://x.com/i/trending/2111763866136838295", False),     # 2026-10-28 실호출에서 온 것
+    ("https://twitter.com/user/status/1", False),
+    ("https://mobile.twitter.com/user/status/1", False),
+    ("https://t.co/abc", False),
     ("https://notreddit.com/a", True),
+    ("https://notx.com/a", True),
     ("https://dev.to/a/b", True),
 ])
 def test_web_keeps_reddit_links_but_marks_them_not_fetchable(url, fetchable):
-    # 결정 52 — Reddit 링크·스니펫은 남긴다. robots 로 막혀 있어 본문(web_fetch)은 읽지 않는다
+    # 결정 52 — Reddit·X 링크·스니펫은 남긴다. 본문(web_fetch)은 읽지 않는다
+    # (Reddit 은 robots 전면 금지, X 는 API 유료(D-22)·약관상 본문 저장 제한)
     p = FakePoster([ok([_r(url, "t", "snippet")])])
     [d] = TavilySource(p, KEY, clock=lambda: NOW, queries=lambda t: ["q"]).collect(TARGET)
     assert d.url == url and d.extra["fetchable"] is fetchable

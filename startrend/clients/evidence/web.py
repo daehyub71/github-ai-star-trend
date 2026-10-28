@@ -3,7 +3,7 @@
 Tavily Search(`POST /search`, basic = 1크레딧, 무료 월 1,000크레딧)로 저장소마다 검색어 2~3개를 보내
 결과 URL·제목·스니펫·발행일을 근거 목록에 남긴다. 저장소 자신의 GitHub 페이지는 GitHub 출처(FR-5.1)가
 맡으므로 뺀다.
-Reddit 결과도 남기되 본문은 읽지 않는다 — `extra["fetchable"]` 이 False 다(결정 52).
+Reddit·X 결과도 남기되 본문은 읽지 않는다 — `extra["fetchable"]` 이 False 다(결정 52).
 Claude 는 이 목록 안에서만 판정·요약한다 — 본문이 필요하면 web_fetch 로 읽는다(P3-4 뒷부분, 과금 단계).
 키는 Authorization 헤더로만 보내고, 오류 메시지·repr 에 남기지 않는다(NFR-8).
 """
@@ -21,8 +21,10 @@ from startrend.core import evidence as ev
 API = "https://api.tavily.com/search"
 CREDITS = {"basic": 1, "fast": 1, "ultra-fast": 1, "advanced": 2}
 MAX_RESULTS = 8
-# 링크·스니펫은 남기되 본문(web_fetch)은 읽지 않는 곳 — robots 로 전부 막혀 있다 (결정 52, 부록 C-2)
-NO_FETCH_HOSTS = ("reddit.com", "redd.it")
+# 링크·스니펫은 남기되 본문(web_fetch)은 읽지 않는 곳 (결정 52)
+# - Reddit: robots 로 전부 막혀 있다(부록 C-2). API 는 사전 승인제(결정 44)
+# - X: API 는 유료(D-22)이고 약관이 본문 저장·재표시를 막는다 — 페이지를 긁지 않는다. t.co 는 X 의 단축 주소
+NO_FETCH_HOSTS = ("reddit.com", "redd.it", "x.com", "twitter.com", "t.co")
 
 
 def iso_date(raw: str) -> str | None:
