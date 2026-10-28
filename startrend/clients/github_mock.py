@@ -4,6 +4,7 @@
 """
 
 from collections.abc import Callable
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -14,9 +15,17 @@ from startrend.clients.github import (
     GitHubError,
     NotFound,
 )
-from startrend.clients.github_parse import parse_history, parse_repo, parse_search_page
+from startrend.clients.github_parse import parse_history, parse_releases, parse_repo, parse_search_page
 from startrend.core import io
-from startrend.core.models import HistoryWeek, RateLimit, Repo, SearchPage
+from startrend.core.models import (
+    Contributors,
+    HistoryWeek,
+    IssueCounts,
+    RateLimit,
+    Release,
+    Repo,
+    SearchPage,
+)
 
 
 class MockGitHub:
@@ -25,6 +34,9 @@ class MockGitHub:
         self._histories: dict[str, list[dict[str, Any]]] = {}
         self._readmes: dict[str, str] = {}
         self._searches: dict[str, list[str]] = {}
+        self._releases: dict[str, list[dict[str, Any]]] = {}
+        self._contributors: dict[str, list[int]] = {}
+        self._issue_counts: dict[str, IssueCounts] = {}
         self.stats = CallStats()
         self.last_rate_limit: RateLimit | None = None
 
@@ -54,6 +66,16 @@ class MockGitHub:
 
     def add_search(self, query: str, full_names: list[str]) -> None:
         self._searches[query] = full_names
+
+    def add_releases(self, full_name: str, raw_newest_first: list[dict[str, Any]]) -> None:
+        self._releases[full_name] = raw_newest_first
+
+    def add_contributors(self, full_name: str, contributions: list[int]) -> None:
+        """기여자마다 기여 수 (많은 순)."""
+        self._contributors[full_name] = contributions
+
+    def add_issue_counts(self, full_name: str, counts: IssueCounts) -> None:
+        self._issue_counts[full_name] = counts
 
     # --- GitHubClient ---
 
@@ -93,6 +115,20 @@ class MockGitHub:
         # 실제 API 와 같다: README 가 없든 저장소가 없든 404 → None
         self.stats.record("readme", 0.0)
         return self._readmes.get(full_name)
+
+    def releases(self, full_name: str, *, per_page: int = 10) -> list[Release]:
+        self.stats.record("releases", 0.0)
+        self._raw_repo(full_name)
+        return parse_releases(self._releases.get(full_name, [])[:per_page])
+
+    def contributors(self, full_name: str) -> Contributors:
+        self.stats.record("contributors", 0.0)
+        c = self._contributors.get(full_name, [])
+        return Contributors(len(c), (max(c) / sum(c)) if c and sum(c) else None)
+
+    def issue_counts(self, full_name: str, since: date) -> IssueCounts:
+        self.stats.record("search_issues", 0.0)
+        return self._issue_counts.get(full_name, IssueCounts(0, 0))
 
     def _evaluate(self, query: str) -> list[str]:
         """등록되지 않은 질의는 실제 Search 처럼 `stars:` · `created:` 조건으로 계산한다.

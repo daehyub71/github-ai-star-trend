@@ -33,6 +33,44 @@ def test_github_parse_repo_nullable_fields():
     assert r.topics == ()
 
 
+def test_github_parse_repo_license_and_homepage():
+    raw = {**synth.repo("o/r", id=1, stars=10), "license": {"spdx_id": "MIT", "name": "MIT License"},
+           "homepage": "https://o.dev"}
+    r = gp.parse_repo(raw)
+    assert r.license == "MIT" and r.homepage == "https://o.dev"
+    bare = gp.parse_repo({**synth.repo("o/r", id=1, stars=10), "license": None, "homepage": ""})
+    assert bare.license is None and bare.homepage is None
+    assert bare.has_issues is True                       # 필드가 없으면 켜져 있다고 본다(API 기본값)
+    assert gp.parse_repo({**synth.repo("o/r", id=1, stars=10), "has_issues": False}).has_issues is False
+
+
+def test_github_parse_releases_skips_drafts():
+    raw = [
+        {"tag_name": "v2.0", "name": "Two", "published_at": "2026-10-20T01:00:00Z", "draft": False,
+         "prerelease": False, "html_url": "https://github.com/o/r/releases/tag/v2.0", "body": "notes"},
+        {"tag_name": "v2.1-rc", "name": None, "published_at": None, "draft": True, "prerelease": True,
+         "html_url": "https://github.com/o/r/releases/tag/untagged-1", "body": None},
+        {"tag_name": "v1.0", "name": "", "published_at": "2026-09-01T00:00:00Z", "draft": False,
+         "prerelease": True, "html_url": "https://github.com/o/r/releases/tag/v1.0", "body": None},
+    ]
+    rs = gp.parse_releases(raw)
+    assert [r.tag for r in rs] == ["v2.0", "v1.0"]
+    assert rs[0].name == "Two" and rs[0].published_at == datetime(2026, 10, 20, 1, 0, tzinfo=UTC)
+    assert rs[1].name == "v1.0" and rs[1].body == "" and rs[1].prerelease is True
+    with pytest.raises(gp.GitHubFormatError):
+        gp.parse_releases({"message": "x"})
+
+
+@pytest.mark.parametrize("link, want", [
+    ('<https://api.github.com/repositories/1/contributors?per_page=1&page=2>; rel="next", '
+     '<https://api.github.com/repositories/1/contributors?per_page=1&page=347>; rel="last"', 347),
+    ('<https://api.github.com/x?page=1>; rel="prev"', None),
+    ("", None),
+])
+def test_github_parse_last_page_from_link_header(link, want):
+    assert gp.last_page(link) == want
+
+
 def test_github_parse_repo_missing_topics_key():
     raw = dict(_repos()[0])
     del raw["topics"]

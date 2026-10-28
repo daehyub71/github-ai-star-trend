@@ -2,9 +2,18 @@
 
 from collections import Counter
 from dataclasses import dataclass, field
+from datetime import date
 from typing import Protocol
 
-from startrend.core.models import HistoryWeek, RateLimit, Repo, SearchPage
+from startrend.core.models import (
+    Contributors,
+    HistoryWeek,
+    IssueCounts,
+    RateLimit,
+    Release,
+    Repo,
+    SearchPage,
+)
 
 HISTORY_PER_PAGE_MAX = 30  # 히스토리 API 한도 (공식 문서)
 SEARCH_RESULT_CAP = 1000  # Search API 는 처음 1,000건만 준다
@@ -55,3 +64,10 @@ class GitHubClient(Protocol):
     def star_count(self, full_name: str) -> int: ...
 
     def readme(self, full_name: str) -> str | None: ...
+
+    # 근거 수집용 (FR-5.1) — 저장소가 없으면 NotFound
+    def releases(self, full_name: str, *, per_page: int = 10) -> list[Release]: ...
+
+    def contributors(self, full_name: str) -> Contributors: ...
+
+    def issue_counts(self, full_name: str, since: date) -> IssueCounts: ...

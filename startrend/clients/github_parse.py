@@ -3,12 +3,13 @@
 형식이 예상과 다르면 조용히 넘어가지 않고 GitHubFormatError 를 낸다.
 """
 
+import re
 from collections.abc import Mapping
 from datetime import datetime
 from typing import Any
 
 from startrend.core import week
-from startrend.core.models import HistoryWeek, RateLimit, Repo, SearchPage
+from startrend.core.models import HistoryWeek, RateLimit, Release, Repo, SearchPage
 
 
 class GitHubFormatError(Exception):
@@ -30,9 +31,38 @@ def parse_repo(d: Mapping[str, Any]) -> Repo:
             pushed_at=_dt(d["pushed_at"]) if d.get("pushed_at") else None,
             archived=bool(d.get("archived", False)),
             is_fork=bool(d.get("fork", False)),
+            license=(d.get("license") or {}).get("spdx_id") or None,
+            homepage=d.get("homepage") or None,
+            has_issues=bool(d.get("has_issues", True)),
         )
-    except (KeyError, TypeError, ValueError) as e:
+    except (KeyError, TypeError, ValueError, AttributeError) as e:
         raise GitHubFormatError(f"저장소 형식 오류: {e!r}") from e
+
+
+def parse_releases(raw: Any) -> list[Release]:
+    """릴리스 목록(최신 먼저). 초안(draft)은 공개된 것이 아니라 뺀다."""
+    if not isinstance(raw, list):
+        raise GitHubFormatError(f"릴리스는 배열이어야 한다: {type(raw).__name__}")
+    out = []
+    for d in raw:
+        try:
+            if d.get("draft"):
+                continue
+            tag = str(d["tag_name"])
+            out.append(Release(
+                tag=tag, name=str(d.get("name") or tag),
+                published_at=_dt(d["published_at"]) if d.get("published_at") else None,
+                url=str(d["html_url"]), body=str(d.get("body") or ""), prerelease=bool(d.get("prerelease")),
+            ))
+        except (KeyError, TypeError, ValueError, AttributeError) as e:
+            raise GitHubFormatError(f"릴리스 형식 오류: {e!r}") from e
+    return out
+
+
+def last_page(link: str | None) -> int | None:
+    """Link 헤더의 rel="last" 쪽 번호 — 목록 전체 개수를 per_page=1 로 셀 때 쓴다."""
+    m = re.search(r'<[^>]*[?&]page=(\d+)[^>]*>;\s*rel="last"', link or "")
+    return int(m.group(1)) if m else None
 
 
 def parse_search_page(d: Mapping[str, Any]) -> SearchPage:

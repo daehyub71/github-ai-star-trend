@@ -13,6 +13,7 @@ import pytest
 from startrend.clients.github import GitHubError, NotFound, RateLimited
 from startrend.clients.github_live import LiveGitHub
 from startrend.clients.transport import HttpResponse, TransportError
+from startrend.core import models as gh_models
 from tests import synth
 
 TOKEN = "ghp_test_token_value"
@@ -94,6 +95,45 @@ def test_github_live_readme_raw_accept_and_404_is_none():
     assert gh.readme("a/b") == "# hi"
     assert t.requests[0][2]["Accept"] == "application/vnd.github.raw+json"
     assert gh.readme("a/c") is None
+
+
+def test_github_live_releases_params_and_parse():
+    rel = {"tag_name": "v1", "name": "One", "published_at": "2026-10-20T00:00:00Z", "draft": False,
+           "prerelease": False, "html_url": "https://github.com/a/b/releases/tag/v1", "body": "x"}
+    gh, t, _ = make([ok([rel])])
+    assert [r.tag for r in gh.releases("a/b", per_page=5)] == ["v1"]
+    assert t.requests[0][1] == "https://api.github.com/repos/a/b/releases?per_page=5"
+
+
+def test_github_live_contributors_counts_from_link_and_measures_top_share():
+    link = ('<https://api.github.com/repositories/1/contributors?per_page=1&page=2>; rel="next", '
+            '<https://api.github.com/repositories/1/contributors?per_page=1&page=42>; rel="last"')
+    page = [{"login": "a", "contributions": 60}, {"login": "b", "contributions": 30},
+            {"login": "c", "contributions": 10}]
+    gh, t, _ = make([ok([{"login": "a", "contributions": 60}], {"link": link}), ok(page)])
+    c = gh.contributors("a/b")
+    assert c.count == 42 and c.top_share == 0.6
+    assert "contributors?per_page=1" in t.requests[0][1] and "contributors?per_page=100" in t.requests[1][1]
+
+
+def test_github_live_contributors_small_and_empty_and_too_large():
+    gh, t, _ = make([ok([{"login": "solo", "contributions": 9}])])
+    assert gh.contributors("a/b") == gh_models.Contributors(1, 1.0) and len(t.requests) == 1
+    gh, _, _ = make([err(204, body=b"")])
+    assert gh.contributors("a/b") == gh_models.Contributors(0, None)
+    too_large = b'{"message": "The history or contributor list is too large to list contributors"}'
+    gh, _, _ = make([err(403, {}, too_large)])
+    assert gh.contributors("a/b") == gh_models.Contributors(None, None)
+
+
+def test_github_live_issue_counts_use_issue_search():
+    gh, t, _ = make([ok({"total_count": 12, "incomplete_results": False, "items": []}),
+                     ok({"total_count": 7, "incomplete_results": False, "items": []})])
+    assert gh.issue_counts("a/b", date(2026, 9, 27)) == gh_models.IssueCounts(opened=12, closed=7)
+    opened, closed = (t.requests[0][1], t.requests[1][1])
+    assert opened.startswith("https://api.github.com/search/issues?")
+    assert "repo%3Aa%2Fb+is%3Aissue+created%3A%3E%3D2026-09-27" in opened and "per_page=1" in opened
+    assert "is%3Aissue+closed%3A%3E%3D2026-09-27" in closed
 
 
 def test_github_live_404_raises_not_found():

@@ -13,6 +13,7 @@ import json
 import time
 import urllib.parse
 from collections.abc import Callable, Mapping
+from datetime import date
 from typing import Any
 
 from startrend.clients.github import (
@@ -24,13 +25,23 @@ from startrend.clients.github import (
 )
 from startrend.clients.github_parse import (
     GitHubFormatError,
+    last_page,
     parse_history,
     parse_rate_limit,
+    parse_releases,
     parse_repo,
     parse_search_page,
 )
 from startrend.clients.transport import HttpResponse, Transport, TransportError, UrllibTransport
-from startrend.core.models import HistoryWeek, RateLimit, Repo, SearchPage
+from startrend.core.models import (
+    Contributors,
+    HistoryWeek,
+    IssueCounts,
+    RateLimit,
+    Release,
+    Repo,
+    SearchPage,
+)
 
 API_VERSION = "2026-03-10"  # 지원 버전 중 최신 (2026-10 기준 공식 문서)
 USER_AGENT = "startrend/0.0.1"
@@ -103,6 +114,46 @@ class LiveGitHub:
         except NotFound:
             return None
         return resp.body.decode("utf-8", errors="replace")
+
+    def releases(self, full_name: str, *, per_page: int = 10) -> list[Release]:
+        path = _repo_path(full_name) + "/releases"
+        return parse_releases(self._json("releases", path, {"per_page": per_page}))
+
+    def contributors(self, full_name: str) -> Contributors:
+        """기여자 수는 per_page=1 의 Link 헤더 마지막 쪽으로 센다. 상위 1명 비중은 첫 100명으로 잰다."""
+        path = _repo_path(full_name) + "/contributors"
+        try:
+            first = self._get("contributors", path, {"per_page": 1})
+        except GitHubError as e:
+            if e.status == 204:                               # 커밋이 없는 저장소
+                return Contributors(0, None)
+            if e.status == 403 and "too large" in str(e):     # 기록이 너무 큰 저장소 — GitHub 이 주지 않는다
+                return Contributors(None, None)
+            raise
+        try:
+            count = last_page(first.headers.get("link")) or len(json.loads(first.body))
+        except (ValueError, TypeError) as e:
+            raise GitHubFormatError("contributors: 형식이 다르다") from e
+        if count <= 1:
+            return Contributors(count, 1.0 if count == 1 else None)
+        page = self._json("contributors", path, {"per_page": 100})
+        try:
+            n = [int(c["contributions"]) for c in page]
+        except (KeyError, TypeError, ValueError) as e:
+            raise GitHubFormatError(f"contributors 형식 오류: {e!r}") from e
+        return Contributors(count, round(max(n) / sum(n), 4) if n and sum(n) else None)
+
+    def issue_counts(self, full_name: str, since: date) -> IssueCounts:
+        """기간 안에 열린·닫힌 이슈 수 — 이슈 검색 2번(검색은 분당 30회, 레이트 리밋 대기는 _get 이 한다)."""
+        out = []
+        for qual in ("created", "closed"):
+            q = f"repo:{full_name} is:issue {qual}:>={since.isoformat()}"
+            d = self._json("search_issues", "/search/issues", {"q": q, "per_page": 1})
+            try:
+                out.append(int(d["total_count"]))
+            except (KeyError, TypeError, ValueError) as e:
+                raise GitHubFormatError(f"이슈 검색 형식 오류: {e!r}") from e
+        return IssueCounts(opened=out[0], closed=out[1])
 
     # --- 전송·재시도 ---
 
