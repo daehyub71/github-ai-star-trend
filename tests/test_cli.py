@@ -263,6 +263,33 @@ def test_cli_brief_defaults_to_dry_run_without_keys(tmp_path, capsys):
     assert main(["brief", "--week", "2026-10-11"], env=_dirs(tmp_path)) == 2            # 랭킹 없음
 
 
+def test_cli_evidence_only_missing_skips_repos_already_collected(tmp_path, capsys):
+    # 같은 주를 이어 모을 때 이미 모은 저장소의 검색 크레딧을 다시 쓰지 않는다
+    import json
+    from datetime import UTC, datetime
+
+    from startrend.core import evidence as cev
+    from startrend.core import io as cio
+    from startrend.core import weekfile
+    from startrend.core.weekfile import WeekRow
+
+    w = date(2026, 10, 18)
+    weekfile.write(weekfile.week_path(tmp_path / "d", w),
+                   [WeekRow(1, "o/r1", date(2024, 1, 1), 5000, 100, False, None),
+                    WeekRow(2, "o/r2", date(2024, 1, 1), 5000, 90, False, None)])
+    e1 = {"id": 1, "full_name": "o/r1", "created": "2024-01-01"}
+    e2 = {"id": 2, "full_name": "o/r2", "created": "2024-01-01"}
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {"gain": {"all": [e1, e2], "ai": [e1, e2]}}})
+    doc = cev.make(url="https://github.com/o/r1", source="github", kind="repo", title="o/r1", text="x",
+                   fetched_at=datetime(2026, 10, 28, tzinfo=UTC))
+    target = cev.Target(1, "o/r1", since=w, until=date(2026, 10, 24))
+    cev.write(tmp_path / "w", w, [cev.Collected(target, [doc])])
+    assert main(["evidence", "--week", "2026-10-18", "--only-missing"], env=_dirs(tmp_path)) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["repos"] == ["o/r2"] and out["tavily_credits"] == 3
+
+
 def test_cli_evidence_run_needs_keys(tmp_path, capsys):
     assert main(["evidence", "--week", "2026-10-18", "--run"], env=_dirs(tmp_path)) == 2
 

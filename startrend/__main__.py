@@ -125,6 +125,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--repos", help="쉼표로 구분 — 그 주 AI 탭에서 이 저장소만")
     p.add_argument("--run", action="store_true", help="실제로 모은다 — GitHub·HN·GeekNews·패키지·웹 검색")
     p.add_argument("--no-web", action="store_true", help="웹 검색(Tavily 크레딧)을 쓰지 않는다")
+    p.add_argument("--only-missing", action="store_true",
+                   help="그 주 근거 목록에 아직 없는 저장소만 — 이어 모을 때 크레딧을 다시 쓰지 않는다")
     p = sub.add_parser("analyze", help="심층 카드(FR-6) — 기본은 dry-run(호출 0). --run 은 과금")
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--repos", help="쉼표로 구분 — 근거를 모은 저장소 중 이것만")
@@ -496,6 +498,9 @@ def _evidence(settings: Settings, args: argparse.Namespace) -> int:
     except FileNotFoundError as e:
         print(e, file=sys.stderr)
         return 2
+    if args.only_missing:
+        have = set(evidence.read(settings.work_dir, w))
+        targets = [t for t in targets if t.repo_id not in have]
     queries = 0 if args.no_web else len(web.default_queries(targets[0])) if targets else 3
     if not args.run:
         est = evidence.plan(targets, web_queries=queries)
