@@ -49,6 +49,19 @@ def test_evaluate_load_labels_rejects_unknown_category(tmp_path):
         ev.load_labels(p, TAX)
 
 
+def test_evaluate_load_labels_can_keep_only_blind_rows(tmp_path):
+    # 초안 앵커링 때문에 구현 비교의 주 기준은 블라인드다(FR-14.1) — 출처가 blind 로 시작하는 행만
+    p = tmp_path / "gold.jsonl"
+    io.write_jsonl(p, [
+        {"repo_id": 1, "full_name": "o/a", "is_ai": True, "type": TOOL, "category": "rag",
+         "source": "blind:x"},
+        {"repo_id": 2, "full_name": "o/b", "is_ai": False, "type": TOOL, "category": None,
+         "source": "draft:claude · review:user"},
+    ])
+    assert set(ev.load_labels(p, TAX)) == {1, 2}
+    assert set(ev.load_labels(p, TAX, blind_only=True)) == {1}
+
+
 def test_evaluate_load_labels_on_the_real_blind_set():
     gold = ev.load_labels(ROOT / "data" / "eval" / "goldset_blind_labels.jsonl", TAX)
     assert len(gold) == 30 and sum(g.is_ai for g in gold.values()) == 19

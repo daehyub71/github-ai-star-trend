@@ -84,6 +84,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="스냅샷 주(일요일). 기본은 막 끝난 주")
     p.add_argument("--ranked-from", help="랭킹 진입 저장소를 읽을 데이터 폴더. 기본은 데이터 폴더")
     p.add_argument("--seed", type=int, default=20261027)
+    p.add_argument("--more", type=int, help="블라인드 추가 N개(결정 50) → goldset_blind2_candidates.jsonl. "
+                   "기존 후보는 빼고 덮어쓰지 않는다")
     p = sub.add_parser("classify", help="AI 여부·유형·카테고리 판정 — 기본은 dry-run(호출 0)")
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="랭킹이 있는 모든 주")
@@ -95,6 +97,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
     p.add_argument("--name", default="eval", help="실행 기록 이름 → data/eval/runs/<날짜>-<이름>")
+    p.add_argument("--blind-only", action="store_true",
+                   help="블라인드 행만 — 초안 없이 라벨한 주 기준(FR-14.1)")
     p = sub.add_parser("goldset-draft", help="정답 세트 후보 Claude 초안 — 기본은 dry-run(호출 0)")
     p.add_argument("--run", action="store_true", help="실제 판정(과금, Batch) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=3.0,
@@ -321,8 +325,19 @@ def _goldset(settings: Settings, args: argparse.Namespace) -> int:
     repos = cached_repos(settings.work_dir / "cache" / wk.week_name(w), set(snap))
     ranked = ranked_ids(Path(args.ranked_from) if args.ranked_from else settings.data_dir)
     new = {rid for rid, r in snap.items() if "new" in r.sources}
-    picks = goldset.sample(repos, ranked=ranked, new=new, seed=args.seed)
-    out = settings.data_dir / "eval" / "goldset_candidates.jsonl"
+    ev_dir = settings.data_dir / "eval"
+    if args.more:
+        out = ev_dir / "goldset_blind2_candidates.jsonl"
+        if out.exists():
+            print(f"이미 있다 — 덮어쓰지 않는다: {out}", file=sys.stderr)
+            return 2
+        first = ev_dir / "goldset_candidates.jsonl"
+        taken = {int(p["repo_id"]) for p in read_jsonl(first)} if first.exists() else set()
+        picks = goldset.sample_more(repos, ranked=ranked, new=new, exclude=taken, n=args.more,
+                                    seed=args.seed + 1)
+    else:
+        out = ev_dir / "goldset_candidates.jsonl"
+        picks = goldset.sample(repos, ranked=ranked, new=new, seed=args.seed)
     write_jsonl(out, picks)
     groups: dict[str, int] = {}
     for p in picks:
@@ -386,7 +401,7 @@ def _eval(settings: Settings, args: argparse.Namespace) -> int:
     if not gold_path.exists():
         print(f"정답 파일이 없다: {gold_path} — --gold 로 지정한다", file=sys.stderr)
         return 2
-    gold = evaluate.load_labels(gold_path, tax)
+    gold = evaluate.load_labels(gold_path, tax, blind_only=args.blind_only)
     if not args.predictions:
         est = evaluate.dry_run(n_items=len(gold), system_prompt=LLMDecider(MockLLM([]), tax).system)
         print(dumps_json({"dry_run": True, "gold": str(gold_path), **est}), end="")

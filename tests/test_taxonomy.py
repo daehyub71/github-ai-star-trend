@@ -1,4 +1,4 @@
-"""core.taxonomy — 분류 체계 v1 (FR-3.2·3.3·3.4, 결정 20 · 부록 A)."""
+"""core.taxonomy — 분류 체계 v2 (FR-3.2·3.3·3.4, 결정 20·50 · 부록 A)."""
 
 from pathlib import Path
 
@@ -10,13 +10,15 @@ ROOT = Path(__file__).resolve().parents[1]
 APPENDIX_A = [
     "에이전트 프레임워크", "코딩 에이전트·IDE", "MCP 서버·도구", "에이전트 스킬·프롬프트", "추론·서빙",
     "로컬 LLM 실행", "모델·가중치", "학습·파인튜닝", "RAG·검색", "벡터DB·메모리", "평가·관측(LLMOps)",
-    "멀티모달(이미지·음성·영상)", "브라우저·컴퓨터 사용 자동화", "문서·데이터 파싱", "기타 AI",
+    "멀티모달(이미지·음성·영상)", "브라우저·컴퓨터 사용 자동화", "문서·데이터 파싱", "AI 앱·서비스",
+    "기타 AI",
 ]
 
 
-def test_taxonomy_v1_matches_spec_appendix_a():
+def test_taxonomy_v2_matches_spec_appendix_a():
+    # 결정 50 (2026-10-28): v1 에 "AI 앱·서비스"(ai-apps)를 더했다 — 기존 id 는 그대로라 매핑이 없다
     t = tx.load(ROOT / "data" / "taxonomy.toml")
-    assert t.version == 1
+    assert t.version == 2 and t.resolve("AI 앱·서비스") == "ai-apps" and t.mapping == {}
     assert [c.name for c in t.categories] == APPENDIX_A
     assert t.types == ("도구/라이브러리", "큐레이션 목록", "교육자료", "모델/데이터", "기타")
     assert all(c.id.isascii() and c.desc for c in t.categories)

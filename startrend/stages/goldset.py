@@ -139,6 +139,13 @@ def sample(repos: Mapping[int, Repo], *, ranked: set[int], new: set[int], n: int
     return sorted(out, key=lambda p: p["repo_id"])
 
 
+def sample_more(repos: Mapping[int, Repo], *, ranked: set[int], new: set[int], exclude: set[int], n: int = 30,
+                seed: int = 20261028) -> list[dict[str, Any]]:
+    """블라인드 추가(결정 50 ⑤) — 이미 뽑은 저장소를 빼고 같은 그룹 비율로 n 개, 전부 블라인드."""
+    rest = {rid: r for rid, r in repos.items() if rid not in exclude}
+    return [{**p, "blind": True} for p in sample(rest, ranked=ranked, new=new, n=n, blind=n, seed=seed)]
+
+
 # --- 초안 (P2-11, 결정 41) — 과금 단계. CLI 가 dry-run 을 먼저 보인다 ---
 
 

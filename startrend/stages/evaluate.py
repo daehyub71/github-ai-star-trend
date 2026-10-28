@@ -44,10 +44,15 @@ def _bool(v: Any) -> bool:
     raise ValueError(f"is_ai 값을 알 수 없다: {v!r}")
 
 
-def load_labels(path: Path, tax: Taxonomy) -> dict[int, Label]:
-    """정답 라벨 — is_ai 는 true/false 또는 "yes"/"no", 카테고리는 id 나 이름(라벨링 화면)."""
+def load_labels(path: Path, tax: Taxonomy, *, blind_only: bool = False) -> dict[int, Label]:
+    """정답 라벨 — is_ai 는 true/false 또는 "yes"/"no", 카테고리는 id 나 이름(라벨링 화면).
+
+    blind_only: 출처(source)가 "blind" 로 시작하는 행만 — 초안을 보지 않고 라벨한 것(FR-14.1 주 기준).
+    """
     out: dict[int, Label] = {}
     for row in io.read_jsonl(path):
+        if blind_only and not str(row.get("source", "")).startswith("blind"):
+            continue
         is_ai = _bool(row["is_ai"])
         raw = row.get("category")
         cat = tax.resolve(raw) if raw not in (None, "", "none") else None

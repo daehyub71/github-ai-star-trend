@@ -209,3 +209,45 @@ def test_cli_trends_runs_without_token(tmp_path, capsys):
     out = json.loads(capsys.readouterr().out)
     assert out["weeks"] == 1 and out["written"] == 1 and out["classified"] == 0
     assert (tmp_path / "d" / "weekly" / "2026-10-18" / "categories.json").exists()
+
+
+def test_cli_goldset_more_adds_blind_picks_without_touching_the_first_set(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+    from startrend.core import snapshot
+    from tests import synth
+
+    w = date(2026, 10, 18)
+    env = _dirs(tmp_path)
+    rows = [SnapRow(i, f"o/r{i}", 1500 + i, 1, 1, date(2024, 1, 1), ("pool",)) for i in range(1, 6)]
+    snapshot.write(tmp_path / "w" / "snapshots" / "2026-10-18.csv", rows)
+    _cache_search(tmp_path / "w" / "cache" / "2026-10-18",
+                  [synth.repo(f"o/r{i}", id=i, stars=1500 + i, description="LLM tool") for i in range(1, 6)])
+    first = tmp_path / "d" / "eval" / "goldset_candidates.jsonl"
+    cio.write_jsonl(first, [{"repo_id": i, "full_name": f"o/r{i}", "blind": False} for i in (1, 2, 3)])
+    before = first.read_text(encoding="utf-8")
+    assert main(["goldset", "--week", w.isoformat(), "--more", "2"], env=env) == 0
+    out = tmp_path / "d" / "eval" / "goldset_blind2_candidates.jsonl"
+    picks = [json.loads(x) for x in out.read_text(encoding="utf-8").splitlines()]
+    assert sorted(p["repo_id"] for p in picks) == [4, 5] and all(p["blind"] for p in picks)
+    assert first.read_text(encoding="utf-8") == before                      # 첫 200 은 그대로
+    capsys.readouterr()
+    # 이미 있으면 덮어쓰지 않는다
+    assert main(["goldset", "--week", w.isoformat(), "--more", "2"], env=env) == 2
+
+
+def test_cli_eval_blind_only_scores_blind_rows(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+
+    gold = tmp_path / "gold.jsonl"
+    cio.write_jsonl(gold, [
+        {"repo_id": 1, "full_name": "o/r1", "is_ai": True, "type": "기타", "category": "rag",
+         "source": "blind:x"},
+        {"repo_id": 2, "full_name": "o/r2", "is_ai": False, "type": "기타", "category": None,
+         "source": "draft"},
+    ])
+    assert main(["eval", "--gold", str(gold), "--blind-only"], env=_dirs(tmp_path)) == 0
+    assert json.loads(capsys.readouterr().out)["calls"] == 1

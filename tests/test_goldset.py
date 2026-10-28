@@ -168,3 +168,31 @@ def test_goldset_run_draft_keeps_what_was_decided_when_the_budget_stops(tmp_path
     table = {i: dc.Decision(status="ok", is_ai=False, type="기타") for i in (1, 2)}
     stats = gs.run_draft(_gh([1, 2]), Capped(table), _cands(2), out=out, log=lambda m: None)
     assert stats["stopped"] == "budget" and [r["repo_id"] for r in io.read_jsonl(out)] == [1]
+
+
+# --- 블라인드 추가 (결정 50 ⑤) ---
+
+
+def _pop400() -> dict[int, Repo]:
+    out = {}
+    for i in range(1, 401):
+        if i % 3 == 0:
+            out[i] = repo(i, topics=("llm",), stars=1000 + i * 100)          # 강
+        elif i % 3 == 1:
+            out[i] = repo(i, desc="An AI-powered editor", stars=1000 + i * 100)  # 약
+        else:
+            out[i] = repo(i, desc="a web server", stars=1000 + i * 100)       # 없음
+    return out
+
+
+def test_goldset_sample_more_skips_existing_and_marks_every_pick_blind():
+    pop = _pop400()
+    ranked = set(range(1, 81))
+    first = gs.sample(pop, ranked=ranked, new=set(), n=200, blind=30)
+    taken = {p["repo_id"] for p in first}
+    more = gs.sample_more(pop, ranked=ranked, new=set(), exclude=taken, n=30, seed=7)
+    assert len(more) == 30 and all(p["blind"] for p in more)
+    assert not {p["repo_id"] for p in more} & taken
+    groups = Counter(p["group"] for p in more)
+    assert groups["ranked"] >= 5 and groups["strong"] >= 5 and groups["none"] >= 3   # 첫 200 과 같은 비율로
+    assert gs.sample_more(pop, ranked=ranked, new=set(), exclude=taken, n=30, seed=7) == more   # 결정론
