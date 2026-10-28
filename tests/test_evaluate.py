@@ -62,6 +62,23 @@ def test_evaluate_load_labels_can_keep_only_blind_rows(tmp_path):
     assert set(ev.load_labels(p, TAX, blind_only=True)) == {1}
 
 
+def test_evaluate_load_labels_by_source_prefix(tmp_path):
+    # 블라인드 1차(규칙을 만들 때 본 것)와 2차(처음 보는 것)를 나눠 잰다 — 과적합 확인 (결정 50)
+    p = tmp_path / "gold.jsonl"
+    io.write_jsonl(p, [{"repo_id": i, "full_name": f"o/{i}", "is_ai": False, "type": TOOL, "category": None,
+                        "source": s} for i, s in ((1, "blind:x"), (2, "blind2:user"), (3, "draft"))])
+    assert set(ev.load_labels(p, TAX, source_prefix="blind:")) == {1}
+    assert set(ev.load_labels(p, TAX, source_prefix="blind2:")) == {2}
+
+
+def test_evaluate_compare_table_lines_up_subsets():
+    gold = {1: lab(1, True, "rag"), 2: lab(2, False)}
+    a = ev.score(gold, {1: pred(True, "rag"), 2: pred(False)})
+    b = ev.score({1: gold[1]}, {1: pred(True, "mcp-tools")})
+    md = ev.compare_md([("블라인드 60", a), ("2차 30", b)])
+    assert "| 블라인드 60 | 2 |" in md and "| 2차 30 | 1 |" in md and "100.0%" in md and "0.0%" in md
+
+
 def test_evaluate_load_labels_on_the_real_blind_set():
     gold = ev.load_labels(ROOT / "data" / "eval" / "goldset_blind_labels.jsonl", TAX)
     assert len(gold) == 30 and sum(g.is_ai for g in gold.values()) == 19

@@ -44,14 +44,19 @@ def _bool(v: Any) -> bool:
     raise ValueError(f"is_ai 값을 알 수 없다: {v!r}")
 
 
-def load_labels(path: Path, tax: Taxonomy, *, blind_only: bool = False) -> dict[int, Label]:
+def load_labels(path: Path, tax: Taxonomy, *, blind_only: bool = False,
+                source_prefix: str | None = None) -> dict[int, Label]:
     """정답 라벨 — is_ai 는 true/false 또는 "yes"/"no", 카테고리는 id 나 이름(라벨링 화면).
 
     blind_only: 출처(source)가 "blind" 로 시작하는 행만 — 초안을 보지 않고 라벨한 것(FR-14.1 주 기준).
+    source_prefix: 출처가 이것으로 시작하는 행만 — 예: "blind:"(1차) · "blind2:"(2차, 결정 50).
     """
     out: dict[int, Label] = {}
     for row in io.read_jsonl(path):
-        if blind_only and not str(row.get("source", "")).startswith("blind"):
+        src = str(row.get("source", ""))
+        if blind_only and not src.startswith("blind"):
+            continue
+        if source_prefix and not src.startswith(source_prefix):
             continue
         is_ai = _bool(row["is_ai"])
         raw = row.get("category")
@@ -196,6 +201,17 @@ def report_md(r: Mapping[str, Any], *, title: str, tax: Taxonomy, notes: Sequenc
             lines.append(f"| {d['full_name']} | {d['field']} | {g} | {p} |")
         if len(r["disagreements"]) > MAX_LISTED:
             lines.append(f"| … {len(r['disagreements']) - MAX_LISTED}건 더 (json 에 전부) | | | |")
+    return "\n".join(lines) + "\n"
+
+
+def compare_md(rows: Sequence[tuple[str, Mapping[str, Any]]]) -> str:
+    """같은 판정을 여러 정답 묶음으로 채점한 결과를 한 표로 — 예: 블라인드 60 · 1차 30 · 2차 30."""
+    lines = ["| 정답 묶음 | 정답 수 | AI 여부 정확도 | 유형 정확도 | 카테고리 정확도 | 카테고리 macro-F1 |",
+             "|---|---:|---:|---:|---:|---:|"]
+    for name, r in rows:
+        lines.append(f"| {name} | {r['n']} | {_pct(r['is_ai']['accuracy'])} | "
+                     f"{_pct(r['type']['accuracy'])} | {_pct(r['category']['accuracy'])} | "
+                     f"{_pct(r['category']['macro_f1'])} |")
     return "\n".join(lines) + "\n"
 
 

@@ -251,3 +251,28 @@ def test_cli_eval_blind_only_scores_blind_rows(tmp_path, capsys):
     ])
     assert main(["eval", "--gold", str(gold), "--blind-only"], env=_dirs(tmp_path)) == 0
     assert json.loads(capsys.readouterr().out)["calls"] == 1
+
+
+def test_cli_goldset_draft_blind_only_counts_blind_rows_of_both_batches(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+
+    ev = tmp_path / "d" / "eval"
+    cio.write_jsonl(ev / "goldset_candidates.jsonl",
+                    [{"repo_id": i, "full_name": f"o/r{i}", "blind": i == 1} for i in (1, 2, 3)])
+    cio.write_jsonl(ev / "goldset_blind2_candidates.jsonl",
+                    [{"repo_id": i, "full_name": f"o/r{i}", "blind": True} for i in (4, 5)])
+    assert main(["goldset-draft", "--blind-only", "--out", "drafts_v2_blind"], env=_dirs(tmp_path)) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["candidates"] == 3 and out["blind"] == 3 and out["out"].endswith("drafts_v2_blind.jsonl")
+
+
+def test_cli_goldset_draft_never_overwrites_a_paid_drafts_file(tmp_path, capsys):
+    from startrend.core import io as cio
+
+    ev = tmp_path / "d" / "eval"
+    cio.write_jsonl(ev / "goldset_candidates.jsonl", [{"repo_id": 1, "full_name": "o/r1", "blind": True}])
+    cio.write_jsonl(ev / "goldset_drafts.jsonl", [{"repo_id": 1, "status": "ok"}])
+    assert main(["goldset-draft", "--run"], env=_dirs(tmp_path)) == 2     # 키 확인보다 먼저 막는다
+    assert "덮어쓰지 않는다" in capsys.readouterr().err

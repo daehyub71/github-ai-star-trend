@@ -104,6 +104,10 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--cap", type=float, default=3.0,
                    help="이번 실행 예산 상한(달러) — 제출 전에 최악 비용으로 막는다")
     p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
+    p.add_argument("--blind-only", action="store_true", help="블라인드 후보만(1차 + 2차) — 재측정용(결정 50)")
+    p.add_argument("--out", default="goldset_drafts",
+                   help="결과 파일 이름 data/eval/<이름>.jsonl — 있으면 덮어쓰지 않는다")
+    p.add_argument("--no-batch", action="store_true", help="Batch 대신 일반 호출 — 빠르지만 할인 없음(2배)")
     args = ap.parse_args(argv)
 
     settings = load_settings(env=env)
@@ -416,21 +420,63 @@ def _eval(settings: Settings, args: argparse.Namespace) -> int:
     return 0
 
 
+def _score_blind(settings: Settings, tax: taxonomy.Taxonomy, preds_path: Path, *,
+                 notes: list[str]) -> Path | None:
+    """블라인드 대 판정 — 전체 · 1차(규칙을 만들 때 본 것) · 2차(처음 보는 것)를 나눠 잰다 (FR-14.1, 결정 50).
+
+    정답은 정답 세트(분류 체계 v2)의 블라인드 행. 정답 세트가 없으면 1차 라벨 파일.
+    """
+    ev_dir = settings.data_dir / "eval"
+    gold_path = ev_dir / "goldset_classify.jsonl"
+    preds = evaluate.load_predictions(preds_path)
+    if gold_path.exists():
+        def labels(**kw: Any) -> dict[int, evaluate.Label]:
+            return evaluate.load_labels(gold_path, tax, **kw)
+
+        subsets = [("블라인드 전체", labels(blind_only=True)),
+                   ("1차 30 — 규칙을 만들 때 본 것", labels(source_prefix="blind:")),
+                   ("2차 30 — 처음 보는 것", labels(source_prefix="blind2:"))]
+    elif (ev_dir / "goldset_blind_labels.jsonl").exists():
+        gold_path = ev_dir / "goldset_blind_labels.jsonl"
+        subsets = [("블라인드 30", evaluate.load_labels(gold_path, tax))]
+    else:
+        return None
+    scored = [(name, evaluate.score(g, {i: preds[i] for i in g if i in preds})) for name, g in subsets if g]
+    main_name, main = scored[0]
+    md = evaluate.report_md(main, title=f"{main_name} 대 Claude 판정", tax=tax, notes=[
+        f"정답: `{gold_path.name}` 의 블라인드 행 — 초안 없이 사용자가 라벨(FR-14.1)", *notes])
+    md += "\n## 묶음별\n\n" + evaluate.compare_md(scored)
+    return evaluate.write_run(settings.data_dir, f"blind-vs-{preds_path.stem}",
+                              {"gold": gold_path.name, "predictions": preds_path.name, **main,
+                               "by_subset": {n: {k: v for k, v in r.items() if k != "disagreements"}
+                                             for n, r in scored}}, md)
+
+
 def _goldset_draft(settings: Settings, args: argparse.Namespace) -> int:
-    cand_path = settings.data_dir / "eval" / "goldset_candidates.jsonl"
+    ev_dir = settings.data_dir / "eval"
+    cand_path = ev_dir / "goldset_candidates.jsonl"
     if not cand_path.exists():
         print(f"후보 파일이 없다 — 먼저 goldset: {cand_path}", file=sys.stderr)
         return 2
     candidates = list(read_jsonl(cand_path))
+    more = ev_dir / "goldset_blind2_candidates.jsonl"      # 블라인드 2차(결정 50)
+    if more.exists():
+        candidates += list(read_jsonl(more))
+    if args.blind_only:
+        candidates = [c for c in candidates if c.get("blind")]
     tax = _load_taxonomy(settings)
-    out = settings.data_dir / "eval" / "goldset_drafts.jsonl"
+    out = ev_dir / f"{args.out}.jsonl"
     if not args.run:
-        est = evaluate.dry_run(n_items=len(candidates), system_prompt=LLMDecider(MockLLM([]), tax).system)
+        est = evaluate.dry_run(n_items=len(candidates), system_prompt=LLMDecider(MockLLM([]), tax).system,
+                               batch=not args.no_batch)
         print(dumps_json({"dry_run": True, "candidates": len(candidates),
                           "blind": sum(1 for c in candidates if c.get("blind")),
                           "github_calls": 2 * len(candidates), "cap_usd": args.cap, "out": str(out), **est}),
               end="")
         return 0
+    if out.exists():  # 돈을 내고 만든 판정 — 덮어쓰지 않는다
+        print(f"이미 있다 — 덮어쓰지 않는다: {out} (--out 으로 다른 이름을 준다)", file=sys.stderr)
+        return 2
     try:
         token = settings.require_github_token()
         key = settings.require_anthropic_key()
@@ -449,23 +495,19 @@ def _goldset_draft(settings: Settings, args: argparse.Namespace) -> int:
     states = settings.work_dir / "batches"
 
     def runner(reqs: dict[str, LLMRequest], tag: str) -> dict[str, BatchItem]:
-        return run_batch(meter, batch_client, reqs, state=states / f"goldset-draft-{tag}.json",
+        return run_batch(meter, batch_client, reqs, state=states / f"{args.out}-{tag}.json",
                          poll_seconds=args.poll, log=log)
 
     t0 = time.monotonic()
-    stats = goldset.run_draft(gh, decider, candidates, out=out, batch=runner, log=log)
+    stats = goldset.run_draft(gh, decider, candidates, out=out, batch=None if args.no_batch else runner,
+                              log=log)
     seconds = time.monotonic() - t0
     report = None
-    blind_path = settings.data_dir / "eval" / "goldset_blind_labels.jsonl"
-    # 블라인드 30 대 초안 — 초안 편향을 잰다 (FR-14.1). 이번 실행에서 판정한 것이 없으면 기록하지 않는다
-    if blind_path.exists() and out.exists() and stats["decided"]:
-        result = evaluate.score(evaluate.load_labels(blind_path, tax), evaluate.load_predictions(out))
-        md = evaluate.report_md(result, title="블라인드 30 대 Claude 초안", tax=tax, notes=[
-            "정답: 블라인드 30 — 사용자가 다른 AI 의 분류를 검토해 옮긴 라벨(FR-14.1)",
-            f"판정: Claude 초안 `{out.name}` · 판정기 `{decider.fingerprint}`",
-            f"이번 실행 전체 비용 ${meter.spent:.2f} (후보 {len(candidates)}개, Batch)"])
-        report = evaluate.write_run(settings.data_dir, "blind30-vs-claude-draft",
-                                    {"gold": blind_path.name, "predictions": out.name, **result}, md)
+    if out.exists() and stats["decided"]:   # 이번 실행에서 판정한 것이 없으면 기록하지 않는다
+        how = "일반 호출" if args.no_batch else "Batch"
+        report = _score_blind(settings, tax, out, notes=[
+            f"판정: Claude `{out.name}` · 판정기 `{decider.fingerprint}`",
+            f"이번 실행 비용 ${meter.spent:.2f} (후보 {len(candidates)}개, {how})"])
     summary = {**stats, "spent_usd": round(meter.spent, 4), "calls": meter.calls,
                "batch_calls": sum(1 for e in meter.ledger if e["batch"]), "seconds": round(seconds),
                "out": str(out), "blind_report": str(report) if report else None}
