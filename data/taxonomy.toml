@@ -22,7 +22,7 @@ desc = "코드를 쓰는 에이전트, AI 코딩 CLI·IDE·확장"
 [[category]]
 id = "mcp-tools"
 name = "MCP 서버·도구"
-desc = "MCP 서버, 에이전트가 부르는 도구·연결 모음"
+desc = "MCP 서버, 에이전트가 부르는 도구·연결 모음, 에이전트가 조작하도록 만든 앱(MCP·에이전트 인터페이스를 내세움)"
 
 [[category]]
 id = "agent-skills"
@@ -82,7 +82,7 @@ desc = "PDF·문서·웹 페이지를 LLM 입력으로 바꾸기"
 [[category]]
 id = "ai-apps"
 name = "AI 앱·서비스"
-desc = "AI 기능을 내세운 최종 사용자용 앱·서비스 — 채팅 클라이언트, AI 업무·생산성 앱, AI 봇"
+desc = "AI 기능을 내세운 최종 사용자용 앱·서비스 — 채팅 클라이언트, AI 업무·생산성 앱, AI 봇, 일반 앱에 AI 기능을 더한 것"
 
 [[category]]
 id = "other-ai"

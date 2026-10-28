@@ -27,8 +27,12 @@ Boundary rules:
   coding agent.
 - agent-framework is only for libraries and runtimes used to build agents. An end-user app with an AI assistant
   inside is ai-apps.
-- ai-apps is for end-user apps and services that advertise AI features. Prefer a more specific category when the
-  app's main job fits one (a coding agent → coding-agent, a local model runner → local-llm).
+- ai-apps is for end-user apps and services that advertise AI features, including general apps that add AI
+  features (low-code platforms, analysis or productivity tools with LLM features). Prefer a more specific category
+  when the app's main job fits one (a coding agent → coding-agent, a local model runner → local-llm).
+- Apps whose pitch is being driven by agents (a "built for agents" section, an MCP server or agent interface for
+  operating the app) are mcp-tools. An app whose main job is AI generation itself stays in that field (AI image or
+  video creation → multimodal).
 - Classify a guide or example collection for calling a specific model's API by that model's field (image or video
   generation → multimodal), not by the service that sells access to it.
 
