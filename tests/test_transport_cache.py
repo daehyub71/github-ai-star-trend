@@ -6,7 +6,13 @@ from collections.abc import Mapping
 
 import pytest
 
-from startrend.clients.transport import CachingTransport, HttpResponse, TransportError, UrllibTransport
+from startrend.clients.transport import (
+    CachingTransport,
+    HttpResponse,
+    TransportError,
+    UrllibPoster,
+    UrllibTransport,
+)
 
 
 class Counting:
@@ -27,6 +33,40 @@ def test_transport_urllib_wraps_dropped_connection(monkeypatch):
     monkeypatch.setattr(urllib.request, "urlopen", drop)
     with pytest.raises(TransportError):
         UrllibTransport()("GET", "https://api.github.com/x?q=1", {}, 5.0)
+
+
+def test_transport_poster_sends_body_and_wraps_failures(monkeypatch):
+    seen: list[urllib.request.Request] = []
+
+    class Resp:
+        status = 200
+        headers = {"Content-Type": "application/json"}
+
+        def read(self):
+            return b'{"ok": true}'
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def fake(req, timeout):
+        seen.append(req)
+        return Resp()
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake)
+    r = UrllibPoster()("https://api.tavily.com/search", {"Content-Type": "application/json"}, b'{"q":1}', 5.0)
+    assert r.status == 200 and r.headers == {"content-type": "application/json"} and r.body == b'{"ok": true}'
+    assert seen[0].get_method() == "POST" and seen[0].data == b'{"q":1}'
+
+    def drop(*args, **kwargs):
+        raise http.client.RemoteDisconnected("closed")
+
+    monkeypatch.setattr(urllib.request, "urlopen", drop)
+    with pytest.raises(TransportError) as e:
+        UrllibPoster()("https://api.tavily.com/search?x=1", {}, b"{}", 5.0)
+    assert "?x=1" not in str(e.value)
 
 
 def test_transport_cache_hit_skips_network(tmp_path):

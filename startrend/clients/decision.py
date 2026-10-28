@@ -18,6 +18,7 @@ from string import Template
 from typing import Any, Protocol
 
 from startrend.clients.llm import BatchItem, LLMClient, LLMRequest, request_tokens
+from startrend.core import untrusted
 from startrend.core.taxonomy import Taxonomy
 
 # (custom_id → 요청, 묶음 번호) → custom_id → 결과. 예산·상태 파일은 부른 쪽(budget.run_batch)이 맡는다
@@ -96,10 +97,12 @@ class MockDecider:
 
 
 def user_message(item: RepoInput) -> str:
+    # 외부 글이 우리 태그를 닫고 빠져나오지 못하게 한다 (NFR-7, P3-12)
     topics = ", ".join(item.topics) or "(none)"
-    return (f"<repository>\nname: {item.full_name}\ndescription: {item.description or '(none)'}\n"
-            f"topics: {topics}\nlanguage: {item.language or '(unknown)'}\n</repository>\n"
-            f"<readme_head>\n{item.readme_head[:README_CHARS]}\n</readme_head>")
+    repo = (f"name: {item.full_name}\ndescription: {item.description or '(none)'}\n"
+            f"topics: {topics}\nlanguage: {item.language or '(unknown)'}")
+    readme = untrusted.block("readme_head", item.readme_head[:README_CHARS])
+    return f"{untrusted.block('repository', repo)}\n{readme}"
 
 
 def input_token_range(system: str) -> tuple[int, int]:

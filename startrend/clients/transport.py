@@ -32,17 +32,31 @@ class Transport(Protocol):
     def __call__(self, method: str, url: str, headers: Mapping[str, str], timeout: float) -> HttpResponse: ...
 
 
+class Poster(Protocol):
+    """본문이 있는 POST (검색 API 등). 응답 규칙은 Transport 와 같다."""
+
+    def __call__(self, url: str, headers: Mapping[str, str], body: bytes, timeout: float) -> HttpResponse: ...
+
+
+def _send(req: urllib.request.Request, timeout: float) -> HttpResponse:
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return HttpResponse(resp.status, _lower(resp.headers.items()), resp.read())
+    except urllib.error.HTTPError as e:
+        return HttpResponse(e.code, _lower(e.headers.items()), e.read())
+    # RemoteDisconnected·IncompleteRead 는 URLError 가 아니다 — http.client 예외와 OSError 도 잡는다
+    except (urllib.error.URLError, http.client.HTTPException, OSError) as e:
+        raise TransportError(f"{req.get_method()} {req.full_url.split('?', 1)[0]}: {e}") from e
+
+
 class UrllibTransport:
     def __call__(self, method: str, url: str, headers: Mapping[str, str], timeout: float) -> HttpResponse:
-        req = urllib.request.Request(url, method=method, headers=dict(headers))
-        try:
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return HttpResponse(resp.status, _lower(resp.headers.items()), resp.read())
-        except urllib.error.HTTPError as e:
-            return HttpResponse(e.code, _lower(e.headers.items()), e.read())
-        # RemoteDisconnected·IncompleteRead 는 URLError 가 아니다 — http.client 예외와 OSError 도 잡는다
-        except (urllib.error.URLError, http.client.HTTPException, OSError) as e:
-            raise TransportError(f"{method} {url.split('?', 1)[0]}: {e}") from e
+        return _send(urllib.request.Request(url, method=method, headers=dict(headers)), timeout)
+
+
+class UrllibPoster:
+    def __call__(self, url: str, headers: Mapping[str, str], body: bytes, timeout: float) -> HttpResponse:
+        return _send(urllib.request.Request(url, data=body, method="POST", headers=dict(headers)), timeout)
 
 
 def _lower(items: Iterable[tuple[str, str]]) -> dict[str, str]:

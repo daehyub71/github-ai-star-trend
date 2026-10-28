@@ -18,6 +18,7 @@ class Settings:
     work_dir: Path
     github_token: str | None = field(default=None, repr=False)
     anthropic_key: str | None = field(default=None, repr=False)
+    tavily_key: str | None = field(default=None, repr=False)
 
     def require_github_token(self) -> str:
         if not self.github_token:
@@ -35,6 +36,14 @@ class Settings:
             )
         return self.anthropic_key
 
+    def require_tavily_key(self) -> str:
+        if not self.tavily_key:
+            raise ConfigError(
+                "STARTREND_TAVILY_API_KEY 환경변수가 없다. 근거 검색(결정 46)용 Tavily 키를 "
+                "사용자 환경변수로 설정한다 (채팅·파일에 붙여 넣지 않는다)."
+            )
+        return self.tavily_key
+
 
 def load_settings(env: Mapping[str, str] | None = None, root: Path | None = None) -> Settings:
     env = os.environ if env is None else env
@@ -47,4 +56,5 @@ def load_settings(env: Mapping[str, str] | None = None, root: Path | None = None
         work_dir=Path(env["STARTREND_WORK_DIR"]) if env.get("STARTREND_WORK_DIR") else root / ".work",
         github_token=token,
         anthropic_key=key,
+        tavily_key=env.get("STARTREND_TAVILY_API_KEY", "").strip() or None,
     )

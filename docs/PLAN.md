@@ -65,6 +65,7 @@ gate · budget           인용 게이트(순수 함수) · 예산 계량기(LLM
 clients                 GitHubClient · LLMClient · DecisionClient · EvidenceSource · NotionClient   ← 인터페이스. 기본 구현은 mock
   │
 core                    config · week(일~토) · io(인코딩·원자적 쓰기·불변 가드) · hashing · models · log
+                        · evidence(근거 문서·URL 정규화) · spikes(급등일) · untrusted(외부 글 구분 태그 무력화)
 ```
 
 </details>
@@ -97,7 +98,7 @@ github-ai-star-trend/
 | classify | 랭킹 후보 + meta(판정 입력 해시) | AI 여부·유형·카테고리 | `data/repos/**/meta.json` (해시가 바뀔 때만) |
 | rank | 주간 파일 + 그 주 스냅샷(있으면, 누적 축) + 지난 주 랭킹(순위 변동) + meta 의 판정 결과(AI 탭) | 4축 × 전체·AI 탭 랭킹(판정 전이면 AI 탭 null, 판정 전 후보 수 `ai_status`) + 급등 패턴 표시 · 랭킹 진입 저장소 메타 | `data/weekly/<주>/rankings.json` (내용이 바뀔 때만) · `data/repos/**/meta.json` |
 | trends | 주간 파일 + 그 주 랭킹(AI 탭) + meta 의 판정 결과 | 카테고리(+ALL)별 증가 합계·저장소 수·AI 탭 진입 수, 판정 범위(coverage) | `data/weekly/<주>/categories.json` (내용이 바뀔 때만) |
-| evidence | 랭킹(AI 신규·재등장) | 근거 목록 + 원문 | 목록 `.work/<주>/evidence.jsonl`, 원문 `.work/<주>/raw/` |
+| evidence | 랭킹(AI 신규·재등장) + 일별 곡선의 급등일(근거 우선순위) | 근거 목록(URL·가져온 시각·해시·짧은 인용) + 출처별 수집 실패 + 원문 | 목록 `.work/<주>/evidence.jsonl`(저장소마다 한 줄), 원문 `.work/<주>/raw/<해시>.txt` |
 | analyze | 근거 + 숫자 | 카드 | `data/repos/**/card.md` |
 | brief | 랭킹 + 카드 + 카테고리 추이 | 브리핑 | `data/weekly/<주>/briefing.md` |
 | blog | 브리핑 + 랭킹 + 주목할 저장소 카드 + 견본(`docs/ref/`) | 주간 블로그 초안 1편 (견본 형식, 인용 게이트 통과) + 사진 배치 문서 + 이미지 PNG | `data/blog/<주>.md` · `<주>-images.md` |

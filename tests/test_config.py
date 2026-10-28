@@ -64,6 +64,15 @@ def test_config_require_anthropic_key_names_the_variable(tmp_path):
     assert "STARTREND_ANTHROPIC_API_KEY" in str(e.value)
 
 
+def test_config_reads_tavily_key_and_hides_it(tmp_path):
+    s = config.load_settings(env={"STARTREND_TAVILY_API_KEY": " tvly-mine "}, root=tmp_path)
+    assert s.require_tavily_key() == "tvly-mine"
+    assert "tvly-mine" not in repr(s) and "tvly-mine" not in str(s)
+    with pytest.raises(config.ConfigError) as e:
+        config.load_settings(env={}, root=tmp_path).require_tavily_key()
+    assert "STARTREND_TAVILY_API_KEY" in str(e.value)
+
+
 def test_config_default_root_is_project_root():
     s = config.load_settings(env={})
     assert (s.data_dir.parent / "pyproject.toml").exists()
