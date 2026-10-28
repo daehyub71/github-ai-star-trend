@@ -191,3 +191,21 @@ def test_cli_goldset_draft_run_needs_the_project_anthropic_key(tmp_path, capsys)
     env = _dirs(tmp_path, GITHUB_TOKEN="ghp_x", ANTHROPIC_API_KEY="sk-ant-other")
     assert main(["goldset-draft", "--run"], env=env) == 2
     assert "STARTREND_ANTHROPIC_API_KEY" in capsys.readouterr().err
+
+
+def test_cli_trends_runs_without_token(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+    from startrend.core import weekfile
+    from startrend.core.weekfile import WeekRow
+
+    w = date(2026, 10, 18)
+    weekfile.write(weekfile.week_path(tmp_path / "d", w),
+                   [WeekRow(1, "o/r1", date(2024, 1, 1), 5000, 100, False, None)])
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {}})
+    assert main(["trends", "--all"], env=_dirs(tmp_path)) == 0          # 네트워크·키 없이
+    out = json.loads(capsys.readouterr().out)
+    assert out["weeks"] == 1 and out["written"] == 1 and out["classified"] == 0
+    assert (tmp_path / "d" / "weekly" / "2026-10-18" / "categories.json").exists()

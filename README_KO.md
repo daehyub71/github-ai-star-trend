@@ -79,6 +79,8 @@ python -m startrend stars                   # 이번 주 증가 (지난 주 스�
 python -m startrend backfill --weeks 4      # 1회성 과거 소급 (52주 ≈ 15만 번 요청)
 python -m startrend rank --all              # 주간 파일이 있는 모든 주의 랭킹
 python -m startrend classify --all          # dry-run: 판정 수와 비용 범위만, API 호출 0
+python -m startrend trends --all            # 주마다 카테고리(+ALL) 추이, API 호출 0
+python -m startrend eval --gold data/eval/goldset_classify.jsonl   # dry-run, --predictions 를 주면 채점
 ```
 
 ```bash

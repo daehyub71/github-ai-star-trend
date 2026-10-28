@@ -3,11 +3,11 @@
 축: gain(지난 주 증가량) · fresh(생성 30일 이내, 누적 스타순)
     · growth(증가 ÷ 주 시작 스타, 시작 ≥ 1,000) · total(누적).
 급등 패턴은 근거 수치를 붙여 표시만 한다 — 어느 축에서도 빼지 않는다(MEASURE §5: 출시 급등을 오탐하는 사례).
-AI 탭은 Phase 2 분류 뒤에 채운다(지금은 null).
+AI 탭(P2-6)은 판정 결과(meta 의 classify)가 있으면 축 후보 순서에서 AI 를 위에서부터 채운다. 판정 전이면 null.
 랭킹 파일은 파생 데이터라 다시 만들 수 있다(내용이 바뀔 때만 쓴다) — 주간 스타 파일과 달리 불변이 아니다.
 """
 
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
@@ -99,21 +99,64 @@ def flags_for(r: WeekRow, rows: dict[int, WeekRow], week_start: date,
     return flags
 
 
-def _prev_ranks(data_dir: Path, week_start: date) -> dict[str, dict[int, int]]:
+def _prev_ranks(data_dir: Path, week_start: date) -> dict[str, dict[str, dict[int, int]]]:
+    """지난 주 순위 {탭: {축: {ID: 순위}}} — AI 탭은 지난 주 AI 탭과 비교한다."""
     p = rankings_path(data_dir, week_start - timedelta(days=7))
     if not p.exists():
         return {}
     axes = io.read_json(p).get("axes", {})
-    return {a: {e["id"]: e["rank"] for e in (axes.get(a, {}).get("all") or [])} for a in AXES}
+    return {tab: {a: {e["id"]: e["rank"] for e in (axes.get(a, {}).get(tab) or [])} for a in AXES}
+            for tab in ("all", "ai")}
+
+
+_AI_NOTE = ("축 후보(pool) 위에서부터 AI 로 판정된 저장소 — ai_status.pending_above 는 그보다 위에 있는 "
+            "판정 전 후보 수(0 이 아니면 순위가 바뀔 수 있다)")
+
+
+def _is_ai(c: Mapping[str, Any] | None) -> bool:
+    return bool(c and c.get("status") == "ok" and c.get("is_ai"))
+
+
+def ai_axes(pool_axes: Mapping[str, list[WeekRow]], cls: Mapping[int, Mapping[str, Any]], *,
+            top: int = TOP) -> tuple[dict[str, list[WeekRow]] | None, dict[str, dict[str, int]] | None]:
+    """AI 탭 (FR-4.5) — 축의 후보 순서(pool)에서 AI 로 판정된 저장소를 위에서부터 top 개.
+
+    후보 중 판정 기록이 하나도 없으면 (None, None) — 아직 분류 전이다.
+    pending_above: 마지막으로 뽑힌 AI(모자라면 후보 끝)보다 위에 있는, 판정 기록이 없는 후보 수.
+    그것이 AI 라면 순위가 바뀐다. 거절·미분류로 끝난 판정은 대기가 아니다(classify 가 다시 묻지 않는다).
+    """
+    if not any(r.id in cls for rs in pool_axes.values() for r in rs):
+        return None, None
+    tabs: dict[str, list[WeekRow]] = {}
+    status: dict[str, dict[str, int]] = {}
+    for a, rs in pool_axes.items():
+        picked: list[WeekRow] = []
+        pending = 0
+        for r in rs:
+            if len(picked) == top:
+                break
+            if r.id not in cls:
+                pending += 1
+            elif _is_ai(cls[r.id]):
+                picked.append(r)
+        tabs[a], status[a] = picked, {"found": len(picked), "pending_above": pending}
+    return tabs, status
 
 
 def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = TOP, pool: int = POOL,
              extra_totals: dict[int, WeekRow] | None = None,
+             classified: Mapping[int, Mapping[str, Any]] | None = None,
              log: Callable[[str], None] = print) -> dict[str, Any]:
+    """classified: 판정 결과 색인(meta.classified). 없으면 메타를 한 번 훑어 만든다."""
     wname = week.week_name(week_start)
     rows = weekfile.read(weekfile.week_path(data_dir, week_start))
     axes = compute_axes(rows, week_start, top=top, extra_totals=extra_totals)
+    pool_axes = compute_axes(rows, week_start, top=pool, extra_totals=extra_totals)
+    cls = meta.classified(data_dir) if classified is None else classified
+    ai_tabs, ai_status = ai_axes(pool_axes, cls, top=top)
     entrants = {r.id: r for rs in axes.values() for r in rs}
+    if ai_tabs:
+        entrants.update((r.id, r) for rs in ai_tabs.values() for r in rs)
 
     infos: dict[int, dict[str, Any]] = {}
     calls = 0
@@ -138,13 +181,15 @@ def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = T
 
     prev = _prev_ranks(data_dir, week_start)
     prior = prior_gains(data_dir, week_start)
-    out_axes: dict[str, dict[str, Any]] = {}
-    for a, rs in axes.items():
-        entries = []
+
+    def entries(rs: list[WeekRow], prev_tab: Mapping[int, int]) -> list[dict[str, Any]]:
+        out = []
         for i, r in enumerate(rs, 1):
             info = infos.get(r.id, {})
+            c = cls.get(r.id) or {}
+            ok = c.get("status") == "ok"
             start = r.stars_end - r.gain
-            entries.append({
+            out.append({
                 "rank": i, "id": r.id, "full_name": info.get("full_name", r.full_name),
                 "description": info.get("description"), "language": info.get("language"),
                 "topics": info.get("topics", []), "created": r.created.isoformat(),
@@ -152,18 +197,27 @@ def run_rank(gh: GitHubClient, *, week_start: date, data_dir: Path, top: int = T
                 "growth": round(r.gain / start, 4) if start > 0 else None,
                 "exact": r.exact, "days": list(r.days) if r.days else None,
                 "forks": info.get("forks"), "open_issues": info.get("open_issues"),
+                # 판정 결과 — 화면의 카테고리·유형 칩 (판정 전이거나 거절·미분류면 None)
+                "is_ai": c.get("is_ai") if ok else None, "type": c.get("type") if ok else None,
+                "category": c.get("category") if ok else None,
+                "secondary": c.get("secondary") if ok else None,
                 "flags": flags_for(r, rows, week_start,
                                    prior_gain=None if prior is None else prior.get(r.id, 0)),
-                "prev_rank": prev.get(a, {}).get(r.id),
+                "prev_rank": prev_tab.get(r.id),
             })
-        out_axes[a] = {"all": entries, "ai": None}
+        return out
+
+    out_axes: dict[str, dict[str, Any]] = {}
+    for a, rs in axes.items():
+        out_axes[a] = {"all": entries(rs, prev.get("all", {}).get(a, {})),
+                       "ai": entries(ai_tabs[a], prev.get("ai", {}).get(a, {})) if ai_tabs else None}
     doc = {
         "week": wname, "week_end": week.week_end(week_start).isoformat(), "top": top, "axes": out_axes,
+        "ai_status": ai_status,
         "notes": {"total": "주간 파일(증가 ≥ 10)과 스냅샷이 있으면 그 값 기준",
-                  "ai": "Phase 2 분류 뒤에 채운다",
+                  "ai": _AI_NOTE if ai_tabs else "분류 전 — classify 뒤에 채운다",
                   "pool": f"축마다 상위 {pool}개 ID — classify 가 위에서부터 AI 15개까지 판정(결정 30)"},
-        "pool": {a: [r.id for r in rs]
-                 for a, rs in compute_axes(rows, week_start, top=pool, extra_totals=extra_totals).items()},
+        "pool": {a: [r.id for r in rs] for a, rs in pool_axes.items()},
     }
     path = rankings_path(data_dir, week_start)
     written = io.write_if_changed(path, io.dumps_json(doc))

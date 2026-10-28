@@ -44,7 +44,7 @@ flowchart LR
 </details>
 
 LLM 을 부르는 단계는 `classify`·`analyze`·`brief` 셋뿐이다. 나머지는 비용 0이다.
-분류 범위가 랭킹 후보라(결정 30) 실제 실행 순서는 `stars → rank(전체 탭) → classify → rank(AI 탭 채움)` 이다.
+분류 범위가 랭킹 후보라(결정 30) 실제 실행 순서는 `stars → rank(전체 탭) → classify → rank(AI 탭 채움) → trends(카테고리 추이)` 이다.
 예산을 넘으면 LLM 단계만 멈추고 `rank`·`export` 결과는 그대로 나간다(FR-11.2).
 
 ### 1-2. 모듈 의존 (층 — 위가 아래를 쓴다, 순환 없음)
@@ -95,7 +95,8 @@ github-ai-star-trend/
 | stars | 이번 주·지난 주 스냅샷, 지난 주 랭킹 | 증가 ≥ 10 행(후보는 정밀 값·요일별, 나머지는 스냅샷 차이) | `data/stars/YYYY/<주>.csv` (불변 — 이미 있으면 건너뜀) |
 | backfill (1회) | 막 끝난 주 스냅샷 | 과거 N주 주간 파일 | `data/stars/YYYY/<주>.csv` × N (불변) · `.work/<주>/backfill.json` |
 | classify | 랭킹 후보 + meta(판정 입력 해시) | AI 여부·유형·카테고리 | `data/repos/**/meta.json` (해시가 바뀔 때만) |
-| rank | 주간 파일 + 그 주 스냅샷(있으면, 누적 축) + 지난 주 랭킹(순위 변동) | 4축 랭킹(전체 탭, AI 탭은 Phase 2) + 급등 패턴 표시 · 랭킹 진입 저장소 메타 | `data/weekly/<주>/rankings.json` (내용이 바뀔 때만) · `data/repos/**/meta.json` |
+| rank | 주간 파일 + 그 주 스냅샷(있으면, 누적 축) + 지난 주 랭킹(순위 변동) + meta 의 판정 결과(AI 탭) | 4축 × 전체·AI 탭 랭킹(판정 전이면 AI 탭 null, 판정 전 후보 수 `ai_status`) + 급등 패턴 표시 · 랭킹 진입 저장소 메타 | `data/weekly/<주>/rankings.json` (내용이 바뀔 때만) · `data/repos/**/meta.json` |
+| trends | 주간 파일 + 그 주 랭킹(AI 탭) + meta 의 판정 결과 | 카테고리(+ALL)별 증가 합계·저장소 수·AI 탭 진입 수, 판정 범위(coverage) | `data/weekly/<주>/categories.json` (내용이 바뀔 때만) |
 | evidence | 랭킹(AI 신규·재등장) | 근거 목록 + 원문 | 목록 `.work/<주>/evidence.jsonl`, 원문 `.work/<주>/raw/` |
 | analyze | 근거 + 숫자 | 카드 | `data/repos/**/card.md` |
 | brief | 랭킹 + 카드 + 카테고리 추이 | 브리핑 | `data/weekly/<주>/briefing.md` |

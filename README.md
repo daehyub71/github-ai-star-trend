@@ -79,6 +79,8 @@ python -m startrend stars                   # this week's gains (needs last week
 python -m startrend backfill --weeks 4      # one-off history backfill (52 weeks ≈ 150,000 requests)
 python -m startrend rank --all              # rankings for every week with a star file
 python -m startrend classify --all          # dry-run: counts and cost range, no API calls
+python -m startrend trends --all            # category trends (+ALL) per week, no API calls
+python -m startrend eval --gold data/eval/goldset_classify.jsonl   # dry-run; add --predictions to score
 ```
 
 ```bash

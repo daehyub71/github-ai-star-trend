@@ -48,6 +48,17 @@ class Taxonomy:
         """이전 버전 키("v1:old-id") → 지금 id."""
         return self.mapping.get(key)
 
+    def current(self, cid: str | None) -> str | None:
+        """판정 기록의 카테고리 id → 지금 id. 지금 목록에 있으면 그대로, 이전 id 면 매핑을 따른다(FR-3.4)."""
+        if cid is None:
+            return None
+        if cid in self.ids():
+            return cid
+        for key, new in self.mapping.items():
+            if key.split(":", 1)[-1] == cid:
+                return new
+        return None
+
 
 def load(path: Path) -> Taxonomy:
     d: dict[str, Any] = tomllib.loads(path.read_text(encoding="utf-8"))

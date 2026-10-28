@@ -39,6 +39,16 @@ def load(data_dir: Path, repo_id: int) -> dict[str, Any] | None:
     return dict(io.read_json(p)) if p else None
 
 
+def classified(data_dir: Path) -> dict[int, dict[str, Any]]:
+    """판정 결과 색인 {저장소 ID: classify 기록} — 메타를 한 번만 훑는다(주마다 하나씩 찾지 않게)."""
+    out: dict[int, dict[str, Any]] = {}
+    for p in sorted((data_dir / "repos").glob("*/*/meta.json")):
+        m = io.read_json(p)
+        if m.get("classify"):
+            out[int(m["id"])] = dict(m["classify"])
+    return out
+
+
 def save(data_dir: Path, m: dict[str, Any]) -> bool:
     """메타를 저장한다. 바뀐 것이 없으면 False."""
     repo_id, full_name = int(m["id"]), str(m["full_name"])

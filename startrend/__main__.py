@@ -10,6 +10,7 @@
 - goldset  : 분류 정답 세트 후보 200개 → data/eval/goldset_candidates.jsonl (FR-14.1, 결정 41)
              캐시된 Search 응답에서 설명·토픽을 읽는다 — 네트워크 0, 토큰 불필요
 - classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). 실제 판정은 P2-9 승인 뒤
+- trends   : 카테고리 추이 — 주마다 카테고리(+ALL) 증가 합계·저장소 수·AI 탭 진입 수 (FR-8.1), 호출 0
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -34,12 +35,23 @@ from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_
 from startrend.clients.llm import BatchItem, LLMRequest, MockLLM
 from startrend.clients.transport import CachingTransport, UrllibTransport
 from startrend.clients.trending import fetch_trending
-from startrend.core import snapshot, taxonomy, weekfile
+from startrend.core import meta, snapshot, taxonomy, weekfile
 from startrend.core import week as wk
 from startrend.core.config import PROJECT_ROOT, ConfigError, Settings, load_settings
 from startrend.core.io import dumps_json, read_json, read_jsonl, write_json, write_jsonl
 from startrend.core.models import Repo
-from startrend.stages import backfill, classify, contract, discover, evaluate, goldset, probe, rank, stars
+from startrend.stages import (
+    backfill,
+    classify,
+    contract,
+    discover,
+    evaluate,
+    goldset,
+    probe,
+    rank,
+    stars,
+    trends,
+)
 
 
 def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) -> int:
@@ -76,6 +88,9 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="랭킹이 있는 모든 주")
     p.add_argument("--run", action="store_true", help="실제 판정(과금) — dry-run 금액 승인 뒤")
+    p = sub.add_parser("trends", help="카테고리 추이 — 주마다 카테고리(+ALL) 집계 (호출 0, 비용 0)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--all", action="store_true", help="주간 파일이 있는 모든 주")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -92,6 +107,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _goldset(settings, args)
     if args.cmd == "classify":
         return _classify(settings, args)
+    if args.cmd == "trends":  # 정본 파일만 읽는다 — 토큰 없이 돈다
+        return _trends(settings, args)
     if args.cmd == "eval":
         return _eval(settings, args)
     if args.cmd == "goldset-draft":
@@ -247,6 +264,7 @@ def _rank(settings: Settings, token: str, args: argparse.Namespace) -> int:
         weeks = [_week_arg(args.week, today)]
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "rank", cacheable_response)
     gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
+    classified = meta.classified(settings.data_dir)   # AI 탭(P2-6) — 판정 결과 색인을 한 번만 만든다
     for w in weeks:
         if not weekfile.week_path(settings.data_dir, w).exists():
             print(f"주간 파일이 없다: {w}", file=sys.stderr)
@@ -257,7 +275,7 @@ def _rank(settings: Settings, token: str, args: argparse.Namespace) -> int:
             extra = {r.id: weekfile.WeekRow(r.id, r.full_name, r.created, r.stars, 0, False, None)
                      for r in snapshot.read(snap_path).values()}
         stats = rank.run_rank(gh, week_start=w, data_dir=settings.data_dir, extra_totals=extra,
-                              log=lambda m: print(m, flush=True))
+                              classified=classified, log=lambda m: print(m, flush=True))
         print(f"{stats['week']}: 랭킹 진입 {stats['entrants']}개 · 저장소 조회 {stats['repo_calls']}회",
               flush=True)
     return 0
@@ -335,6 +353,22 @@ def _classify(settings: Settings, args: argparse.Namespace) -> int:
     system = LLMDecider(MockLLM([]), tax).system
     est = classify.dry_run(data_dir=settings.data_dir, weeks=weeks, system_prompt=system)
     print(dumps_json({"dry_run": True, "weeks": [wk.week_name(w) for w in weeks], **est}), end="")
+    return 0
+
+
+def _trends(settings: Settings, args: argparse.Namespace) -> int:
+    if args.all:
+        weeks = [wk.parse_week(f.stem) for f in sorted((settings.data_dir / "stars").glob("*/*.csv"))]
+    else:
+        weeks = [_week_arg(args.week, date.today())]
+    for w in weeks:
+        if not weekfile.week_path(settings.data_dir, w).exists():
+            print(f"주간 파일이 없다: {w}", file=sys.stderr)
+            return 2
+    classified = meta.classified(settings.data_dir)
+    stats = trends.run_trends(data_dir=settings.data_dir, weeks=weeks, tax=_load_taxonomy(settings),
+                              classified=classified, log=lambda m: print(m, flush=True))
+    print(dumps_json({**stats, "classified": len(classified)}), end="")
     return 0
 
 

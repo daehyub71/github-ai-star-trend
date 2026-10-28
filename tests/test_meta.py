@@ -43,3 +43,13 @@ def test_meta_card_moves_with_rename(tmp_path):
 
 def test_meta_load_missing_is_none(tmp_path):
     assert meta.load(tmp_path, 123) is None
+
+
+def test_meta_classified_index_reads_every_meta_once(tmp_path):
+    # 판정 결과 색인 — 주마다 수만 건을 하나씩 찾지 않게 한 번 훑는다 (P2-6·P2-7)
+    meta.save(tmp_path, {"id": 7, "full_name": "a/b", "classify": {"status": "ok", "is_ai": True}})
+    meta.save(tmp_path, {"id": 8, "full_name": "c/d"})                     # 판정 전
+    meta.save(tmp_path, {"id": 9, "full_name": "e/f", "classify": {"status": "refused"}})
+    idx = meta.classified(tmp_path)
+    assert idx == {7: {"status": "ok", "is_ai": True}, 9: {"status": "refused"}}
+    assert meta.classified(tmp_path / "nowhere") == {}

@@ -59,6 +59,13 @@ def test_taxonomy_mapping_follows_renamed_categories(tmp_path):
     assert t.map_old("v1:gone") is None
 
 
+def test_taxonomy_current_maps_a_recorded_category_to_todays_id(tmp_path):
+    # 판정 기록은 그때의 id 를 남긴다 — 추이는 지금 id 로 모은다 (FR-3.4)
+    t = tx.load(_write(tmp_path, GOOD))
+    assert t.current("a") == "a" and t.current("old") == "a"
+    assert t.current("gone") is None and t.current(None) is None
+
+
 @pytest.mark.parametrize("bad, why", [
     (GOOD.replace('id = "b"', 'id = "a"'), "id"),
     (GOOD.replace('name = "나"', 'name = "가"'), "이름"),

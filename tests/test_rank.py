@@ -184,6 +184,73 @@ def test_rank_run_keeps_issue_and_fork_counts_without_flags(tmp_path):
     assert e["flags"] == [] and (e["open_issues"], e["forks"]) == (975, 2233)
 
 
+# --- AI 탭 (P2-6, FR-4.5) ---
+
+
+def _judge(data_dir, rid: int, *, ai: bool | None, cat: str = "rag", status: str = "ok") -> None:
+    ok = status == "ok"
+    meta.save(data_dir, {"id": rid, "full_name": f"o{rid}/r{rid}", "classify": {
+        "status": status, "is_ai": ai if ok else None, "type": "도구/라이브러리" if ok else None,
+        "category": cat if (ok and ai) else None, "secondary": None}})
+
+
+def _six(tmp_path) -> dict[int, WeekRow]:
+    rows = {i: row(i, 5000 + 100 * i, 100 * i) for i in range(1, 7)}   # 증가 순서: 6 > 5 > … > 1
+    weekfile.write(weekfile.week_path(tmp_path, W), list(rows.values()))
+    return rows
+
+
+def test_rank_ai_tab_takes_ai_repos_in_axis_order(tmp_path):
+    rows = _six(tmp_path)
+    for i, ai in ((6, False), (5, True), (4, False), (3, True), (2, True), (1, False)):
+        _judge(tmp_path, i, ai=ai, cat="mcp-tools" if i == 3 else "rag")
+    rank.run_rank(_gh(rows), week_start=W, data_dir=tmp_path, top=2, log=lambda m: None)
+    out = io.read_json(rank.rankings_path(tmp_path, W))
+    gain = out["axes"]["gain"]
+    assert [e["id"] for e in gain["all"]] == [6, 5]
+    assert [(e["id"], e["rank"], e["category"]) for e in gain["ai"]] == [(5, 1, "rag"), (3, 2, "mcp-tools")]
+    # 전체 탭 항목에도 판정 결과가 붙는다 — 화면의 카테고리·유형 칩
+    assert gain["all"][0]["is_ai"] is False and gain["all"][1]["type"] == "도구/라이브러리"
+    assert out["ai_status"]["gain"] == {"found": 2, "pending_above": 0}
+
+
+def test_rank_ai_tab_counts_pending_candidates_above_the_cut(tmp_path):
+    # 15번째 AI 보다 위에 아직 판정 안 된 후보가 있으면, 그것이 AI 일 때 순위가 바뀐다 — 그 수를 남긴다
+    rows = _six(tmp_path)
+    _judge(tmp_path, 5, ai=True)
+    _judge(tmp_path, 4, ai=None, status="refused")      # 거절로 끝난 판정은 대기가 아니다
+    _judge(tmp_path, 2, ai=True)
+    rank.run_rank(_gh(rows), week_start=W, data_dir=tmp_path, top=2, log=lambda m: None)
+    out = io.read_json(rank.rankings_path(tmp_path, W))
+    assert [e["id"] for e in out["axes"]["gain"]["ai"]] == [5, 2]
+    assert out["ai_status"]["gain"] == {"found": 2, "pending_above": 2}   # 6 과 3
+
+
+def test_rank_ai_tab_prev_rank_comes_from_last_weeks_ai_tab(tmp_path):
+    prev_w = date(2026, 10, 11)
+    weekfile.write(weekfile.week_path(tmp_path, prev_w),
+                   [row(1, 4700, 500), row(2, 8100, 100), row(3, 3000, 50)])
+    cur = {1: row(1, 5000, 300), 2: row(2, 9000, 900), 3: row(3, 3100, 100)}
+    weekfile.write(weekfile.week_path(tmp_path, W), list(cur.values()))
+    _judge(tmp_path, 1, ai=True)
+    _judge(tmp_path, 2, ai=False)
+    _judge(tmp_path, 3, ai=True)
+    gh = _gh(cur)
+    rank.run_rank(gh, week_start=prev_w, data_dir=tmp_path, top=2, log=lambda m: None)
+    rank.run_rank(gh, week_start=W, data_dir=tmp_path, top=2, log=lambda m: None)
+    gain = io.read_json(rank.rankings_path(tmp_path, W))["axes"]["gain"]
+    assert [(e["id"], e["rank"], e["prev_rank"]) for e in gain["ai"]] == [(1, 1, 1), (3, 2, 2)]
+    assert [(e["id"], e["prev_rank"]) for e in gain["all"]] == [(2, 2), (1, 1)]
+
+
+def test_rank_ai_tab_stays_null_before_any_classification(tmp_path):
+    rows = _six(tmp_path)
+    rank.run_rank(_gh(rows), week_start=W, data_dir=tmp_path, top=2, log=lambda m: None)
+    out = io.read_json(rank.rankings_path(tmp_path, W))
+    assert out["axes"]["gain"]["ai"] is None and out["ai_status"] is None
+    assert out["axes"]["gain"]["all"][0]["is_ai"] is None
+
+
 def test_rank_tracked_names_from_rankings(tmp_path):
     rows = {1: row(1, 5000, 300), 2: row(2, 9000, 900)}
     weekfile.write(weekfile.week_path(tmp_path, W), list(rows.values()))
