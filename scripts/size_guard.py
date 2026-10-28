@@ -5,11 +5,13 @@
   — 주간 스타 파일(data/stars/**.csv)만 2MB (결정 48: 최근 주 1.2~1.3MB, MEASURE §14)
 - 한 커밋에 data/ 가 5MB 넘게 늘어나는 것 (주간 실행 한 번은 약 1.5MB)
 - ASCII 가 아닌 파일명 (루트 규칙: NFD/NFC 차이로 Vercel 배포 실패 사례)
+- data/ 아래 LLM 카드·브리핑 (결정 53: 사람이 검토하지 않은 LLM 글은 공개 저장소에 커밋하지 않는다)
 
     .\\.venv\\Scripts\\python.exe scripts\\size_guard.py --staged
 """
 
 import argparse
+import re
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -19,6 +21,7 @@ MB = 1_048_576
 MAX_FILE = MB
 MAX_STAR_FILE = 2 * MB  # 결정 48 — 증가 ≥ 10 행을 모두 두는 주간 스타 파일
 MAX_DATA_GROWTH = 5 * MB  # 주간 실행 한 번(스타 파일 + 랭킹 + 메타)은 약 1.5MB — MEASURE §14
+_LLM_TEXT = re.compile(r"^data/(?:.+/)?(?:card|briefing)\.md$|^data/cards/")   # 결정 53
 
 
 @dataclass(frozen=True)
@@ -34,6 +37,8 @@ def check(entries: list[Entry], max_file: int = MAX_FILE,
     for e in entries:
         if not e.path.isascii():
             violations.append(f"{e.path}: 파일명은 ASCII 만 쓴다")
+        if _LLM_TEXT.match(e.path):
+            violations.append(f"{e.path}: LLM 카드·브리핑은 공개 저장소에 커밋하지 않는다 (결정 53)")
         limit = max_star_file if _is_star_file(e.path) else max_file
         if e.new_size > limit:
             violations.append(

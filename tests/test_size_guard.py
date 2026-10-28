@@ -62,6 +62,22 @@ def test_size_guard_growth_uses_delta_not_total():
     assert sg.check(entries, max_data_growth=5 * MB) == []
 
 
+@pytest.mark.parametrize("path", [
+    "data/repos/ab/o__r/card.md",
+    "data/weekly/2026-10-18/briefing.md",
+    "data/cards/o__r.md",
+])
+def test_size_guard_keeps_llm_cards_out_of_the_public_repo(path):
+    # 결정 53: 사람이 검토하지 않은 LLM 카드·브리핑은 공개 저장소에 커밋하지 않는다 — 코드가 막는다
+    v = sg.check([sg.Entry(path, 0, 100)])
+    assert len(v) == 1 and "결정 53" in v[0]
+
+
+def test_size_guard_allows_public_data_next_to_cards():
+    ok = ["data/repos/ab/o__r/meta.json", "data/weekly/2026-10-18/rankings.json", "docs/cards-design.md"]
+    assert sg.check([sg.Entry(p, 0, 100) for p in ok]) == []
+
+
 def test_size_guard_rejects_non_ascii_filename():
     # 루트 규칙: 리포 파일명은 ASCII 만 (NFD/NFC 차이로 Vercel 배포 실패 사례)
     v = sg.check([sg.Entry("data/한글.json", 0, 10)])
