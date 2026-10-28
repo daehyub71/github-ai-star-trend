@@ -23,6 +23,10 @@ from startrend.budget import BudgetExceeded
 from startrend.clients.llm import LLMClient, LLMRequest, Usage, cost, request_tokens
 from startrend.core import evidence as ev
 from startrend.core import io, spikes, untrusted, week, weekfile
+from startrend.core.cards import CardStore as CardStore
+from startrend.core.cards import StoredCard as StoredCard
+from startrend.core.cards import front as _front
+from startrend.core.cards import sections as _sections
 from startrend.core.evidence import Target
 from startrend.core.spikes import Spike
 
@@ -416,17 +420,6 @@ _METRIC = re.compile(r"(?<![\d.,-])(?:\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?\s*(?:[kKm
 _MD_LINK = re.compile(r"\[[^\]]*\]\([^)]*\)")
 
 
-def _sections(markdown: str) -> dict[str, str]:
-    return {h: b for h, b in re.findall(r"(?ms)^## (.+?)\n(.*?)(?=^## |\Z)", markdown)}
-
-
-def _front(markdown: str) -> dict[str, str]:
-    """카드 앞머리(--- 사이 key: value)."""
-    if not markdown.startswith("---"):
-        return {}
-    return dict(re.findall(r"(?m)^(\w+): (.*)$", markdown.split("---")[1]))
-
-
 def check_card(markdown: str, *, row: weekfile.WeekRow | None) -> dict[str, Any]:
     """카드 품질 — 8섹션(순서 포함) · 인용 게이트 통과율 · ② 숫자 = 주간 파일 값 ·
     LLM 글의 지표 숫자(경고)."""
@@ -471,33 +464,7 @@ def check_week(data_dir: Path, work_dir: Path, week_start: date) -> dict[str, di
     return out
 
 
-# --- 카드 보관소와 재등장 (P3-10, FR-6.1) ---
-
-
-@dataclass
-class StoredCard:
-    markdown: str
-    meta: dict[str, Any]
-
-
-class CardStore:
-    """저장소마다 최신 카드와 그때의 상태(스타·README 해시·릴리스·근거 URL)를 둔다. 열쇠는 저장소 숫자 ID.
-
-    어디에 둘지는 결정 53(공개 저장소 밖)에 따라 Phase 5 에서 정한다 — 그때까지 `.work/cards/`.
-    """
-
-    def __init__(self, root: Path):
-        self.root = root
-
-    def load(self, repo_id: int) -> StoredCard | None:
-        md, meta = self.root / f"{repo_id}.md", self.root / f"{repo_id}.json"
-        if not (md.exists() and meta.exists()):
-            return None
-        return StoredCard(io.read_text(md), io.read_json(meta))
-
-    def save(self, repo_id: int, markdown: str, meta: Mapping[str, Any]) -> None:
-        io.write_text_atomic(self.root / f"{repo_id}.md", markdown)
-        io.write_json(self.root / f"{repo_id}.json", dict(meta))
+# --- 카드 보관소와 재등장 (P3-10, FR-6.1) — 보관소는 core.cards (brief 도 읽는다) ---
 
 
 def _tag(d: ev.Evidence) -> str:

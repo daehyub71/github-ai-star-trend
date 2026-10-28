@@ -14,7 +14,10 @@
 - evidence : 근거 수집 (FR-5) — 그 주 AI 탭 저장소의 GitHub·HN·GeekNews·패키지·웹 검색 근거
              → .work/<주>/evidence.jsonl. 기본은 계획만(호출 0). --run 은 무료 API·Tavily 무료 크레딧
 - analyze  : 심층 카드 (FR-6) — 근거 + 숫자 → 8섹션 카드, 인용 게이트 → .work/<주>/cards/ (D-23 전까지).
-             기본은 dry-run(호출 0). --run 은 일반 호출(과금, --cap 상한)
+             기본은 dry-run(호출 0). --run 은 일반 호출(과금, --cap 상한).
+             다시 들어온 저장소는 변경 기록만(비용 0)
+- brief    : 주간 브리핑 (FR-8) — 랭킹·카테고리 추이·카드 → .work/<주>/briefing.md (결정 53).
+             기본은 dry-run(호출 0). --run 은 주 1회 호출(과금)
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -55,6 +58,7 @@ from startrend.core.models import Repo
 from startrend.stages import (
     analyze,
     backfill,
+    brief,
     classify,
     contract,
     discover,
@@ -132,6 +136,10 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
                         "다음 주에 '다시 등장'으로 이어진다")
     p.add_argument("--force-new", action="store_true",
                    help="보관소에 카드가 있어도 새로 쓴다(과금). 기본은 다시 등장하면 변경 기록만(비용 0)")
+    p = sub.add_parser("brief", help="주간 브리핑(FR-8) — 기본은 dry-run(호출 0). --run 은 과금(주 1회 호출)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
+    p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -160,6 +168,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _evidence(settings, args)
     if args.cmd == "analyze":   # dry-run 은 키 없이
         return _analyze(settings, args)
+    if args.cmd == "brief":     # dry-run 은 키 없이
+        return _brief(settings, args)
     if args.cmd == "eval":
         return _eval(settings, args)
     if args.cmd == "goldset-draft":
@@ -571,6 +581,34 @@ def _analyze(settings: Settings, args: argparse.Namespace) -> int:
                {**summary, "ledger": meter.ledger})
     print(dumps_json(summary), end="")
     return 0 if stats["stopped"] is None else 3
+
+
+def _brief(settings: Settings, args: argparse.Namespace) -> int:
+    w = _week_arg(args.week, date.today())
+    names = {c.id: c.name for c in _load_taxonomy(settings).categories}
+    store = analyze.CardStore(settings.work_dir / "cards")     # 결정 53 — analyze 와 같은 보관소
+    try:
+        bi = brief.load_input(settings.data_dir, store, w, names=names)
+    except FileNotFoundError as e:
+        print(e, file=sys.stderr)
+        return 2
+    if not args.run:
+        est = brief.dry_run(brief.BriefWriter(MockLLM([])), bi)
+        print(dumps_json({"dry_run": True, "week": wk.week_name(w), "cap_usd": args.cap, **est}), end="")
+        return 0
+    try:
+        key = settings.require_anthropic_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    writer = brief.BriefWriter(meter)
+    stats = brief.run_brief(writer, bi, work_dir=settings.work_dir, today=date.today(),
+                            log=lambda m: print(m, flush=True))
+    print(dumps_json({**stats, "week": wk.week_name(w), "spent_usd": round(meter.spent, 4),
+                      "cap_usd": args.cap, "ledger": meter.ledger, "fingerprint": writer.fingerprint}),
+          end="")
+    return 0 if stats["written"] else 3
 
 
 def _eval_summary(r: Mapping[str, Any], run: Path) -> dict[str, Any]:

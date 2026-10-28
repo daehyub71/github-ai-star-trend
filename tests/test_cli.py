@@ -248,6 +248,21 @@ def test_cli_analyze_without_evidence_says_what_to_run_first(tmp_path, capsys):
     assert "evidence" in capsys.readouterr().err
 
 
+def test_cli_brief_defaults_to_dry_run_without_keys(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+
+    e = {"id": 1, "full_name": "o/r1", "category": None, "description": "d"}
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {"gain": {"all": [e], "ai": [e]}}})
+    assert main(["brief", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["dry_run"] is True and out["llm_calls"] == 1 and out["repos"] == 1
+    assert main(["brief", "--week", "2026-10-18", "--run"], env=_dirs(tmp_path)) == 2   # 키 없음
+    assert main(["brief", "--week", "2026-10-11"], env=_dirs(tmp_path)) == 2            # 랭킹 없음
+
+
 def test_cli_evidence_run_needs_keys(tmp_path, capsys):
     assert main(["evidence", "--week", "2026-10-18", "--run"], env=_dirs(tmp_path)) == 2
 
