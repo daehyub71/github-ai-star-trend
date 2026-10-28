@@ -388,7 +388,8 @@ def _classify(settings: Settings, args: argparse.Namespace) -> int:
         print(m, flush=True)
 
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "classify", cacheable_response)
-    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
+    # 첫 전수 분류는 GitHub 호출이 수천 번이다 — 시간당 한도에 걸리면 풀릴 때까지 기다린다(빠뜨리지 않게)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache, max_rate_wait=3700.0, max_rate_waits=100)
     meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)   # 일반 호출(거절 → 대체 모델)도 같은 상한
     decider = LLMDecider(meter, tax)
     batch_client = ClaudeBatch(key)
