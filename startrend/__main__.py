@@ -126,6 +126,7 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--cap", type=float, default=3.0,
                    help="이번 실행 예산 상한(달러) — 부르기 전 최악 비용으로 막는다")
     p.add_argument("--effort", default=analyze.EFFORT, choices=["low", "medium", "high"])
+    p.add_argument("--check", action="store_true", help="그 주에 쓴 카드의 품질 검사만(호출 0, FR-14.4)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -507,6 +508,11 @@ def _evidence(settings: Settings, args: argparse.Namespace) -> int:
 
 def _analyze(settings: Settings, args: argparse.Namespace) -> int:
     w = _week_arg(args.week, date.today())
+    if args.check:
+        res = analyze.check_week(settings.data_dir, settings.work_dir, w)
+        ok = sum(q["ok"] for q in res.values())
+        print(dumps_json({"week": wk.week_name(w), "cards": len(res), "ok": ok, "results": res}), end="")
+        return 0 if all(q["ok"] for q in res.values()) else 1
     repos = [r.strip() for r in args.repos.split(",") if r.strip()] if args.repos else None
     try:
         inputs = analyze.load_inputs(settings.data_dir, settings.work_dir, w, repos=repos)

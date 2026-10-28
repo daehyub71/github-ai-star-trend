@@ -74,6 +74,7 @@ class CardInput:
     docs: list[ev.Evidence]                   # 원문이 붙은 근거 — 번호는 1부터 이 순서
     failed_sources: list[str] = field(default_factory=list)
     spikes: list[Spike] = field(default_factory=list)
+    row: weekfile.WeekRow | None = None       # 그 주 주간 파일 행 — 품질 검사의 숫자 기준(FR-2)
 
 
 def load_inputs(data_dir: Path, work_dir: Path, week_start: date, *,
@@ -98,7 +99,7 @@ def load_inputs(data_dir: Path, work_dir: Path, week_start: date, *,
         created = date.fromisoformat(e["created"]) if e.get("created") else None
         docs = [d for d in c.docs if not _after(d, c.target.until)]
         out.append(CardInput(c.target, e, ranks[rid], docs, c.failed_sources,
-                             spikes.find_spikes(daily, created=created)))
+                             spikes.find_spikes(daily, created=created), rows.get(week_start, {}).get(rid)))
     return out
 
 
@@ -401,6 +402,74 @@ def render_card(ci: CardInput, dr: Draft, *, names: Mapping[str, str], verified_
     return Card("\n".join(front) + _fill_empty(res.body), res, dr)
 
 
+# --- 품질 검사 (P3-14, FR-14.4) — 코드 검사. 사용자 평가는 MEASURE §23 에 함께 적는다 ---
+
+
+SECTIONS = ("① 3줄 요약", "② 숫자", "③ 왜 지금 떴나", "④ 무엇인가", "⑤ 비교", "⑥ 활용사례", "⑦ 한계·리스크",
+            "⑧ 변경 기록")
+LLM_SECTIONS = ("① 3줄 요약", "③ 왜 지금 떴나", "④ 무엇인가", "⑤ 비교", "⑥ 활용사례", "⑦ 한계·리스크")
+# 지표로 보이는 숫자: 천 단위 쉼표, 또는 스타·다운로드·포크가 붙은 수 (버전·날짜는 아니다)
+# 날짜 일부(2026-09-17)나 사이트 이름(star-history)은 아니다 — 2026-10-28 시범 카드의 오탐
+_METRIC = re.compile(r"(?<![\d.,-])(?:\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?\s*(?:[kKmM]|만|천)?\s*"
+                     r"(?:스타|stars?|다운로드|downloads?|포크|forks?)(?![\w-]))")
+_MD_LINK = re.compile(r"\[[^\]]*\]\([^)]*\)")
+
+
+def _sections(markdown: str) -> dict[str, str]:
+    return {h: b for h, b in re.findall(r"(?ms)^## (.+?)\n(.*?)(?=^## |\Z)", markdown)}
+
+
+def _front(markdown: str) -> dict[str, str]:
+    """카드 앞머리(--- 사이 key: value)."""
+    if not markdown.startswith("---"):
+        return {}
+    return dict(re.findall(r"(?m)^(\w+): (.*)$", markdown.split("---")[1]))
+
+
+def check_card(markdown: str, *, row: weekfile.WeekRow | None) -> dict[str, Any]:
+    """카드 품질 — 8섹션(순서 포함) · 인용 게이트 통과율 · ② 숫자 = 주간 파일 값 ·
+    LLM 글의 지표 숫자(경고)."""
+    markdown = markdown.replace("\r\n", "\n")        # 사람이 Windows 에서 고친 카드도 같게 읽는다
+    secs = _sections(markdown)
+    heads = [h for h in secs if h in SECTIONS]
+    missing = [s for s in SECTIONS if s not in secs]
+    front = _front(markdown)
+    checked, excluded = int(front.get("gate_checked") or 0), int(front.get("gate_excluded") or 0)
+    mismatches: list[dict[str, str]] = []
+    if row is not None:
+        table = dict(re.findall(r"(?m)^\| (.+?) \| (.+?) \|$", secs.get("② 숫자", "")))
+        for fld, expected in (("누적 스타", f"{row.stars_end:,}"), ("이번 주 증가", f"+{row.gain:,}")):
+            got = table.get(fld, "").split(" ")[0]
+            if got != expected:
+                mismatches.append({"field": fld, "card": got, "expected": expected})
+    numbers = []
+    for s in LLM_SECTIONS:
+        for line in secs.get(s, "").splitlines():
+            if line.startswith("|"):
+                continue                                  # ⑦ 사실 표는 코드가 채운다
+            numbers += [{"section": s, "text": m.group(0)} for m in _METRIC.finditer(_MD_LINK.sub("", line))]
+    return {"ok": not missing and heads == list(SECTIONS) and not mismatches,
+            "missing_sections": missing, "order_ok": heads == [s for s in SECTIONS if s in secs],
+            "number_mismatches": mismatches, "number_check": "skipped" if row is None else "done",
+            "gate_checked": checked, "gate_excluded": excluded,
+            "gate_pass_rate": round(1 - excluded / checked, 4) if checked else None, "llm_numbers": numbers}
+
+
+def check_week(data_dir: Path, work_dir: Path, week_start: date) -> dict[str, dict[str, Any]]:
+    """그 주에 쓴 카드를 다시 검사한다(호출 0) — 결과는 카드 옆 <slug>.check.json 에도 남긴다."""
+    wp = weekfile.week_path(data_dir, week_start)
+    rows = weekfile.read(wp) if wp.exists() else {}
+    out: dict[str, dict[str, Any]] = {}
+    for p in sorted(card_dir(work_dir, week_start).glob("*.md")):
+        md = io.read_text(p).replace("\r\n", "\n")
+        front = _front(md)
+        rid = int(front["repo_id"]) if front.get("repo_id", "").isdigit() else None
+        q = check_card(md, row=rows.get(rid) if rid is not None else None)
+        io.write_json(p.with_suffix(".check.json"), q)
+        out[front.get("repo", p.stem)] = q
+    return out
+
+
 # --- 실행 ---
 
 
@@ -416,7 +485,8 @@ def run_analyze(writer: CardWriter, inputs: Sequence[CardInput], *, work_dir: Pa
                 names: Mapping[str, str], repo_exists: Callable[[str], bool], today: date,
                 log: Callable[[str], None] = print) -> dict[str, Any]:
     out_dir = card_dir(work_dir, week_start)
-    stats: dict[str, Any] = {"cards": 0, "failed": [], "excluded_claims": 0, "stopped": None}
+    stats: dict[str, Any] = {"cards": 0, "failed": [], "excluded_claims": 0, "stopped": None,
+                             "quality_ok": 0, "quality_notes": []}
     for i, ci in enumerate(inputs, 1):
         name = ci.target.full_name
         try:
@@ -441,9 +511,15 @@ def run_analyze(writer: CardWriter, inputs: Sequence[CardInput], *, work_dir: Pa
                        "excluded": card.gate.log(), "verified_repos": verified,
                        "unverified_repos": sorted(candidates - set(verified))})
         io.write_json(out_dir / f"{slug}.draft.json", asdict(dr))
+        q = check_card(card.markdown, row=ci.row)
+        io.write_json(out_dir / f"{slug}.check.json", q)
         stats["cards"] += 1
         stats["excluded_claims"] += len(card.gate.excluded)
-        log(f"  [{i}/{len(inputs)}] {name}: 카드 작성 — 게이트 제외 {len(card.gate.excluded)}건")
+        stats["quality_ok"] += int(q["ok"])
+        if not q["ok"] or q["llm_numbers"]:
+            stats["quality_notes"].append(name)
+        log(f"  [{i}/{len(inputs)}] {name}: 카드 작성 — 게이트 제외 {len(card.gate.excluded)}건"
+            + ("" if q["ok"] else " · 품질 검사 실패"))
     return stats
 
 

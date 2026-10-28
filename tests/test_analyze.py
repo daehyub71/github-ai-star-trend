@@ -228,6 +228,49 @@ def test_analyze_change_log_records_first_write():
     assert "- 2026-10-28 처음 작성 — 기준일 2026-10-24 · 근거 5건" in body
 
 
+# --- 품질 검사 (P3-14, FR-14.4) ---
+
+
+ROW = WeekRow(1, "o/r", date(2026, 9, 1), 19218, 17188, True, tuple(ENTRY["days"]))
+
+
+def test_analyze_check_passes_a_rendered_card():
+    q = an.check_card(_render().markdown, row=ROW)
+    assert q["ok"] is True and q["missing_sections"] == [] and q["order_ok"] is True
+    assert q["number_mismatches"] == [] and q["gate_pass_rate"] == 1.0 and q["llm_numbers"] == []
+
+
+def test_analyze_check_finds_missing_sections_and_wrong_numbers():
+    md = _render().markdown.replace("## ⑤ 비교", "## 비교").replace("| 이번 주 증가 | +17,188 |",
+                                                                    "| 이번 주 증가 | +17,000 |")
+    q = an.check_card(md, row=ROW)
+    assert q["ok"] is False and q["missing_sections"] == ["⑤ 비교"]
+    assert q["number_mismatches"] == [{"field": "이번 주 증가", "card": "+17,000", "expected": "+17,188"}]
+
+
+def test_analyze_check_reports_gate_pass_rate():
+    d = draft(use_cases=[{"text": "근거 없는 후기", "sources": [], "basis": "확인"}])
+    q = an.check_card(_render(d).markdown, row=ROW)
+    assert q["gate_excluded"] == 1 and 0 < q["gate_pass_rate"] < 1 and q["ok"] is True
+
+
+def test_analyze_check_warns_when_the_llm_writes_metrics():
+    # FR-6.5 — 지표 숫자는 코드 표가 보여 준다. LLM 글에 스타 수·다운로드 수가 있으면 경고(카드는 그대로)
+    d = draft(summary={"what": "스타 19,218개를 모은 라이브러리다.", "why_now": "x", "meaning": "y"},
+              use_cases=[{"text": "주간 다운로드 7,000회", "sources": ["E4"], "basis": "확인"}])
+    q = an.check_card(_render(d).markdown, row=ROW)
+    assert len(q["llm_numbers"]) == 2 and q["ok"] is True
+    assert an.check_card(_render(draft(what_it_is="v1.0 과 2026-10-19 은 숫자 경고가 아니다.")).markdown,
+                         row=ROW)["llm_numbers"] == []
+    # 회귀(2026-10-28 시범 카드): 날짜 뒤의 사이트 이름을 지표로 잘못 잡았다
+    quiet = draft(why_now=[{"date": "2026-09-17", "text": "2026-09-17 star-history 기록상 트렌딩 1위를 했다.",
+                            "sources": ["E3"], "basis": "확인"}])
+    assert an.check_card(_render(quiet).markdown, row=ROW)["llm_numbers"] == []
+    loud = draft(what_it_is="출시 일주일 만에 1.2k stars 와 300 forks 를 모았다.")
+    assert [n["text"] for n in an.check_card(_render(loud).markdown, row=ROW)["llm_numbers"]] == [
+        "1.2k stars", "300 forks"]
+
+
 # --- 실행 ---
 
 
@@ -282,7 +325,21 @@ def test_analyze_run_writes_cards_and_gate_logs_to_work(tmp_path):
     assert "## ⑧ 변경 기록" in card and "langchain-ai/langchain" in card
     log = json.loads((out / "o__r.gate.json").read_text(encoding="utf-8"))
     assert log["excluded"] == [] and log["kept_links"] >= 4
+    q = json.loads((out / "o__r.check.json").read_text(encoding="utf-8"))
+    assert q["ok"] is True and stats["quality_ok"] == 1
     assert json.loads((out / "o__r.draft.json").read_text(encoding="utf-8"))["summary"]["what"]
+
+
+def test_analyze_check_week_rechecks_written_cards_without_calls(tmp_path):
+    data, work = _week_files(tmp_path)
+    w, _ = _writer([resp(draft())])
+    an.run_analyze(w, an.load_inputs(data, work, W), work_dir=work, week_start=W, names=NAMES,
+                   repo_exists=lambda r: True, today=date(2026, 10, 28), log=lambda m: None)
+    card = work / "2026-10-18" / "cards" / "o__r.md"
+    card.write_text(card.read_text(encoding="utf-8").replace("+17,188", "+1"), encoding="utf-8")
+    res = an.check_week(data, work, W)
+    assert list(res) == ["o/r"] and res["o/r"]["ok"] is False
+    assert res["o/r"]["number_mismatches"][0]["expected"] == "+17,188"
 
 
 def test_analyze_run_stops_on_budget_and_keeps_written_cards(tmp_path):
