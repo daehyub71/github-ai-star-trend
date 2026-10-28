@@ -137,6 +137,44 @@ def test_classify_run_sends_each_round_as_one_batch(tmp_path):
     assert m["classify"]["fingerprint"] == decider.fingerprint
 
 
+def _answering_runner(calls: list[tuple[str, int]], fail_on: int | None = None):
+    """짝수 ID 는 AI(rag), 홀수는 비AI 로 답하는 가짜 Batch. fail_on 번째 호출에서 예산 초과."""
+    def runner(reqs: dict[str, llm.LLMRequest], tag: str) -> dict[str, llm.BatchItem]:
+        calls.append((tag, len(reqs)))
+        if fail_on is not None and len(calls) == fail_on:
+            raise BudgetExceeded("cap")
+        out = {}
+        for cid in reqs:
+            rid = int(cid[1:].split("-")[0])
+            body = ({"is_ai": True, "type": "도구/라이브러리", "category": "rag"} if rid % 2 == 0
+                    else {"is_ai": False, "type": "교육자료", "category": "none"})
+            text = json.dumps({**body, "secondary": "none", "reason": "x"}, ensure_ascii=False)
+            resp = llm.LLMResponse(text, "end_turn", llm.Usage(1000, 50), "claude-opus-5-5")
+            out[cid] = llm.BatchItem(resp)
+        return out
+    return runner
+
+
+def test_classify_run_splits_a_round_into_chunks(tmp_path):
+    # 묶음 전체의 최악 비용이 상한을 넘어 통째로 막히지 않게, 조각으로 나눠 차례로 보낸다(P2-9)
+    gh = _setup(tmp_path)
+    calls: list[tuple[str, int]] = []
+    decider = dc.LLMDecider(llm.MockLLM([]), TAX)
+    stats = cl.run_classify(gh, decider, data_dir=tmp_path, weeks=[W], need=3, ratio=0.5,
+                            batch=_answering_runner(calls), chunk=4, log=lambda m: None)
+    assert calls == [("1-c1-1", 4), ("1-c2-1", 2)] and stats["decided"] == 6
+
+
+def test_classify_run_keeps_earlier_chunks_when_a_later_one_hits_the_budget(tmp_path):
+    gh = _setup(tmp_path)
+    calls: list[tuple[str, int]] = []
+    decider = dc.LLMDecider(llm.MockLLM([]), TAX)
+    stats = cl.run_classify(gh, decider, data_dir=tmp_path, weeks=[W], need=3, ratio=0.5,
+                            batch=_answering_runner(calls, fail_on=2), chunk=4, log=lambda m: None)
+    assert stats["stopped"] == "budget" and stats["decided"] == 4
+    assert sum(1 for i in range(7, 13) if (meta.load(tmp_path, i) or {}).get("classify")) == 4
+
+
 def test_classify_unclassified_is_not_retried_and_does_not_count_as_ai(tmp_path):
     gh = _setup(tmp_path, n=4)
     table = {4: dc.Decision(status="unclassified", error="x"), 3: dc.Decision(status="refused"),

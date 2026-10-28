@@ -9,7 +9,7 @@
 - rank     : 주간 파일 → data/weekly/<주>/rankings.json · 메타 (FR-4)
 - goldset  : 분류 정답 세트 후보 200개 → data/eval/goldset_candidates.jsonl (FR-14.1, 결정 41)
              캐시된 Search 응답에서 설명·토픽을 읽는다 — 네트워크 0, 토큰 불필요
-- classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). 실제 판정은 P2-9 승인 뒤
+- classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). --run 은 Batch 조각으로 판정(과금)
 - trends   : 카테고리 추이 — 주마다 카테고리(+ALL) 증가 합계·저장소 수·AI 탭 진입 수 (FR-8.1), 호출 0
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
@@ -18,6 +18,7 @@
 
 import argparse
 import base64
+import hashlib
 import io as _stdio
 import json
 import sys
@@ -90,6 +91,12 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="랭킹이 있는 모든 주")
     p.add_argument("--run", action="store_true", help="실제 판정(과금) — dry-run 금액 승인 뒤")
+    p.add_argument("--cap", type=float, default=10.0,
+                   help="이번 실행 예산 상한(달러) — 주간 기본 $10(결정 31). 첫 전수 분류는 승인한 금액")
+    p.add_argument("--chunk", type=int, default=400,
+                   help="한 Batch 에 보낼 최대 건수 — 실제 지출로 상한을 지킨다")
+    p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
+    p.add_argument("--no-batch", action="store_true", help="Batch 대신 일반 호출 — 빠르지만 할인 없음(2배)")
     p = sub.add_parser("trends", help="카테고리 추이 — 주마다 카테고리(+ALL) 집계 (호출 0, 비용 0)")
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="주간 파일이 있는 모든 주")
@@ -359,20 +366,55 @@ def _load_taxonomy(settings: Settings) -> taxonomy.Taxonomy:
 
 
 def _classify(settings: Settings, args: argparse.Namespace) -> int:
-    if args.run:
-        print("실제 판정은 아직 열지 않았다 — 정답 세트 비교(D-16)와 dry-run 금액 승인(P2-9) 뒤에 연다 "
-              "(Batch 경로 P2-2 는 준비됨)", file=sys.stderr)
-        return 2
     if args.all:
         files = sorted((settings.data_dir / "weekly").glob("*/rankings.json"))
         weeks = [wk.parse_week(f.parent.name) for f in files]
     else:
         weeks = [_week_arg(args.week, date.today())]
     tax = _load_taxonomy(settings)
-    system = LLMDecider(MockLLM([]), tax).system
-    est = classify.dry_run(data_dir=settings.data_dir, weeks=weeks, system_prompt=system)
-    print(dumps_json({"dry_run": True, "weeks": [wk.week_name(w) for w in weeks], **est}), end="")
-    return 0
+    if not args.run:
+        system = LLMDecider(MockLLM([]), tax).system
+        est = classify.dry_run(data_dir=settings.data_dir, weeks=weeks, system_prompt=system)
+        print(dumps_json({"dry_run": True, "weeks": [wk.week_name(w) for w in weeks], **est}), end="")
+        return 0
+    try:
+        token = settings.require_github_token()
+        key = settings.require_anthropic_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+
+    def log(m: str) -> None:
+        print(m, flush=True)
+
+    cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "classify", cacheable_response)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
+    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)   # 일반 호출(거절 → 대체 모델)도 같은 상한
+    decider = LLMDecider(meter, tax)
+    batch_client = ClaudeBatch(key)
+    states = settings.work_dir / "batches"
+
+    def runner(reqs: dict[str, LLMRequest], tag: str) -> dict[str, BatchItem]:
+        # 상태 파일 이름은 보낸 항목 목록으로 — 끊겼다 다시 돌 때 순번이 바뀌어도 같은 묶음을 이어 받는다
+        ids = hashlib.sha256(",".join(sorted(reqs)).encode()).hexdigest()[:16]
+        log(f"  Batch {tag}: {len(reqs)}건")
+        return run_batch(meter, batch_client, reqs, state=states / f"classify-{ids}.json",
+                         poll_seconds=args.poll, log=log)
+
+    t0 = time.monotonic()
+    stats = classify.run_classify(gh, decider, data_dir=settings.data_dir, weeks=weeks,
+                                  batch=None if args.no_batch else runner, chunk=args.chunk, log=log)
+    summary = {**{k: v for k, v in stats.items() if k not in ("unclassified", "missing")},
+               "unclassified": len(stats["unclassified"]), "missing": len(stats["missing"]),
+               "spent_usd": round(meter.spent, 4), "cap_usd": args.cap, "calls": meter.calls,
+               "batch_calls": sum(1 for e in meter.ledger if e["batch"]),
+               "seconds": round(time.monotonic() - t0), "fingerprint": decider.fingerprint,
+               "weeks": len(weeks)}
+    write_json(settings.work_dir / "classify" / f"{date.today().isoformat()}.json",
+               {**summary, "unclassified_names": stats["unclassified"], "missing_names": stats["missing"],
+                "ledger": meter.ledger})
+    print(dumps_json(summary), end="")
+    return 0 if stats["stopped"] is None else 3
 
 
 def _trends(settings: Settings, args: argparse.Namespace) -> int:

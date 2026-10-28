@@ -121,10 +121,12 @@ def test_cli_classify_defaults_to_dry_run_without_token(tmp_path, capsys):
     assert out["dry_run"] is True
 
 
-def test_cli_classify_run_is_not_open_yet(tmp_path, capsys):
-    env = {"STARTREND_DATA_DIR": str(tmp_path / "d"), "STARTREND_WORK_DIR": str(tmp_path / "w")}
+def test_cli_classify_run_needs_the_project_anthropic_key(tmp_path, capsys):
+    # P2-9 에서 연다 — 키가 없으면 네트워크에 가지 않고 안내한 뒤 끝낸다 (ANTHROPIC_API_KEY 는 읽지 않는다)
+    env = {"STARTREND_DATA_DIR": str(tmp_path / "d"), "STARTREND_WORK_DIR": str(tmp_path / "w"),
+           "GITHUB_TOKEN": "ghp_x", "ANTHROPIC_API_KEY": "sk-ant-other"}
     assert main(["classify", "--run", "--week", "2026-10-18"], env=env) == 2
-    assert "P2-2" in capsys.readouterr().err
+    assert "STARTREND_ANTHROPIC_API_KEY" in capsys.readouterr().err
 
 
 # --- eval · goldset-draft (P2-11·P2-12) ---

@@ -84,8 +84,8 @@ def _known_from(c: Mapping[str, Any]) -> bool | None:
     return bool(c.get("is_ai")) if c.get("status") == "ok" else None
 
 
-def _numbered(batch: BatchRunner | None, n: int) -> BatchRunner | None:
-    """Batch 차수 앞에 classify 묶음 번호를 붙인다 — 상태 파일 이름이 묶음마다 다르게."""
+def _numbered(batch: BatchRunner | None, n: int | str) -> BatchRunner | None:
+    """Batch 차수 앞에 classify 묶음(·조각) 번호를 붙인다 — 상태 파일 이름이 묶음마다 다르게."""
     if batch is None:
         return None
 
@@ -96,8 +96,14 @@ def _numbered(batch: BatchRunner | None, n: int) -> BatchRunner | None:
 
 def run_classify(gh: GitHubClient, decider: DecisionClient, *, data_dir: Path, weeks: Sequence[date],
                  need: int = NEED, ratio: float = EXPECTED_AI_RATIO, today: date | None = None,
-                 batch: BatchRunner | None = None, log: Callable[[str], None] = print) -> dict[str, Any]:
-    """batch 가 있으면 묶음마다 판정 후보를 모아 Batch 로 보낸다(FR-3.7). 없으면 한 건씩."""
+                 batch: BatchRunner | None = None, chunk: int | None = None,
+                 log: Callable[[str], None] = print) -> dict[str, Any]:
+    """batch 가 있으면 묶음마다 판정 후보를 모아 Batch 로 보낸다(FR-3.7). 없으면 한 건씩.
+
+    chunk: 한 번에 보낼 최대 건수. 예산 계량기는 제출 전에 그 Batch 전체의 최악 비용을 잡으므로,
+    큰 묶음을 통째로 보내면 실제 비용이 상한보다 훨씬 작아도 막힌다 — 조각으로 나눠 차례로 보내
+    실제 지출로 상한을 지킨다.
+    """
     pools = load_pools(data_dir, weeks)
     names = names_for(data_dir, weeks)
     known: dict[int, bool | None] = {}
@@ -148,8 +154,14 @@ def run_classify(gh: GitHubClient, decider: DecisionClient, *, data_dir: Path, w
             pending.append(item)
             hashes[rid] = h
         log(f"  묶음 {n}: 판정 후보 {len(ids)}개 — 새로 판정 {len(pending)}개")
+        size = chunk or max(len(pending), 1)
+        parts = [pending[i:i + size] for i in range(0, len(pending), size)]
         try:
-            decider.classify_many(pending, batch=_numbered(batch, n), on_decision=save)
+            for k, part in enumerate(parts, 1):
+                tag: int | str = f"{n}-c{k}" if chunk else n
+                if chunk:
+                    log(f"  묶음 {n} 조각 {k}/{len(parts)}: {len(part)}개")
+                decider.classify_many(part, batch=_numbered(batch, tag), on_decision=save)
         except BudgetExceeded as e:
             stats["stopped"] = "budget"
             log(f"  예산 상한 — 여기서 멈춘다: {e}")
