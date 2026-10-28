@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { Categories, CardRef, SiteIndex, WeekData } from "./types";
+import type { Categories, CardRef, RepoTrends, SiteIndex, WeekData } from "./types";
 
 export type Dirs = { site: string; priv: string };
 
@@ -36,6 +36,11 @@ export function loadWeek(week: string, dirs: Dirs = defaultDirs()): WeekData {
 
 export function loadCategories(dirs: Dirs = defaultDirs()): Categories {
   return readJson<Categories>(path.join(dirs.site, "categories.json"));
+}
+
+export function loadRepos(dirs: Dirs = defaultDirs()): RepoTrends {
+  const file = path.join(dirs.site, "repos.json");
+  return fs.existsSync(file) ? readJson<RepoTrends>(file) : { weeks: [], axes: [], repos: [] };
 }
 
 export function loadCardIndex(dirs: Dirs = defaultDirs()): CardRef[] {

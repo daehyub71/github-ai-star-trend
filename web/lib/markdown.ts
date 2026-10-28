@@ -48,6 +48,20 @@ export function parseBriefing(md: string): Briefing {
   return { front, title, headline: lead.split("\n\n")[0]?.trim() ?? "", whyNow, body: afterTitle };
 }
 
+export type CardBrief = { what: string; why: string; meaning: string };
+
+/** ① 3줄 요약 (startrend/core/cards.py summary 와 같은 규칙) — 목록·랭킹에 평문으로 쓰므로 링크는 글자만 남긴다 */
+export function cardSummary(md: string): CardBrief {
+  const body = sections(splitFront(md).rest).find((s) => s.head.startsWith("①"))?.body ?? "";
+  const keys: Record<string, keyof CardBrief> = { 무엇인지: "what", "왜 지금 떴나": "why", "어떤 의미인지": "meaning" };
+  const out: CardBrief = { what: "", why: "", meaning: "" };
+  for (const m of body.matchAll(/^- \*\*(.+?)\*\* — (.*)$/gm)) {
+    const key = keys[m[1]];
+    if (key) out[key] = m[2].replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim();
+  }
+  return out;
+}
+
 export type CardSection = { no: string; title: string; id: string; body: string };
 export type Card = { front: Front; title: string; sections: CardSection[]; evidence: string | null };
 

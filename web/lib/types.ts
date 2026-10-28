@@ -52,3 +52,16 @@ export type Categories = {
 };
 
 export type CardRef = { repo_id: number; full_name: string; as_of: string | null; slug: string };
+
+/** repos.json — 저장소 추이(시안 v1.3). bits 는 weeks 와 같은 길이, 오래된 주 → 이번 주 */
+export type RepoTrend = {
+  id: number;
+  full_name: string;
+  category: string | null;
+  bits: string;
+  streak: number;
+  gain4: number;
+  spark: number[];
+};
+
+export type RepoTrends = { weeks: string[]; axes: string[]; repos: RepoTrend[] };

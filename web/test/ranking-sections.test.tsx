@@ -10,7 +10,7 @@ afterEach(cleanup);
 
 describe("RankingSections", () => {
   it("starts on the AI tab with five rows per axis and expands to fifteen", () => {
-    render(<RankingSections sections={buildSections(week(), NAMES, new Set())} />);
+    render(<RankingSections sections={buildSections(week(), NAMES, new Map())} />);
     expect(screen.getByRole("button", { name: "AI" }).getAttribute("aria-pressed")).toBe("true");
     const gain = screen.getByRole("region", { name: "지금 뜨는 저장소" });
     expect(gain.querySelectorAll("a.rank-row")).toHaveLength(5);
@@ -20,8 +20,17 @@ describe("RankingSections", () => {
     expect(gain.querySelectorAll("a.rank-row")).toHaveLength(15);
   });
 
+  it("shows medals for the top three and the why-now line for carded rows", () => {
+    render(<RankingSections sections={buildSections(week(), NAMES, new Map([["o__r1", "논문 공개 뒤 급등했다."]]))} />);
+    const gain = screen.getByRole("region", { name: "지금 뜨는 저장소" });
+    const ranks = [...gain.querySelectorAll(".rank-no")].map((n) => n.className);
+    expect(ranks.slice(0, 4)).toEqual(["rank-no medal-1", "rank-no medal-2", "rank-no medal-3", "rank-no"]);
+    expect(gain.querySelector(".why")?.textContent).toBe("왜 지금 · 논문 공개 뒤 급등했다.");
+    expect(gain.querySelectorAll(".why")).toHaveLength(1);
+  });
+
   it("says when an AI tab is not classified yet", () => {
-    render(<RankingSections sections={buildSections(week(), NAMES, new Set())} />);
+    render(<RankingSections sections={buildSections(week(), NAMES, new Map())} />);
     const fresh = screen.getByRole("region", { name: "새로 뜨는 저장소" });
     expect(fresh.textContent).toContain("아직 판정 전");
   });

@@ -1,6 +1,10 @@
+import type { CSSProperties } from "react";
+
+import { hueVars } from "@/lib/palette";
 import type { Chip as ChipT } from "@/lib/rankings";
 
-// 칩 색과 뜻은 시안 v1.1 그대로(DESIGN §3): 회색 카테고리 · 보라 유형 · 파랑 30일 이내 · 노랑 급등 패턴 · 점선 분류 전
+// 칩 뜻은 시안 v1.1 그대로(DESIGN §3). v1.3: 카테고리는 카테고리 색, 카드가 있으면 '카드' 배지
 export function Chip({ chip }: { chip: ChipT }) {
-  return <span className={`chip chip-${chip.kind}`}>{chip.label}</span>;
+  const style = chip.kind === "cat" && chip.catId ? (hueVars(chip.catId) as CSSProperties) : undefined;
+  return <span className={`chip chip-${chip.kind}`} style={style}>{chip.label}</span>;
 }

@@ -1,13 +1,15 @@
-// 저장소 카드 — 시안 v1.1: 8개 섹션 + 옆 목차 · 근거와 인용 게이트 상자
+// 저장소 카드 — 시안 v1.1: 8개 섹션 + 옆 목차 · 근거와 인용 게이트 상자. v1.3: 머리를 카테고리 커버로
 // 카드 본문(LLM 글 + 코드 표)은 비공개 사본에서, ② 의 지표 타일·막대는 공개 주간 데이터에서 읽는다
 import Link from "next/link";
+import type { CSSProperties } from "react";
 
+import { artUrl } from "@/lib/art";
 import { loadIndex, loadWeek } from "@/lib/data";
 import { fmtInt, fmtPct, fmtSigned, mmdd, splitName } from "@/lib/format";
 import { parseCard } from "@/lib/markdown";
+import { hueVars, paletteOf } from "@/lib/palette";
 import type { Entry } from "@/lib/types";
 
-import { Chip } from "./Chip";
 import { Markdown } from "./Markdown";
 import { SiteFooter, SiteHeader } from "./SiteHeader";
 
@@ -76,33 +78,50 @@ export function CardView({ markdown, fullName }: { markdown: string; fullName: s
   const names = Object.fromEntries(loadIndex().categories.map((c) => [c.id, c.name]));
   const [prompt, model, effort] = (f.fingerprint ?? "").split(":");
 
+  const pal = paletteOf(entry?.category);
+  const cover = artUrl(pal.slot);
+  const top: CSSProperties = {
+    ...(hueVars(entry?.category) as CSSProperties),
+    ...(cover ? { backgroundImage: `linear-gradient(100deg, rgba(11,16,32,.92) 0%, rgba(11,16,32,.72) 48%, rgba(11,16,32,.25) 100%), url(${cover})` } : {}),
+  };
+  const tiles = entry ? [
+    { v: fmtSigned(entry.gain), l: "지난 주" },
+    { v: fmtPct(entry.growth), l: "규모 대비 성장률" },
+    { v: fmtInt(entry.stars_end), l: "누적 스타" },
+  ] : [];
+
   return (
     <>
-      <SiteHeader current="card" />
-      <main className="page">
-        <nav aria-label="위치" className="crumbs">
-          <Link href={f.week ? `/week/${f.week}` : "/"}>{f.week ? `${f.week} 주` : "이번 주"}</Link> › 저장소 카드
-        </nav>
-        <section className="panel" style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", gap: "12px 24px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, minWidth: 0, flex: "999 1 420px" }}>
-            <h1 className="card-title"><span className="owner">{owner}</span>{repo}</h1>
-            {entry?.description ? <p style={{ margin: 0, fontSize: 15, lineHeight: 1.7, color: "var(--text-2)" }}>{entry.description}</p> : null}
+      <div className={`top top-card${cover ? " has-art" : ""}`} style={top}>
+        <SiteHeader current="card" />
+        <section className="card-hero">
+          <div className="card-hero-main">
+            <nav aria-label="위치" className="crumbs">
+              <Link href={f.week ? `/week/${f.week}` : "/"}>{f.week ? `${f.week} 주` : "이번 주"}</Link> › 저장소 카드
+            </nav>
             <div className="chips">
-              {entry?.category ? <Chip chip={{ kind: "cat", label: names[entry.category] ?? entry.category }} /> : null}
-              {entry?.type ? <Chip chip={{ kind: "type", label: entry.type }} /> : null}
-              {entry?.language ? <Chip chip={{ kind: "no", label: entry.language }} /> : null}
-              {(entry?.flags ?? []).map((fl) => <Chip key={fl.kind} chip={{ kind: "flag", label: fl.label }} />)}
+              {entry?.category ? <span className="glass-chip strong">{names[entry.category] ?? entry.category}</span> : null}
+              {entry?.type ? <span className="glass-chip">{entry.type}</span> : null}
+              {entry?.language ? <span className="glass-chip">{entry.language}</span> : null}
+              {(entry?.flags ?? []).map((fl) => <span key={fl.kind} className="glass-chip warn">{fl.label}</span>)}
+            </div>
+            <h1 className="card-title"><span className="owner">{owner}</span>{repo}</h1>
+            {entry?.description ? <p className="card-desc">{entry.description}</p> : null}
+            <div className="hero-actions">
+              <a className="btn-white" href={`https://github.com/${fullName}`} target="_blank" rel="noopener noreferrer">GitHub 에서 보기 ↗</a>
+              <span className="card-dates">
+                카드 기준일 {f.as_of ?? "—"} · 처음 작성 {f.generated ?? "—"}{f.updated ? ` · 갱신 ${f.updated}` : ""}
+              </span>
             </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: "1 1 220px" }}>
-            <a className="btn" href={`https://github.com/${fullName}`} target="_blank" rel="noopener noreferrer"
-              style={{ fontWeight: 600, alignSelf: "flex-start" }}>GitHub 에서 보기 ↗</a>
-            <span className="muted small" style={{ lineHeight: 1.6 }}>
-              카드 기준일 {f.as_of ?? "—"} · 처음 작성 {f.generated ?? "—"}{f.updated ? ` · 갱신 ${f.updated}` : ""}
-            </span>
-          </div>
+          {tiles.length ? (
+            <div className="card-tiles">
+              {tiles.map((t) => <div key={t.l} className="tile"><span className="v">{t.v}</span><span className="l">{t.l}</span></div>)}
+            </div>
+          ) : null}
         </section>
-
+      </div>
+      <main className="page" style={hueVars(entry?.category) as CSSProperties}>
         <div className="card-layout">
           <div className="card-main">
             {card.sections.map((s) => (
