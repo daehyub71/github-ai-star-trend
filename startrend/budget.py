@@ -1,6 +1,7 @@
 """예산 계량기 (SPEC NFR-3, FR-11.2, 결정 31 · PLAN 1-5). LLMClient 를 감싼다.
 
-모든 LLM 호출은 이것을 지난다. 부르기 **전에** 최악의 비용(입력 추정 + max_tokens 전부 출력)을 잡아
+모든 LLM 호출은 이것을 지난다. 부르기 **전에** 최악의 비용(보수적 입력 추정 + 정해진 형식 몫 + max_tokens 전부
+출력 — 입력 추정은 실측 200건을 모두 덮는다, MEASURE §18)을 잡아
 상한을 넘을 수 있으면 부르지 않고 BudgetExceeded 를 올린다 — 그래서 실제 지출은 상한을 넘지 않는다.
 단계는 이 예외를 받으면 LLM 단계만 멈추고, 비용 0 인 결과는 그대로 내보낸다(FR-11.2).
 
@@ -24,7 +25,7 @@ from startrend.clients.llm import (
     LLMResponse,
     Usage,
     cost,
-    estimate_tokens,
+    request_tokens,
 )
 from startrend.core import hashing, io
 
@@ -57,7 +58,8 @@ class BudgetMeter:
         return self.cap_usd - self.spent
 
     def worst_case(self, req: LLMRequest, *, batch: bool | None = None, model: str | None = None) -> float:
-        est = Usage(input_tokens=estimate_tokens(req.system + req.user), output_tokens=req.max_tokens)
+        tokens = request_tokens(req.system, req.user, schema=req.schema is not None)
+        est = Usage(input_tokens=tokens, output_tokens=req.max_tokens)
         return cost(model or self.model, est, batch=self.batch if batch is None else batch)
 
     def reserve(self, reqs: Iterable[LLMRequest], *, batch: bool, model: str | None = None) -> float:

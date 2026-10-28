@@ -76,12 +76,27 @@ def cost(model: str, usage: Usage, *, batch: bool = False) -> float:
     return usd / 2 if batch else usd
 
 
-def estimate_tokens(text: str) -> int:
-    """보수적 추정 — UTF-8 바이트 ÷ 3.
+# 입력 토큰 추정 (P2-15, MEASURE §18 — Opus 5.5 · 정해진 형식 출력 요청 200건 실측)
+# 예전 "바이트 ÷ 3"은 200건 모두를 작게 잡았다(실제 ÷ 추정 중앙값 1.51).
+BYTES_PER_TOKEN = 1.5            # 보수적 — 실측에서 가장 촘촘한 요청이 1.52 바이트/토큰(형식 몫 뺀 값)
+TYPICAL_BYTES_PER_TOKEN = 2.44   # 보통 — 실측 회귀 0.41 토큰/바이트
+SCHEMA_TOKENS = 700              # 정해진 형식(json_schema)이 입력에 더하는 몫 — 실측 회귀 절편 690
 
-    영어는 실제보다 약 1.3배(토크나이저 차이 1.35배를 덮는다), 한국어는 1자 ≈ 1토큰.
-    """
-    return math.ceil(len(text.encode("utf-8")) / 3)
+
+def estimate_tokens(text: str) -> int:
+    """보수적 추정 — UTF-8 바이트 ÷ 1.5. 예산 계량기의 최악 비용에 쓴다(실제보다 작으면 안 된다)."""
+    return math.ceil(len(text.encode("utf-8")) / BYTES_PER_TOKEN)
+
+
+def typical_tokens(text: str) -> int:
+    """보통 추정 — UTF-8 바이트 ÷ 2.44. dry-run 금액의 하한에만 쓴다."""
+    return math.ceil(len(text.encode("utf-8")) / TYPICAL_BYTES_PER_TOKEN)
+
+
+def request_tokens(system: str, user: str, *, schema: bool, typical: bool = False) -> int:
+    """요청 하나의 입력 토큰 — 본문 추정 + 정해진 형식을 쓰면 그 몫."""
+    body = (typical_tokens if typical else estimate_tokens)(system + user)
+    return body + (SCHEMA_TOKENS if schema else 0)
 
 
 @dataclass

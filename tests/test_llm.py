@@ -1,5 +1,8 @@
 """clients.llm + budget — LLM 인터페이스·mock·비용 계산과 예산 계량기 (NFR-3, FR-11.2, PLAN 1-5)."""
 
+import json
+from pathlib import Path
+
 import pytest
 
 from startrend import budget
@@ -31,10 +34,32 @@ def test_llm_cost_unknown_model_is_an_error():
         llm.cost("claude-unknown", llm.Usage(1, 1))
 
 
-def test_llm_estimate_tokens_is_conservative():
-    assert llm.estimate_tokens("a" * 4000) == 1334        # 영어 4,000자 — 실제(약 1,000)보다 크게
-    assert llm.estimate_tokens("가" * 300) == 300          # 한국어 1자 ≈ 1토큰
+CALIBRATION = json.loads(
+    (Path(__file__).parent / "fixtures" / "token_calibration.json").read_text(encoding="utf-8"))
+
+
+def test_llm_estimate_tokens_is_bytes_over_1_5():
+    assert llm.estimate_tokens("a" * 3000) == 2000
+    assert llm.estimate_tokens("가" * 300) == 600          # 한국어 1자 = 3바이트
     assert llm.estimate_tokens("") == 0
+
+
+def test_llm_request_tokens_cover_every_measured_request():
+    # 회귀(P2-15, MEASURE §18): 바이트 ÷ 3 은 실측 200건 모두를 작게 잡았다(실제 ÷ 추정 중앙값 1.51).
+    # 예산 계량기의 최악 비용은 실제보다 작으면 안 된다 — 정해진 형식 몫까지 더해 200건 모두를 덮는다
+    for nbytes, actual in CALIBRATION["requests"]:
+        assert llm.request_tokens("a" * nbytes, "", schema=True) >= actual, (nbytes, actual)
+
+
+def test_llm_typical_request_tokens_sit_near_the_measured_median():
+    ratios = sorted(llm.request_tokens("a" * b, "", schema=True, typical=True) / a
+                    for b, a in CALIBRATION["requests"])
+    assert 0.9 <= ratios[len(ratios) // 2] <= 1.1                # dry-run 하한은 실제에 가깝게
+
+
+def test_llm_schema_share_is_counted_only_with_a_schema():
+    assert llm.request_tokens("s", "u", schema=True) - llm.request_tokens("s", "u", schema=False) \
+        == llm.SCHEMA_TOKENS
 
 
 # --- mock ---
@@ -63,10 +88,17 @@ def test_budget_records_actual_cost():
     assert meter.calls == 1 and meter.ledger[0]["purpose"] == "test"
 
 
+def test_budget_worst_case_includes_the_schema_share():
+    meter = budget.BudgetMeter(llm.MockLLM([], model=OPUS), cap_usd=1.0)
+    plain = req(max_tokens=0)
+    shaped = llm.LLMRequest(system=plain.system, user=plain.user, max_tokens=0, schema={"type": "object"})
+    assert meter.worst_case(shaped) - meter.worst_case(plain) == pytest.approx(llm.SCHEMA_TOKENS * 4e-6)
+
+
 def test_budget_blocks_before_a_call_that_could_exceed_the_cap():
     inner = llm.MockLLM([resp()], model=OPUS)
     meter = budget.BudgetMeter(inner, cap_usd=0.01)
-    # 최악: 입력 추정 200 + 출력 1,000 → 약 $0.0208 > $0.01 — 부르기 전에 멈춘다
+    # 최악: 입력 추정 400 + 출력 1,000 → 약 $0.0216 > $0.01 — 부르기 전에 멈춘다
     with pytest.raises(budget.BudgetExceeded):
         meter.complete(req(max_tokens=1000))
     assert inner.requests == [] and meter.spent == 0

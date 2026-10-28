@@ -143,7 +143,8 @@ def test_evaluate_write_run_never_overwrites(tmp_path):
 
 def test_evaluate_dry_run_prices_without_calls():
     est = ev.dry_run(n_items=200, system_prompt="s" * 3000, batch=True)
-    assert est["calls"] == 200 and est["input_tokens_per_item"] > 1000
+    typical, conservative = est["input_tokens_per_item"]          # 하한은 보통 추정, 상한은 보수적 추정
+    assert est["calls"] == 200 and 1000 < typical < conservative
     lo, hi = est["usd"]
     assert 0 < lo < hi
     assert est["usd_retry_upper"] == pytest.approx(2 * hi)    # 전부 한 번씩 다시 묻는 최악

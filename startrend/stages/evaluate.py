@@ -15,7 +15,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-from startrend.clients.decision import MAX_TOKENS, TYPICAL_OUTPUT, typical_input_tokens
+from startrend.clients.decision import MAX_TOKENS, TYPICAL_OUTPUT, input_token_range
 from startrend.clients.llm import Usage, cost
 from startrend.core import io
 from startrend.core.taxonomy import Taxonomy
@@ -209,9 +209,9 @@ def write_run(data_dir: Path, name: str, result: Mapping[str, Any], md: str, *,
 
 def dry_run(*, n_items: int, system_prompt: str, batch: bool = True) -> dict[str, Any]:
     """정답 세트를 판정기로 한 번 돌릴 때의 호출 수·입력 토큰·비용 범위. 호출 0회 (FR-14.7)."""
-    tokens_in = typical_input_tokens(system_prompt)
-    lo = cost(MODEL, Usage(tokens_in, TYPICAL_OUTPUT), batch=batch)
-    hi = cost(MODEL, Usage(tokens_in, MAX_TOKENS), batch=batch)
+    tokens_in = input_token_range(system_prompt)       # (보통, 보수적) — 하한·상한에 각각 (P2-15)
+    lo = cost(MODEL, Usage(tokens_in[0], TYPICAL_OUTPUT), batch=batch)
+    hi = cost(MODEL, Usage(tokens_in[1], MAX_TOKENS), batch=batch)
     return {"calls": n_items, "input_tokens_per_item": tokens_in, "batch": batch,
             "usd": (n_items * lo, n_items * hi), "usd_retry_upper": 2 * n_items * hi,
             "assumptions": {"output_tokens": (TYPICAL_OUTPUT, MAX_TOKENS), "model": MODEL}}

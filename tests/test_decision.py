@@ -105,6 +105,13 @@ def test_decision_mock_decider():
     assert m.classify(dc.RepoInput(8, "o/x", None, (), None, "")).status == "unclassified"
 
 
+def test_decision_input_token_range_for_dry_runs():
+    # P2-15: 하한은 보통 추정, 상한은 보수적 추정 — 둘 다 정해진 형식 몫을 더한다
+    typical, conservative = dc.input_token_range("s" * 3000)
+    assert llm.SCHEMA_TOKENS < typical < conservative
+    assert dc.TYPICAL_OUTPUT == 80                              # 실측 출력 중앙값 79 (MEASURE §18)
+
+
 def test_decision_prompt_hash_changes_with_taxonomy_version():
     a = dc.LLMDecider(llm.MockLLM([]), TAX).prompt_hash
     bumped = tx.Taxonomy(TAX.version + 1, TAX.types, TAX.categories, TAX.mapping)

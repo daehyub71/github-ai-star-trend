@@ -23,7 +23,7 @@ from startrend.clients.decision import (
     Decision,
     DecisionClient,
     RepoInput,
-    typical_input_tokens,
+    input_token_range,
 )
 from startrend.clients.github import GitHubClient, GitHubError
 from startrend.clients.llm import Usage, cost
@@ -168,9 +168,9 @@ def dry_run(*, data_dir: Path, weeks: Sequence[date], system_prompt: str, need: 
             known[rid] = _known_from(c)
     first = next_round(pools, known, need=need, ratio=ratio)
     upper = len({i for ids in pools.values() for i in ids if i not in known})
-    tokens_in = typical_input_tokens(system_prompt)
-    lo = cost(MODEL, Usage(tokens_in, TYPICAL_OUTPUT), batch=batch)
-    hi = cost(MODEL, Usage(tokens_in, MAX_TOKENS), batch=batch)
+    tokens_in = input_token_range(system_prompt)       # (보통, 보수적) — 하한·상한에 각각 (P2-15)
+    lo = cost(MODEL, Usage(tokens_in[0], TYPICAL_OUTPUT), batch=batch)
+    hi = cost(MODEL, Usage(tokens_in[1], MAX_TOKENS), batch=batch)
     return {
         "first_round": len(first), "upper_bound": upper, "already_known": len(known),
         "per_item_usd": (lo, hi), "first_round_usd": (len(first) * lo, len(first) * hi),
