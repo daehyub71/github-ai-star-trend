@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "41d61fe5f9640c6d",
+    "is_ai": true,
+    "reason": "A skill generator that distills books, videos and podcasts into installable agent skills for Claude Code and similar agents.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-16",
   "description": "把书、长视频、播客等高价值内容蒸馏成可执行的 Agent Skills（Distill high-value content from books, long-form videos, podcasts, and more into executable Agent Skills）",
   "first_seen": "2026-07-05",

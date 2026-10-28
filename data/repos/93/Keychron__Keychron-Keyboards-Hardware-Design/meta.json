@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d62e152b664b616e",
+    "is_ai": false,
+    "reason": "This repository releases CAD hardware design files for keyboards and mice and has no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "Keychron/Keychron-Keyboards-Hardware-Design",
+  "id": 1200994191
+}

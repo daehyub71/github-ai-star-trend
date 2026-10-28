@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6f5997fbe83dcb82",
+    "is_ai": true,
+    "reason": "Curated marketplace directory of Claude Code plugins bundling MCP servers, commands, and skills that the agent loads.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2025-11-20",
   "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
   "first_seen": "2026-01-04",

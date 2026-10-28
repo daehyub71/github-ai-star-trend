@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bba140fea3b5d1e5",
+    "is_ai": true,
+    "reason": "Local-first desktop agentic workspace app integrating agents, MCP, apps and memory for end users.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-22",
   "description": "Open-source agentic workspace enterprises can make their own. Connect the systems you already run — 100+ integrations, MCP, chat tools, apps, browser, local files — with shared memory. Any agent (Claude Code, Codex), any model, or BYOK. Set up in clicks, not months. Local-first: your data never leaves your machines.",
   "first_seen": "2026-04-12",

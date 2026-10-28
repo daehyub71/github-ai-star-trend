@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3d1b82db9f4f4399",
+    "is_ai": true,
+    "reason": "A collection of agent skill files that teach AI agents UI design and animation best practices.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-16",
   "description": "Skills for Designers and Engineers.",
   "first_seen": "2026-07-05",

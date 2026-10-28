@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f241a5151841c7ee",
+    "is_ai": true,
+    "reason": "A browser built for AI agents like Claude Code and Codex to run browser automation using shared logged-in state, shipped with agent skills.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-16",
   "description": "The fastest browser for AI agents to run browser automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
   "first_seen": "2026-07-26",

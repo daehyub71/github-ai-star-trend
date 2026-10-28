@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3d8157f70e9a2e08",
+    "is_ai": true,
+    "reason": "Open-source agent runtime with ReAct and multi-agent team workflows plus an evaluation suite.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-22",
   "description": "🧩 FrontierAgent, our agent framework, open-sourced alongside it — native command-line TUI, ReAct and Agent Team modes, one command on macOS and Linux, no preinstall, no hard Docker dependency.",
   "first_seen": "2026-09-06",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "39ab33a55ad6534e",
+    "is_ai": true,
+    "reason": "A from-scratch tutorial and scripts for pretraining and post-training LLMs in PyTorch.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-01-12",
   "description": "A straightforward method for training your LLM, from downloading data to generating text.",
   "first_seen": "2026-05-31",

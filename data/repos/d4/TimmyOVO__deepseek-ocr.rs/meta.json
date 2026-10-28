@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "02cf8aa654c7ba3f",
+    "is_ai": true,
+    "reason": "Rust inference engine and OpenAI-compatible server for OCR vision-language models with quantization.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-25",
   "description": "Rust multi‑backend OCR/VLM engine (DeepSeek‑OCR-1/2, PaddleOCR‑VL, DotsOCR) with DSQ quantization and an OpenAI‑compatible server & CLI – run locally without Python.",
-  "first_seen": "2025-11-16",
+  "first_seen": "2025-11-09",
   "full_name": "TimmyOVO/deepseek-ocr.rs",
   "id": 1083171672,
   "language": "Rust",

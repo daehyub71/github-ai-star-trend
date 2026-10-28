@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d2c3fe7cf70516c6",
+    "is_ai": true,
+    "reason": "A Claude Code skill/plugin of style prompts that let a coding agent make code-rendered videos.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-26",
   "description": "A toolbox of film styles made in code for Claude Code: 59 ready to use, and your own. Each style is a style prompt plus a demo film made entirely in code by Claude Opus 5.5, with no video model. By Lemomo. · 一套用代码做片的风格工具箱：59 种现成风格，也能做出你自己的",
   "first_seen": "2026-10-18",

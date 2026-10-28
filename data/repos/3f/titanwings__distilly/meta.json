@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9768c70306e8b01f",
+    "is_ai": true,
+    "reason": "A meta-skill tool that distills a person's materials into reusable Agent Skills (person profiles) for coding agents and bots.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-30",
   "description": "Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.",
   "first_seen": "2026-04-05",

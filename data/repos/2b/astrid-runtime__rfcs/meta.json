@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "09b1d72a5353a633",
+    "is_ai": false,
+    "reason": "This repository holds RFC design documents for the Astrid runtime's kernel contract, and the README advertises no AI or agent features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "astrid-runtime/rfcs",
+  "id": 1183230131
+}

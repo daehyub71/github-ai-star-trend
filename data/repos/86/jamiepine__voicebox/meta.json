@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "aa5ff821aa9247fb",
+    "is_ai": true,
+    "reason": "Local-first AI voice studio for voice cloning, TTS and dictation, running models on the user's machine.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-25",
   "description": "The open-source AI voice studio. Clone, dictate, create.",
   "first_seen": "2026-02-15",

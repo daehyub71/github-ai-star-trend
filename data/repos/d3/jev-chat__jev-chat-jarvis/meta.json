@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "78c151466b15d328",
+    "is_ai": true,
+    "reason": "End-user AI chat assistant app that uses LLMs to analyze conversations and draft replies across messaging platforms.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-21",
   "description": "The chat decision assistant: before you reply, Jev reads the chat, judges intent and risk, and drafts replies you fill in with one tap. You press send. Android · Windows · macOS · iOS | 聊天辅助决策工具：先看懂对方再回复，发不发由你。",
   "first_seen": "2026-09-20",
   "full_name": "jev-chat/jev-chat-jarvis",
   "id": 1379574728,
   "language": "Kotlin",
-  "last_seen": "2026-09-27",
+  "last_seen": "2026-10-04",
   "topics": [
     "accessibility-service",
     "ai-assistant",

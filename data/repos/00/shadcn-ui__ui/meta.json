@@ -1,0 +1,42 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b6291aa7429ea71d",
+    "is_ai": true,
+    "reason": "A React UI component library that advertises AI and generative-UI topics and ships an MCP server for agents to use its registry.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2023-01-04",
+  "description": "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
+  "first_seen": "2025-10-26",
+  "full_name": "shadcn-ui/ui",
+  "id": 585146387,
+  "language": "TypeScript",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "ai",
+    "base-ui",
+    "components",
+    "gen-ui",
+    "generative-ai",
+    "generative-ui",
+    "laravel",
+    "nextjs",
+    "radix-ui",
+    "react",
+    "react-aria",
+    "react-aria-components",
+    "shadcn",
+    "tailwindcss",
+    "tanstack",
+    "ui",
+    "vite"
+  ]
+}

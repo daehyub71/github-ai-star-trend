@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5705277bc7001ba2",
+    "is_ai": true,
+    "reason": "A registry of UI design agent skills with a CLI and an MCP server for agents to fetch them.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ibelick/ui-skills",
+  "id": 1129930192
+}

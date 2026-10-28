@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4ad8609be66a9b72",
+    "is_ai": true,
+    "reason": "An agent-first ESLint/Oxlint linter that gives coding agents verifiable design system rules and fix guidance, so it is a tool agents use.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "shadcn-ui/lint",
+  "id": 1354701193
+}

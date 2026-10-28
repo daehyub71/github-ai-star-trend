@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "14ef622b136d9af7",
+    "is_ai": true,
+    "reason": "A Claude/agent skill that instructs coding agents to generate interactive isometric SVG/WebGL illustrations.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-10-08",
   "description": "An agent skill for creating detailed, interactive isometric illustrations of real-world machines and complex systems. Generates polished SVGs with optional WebGL shaders and 3D effects.",
   "first_seen": "2026-10-11",

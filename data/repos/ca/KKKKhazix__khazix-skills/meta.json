@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9b35ee98b564d87f",
+    "is_ai": true,
+    "reason": "A collection of Agent Skills (SKILL.md instruction sets) for Claude Code, Codex and other agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-06",
   "description": "数字生命卡兹克开源的 AI Skills 合集 | Agent Skills: leader（帮你定义目标）, neat-freak 洁癖, hv-analysis, khazix-writer & more — Claude Code, Codex & 40+ agents",
   "first_seen": "2026-04-12",

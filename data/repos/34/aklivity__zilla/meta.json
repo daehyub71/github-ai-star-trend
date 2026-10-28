@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a7a0af6659287e3c",
+    "is_ai": true,
+    "reason": "Multi-protocol gateway that routes LLM requests across providers with metrics and also aggregates and governs MCP tools.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "aklivity/zilla",
+  "id": 436039945
+}

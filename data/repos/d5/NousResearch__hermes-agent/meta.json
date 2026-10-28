@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4aa1bc5ecca84390",
+    "is_ai": true,
+    "reason": "Hermes Agent is a self-improving personal AI agent app with memory, skills, and messaging-platform integrations that users run directly.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-07-22",
   "description": "The agent that grows with you",
   "first_seen": "2026-03-08",
   "full_name": "NousResearch/hermes-agent",
   "id": 1024554267,
   "language": "Python",
-  "last_seen": "2026-08-30",
+  "last_seen": "2026-10-18",
   "topics": [
     "ai",
     "ai-agent",

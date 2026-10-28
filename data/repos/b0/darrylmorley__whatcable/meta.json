@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "941c93b3a550b3bc",
+    "is_ai": false,
+    "reason": "A macOS menu bar utility for inspecting USB-C cable capabilities with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-01",
   "description": "macOS menu bar app that tells you, in plain English, what each USB-C cable plugged into your Mac can actually do",
   "first_seen": "2026-05-03",

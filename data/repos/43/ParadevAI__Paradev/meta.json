@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b22b7667ace4fb6e",
+    "is_ai": true,
+    "reason": "Paradev is an agentic IDE desktop app for running and orchestrating many coding agents in parallel.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-21",
   "description": "Paradev (formerly Superset) is an agentic IDE to orchestrate 100+ coding agents in parallel. Run any agent with your own subscription.",
   "first_seen": "2026-03-01",

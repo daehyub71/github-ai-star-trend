@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "aab84e20ca6097b1",
+    "is_ai": true,
+    "reason": "A local proxy that reduces coding-agent LLM token costs by rendering context as images, functioning as a request-rewriting gateway.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-20",
   "description": "cut Claude Code token usage by rendering text context as images",
   "first_seen": "2026-07-05",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d4d9164e29f97289",
+    "is_ai": true,
+    "reason": "Documentation, model catalog and examples for calling Agnes AI's multimodal API gateway, covering text, image and video models.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "AgnesAI-Labs/AgnesAI-Models",
+  "id": 1225365569
+}

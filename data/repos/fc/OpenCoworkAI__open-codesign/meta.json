@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "52849f203921aa5f",
+    "is_ai": true,
+    "reason": "Desktop app that turns prompts into prototypes, slides and PDFs using multiple LLMs, an end-user AI design tool.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-18",
   "description": "Open-source Claude Design alternative. One-click import your Claude Code / Codex API key. Prompt → prototype / slides / PDF. Multi-model (Claude, GPT, Gemini, Kimi, GLM, Ollama). BYOK, local-first, MIT.",
   "first_seen": "2026-04-26",

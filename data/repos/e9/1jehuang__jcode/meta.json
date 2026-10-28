@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bb72891776dcc002",
+    "is_ai": true,
+    "reason": "A Rust terminal coding agent harness for running many parallel coding agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-05",
   "description": "High performance coding agent harness written in Rust, built for heavy multi-agent dev workflows",
   "first_seen": "2026-05-03",

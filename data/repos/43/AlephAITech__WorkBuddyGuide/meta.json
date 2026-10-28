@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f6668ea1e89ebf18",
+    "is_ai": true,
+    "reason": "An open-source practical guidebook for using the WorkBuddy AI agent, covering skills, MCP, automation and multi-agent workflows.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "AlephAITech/WorkBuddyGuide",
+  "id": 1296036886
+}

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "837a175f61e4a85b",
+    "is_ai": false,
+    "reason": "SpacetimeDB is a relational database and server framework for games and web apps, with no AI features advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "clockworklabs/SpacetimeDB",
+  "id": 654870350
+}

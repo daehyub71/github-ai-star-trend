@@ -1,0 +1,39 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7a76c48f6f74f416",
+    "is_ai": true,
+    "reason": "Ollama is a tool for running open LLMs locally with a REST API serving layer.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2023-06-26",
+  "description": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+  "first_seen": "2025-10-26",
+  "full_name": "ollama/ollama",
+  "id": 658928958,
+  "language": "Go",
+  "last_seen": "2026-10-04",
+  "topics": [
+    "deepseek",
+    "gemma",
+    "glm",
+    "go",
+    "golang",
+    "gpt-oss",
+    "llama",
+    "llm",
+    "llms",
+    "minimax",
+    "mistral",
+    "muse",
+    "ollama",
+    "qwen"
+  ]
+}

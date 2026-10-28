@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f2f97574a6a160f5",
+    "is_ai": true,
+    "reason": "MarkItDown is a Python tool that converts PDFs and office documents to Markdown for LLM consumption, and it also ships an MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-11-13",
   "description": "Python tool for converting files and office documents to Markdown.",
   "first_seen": "2026-04-05",
   "full_name": "microsoft/markitdown",
   "id": 888092115,
   "language": "Python",
-  "last_seen": "2026-09-06",
+  "last_seen": "2026-10-18",
   "topics": [
     "autogen",
     "autogen-extension",

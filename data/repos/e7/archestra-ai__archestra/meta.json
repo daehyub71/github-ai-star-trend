@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5d2059a491292df0",
+    "is_ai": true,
+    "reason": "Enterprise AI platform centered on MCP registry, MCP gateway and orchestrator, plus an LLM gateway with guardrails and observability.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "archestra-ai/archestra",
+  "id": 1020144870
+}

@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bc7dac36f08b2961",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of Claude Skills and related resources for customizing Claude workflows.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "created": "2025-10-16",
+  "description": "A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows — particularly Claude Code",
+  "first_seen": "2025-10-26",
+  "full_name": "travisvn/awesome-claude-skills",
+  "id": 1077850011,
+  "language": null,
+  "last_seen": "2025-10-26",
+  "topics": [
+    "agentic-coding",
+    "anthropic",
+    "awesome",
+    "awesome-list",
+    "awesome-lists",
+    "claude",
+    "claude-ai",
+    "claude-code",
+    "claude-desktop",
+    "claude-skills",
+    "claudeskills"
+  ]
+}

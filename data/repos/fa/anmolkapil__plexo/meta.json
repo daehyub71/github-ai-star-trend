@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cfbe96baf0a85647",
+    "is_ai": false,
+    "reason": "A multi-network download manager desktop app with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-15",
   "description": "Speed up downloads by combining multiple network connections in parallel",
   "first_seen": "2026-10-11",

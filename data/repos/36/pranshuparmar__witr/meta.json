@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0f381460703058d9",
+    "is_ai": true,
+    "reason": "A process-tracing CLI/TUI that advertises a dedicated section and JSON output for use with AI coding agents, making it an agent-callable tool.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-20",
   "description": "Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI. ",
-  "first_seen": "2025-12-28",
+  "first_seen": "2025-12-21",
   "full_name": "pranshuparmar/witr",
   "id": 1120195677,
   "language": "Go",

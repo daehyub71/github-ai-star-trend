@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c2a53fb89e8ffbf4",
+    "is_ai": true,
+    "reason": "A plugin of agent presets that a DeepSeek coding-agent harness loads to control tool exposure and context injection.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-14",
   "description": "Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99)",
   "first_seen": "2026-08-30",

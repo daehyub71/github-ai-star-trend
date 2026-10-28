@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ec41fe966d92d6d1",
+    "is_ai": true,
+    "reason": "Reference collection of Claude Code skills, hooks, and agents with a setup wizard for skill auto-activation.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-30",
   "description": "Examples of my Claude Code infrastructure with skill auto-activation, hooks, and agents",
-  "first_seen": "2025-11-02",
+  "first_seen": "2025-10-26",
   "full_name": "diet103/claude-code-infrastructure-showcase",
   "id": 1086161926,
   "language": "TypeScript",

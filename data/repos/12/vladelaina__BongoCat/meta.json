@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "95ad9d8aa86a7d5d",
+    "is_ai": false,
+    "reason": "A desktop pet app written in C with SDL3 and OpenGL that advertises no AI features; its \"models\" are character art models, not AI models.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-22",
   "description": "🩷 💘C × SDL3 × OpenGL — Three Mysterious Forces, United as One! Bong~ Bongocat!!!Don't be shy, Join Here🧸: https://discord.gg/vf8jqnattk",
   "first_seen": "2026-09-20",

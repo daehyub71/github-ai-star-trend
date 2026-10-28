@@ -1,0 +1,111 @@
+{
+  "ALL": {
+    "entrants": 49,
+    "gain": 313884,
+    "repos": 492
+  },
+  "ai_tab": true,
+  "categories": {
+    "agent-framework": {
+      "entrants": 7,
+      "gain": 23183,
+      "repos": 42
+    },
+    "agent-skills": {
+      "entrants": 15,
+      "gain": 98004,
+      "repos": 69
+    },
+    "ai-apps": {
+      "entrants": 9,
+      "gain": 42244,
+      "repos": 77
+    },
+    "coding-agent": {
+      "entrants": 4,
+      "gain": 43423,
+      "repos": 52
+    },
+    "computer-use": {
+      "entrants": 1,
+      "gain": 5568,
+      "repos": 16
+    },
+    "doc-parsing": {
+      "entrants": 0,
+      "gain": 5964,
+      "repos": 11
+    },
+    "inference": {
+      "entrants": 1,
+      "gain": 4741,
+      "repos": 16
+    },
+    "llmops": {
+      "entrants": 0,
+      "gain": 8846,
+      "repos": 15
+    },
+    "local-llm": {
+      "entrants": 1,
+      "gain": 1884,
+      "repos": 7
+    },
+    "mcp-tools": {
+      "entrants": 3,
+      "gain": 14823,
+      "repos": 44
+    },
+    "models": {
+      "entrants": 0,
+      "gain": 1526,
+      "repos": 16
+    },
+    "multimodal": {
+      "entrants": 3,
+      "gain": 22104,
+      "repos": 59
+    },
+    "other-ai": {
+      "entrants": 2,
+      "gain": 26009,
+      "repos": 30
+    },
+    "rag": {
+      "entrants": 1,
+      "gain": 8396,
+      "repos": 16
+    },
+    "training": {
+      "entrants": 1,
+      "gain": 3232,
+      "repos": 12
+    },
+    "vectordb-memory": {
+      "entrants": 1,
+      "gain": 3937,
+      "repos": 10
+    }
+  },
+  "coverage": 0.43460087410122655,
+  "non_ai": {
+    "gain": 71444,
+    "repos": 285
+  },
+  "notes": {
+    "category": "주 카테고리만(보조 제외)",
+    "rows": "주간 파일(증가 ≥ 10)의 행",
+    "scope": "판정은 랭킹 후보만(결정 30) — 합계는 판정된 AI 저장소만. coverage 는 판정이 끝난 저장소가 그 주 증가에서 차지하는 비율"
+  },
+  "taxonomy_version": 2,
+  "total_gain": 886625,
+  "unclassified": {
+    "gain": 501297,
+    "repos": 11886
+  },
+  "unmapped": {
+    "gain": 0,
+    "repos": 0
+  },
+  "week": "2026-01-18"
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ebb905e3c7694577",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of Claude agent skills and plugins, with an MCP gateway plugin for connecting apps.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2025-10-17",
   "description": "A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
   "first_seen": "2025-11-09",

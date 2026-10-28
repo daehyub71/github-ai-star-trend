@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6923ed758949ddd8",
+    "is_ai": true,
+    "reason": "BLE recorder hardware SDK that includes an offline speech engine with SenseVoice ASR and Kokoro TTS, making speech recognition a featured capability.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "SonicloudTech/sonicloud_opensdk",
+  "id": 1354267344
+}

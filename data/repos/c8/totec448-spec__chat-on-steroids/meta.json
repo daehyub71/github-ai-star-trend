@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f1abfb65ca80c3af",
+    "is_ai": true,
+    "reason": "Desktop app that turns ChatGPT into a local coding agent via local MCP tools, Chrome integration and multi-agent workers.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-08-22",
+  "description": "Cross-platform local MCP capabilities for ChatGPT with Chrome integration, Goal, Compact & Resume, and durable multi-agent workflows.",
+  "first_seen": "2026-09-13",
+  "full_name": "totec448-spec/chat-on-steroids",
+  "id": 1342876750,
+  "language": "TypeScript",
+  "last_seen": "2026-09-13",
+  "topics": [
+    "automation",
+    "chatgpt",
+    "chrome-extension",
+    "electron",
+    "linux",
+    "local-first",
+    "macos",
+    "mcp",
+    "multi-agent",
+    "windows"
+  ]
+}

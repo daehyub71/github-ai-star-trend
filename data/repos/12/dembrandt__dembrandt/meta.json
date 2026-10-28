@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "44374b1fce93f12a",
+    "is_ai": true,
+    "reason": "A CLI that extracts website design tokens and ships an MCP server and DESIGN.md output for AI agents.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "dembrandt/dembrandt",
+  "id": 1101924225
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d864bd29141eb315",
+    "is_ai": true,
+    "reason": "Remotion is a React video framework pitched as \"video tools for the agent era\" with agent skills for coding agents, so it is an app driven by agents.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2020-06-23",
   "description": "🎥      Make videos programmatically with React",
   "first_seen": "2026-01-18",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8d952a6191b3bcb9",
+    "is_ai": true,
+    "reason": "Awesome-style curated list of free AI models, free API tiers, and local inference tools.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "12britz/awesome-free-models",
+  "id": 1261170027
+}

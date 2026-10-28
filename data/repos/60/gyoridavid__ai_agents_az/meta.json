@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d475b0d915973c53",
+    "is_ai": true,
+    "reason": "A collection of n8n workflow templates accompanying a YouTube series on building AI agents, many of them for AI image and video generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "gyoridavid/ai_agents_az",
+  "id": 957128834
+}

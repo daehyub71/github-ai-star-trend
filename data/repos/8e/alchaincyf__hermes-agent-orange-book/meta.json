@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1855b0cab47e91a6",
+    "is_ai": true,
+    "reason": "A guidebook (PDF) teaching how to use the Nous Research Hermes Agent framework.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "alchaincyf/hermes-agent-orange-book",
+  "id": 1204451436
+}

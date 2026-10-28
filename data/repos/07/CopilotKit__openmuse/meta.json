@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3c380121e3163bc1",
+    "is_ai": true,
+    "reason": "A self-hostable personal agent app with chat, browser and terminal control, built on CopilotKit.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-15",
+  "description": "A personal agent with a browser, terminal, files, and work that keeps going built with CopilotKit and AG-UI.",
+  "first_seen": "2026-09-27",
+  "full_name": "CopilotKit/openmuse",
+  "id": 1371757322,
+  "language": "TypeScript",
+  "last_seen": "2026-09-27",
+  "topics": []
+}

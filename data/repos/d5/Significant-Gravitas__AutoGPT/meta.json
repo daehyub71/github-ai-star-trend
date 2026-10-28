@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3eb7a04919d6b495",
+    "is_ai": true,
+    "reason": "AutoGPT is now pitched as an end-user platform of AI expert agents for business tasks, with self-hostable agent-building infrastructure.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2023-03-16",
+  "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+  "first_seen": "2025-10-26",
+  "full_name": "Significant-Gravitas/AutoGPT",
+  "id": 614765452,
+  "language": "Python",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "agentic-ai",
+    "agents",
+    "ai",
+    "artificial-intelligence",
+    "autonomous-agents",
+    "claude",
+    "gpt",
+    "llama-api",
+    "llm",
+    "openai",
+    "python"
+  ]
+}

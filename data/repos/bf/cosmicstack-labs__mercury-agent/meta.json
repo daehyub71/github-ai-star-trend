@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0f3cbf8fe368f3fe",
+    "is_ai": true,
+    "reason": "A personal always-on AI assistant agent accessible via CLI and chat apps, with memory, tools and a coding mode.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "cosmicstack-labs/mercury-agent",
+  "id": 1215974868
+}

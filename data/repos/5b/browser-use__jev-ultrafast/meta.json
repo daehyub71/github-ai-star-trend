@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0bb30815f595c94a",
+    "is_ai": true,
+    "reason": "A fast LLM-driven browser agent library that operates web pages from natural-language goals.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-16",
   "description": "Fastest and cheapest web agent",
   "first_seen": "2026-09-13",

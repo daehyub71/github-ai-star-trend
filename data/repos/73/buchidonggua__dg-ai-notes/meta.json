@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cff481ba43d667c3",
+    "is_ai": true,
+    "reason": "A tutorial book that walks through the Pi-Agent SDK source code and agent development, and it ships a companion agent skill.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "buchidonggua/dg-ai-notes",
+  "id": 1289755707
+}

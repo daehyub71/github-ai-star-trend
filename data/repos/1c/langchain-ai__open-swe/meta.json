@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "98bc88a9472963cd",
+    "is_ai": true,
+    "reason": "Open SWE is an open-source asynchronous coding agent that implements changes and opens pull requests, built on LangGraph and Deep Agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "langchain-ai/open-swe",
+  "id": 987975584
+}

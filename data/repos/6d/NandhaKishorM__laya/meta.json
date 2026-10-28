@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "267e8a390d91ce32",
+    "is_ai": true,
+    "reason": "A Python library for non-autoregressive NLP decision/classification models with released checkpoints and routing, fitting traditional ML/NLP tooling.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-18",
   "description": "Non-autoregressive System 1 decision engine. Typed choice, score and yes/no decisions over any text in a single forward pass, in 100+ languages, with a router that picks the right checkpoint per request.",
   "first_seen": "2026-09-20",

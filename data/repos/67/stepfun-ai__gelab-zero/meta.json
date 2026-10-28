@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "38ea723de0b1a7b0",
+    "is_ai": true,
+    "reason": "Open-source GUI phone-use agent with model weights, infrastructure, and MCP server for operating mobile devices.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-28",
   "description": "STEP-GUI: The top GUI agent solution in the galaxy.  Developed by the StepFun-GELab team and powered by StepFun’s cutting-edge research capabilities.",
   "first_seen": "2025-12-14",
   "full_name": "stepfun-ai/gelab-zero",
   "id": 1106046293,
   "language": "Python",
-  "last_seen": "2025-12-14",
+  "last_seen": "2025-12-21",
   "topics": [
     "agent",
     "gui-agents",

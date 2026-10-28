@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "679a78e8aa85e132",
+    "is_ai": true,
+    "reason": "An installable agent skill for Claude Code and other hosts that researches social media and web sources and synthesizes grounded summaries.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-23",
   "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
   "first_seen": "2026-03-22",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "743202c1aaade4a2",
+    "is_ai": true,
+    "reason": "OpenAI's Codex-powered CLI and SDK that uses an AI agent to scan, validate, and patch code security vulnerabilities, with a Codex plugin.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-13",
   "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
   "first_seen": "2026-07-26",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c8764976dff18fc5",
+    "is_ai": true,
+    "reason": "A large open-source AI engineering course with lessons on model internals, retrieval and agent runtimes.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-03-18",
   "description": "Learn AI Engineering! Learn it. Build it. Ship it for others.",
   "first_seen": "2026-05-17",

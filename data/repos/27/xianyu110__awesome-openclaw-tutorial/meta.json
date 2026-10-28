@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2daec6d325573847",
+    "is_ai": true,
+    "reason": "Chinese tutorial book on installing, configuring, and using the OpenClaw AI agent assistant, including its skills.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-02-10",
   "description": "OpenClaw 中文教程（4500+ Star · 已出版纸质书）：安装、配置、Skills、飞书接入与避坑｜作者的 GPT-6 / Codex / Claude Code 新项目见 README 顶部",
   "first_seen": "2026-03-08",

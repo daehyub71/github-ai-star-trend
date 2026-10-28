@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a474e61eb56cd02d",
+    "is_ai": true,
+    "reason": "Official inference code for FLUX.2 open-weight image generation and editing models.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "black-forest-labs/flux2",
+  "id": 1103476826
+}

@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "21ccd772be121b2b",
+    "is_ai": true,
+    "reason": "A free book guiding readers on the Forward Deployed Engineer role for delivering enterprise AI deployments.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-07-30",
   "description": "FDE（前沿部署工程师）从零入门指南（基于范冰《增长黑客》原书框架）",
   "first_seen": "2026-08-02",
   "full_name": "xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer",
   "id": 1316875788,
   "language": null,
-  "last_seen": "2026-08-09",
+  "last_seen": "2026-08-16",
   "topics": []
 }

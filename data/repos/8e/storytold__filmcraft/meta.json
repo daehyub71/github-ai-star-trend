@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b307c0ffd3e35cf5",
+    "is_ai": true,
+    "reason": "A Rust nonlinear video editor that advertises a 'Built for agents' section, so it counts as an app designed to be driven by agents.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-30",
   "description": "FilmCraft: An open-source, nonlinear video editor written by scratch in pure Rust",
   "first_seen": "2026-10-04",

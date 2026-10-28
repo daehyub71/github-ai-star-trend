@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8291680abc0e104c",
+    "is_ai": false,
+    "reason": "An iOS customization/exploit tool; enabling Apple Intelligence is a minor toggle, not an AI project.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-16",
   "description": "iOS /iPadOS 16.0 - 26.1, An ultimate customization tool, uilitizing the bug that makes TrollRestore possible. ",
   "first_seen": "2025-11-16",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "02bd26c926c07727",
+    "is_ai": true,
+    "reason": "A general TUI library, but it ships an AI agent skill for coding assistants, which counts as AI per the rules.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-07-21",
   "description": "OpenTUI is a library to build terminal user interfaces (TUI)",
   "first_seen": "2025-11-02",

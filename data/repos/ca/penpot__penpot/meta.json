@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "555f09bfdb0c3bcc",
+    "is_ai": true,
+    "reason": "Penpot is an open-source design platform that advertises an MCP server so AI agents can operate it.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2015-12-29",
+  "description": "Penpot: The open-source design platform for Product teams that need scalable collaboration.",
+  "first_seen": "2025-11-23",
+  "full_name": "penpot/penpot",
+  "id": 48769241,
+  "language": "Clojure",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "clojure",
+    "clojurescript",
+    "design",
+    "prototyping",
+    "ui",
+    "ux-design",
+    "ux-experience"
+  ]
+}

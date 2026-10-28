@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8cf92507250ed3ed",
+    "is_ai": true,
+    "reason": "Open-source framework for building AI SRE agents with integrations to observability tools plus training and evaluation environments.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-13",
   "description": "Build your own AI SRE agents. The open source toolkit for the AI era.",
   "first_seen": "2026-04-19",

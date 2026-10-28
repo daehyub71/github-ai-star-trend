@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "97951b906a2a781d",
+    "is_ai": true,
+    "reason": "An awesome-style curated collection of prompts for the Nano Banana Pro AI image generation model.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2025-11-10",
   "description": "🚀 An awesome list of curated Nano Banana pro prompts and examples. Your go-to resource for mastering prompt engineering and exploring the creative potential of the Nano banana pro(Nano banana 2) AI image model.",
   "first_seen": "2025-11-23",

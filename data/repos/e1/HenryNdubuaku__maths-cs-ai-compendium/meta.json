@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a1e0a1bcbb16952f",
+    "is_ai": true,
+    "reason": "An open AI/ML textbook covering maths, CS and ML that also ships an MCP server exposing the compendium as a knowledge base.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-02-03",
   "description": "Become a cracked AI/ML researcher/engineer with this unconventional textbook covering maths, computing, and ML with intuition.",
   "first_seen": "2026-03-22",
   "full_name": "HenryNdubuaku/maths-cs-ai-compendium",
   "id": 1149023093,
   "language": "TypeScript",
-  "last_seen": "2026-03-22",
+  "last_seen": "2026-07-12",
   "topics": [
     "ai-textbook",
     "algorithms",

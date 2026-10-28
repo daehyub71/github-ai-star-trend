@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2fd085c7a1d1dd1d",
+    "is_ai": true,
+    "reason": "A Playwright CLI with agent skills built for coding agents to drive browser automation token-efficiently.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2020-06-19",
   "description": "CLI for common Playwright actions. Record and generate Playwright code, inspect selectors and take screenshots.",
   "first_seen": "2026-01-25",
   "full_name": "microsoft/playwright-cli",
   "id": 273562379,
   "language": "TypeScript",
-  "last_seen": "2026-01-25",
+  "last_seen": "2026-02-08",
   "topics": [
     "playwright"
   ]

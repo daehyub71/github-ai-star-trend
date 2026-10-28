@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c7cf056b6dcc16d5",
+    "is_ai": true,
+    "reason": "A collection of engineering skills and slash commands for AI coding agents like Claude Code and Cursor.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-15",
   "description": "Production-grade engineering skills for AI coding agents.",
   "first_seen": "2026-04-05",

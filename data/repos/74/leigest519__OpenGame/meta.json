@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "667e2312db7e45ca",
+    "is_ai": true,
+    "reason": "Open-source agentic coding framework that generates web games from prompts, with a specialized code LLM and evaluation benchmark.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "leigest519/OpenGame",
+  "id": 1216116826
+}

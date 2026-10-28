@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a8ec45d55dbbd1a3",
+    "is_ai": true,
+    "reason": "An AI-powered code review CLI that uses an LLM agent to produce line-level review comments and integrates with coding agents.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-18",
   "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
   "first_seen": "2026-05-31",

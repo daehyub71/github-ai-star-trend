@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dd1459f8850386d0",
+    "is_ai": true,
+    "reason": "LEANN is a storage-efficient vector index for running private RAG over personal data on a local device.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "StarTrail-org/LEANN",
+  "id": 998732712
+}

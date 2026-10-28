@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "510bbdd46a9f5bc5",
+    "is_ai": true,
+    "reason": "A Claude Code plugin providing multi-agent orchestration for AI coding workflows.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-09",
   "description": "Teams-first Multi-agent orchestration for Claude Code",
   "first_seen": "2026-01-18",
   "full_name": "Yeachan-Heo/oh-my-claudecode",
   "id": 1130809465,
   "language": "TypeScript",
-  "last_seen": "2026-01-25",
+  "last_seen": "2026-03-29",
   "topics": [
     "agentic-coding",
     "ai-agents",

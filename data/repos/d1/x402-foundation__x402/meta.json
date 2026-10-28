@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dd670763c3be39e6",
+    "is_ai": true,
+    "reason": "x402 is an HTTP payments protocol widely used for agent payments, shipping an @x402/mcp package that lets AI agents pay for resources.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-02-21",
   "description": "A payments protocol for the internet. Built on HTTP.",
   "first_seen": "2025-10-26",

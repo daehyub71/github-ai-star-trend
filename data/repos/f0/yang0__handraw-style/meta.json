@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f0c642086e98b593",
+    "is_ai": true,
+    "reason": "An agent skill providing numbered style/layout prompt libraries for generating AI image prompts.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-05",
+  "description": "手绘风格编号画廊与双语提示词 Skill",
+  "first_seen": "2026-09-27",
+  "full_name": "yang0/handraw-style",
+  "id": 1358588929,
+  "language": "HTML",
+  "last_seen": "2026-09-27",
+  "topics": []
+}

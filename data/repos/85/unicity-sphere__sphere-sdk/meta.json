@@ -1,0 +1,29 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8e18322b6ed03c1f",
+    "is_ai": true,
+    "reason": "A TypeScript SDK that gives autonomous AI agents wallets, identity, payments and messaging, i.e., tooling that agents use to transact.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-01-27",
+  "description": "The SDK for autonomous economic agents. Give an agent an identity, a wallet, and the ability to find, negotiate with, and settle with other agents - peer-to-peer, with perfect privacy and ultra-fast finality",
+  "first_seen": "2026-05-24",
+  "full_name": "unicity-sphere/sphere-sdk",
+  "id": 1143295695,
+  "language": "TypeScript",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "ai-agents",
+    "artificial-intelligence",
+    "blockchain",
+    "commerce"
+  ]
+}

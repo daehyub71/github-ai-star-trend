@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "668313b5190a776e",
+    "is_ai": false,
+    "reason": "A curated list of classic mathematics books, not about AI models or agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2024-09-01",
   "description": null,
   "first_seen": "2025-11-23",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1c2e2ffb71e56d23",
+    "is_ai": true,
+    "reason": "A collection of agent skills for Claude Code/Codex for Nature-style academic writing and scientific figure creation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-24",
   "description": "符合nature论文学术表达和科研绘图的Skill",
   "first_seen": "2026-05-10",

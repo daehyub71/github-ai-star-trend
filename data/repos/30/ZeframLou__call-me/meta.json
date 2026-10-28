@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ee1cb1b5851656b2",
+    "is_ai": true,
+    "reason": "A Claude Code plugin that lets the agent phone the user using speech-to-text and text-to-speech, making it a tool the agent calls.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ZeframLou/call-me",
+  "id": 1127052092
+}

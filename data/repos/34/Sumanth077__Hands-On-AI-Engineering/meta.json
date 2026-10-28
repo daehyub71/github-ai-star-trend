@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0f6bf0ebf98d8866",
+    "is_ai": true,
+    "reason": "A collection of hands-on AI example projects (agents, RAG, OCR) intended for learning AI engineering.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-02-24",
   "description": "A curated collection of practical AI projects implementing OCR systems, RAG, AI agents, and other AI use cases.",
   "first_seen": "2026-06-07",

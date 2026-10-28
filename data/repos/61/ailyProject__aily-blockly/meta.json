@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0f5e0d441232f619",
+    "is_ai": true,
+    "reason": "A Blockly hardware IDE with AI-assisted code generation, debugging, and project analysis for Arduino/ESP32 boards.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-11-21",
   "description": "AI IDE for hardware development, support Arduino, MicroPython, ESP32, STM32, RP2040, Nrf5x...",
   "first_seen": "2026-08-09",

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "09e90b1aea959a12",
+    "is_ai": true,
+    "reason": "Microsoft's 4B image-to-3D generative model with inference and training code and released checkpoints.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-26",
+  "description": "Native and Compact Structured Latents for 3D Generation",
+  "first_seen": "2025-12-14",
+  "full_name": "microsoft/TRELLIS.2",
+  "id": 1104510027,
+  "language": "Python",
+  "last_seen": "2025-12-14",
+  "topics": []
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "73e4ad25eae9ef79",
+    "is_ai": true,
+    "reason": "Self-hosted OSINT dashboard that advertises an LLM-powered intelligence assistant with alerts and briefs, making it an end-user AI app.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-14",
   "description": "Your personal intelligence agent. Watches the world from multiple data sources and pings you when something changes.",
   "first_seen": "2026-03-22",

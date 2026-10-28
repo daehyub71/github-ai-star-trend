@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c83abf868f6741d0",
+    "is_ai": true,
+    "reason": "A systematic tutorial teaching vibe coding with AI coding assistants, an AI education resource.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "datawhalechina/vibe-vibe",
+  "id": 1105906942
+}

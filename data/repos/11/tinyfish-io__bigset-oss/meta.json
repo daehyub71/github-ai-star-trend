@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "72788262dfa46f3c",
+    "is_ai": true,
+    "reason": "Self-hostable app where AI web agents research the live web to build and refresh structured datasets.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "tinyfish-io/bigset-oss",
+  "id": 1239371359
+}

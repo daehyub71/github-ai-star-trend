@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c6c53c034371c70e",
+    "is_ai": true,
+    "reason": "Spec Kit is a toolkit providing structured processes, templates, and commands for AI coding agents to follow spec-driven development.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-08-21",
   "description": "💫 Toolkit to help you get started with SDD or any other process!",
   "first_seen": "2025-10-26",

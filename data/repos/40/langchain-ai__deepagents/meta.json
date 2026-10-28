@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bf13fb77815a66db",
+    "is_ai": true,
+    "reason": "Deep Agents is a LangGraph-based agent harness library for building agents with sub-agents, filesystem, and memory, plus a bundled coding agent CLI.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "langchain-ai/deepagents",
+  "id": 1027384981
+}

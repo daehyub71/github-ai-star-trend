@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2ab5e6c4612a1cf1",
+    "is_ai": false,
+    "reason": "A fitness exercise dataset for apps; ML use is only mentioned as a possible application, not its focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-03-18",
   "description": "1,324-exercise fitness dataset — animation GIFs, 180×180 thumbnails, muscle-group & equipment data, and step-by-step instructions in 6 languages. The exercise data layer behind the LogPress app.",
   "first_seen": "2026-06-28",

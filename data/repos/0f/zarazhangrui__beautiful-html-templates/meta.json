@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a204df7d38ff2874",
+    "is_ai": true,
+    "reason": "An HTML slide template library with an AGENTS.md operating manual designed for coding agents to select templates and generate decks.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-05-05",
+  "description": "A library of HTML slide templates designed so any coding agent can pick the right one and produce a beautiful deck on the user's behalf, automatically.",
+  "first_seen": "2026-05-24",
+  "full_name": "zarazhangrui/beautiful-html-templates",
+  "id": 1229531271,
+  "language": "HTML",
+  "last_seen": "2026-05-24",
+  "topics": []
+}

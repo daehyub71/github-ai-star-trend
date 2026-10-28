@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a5fda50808f9565f",
+    "is_ai": true,
+    "reason": "A beginner AI curriculum covering neural networks, computer vision and NLP, which falls under AI education material.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2021-03-03",
   "description": "12 Weeks, 24 Lessons, AI for All!",
   "first_seen": "2026-07-26",

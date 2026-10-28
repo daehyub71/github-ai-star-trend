@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "519d8a6506368323",
+    "is_ai": false,
+    "reason": "A pure front-end 2D/3D floor plan and interior design tool with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "wy51ai/floorplan-3d",
+  "id": 1394134758
+}

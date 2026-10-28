@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d6dfc515ab302799",
+    "is_ai": true,
+    "reason": "A Node.js engine that lets AI agents self-evolve by encoding their experience as Genes and Capsules, which is agent runtime infrastructure with skill and prompt governance.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-01",
   "description": "The GEP-powered self-evolving engine for AI agents. Auditable evolution with Genes, Capsules, and Events. | evomap.ai",
   "first_seen": "2026-04-12",

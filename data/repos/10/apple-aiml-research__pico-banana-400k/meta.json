@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f5cd1faac8910aba",
+    "is_ai": true,
+    "reason": "Releases a large-scale dataset for training text-guided image editing models.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "apple-aiml-research/pico-banana-400k",
+  "id": 1080777367
+}

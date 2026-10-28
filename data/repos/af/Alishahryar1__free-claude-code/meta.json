@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3131649e3e33c81e",
+    "is_ai": true,
+    "reason": "A proxy/gateway that routes coding agents like Claude Code to many free model providers with fallback, making it primarily an LLM gateway for coding agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-28",
   "description": "Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)",
   "first_seen": "2026-04-19",
   "full_name": "Alishahryar1/free-claude-code",
   "id": 1144520675,
   "language": "Python",
-  "last_seen": "2026-04-26",
+  "last_seen": "2026-08-23",
   "topics": []
 }

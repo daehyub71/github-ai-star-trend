@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c0821073aba9c7b0",
+    "is_ai": true,
+    "reason": "Microsoft releases Fara1.5 computer-use agent model weights and benchmarks for browser automation.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-10-29",
   "description": "Fara1.5 – A family of frontier computer use agent models",
-  "first_seen": "2025-11-30",
+  "first_seen": "2025-11-23",
   "full_name": "microsoft/fara",
   "id": 1085876386,
   "language": "Python",

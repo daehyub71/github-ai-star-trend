@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "62d5802b1bc85c75",
+    "is_ai": false,
+    "reason": "An anime streaming/scraping app whose Anime4K super-resolution is a shader-based video upscaling feature, not advertised as an AI product.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Predidit/Kazumi",
+  "id": 798049841
+}

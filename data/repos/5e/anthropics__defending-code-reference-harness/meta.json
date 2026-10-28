@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5e443084dc5acc23",
+    "is_ai": true,
+    "reason": "Claude Code skills plus an autonomous LLM agent harness for vulnerability discovery, triage and patching.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-22",
   "description": "Skills for threat modeling, scanning, triage, patching, plus an autonomous scanning harness you can /customize",
   "first_seen": "2026-05-31",

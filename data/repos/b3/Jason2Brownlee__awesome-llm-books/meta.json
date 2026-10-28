@@ -1,0 +1,30 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bfc78736f3794ed2",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of books about developing with large language models.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "created": "2024-12-14",
+  "description": "Awesome LLM Books: Curated list of books on Large Language Models",
+  "first_seen": "2025-11-30",
+  "full_name": "Jason2Brownlee/awesome-llm-books",
+  "id": 903548628,
+  "language": null,
+  "last_seen": "2025-11-30",
+  "topics": [
+    "awesome-list",
+    "books",
+    "gpt",
+    "llm-book",
+    "llms"
+  ]
+}

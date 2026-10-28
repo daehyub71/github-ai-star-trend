@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c7b90fb4b05d7253",
+    "is_ai": true,
+    "reason": "A collection of hands-on tutorials and example projects covering LLMs, RAG, and AI agents.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2024-10-21",
+  "description": "In-depth tutorials on LLMs, RAGs and real-world AI agent applications.",
+  "first_seen": "2025-12-07",
+  "full_name": "patchy631/ai-engineering-hub",
+  "id": 876064934,
+  "language": "Jupyter Notebook",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "agents",
+    "ai",
+    "llms",
+    "machine-learning",
+    "mcp",
+    "rag"
+  ]
+}

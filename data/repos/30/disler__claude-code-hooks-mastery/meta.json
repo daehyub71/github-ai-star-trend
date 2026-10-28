@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6994ff27ea027890",
+    "is_ai": true,
+    "reason": "A tutorial and example collection of Claude Code hooks, sub-agents, and output styles for controlling a coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "disler/claude-code-hooks-mastery",
+  "id": 1014394578
+}

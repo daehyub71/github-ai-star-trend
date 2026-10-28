@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8fef6b15a9f9247d",
+    "is_ai": true,
+    "reason": "A step-by-step tutorial for building a Claude Code-like coding agent from scratch, with runnable code for each chapter.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "Windy3f3f3f3f/claude-code-from-scratch",
+  "id": 1197227242
+}

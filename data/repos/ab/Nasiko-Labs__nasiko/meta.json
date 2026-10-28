@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "46ce264b9eb44ef4",
+    "is_ai": true,
+    "reason": "Nasiko is a runtime that discovers coding agents, tracks their cost, and routes them to chosen models, functioning as an LLM gateway and observability layer.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-12",
   "description": "The Open Runtime for AI Agents",
   "first_seen": "2026-06-21",

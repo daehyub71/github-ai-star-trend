@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5af42e89b5cbdb6f",
+    "is_ai": false,
+    "reason": "A GitHub CLI extension for local CI commit status signoff with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-11-10",
   "description": "Local CI. Sign off on your own work.",
   "first_seen": "2026-06-21",

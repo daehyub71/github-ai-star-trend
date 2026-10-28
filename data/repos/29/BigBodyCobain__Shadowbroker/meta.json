@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "06f104bb8421b181",
+    "is_ai": true,
+    "reason": "OSINT geospatial platform that advertises an agent command channel for connecting AI agents as co-analysts.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "BigBodyCobain/Shadowbroker",
+  "id": 1173152133
+}

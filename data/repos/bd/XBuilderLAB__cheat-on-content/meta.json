@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c83c1156245cdadd",
+    "is_ai": true,
+    "reason": "An agent skill workflow for content creators that uses AI to score, predict, and retro posts with an evolving rubric.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-05",
   "description": "You're reading this. The skill predicted it. A workflow that turns every post into a calibrated experiment—score, blind-predict, retro, evolve. The future doesn't reward effort, it rewards those who see the pattern first. 1M followers in a month — not luck, system.",
-  "first_seen": "2026-05-24",
+  "first_seen": "2026-05-17",
   "full_name": "XBuilderLAB/cheat-on-content",
   "id": 1229729956,
   "language": "Python",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ff5a8ca6108aa78d",
+    "is_ai": true,
+    "reason": "A Microsoft course curriculum teaching classic machine learning with scikit-learn, which is AI education material.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "microsoft/ML-For-Beginners",
+  "id": 343965132
+}

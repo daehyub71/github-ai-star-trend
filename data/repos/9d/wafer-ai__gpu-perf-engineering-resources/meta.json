@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6242abc2961bb6cd",
+    "is_ai": true,
+    "reason": "A curated resource list for learning GPU performance engineering and production LLM inference.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "created": "2026-01-12",
+  "description": "A curated resource list for learning AI performance engineering, from GPU fundamentals to production inference.",
+  "first_seen": "2026-08-23",
+  "full_name": "wafer-ai/gpu-perf-engineering-resources",
+  "id": 1132444278,
+  "language": "Python",
+  "last_seen": "2026-08-23",
+  "topics": []
+}

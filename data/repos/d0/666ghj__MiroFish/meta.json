@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "457da40cf467ebd3",
+    "is_ai": true,
+    "reason": "An LLM-powered multi-agent simulation engine that end users run to generate prediction reports from seed materials.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-26",
   "description": "A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物",
   "first_seen": "2026-01-11",
   "full_name": "666ghj/MiroFish",
   "id": 1104332987,
   "language": "Python",
-  "last_seen": "2026-03-15",
+  "last_seen": "2026-03-22",
   "topics": [
     "agent-memory",
     "financial-forecasting",

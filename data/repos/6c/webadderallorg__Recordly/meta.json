@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b865a96bb1a872ca",
+    "is_ai": false,
+    "reason": "A desktop screen recorder and editor with auto-zoom based on cursor activity, with no advertised AI or agent features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-12",
   "description": "Create polished demo videos without editing skills. Mac/Windows/Linux",
   "first_seen": "2026-09-06",

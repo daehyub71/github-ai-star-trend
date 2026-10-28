@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8f6b703291b91e0e",
+    "is_ai": true,
+    "reason": "A guide to vibe coding with AI coding agents like Claude Code and Codex CLI, including rules setup.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2025-03-12",
+  "description": null,
+  "first_seen": "2025-11-16",
+  "full_name": "EnzeD/vibe-coding",
+  "id": 947537164,
+  "language": null,
+  "last_seen": "2025-11-16",
+  "topics": []
+}

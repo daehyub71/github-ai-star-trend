@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fafbce0c232d8a18",
+    "is_ai": true,
+    "reason": "A usage guide documenting special prompt instructions to control DeepSeek-V4's roleplay thinking style.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "victorchen96/deepseek_v4_rolepaly_instruct",
+  "id": 1219712617
+}

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bb7bb058fdf2238f",
+    "is_ai": true,
+    "reason": "End-user Mac meeting note-taker with local speech transcription and LLM suggestions from a knowledge base.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "yazinsai/OpenOats",
+  "id": 1169471651
+}

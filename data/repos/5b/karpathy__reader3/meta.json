@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "464e9b3b71211725",
+    "is_ai": true,
+    "reason": "A self-hosted EPUB reader explicitly built to make reading books alongside an LLM easy by splitting chapters for copy-pasting.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-18",
   "description": "Quick illustration of how one can easily read books together with LLMs. It's great and I highly recommend it.",
   "first_seen": "2025-11-16",

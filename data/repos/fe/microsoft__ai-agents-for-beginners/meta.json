@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9d615c3128154d2f",
+    "is_ai": true,
+    "reason": "A Microsoft course of 18 lessons teaching how to build AI agents with frameworks like AutoGen and Semantic Kernel.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "microsoft/ai-agents-for-beginners",
+  "id": 895508656
+}

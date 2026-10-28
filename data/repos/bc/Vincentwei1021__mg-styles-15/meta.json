@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "061468207929cfd4",
+    "is_ai": true,
+    "reason": "A showcase collection of prompts and Claude-generated source code for motion design films, centered on reusable prompts.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-10-02",
   "description": "15 motion design styles, each made by Claude Opus 5.5 writing code from one prompt: watch the films, copy the prompts, read the full source.",
   "first_seen": "2026-10-18",

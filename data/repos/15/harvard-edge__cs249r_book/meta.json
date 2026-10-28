@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b9bc5c3099e17d2c",
+    "is_ai": true,
+    "reason": "Open textbook and curriculum on machine learning systems engineering, an AI-focused education resource.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2023-09-06",
   "description": "Machine Learning Systems: Foundations, Scaling, Agentic AI, and Physical AI (Vols I–IV) • Harvard CS249r | https://mlsysbook.ai",
   "first_seen": "2025-10-26",

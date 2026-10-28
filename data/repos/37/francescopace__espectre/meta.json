@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3506596790e5a044",
+    "is_ai": true,
+    "reason": "ESP32 Wi-Fi CSI motion sensing platform that ships ML detectors with open model weights and a dataset, best fitting traditional ML sensing.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-26",
   "description": "Wi-Fi CSI motion sensing for ESP32. C++ SDK, ESPHome, Native, and Matter frontends, browser tools, and a CLI for the full device lifecycle. GPLv3 and commercial licensing.",
-  "first_seen": "2025-11-16",
+  "first_seen": "2025-11-09",
   "full_name": "francescopace/espectre",
   "id": 1083590674,
   "language": "Python",

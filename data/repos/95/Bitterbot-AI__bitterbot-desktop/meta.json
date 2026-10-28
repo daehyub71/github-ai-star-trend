@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7763c6d1469e5dd6",
+    "is_ai": true,
+    "reason": "A local-first personal AI agent desktop app with persistent memory, skills, and multi-channel chat for end users.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Bitterbot-AI/bitterbot-desktop",
+  "id": 1194596194
+}

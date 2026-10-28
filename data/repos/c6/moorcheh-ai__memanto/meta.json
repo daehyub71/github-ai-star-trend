@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fd61f99f5008c2bb",
+    "is_ai": true,
+    "reason": "Memanto is a long-term memory management agent/system for AI agents, also offered as an MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "moorcheh-ai/memanto",
+  "id": 1190042495
+}

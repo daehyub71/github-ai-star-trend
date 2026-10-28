@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0076e9965b2db40b",
+    "is_ai": false,
+    "reason": "This is the historical Apollo 11 guidance computer source code archive and has no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "chrislgarry/Apollo-11",
+  "id": 18408635
+}

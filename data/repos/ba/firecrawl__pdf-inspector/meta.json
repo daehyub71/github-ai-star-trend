@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b5817bbb37bc28cd",
+    "is_ai": true,
+    "reason": "Rust library converting PDFs to Markdown for LLM pipelines with OCR routing, benchmarked against LLM-oriented parsers.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-06",
   "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
   "first_seen": "2026-07-26",

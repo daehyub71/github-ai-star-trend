@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "df8d3b776d93b7a6",
+    "is_ai": true,
+    "reason": "vLLM-Omni is a serving framework for efficient inference of omni-modality models covering audio, image and video generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-09-11",
   "description": "A framework for efficient model inference with omni-modality models",
   "first_seen": "2025-12-21",

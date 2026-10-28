@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8a7eac327ec9729d",
+    "is_ai": false,
+    "reason": "A Next.js SaaS boilerplate with auth, billing and i18n, and no AI features advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-02-01",
   "description": "Open Source Next.js Saas Boilerplate",
   "first_seen": "2025-11-02",

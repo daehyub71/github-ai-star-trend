@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "29a800502c715063",
+    "is_ai": true,
+    "reason": "Codebase for training and evaluating draft models for speculative decoding, an LLM inference acceleration technique.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-26",
   "description": "DeepSpec: a full-stack codebase for training and evaluating speculative decoding algorithms",
   "first_seen": "2026-06-28",

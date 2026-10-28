@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "42601ca80d2b8f30",
+    "is_ai": true,
+    "reason": "Platform for orchestrating multiple AI agents from different models into collaborating teams with shared memory.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "zts212653/clowder-ai",
+  "id": 1179679081
+}

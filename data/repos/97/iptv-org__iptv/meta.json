@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1cfe9ddbeb78b770",
+    "is_ai": false,
+    "reason": "A curated collection of public IPTV stream links with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2018-11-14",
   "description": "Collection of publicly available IPTV channels from all over the world",
   "first_seen": "2025-11-16",

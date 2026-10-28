@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5127bd5a69802628",
+    "is_ai": true,
+    "reason": "A native macOS launcher app that advertises AI chat and AI text quick actions among its features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-29",
   "description": "Tinycast — a tiny, fully native macOS launcher, hotkeys, and clipboard history.",
   "first_seen": "2026-09-13",

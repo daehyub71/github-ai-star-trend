@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "75140b707c771a37",
+    "is_ai": true,
+    "reason": "A curated awesome-style library of prompts for OpenAI's GPT Image 2 image generation model.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-04-16",
   "description": "🚀 World's largest GPT Image 2 prompt library, updated daily — 2000+ curated prompts with preview images, 16 languages. OpenAI's next-gen image model with pixel-perfect text rendering, cross-image consistency, and commercial-grade illustration. Free & open source.",
   "first_seen": "2026-05-03",

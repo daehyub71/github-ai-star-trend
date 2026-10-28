@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9cc9f84fb6d2acbc",
+    "is_ai": true,
+    "reason": "Offline knowledge server that advertises a local AI chat assistant with RAG, built on Ollama, alongside other offline tools.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-06-24",
   "description": "Project NOMAD is an offline-first knowledge and education server. Wikipedia, thousands of books, courses, maps, and optional local AI, all running on hardware you own with no internet required.",
   "first_seen": "2026-03-15",

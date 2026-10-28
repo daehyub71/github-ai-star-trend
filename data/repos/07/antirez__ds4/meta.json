@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4419bc54c4950d5b",
+    "is_ai": true,
+    "reason": "A native inference engine for running DeepSeek and GLM models locally on Metal, CUDA and ROCm.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-06",
   "description": "DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
   "first_seen": "2026-05-03",

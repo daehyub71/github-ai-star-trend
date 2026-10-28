@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a5778158b662a636",
+    "is_ai": true,
+    "reason": "A collection of example quickstart projects for building apps with the Claude API, many focused on computer and browser use agents.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "anthropics/claude-quickstarts",
+  "id": 849553306
+}

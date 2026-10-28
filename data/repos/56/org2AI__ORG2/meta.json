@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e2e054e0dfe3eeb0",
+    "is_ai": true,
+    "reason": "Desktop app for running coding agents with a built-in harness plus session replay, tracing and review of agent work.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "org2AI/ORG2",
+  "id": 1256082863
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "de1ff90802131798",
+    "is_ai": true,
+    "reason": "Streaming ETL framework that advertises LLM pipelines and real-time RAG as core use cases.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2022-11-27",
   "description": "Python ETL framework for stream processing, real-time analytics, LLM pipelines, and RAG.",
   "first_seen": "2025-12-28",

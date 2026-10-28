@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c6e121c4a24585d4",
+    "is_ai": true,
+    "reason": "VoxCPM2 is an open-weight 2B tokenizer-free TTS model with voice cloning and design, so its field is speech generation.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "OpenBMB/VoxCPM",
+  "id": 1057664813
+}

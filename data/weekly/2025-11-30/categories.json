@@ -1,0 +1,111 @@
+{
+  "ALL": {
+    "entrants": 49,
+    "gain": 103645,
+    "repos": 355
+  },
+  "ai_tab": true,
+  "categories": {
+    "agent-framework": {
+      "entrants": 7,
+      "gain": 12621,
+      "repos": 36
+    },
+    "agent-skills": {
+      "entrants": 9,
+      "gain": 15809,
+      "repos": 35
+    },
+    "ai-apps": {
+      "entrants": 8,
+      "gain": 22797,
+      "repos": 66
+    },
+    "coding-agent": {
+      "entrants": 2,
+      "gain": 9718,
+      "repos": 31
+    },
+    "computer-use": {
+      "entrants": 1,
+      "gain": 3261,
+      "repos": 11
+    },
+    "doc-parsing": {
+      "entrants": 0,
+      "gain": 2089,
+      "repos": 10
+    },
+    "inference": {
+      "entrants": 1,
+      "gain": 1775,
+      "repos": 11
+    },
+    "llmops": {
+      "entrants": 0,
+      "gain": 1067,
+      "repos": 7
+    },
+    "local-llm": {
+      "entrants": 1,
+      "gain": 1534,
+      "repos": 7
+    },
+    "mcp-tools": {
+      "entrants": 3,
+      "gain": 4610,
+      "repos": 31
+    },
+    "models": {
+      "entrants": 3,
+      "gain": 4554,
+      "repos": 12
+    },
+    "multimodal": {
+      "entrants": 8,
+      "gain": 11734,
+      "repos": 42
+    },
+    "other-ai": {
+      "entrants": 3,
+      "gain": 5018,
+      "repos": 22
+    },
+    "rag": {
+      "entrants": 1,
+      "gain": 1612,
+      "repos": 14
+    },
+    "training": {
+      "entrants": 1,
+      "gain": 2478,
+      "repos": 11
+    },
+    "vectordb-memory": {
+      "entrants": 1,
+      "gain": 2968,
+      "repos": 9
+    }
+  },
+  "coverage": 0.2945525177603382,
+  "non_ai": {
+    "gain": 76964,
+    "repos": 243
+  },
+  "notes": {
+    "category": "주 카테고리만(보조 제외)",
+    "rows": "주간 파일(증가 ≥ 10)의 행",
+    "scope": "판정은 랭킹 후보만(결정 30) — 합계는 판정된 AI 저장소만. coverage 는 판정이 끝난 저장소가 그 주 증가에서 차지하는 비율"
+  },
+  "taxonomy_version": 2,
+  "total_gain": 613164,
+  "unclassified": {
+    "gain": 432555,
+    "repos": 11499
+  },
+  "unmapped": {
+    "gain": 0,
+    "repos": 0
+  },
+  "week": "2025-11-30"
+}

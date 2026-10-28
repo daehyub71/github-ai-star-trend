@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3475e392b61470b0",
+    "is_ai": true,
+    "reason": "Menu bar app that monitors usage limits, spend and status across AI coding providers like Codex and Claude Code.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-16",
   "description": "Show usage stats for OpenAI Codex and Claude Code, without having to login.",
   "first_seen": "2026-01-04",

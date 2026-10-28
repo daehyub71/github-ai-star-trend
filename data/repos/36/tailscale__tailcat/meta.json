@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0b6c2b062e85e4ce",
+    "is_ai": false,
+    "reason": "A netcat-like networking CLI and library over Tailscale's data plane, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-10-29",
   "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
   "first_seen": "2026-08-30",

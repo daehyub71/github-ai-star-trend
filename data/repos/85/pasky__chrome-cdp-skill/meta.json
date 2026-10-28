@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8ed9284d0d5bbaab",
+    "is_ai": true,
+    "reason": "An agent skill and CLI that lets AI agents control the user's live Chrome session via CDP.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-13",
   "description": "Give your AI agent access to your live Chrome session — works out of the box, connects to tabs you already have open",
   "first_seen": "2026-03-15",

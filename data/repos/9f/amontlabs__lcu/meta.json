@@ -1,0 +1,38 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "06648d650d2fb93a",
+    "is_ai": true,
+    "reason": "LCU exposes Codex's computer-use runtime so coding-agent harnesses can control desktop apps and Chrome, integrating via MCP and plugins.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-22",
+  "description": "Codex computer use, decoupled from the app, for usage inside any harness.",
+  "first_seen": "2026-10-18",
+  "full_name": "amontlabs/lcu",
+  "id": 1381783784,
+  "language": "JavaScript",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "accessibility",
+    "agent-skills",
+    "browser-automation",
+    "claude-code",
+    "codex-cli",
+    "computer-use",
+    "desktop-automation",
+    "library",
+    "linux",
+    "macos",
+    "mcp",
+    "pi-agent",
+    "x11"
+  ]
+}

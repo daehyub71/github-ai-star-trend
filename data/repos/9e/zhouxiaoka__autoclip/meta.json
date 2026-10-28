@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e9e886d8f0b35843",
+    "is_ai": true,
+    "reason": "An open-source AI desktop tool that automatically clips long videos into shorts with subtitles, covers and captions, and also ships CLI and MCP interfaces.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "zhouxiaoka/autoclip",
+  "id": 1015815983
+}

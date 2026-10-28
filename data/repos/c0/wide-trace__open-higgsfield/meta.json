@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "348eb1ce121dc813",
+    "is_ai": true,
+    "reason": "Self-hostable studio app for AI image and video generation across many models.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-26",
   "description": "A studio for image and video generation — one prompt bar, each model’s own settings, and every finished run in one gallery.",
   "first_seen": "2026-09-13",

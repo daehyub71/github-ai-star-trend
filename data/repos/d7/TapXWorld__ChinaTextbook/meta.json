@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fef8d742550f1783",
+    "is_ai": false,
+    "reason": "A collection of Chinese school and university textbook PDFs with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2020-01-05",
   "description": "所有小初高、大学PDF教材。",
   "first_seen": "2025-11-09",

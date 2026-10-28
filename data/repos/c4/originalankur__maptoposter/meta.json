@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ec99be22a337cfb3",
+    "is_ai": false,
+    "reason": "A Python tool that generates map posters from OpenStreetMap data, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-08",
   "description": "Transform your favorite cities into beautiful, minimalist designs. MapToPoster lets you create and export visually striking map posters with code.",
   "first_seen": "2026-01-18",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d1d5a494aaa621bb",
+    "is_ai": true,
+    "reason": "AI-powered testing CLI designed to be called by coding agents to verify their work against live apps.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-11",
   "description": "Official TestSprite CLI — AI-powered automated testing from your terminal",
   "first_seen": "2026-06-28",

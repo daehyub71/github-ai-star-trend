@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8e5187c2f6344629",
+    "is_ai": true,
+    "reason": "A design skill package for coding agents like Claude Code, Cursor and Codex that guides and lints AI-generated web pages.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-27",
   "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
   "first_seen": "2026-07-12",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "192a80026978fd3b",
+    "is_ai": true,
+    "reason": "A Claude Code skill/plugin bundle of SEO sub-skills and sub-agents for running AI-driven SEO audits.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "AgriciDaniel/claude-seo",
+  "id": 1152014594
+}

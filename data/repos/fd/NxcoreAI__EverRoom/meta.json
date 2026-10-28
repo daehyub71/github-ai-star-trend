@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "035c9b35c63f58a8",
+    "is_ai": true,
+    "reason": "Local-first desktop workspace app with AI agents and memory over personal files and conversations.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-08-14",
+  "description": "EverRoom - A workspace that remembers your projects, decisions, and sources.",
+  "first_seen": "2026-09-20",
+  "full_name": "NxcoreAI/EverRoom",
+  "id": 1334198162,
+  "language": "TypeScript",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "ai",
+    "editor",
+    "electron",
+    "knowledge",
+    "memory",
+    "notion",
+    "obisidian",
+    "typescript"
+  ]
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b480511f64f0edc8",
+    "is_ai": true,
+    "reason": "A Rust PDF reader/editor whose README has a \"Built for agents too\" section, marking it as an app pitched for agent operation.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-30",
   "description": "PdfCraft: An open-source PDF reader and editor written by scratch in pure Rust",
   "first_seen": "2026-10-04",

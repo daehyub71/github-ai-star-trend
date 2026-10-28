@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "063ae354484cfebf",
+    "is_ai": true,
+    "reason": "A collection of prompt templates and agent skills for AI-assisted academic paper writing.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-01-30",
   "description": "Elevate your AI research writing, no more tedious polishing ✨ ",
   "first_seen": "2026-02-01",

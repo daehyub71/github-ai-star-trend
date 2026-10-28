@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d62f1348ac6c83df",
+    "is_ai": false,
+    "reason": "DroidDeck is an Android gaming runtime that brings Steam and Proton to handhelds, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-24",
   "description": "DroidDeck brings the SteamOS experience to Android",
   "first_seen": "2026-10-04",

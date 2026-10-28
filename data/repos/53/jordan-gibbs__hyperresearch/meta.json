@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ac82c03911ec87f1",
+    "is_ai": true,
+    "reason": "A deep research skill/pipeline installed into Claude Code and Codex, with web research collection into a searchable wiki.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-09",
   "description": "Convert Claude Code or Codex into the most intelligent Deep Research Agent. Collect, search, and synthesize web research into a persistent, searchable wiki that builds on itself. Hosted API + MCP: hyperresearch.ai",
   "first_seen": "2026-09-06",

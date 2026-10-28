@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e29f690b87b0806e",
+    "is_ai": true,
+    "reason": "Educational tutorial teaching how to build a nano Claude Code-like coding agent harness from scratch.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-06-29",
   "description": "Bash is all you need -  A nano claude code–like 「agent harness」, built from 0 to 1",
   "first_seen": "2026-03-15",

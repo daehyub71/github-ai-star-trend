@@ -1,0 +1,29 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "baaf65c0ef5b732d",
+    "is_ai": true,
+    "reason": "macOS/CLI tool that tracks AI provider quotas and manages a local proxy with routing and failover for AI coding agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-12-24",
+  "description": "Stop juggling AI accounts. Quotio is a beautiful native macOS menu bar app that unifies your Claude, Gemini, OpenAI, Qwen, and Antigravity subscriptions – with real-time quota tracking and smart auto-failover for AI coding tools like Claude Code, OpenCode, and Droid.",
+  "first_seen": "2025-12-28",
+  "full_name": "nguyenphutrong/quotio",
+  "id": 1122347787,
+  "language": "Rust",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "ai-tools",
+    "developer-tools",
+    "proxy",
+    "quota-monitor"
+  ]
+}

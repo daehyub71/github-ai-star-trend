@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "54adf844f9b417b2",
+    "is_ai": true,
+    "reason": "A multi-account reverse-proxy gateway exposing Tencent WorkBuddy/CodeBuddy models as OpenAI-compatible APIs for Codex and Claude Code.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ardeyouxipianyi/workbuddy2api-hub",
+  "id": 1367131646
+}

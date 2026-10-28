@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8502904c63480397",
+    "is_ai": true,
+    "reason": "An AI skill installed into Codex/Claude/OpenClaw that runs the full academic paper workflow: literature search, writing, figures, citation checks and delivery.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-17",
   "description": "PaperSpine5 — local-first, evidence-bound paper research, writing, figures, review and delivery. Download: https://wubing2023.github.io/PaperSpine/v5/",
   "first_seen": "2026-05-31",
   "full_name": "WUBING2023/PaperSpine",
   "id": 1241325722,
   "language": "Python",
-  "last_seen": "2026-05-31",
+  "last_seen": "2026-06-07",
   "topics": []
 }

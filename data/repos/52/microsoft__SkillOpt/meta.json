@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "48965539c485aec8",
+    "is_ai": true,
+    "reason": "SkillOpt is a Python optimizer that trains reusable natural-language skill files for frozen LLM agents.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-08",
   "description": "SkillOpt is a text-space optimizer that trains reusable natural-language skills for frozen LLM agents through trajectory-driven edits, validation-gated updates, and deployable best_skill.md artifacts.",
   "first_seen": "2026-05-24",
   "full_name": "microsoft/SkillOpt",
   "id": 1232669890,
   "language": "Python",
-  "last_seen": "2026-05-31",
+  "last_seen": "2026-06-14",
   "topics": [
     "agent-skills",
     "self-evolving-agents"

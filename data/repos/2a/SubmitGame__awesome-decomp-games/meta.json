@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f12f5ef0654724af",
+    "is_ai": false,
+    "reason": "An awesome-style curated list of decompiled and reverse-engineered game projects with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "SubmitGame/awesome-decomp-games",
+  "id": 1412045987
+}

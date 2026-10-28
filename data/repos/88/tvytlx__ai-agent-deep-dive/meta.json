@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7fea619d21d0d14e",
+    "is_ai": true,
+    "reason": "A source-code deep-dive report on AI agents like Claude Code, bundled with a minimal teaching agent project.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "tvytlx/ai-agent-deep-dive",
+  "id": 1197160875
+}

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1ef277fffdcf26d5",
+    "is_ai": true,
+    "reason": "A performance-optimization take-home challenge that doubles as a benchmark comparing Claude models' results against humans.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "created": "2026-01-19",
+  "description": "Anthropic's original performance take-home, now open for you to try!",
+  "first_seen": "2026-02-08",
+  "full_name": "anthropics/original_performance_takehome",
+  "id": 1137741043,
+  "language": "Python",
+  "last_seen": "2026-02-08",
+  "topics": []
+}

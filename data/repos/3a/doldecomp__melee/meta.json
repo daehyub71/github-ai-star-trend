@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e662ac530e38e4a8",
+    "is_ai": false,
+    "reason": "A matching decompilation of Super Smash Bros Melee with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2020-06-30",
   "description": "A decompilation of Super Smash Bros Melee brought to you by a bunch of clever folks.",
   "first_seen": "2026-09-06",

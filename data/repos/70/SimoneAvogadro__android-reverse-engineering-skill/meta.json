@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "68196166d57513c8",
+    "is_ai": true,
+    "reason": "A Claude Code skill/plugin that guides the agent through decompiling Android apps and extracting their APIs.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-02",
   "description": "Claude Code skill to support Android app's reverse engineering",
   "first_seen": "2026-04-12",

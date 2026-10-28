@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6bef8cbe02f96816",
+    "is_ai": false,
+    "reason": "A general meta awesome list covering all kinds of topics, and AI is not its focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2014-07-11",
   "description": "😎 Awesome lists about all kinds of interesting topics [NOTE: Pull requests are temporarily disabled until I have a chance to catch up with the existing ones]",
   "first_seen": "2025-10-26",

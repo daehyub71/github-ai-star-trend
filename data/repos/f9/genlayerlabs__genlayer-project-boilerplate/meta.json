@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "04bb98f396e3c550",
+    "is_ai": true,
+    "reason": "Boilerplate for GenLayer intelligent contracts that integrate LLM calls on a blockchain, an AI-adjacent dev template.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "genlayerlabs/genlayer-project-boilerplate",
+  "id": 821266090
+}

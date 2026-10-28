@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ad132c8395e2a976",
+    "is_ai": false,
+    "reason": "This is a general computer science study plan for coding interviews, not an AI project.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2016-06-06",
   "description": "A complete computer science study plan to become a software engineer.",
   "first_seen": "2025-10-26",

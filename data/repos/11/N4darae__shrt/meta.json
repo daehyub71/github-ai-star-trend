@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "597f46e4abebe8f7",
+    "is_ai": true,
+    "reason": "A gRPC regression testing harness built to be driven by coding agents, installing a Claude Code skill for agent use.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "N4darae/shrt",
+  "id": 1355845745
+}

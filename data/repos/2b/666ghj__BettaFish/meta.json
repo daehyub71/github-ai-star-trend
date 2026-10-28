@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "57ff475e2689f12f",
+    "is_ai": true,
+    "reason": "A multi-agent public opinion analysis system that end users query via chat to produce research reports.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-07-01",
   "description": "微舆：人人可用的多Agent舆情分析助手，打破信息茧房，还原舆情原貌，预测未来走向，辅助决策！从0实现，不依赖任何框架。",
   "first_seen": "2025-10-26",
   "full_name": "666ghj/BettaFish",
   "id": 822604462,
   "language": "Python",
-  "last_seen": "2025-11-09",
+  "last_seen": "2025-12-07",
   "topics": [
     "agent-framework",
     "data-analysis",

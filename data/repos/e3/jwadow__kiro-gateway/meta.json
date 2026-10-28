@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c17f9249c61421c7",
+    "is_ai": true,
+    "reason": "A proxy API gateway exposing Kiro's Claude models via OpenAI/Anthropic-compatible endpoints for coding tools.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "jwadow/kiro-gateway",
+  "id": 1115489218
+}

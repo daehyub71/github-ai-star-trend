@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6f7111db4f8ecbfd",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of Codex agent skills with an installer.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-01-12",
   "description": "A curated list of practical Codex skills for automating workflows across the Codex CLI and API.",
   "first_seen": "2026-04-26",

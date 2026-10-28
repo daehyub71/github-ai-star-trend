@@ -1,0 +1,39 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bb8476c2d5d531f6",
+    "is_ai": true,
+    "reason": "A catalog of official NVIDIA agent skills installable into coding agents like Claude Code and Codex.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-25",
+  "description": "Agent Skills for NVIDIA products — install into Claude Code, Codex, and other coding agents to run Physical AI, robotics, simulation, CUDA, and RAG workflows end to end.",
+  "first_seen": "2026-06-21",
+  "full_name": "NVIDIA/skills",
+  "id": 1167034425,
+  "language": "Python",
+  "last_seen": "2026-06-21",
+  "topics": [
+    "agent-skills",
+    "agentic-ai",
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "coding-agents",
+    "cuda",
+    "developer-tools",
+    "llm",
+    "omniverse",
+    "physical-ai",
+    "rag",
+    "robotics",
+    "simulation"
+  ]
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "60110ec9ae7837bb",
+    "is_ai": true,
+    "reason": "A collection of AI agent skills encoding research supervision expertise for idea generation through paper writing, with an accompanying handbook.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-19",
   "description": "将博导十年科研经验炼化为可直接调用的 AI 技能。从 Idea 构思到论文投稿，你的 AI 科研副导师。",
   "first_seen": "2026-06-07",

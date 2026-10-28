@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d34916498fc387e7",
+    "is_ai": true,
+    "reason": "Browser automation tool for AI coding agents, offered as skills, an MCP server, and client libraries, used to verify agent work.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-12",
   "description": "The verification layer for coding agents",
-  "first_seen": "2026-01-04",
+  "first_seen": "2025-12-28",
   "full_name": "VibiumDev/vibium",
   "id": 1114840147,
   "language": "Go",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b14d085d138e523e",
+    "is_ai": true,
+    "reason": "A React map component library that ships an agent skill for coding agents, which counts as AI under the rules.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-28",
   "description": "Beautiful map components. 100% Free, Zero config, one command setup.",
   "first_seen": "2025-12-28",

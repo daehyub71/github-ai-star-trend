@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "14a55a3af065dbf7",
+    "is_ai": true,
+    "reason": "A Claude Code plugin of agent skills/workflow instructions with an accompanying evaluation harness.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Sahir619/fable-method",
+  "id": 1291544092
+}

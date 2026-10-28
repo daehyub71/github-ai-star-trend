@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cc8b2f03d9855e0e",
+    "is_ai": false,
+    "reason": "This is a TeX whitepaper for a blockchain protocol; its 'agentic internet' branding does not make building or using AI models or agents the subject.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "unicitynetwork/whitepaper",
+  "id": 877521380
+}

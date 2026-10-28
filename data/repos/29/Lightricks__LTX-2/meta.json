@@ -1,0 +1,28 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "10f06a9f09a5aa45",
+    "is_ai": true,
+    "reason": "Official inference and LoRA training package for the LTX-2 audio-video generation model.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-01-03",
+  "description": "Official Python inference and LoRA trainer package for the LTX-2 audio–video generative model.",
+  "first_seen": "2026-01-04",
+  "full_name": "Lightricks/LTX-2",
+  "id": 1127234517,
+  "language": "Python",
+  "last_seen": "2026-01-11",
+  "topics": [
+    "generative-ai",
+    "ltx",
+    "ltx-2"
+  ]
+}

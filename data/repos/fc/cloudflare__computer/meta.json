@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5b13b66ea5191ede",
+    "is_ai": true,
+    "reason": "A sandboxed virtual filesystem and execution runtime for giving AI agents a computer on Cloudflare, with MCP examples.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-05",
   "description": "Give your agent a computer 👾",
   "first_seen": "2026-08-02",

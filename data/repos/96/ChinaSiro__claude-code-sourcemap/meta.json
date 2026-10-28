@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9fdc1956e9cdcd03",
+    "is_ai": true,
+    "reason": "Reconstructed TypeScript source of the Claude Code AI coding CLI from its npm source map, shared for research.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "ChinaSiro/claude-code-sourcemap",
+  "id": 1196984640
+}

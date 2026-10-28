@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1a71d70cceb71579",
+    "is_ai": true,
+    "reason": "Release of a lightweight OCR vision-language model with weights, inference and training code for document parsing.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2025-11-18",
+  "description": "HunyuanOCR-1.5: Making Lightweight OCR VLMs Faster and Better",
+  "first_seen": "2025-12-07",
+  "full_name": "Tencent-Hunyuan/HunyuanOCR",
+  "id": 1098724072,
+  "language": "Python",
+  "last_seen": "2025-12-07",
+  "topics": []
+}

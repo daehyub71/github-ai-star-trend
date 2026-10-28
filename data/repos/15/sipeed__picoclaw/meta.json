@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cc3a04d929aab584",
+    "is_ai": true,
+    "reason": "PicoClaw is an ultra-lightweight personal AI assistant in Go, similar to OpenClaw and NanoBot, that runs on cheap hardware.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-04",
   "description": "Tiny, Fast, and Deployable anywhere — automate the mundane, unleash your creativity",
   "first_seen": "2026-02-08",

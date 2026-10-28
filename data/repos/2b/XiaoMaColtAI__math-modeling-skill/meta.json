@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bf9ed22997987f98",
+    "is_ai": true,
+    "reason": "An agent skill package (SKILL.md) for Claude Code/Codex that runs a three-stage math-modeling competition workflow, plus a DeepSeek Harness agent preset with tools.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "XiaoMaColtAI/math-modeling-skill",
+  "id": 1140988056
+}

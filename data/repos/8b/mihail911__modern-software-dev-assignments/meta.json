@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4e48af5a642f52f7",
+    "is_ai": true,
+    "reason": "Stanford CS146S course assignments on modern software development, which centers on AI-assisted coding tools.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "mihail911/modern-software-dev-assignments",
+  "id": 1033674301
+}

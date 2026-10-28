@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "84a7e1bd38e1045a",
+    "is_ai": true,
+    "reason": "A best-practice guide for Claude Code covering subagents, commands, skills and workflows, with example implementations.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-10-31",
   "description": "from vibe coding to agentic engineering - practice makes claude perfect",
   "first_seen": "2026-02-08",

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2860924dc15eaf1f",
+    "is_ai": true,
+    "reason": "A 15TB collection of physics simulation datasets with a loader and benchmark suite for training ML surrogate models.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2024-12-02",
+  "description": "A 15TB Collection of Physics Simulation Datasets",
+  "first_seen": "2025-12-07",
+  "full_name": "PolymathicAI/the_well",
+  "id": 897306546,
+  "language": "Jupyter Notebook",
+  "last_seen": "2025-12-07",
+  "topics": []
+}

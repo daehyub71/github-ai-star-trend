@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9a73cd36ff9948ba",
+    "is_ai": true,
+    "reason": "An educational textbook teaching how to build and train a LLaMA-style LLM from scratch in PyTorch.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "raiyanyahya/how-to-train-your-gpt",
+  "id": 1228312499
+}

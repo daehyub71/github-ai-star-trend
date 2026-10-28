@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4a634d8b4fc1eed7",
+    "is_ai": false,
+    "reason": "A Mac image editor alternative to Photoshop that does not advertise AI features as its focus, apart from standard content-aware tools.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-16",
   "description": "The Photoshop alternative for Mac",
   "first_seen": "2026-09-20",

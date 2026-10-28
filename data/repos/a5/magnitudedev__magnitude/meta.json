@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "affd6da1d66d21ec",
+    "is_ai": true,
+    "reason": "An open source inference engine with hardware-tuned kernels that runs models locally via a desktop app and CLI.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-12",
   "description": "Open source inference engine that tunes its kernels on your hardware to find the fastest way to run each model. 2x faster than Ollama. Works on Apple Silicon, NVIDIA, AMD, Intel, or just a CPU.",
   "first_seen": "2026-08-30",

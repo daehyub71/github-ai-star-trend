@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "69df36281c0acea5",
+    "is_ai": true,
+    "reason": "A collection of Agent Skills giving coding agents access to Hugging Face Hub workflows, with an MCP server config included.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-24",
   "description": "Give your agents the power of the Hugging Face ecosystem",
   "first_seen": "2026-02-22",

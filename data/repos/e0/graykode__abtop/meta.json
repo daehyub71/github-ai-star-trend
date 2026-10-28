@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6eb188f774692576",
+    "is_ai": true,
+    "reason": "A TUI monitor for AI coding agent sessions tracking tokens, context, and rate limits, which is observability tooling.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "graykode/abtop",
+  "id": 1195165448
+}

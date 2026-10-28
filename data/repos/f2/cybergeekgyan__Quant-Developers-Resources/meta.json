@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a338af76ee71d4f3",
+    "is_ai": false,
+    "reason": "This is quant finance interview preparation material that only touches on machine learning as one topic among many.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2023-10-16",
   "description": "Resources to Prepare for Quant Developers/ Quantitative Researcher/ Quantitative Trader/ Quant Analyst/ Software Engineers in Quant Trading Firms, HFTs and Hedge Funds",
   "first_seen": "2025-12-07",

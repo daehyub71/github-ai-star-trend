@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1800111b2258edd2",
+    "is_ai": true,
+    "reason": "A curated collection of AI agent use cases and example implementations across agent frameworks.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2024-12-20",
   "description": "The 500 AI Agents Projects is a curated collection of AI agent use cases across various industries. It showcases practical applications and provides links to open-source projects for implementation, illustrating how AI agents are transforming sectors such as healthcare, finance, education, retail, and more.",
   "first_seen": "2025-11-30",
   "full_name": "ashishpatel26/500-AI-Agents-Projects",
   "id": 906251482,
   "language": "Python",
-  "last_seen": "2025-11-30",
+  "last_seen": "2025-12-07",
   "topics": [
     "ai-agents",
     "genai"

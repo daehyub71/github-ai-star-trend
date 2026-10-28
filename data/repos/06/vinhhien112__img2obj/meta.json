@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4a904b37a069bcf3",
+    "is_ai": true,
+    "reason": "A Codex plugin that guides the agent to reconstruct images into procedural Three.js 3D models, making it an agent-loaded tool with image-to-3D focus.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "vinhhien112/img2obj",
+  "id": 1295531254
+}

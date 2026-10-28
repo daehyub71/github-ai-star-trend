@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9556358489e63e00",
+    "is_ai": true,
+    "reason": "Official release repository for the DeepSeek-V3 MoE language model weights with inference code.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2024-12-26",
+  "description": null,
+  "first_seen": "2025-10-26",
+  "full_name": "deepseek-ai/DeepSeek-V3",
+  "id": 908531752,
+  "language": "Python",
+  "last_seen": "2026-01-04",
+  "topics": []
+}

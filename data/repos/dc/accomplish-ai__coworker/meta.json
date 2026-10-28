@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "58119afc3e633a38",
+    "is_ai": false,
+    "reason": "Deprecated repository with no description or content indicating AI functionality.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
   "created": "2026-01-14",
   "description": null,
   "first_seen": "2026-01-18",

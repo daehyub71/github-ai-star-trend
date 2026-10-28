@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3215291670c66903",
+    "is_ai": true,
+    "reason": "Awesome list of plugins for the DeepSeek Harness coding agent, which are tools and extensions the agent loads.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-08-13",
   "description": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
   "first_seen": "2026-08-16",

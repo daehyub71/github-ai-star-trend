@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "53015a627db10be0",
+    "is_ai": true,
+    "reason": "An MLX-based LLM inference server for Apple Silicon with continuous batching and KV caching, managed from the macOS menu bar.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "jundot/omlx",
+  "id": 1157171418
+}

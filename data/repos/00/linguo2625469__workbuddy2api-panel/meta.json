@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d7e1a4fbb7bd0d52",
+    "is_ai": true,
+    "reason": "An OpenAI-compatible reverse-proxy gateway that pools CodeBuddy accounts for LLM access, with routing and rate-limit handling.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-12",
+  "description": "把腾讯WorkBuddy账号变成 OpenAI 兼容 API 的多账号网关，同时自动完成任务中心全部任务，附 Web 管理面板（账号池可视化 / 积分任务 / 配置热更新）。基于 Sliverkiss/workbuddy2api 的增强分支",
+  "first_seen": "2026-09-27",
+  "full_name": "linguo2625469/workbuddy2api-panel",
+  "id": 1366969284,
+  "language": "Go",
+  "last_seen": "2026-09-27",
+  "topics": [
+    "admin-panel",
+    "codebuddy",
+    "gateway",
+    "golang",
+    "openai-api",
+    "reverse-proxy",
+    "workbuddy"
+  ]
+}

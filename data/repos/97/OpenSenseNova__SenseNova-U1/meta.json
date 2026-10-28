@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4ba4b1b28a5c203d",
+    "is_ai": true,
+    "reason": "The repository releases the weights of SenseNova-U, a native unified multimodal model for image understanding and generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2026-04-17",
+  "description": "SenseNova-U series: Native Unified Paradigm with NEO-unify from the First Principles",
+  "first_seen": "2026-05-10",
+  "full_name": "OpenSenseNova/SenseNova-U1",
+  "id": 1213108633,
+  "language": "Python",
+  "last_seen": "2026-05-10",
+  "topics": []
+}

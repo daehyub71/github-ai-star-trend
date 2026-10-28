@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ea5abfb119b7c4ca",
+    "is_ai": true,
+    "reason": "An agent skill for Claude Code/Codex that generates HTML slide decks and image prompts.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-23",
   "description": "AI-agent Skill for generating polished HTML slide decks: editorial magazine and Swiss layouts, image prompts, social covers, and a WebGL/low-power presentation runtime.",
-  "first_seen": "2026-05-03",
+  "first_seen": "2026-04-26",
   "full_name": "op7418/guizang-ppt-skill",
   "id": 1219042200,
   "language": "HTML",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7f0cf7b6caa81c3c",
+    "is_ai": true,
+    "reason": "A catalog of agent skills (instructions, scripts, resources) for OpenAI's Codex coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-25",
   "description": "Skills Catalog for Codex",
   "first_seen": "2026-02-01",

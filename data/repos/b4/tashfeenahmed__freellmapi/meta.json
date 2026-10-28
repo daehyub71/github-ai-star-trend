@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5108bf5dc0163ab7",
+    "is_ai": true,
+    "reason": "An OpenAI-compatible gateway that aggregates free LLM providers with smart routing and failover, which makes it an LLM gateway/routing tool.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "tashfeenahmed/freellmapi",
+  "id": 1217040185
+}

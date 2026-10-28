@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0aa01282821a61d7",
+    "is_ai": true,
+    "reason": "A plugin loaded by Claude Code and Codex that changes agent behavior to teach users while the AI writes code.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "nykooi1/vibe-wise",
+  "id": 1394045721
+}

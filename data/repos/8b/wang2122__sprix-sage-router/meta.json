@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b4427529b4be1253",
+    "is_ai": true,
+    "reason": "A Python routing/orchestration layer for deciding task delegation among agents in A2A multi-agent networks.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-08-18",
+  "description": "Sprix AI at 屿智同行 — state-aware SELF/COLLABORATE/HANDOFF routing for A2A agent networks.",
+  "first_seen": "2026-09-06",
+  "full_name": "wang2122/sprix-sage-router",
+  "id": 1337955304,
+  "language": "Python",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "a2a",
+    "agent-orchestration",
+    "agent-routing",
+    "ai-agents",
+    "multi-agent-systems",
+    "python",
+    "sprix-ai",
+    "task-scheduling"
+  ]
+}

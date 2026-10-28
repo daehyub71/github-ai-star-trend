@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a5766454a39b89e2",
+    "is_ai": true,
+    "reason": "A curated awesome-style collection of image generation prompts for Google's Nano Banana Pro model.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2025-11-23",
   "description": "🍌 World's largest Nano Banana Pro prompt library — 10,000+ curated prompts with preview images, 16 languages. Google Gemini AI image generation. Free & open source.",
   "first_seen": "2025-11-30",

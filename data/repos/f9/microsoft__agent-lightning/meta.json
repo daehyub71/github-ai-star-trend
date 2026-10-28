@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "228eb93fa0086f59",
+    "is_ai": true,
+    "reason": "Agent Lightning is a lightweight reinforcement learning framework for training AI agents with their real harnesses.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-06-18",
   "description": "The absolute trainer to light up AI agents.",
   "first_seen": "2025-10-26",
   "full_name": "microsoft/agent-lightning",
   "id": 1004147641,
   "language": "Python",
-  "last_seen": "2025-10-26",
+  "last_seen": "2025-11-02",
   "topics": [
     "agent",
     "agentic-ai",

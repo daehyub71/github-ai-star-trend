@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "95a740cfba11acca",
+    "is_ai": true,
+    "reason": "Releases a tiny on-device foundation model with weights for tool calling, extraction, embeddings and ASR, plus a runtime package.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-02-24",
   "description": "Automation foundation model for tiny devices: 2-bit, 8-29 MB, tool calls, ASR, structured extraction and embeddings on phones, wearables, smart homes, robots, cars and microcontrollers.",
   "first_seen": "2026-08-09",

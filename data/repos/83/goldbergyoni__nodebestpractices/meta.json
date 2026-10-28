@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "00f2cdf00bbf1958",
+    "is_ai": false,
+    "reason": "A Node.js best practices guide with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "goldbergyoni/nodebestpractices",
+  "id": 103633984
+}

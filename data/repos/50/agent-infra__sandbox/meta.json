@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c5c6a6e0f3a8d401",
+    "is_ai": true,
+    "reason": "A Docker sandbox environment for AI agents exposing browser, shell, file and MCP services for agents to operate.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "agent-infra/sandbox",
+  "id": 1033268244
+}

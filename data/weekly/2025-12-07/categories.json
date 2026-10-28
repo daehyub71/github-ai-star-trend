@@ -1,0 +1,111 @@
+{
+  "ALL": {
+    "entrants": 51,
+    "gain": 135832,
+    "repos": 370
+  },
+  "ai_tab": true,
+  "categories": {
+    "agent-framework": {
+      "entrants": 7,
+      "gain": 16333,
+      "repos": 35
+    },
+    "agent-skills": {
+      "entrants": 6,
+      "gain": 14197,
+      "repos": 39
+    },
+    "ai-apps": {
+      "entrants": 11,
+      "gain": 25150,
+      "repos": 66
+    },
+    "coding-agent": {
+      "entrants": 3,
+      "gain": 14564,
+      "repos": 33
+    },
+    "computer-use": {
+      "entrants": 1,
+      "gain": 16665,
+      "repos": 15
+    },
+    "doc-parsing": {
+      "entrants": 1,
+      "gain": 1348,
+      "repos": 10
+    },
+    "inference": {
+      "entrants": 2,
+      "gain": 1940,
+      "repos": 10
+    },
+    "llmops": {
+      "entrants": 1,
+      "gain": 1253,
+      "repos": 8
+    },
+    "local-llm": {
+      "entrants": 2,
+      "gain": 1352,
+      "repos": 7
+    },
+    "mcp-tools": {
+      "entrants": 2,
+      "gain": 4834,
+      "repos": 34
+    },
+    "models": {
+      "entrants": 3,
+      "gain": 2677,
+      "repos": 12
+    },
+    "multimodal": {
+      "entrants": 6,
+      "gain": 14080,
+      "repos": 42
+    },
+    "other-ai": {
+      "entrants": 4,
+      "gain": 9518,
+      "repos": 23
+    },
+    "rag": {
+      "entrants": 0,
+      "gain": 2624,
+      "repos": 15
+    },
+    "training": {
+      "entrants": 1,
+      "gain": 2400,
+      "repos": 12
+    },
+    "vectordb-memory": {
+      "entrants": 1,
+      "gain": 6897,
+      "repos": 9
+    }
+  },
+  "coverage": 0.3308064363947404,
+  "non_ai": {
+    "gain": 78038,
+    "repos": 252
+  },
+  "notes": {
+    "category": "주 카테고리만(보조 제외)",
+    "rows": "주간 파일(증가 ≥ 10)의 행",
+    "scope": "판정은 랭킹 후보만(결정 30) — 합계는 판정된 AI 저장소만. coverage 는 판정이 끝난 저장소가 그 주 증가에서 차지하는 비율"
+  },
+  "taxonomy_version": 2,
+  "total_gain": 646511,
+  "unclassified": {
+    "gain": 432641,
+    "repos": 11434
+  },
+  "unmapped": {
+    "gain": 0,
+    "repos": 0
+  },
+  "week": "2025-12-07"
+}

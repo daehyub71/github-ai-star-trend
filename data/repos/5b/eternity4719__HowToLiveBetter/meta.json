@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "09ee7801bc41128d",
+    "is_ai": true,
+    "reason": "An evidence-based Chinese life-advice book that also ships a Claude Code/Codex agent skill for answering questions from the book.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-09-07",
   "description": "高性价比人生指南: 长寿防病、急救、省钱理财、法律红线、失业与工伤、医保社保、恋爱婚育、怀孕育儿、创业与做平台合规、出国与技能。每条写明成本、收益、证据等级和原始出处，只引期刊论文与官方文件。",
   "first_seen": "2026-09-13",
   "full_name": "eternity4719/HowToLiveBetter",
   "id": 1359648985,
   "language": "HTML",
-  "last_seen": "2026-10-04",
+  "last_seen": "2026-10-11",
   "topics": []
 }

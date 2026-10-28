@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6a78ee0cf3ab2225",
+    "is_ai": true,
+    "reason": "Foundation GUI agent model for mobile, computer and browser use, with model release and benchmarks.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "Tongyi-MAI/MAI-UI",
+  "id": 1116665379
+}

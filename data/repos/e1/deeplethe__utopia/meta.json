@@ -1,0 +1,40 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5bec199d6371aef9",
+    "is_ai": true,
+    "reason": "Self-hosted temporal knowledge graph and GraphRAG substrate providing knowledge retrieval and memory for enterprise agents.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-08-07",
+  "description": "World's first open-source enterprise world model.",
+  "first_seen": "2026-08-30",
+  "full_name": "deeplethe/utopia",
+  "id": 1327088798,
+  "language": "Rust",
+  "last_seen": "2026-08-30",
+  "topics": [
+    "agent-memory",
+    "bitemporal",
+    "graphrag",
+    "knowledge-base",
+    "knowledge-graph",
+    "llm",
+    "ontology",
+    "pgvector",
+    "postgresql",
+    "rag",
+    "rust",
+    "self-hosted",
+    "semantic-search",
+    "temporal-knowledge-graph",
+    "world-model"
+  ]
+}

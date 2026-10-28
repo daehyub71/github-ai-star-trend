@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bb338bfffe16df18",
+    "is_ai": false,
+    "reason": "A curated collection of Android TV APKs and TVBox source configs, unrelated to AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "youhunwl/TVAPP",
+  "id": 946345763
+}

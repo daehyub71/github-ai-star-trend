@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2c10b56d24048239",
+    "is_ai": true,
+    "reason": "End-user desktop app using ML source separation models locally to split songs into instrument stems.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "stemdeckapp/stemdeck",
+  "id": 1227920501
+}

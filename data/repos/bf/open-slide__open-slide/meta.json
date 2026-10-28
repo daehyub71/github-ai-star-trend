@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a2901c2aa1b483e0",
+    "is_ai": true,
+    "reason": "A slide framework built to be driven by coding agents, shipping agent skills and an in-app agent panel.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-26",
   "description": "A slide framework built for agents.",
   "first_seen": "2026-05-17",

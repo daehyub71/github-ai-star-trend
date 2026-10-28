@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "40365920725befed",
+    "is_ai": true,
+    "reason": "A curated list of AI research papers and blogs for engineers moving into AI engineering.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "InterviewReady/ai-engineering-resources",
+  "id": 983002845
+}

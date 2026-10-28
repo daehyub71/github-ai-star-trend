@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0ee7d2477d8b4cb2",
+    "is_ai": false,
+    "reason": "A curated list of Korean public APIs with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2025-08-19",
   "description": "한국 서비스에 이용 가능한 Public API 모음 | Public APIs Available for Korean Services",
   "first_seen": "2025-11-16",

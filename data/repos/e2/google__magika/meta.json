@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "88f3d05abd4d73e2",
+    "is_ai": true,
+    "reason": "Deep-learning-based file type detection tool and library, a traditional ML classifier not fitting other categories.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2023-08-22",
+  "description": "Fast and accurate AI powered file content types detection ",
+  "first_seen": "2026-04-12",
+  "full_name": "google/magika",
+  "id": 681566005,
+  "language": "Rust",
+  "last_seen": "2026-04-12",
+  "topics": [
+    "ai",
+    "deep-learning",
+    "filetype",
+    "keras-classification-models",
+    "keras-models",
+    "mime-types",
+    "onnx"
+  ]
+}

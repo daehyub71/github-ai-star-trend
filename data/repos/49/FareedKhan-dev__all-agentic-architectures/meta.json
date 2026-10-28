@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "033d1df8d838360e",
+    "is_ai": true,
+    "reason": "A pip-installable Python library implementing 35 agentic architectures on LangGraph, with a benchmark leaderboard and educational notebooks.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "FareedKhan-dev/all-agentic-architectures",
+  "id": 1063265931
+}

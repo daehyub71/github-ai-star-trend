@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "90a158989e8ce497",
+    "is_ai": true,
+    "reason": "Collection of setup guides for using DeepSeek models in AI coding agents and assistant tools.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "deepseek-ai/awesome-deepseek-agent",
+  "id": 1222213350
+}

@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fafa77a72f448f1f",
+    "is_ai": true,
+    "reason": "DeepSeek's repository releasing the DeepSeekMath-V2 model for self-verifiable mathematical reasoning, along with its evaluation results.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-11-27",
   "description": null,
-  "first_seen": "2025-11-30",
+  "first_seen": "2025-11-23",
   "full_name": "deepseek-ai/DeepSeek-Math-V2",
   "id": 1105098324,
   "language": "Python",
-  "last_seen": "2025-11-30",
+  "last_seen": "2025-12-07",
   "topics": []
 }

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "59e5fcdc108d769f",
+    "is_ai": true,
+    "reason": "Open-source text-to-speech model family with an installable Python package, which places it in speech generation.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-04-23",
+  "description": "SoTA open-source TTS",
+  "first_seen": "2025-12-28",
+  "full_name": "resemble-ai/chatterbox",
+  "id": 971241545,
+  "language": "Python",
+  "last_seen": "2025-12-28",
+  "topics": []
+}

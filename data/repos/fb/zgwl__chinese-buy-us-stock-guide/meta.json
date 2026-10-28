@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "393b626c42ebf3a9",
+    "is_ai": false,
+    "reason": "A Chinese-language guide to investing in US stocks with no AI content.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-05-30",
   "description": "美股指南",
   "first_seen": "2026-05-31",

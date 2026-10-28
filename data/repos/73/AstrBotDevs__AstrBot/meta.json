@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "da51904cd390512f",
+    "is_ai": true,
+    "reason": "AstrBot is a multi-platform AI chatbot assistant integrating LLMs into IM platforms, with plugin and agent framework capabilities.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "AstrBotDevs/AstrBot",
+  "id": 575865240
+}

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fbc6e9d4f0fd8c0c",
+    "is_ai": true,
+    "reason": "Releases Kimi Linear model checkpoints with a new efficient linear attention architecture.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2025-10-29",
+  "description": null,
+  "first_seen": "2025-11-16",
+  "full_name": "MoonshotAI/Kimi-Linear",
+  "id": 1085946289,
+  "language": null,
+  "last_seen": "2025-11-16",
+  "topics": []
+}

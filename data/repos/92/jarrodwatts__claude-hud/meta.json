@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0c983c8aacad2f92",
+    "is_ai": true,
+    "reason": "A Claude Code plugin that adds a status line showing context usage, tools, and agents, which counts as an extension loaded by a coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-02",
   "description": "A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress",
   "first_seen": "2026-03-15",

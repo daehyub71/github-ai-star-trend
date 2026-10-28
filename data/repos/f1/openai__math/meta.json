@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "279011bbbd1a9028",
+    "is_ai": true,
+    "reason": "Releases AI-generated mathematical manuscripts, Lean proofs and reasoning traces from an internal OpenAI model evaluation, essentially a research output dataset.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-10-06",
   "description": null,
   "first_seen": "2026-10-04",

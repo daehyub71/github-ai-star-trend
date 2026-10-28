@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e58a57d9f1543504",
+    "is_ai": true,
+    "reason": "OxyGent is a Python multi-agent framework for building, observing, and evolving agent systems.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-07-18",
+  "description": "[ACL 2026] OxyGent: Making Multi-Agent Systems Modular, Observable, and Evolvable via Oxy Abstraction https://arxiv.org/abs/2604.25602",
+  "first_seen": "2025-11-02",
+  "full_name": "jd-opensource/OxyGent",
+  "id": 1021827990,
+  "language": "Python",
+  "last_seen": "2025-11-02",
+  "topics": []
+}

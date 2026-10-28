@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "92cd66367fdc9a7c",
+    "is_ai": true,
+    "reason": "A deployment CLI that ships a Claude Code skill and an agent-facing workflow, pitching itself as operable by AI agents.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-04-13",
   "description": "Deploy Your Frontend in a Single Command. Claude Code Skills supported.",
   "first_seen": "2025-12-14",

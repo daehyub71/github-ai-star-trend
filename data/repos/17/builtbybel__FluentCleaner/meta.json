@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "29610836f82221cf",
+    "is_ai": false,
+    "reason": "FluentCleaner is a Windows system cleaner tool with no advertised AI features or agent interface.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "builtbybel/FluentCleaner",
+  "id": 1209677886
+}

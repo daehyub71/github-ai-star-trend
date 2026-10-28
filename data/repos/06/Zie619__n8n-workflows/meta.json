@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1c65a42d346a7897",
+    "is_ai": false,
+    "reason": "A collection of n8n automation workflow JSONs with a search interface, general automation rather than AI-focused.",
+    "secondary": null,
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-05-14",
   "description": "all of the workflows of n8n i could find (also from the site itself)",
   "first_seen": "2025-11-16",

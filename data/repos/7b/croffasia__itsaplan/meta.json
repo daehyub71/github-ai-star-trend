@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cb3cfdbafdfcb4e0",
+    "is_ai": true,
+    "reason": "Self-hosted issue tracker built for AI agents as teammates, exposing an MCP server and agent interface.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "croffasia/itsaplan",
+  "id": 1300991151
+}

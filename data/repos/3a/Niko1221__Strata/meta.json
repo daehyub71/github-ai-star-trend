@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "eef78d34c9a91783",
+    "is_ai": true,
+    "reason": "A one-click desktop app and inference engine for running LLMs locally on consumer hardware, exposing OpenAI/Anthropic-compatible APIs.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-24",
   "description": "Qwen3.8-Flash-Next on any consumer hardware: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.",
   "first_seen": "2026-09-27",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d65a46bdce188b2b",
+    "is_ai": true,
+    "reason": "Anti-detect browser that exposes a remote MCP interface for AI agents to operate browser profiles.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "donutbrowser/donutbrowser",
+  "id": 992424531
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5ec25063ab30b479",
+    "is_ai": true,
+    "reason": "An agent plugin with skills and an MCP server that lets coding agents generate CAD models.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-22",
   "description": "Give your agent CAD superpowers.",
   "first_seen": "2026-05-03",

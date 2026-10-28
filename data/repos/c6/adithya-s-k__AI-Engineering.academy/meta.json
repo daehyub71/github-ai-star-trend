@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "aa003a04d7715b4f",
+    "is_ai": true,
+    "reason": "An AI engineering education resource with learning paths on prompting, RAG, fine-tuning, and agents.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2023-10-05",
+  "description": "Mastering Applied AI, One Concept at a Time ",
+  "first_seen": "2025-11-02",
+  "full_name": "adithya-s-k/AI-Engineering.academy",
+  "id": 700724064,
+  "language": "Jupyter Notebook",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "fine-tuning",
+    "finetuning",
+    "finetuning-llms",
+    "inference",
+    "large-language-models",
+    "llm",
+    "python",
+    "quantization"
+  ]
+}

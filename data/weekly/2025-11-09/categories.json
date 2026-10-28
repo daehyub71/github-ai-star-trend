@@ -1,0 +1,111 @@
+{
+  "ALL": {
+    "entrants": 48,
+    "gain": 111363,
+    "repos": 301
+  },
+  "ai_tab": true,
+  "categories": {
+    "agent-framework": {
+      "entrants": 6,
+      "gain": 13785,
+      "repos": 33
+    },
+    "agent-skills": {
+      "entrants": 6,
+      "gain": 15488,
+      "repos": 31
+    },
+    "ai-apps": {
+      "entrants": 9,
+      "gain": 31081,
+      "repos": 54
+    },
+    "coding-agent": {
+      "entrants": 1,
+      "gain": 7125,
+      "repos": 25
+    },
+    "computer-use": {
+      "entrants": 0,
+      "gain": 1416,
+      "repos": 7
+    },
+    "doc-parsing": {
+      "entrants": 4,
+      "gain": 3439,
+      "repos": 10
+    },
+    "inference": {
+      "entrants": 2,
+      "gain": 1716,
+      "repos": 9
+    },
+    "llmops": {
+      "entrants": 4,
+      "gain": 2651,
+      "repos": 7
+    },
+    "local-llm": {
+      "entrants": 1,
+      "gain": 1667,
+      "repos": 7
+    },
+    "mcp-tools": {
+      "entrants": 2,
+      "gain": 5508,
+      "repos": 28
+    },
+    "models": {
+      "entrants": 3,
+      "gain": 1632,
+      "repos": 10
+    },
+    "multimodal": {
+      "entrants": 2,
+      "gain": 6651,
+      "repos": 27
+    },
+    "other-ai": {
+      "entrants": 3,
+      "gain": 9661,
+      "repos": 22
+    },
+    "rag": {
+      "entrants": 0,
+      "gain": 2063,
+      "repos": 12
+    },
+    "training": {
+      "entrants": 3,
+      "gain": 4410,
+      "repos": 11
+    },
+    "vectordb-memory": {
+      "entrants": 2,
+      "gain": 3070,
+      "repos": 8
+    }
+  },
+  "coverage": 0.3067603017613609,
+  "non_ai": {
+    "gain": 76905,
+    "repos": 222
+  },
+  "notes": {
+    "category": "주 카테고리만(보조 제외)",
+    "rows": "주간 파일(증가 ≥ 10)의 행",
+    "scope": "판정은 랭킹 후보만(결정 30) — 합계는 판정된 AI 저장소만. coverage 는 판정이 끝난 저장소가 그 주 증가에서 차지하는 비율"
+  },
+  "taxonomy_version": 2,
+  "total_gain": 613730,
+  "unclassified": {
+    "gain": 425462,
+    "repos": 11256
+  },
+  "unmapped": {
+    "gain": 0,
+    "repos": 0
+  },
+  "week": "2025-11-09"
+}

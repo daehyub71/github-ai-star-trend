@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "06251e856f868db8",
+    "is_ai": true,
+    "reason": "Rust SDK for building WASM capsules (tools, hooks, approvals) for the Astrid agent runtime.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "astrid-runtime/sdk-rust",
+  "id": 1183274175
+}

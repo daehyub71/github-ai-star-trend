@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ce20bdee5b0bc4fa",
+    "is_ai": true,
+    "reason": "A Docker workstation bundling Claude Code, a web UI, AI coding CLIs and a headless browser for AI-assisted coding.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "CoderLuii/HolyClaude",
+  "id": 1188362803
+}

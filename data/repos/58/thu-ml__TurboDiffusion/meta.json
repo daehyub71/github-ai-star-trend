@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ae17d240555dc276",
+    "is_ai": true,
+    "reason": "TurboDiffusion is an inference acceleration framework that speeds up video diffusion models using sparse attention and distillation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-06",
   "description": "TurboDiffusion: 100–200× Acceleration for Video Diffusion Models",
   "first_seen": "2025-12-21",

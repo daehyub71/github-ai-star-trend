@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0e717b8fab189611",
+    "is_ai": true,
+    "reason": "A pretrained tabular foundation model library with downloadable weights for zero-shot classification and regression.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-06-16",
+  "description": "TabFM (Tabular Foundation Model) is a pretrained tabular foundation model developed by Google Research for tabular data regression and classification. ",
+  "first_seen": "2026-07-05",
+  "full_name": "google-research/tabfm",
+  "id": 1271618207,
+  "language": "Python",
+  "last_seen": "2026-07-05",
+  "topics": []
+}

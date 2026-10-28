@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3b5b299b823cfbe0",
+    "is_ai": false,
+    "reason": "A Windows hardware performance monitor with no AI features or agent interface.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Diorser/LiteMonitor",
+  "id": 1093493958
+}

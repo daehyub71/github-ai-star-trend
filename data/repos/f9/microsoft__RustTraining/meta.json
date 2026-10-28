@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6e19dd06410d3d03",
+    "is_ai": false,
+    "reason": "Rust programming training books with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-03-13",
   "description": "Beginner, advanced, expert level Rust training material",
   "first_seen": "2026-03-22",

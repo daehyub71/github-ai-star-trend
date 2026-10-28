@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "895d174efe50029e",
+    "is_ai": true,
+    "reason": "An unofficial Chinese usage guide book for OpenAI Codex coding agent and ChatGPT agents.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-06-23",
   "description": "Codex 橙皮书：从安装到实战案例的全链路 Codex 使用指南（非官方开源，含可下载 PDF）",
-  "first_seen": "2026-07-05",
+  "first_seen": "2026-06-21",
   "full_name": "bozhouDev/codex-orange-book",
   "id": 1277578741,
   "language": "HTML",

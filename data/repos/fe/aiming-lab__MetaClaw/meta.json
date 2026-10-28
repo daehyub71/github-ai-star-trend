@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ec85e0756fcdbe60",
+    "is_ai": true,
+    "reason": "MetaClaw is a tool that continually trains agents via RL/LoRA fine-tuning and skill evolution from conversations, plugging into OpenClaw-style agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-09",
   "description": "🦞 Just talk to your agent — it learns and EVOLVES 🧬.",
   "first_seen": "2026-03-15",

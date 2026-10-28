@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ac42b72b42b2afc8",
+    "is_ai": true,
+    "reason": "An automation app that uses LLMs (gpt4free) and TTS to generate YouTube Shorts and Twitter content for making money online.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-02-12",
   "description": "Automate the process of making money online.",
   "first_seen": "2026-03-22",

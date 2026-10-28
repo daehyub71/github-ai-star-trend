@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "df800641abaa01d4",
+    "is_ai": true,
+    "reason": "An EigenLayer AVS with smart contracts and operator/aggregator services for trustless verification of AI inference results.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-05-03",
   "description": "Proof of Inference - Trustless AI verification",
   "first_seen": "2025-12-07",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a92f35f681a2ce82",
+    "is_ai": true,
+    "reason": "Open-source coding-agent CLI supporting many cloud and local LLM providers.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-01",
   "description": "runs anywhere. uses anything",
   "first_seen": "2026-03-29",

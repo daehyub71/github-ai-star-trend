@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fe84f89cbcae5f0e",
+    "is_ai": true,
+    "reason": "A trading bot that uses an AI model to make buy/sell decisions every block on a DEX order book.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-16",
+  "description": "One AI trade decision every Monad block. Jev on Kuru MON-USDC.",
+  "first_seen": "2026-09-20",
+  "full_name": "jarrodwatts/jev-trader",
+  "id": 1373659194,
+  "language": "TypeScript",
+  "last_seen": "2026-09-20",
+  "topics": []
+}

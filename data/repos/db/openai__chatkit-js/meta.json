@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ee1fa3fd8127b3b8",
+    "is_ai": true,
+    "reason": "ChatKit is a developer framework/UI library for building AI-powered agentic chat experiences on OpenAI.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "openai/chatkit-js",
+  "id": 1069899547
+}

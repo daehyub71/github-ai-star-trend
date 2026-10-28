@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c9952ebc245fa401",
+    "is_ai": true,
+    "reason": "A Codex skill suite packaging academic research workflows (literature review, paper writing, peer review) for the Codex coding agent.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-04-25",
+  "description": "Codex-native Academic Research Skills suite for human-in-the-loop academic research workflows",
+  "first_seen": "2026-05-24",
+  "full_name": "Imbad0202/academic-research-skills-codex",
+  "id": 1220899692,
+  "language": "Python",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "academic-pipeline",
+    "academic-research",
+    "academic-writing",
+    "ai-research",
+    "codex",
+    "literature-review",
+    "openai-codex",
+    "peer-review",
+    "prompt-engineering",
+    "research-assistant"
+  ]
+}

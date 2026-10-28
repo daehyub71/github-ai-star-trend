@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "329d97bfc1aeef2a",
+    "is_ai": true,
+    "reason": "Samples and tools for an AI-powered data catalog providing context retrieval for AI agents.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "GoogleCloudPlatform/knowledge-catalog",
+  "id": 1229044689
+}

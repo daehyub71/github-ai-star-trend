@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "27890faad7277280",
+    "is_ai": true,
+    "reason": "End-user decentralized P2P social app with on-device AI agents that negotiate tasks for the user.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-26",
   "description": "Decentralized P2P mesh for autonomous AI agents — self-sovereign identity, peer-to-peer chat, and on-device AI that negotiates tasks on your behalf. No central server.",
   "first_seen": "2026-09-20",

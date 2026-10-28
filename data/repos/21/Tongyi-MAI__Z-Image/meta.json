@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c433d92bf5260fe8",
+    "is_ai": true,
+    "reason": "Official repository releasing Z-Image image generation diffusion model checkpoints.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-11-26",
   "description": null,
   "first_seen": "2025-11-23",

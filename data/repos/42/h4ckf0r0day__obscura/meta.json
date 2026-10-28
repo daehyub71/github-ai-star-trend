@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4d12101f82764b37",
+    "is_ai": true,
+    "reason": "A Rust headless browser built for AI agents to automate the web and scrape pages.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-13",
   "description": "The headless browser for AI agents and web scraping",
   "first_seen": "2026-04-26",

@@ -1,0 +1,38 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9493c9122804420f",
+    "is_ai": true,
+    "reason": "Cindy is an end-user cross-device AI agent app that wraps Claude Code, Codex, and Pi with tools, automations, and MCP support.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-22",
+  "description": "Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。",
+  "first_seen": "2026-08-02",
+  "full_name": "makecindy/cindy",
+  "id": 1309102418,
+  "language": "TypeScript",
+  "last_seen": "2026-08-02",
+  "topics": [
+    "agent",
+    "ai-agent",
+    "ai-assistant",
+    "android",
+    "claude-code",
+    "codex",
+    "electron",
+    "ios",
+    "llm",
+    "macos",
+    "react-native",
+    "typescript",
+    "windows"
+  ]
+}

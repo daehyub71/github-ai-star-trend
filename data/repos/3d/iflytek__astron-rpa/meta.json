@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d9288dcdf3f5d59e",
+    "is_ai": true,
+    "reason": "Agent-ready RPA desktop automation suite for web and desktop apps, exposing MCP services and agent integration.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-09-20",
   "description": "Agent-ready RPA suite with out-of-the-box automation tools. Built for individuals and enterprises.",
   "first_seen": "2025-10-26",

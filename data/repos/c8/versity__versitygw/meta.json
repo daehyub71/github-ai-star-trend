@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "037c996c61388cd7",
+    "is_ai": false,
+    "reason": "An S3 object storage gateway server for filesystems with no advertised AI features or agent interfaces.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "versity/versitygw",
+  "id": 636903576
+}

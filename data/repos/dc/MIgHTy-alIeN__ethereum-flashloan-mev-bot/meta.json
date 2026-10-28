@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8d4f3e5eaa18e683",
+    "is_ai": false,
+    "reason": "A crypto arbitrage smart-contract bot (likely a scam) with no real AI functionality, only AI-related topic tags.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "MIgHTy-alIeN/ethereum-flashloan-mev-bot",
+  "id": 1303829880
+}

@@ -1,0 +1,40 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc6682cf8792ac7f",
+    "is_ai": true,
+    "reason": "Deepnote is a data notebook tool advertising AI-first design and an AI agent, making it a general app with AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-09-29",
+  "description": "Deepnote is a drop-in replacement for Jupyter with an AI-first design, sleek UI, new blocks, and native data integrations. Use Python, R, and SQL locally in your favorite IDE, then scale to Deepnote cloud for real-time collaboration, Deepnote agent, and deployable data apps. https://deepnote.com/",
+  "first_seen": "2025-11-02",
+  "full_name": "deepnote/deepnote",
+  "id": 1066509034,
+  "language": "TypeScript",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "artificial-intelligence",
+    "data",
+    "data-analysis",
+    "data-science",
+    "data-visualization",
+    "deepnote",
+    "eda",
+    "jupyter",
+    "jupyterhub",
+    "jupyterlab",
+    "machine-learning",
+    "notebooks",
+    "python",
+    "r",
+    "sql"
+  ]
+}

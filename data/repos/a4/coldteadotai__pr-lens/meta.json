@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f87c06f699c9d9f6",
+    "is_ai": true,
+    "reason": "PR review tool that generates architecture diagrams for pull requests, offered as a GitHub App, CLI, and coding-agent skill.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "coldteadotai/pr-lens",
+  "id": 1341067556
+}

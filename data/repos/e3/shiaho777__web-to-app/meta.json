@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1150abb972eaf080",
+    "is_ai": true,
+    "reason": "An on-device Android APK builder that advertises a built-in Agent feature alongside its general web-to-app tooling.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "shiaho777/web-to-app",
+  "id": 1104341840
+}

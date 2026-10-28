@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b22b1b8e8d096f61",
+    "is_ai": true,
+    "reason": "A PyTorch library implementing a speculative recurrent-depth transformer architecture with configurable model variants, without released weights.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-18",
   "description": "A theoretical reconstruction of the Claude Mythos architecture, built from first principles using the available research literature.",
   "first_seen": "2026-04-19",

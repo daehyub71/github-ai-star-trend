@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9099da06880c13d5",
+    "is_ai": true,
+    "reason": "Beacon is a cross-harness memory layer for coding agents that captures session traces and exposes reusable knowledge via MCP.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Asymptote-Labs/agent-beacon",
+  "id": 1236183038
+}

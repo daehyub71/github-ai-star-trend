@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ff46faddc39cfe33",
+    "is_ai": true,
+    "reason": "A usage guide with examples for Oxylabs' AI crawler service, which turns websites into structured JSON or Markdown using natural language prompts.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-09-17",
   "description": "Crawl a website starting from a URL, find relevant pages, and extract data – all guided by your natural language prompt.",
   "first_seen": "2025-11-09",
   "full_name": "oxylabs/ai-crawler-py",
   "id": 1058850200,
   "language": null,
-  "last_seen": "2025-11-09",
+  "last_seen": "2025-11-16",
   "topics": [
     "ai",
     "ai-agents",

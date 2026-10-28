@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "82a0ffa1e7a7aeda",
+    "is_ai": true,
+    "reason": "A collaboration system for coordinating multiple AI coding agents and people, focused on multi-agent orchestration with an end-user app.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "amplifthq/openmeld",
+  "id": 1278926400
+}

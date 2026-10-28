@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "05bd9011c8863372",
+    "is_ai": true,
+    "reason": "End-user desktop app where an LLM builds a persistent knowledge wiki from documents, an alternative to traditional RAG with search and an MCP server.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-08",
   "description": "LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically. Instead of traditional RAG (retrieve-and-answer from scratch every time), the LLM incrementally builds and maintains a persistent wiki from your sources。",
   "first_seen": "2026-04-19",

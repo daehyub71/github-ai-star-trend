@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5704c2273002ea30",
+    "is_ai": true,
+    "reason": "An AI platform that generates short dramas end to end, from script to image and video generation.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-05",
   "description": "🎬 火宝短剧 - 基于AI的一站式短剧生成平台 《一句话生成完整短剧，从剧本到成片全自动化》  Huobao Drama - An AI-Powered End-to-End Short Drama Generator \"One Sentence to Complete Drama: Fully Automated from Script to Final Video\"",
-  "first_seen": "2026-01-18",
+  "first_seen": "2026-01-11",
   "full_name": "chatfire-AI/huobao-drama",
   "id": 1128267392,
   "language": "Vue",

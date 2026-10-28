@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5b5f03a1aa19bbf6",
+    "is_ai": false,
+    "reason": "The Linux kernel is general operating system software; its AI coding assistant guidance only covers developing the repository itself.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2011-09-04",
   "description": "Linux kernel source tree",
   "first_seen": "2025-10-26",

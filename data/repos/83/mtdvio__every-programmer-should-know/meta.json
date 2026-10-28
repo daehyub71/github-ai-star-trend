@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "16114f4a01114c13",
+    "is_ai": false,
+    "reason": "A curated list of general computer science resources for programmers, not focused on AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "mtdvio/every-programmer-should-know",
+  "id": 101296881
+}

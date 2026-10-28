@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "94abc9acde34cebe",
+    "is_ai": true,
+    "reason": "Official code and weights for a 9B audio language model covering ASR, TTS, and speech editing.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2026-08-22",
+  "description": null,
+  "first_seen": "2026-09-13",
+  "full_name": "FireRedTeam/FireRedAudio",
+  "id": 1342737409,
+  "language": "Python",
+  "last_seen": "2026-09-13",
+  "topics": []
+}

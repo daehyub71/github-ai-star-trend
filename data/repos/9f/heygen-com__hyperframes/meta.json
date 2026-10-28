@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f41e77e4f36b2d2c",
+    "is_ai": true,
+    "reason": "HTML-to-video rendering framework explicitly built for agents, shipping agent skills, plugins and MCP integration.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-10",
   "description": "Write HTML. Render video. Built for agents.",
   "first_seen": "2026-04-19",

@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "eedf0b7f88bf2e61",
+    "is_ai": true,
+    "reason": "An AI agent that operates Android phones from natural-language instructions, exposed to coding assistants via an MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-13",
   "description": "ARTEMIS turns natural-language instructions into reliable Android automation. It automates end-to-end workflows, captures logs, and integrates seamlessly with AI coding assistants such as Antigravity, Codex, and Claude Code.  It also achieves 99%+ success rate on AndroidWorld Benchmark.",
-  "first_seen": "2026-09-13",
+  "first_seen": "2026-09-06",
   "full_name": "google/artemis",
   "id": 1333399642,
   "language": "Python",

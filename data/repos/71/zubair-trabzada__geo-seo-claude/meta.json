@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7093b4e5cdde591d",
+    "is_ai": true,
+    "reason": "A Claude Code skill package for AI search (GEO) optimization audits of websites.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "zubair-trabzada/geo-seo-claude",
+  "id": 1160693255
+}

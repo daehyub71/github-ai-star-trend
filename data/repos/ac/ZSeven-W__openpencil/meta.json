@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a72ce2c3a0ee4d46",
+    "is_ai": true,
+    "reason": "An AI-native vector design app that turns prompts into UI with agent teams and also ships a built-in MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ZSeven-W/openpencil",
+  "id": 1159938129
+}

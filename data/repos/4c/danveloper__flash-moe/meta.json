@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c9a44373d0a7feb3",
+    "is_ai": true,
+    "reason": "A C/Metal inference engine that streams a 397B MoE model from SSD to run it on a MacBook.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "danveloper/flash-moe",
+  "id": 1185476360
+}

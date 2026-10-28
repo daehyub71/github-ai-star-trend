@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0e948cd41798b75d",
+    "is_ai": true,
+    "reason": "A wardrobe app whose core function is AI image detection, cutout extraction, and modeled photo generation with gpt-image, plus bundled Codex skills.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "tandpfun/wardrobe",
+  "id": 1302398032
+}

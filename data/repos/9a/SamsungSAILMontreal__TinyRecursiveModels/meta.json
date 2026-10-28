@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "085daf5c66ee6c7a",
+    "is_ai": true,
+    "reason": "Research codebase for training the Tiny Recursive Model, a small recursive reasoning network for ARC-AGI and Sudoku.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-07",
   "description": null,
   "first_seen": "2025-10-26",

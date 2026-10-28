@@ -1,0 +1,39 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "51d4f0f09f01b9c4",
+    "is_ai": true,
+    "reason": "A 21-lesson course from Microsoft that teaches how to build generative AI applications.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2023-06-19",
+  "description": "21 Lessons, Get Started Building with Generative AI ",
+  "first_seen": "2025-10-26",
+  "full_name": "microsoft/generative-ai-for-beginners",
+  "id": 655806940,
+  "language": "Jupyter Notebook",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "ai",
+    "azure",
+    "chatgpt",
+    "dall-e",
+    "generative-ai",
+    "generativeai",
+    "gpt",
+    "language-model",
+    "llms",
+    "microsoft-for-beginners",
+    "openai",
+    "prompt-engineering",
+    "semantic-search",
+    "transformers"
+  ]
+}

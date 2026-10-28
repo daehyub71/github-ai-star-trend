@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "36e729a7b8f4396d",
+    "is_ai": true,
+    "reason": "A multi-agent swarm orchestration CLI that coordinates CLI coding agents such as Claude Code and Codex to work together on tasks.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "HKUDS/ClawTeam",
+  "id": 1184391618
+}

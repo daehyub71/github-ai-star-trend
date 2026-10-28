@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cc85f78b0b3f672e",
+    "is_ai": true,
+    "reason": "A Claude Code plugin that lets the coding agent call Codex for reviews and task delegation, so it is a tool loaded by a coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-30",
   "description": "Use Codex from Claude Code to review code or delegate tasks.",
   "first_seen": "2026-03-29",

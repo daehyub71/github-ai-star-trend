@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ca8e87cfaf5a00b6",
+    "is_ai": true,
+    "reason": "A humorous catalog of persuasion prompt techniques and templates for LLM agents, essentially a prompt collection.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "puaclaw/PUAClaw",
+  "id": 1167077257
+}

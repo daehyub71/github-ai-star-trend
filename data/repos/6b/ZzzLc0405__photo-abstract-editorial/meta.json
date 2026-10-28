@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f1908f479edf410c",
+    "is_ai": true,
+    "reason": "A Codex skill and image-generation prompt that turns a photo into an editorial composition with an abstract panel and a title.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-04",
   "description": null,
   "first_seen": "2026-08-09",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a0cb3d0cc43b5031",
+    "is_ai": true,
+    "reason": "An open-source plugin-based agent harness from DeepSeek, with a Web UI, for running and extending AI agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-13",
   "description": "DeepSeek Harness: Everything is a Plugin.",
   "first_seen": "2026-08-09",

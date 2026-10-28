@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "86198fe54eb6f6cc",
+    "is_ai": true,
+    "reason": "On-device desktop app for semantic multimodal file search using the EmbeddingGemma 2 embedding model.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ARahim3/DigUp",
+  "id": 1410929004
+}

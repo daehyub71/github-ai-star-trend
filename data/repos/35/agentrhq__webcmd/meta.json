@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "009b5229f1e02b47",
+    "is_ai": true,
+    "reason": "A browser automation infrastructure tool for AI agents, with a self-learning site memory layer.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-02",
+  "description": "Self-learning agent browser",
+  "first_seen": "2026-09-06",
+  "full_name": "agentrhq/webcmd",
+  "id": 1287114669,
+  "language": "TypeScript",
+  "last_seen": "2026-09-06",
+  "topics": [
+    "ai-agents",
+    "browser-automation",
+    "browser-use",
+    "cli",
+    "developer-tools",
+    "playwright",
+    "self-learning-ai"
+  ]
+}

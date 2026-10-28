@@ -1,0 +1,34 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fe68e3b738d4932d",
+    "is_ai": true,
+    "reason": "A graph database pitched as a knowledge graph for LLMs, GraphRAG, and agent memory.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2023-07-20",
+  "description": "A super fast Graph Database uses GraphBLAS under the hood for its sparse adjacency matrix graph representation. Our goal is to provide the best Knowledge Graph for LLM (GraphRAG).",
+  "first_seen": "2025-11-23",
+  "full_name": "FalkorDB/FalkorDB",
+  "id": 668673665,
+  "language": "Rust",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "cloud-database",
+    "database",
+    "database-as-a-service",
+    "developer-tools",
+    "devtools",
+    "graph-database",
+    "graphrag",
+    "knowledge-graph",
+    "realtime-database"
+  ]
+}

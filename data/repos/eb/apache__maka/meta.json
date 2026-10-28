@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c6d335496d218a47",
+    "is_ai": true,
+    "reason": "Maka is an agent harness/workspace with desktop, TUI and CLI clients that runs commands and edits files, benchmarked against other harnesses, fitting coding agent tooling.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-27",
   "description": "Apache Maka (Incubating) is a high-performance agent workspace that keeps a complete record of everything it did.",
-  "first_seen": "2026-08-23",
+  "first_seen": "2026-08-16",
   "full_name": "apache/maka",
   "id": 1251460378,
   "language": "TypeScript",

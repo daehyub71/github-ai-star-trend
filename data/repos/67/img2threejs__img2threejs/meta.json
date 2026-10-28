@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5ed3162ec5b023fa",
+    "is_ai": true,
+    "reason": "An AI agent-driven image-to-3D tool that reconstructs objects from reference images as procedural Three.js code, likely packaged as a Claude Code workflow.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-15",
   "description": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D.",
   "first_seen": "2026-07-19",

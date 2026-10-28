@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0810c883f97b1b2a",
+    "is_ai": true,
+    "reason": "A local proxy and TUI that captures Claude Code and Codex API traffic to attribute token usage and cost, making it an LLM observability tool.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "tigerless-labs/cost-xray",
+  "id": 1260962896
+}

@@ -1,0 +1,29 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "08b594c2c42c5378",
+    "is_ai": true,
+    "reason": "Flint is a chart specification language built for AI agents and ships an MCP server so agents can create charts.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-05-13",
+  "description": "🪄 Flint is a visualization language that lets AI agents reliably create expressive, good-looking charts from simple, human-editable chart specs.",
+  "first_seen": "2026-07-12",
+  "full_name": "microsoft/flint-chart",
+  "id": 1237164513,
+  "language": "TypeScript",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "ai-agents",
+    "charting-library",
+    "data-visualization",
+    "mcp-server"
+  ]
+}

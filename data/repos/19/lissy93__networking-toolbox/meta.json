@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "69388cd796b3e241",
+    "is_ai": false,
+    "reason": "A self-hosted collection of offline networking utilities for sysadmins, with no advertised AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "lissy93/networking-toolbox",
+  "id": 1065221976
+}

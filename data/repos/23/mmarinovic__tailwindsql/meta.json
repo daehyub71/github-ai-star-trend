@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0193f22ea64ebbeb",
+    "is_ai": false,
+    "reason": "A joke React library that maps Tailwind-style class names to SQL queries, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "mmarinovic/tailwindsql",
+  "id": 1116861754
+}

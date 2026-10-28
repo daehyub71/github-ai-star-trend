@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "918782000a32d80c",
+    "is_ai": true,
+    "reason": "A collection of Codex system prompt/instruction files, described as jailbreak prompts, bundled with an evaluation test harness for GPT models.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-11",
   "description": "A Codex jailbreak prompt and test pack for gpt. 针对 gpt 系列的 Codex 破甲提示词与测试包。",
-  "first_seen": "2026-07-19",
+  "first_seen": "2026-07-12",
   "full_name": "MDX-Tom/gpt-instruct",
   "id": 1297316519,
   "language": "Python",

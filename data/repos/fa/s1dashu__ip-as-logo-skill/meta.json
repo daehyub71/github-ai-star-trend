@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "36724a5d0fd45cb6",
+    "is_ai": true,
+    "reason": "An Agent Skill providing prompt guidance for AI image generation of mascot logos.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-18",
   "description": "A compact Agent Skill for highly simplified, rounded, subtly neo-skeuomorphic IP mascot logos.",
-  "first_seen": "2026-08-30",
+  "first_seen": "2026-08-23",
   "full_name": "s1dashu/ip-as-logo-skill",
   "id": 1338470635,
   "language": null,

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "44545515fc2c0468",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of LLM API providers offering permanent free tiers for text inference.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-03-21",
   "description": "List of Permanent Free LLM API  (API Keys)",
   "first_seen": "2026-04-19",

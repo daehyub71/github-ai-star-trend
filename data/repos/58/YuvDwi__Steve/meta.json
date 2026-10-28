@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f41ca79a0646928a",
+    "is_ai": true,
+    "reason": "A Minecraft Forge mod that adds LLM-driven autonomous multi-agent players controlled by natural language.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "YuvDwi/Steve",
+  "id": 1091132409
+}

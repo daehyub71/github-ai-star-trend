@@ -1,0 +1,29 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d007f6b08aa9dc4e",
+    "is_ai": true,
+    "reason": "Research code for a multi-agent system that generates educational videos by having LLMs write Manim code.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-09-29",
+  "description": "[ICML 2026] Video generation via code",
+  "first_seen": "2025-11-30",
+  "full_name": "showlab/Code2Video",
+  "id": 1066243512,
+  "language": "Python",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "coding",
+    "education",
+    "multi-agent",
+    "video-generation"
+  ]
+}

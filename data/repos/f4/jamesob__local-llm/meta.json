@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4d338082f96b049f",
+    "is_ai": true,
+    "reason": "A personal guide with hardware advice and ready-to-run vLLM and STT configs for running LLMs locally.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "jamesob/local-llm",
+  "id": 1288292418
+}

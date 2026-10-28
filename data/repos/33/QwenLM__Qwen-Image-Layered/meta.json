@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c0fc03e6c918b795",
+    "is_ai": true,
+    "reason": "Repository releasing Qwen-Image-Layered model weights for decomposing images into editable RGBA layers.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "QwenLM/Qwen-Image-Layered",
+  "id": 1118770071
+}

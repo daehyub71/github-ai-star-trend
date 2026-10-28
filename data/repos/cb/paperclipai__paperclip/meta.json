@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4123b49cce1ad8e0",
+    "is_ai": true,
+    "reason": "Paperclip is an open-source server and UI for orchestrating teams of AI agents with goals, budgets, and governance.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-02",
   "description": "The open-source app everyone uses to manage agents at work",
   "first_seen": "2026-03-01",

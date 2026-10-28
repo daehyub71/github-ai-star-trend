@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3ce343ba1ded5499",
+    "is_ai": true,
+    "reason": "A Mac/PC cleaner CLI that ships agent skills and plugins for Claude Code and Codex to operate it, so it counts as an agent-operable app.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-09-23",
   "description": "🐹 Keep your Mac and PC clean, light, and running like new. Fast open-source CLI, plus native Mac and Windows apps.",
-  "first_seen": "2025-12-14",
+  "first_seen": "2025-12-07",
   "full_name": "tw93/Mole",
   "id": 1062356571,
   "language": "Shell",

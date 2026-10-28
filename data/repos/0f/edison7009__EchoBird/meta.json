@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc1ea6bc011c971c",
+    "is_ai": true,
+    "reason": "Desktop app managing AI coding tool accounts with multi-model routing and failover, plus one-click setup of AI tools and local LLMs.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "edison7009/EchoBird",
+  "id": 1158472225
+}

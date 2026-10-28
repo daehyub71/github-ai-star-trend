@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f5b19d48893b7ebe",
+    "is_ai": false,
+    "reason": "A client-side PDF toolkit with no advertised AI features or agent interfaces; OCR alone doesn't make it an AI project.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-12",
   "description": "The Privacy First PDF Toolkit",
   "first_seen": "2025-10-26",

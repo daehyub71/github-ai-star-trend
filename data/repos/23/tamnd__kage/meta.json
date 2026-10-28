@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6ab9d3f584d12bc3",
+    "is_ai": false,
+    "reason": "A website cloning tool for offline viewing using headless Chrome, with no AI features advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-14",
   "description": "Shadow any website for offline viewing, with the JavaScript stripped out",
   "first_seen": "2026-07-05",

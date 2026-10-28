@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6820b276522d8aa0",
+    "is_ai": false,
+    "reason": "A peer-to-peer file transfer app with no AI features or agent interface.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-17",
   "description": "Share files nearby and beyond. ",
   "first_seen": "2025-11-09",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "be1df63bac712a06",
+    "is_ai": true,
+    "reason": "Anti-detection headless browser server with a REST API designed for AI agents to browse the web.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "jo-inc/camofox-browser",
+  "id": 1142274728
+}

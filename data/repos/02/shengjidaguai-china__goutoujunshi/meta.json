@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6219c0183d3c302f",
+    "is_ai": true,
+    "reason": "A Codex skill with a knowledge base providing AI relationship advice, installed into AI assistants.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-20",
+  "description": "一个先接住情绪、再分析关系并给出可执行策略的 Codex 恋爱军师，内置心理、法律、社会、人文、哲学、婚姻家庭与性学知识库，支持多元关系。",
+  "first_seen": "2026-09-20",
+  "full_name": "shengjidaguai-china/goutoujunshi",
+  "id": 1306722822,
+  "language": "Python",
+  "last_seen": "2026-09-20",
+  "topics": [
+    "ai-agent",
+    "chinese",
+    "codex",
+    "codex-skill",
+    "lgbtq",
+    "psychology",
+    "relationship-advice"
+  ]
+}

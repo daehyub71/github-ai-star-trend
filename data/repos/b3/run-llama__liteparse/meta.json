@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "10e095dccd986196",
+    "is_ai": true,
+    "reason": "LlamaIndex's local PDF/document parser that produces markdown and screenshots for LLM and RAG pipelines.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-09",
   "description": "A fast, helpful, and open-source document parser",
   "first_seen": "2026-03-22",

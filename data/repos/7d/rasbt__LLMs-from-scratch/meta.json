@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f88f3b9efd802e59",
+    "is_ai": true,
+    "reason": "Official code for a book teaching how to build, pretrain, and finetune a GPT-like LLM from scratch in PyTorch.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "rasbt/LLMs-from-scratch",
+  "id": 669879380
+}

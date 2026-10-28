@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bf5a86fcaf0aea9f",
+    "is_ai": false,
+    "reason": "A monthly curated list of interesting general open source GitHub projects, not AI-focused.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "521xueweihan/HelloGitHub",
+  "id": 58028038
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "693d39bc934c64ce",
+    "is_ai": false,
+    "reason": "A local-first video metadata scraper and media manager that advertises no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-19",
   "description": "Peach: Local-first video metadata scraper and media manager.",
   "first_seen": "2026-10-18",

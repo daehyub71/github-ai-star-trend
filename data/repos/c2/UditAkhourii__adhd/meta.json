@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4feb77d68898ae74",
+    "is_ai": true,
+    "reason": "A tree-of-thought ideation skill for coding agents built on Claude/Codex Agent SDK, distributed as an npm package.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "UditAkhourii/adhd",
+  "id": 1249107749
+}

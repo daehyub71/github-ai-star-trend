@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "36ecb5c88e7d6bbf",
+    "is_ai": true,
+    "reason": "An image-processing tool built to clean up AI-generated pixel art, which places it in the AI image post-processing space.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Hugo-Dz/spritefusion-pixel-snapper",
+  "id": 1103154605
+}

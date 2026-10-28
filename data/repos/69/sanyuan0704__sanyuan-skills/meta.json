@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7b63fc50ba0e202f",
+    "is_ai": true,
+    "reason": "A collection of agent skills for Claude Code and other AI agent terminals, including code review and tutoring skills.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "sanyuan0704/sanyuan-skills",
+  "id": 1149477047
+}

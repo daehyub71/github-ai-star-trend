@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f99573ea0a01ec17",
+    "is_ai": false,
+    "reason": "A general computer science video course list where AI and ML topics make up only some of the sections.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2016-10-21",
   "description": "List of Computer Science courses with video lectures.",
   "first_seen": "2026-02-15",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a0c5a9b3c225f12b",
+    "is_ai": false,
+    "reason": "A Windows desktop organizer app with widgets and no advertised AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-11",
   "description": "A free, open-source Windows desktop organizer with native-feeling WinUI 3 widgets.",
   "first_seen": "2026-08-30",

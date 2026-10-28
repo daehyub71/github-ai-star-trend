@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7bd72794070cb8e1",
+    "is_ai": true,
+    "reason": "A vector art editor that advertises an MCP server so agents can operate it, which makes it an agent-driven app.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-30",
   "description": "VectorCraft: An open-source, vector art tool written by scratch in pure Rust",
-  "first_seen": "2026-10-11",
+  "first_seen": "2026-10-04",
   "full_name": "storytold/vectorcraft",
   "id": 1398097510,
   "language": "Rust",

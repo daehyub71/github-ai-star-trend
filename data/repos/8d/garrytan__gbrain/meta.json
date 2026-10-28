@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "793cedccfab94d41",
+    "is_ai": true,
+    "reason": "GBrain is a memory system for AI agents with retrieval and an MCP server for connecting agents.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-05",
   "description": "Garry's Opinionated OpenClaw/Hermes Agent Brain",
   "first_seen": "2026-04-12",

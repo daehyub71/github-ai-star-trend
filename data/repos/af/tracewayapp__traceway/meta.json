@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc09daba49ef67cf",
+    "is_ai": true,
+    "reason": "General OpenTelemetry observability platform that advertises AI/LLM observability features like token, cost and conversation tracing.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "tracewayapp/traceway",
+  "id": 1118625788
+}

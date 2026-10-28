@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2e7a418e9ba08ae2",
+    "is_ai": true,
+    "reason": "Langflow is a visual platform for building and deploying AI agents and workflows, with built-in MCP server deployment.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2023-02-08",
   "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
   "first_seen": "2025-10-26",
   "full_name": "langflow-ai/langflow",
   "id": 599320067,
   "language": "Python",
-  "last_seen": "2025-10-26",
+  "last_seen": "2026-05-31",
   "topics": [
     "agents",
     "chatgpt",

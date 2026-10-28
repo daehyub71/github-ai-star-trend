@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5a125c6d40e7de15",
+    "is_ai": true,
+    "reason": "Exo runs large AI models locally by clustering personal devices with distributed inference.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-06-24",
   "description": "Run frontier AI locally.",
-  "first_seen": "2025-12-21",
+  "first_seen": "2025-12-14",
   "full_name": "exo-explore/exo",
   "id": 819554665,
   "language": "Python",

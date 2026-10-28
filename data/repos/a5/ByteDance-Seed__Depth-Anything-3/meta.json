@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5f6910797341a6a0",
+    "is_ai": true,
+    "reason": "Depth Anything 3 releases vision foundation models and code for depth and pose estimation from images.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-11-12",
   "description": "Depth Anything 3",
   "first_seen": "2025-11-16",

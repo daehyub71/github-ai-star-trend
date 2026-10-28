@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "85f8ab7a50fdffeb",
+    "is_ai": true,
+    "reason": "Durable workflow SDK explicitly advertised for building reliable AI agents with orchestration.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "vercel/workflow",
+  "id": 1081770999
+}

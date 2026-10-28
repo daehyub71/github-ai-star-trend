@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "49cad7d260e22f7e",
+    "is_ai": true,
+    "reason": "A git proxy that runs an AI coding-agent-driven validation pipeline (review, test, lint, fix) before pushing and opening PRs.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-05",
   "description": "git push no-mistakes",
   "first_seen": "2026-06-21",

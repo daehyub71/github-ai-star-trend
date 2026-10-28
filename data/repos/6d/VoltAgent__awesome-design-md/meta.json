@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d967bb774f7397f4",
+    "is_ai": true,
+    "reason": "Curated collection of DESIGN.md instruction files that coding agents read to generate consistent UI.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-03-31",
   "description": "A collection of DESIGN.md files analysis by popular brand design systems. Drop one into your project and let coding agents generate a matching UI.",
-  "first_seen": "2026-04-05",
+  "first_seen": "2026-03-29",
   "full_name": "VoltAgent/awesome-design-md",
   "id": 1197515131,
   "language": null,

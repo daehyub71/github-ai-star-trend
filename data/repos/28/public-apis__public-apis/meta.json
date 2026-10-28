@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "45f1d7ca54770002",
+    "is_ai": false,
+    "reason": "A curated list of free public APIs across many domains, not specifically about AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2016-03-20",
   "description": "A collective list of free APIs",
   "first_seen": "2025-10-26",

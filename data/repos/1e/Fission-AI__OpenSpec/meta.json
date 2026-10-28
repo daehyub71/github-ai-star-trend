@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0cc16a13bd6a3ce2",
+    "is_ai": true,
+    "reason": "OpenSpec is a spec-driven development framework providing slash commands and workflow instructions for AI coding assistants.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-08-05",
+  "description": "Spec-driven development (SDD) for AI coding assistants.",
+  "first_seen": "2025-10-26",
+  "full_name": "Fission-AI/OpenSpec",
+  "id": 1032459340,
+  "language": "TypeScript",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "ai",
+    "context-engineering",
+    "engineering",
+    "planning",
+    "prd",
+    "sdd",
+    "sdlc",
+    "spec",
+    "spec-driven-development",
+    "specification"
+  ]
+}

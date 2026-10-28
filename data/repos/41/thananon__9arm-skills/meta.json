@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "869886bc40dafc6e",
+    "is_ai": true,
+    "reason": "A personal collection of SKILL.md agent skills for Claude Code covering engineering and productivity workflows.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-05-20",
+  "description": null,
+  "first_seen": "2026-05-24",
+  "full_name": "thananon/9arm-skills",
+  "id": 1244095591,
+  "language": "Shell",
+  "last_seen": "2026-05-31",
+  "topics": []
+}

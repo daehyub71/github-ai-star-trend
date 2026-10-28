@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d12d1e2b5039682e",
+    "is_ai": false,
+    "reason": "A programming-languages research paper repository on composability; agent harnesses are mentioned only as a motivating example.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "cordiverse/paper",
+  "id": 1332959628
+}

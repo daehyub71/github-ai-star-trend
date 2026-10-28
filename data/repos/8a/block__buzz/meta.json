@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "df45f404550cdcf4",
+    "is_ai": true,
+    "reason": "Self-hostable workspace built for humans and AI agents to collaborate, with agents operating channels, repos and workflows as first-class members.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-06",
   "description": "A hive mind communication platform",
   "first_seen": "2026-07-19",

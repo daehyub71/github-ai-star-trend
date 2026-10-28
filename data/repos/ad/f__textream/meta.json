@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e669c7c8d4ed76d1",
+    "is_ai": false,
+    "reason": "A teleprompter app that uses the OS speech recognition as a feature but does not advertise itself as an AI product.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "f/textream",
+  "id": 1152691112
+}

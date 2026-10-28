@@ -1,0 +1,28 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "209112af6fedca0e",
+    "is_ai": true,
+    "reason": "An agent built on Claude Agent SDK and Google ADK that autonomously trains ML models using agent skills.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-16",
+  "description": "An agentic Machine Learning Engineer",
+  "first_seen": "2025-11-23",
+  "full_name": "K-Dense-AI/karpathy",
+  "id": 1097835077,
+  "language": "Python",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "agentic-ai",
+    "automl",
+    "machine-learning"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ed7bc9ead8e327fa",
+    "is_ai": true,
+    "reason": "A CLI for a Git forge built for coding agents that captures AI coding agent sessions as memory linked to commits.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "entireio/cli",
+  "id": 1126841840
+}

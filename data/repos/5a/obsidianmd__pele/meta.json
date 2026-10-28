@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c99510ee7af3acf5",
+    "is_ai": false,
+    "reason": "A Mermaid diagram-to-SVG rendering library with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-10-05",
   "description": "Renders Mermaid diagrams faster than you'd run from a volcano! 🌋 ",
   "first_seen": "2026-10-18",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "29e46b34c02f4146",
+    "is_ai": true,
+    "reason": "Releases an 8B text-to-speech model with inference code, making it a speech-generation model release.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "MisoLabsAI/MisoTTS",
+  "id": 1244486617
+}

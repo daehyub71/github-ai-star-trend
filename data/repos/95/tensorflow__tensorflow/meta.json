@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "57f105d4fbd9009c",
+    "is_ai": true,
+    "reason": "TensorFlow is a core open-source ML framework for building, training, and deploying neural networks.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2015-11-07",
+  "description": "An Open Source Machine Learning Framework for Everyone",
+  "first_seen": "2025-10-26",
+  "full_name": "tensorflow/tensorflow",
+  "id": 45717250,
+  "language": "C++",
+  "last_seen": "2026-10-18",
+  "topics": [
+    "deep-learning",
+    "deep-neural-networks",
+    "distributed",
+    "machine-learning",
+    "ml",
+    "neural-network",
+    "python",
+    "tensorflow"
+  ]
+}

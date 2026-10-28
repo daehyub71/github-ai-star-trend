@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "52983f3da7e8d269",
+    "is_ai": true,
+    "reason": "Example collection for building with Cursor's coding agent SDK, hooks, and cloud agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-04-27",
   "description": null,
-  "first_seen": "2026-05-17",
+  "first_seen": "2026-05-10",
   "full_name": "cursor/cookbook",
   "id": 1222301562,
   "language": "TypeScript",

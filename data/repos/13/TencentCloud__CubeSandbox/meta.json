@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cfb298d7279d5bca",
+    "is_ai": true,
+    "reason": "A secure, E2B-compatible sandbox service that AI agents use to execute code, i.e. agent tool infrastructure.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-10",
   "description": "Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents.",
   "first_seen": "2026-05-03",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7b614ebb85714b3d",
+    "is_ai": true,
+    "reason": "Releases a small from-scratch omni model with weights, training code and data for text, audio and vision.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "jingyaogong/minimind-o",
+  "id": 1226182842
+}

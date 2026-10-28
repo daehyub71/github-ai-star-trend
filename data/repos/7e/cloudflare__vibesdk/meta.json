@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8eae5ed764f3fccd",
+    "is_ai": true,
+    "reason": "Open-source vibe-coding platform where an AI coding agent builds and deploys full-stack apps on Cloudflare.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-08-25",
+  "description": "An open-source vibe coding platform that helps you build your own vibe-coding platform, built entirely on Cloudflare stack ",
+  "first_seen": "2025-12-07",
+  "full_name": "cloudflare/vibesdk",
+  "id": 1044360605,
+  "language": "TypeScript",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "ai",
+    "cloudflare-workers",
+    "coding-agent",
+    "durable-objects",
+    "text-to-app",
+    "vibe-coding"
+  ]
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "90f3e6f3ae55bc6f",
+    "is_ai": true,
+    "reason": "A decentralized blockchain storage network marketed as AI-first storage for training data and models, with an ai-agents topic, but its core is blockchain infrastructure rather than any specific AI category.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-03-06",
   "description": "An EVM compatible Substrate chain, powered by StorageHub and secured by EigenLayer",
   "first_seen": "2026-01-11",

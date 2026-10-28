@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e17319474d282d64",
+    "is_ai": true,
+    "reason": "OM1 is a modular AI runtime for building and deploying multimodal LLM agents on robots and digital environments.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-01-08",
   "description": "Modular AI HAL (Hardware Abstraction Layer) for Robots",
   "first_seen": "2025-11-16",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f8f8b1f22f439236",
+    "is_ai": false,
+    "reason": "A promotional guide for Oxylabs free proxy servers with integration examples, not related to AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-02-06",
   "description": "Claim Free proxy list with United States IP addresses and use it for your projects.",
   "first_seen": "2025-11-09",

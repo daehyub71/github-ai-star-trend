@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7f5d1a3e680c526d",
+    "is_ai": true,
+    "reason": "Two books on harness engineering for coding agents like Claude Code and Codex, making it educational material about coding agents.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "wquguru/harness-books",
+  "id": 1198040849
+}

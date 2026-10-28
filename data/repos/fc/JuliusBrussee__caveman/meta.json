@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f03356d9ef2b9ace",
+    "is_ai": true,
+    "reason": "A token-saving skill plus proxy for coding agents that makes them respond tersely, primarily a prompt/skill with routing proxy features.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-04",
   "description": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
   "first_seen": "2026-04-05",

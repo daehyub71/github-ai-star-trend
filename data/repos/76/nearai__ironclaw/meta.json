@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3341cb000a269db9",
+    "is_ai": true,
+    "reason": "IronClaw is a secure, self-hosted personal AI assistant agent (OpenClaw-style) with sandboxed tools and multi-channel access.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-03",
   "description": "IronClaw is an Agent OS focused on privacy, security and extensibility",
   "first_seen": "2026-02-15",

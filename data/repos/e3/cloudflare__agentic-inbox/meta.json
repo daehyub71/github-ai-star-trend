@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d383276d953a79b6",
+    "is_ai": true,
+    "reason": "A self-hosted email client app with a built-in AI agent for reading, searching, and drafting emails.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "cloudflare/agentic-inbox",
+  "id": 1206471102
+}

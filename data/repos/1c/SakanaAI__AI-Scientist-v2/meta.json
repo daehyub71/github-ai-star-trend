@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "febf9f453802ffe8",
+    "is_ai": true,
+    "reason": "An end-to-end agentic system using LLM tree search to autonomously run ML experiments and write scientific papers.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-04-08",
+  "description": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+  "first_seen": "2026-03-22",
+  "full_name": "SakanaAI/AI-Scientist-v2",
+  "id": 962431643,
+  "language": "Python",
+  "last_seen": "2026-03-22",
+  "topics": []
+}

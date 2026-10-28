@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a1bfe2172b6fe1cd",
+    "is_ai": true,
+    "reason": "A minimal self-evolving autonomous agent framework that gives LLMs system-level control over browsers, desktops, and devices.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-16",
   "description": "Self-evolving agent: grows skill tree from 3.3K-line seed, achieving full system control with 6x less token consumption",
   "first_seen": "2026-04-19",

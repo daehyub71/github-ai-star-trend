@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e5ddd6617432ccdc",
+    "is_ai": true,
+    "reason": "An open-source infinite-canvas workspace for AI image and video generation, with agent assistants and prompt management built in.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "basketikun/infinite-canvas",
+  "id": 1242967652
+}

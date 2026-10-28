@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c88c5d532e79cb77",
+    "is_ai": true,
+    "reason": "A C compiler written entirely by Claude Opus 4.6 as a showcase of autonomous AI coding agent capability, though the tool itself is not AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-04",
+  "description": "Claude Opus 4.6 wrote a dependency-free C compiler in Rust, with backends targeting x86 (64- and 32-bit), ARM, and RISC-V, capable of compiling a booting Linux kernel.",
+  "first_seen": "2026-02-08",
+  "full_name": "anthropics/claudes-c-compiler",
+  "id": 1150117793,
+  "language": "Rust",
+  "last_seen": "2026-02-08",
+  "topics": []
+}

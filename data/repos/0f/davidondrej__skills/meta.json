@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9cd65df7c824683a",
+    "is_ai": true,
+    "reason": "A collection of SKILL.md agent skills for AI coding and research agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-24",
   "description": "access to david ondrej's personal agent skills",
-  "first_seen": "2026-07-12",
+  "first_seen": "2026-07-05",
   "full_name": "davidondrej/skills",
   "id": 1279159149,
   "language": "Shell",

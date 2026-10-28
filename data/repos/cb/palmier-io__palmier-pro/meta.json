@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b147ac518cefa7f4",
+    "is_ai": true,
+    "reason": "A macOS video editor whose pitch centers on agents driving the timeline via an exposed MCP server, with built-in AI video and image generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-07",
   "description": "macOS video editor built for AI",
   "first_seen": "2026-06-21",

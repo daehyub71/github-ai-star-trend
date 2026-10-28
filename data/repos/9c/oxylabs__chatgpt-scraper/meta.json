@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "191913f530e241e8",
+    "is_ai": true,
+    "reason": "Usage guide and code examples for a commercial API that scrapes ChatGPT responses for AI answer monitoring and brand tracking.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2025-08-26",
+  "description": "Easily collect responses from ChatGPT scraper by providing a prompt along with valid Web Scraper API credentials.",
+  "first_seen": "2025-11-09",
+  "full_name": "oxylabs/chatgpt-scraper",
+  "id": 1044765979,
+  "language": "Java",
+  "last_seen": "2025-11-16",
+  "topics": [
+    "chatgpt",
+    "chatgpt-api",
+    "chatgpt-free",
+    "chatgpt-scraper",
+    "llm-scraper",
+    "openai-chatgpt",
+    "proxy-scraper"
+  ]
+}

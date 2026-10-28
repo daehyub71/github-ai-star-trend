@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0eab94aa84fd4d26",
+    "is_ai": true,
+    "reason": "A self-hosted engine and server for running large MoE LLMs on personal GPUs with an OpenAI-compatible API and quantization tools.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "mw00/project-maya",
+  "id": 1407997858
+}

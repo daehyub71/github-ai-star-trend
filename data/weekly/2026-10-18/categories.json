@@ -1,0 +1,111 @@
+{
+  "ALL": {
+    "entrants": 48,
+    "gain": 777542,
+    "repos": 1188
+  },
+  "ai_tab": true,
+  "categories": {
+    "agent-framework": {
+      "entrants": 3,
+      "gain": 53852,
+      "repos": 88
+    },
+    "agent-skills": {
+      "entrants": 13,
+      "gain": 207606,
+      "repos": 270
+    },
+    "ai-apps": {
+      "entrants": 8,
+      "gain": 83453,
+      "repos": 176
+    },
+    "coding-agent": {
+      "entrants": 3,
+      "gain": 49975,
+      "repos": 120
+    },
+    "computer-use": {
+      "entrants": 1,
+      "gain": 12032,
+      "repos": 34
+    },
+    "doc-parsing": {
+      "entrants": 2,
+      "gain": 5632,
+      "repos": 14
+    },
+    "inference": {
+      "entrants": 1,
+      "gain": 29128,
+      "repos": 31
+    },
+    "llmops": {
+      "entrants": 1,
+      "gain": 36445,
+      "repos": 44
+    },
+    "local-llm": {
+      "entrants": 0,
+      "gain": 9643,
+      "repos": 15
+    },
+    "mcp-tools": {
+      "entrants": 12,
+      "gain": 191712,
+      "repos": 164
+    },
+    "models": {
+      "entrants": 0,
+      "gain": 4378,
+      "repos": 28
+    },
+    "multimodal": {
+      "entrants": 1,
+      "gain": 46870,
+      "repos": 88
+    },
+    "other-ai": {
+      "entrants": 1,
+      "gain": 14520,
+      "repos": 47
+    },
+    "rag": {
+      "entrants": 1,
+      "gain": 11297,
+      "repos": 21
+    },
+    "training": {
+      "entrants": 1,
+      "gain": 8967,
+      "repos": 26
+    },
+    "vectordb-memory": {
+      "entrants": 0,
+      "gain": 12032,
+      "repos": 22
+    }
+  },
+  "coverage": 0.47536740796559485,
+  "non_ai": {
+    "gain": 157355,
+    "repos": 415
+  },
+  "notes": {
+    "category": "주 카테고리만(보조 제외)",
+    "rows": "주간 파일(증가 ≥ 10)의 행",
+    "scope": "판정은 랭킹 후보만(결정 30) — 합계는 판정된 AI 저장소만. coverage 는 판정이 끝난 저장소가 그 주 증가에서 차지하는 비율"
+  },
+  "taxonomy_version": 2,
+  "total_gain": 1966683,
+  "unclassified": {
+    "gain": 1031786,
+    "repos": 17080
+  },
+  "unmapped": {
+    "gain": 0,
+    "repos": 0
+  },
+  "week": "2026-10-18"
+}

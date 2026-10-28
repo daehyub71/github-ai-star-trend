@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0f590127d9721602",
+    "is_ai": true,
+    "reason": "Sample and tutorial collection for deploying AI agents on Amazon Bedrock AgentCore agent runtime infrastructure.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "awslabs/agentcore-samples",
+  "id": 1013404946
+}

@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a1e3afd31f7c078c",
+    "is_ai": true,
+    "reason": "A collection of agent skills for Claude Code and Codex that produce HTML wireframes, prototypes, plans, and diagrams.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-06-09",
+  "description": "Agent skills for useful HTML artifacts, wireframes, interactive prototypes, plans, and diagrams.",
+  "first_seen": "2026-08-23",
+  "full_name": "plannotator/effective-html",
+  "id": 1264478656,
+  "language": "HTML",
+  "last_seen": "2026-08-23",
+  "topics": [
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "html-artifacts",
+    "html-prototype",
+    "html-wireframe",
+    "prototyping",
+    "skills"
+  ]
+}

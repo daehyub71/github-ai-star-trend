@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c66d90d5a07cab7e",
+    "is_ai": true,
+    "reason": "CocoIndex is an incremental data indexing engine that builds fresh context for RAG and AI agents from diverse sources.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "cocoindex-io/cocoindex",
+  "id": 942312530
+}

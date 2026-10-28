@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cdeacce77aa5692b",
+    "is_ai": true,
+    "reason": "Code to run NVIDIA's full-duplex speech-to-speech conversational model with voice and role control.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-05",
   "description": "PersonaPlex code.",
   "first_seen": "2026-01-25",

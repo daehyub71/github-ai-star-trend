@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4c24fe3af1a821bc",
+    "is_ai": false,
+    "reason": "A Windows debloat PowerShell script that removes AI features, which makes it general system tooling rather than an AI project.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-06-07",
   "description": "Force Remove Copilot, Recall and More in Windows 11",
   "first_seen": "2025-12-07",

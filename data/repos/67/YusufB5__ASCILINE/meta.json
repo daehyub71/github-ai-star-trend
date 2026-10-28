@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "936b3f7a851b110c",
+    "is_ai": false,
+    "reason": "An ASCII video rendering and streaming engine with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-01",
   "description": "A high-performance ASCII video rendering engine featuring real-time WebSocket binary streaming and an isolated compiler for serverless static generation. Built for low-latency 30 FPS playback on HTML5 Canvas.",
   "first_seen": "2026-06-14",

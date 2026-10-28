@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f7c5bbc5e46c3a72",
+    "is_ai": true,
+    "reason": "Releases and serves CLM-8B, a contrastive language model for agent decision-making, with a serving API and fine-tuning tools.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-23",
+  "description": "Contrastive Language Models (CLMs) are a new class of System One model trained with a contrastive learning objective that connects states and actions.",
+  "first_seen": "2026-09-27",
+  "full_name": "Contrastive-LM/CLM",
+  "id": 1384094559,
+  "language": "Python",
+  "last_seen": "2026-09-27",
+  "topics": []
+}

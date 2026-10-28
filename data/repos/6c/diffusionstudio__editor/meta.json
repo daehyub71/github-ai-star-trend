@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c8aecdb949c4f83e",
+    "is_ai": true,
+    "reason": "A video editor built to be driven by coding agents via an MCP server and skills.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-07",
+  "description": "The VS Code of video editing, built for agents.",
+  "first_seen": "2026-08-30",
+  "full_name": "diffusionstudio/editor",
+  "id": 1291928218,
+  "language": "TypeScript",
+  "last_seen": "2026-08-30",
+  "topics": []
+}

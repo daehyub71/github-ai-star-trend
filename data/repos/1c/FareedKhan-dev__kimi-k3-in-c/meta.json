@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d753d256987271dc",
+    "is_ai": true,
+    "reason": "A from-scratch C99 CPU inference engine that runs the Kimi K3 MoE model with disk streaming on ordinary machines.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-01",
   "description": "A 2.78-trillion-parameter Kimi K3 running inference on a single CPU in 8.24 GB of RAM. Portable C99: no BLAS, no framework, no GPU.",
-  "first_seen": "2026-08-09",
+  "first_seen": "2026-08-02",
   "full_name": "FareedKhan-dev/kimi-k3-in-c",
   "id": 1319154759,
   "language": "C",

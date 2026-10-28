@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f0155e4f33dd14dd",
+    "is_ai": true,
+    "reason": "Meta's SAM 3D Objects releases a foundation model with weights and inference code that reconstructs 3D objects from a single image.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-09-29",
   "description": "SAM 3D Objects",
   "first_seen": "2025-11-16",

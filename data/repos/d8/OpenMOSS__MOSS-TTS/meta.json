@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6e00aeecd4b52fff",
+    "is_ai": true,
+    "reason": "Open-source TTS and sound generation model family releasing weights for speech synthesis.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "OpenMOSS/MOSS-TTS",
+  "id": 1152193330
+}

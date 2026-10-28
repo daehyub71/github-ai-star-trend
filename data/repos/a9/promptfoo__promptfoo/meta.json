@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "53cdcfa2f70f9e5b",
+    "is_ai": true,
+    "reason": "A CLI and library for evaluating and red-teaming LLM apps, prompts, and agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "promptfoo/promptfoo",
+  "id": 633927609
+}

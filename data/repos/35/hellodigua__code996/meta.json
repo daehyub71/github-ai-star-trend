@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fe0d70b4ba0b9e3d",
+    "is_ai": true,
+    "reason": "A Git commit-time analysis CLI that also ships a SKILL.md agent skill for AI coding tools to generate overtime reports.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-05",
+  "description": "统计 Git 项目的 commit 时间分布，进而推导出项目的编码工作强度。  Analyzes the commit time distribution of Git projects to infer coding work intensity.",
+  "first_seen": "2025-12-07",
+  "full_name": "hellodigua/code996",
+  "id": 1090202694,
+  "language": "TypeScript",
+  "last_seen": "2025-12-07",
+  "topics": []
+}

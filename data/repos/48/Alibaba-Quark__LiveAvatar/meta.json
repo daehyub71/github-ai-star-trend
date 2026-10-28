@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a0d25bfe0e2104e9",
+    "is_ai": true,
+    "reason": "Research implementation of real-time audio-driven avatar video generation with a diffusion model and released weights.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Alibaba-Quark/LiveAvatar",
+  "id": 1109843084
+}

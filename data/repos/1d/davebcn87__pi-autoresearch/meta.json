@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2b7f18a3d1fe0b90",
+    "is_ai": true,
+    "reason": "An extension providing tools and a skill that the pi coding agent loads to run autonomous optimization experiment loops.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "davebcn87/pi-autoresearch",
+  "id": 1179229480
+}

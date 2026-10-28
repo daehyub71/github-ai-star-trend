@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7ae22f662f201940",
+    "is_ai": false,
+    "reason": "A tutorial on scraping Google Trends with a commercial SERP API, with no AI features involved.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2024-08-06",
   "description": "Learn step-by-step how to scrape Google Trends data and make a result comparison using Python and Oxylabs SERP API. Extract keywords, their popularity, breakdown by region, related queries, and more.",
   "first_seen": "2025-11-09",

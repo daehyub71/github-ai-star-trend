@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cb8520a93e28e233",
+    "is_ai": true,
+    "reason": "An open-source desktop AI chat and work-automation app built on the Claude Agent SDK, with 500+ SaaS integrations through Composio's tool router and MCP.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-13",
   "description": "Open Source version of Claude Cowork with 500+ SaaS app integrations",
   "first_seen": "2026-01-25",

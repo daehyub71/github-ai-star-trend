@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7d8ce266495e5b40",
+    "is_ai": true,
+    "reason": "A curated AI agent learning roadmap with staged todo lists and resources, primarily educational material about building agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-05-17",
   "description": "AI Agent 学习路线与资料库收集",
   "first_seen": "2026-05-24",
   "full_name": "datawhalechina/Agent-Learning-Hub",
   "id": 1241257629,
   "language": "HTML",
-  "last_seen": "2026-05-31",
+  "last_seen": "2026-06-07",
   "topics": []
 }

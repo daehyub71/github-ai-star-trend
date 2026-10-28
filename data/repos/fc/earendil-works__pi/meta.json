@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b62f9d86a1e0a1f6",
+    "is_ai": true,
+    "reason": "Pi is a coding agent CLI harness with an SDK, unified LLM API and agent loop libraries.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-08-09",
   "description": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
-  "first_seen": "2026-01-25",
+  "first_seen": "2026-01-04",
   "full_name": "earendil-works/pi",
   "id": 1035029907,
   "language": "TypeScript",

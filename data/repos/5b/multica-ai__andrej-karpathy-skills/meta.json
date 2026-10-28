@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4c9c0f1d9254dbe4",
+    "is_ai": true,
+    "reason": "A CLAUDE.md guideline file and plugin that shapes Claude Code behavior, i.e. an agent rules/skills file.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-27",
   "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
   "first_seen": "2026-01-25",
   "full_name": "multica-ai/andrej-karpathy-skills",
   "id": 1142983825,
   "language": null,
-  "last_seen": "2026-05-31",
+  "last_seen": "2026-10-18",
   "topics": []
 }

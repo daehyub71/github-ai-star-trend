@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "051b636861a000c5",
+    "is_ai": true,
+    "reason": "A plugin marketplace for the DeepSeek Harness agent host, letting users browse and install agent plugins and exposing a plugin_market agent tool.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-14",
   "description": "The plugin market inside DeepSeek Harness — browse, search, one-click install · DSH 可视化插件市场",
   "first_seen": "2026-09-06",

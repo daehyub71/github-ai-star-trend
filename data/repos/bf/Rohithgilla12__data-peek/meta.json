@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3567b906171e9875",
+    "is_ai": true,
+    "reason": "A desktop SQL client that advertises an AI assistant and an MCP topic, making it a general app with AI features.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-28",
+  "description": "A minimal, fast, database client desktop application. Built for developers who want to quickly peek at their data without the bloat.",
+  "first_seen": "2025-11-30",
+  "full_name": "Rohithgilla12/data-peek",
+  "id": 1105876058,
+  "language": "TypeScript",
+  "last_seen": "2025-12-07",
+  "topics": [
+    "database-gui",
+    "developer-tools",
+    "electron",
+    "hacktoberfest",
+    "mcp",
+    "mysql",
+    "postgresql",
+    "sql",
+    "sql-client",
+    "typescript"
+  ]
+}

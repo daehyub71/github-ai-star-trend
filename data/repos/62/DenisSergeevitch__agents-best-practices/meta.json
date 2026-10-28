@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "619417698c114296",
+    "is_ai": true,
+    "reason": "An installable Agent Skill for Codex and Claude Code that guides agentic harness design.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-15",
   "description": "Provider-neutral Agent Skill for Codex, Claude Code, and agentic harness design.",
   "first_seen": "2026-05-31",

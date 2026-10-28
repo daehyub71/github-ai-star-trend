@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "88b510ac96447792",
+    "is_ai": true,
+    "reason": "Releases pretrained weights and inference code for a tabular/structured-data foundation model.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2025-08-27",
+  "description": "LimiX: Unleashing Structured-Data Modeling Capability for Generalist Intelligence https://arxiv.org/abs/2609.17488",
+  "first_seen": "2025-11-23",
+  "full_name": "limix-ldm-ai/LimiX",
+  "id": 1045442783,
+  "language": "Python",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "foundation-models",
+    "huggingface",
+    "limix",
+    "machine-learning",
+    "pretrained-models",
+    "structured-data",
+    "tabular-foundation-models"
+  ]
+}

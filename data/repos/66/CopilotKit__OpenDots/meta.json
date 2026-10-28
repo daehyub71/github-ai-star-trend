@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "afa38d5d91df2cca",
+    "is_ai": true,
+    "reason": "OpenDots is an open-source template app for persistent AI coworker agents that work across chat, calls, and Slack, each with its own computer.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-29",
+  "description": "Your always-on AI coworkers that move between text, calls, and Slack.",
+  "first_seen": "2026-10-04",
+  "full_name": "CopilotKit/OpenDots",
+  "id": 1396117711,
+  "language": "TypeScript",
+  "last_seen": "2026-10-04",
+  "topics": []
+}

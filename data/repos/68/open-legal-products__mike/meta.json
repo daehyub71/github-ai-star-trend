@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "439ef351492d74c8",
+    "is_ai": true,
+    "reason": "Open-source end-user legal AI platform for chatting with documents, review, drafting, and research using LLMs.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-29",
   "description": "OSS Legal AI Platform",
   "first_seen": "2026-05-03",
   "full_name": "open-legal-products/mike",
   "id": 1224854794,
   "language": "TypeScript",
-  "last_seen": "2026-05-03",
+  "last_seen": "2026-05-17",
   "topics": [
     "legal-ai",
     "legal-tech"

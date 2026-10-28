@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "61859c9a7bc48b5d",
+    "is_ai": true,
+    "reason": "A headless browser built specifically for AI agents and automation, serving as browser-automation infrastructure for agents.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "lightpanda-io/browser",
+  "id": 598667202
+}

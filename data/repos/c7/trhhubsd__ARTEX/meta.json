@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d0d1c62b55b4347f",
+    "is_ai": true,
+    "reason": "Multi-agent LLM system for autonomous penetration testing with planner/worker agents and MCP tooling.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "trhhubsd/ARTEX",
+  "id": 1410926671
+}

@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c67587ac89100b0e",
+    "is_ai": true,
+    "reason": "An end-user AI research agent workbench that reads literature, writes and runs code, and runs experiments for scientific research.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-03",
   "description": "The open-source AI workbench for scientific research",
-  "first_seen": "2026-07-12",
+  "first_seen": "2026-07-05",
   "full_name": "synthetic-sciences/openscience",
   "id": 1288402762,
   "language": "TypeScript",

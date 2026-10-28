@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3b0f63ebca50073c",
+    "is_ai": true,
+    "reason": "An end-user voice-interactive AI companion app with a Live2D avatar that runs LLMs locally.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Open-LLM-VTuber/Open-LLM-VTuber",
+  "id": 722844356
+}

@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f5529a2d3927c570",
+    "is_ai": true,
+    "reason": "File search SDK marketed for AI agents, shipping an MCP server for coding agents like Claude Code and OpenCode.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-07-31",
+  "description": "The fastest and the most accurate file search SDK for AI agents, Neovim, Rust, C,  Python, Bun and NodeJS",
+  "first_seen": "2026-03-29",
+  "full_name": "dmtrKovalenko/fff",
+  "id": 1029972503,
+  "language": "Rust",
+  "last_seen": "2026-03-29",
+  "topics": [
+    "bun",
+    "fff",
+    "filesearch",
+    "fzf",
+    "grep",
+    "lua",
+    "neovim",
+    "neovim-plugin",
+    "nodejs",
+    "python",
+    "rust"
+  ]
+}

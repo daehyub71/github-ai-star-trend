@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "00dcec6b7e7cd51a",
+    "is_ai": true,
+    "reason": "A tips-and-tricks guide for using the Gemini CLI coding agent effectively.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "addyosmani/gemini-cli-tips",
+  "id": 1078598180
+}

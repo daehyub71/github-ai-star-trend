@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ac0004f7ed9594c0",
+    "is_ai": true,
+    "reason": "Treg is a registry/proxy gateway giving agents one-token access to a catalog of paid tool endpoints, CLIs and skills with server-side credential injection.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-15",
   "description": "OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn",
   "first_seen": "2026-09-20",

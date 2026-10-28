@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "01482743cf1c9154",
+    "is_ai": true,
+    "reason": "A local-first end-user AI workspace app for multi-agent chat, coding-agent integrations, and workflows.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "EKKOLearnAI/ekko-studio",
+  "id": 1207639951
+}

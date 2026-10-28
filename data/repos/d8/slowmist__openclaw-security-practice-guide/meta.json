@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5a51adf4ddf469e9",
+    "is_ai": true,
+    "reason": "An agent-facing security guide fed directly to the OpenClaw agent as instructions, essentially a prompt/rules document for hardening AI agents.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "slowmist/openclaw-security-practice-guide",
+  "id": 1170475068
+}

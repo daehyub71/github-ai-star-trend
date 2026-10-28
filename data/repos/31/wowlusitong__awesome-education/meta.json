@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0e9cc3c1fe4104ec",
+    "is_ai": false,
+    "reason": "Curated list of student educational discounts for general software and services, not AI-related.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2018-04-18",
   "description": "学生福利-收集支持教育优惠的软件与服务",
   "first_seen": "2026-07-05",

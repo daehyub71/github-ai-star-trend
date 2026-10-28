@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "943149e6304567f5",
+    "is_ai": true,
+    "reason": "Memori is an SDK providing persistent long-term memory infrastructure for LLM agents.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-07-24",
   "description": "Memori is agent-native memory infrastructure. A LLM-agnostic layer that turns agent execution and conversation into structured, persistent state for production systems. Built for enterprise, Memori works with the data infrastructure you already run, no rip-and-replace, and deploys across managed cloud, single-tenant cloud, VPC, and on-premises.",
   "first_seen": "2025-11-09",
   "full_name": "MemoriLabs/Memori",
   "id": 1025381911,
   "language": "Python",
-  "last_seen": "2025-11-23",
+  "last_seen": "2025-11-30",
   "topics": [
     "agent",
     "agent-memory",

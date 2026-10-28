@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "df56b9c0941a7153",
+    "is_ai": true,
+    "reason": "An anthology and agent context bundle (AGENTS.md, playbooks) teaching harness engineering for coding agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2026-07-18",
+  "description": "🐎 Ryan Lopopolo’s anthology, field guide, and agent context bundle for harness engineering",
+  "first_seen": "2026-07-19",
+  "full_name": "lopopolo/harness-engineering",
+  "id": 1305243497,
+  "language": "Python",
+  "last_seen": "2026-07-19",
+  "topics": []
+}

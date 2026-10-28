@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b1acca1c88b88b3e",
+    "is_ai": true,
+    "reason": "Repository for the GLM-5 family of open-weights LLMs focused on coding and agentic tasks.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-02-09",
   "description": "GLM-5: From Vibe Coding to Agentic Engineering",
   "first_seen": "2026-06-14",

@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "509d8b1b38931ca9",
+    "is_ai": true,
+    "reason": "Open-source book with companion code teaching AI agent design principles and engineering practice.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-09-09",
   "description": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
-  "first_seen": "2026-07-19",
+  "first_seen": "2026-07-12",
   "full_name": "bojieli/ai-agent-book",
   "id": 1053118194,
   "language": "Python",

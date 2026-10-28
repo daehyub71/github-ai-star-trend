@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c27e61807d76c7a0",
+    "is_ai": false,
+    "reason": "A multiplayer co-op game mod; the 'AI sync' refers to game enemy NPCs, not AI models.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Mr-sans-and-InitLoader-s-team/Escape-From-Duckov-Coop-Mod-Preview",
+  "id": 1084662082
+}

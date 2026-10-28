@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4a34211acd0d7163",
+    "is_ai": true,
+    "reason": "Real-time visualization and tracing tool for Claude Code and Codex agent sessions, an observability tool for coding agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "patoles/agent-flow",
+  "id": 1187846546
+}

@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "acfdf4dbbdf2288e",
+    "is_ai": true,
+    "reason": "Open-source course teaching how to build an agentic RAG assistant with fine-tuning and LLMOps.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2024-12-30",
+  "description": "Learn to build your Second Brain AI assistant with LLMs, agents, RAG, fine-tuning, LLMOps and AI systems techniques.",
+  "first_seen": "2025-12-28",
+  "full_name": "decodingai-magazine/second-brain-ai-assistant-course",
+  "id": 910125376,
+  "language": "Jupyter Notebook",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "agents",
+    "ai-systems",
+    "data-engineering",
+    "fine-tuning",
+    "huggingface",
+    "llm",
+    "llmops",
+    "mlops",
+    "openai",
+    "python",
+    "rag"
+  ]
+}

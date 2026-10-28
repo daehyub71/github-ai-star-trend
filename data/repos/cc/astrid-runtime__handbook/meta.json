@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "86957dbbd22c4c14",
+    "is_ai": false,
+    "reason": "A contributor handbook for the Astrid project with no evident AI features described.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-06-06",
   "description": "Contributor handbook for Astrid: the polyrepo, public contracts, contribution process, and release workflow.",
   "first_seen": "2026-06-21",

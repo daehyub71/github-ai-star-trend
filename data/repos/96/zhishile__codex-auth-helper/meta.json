@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "48097477bac30c7d",
+    "is_ai": true,
+    "reason": "Chrome extension that exports a ChatGPT session into an auth.json file for the Codex coding agent CLI, making it a Codex auxiliary tool.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-02",
   "description": "Codex登陆助手：安全地在本地导出您的已登录 ChatGPT 会话配置，生成符合 Codex 规范的 auth.json 本地备份文件。",
   "first_seen": "2026-07-19",

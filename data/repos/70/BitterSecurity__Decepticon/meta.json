@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5357b042665fa651",
+    "is_ai": true,
+    "reason": "Autonomous red-team pentesting agent built on LangGraph with CLI and hosted app.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-06-06",
   "description": "Autonomous Hacking Agent for Red Team",
   "first_seen": "2026-04-12",

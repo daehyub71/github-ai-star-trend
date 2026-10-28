@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a7891c0fc3339721",
+    "is_ai": true,
+    "reason": "A collection of marketing-focused agent skill files for Claude Code, Codex, and other agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-15",
   "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
-  "first_seen": "2026-01-25",
+  "first_seen": "2026-01-18",
   "full_name": "coreyhaines31/marketingskills",
   "id": 1135212071,
   "language": "JavaScript",

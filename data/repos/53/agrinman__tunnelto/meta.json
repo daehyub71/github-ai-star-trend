@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d22ae2d3ab28800c",
+    "is_ai": false,
+    "reason": "A Rust tunneling tool that exposes local web servers publicly, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2020-03-22",
   "description": "Expose your local web server to the internet with a public URL.",
   "first_seen": "2025-12-21",

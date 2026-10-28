@@ -1,0 +1,38 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "27da0b45949cd9d5",
+    "is_ai": true,
+    "reason": "An AI/ML learning roadmap compiling free resources across ML, deep learning, generative AI and agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2024-05-26",
+  "description": "Become skilled in Artificial Intelligence, Machine Learning, Generative AI, Deep Learning, Data Science, Natural Language Processing, Reinforcement Learning and more with this complete 0 to 100 repository.",
+  "first_seen": "2025-11-23",
+  "full_name": "aadi1011/AI-ML-Roadmap-from-scratch",
+  "id": 806007891,
+  "language": null,
+  "last_seen": "2025-12-14",
+  "topics": [
+    "ai",
+    "aiml",
+    "artificial-intelligence",
+    "data-science",
+    "deep-learning",
+    "hacktoberfest",
+    "hacktoberfest2025",
+    "learning",
+    "machine-learning",
+    "machine-learning-from-scratch",
+    "resources",
+    "roadmap",
+    "tutorial"
+  ]
+}

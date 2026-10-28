@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1c75bb3ac5d6a742",
+    "is_ai": true,
+    "reason": "In-page JavaScript GUI agent that controls web interfaces via natural language, with an optional MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-09-23",
   "description": "JavaScript in-page GUI agent. Control web interfaces with natural language.",
   "first_seen": "2026-03-08",

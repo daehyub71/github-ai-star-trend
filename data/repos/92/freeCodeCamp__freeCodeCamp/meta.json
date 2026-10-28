@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "386428c4f8cd8975",
+    "is_ai": false,
+    "reason": "freeCodeCamp is a general coding education platform and curriculum where machine learning is only one part of the material.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2014-12-24",
   "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
   "first_seen": "2025-10-26",

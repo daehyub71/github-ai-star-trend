@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4b70b7bf9d17fd54",
+    "is_ai": true,
+    "reason": "A capability-secure WASM runtime positioned for building and sandboxing agent systems, with MCP support.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-15",
   "description": "Astrid is a portable, capability-secure operating system for composable software.",
   "first_seen": "2026-05-31",

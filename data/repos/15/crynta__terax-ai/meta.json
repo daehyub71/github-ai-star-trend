@@ -1,0 +1,37 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b36eef7ffc35a85b",
+    "is_ai": true,
+    "reason": "A terminal-first AI-native development environment with an agentic AI side-panel for coding, effectively an AI coding IDE.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-04-21",
+  "description": "Lightweight (7MB) terminal-first AI-native development environment",
+  "first_seen": "2026-05-10",
+  "full_name": "crynta/terax-ai",
+  "id": 1217291538,
+  "language": "TypeScript",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "agents",
+    "ai",
+    "code-editor",
+    "libghostty",
+    "linux",
+    "macos",
+    "reactjs",
+    "rust",
+    "tauri",
+    "terminal",
+    "webgpu",
+    "windows"
+  ]
+}

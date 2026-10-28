@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0797fbe2cbb4b6a6",
+    "is_ai": true,
+    "reason": "Trellis is a CLI harness that injects specs, tasks, and memory into AI coding agent sessions across many coding platforms.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-26",
   "description": "The best agent harness.",
   "first_seen": "2026-02-01",

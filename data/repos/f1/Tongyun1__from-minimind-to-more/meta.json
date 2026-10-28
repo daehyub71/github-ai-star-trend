@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e633cad4024398d5",
+    "is_ai": true,
+    "reason": "Educational notes explaining LLM training (pretrain, SFT, RL algorithms) based on Minimind, plus interview prep.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "Tongyun1/from-minimind-to-more",
+  "id": 1142400636
+}

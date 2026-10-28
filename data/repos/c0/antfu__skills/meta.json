@@ -1,0 +1,27 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d32d770eaeb02a2a",
+    "is_ai": true,
+    "reason": "A collection of agent skill files for AI coding agents, generated from official documentation.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-01-28",
+  "description": "Anthony Fu's curated collection of agent skills.",
+  "first_seen": "2026-02-08",
+  "full_name": "antfu/skills",
+  "id": 1143952193,
+  "language": "TypeScript",
+  "last_seen": "2026-02-15",
+  "topics": [
+    "agent-skills",
+    "skills"
+  ]
+}

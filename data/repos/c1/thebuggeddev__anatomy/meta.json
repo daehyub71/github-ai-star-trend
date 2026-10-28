@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f2a62eeb26ab194f",
+    "is_ai": false,
+    "reason": "A 3D anatomy explorer web app that was merely built with an AI model and advertises no AI features of its own.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "thebuggeddev/anatomy",
+  "id": 1320101490
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "00222927134e8ee4",
+    "is_ai": true,
+    "reason": "A skill/plugin with rules for coding agents to produce ADHD-friendly concise output.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-13",
   "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
   "first_seen": "2026-07-19",

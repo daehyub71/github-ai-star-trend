@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e6ea27f84a3709a8",
+    "is_ai": true,
+    "reason": "A Vite-based Next.js reimplementation that ships an Agent Skill for AI-driven migration, which counts as AI per the rules.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-24",
   "description": "Vite plugin that reimplements the Next.js API surface — deploy anywhere",
   "first_seen": "2026-02-22",

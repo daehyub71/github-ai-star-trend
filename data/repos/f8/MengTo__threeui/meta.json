@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "01b9f914b614e185",
+    "is_ai": false,
+    "reason": "A Three.js/WebGL React UI component library with no AI features advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-21",
   "description": "Open-source ThreeUI Community catalog with live interactive components and complete Community source.",
   "first_seen": "2026-08-23",

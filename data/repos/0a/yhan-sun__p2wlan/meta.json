@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "44daccd9a2dd28d8",
+    "is_ai": false,
+    "reason": "A P2P virtual LAN networking tool with no AI features; the AI mention is only a sponsor ad.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-16",
   "description": "跨平台 P2P 虚拟局域网(VirtualLAN)工具，让异地设备像在同一局域网中互联。支持 NAT 穿透、IPv6 直连、房间组网与 Relay 回退，覆盖 Windows / macOS / Linux / Android。",
   "first_seen": "2026-09-27",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dfc9519d16ac43ea",
+    "is_ai": true,
+    "reason": "Awesome-style community collection of use cases and workflows for the OpenClaw AI agent.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-02-08",
   "description": "A community collection of OpenClaw use cases for making life easier.",
   "first_seen": "2026-02-15",

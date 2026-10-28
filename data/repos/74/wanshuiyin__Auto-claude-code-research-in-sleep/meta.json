@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a8b749a895c07885",
+    "is_ai": true,
+    "reason": "A Markdown skill collection for autonomous ML research workflows in coding agents, shipped with a CLI, plugins, and a bundled MCP bridge.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "wanshuiyin/Auto-claude-code-research-in-sleep",
+  "id": 1177608268
+}

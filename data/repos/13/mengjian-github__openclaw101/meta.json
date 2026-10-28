@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "019b8a880787108e",
+    "is_ai": true,
+    "reason": "A resource aggregation site and learning guide for the OpenClaw AI assistant platform, curating tutorials and links.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "mengjian-github/openclaw101",
+  "id": 1147694880
+}

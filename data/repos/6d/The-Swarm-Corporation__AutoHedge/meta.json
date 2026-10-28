@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f9d0d17712e56ab1",
+    "is_ai": true,
+    "reason": "A multi-agent autonomous trading application built on the Swarms framework for market analysis and trade execution.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "The-Swarm-Corporation/AutoHedge",
+  "id": 901529145
+}

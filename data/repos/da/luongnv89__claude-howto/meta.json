@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9a9dc4cdc5d677a3",
+    "is_ai": true,
+    "reason": "A tutorial guide for using the Claude Code coding agent, with copy-paste templates for skills, hooks, and configs.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-11-07",
   "description": "A visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-paste templates that bring immediate value.",
   "first_seen": "2026-03-22",

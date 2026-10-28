@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "093c4cd8ca8421ad",
+    "is_ai": true,
+    "reason": "An AI-built CLI that generates agent documentation wikis and exposes them to coding agents via MCP and integrations.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-22",
   "description": "OpenWiki is a CLI that writes and maintains agent documentation for your codebase.",
   "first_seen": "2026-06-28",

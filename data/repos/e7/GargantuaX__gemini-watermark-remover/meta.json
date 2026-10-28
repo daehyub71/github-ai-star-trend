@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cbb72bcc503e7b12",
+    "is_ai": true,
+    "reason": "Client-side tool that removes watermarks from Gemini AI-generated images and videos, and also ships an agent skill.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-12-19",
+  "description": "A high-performance, 100% client-side tool for removing Gemini AI image & video watermarks. Built with pure JavaScript using mathematically precise Reverse Alpha Blending. / 基于 JavaScript 的纯浏览器端 Gemini AI 图像和视频无损去水印工具，使用数学精确的反向 Alpha 混合算法",
+  "first_seen": "2025-12-28",
+  "full_name": "GargantuaX/gemini-watermark-remover",
+  "id": 1119523584,
+  "language": "JavaScript",
+  "last_seen": "2025-12-28",
+  "topics": [
+    "chrome-extension",
+    "gemini",
+    "gemini-video-watermark-remover",
+    "gemini-watermark-remover",
+    "skills",
+    "userscript",
+    "watermark-remover"
+  ]
+}

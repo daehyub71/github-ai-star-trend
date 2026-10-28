@@ -1,0 +1,30 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d2e480319cd226dd",
+    "is_ai": true,
+    "reason": "BMad Method ships agent skills and plugins that structure AI-driven development workflows inside coding agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-04-13",
+  "description": "Breakthrough Method for Agile Ai Driven Development",
+  "first_seen": "2025-11-09",
+  "full_name": "bmad-code-org/BMAD-METHOD",
+  "id": 965615190,
+  "language": "Python",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "agile",
+    "ai",
+    "context-engineering",
+    "sdlc",
+    "spec-driven-development"
+  ]
+}

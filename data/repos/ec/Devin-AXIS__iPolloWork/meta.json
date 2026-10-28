@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "da2e040c3d778890",
+    "is_ai": true,
+    "reason": "A local-first agent workbench app that unifies multiple coding agent engines with plugins, skills and multi-agent tasks for end users.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Devin-AXIS/iPolloWork",
+  "id": 1044010907
+}

@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "74867eb4fc6cf082",
+    "is_ai": true,
+    "reason": "A semantic search CLI over code, images and PDFs that integrates with coding agents as a retrieval tool.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-06",
   "description": "A calm, CLI-native way to semantically grep everything, like code, images, pdfs and more.",
-  "first_seen": "2025-11-23",
+  "first_seen": "2025-11-16",
   "full_name": "mixedbread-ai/mgrep",
   "id": 1090660826,
   "language": "TypeScript",
-  "last_seen": "2025-11-23",
+  "last_seen": "2025-11-30",
   "topics": []
 }

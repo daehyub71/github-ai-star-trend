@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cc089fa8d8d75b9f",
+    "is_ai": true,
+    "reason": "A static analysis tool for JS/TS codebases that ships an MCP server and coding-agent integration, so it qualifies as an agent-callable tool.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "fallow-rs/fallow",
+  "id": 1184090452
+}

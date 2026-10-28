@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fe1a00090de7939f",
+    "is_ai": false,
+    "reason": "An ADS-B flight-tracking ceiling projector art installation whose computer-vision tracking is incidental rather than an advertised AI feature, so it is not an AI project.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "cpaczek/skylight",
+  "id": 1257699593
+}

@@ -1,0 +1,40 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7b961941932c0941",
+    "is_ai": true,
+    "reason": "An agentic Chromium browser that AI agents drive via MCP to automate web tasks.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-05-18",
+  "description": "🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.",
+  "first_seen": "2025-10-26",
+  "full_name": "browseros-ai/BrowserOS",
+  "id": 985839104,
+  "language": "TypeScript",
+  "last_seen": "2025-10-26",
+  "topics": [
+    "agent",
+    "ai-agents",
+    "automation",
+    "browser",
+    "browser-automation",
+    "browseros",
+    "chromium",
+    "claude",
+    "linux",
+    "llm",
+    "lmstudio",
+    "macos",
+    "mcp",
+    "ollama",
+    "windows"
+  ]
+}

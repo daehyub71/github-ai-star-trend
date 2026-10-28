@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0700c969f2cf5a05",
+    "is_ai": true,
+    "reason": "An agent skill package for Chinese patent disclosure writing, patent interpretation, and examination response assistance.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "handsomestWei/patent-disclosure-skill",
+  "id": 1204004374
+}

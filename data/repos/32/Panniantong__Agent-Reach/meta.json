@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e357dd52994da8f0",
+    "is_ai": true,
+    "reason": "A CLI toolset that lets AI agents read and search social platforms and web content, acting as agent-callable tools with MCP support.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-24",
   "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
   "first_seen": "2026-03-01",
   "full_name": "Panniantong/Agent-Reach",
   "id": 1165277268,
   "language": "Python",
-  "last_seen": "2026-06-28",
+  "last_seen": "2026-09-27",
   "topics": [
     "agent-infrastructure",
     "ai-agent",

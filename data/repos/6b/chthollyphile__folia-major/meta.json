@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d9020c9180b63fee",
+    "is_ai": true,
+    "reason": "A music player app that advertises AI-generated color themes, making it an end-user app with AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-28",
+  "description": "专注于绚丽的歌词动画效果的本地音乐/navidrome/第三方多平台在线音乐播放器",
+  "first_seen": "2026-10-11",
+  "full_name": "chthollyphile/folia-major",
+  "id": 1105953775,
+  "language": "TypeScript",
+  "last_seen": "2026-10-11",
+  "topics": [
+    "ai",
+    "music",
+    "music-player",
+    "navidrome-client",
+    "netease-music",
+    "player",
+    "pwa",
+    "react",
+    "typescript",
+    "vercel-deployment"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b7d1bde0d0e749df",
+    "is_ai": false,
+    "reason": "A general curated list of consumer-facing open source apps, not focused on AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "mustbeperfect/definitive-opensource",
+  "id": 873225216
+}

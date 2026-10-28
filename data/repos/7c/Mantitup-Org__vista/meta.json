@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0c898790b6b3aabe",
+    "is_ai": true,
+    "reason": "A React full-stack web framework that advertises built-in AI agent, LLM chat streaming, and RAG features for building AI apps.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Mantitup-Org/vista",
+  "id": 1356772546
+}

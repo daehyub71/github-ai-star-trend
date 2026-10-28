@@ -1,0 +1,41 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "74ba766847c7f435",
+    "is_ai": true,
+    "reason": "A CLI tool and agent skill/plugin that turns videos into deduplicated frames and transcripts so Claude and other LLM agents can watch them.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-06-30",
+  "description": "Let Claude (or any LLM) actually watch a video — scene-aware, deduplicated frames + transcript, from a URL or local file. Runs locally, MIT.",
+  "first_seen": "2026-07-12",
+  "full_name": "HUANGCHIHHUNGLeo/claude-real-video",
+  "id": 1284959612,
+  "language": "Python",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "claude",
+    "claude-code",
+    "cli",
+    "codex",
+    "codex-cli",
+    "ffmpeg",
+    "keyframe-extraction",
+    "llm",
+    "multimodal",
+    "ocr",
+    "openai-codex",
+    "python",
+    "scene-detection",
+    "transcription",
+    "video-analysis",
+    "whisper"
+  ]
+}

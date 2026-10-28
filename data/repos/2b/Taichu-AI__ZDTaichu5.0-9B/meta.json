@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b9b976f9edae7a83",
+    "is_ai": true,
+    "reason": "Release repository for the ZDTaichu5.0-9B multimodal vision-language model weights.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-09-04",
   "description": null,
   "first_seen": "2026-09-27",

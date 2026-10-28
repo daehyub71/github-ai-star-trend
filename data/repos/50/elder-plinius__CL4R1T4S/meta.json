@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2899c2eeea771249",
+    "is_ai": true,
+    "reason": "A collection of leaked system prompts from major AI models and agents, which fits the prompt collection category.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
   "created": "2025-03-04",
   "description": "LEAKED SYSTEM PROMPTS FOR CHATGPT, CLAUDE, GEMINI, GROK, PERPLEXITY, CURSOR, LOVABLE, REPLIT, AND MORE! - AI SYSTEMS TRANSPARENCY FOR ALL! 👐",
   "first_seen": "2026-04-19",

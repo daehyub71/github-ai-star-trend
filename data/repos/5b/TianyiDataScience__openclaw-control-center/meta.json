@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "44e4a91bb248b834",
+    "is_ai": true,
+    "reason": "A local observability and control dashboard for OpenClaw AI agents covering usage, tokens, tasks and multi-agent collaboration.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "TianyiDataScience/openclaw-control-center",
+  "id": 1178813768
+}

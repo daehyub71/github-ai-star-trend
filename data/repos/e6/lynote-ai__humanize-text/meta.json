@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "37e1f5660a552592",
+    "is_ai": true,
+    "reason": "A CLI/Docker tool that uses LLM rewriting and translation hops to humanize AI-generated text, an AI writing application.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-18",
   "description": "Open-source AI humanizer: rewrite AI-generated text into natural, human-sounding prose. LLM rewriting + multi-engine translation, with step-by-step traces. Python CLI, n8n & Docker.",
   "first_seen": "2026-09-13",

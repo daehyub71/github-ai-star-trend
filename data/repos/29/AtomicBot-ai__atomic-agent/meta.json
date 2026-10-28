@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7fd99b76b265fd2c",
+    "is_ai": true,
+    "reason": "A local-first general AI agent CLI running open-weight models via llama.cpp that drives the browser, edits files and runs commands.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "AtomicBot-ai/atomic-agent",
+  "id": 1217416768
+}

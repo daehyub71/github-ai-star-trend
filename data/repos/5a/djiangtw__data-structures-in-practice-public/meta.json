@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "deda423f73860a25",
+    "is_ai": false,
+    "reason": "An open book on hardware-aware data structures for systems engineers, with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "djiangtw/data-structures-in-practice-public",
+  "id": 1112238599
+}

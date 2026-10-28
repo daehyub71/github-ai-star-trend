@@ -1,0 +1,39 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2adf0559e8b018a6",
+    "is_ai": true,
+    "reason": "A usage guide with code examples for calling a commercial API that scrapes Google AI Mode responses into JSON for AI grounding, GEO work and training data.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "created": "2025-09-08",
+  "description": "Scrape Google AI Mode responses without blocks on a large scale.",
+  "first_seen": "2025-11-09",
+  "full_name": "oxylabs/google-ai-mode-scraper",
+  "id": 1052727550,
+  "language": "Java",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai-grounding",
+    "ai-mode",
+    "ai-search",
+    "ai-training",
+    "firecrawl-alternative",
+    "google-ai",
+    "google-ai-mode",
+    "proxy-scrape",
+    "scraper-api",
+    "search-api",
+    "tavily-alternative",
+    "web-scraper",
+    "web-scraper-api",
+    "web-search-api"
+  ]
+}

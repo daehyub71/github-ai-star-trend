@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5205b97efa19dec3",
+    "is_ai": true,
+    "reason": "End-user AI tool that turns papers and documents into slides and posters using LLM agents and RAG.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-07",
   "description": "\"Paper2Slides: From Paper to Presentation in One Click\"",
-  "first_seen": "2025-12-14",
+  "first_seen": "2025-12-07",
   "full_name": "HKUDS/Paper2Slides",
   "id": 1111537966,
   "language": "Python",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "374a1c55a3dfbec0",
+    "is_ai": true,
+    "reason": "An embedded in-process vector database for similarity search, positioned for RAG and LLM memory.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-05",
   "description": "A lightweight, lightning-fast, in-process vector database",
   "first_seen": "2026-02-15",

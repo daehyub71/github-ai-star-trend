@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5f1ba3624798d036",
+    "is_ai": true,
+    "reason": "Firmware that turns an ESP32-S3 into a personal AI assistant reached through Telegram, running an LLM agent loop with tools and local memory.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-04",
+  "description": "MimiClaw: Personal Agent on a $5 chip. No OS(Linux). No Node.js. No Mac mini. No Raspberry Pi. No VPS. Hardware agents OS. On device Muse.",
+  "first_seen": "2026-02-15",
+  "full_name": "memovai/mimiclaw",
+  "id": 1149403151,
+  "language": "C",
+  "last_seen": "2026-02-22",
+  "topics": [
+    "ai",
+    "assistant",
+    "clawdbot",
+    "edge-ai-agents",
+    "memory",
+    "muse",
+    "openclaw",
+    "personal-agent"
+  ]
+}

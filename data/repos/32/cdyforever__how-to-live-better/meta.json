@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4ac895dae2965402",
+    "is_ai": false,
+    "reason": "A static single-page HTML reader for a life-advice book, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
   "created": "2026-09-18",
   "description": "《高性价比人生指南》全书 528 条的在线单页阅读版：手机可读、可搜索、零依赖、支持离线",
   "first_seen": "2026-09-27",

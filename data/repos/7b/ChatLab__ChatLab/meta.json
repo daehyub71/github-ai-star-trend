@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8c9ccbbf1317233c",
+    "is_ai": true,
+    "reason": "End-user desktop app that analyzes chat history using AI agents with function-calling tools.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-26",
   "description": "Local-first chat history analyzer with AI. | 本地优先的 AI 聊天记录分析工具",
   "first_seen": "2026-01-18",

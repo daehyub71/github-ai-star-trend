@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e7c55586737ad1c7",
+    "is_ai": false,
+    "reason": "A PS5 executable porting/relinking tool with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-03",
   "description": "Tool for automatic PS5 executables porting to Linux and Windows",
   "first_seen": "2026-09-27",

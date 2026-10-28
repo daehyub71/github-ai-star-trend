@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "aa5b3cab75d86546",
+    "is_ai": true,
+    "reason": "An open-source agent workflow that automates AI/ML research from idea generation through experiments to paper-ready evidence.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "EvoMap/AutoResearch",
+  "id": 1334897143
+}

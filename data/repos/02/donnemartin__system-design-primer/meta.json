@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "658079523feca4c0",
+    "is_ai": false,
+    "reason": "System design interview prep guide with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2017-02-26",
   "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
   "first_seen": "2025-10-26",

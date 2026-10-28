@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "974ea5217aab9adf",
+    "is_ai": false,
+    "reason": "A self-hosted PDF editing platform with no advertised AI features or agent interface; OCR alone doesn't make it AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Stirling-Tools/Stirling-PDF",
+  "id": 594155488
+}

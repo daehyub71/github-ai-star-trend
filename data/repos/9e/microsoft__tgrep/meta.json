@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6ec30e687bd2c4e0",
+    "is_ai": true,
+    "reason": "A fast trigram-indexed grep tool that ships MCP search tools and hooks for coding agents and powers Copilot CLI search.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "microsoft/tgrep",
+  "id": 1200598308
+}

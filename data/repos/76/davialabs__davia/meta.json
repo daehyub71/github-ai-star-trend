@@ -1,0 +1,34 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6238b8c339f23e47",
+    "is_ai": true,
+    "reason": "Davia is a documentation tool that AI coding agents load and call to generate interactive docs.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-05",
+  "description": "Interactive, editable docs designed for coding agents",
+  "first_seen": "2025-11-23",
+  "full_name": "davialabs/davia",
+  "id": 1089945736,
+  "language": "TypeScript",
+  "last_seen": "2025-11-23",
+  "topics": [
+    "ai-tools",
+    "documentation",
+    "documentation-generator",
+    "knowledge-base",
+    "knowledge-representation",
+    "local",
+    "open-sou",
+    "wiki",
+    "wiki-engine"
+  ]
+}

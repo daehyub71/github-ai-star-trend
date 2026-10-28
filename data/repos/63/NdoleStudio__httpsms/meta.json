@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "473259be859c8b3d",
+    "is_ai": false,
+    "reason": "An SMS gateway service built on Android phones and an HTTP API, with no AI features or agent connector advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "NdoleStudio/httpsms",
+  "id": 497607901
+}

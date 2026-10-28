@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c2d2bf55e247456b",
+    "is_ai": true,
+    "reason": "A terminal AI coding agent CLI with multi-provider LLM support and IDE tooling (LSP/DAP) integration.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "can1357/oh-my-pi",
+  "id": 1125856365
+}

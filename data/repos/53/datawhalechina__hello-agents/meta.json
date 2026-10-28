@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "244a343258a9e1d6",
+    "is_ai": true,
+    "reason": "A Chinese tutorial book teaching how to build LLM agents from scratch, including frameworks, memory, RAG and agentic RL.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-09-07",
   "description": "📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程",
   "first_seen": "2025-10-26",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ca5ce2fe9ae1c5d3",
+    "is_ai": true,
+    "reason": "General workflow orchestration platform that advertises AI agent orchestration, an AI Copilot, and agent skills for coding agents.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "kestra-io/kestra",
+  "id": 204164353
+}

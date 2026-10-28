@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f4bac4a71a15dd06",
+    "is_ai": true,
+    "reason": "An Android launcher APK that packages and runs the DeepSeek Harness coding agent in a full Ubuntu environment on phones.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "DSH-APP/DSHA",
+  "id": 1334392318
+}

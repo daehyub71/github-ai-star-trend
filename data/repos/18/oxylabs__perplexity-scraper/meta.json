@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fdc19ef9762bb4a9",
+    "is_ai": true,
+    "reason": "Usage guide and code examples for a commercial API that scrapes Perplexity AI answers to monitor brand visibility in LLM responses.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2025-09-02",
   "description": "Perplexity Scraper Track brand mentions, analyze rankings, and gain competitor intelligence from Perplexity. Get started in minutes.",
   "first_seen": "2025-11-09",

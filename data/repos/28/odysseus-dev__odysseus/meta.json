@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc88972af788e3cf",
+    "is_ai": true,
+    "reason": "A self-hosted end-user AI workspace with chat, agents, research, and productivity features, plus local model workflows.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-31",
   "description": "Self-hosted AI workspace. ",
   "first_seen": "2026-05-31",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d83ba5519d08dc09",
+    "is_ai": false,
+    "reason": "Build scripts for running the FnNAS operating system on ARM TV boxes, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ophub/fnnas",
+  "id": 1129017991
+}

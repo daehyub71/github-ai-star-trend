@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f74d666e8155f3f6",
+    "is_ai": true,
+    "reason": "A local ChatGPT-like web app that queries multiple LLMs via OpenRouter, has them rank each other, and synthesizes a final answer.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-22",
   "description": "LLM Council works together to answer your hardest questions",
   "first_seen": "2025-11-23",

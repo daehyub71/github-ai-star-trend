@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cfedd11858546516",
+    "is_ai": true,
+    "reason": "Self-hosted multi-tenant knowledge agent platform combining agentic RAG, knowledge graphs and LangGraph multi-agent orchestration.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "xerrors/Yuxi",
+  "id": 824541776
+}

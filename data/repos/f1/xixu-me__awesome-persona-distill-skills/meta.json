@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f6c743d6ef514548",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of persona-distillation Agent Skills.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "xixu-me/awesome-persona-distill-skills",
+  "id": 1203185600
+}

@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "86eb53434926b74f",
+    "is_ai": true,
+    "reason": "A 3D anatomy explorer web app that exposes optional WebMCP tools so AI agents can search and inspect anatomy.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-05",
   "description": "Open-source 3D anatomy explorer: 2,234 selectable BodyParts3D meshes, system layers, search, and exploded views.",
   "first_seen": "2026-09-06",
   "full_name": "ashemag/human-atlas",
   "id": 1357699236,
   "language": "TypeScript",
-  "last_seen": "2026-09-13",
+  "last_seen": "2026-09-27",
   "topics": []
 }

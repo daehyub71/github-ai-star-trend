@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1b32ae3f687d466d",
+    "is_ai": true,
+    "reason": "A collection of Claude Code/Codex skills for content creation and workflow automation.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "mcncarl/yichen-skills",
+  "id": 1155113456
+}

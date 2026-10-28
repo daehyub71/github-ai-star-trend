@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6ea0e6bb1161b2df",
+    "is_ai": true,
+    "reason": "A W3C-style web standard proposal that lets web pages expose tools to AI agents, MCP-like, for agent actuation in browsers.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "webmachinelearning/webmcp",
+  "id": 1032542721
+}

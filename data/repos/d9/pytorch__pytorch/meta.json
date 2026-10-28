@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4fcc3dbe5b18e071",
+    "is_ai": true,
+    "reason": "PyTorch is a core deep learning framework for building and training neural networks.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2016-08-13",
+  "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+  "first_seen": "2025-10-26",
+  "full_name": "pytorch/pytorch",
+  "id": 65600975,
+  "language": "Python",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "autograd",
+    "deep-learning",
+    "gpu",
+    "machine-learning",
+    "neural-network",
+    "numpy",
+    "python",
+    "tensor"
+  ]
+}

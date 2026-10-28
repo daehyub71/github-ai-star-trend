@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f287a793991b2822",
+    "is_ai": true,
+    "reason": "Open-source framework for agent self-evolution that optimizes harness prompts, skills and tools against benchmarks.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Prism-Shadow/penguin-harness",
+  "id": 1305383508
+}

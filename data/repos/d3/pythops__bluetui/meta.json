@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "418dfea4562b1a58",
+    "is_ai": false,
+    "reason": "A Rust terminal UI for managing Bluetooth devices on Linux, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-02-21",
   "description": "🛜 TUI for managing bluetooth on Linux",
   "first_seen": "2025-11-02",

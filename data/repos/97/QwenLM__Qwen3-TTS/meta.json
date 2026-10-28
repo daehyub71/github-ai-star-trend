@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a8ad4cf6bfb641af",
+    "is_ai": true,
+    "reason": "Open-source release of Qwen3-TTS speech generation model weights with inference and fine-tuning code.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-01-21",
   "description": "Qwen3-TTS is an open-source series of TTS models developed by the Qwen team at Alibaba Cloud, supporting stable, expressive, and streaming speech generation, free-form voice design, and vivid voice cloning.",
   "first_seen": "2026-01-25",

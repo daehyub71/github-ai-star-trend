@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a9622bf407322b1f",
+    "is_ai": false,
+    "reason": "A game compatibility layer porting Diablo II: Resurrected to mobile platforms, with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "jhaizhou-ops/d2r-mobile",
+  "id": 1415313946
+}

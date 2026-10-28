@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3357785d163f8e8e",
+    "is_ai": false,
+    "reason": "A self-hosted UPI payment gateway with no advertised AI features or agent interface.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-19",
   "description": "A self-hosted UPI & COD payment gateway with zero per-transaction platform fees, universal JavaScript checkout integration, dynamic QR payments, WhatsApp OTP authentication, and automated payment verification.",
   "first_seen": "2026-10-18",

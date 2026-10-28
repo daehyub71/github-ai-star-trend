@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d9f51fc72bcb0c85",
+    "is_ai": true,
+    "reason": "Tencent's open video generation model release with weights, inference and training code.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2025-11-20",
   "description": "HunyuanVideo-1.5: A leading lightweight video generation model",
   "first_seen": "2025-11-30",

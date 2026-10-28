@@ -1,0 +1,41 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc9c82fb4843daf7",
+    "is_ai": true,
+    "reason": "Skyvern uses LLMs and computer vision agents to automate browser workflows.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2024-02-28",
+  "description": "Automate browser based workflows with AI",
+  "first_seen": "2025-11-02",
+  "full_name": "Skyvern-AI/skyvern",
+  "id": 764723738,
+  "language": "Python",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "ai",
+    "api",
+    "automation",
+    "browser",
+    "browser-automation",
+    "computer",
+    "gpt",
+    "llm",
+    "playwright",
+    "powerautomate",
+    "puppeteer",
+    "python",
+    "rpa",
+    "selenium",
+    "vision",
+    "workflow"
+  ]
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d9a83cab0cd54d75",
+    "is_ai": true,
+    "reason": "Tambo is a React SDK and backend for building generative-UI agents that render components, with MCP support.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-06-15",
   "description": "Generative UI SDK for React",
   "first_seen": "2025-12-21",

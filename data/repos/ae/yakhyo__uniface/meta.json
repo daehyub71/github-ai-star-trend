@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5f12f4096eb8f2de",
+    "is_ai": true,
+    "reason": "A Python library that runs deep learning models for face detection, recognition and analysis, which is image recognition.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "yakhyo/uniface",
+  "id": 888286802
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8245eeed3ab42d6a",
+    "is_ai": false,
+    "reason": "An OSINT tool for finding social media profiles that relies on OCR and heuristic detection, without advertising AI or LLM features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2020-11-30",
   "description": "API, CLI, and Web App for analyzing and finding a person's profile in 1000 social media \\ websites",
   "first_seen": "2025-10-26",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "07b0580a910a9e35",
+    "is_ai": true,
+    "reason": "A video pipeline system advertising AI transcription, translation, voice synthesis and copy generation for YouTube-to-Bilibili reposting.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "difyz9/ytb2bili",
+  "id": 1096151262
+}

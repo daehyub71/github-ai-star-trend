@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6c9e59c47af67d5d",
+    "is_ai": true,
+    "reason": "A Claude Code skill (SKILL.md) that guides agents to rewrite Chinese text and remove AI-style writing patterns.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-01-19",
+  "description": "Humanizer 的汉化版本，Claude Code Skills，旨在消除文本中 AI 生成的痕迹。",
+  "first_seen": "2026-01-25",
+  "full_name": "op7418/Humanizer-zh",
+  "id": 1137212306,
+  "language": "Python",
+  "last_seen": "2026-02-01",
+  "topics": []
+}

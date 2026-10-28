@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7aa8e845c29d456f",
+    "is_ai": true,
+    "reason": "A proxy DLL enabling NVIDIA DLSS frame generation and INT8 neural super-resolution on RTX 30/20 GPUs, running neural image models for games.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-07",
   "description": "Here is a dlssg for RTX30 Series GPU ",
   "first_seen": "2026-09-13",
   "full_name": "sdli1995/dlssg_for_sm86",
   "id": 1360432710,
   "language": "HTML",
-  "last_seen": "2026-09-13",
+  "last_seen": "2026-09-27",
   "topics": []
 }

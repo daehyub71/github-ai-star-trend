@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4235b3ceff66d796",
+    "is_ai": true,
+    "reason": "This repository holds the specification and documentation for the Agent Skills format, the standard for SKILL.md files that agents load.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
   "created": "2025-12-16",
   "description": "Specification and documentation for Agent Skills",
-  "first_seen": "2025-12-21",
+  "first_seen": "2025-12-14",
   "full_name": "agentskills/agentskills",
   "id": 1117639997,
   "language": "Python",

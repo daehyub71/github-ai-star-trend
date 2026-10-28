@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2d871480d0c2478d",
+    "is_ai": true,
+    "reason": "A trilingual learning roadmap for agentic AI with curated resources and hands-on exercises.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "WenyuChiou/awesome-agentic-ai-zh",
+  "id": 1229284184
+}

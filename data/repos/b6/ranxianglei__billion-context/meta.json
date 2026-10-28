@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bfb4e81c69c1a22b",
+    "is_ai": true,
+    "reason": "A context-compression plugin loaded by coding agents like Claude Code and Codex to manage long sessions and save tokens.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ranxianglei/billion-context",
+  "id": 1324949198
+}

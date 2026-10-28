@@ -1,0 +1,37 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a1a9af100a3e62ed",
+    "is_ai": true,
+    "reason": "PageIndex is a vectorless, reasoning-based RAG engine that builds tree indexes of documents for LLM retrieval.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-04-01",
+  "description": "📑 PageIndex: Document Index for Vectorless, Reasoning-based RAG",
+  "first_seen": "2026-01-18",
+  "full_name": "VectifyAI/PageIndex",
+  "id": 958531089,
+  "language": "Python",
+  "last_seen": "2026-01-18",
+  "topics": [
+    "agentic-ai",
+    "agents",
+    "ai",
+    "ai-agents",
+    "context-engineering",
+    "information-retrieval",
+    "llm",
+    "rag",
+    "reasoning",
+    "retrieval",
+    "retrieval-augmented-generation",
+    "vector-database"
+  ]
+}

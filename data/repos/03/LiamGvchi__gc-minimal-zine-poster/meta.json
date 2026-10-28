@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4cc6a1a7a55e7302",
+    "is_ai": true,
+    "reason": "A Codex skill package that produces image-generation prompts and posters for zine-style editorial design.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-12",
   "description": "Codex skill for generating quiet minimal zine-style editorial poster prompts and images.",
   "first_seen": "2026-08-02",

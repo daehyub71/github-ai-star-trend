@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7ed570dae18c51b4",
+    "is_ai": true,
+    "reason": "Repository releases open-weight NeoHorse language models for agent workflows, with agentic post-training as the method.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "TokenRhythm/NeoHorse",
+  "id": 1356900025
+}

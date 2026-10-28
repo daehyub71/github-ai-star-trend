@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7a3fb582a89ed39e",
+    "is_ai": true,
+    "reason": "Local-first persistent memory layer for LLM agents built from screen context, exposed to MCP clients.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-21",
   "description": null,
   "first_seen": "2026-04-26",

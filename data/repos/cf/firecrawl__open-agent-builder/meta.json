@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d746bc71d7954a3f",
+    "is_ai": true,
+    "reason": "Visual no-code builder for AI agent workflows with LangGraph orchestration and Firecrawl web scraping.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-10-16",
+  "description": "🔥 Visual workflow builder for AI agents powered by Firecrawl - drag-and-drop web scraping pipelines with real-time execution",
+  "first_seen": "2025-11-02",
+  "full_name": "firecrawl/open-agent-builder",
+  "id": 1077683961,
+  "language": "TypeScript",
+  "last_seen": "2025-11-02",
+  "topics": []
+}

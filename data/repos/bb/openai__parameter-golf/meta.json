@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e8f82e1d8f00cec0",
+    "is_ai": true,
+    "reason": "An OpenAI challenge repo for training the smallest language model under 16MB, with training code and a leaderboard.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "openai/parameter-golf",
+  "id": 1153302402
+}

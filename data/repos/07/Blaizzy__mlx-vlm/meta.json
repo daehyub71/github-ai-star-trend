@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0db6a5d01687acf3",
+    "is_ai": true,
+    "reason": "MLX-VLM is a package for running inference on and fine-tuning vision language models locally on Apple Silicon Macs.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Blaizzy/mlx-vlm",
+  "id": 787462297
+}

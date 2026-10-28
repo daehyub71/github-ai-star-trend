@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8353dd267e6e28e7",
+    "is_ai": true,
+    "reason": "Infrastructure connecting agent serving, feedback and RL/weight training for continually self-improving agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-31",
   "description": "Infrastructure for continually self‑improving agents",
   "first_seen": "2026-09-13",

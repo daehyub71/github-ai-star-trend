@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7259f2f3238c728e",
+    "is_ai": true,
+    "reason": "A local-first video editor that advertises an MCP interface for agent scripting plus AI features like auto-captions, TTS, voice cloning and background removal.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-25",
   "description": "The truly free, open-source, local-first, cross-platform CapCut replacement. Scriptable through a JSON-RPC API & MCP.",
   "first_seen": "2026-09-13",
   "full_name": "jub0t/Concat",
   "id": 1346499044,
   "language": "Rust",
-  "last_seen": "2026-09-13",
+  "last_seen": "2026-10-11",
   "topics": [
     "ffmpeg",
     "free-video-editor",

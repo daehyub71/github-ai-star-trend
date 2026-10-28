@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "84521df87a385f04",
+    "is_ai": true,
+    "reason": "A self-hosted personal finance app that ships a built-in AI assistant and can be accessed by LLM agents.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-07-23",
   "description": "The personal finance app for everyone (by everyone)",
   "first_seen": "2025-12-14",
   "full_name": "we-promise/sure",
   "id": 1024661423,
   "language": "Ruby",
-  "last_seen": "2025-12-14",
+  "last_seen": "2025-12-28",
   "topics": []
 }

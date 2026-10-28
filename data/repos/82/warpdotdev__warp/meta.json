@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9352d7a00da8a77c",
+    "is_ai": true,
+    "reason": "Warp is an agentic development environment and terminal with a built-in coding agent and support for third-party CLI agents.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2021-07-08",
   "description": "Warp is an agentic development environment, born out of the terminal.",
   "first_seen": "2026-04-26",

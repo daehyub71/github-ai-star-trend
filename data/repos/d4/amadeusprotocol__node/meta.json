@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "071348bedaa5c480",
+    "is_ai": false,
+    "reason": "This is a blockchain node for the Amadeus network with WASM contracts and a testnet, and the README advertises no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-03-07",
   "description": null,
   "first_seen": "2026-08-16",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cae35daeddac1782",
+    "is_ai": true,
+    "reason": "An all-in-one security testing toolkit that advertises an AI layer turning plain English into the right tool and exact command.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2020-04-11",
   "description": "ALL IN ONE Hacking Tool For Hackers",
   "first_seen": "2026-04-26",

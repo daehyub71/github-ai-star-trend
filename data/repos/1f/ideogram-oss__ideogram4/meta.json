@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "574925174866af98",
+    "is_ai": true,
+    "reason": "Releases open weights and inference code for the Ideogram 4 text-to-image model.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2026-05-28",
+  "description": "Ideogram 4: Open image model at the forefront of design",
+  "first_seen": "2026-06-14",
+  "full_name": "ideogram-oss/ideogram4",
+  "id": 1252526989,
+  "language": "Python",
+  "last_seen": "2026-06-14",
+  "topics": []
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "58d5b8448a0a73a9",
+    "is_ai": false,
+    "reason": "A general research and paper-writing starter guide for students, with AI appearing only as a minor tips section.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-08-29",
   "description": "从0开始，掌握做科研、写论文的基本流程。",
   "first_seen": "2026-09-27",

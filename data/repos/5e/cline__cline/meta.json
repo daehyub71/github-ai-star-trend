@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3b68ff98f547b44c",
+    "is_ai": true,
+    "reason": "Cline is an open source AI coding agent delivered as IDE extensions, CLI, desktop app, and an SDK for building agents.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2024-07-06",
+  "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
+  "first_seen": "2025-11-30",
+  "full_name": "cline/cline",
+  "id": 824874689,
+  "language": "TypeScript",
+  "last_seen": "2025-11-30",
+  "topics": []
+}

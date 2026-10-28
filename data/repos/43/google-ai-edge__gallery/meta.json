@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b3f9f1dc0b022c63",
+    "is_ai": true,
+    "reason": "A mobile/desktop app for running open LLMs fully on-device with chat, skills, and multimodal search features.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "google-ai-edge/gallery",
+  "id": 958136139
+}

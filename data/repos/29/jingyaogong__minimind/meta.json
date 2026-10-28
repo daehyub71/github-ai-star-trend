@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c0ad120878d79f96",
+    "is_ai": true,
+    "reason": "Provides full from-scratch LLM training pipeline code (pretrain, SFT, RLHF) with released small model weights and datasets.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "jingyaogong/minimind",
+  "id": 834369920
+}

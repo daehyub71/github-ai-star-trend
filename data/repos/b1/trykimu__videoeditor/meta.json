@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e7ddbeabc4caa3c8",
+    "is_ai": true,
+    "reason": "Open-source video editor advertising an AI assistant that generates edits, an end-user app with AI features.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "trykimu/videoeditor",
+  "id": 988575614
+}

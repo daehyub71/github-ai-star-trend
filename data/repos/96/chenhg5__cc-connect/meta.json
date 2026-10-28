@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "76c8a366f30f50da",
+    "is_ai": true,
+    "reason": "A Go bridge that connects local AI coding agents like Claude Code and Codex to messaging platforms so users can chat with them remotely.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-28",
+  "description": "Bridge local AI coding agents (Claude Code, Cursor, Gemini CLI, Codex) to messaging platforms (Feishu/Lark, DingTalk, Slack, Telegram, Discord, LINE, WeChat Work). Chat with your AI dev assistant from anywhere — no public IP required for most platforms.",
+  "first_seen": "2026-03-15",
+  "full_name": "chenhg5/cc-connect",
+  "id": 1168978399,
+  "language": "Go",
+  "last_seen": "2026-03-15",
+  "topics": []
+}

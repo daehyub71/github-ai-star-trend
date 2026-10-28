@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b29842a9e532bdd6",
+    "is_ai": true,
+    "reason": "OpenClaw is a self-hosted personal AI assistant app that connects to chat channels and runs agents with swappable models.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-11-24",
   "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 ",
   "first_seen": "2026-01-04",

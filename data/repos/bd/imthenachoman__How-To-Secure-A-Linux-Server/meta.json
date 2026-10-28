@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9b2e6fb124799864",
+    "is_ai": false,
+    "reason": "A how-to guide for hardening Linux servers with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2019-02-09",
   "description": "An evolving how-to guide for securing a Linux server.",
   "first_seen": "2025-11-02",

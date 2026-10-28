@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dcc970ee2aa4880e",
+    "is_ai": true,
+    "reason": "Releases an open 15B audio-video generative foundation model with weights and inference code for human-centric video generation.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "GAIR-NLP/daVinci-MagiHuman",
+  "id": 1188867175
+}

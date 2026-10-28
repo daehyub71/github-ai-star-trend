@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "61189b235ae24666",
+    "is_ai": true,
+    "reason": "End-user AI virtual executive app built on multi-agent orchestration with RAG over company documents.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "SenteLabsAI/OpenExecutive",
+  "id": 1266695553
+}

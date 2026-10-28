@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a4c6fec5aeeb6a0c",
+    "is_ai": false,
+    "reason": "A pygame-based OS management game with no AI features; its AGENTS.md is only contributor tooling.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "plbrault/youre-the-os",
+  "id": 567061540
+}

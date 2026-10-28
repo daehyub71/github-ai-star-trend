@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8ab9eb5e941d9520",
+    "is_ai": true,
+    "reason": "Replicates a parallel decision model with an end-to-end training pipeline and released 0.6B checkpoint and dataset.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-17",
   "description": "A nano replica of Jev: parallel decisions, dynamic candidates, and an end-to-end training pipeline.",
   "first_seen": "2026-09-20",

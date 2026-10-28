@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "af6f70243ede6d37",
+    "is_ai": true,
+    "reason": "Streaming MoE inference framework offloading experts to SSD to run large models on consumer devices.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Edge0-AI/Edge0",
+  "id": 1361439328
+}

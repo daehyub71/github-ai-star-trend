@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b2e3673f631fa429",
+    "is_ai": true,
+    "reason": "Plugin collection that agent harnesses load to gain multimodal image, video and 3D capabilities via Qwen models.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "QwenLM/Qwen-MM-Plugins",
+  "id": 1315929647
+}

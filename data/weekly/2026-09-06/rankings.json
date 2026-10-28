@@ -1,9 +1,27 @@
 {
+  "ai_status": {
+    "fresh": {
+      "found": 15,
+      "pending_above": 0
+    },
+    "gain": {
+      "found": 15,
+      "pending_above": 0
+    },
+    "growth": {
+      "found": 15,
+      "pending_above": 0
+    },
+    "total": {
+      "found": 15,
+      "pending_above": 0
+    }
+  },
   "axes": {
     "fresh": {
-      "ai": null,
-      "all": [
+      "ai": [
         {
+          "category": "mcp-tools",
           "created": "2026-08-14",
           "days": [
             22,
@@ -22,10 +40,12 @@
           "gain": 122,
           "growth": 0.0185,
           "id": 1334586481,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 179,
           "prev_rank": 6,
           "rank": 1,
+          "secondary": "agent-skills",
           "stars_end": 6703,
           "start_stars": 6581,
           "topics": [
@@ -34,9 +54,11 @@
             "deepseek-harness",
             "dsh",
             "dsh-plugin"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-09-02",
           "days": [
             473,
@@ -55,10 +77,12 @@
           "gain": 2415,
           "growth": 0.6235,
           "id": 1354310030,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 11,
-          "prev_rank": 13,
+          "prev_rank": 11,
           "rank": 2,
+          "secondary": "coding-agent",
           "stars_end": 6288,
           "start_stars": 3873,
           "topics": [
@@ -70,42 +94,11 @@
             "prompt",
             "react",
             "vibe-coding"
-          ]
-        },
-        {
-          "created": "2026-08-21",
-          "days": [
-            72,
-            73,
-            57,
-            71,
-            67,
-            84,
-            53
           ],
-          "description": "Open-source ThreeUI Community catalog with live interactive components and complete Community source.",
-          "exact": true,
-          "flags": [],
-          "forks": 651,
-          "full_name": "MengTo/threeui",
-          "gain": 477,
-          "growth": 0.0923,
-          "id": 1341759590,
-          "language": "HTML",
-          "open_issues": 8,
-          "prev_rank": 7,
-          "rank": 3,
-          "stars_end": 5644,
-          "start_stars": 5167,
-          "topics": [
-            "react",
-            "shaders",
-            "threejs",
-            "ui-components",
-            "webgl"
-          ]
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-08-18",
           "days": [
             30,
@@ -124,10 +117,12 @@
           "gain": 221,
           "growth": 0.045,
           "id": 1338470635,
+          "is_ai": true,
           "language": null,
           "open_issues": 7,
-          "prev_rank": 8,
-          "rank": 4,
+          "prev_rank": 7,
+          "rank": 3,
+          "secondary": "multimodal",
           "stars_end": 5133,
           "start_stars": 4912,
           "topics": [
@@ -136,9 +131,11 @@
             "image-generation",
             "logo-design",
             "mascot-design"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "ai-apps",
           "created": "2026-08-17",
           "days": [
             58,
@@ -157,10 +154,12 @@
           "gain": 509,
           "growth": 0.1195,
           "id": 1336502227,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 45,
-          "prev_rank": 9,
-          "rank": 5,
+          "prev_rank": 8,
+          "rank": 4,
+          "secondary": "computer-use",
           "stars_end": 4770,
           "start_stars": 4261,
           "topics": [
@@ -171,9 +170,11 @@
             "copilotkit",
             "generative-ui",
             "mcp"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "multimodal",
           "created": "2026-08-19",
           "days": [
             91,
@@ -192,19 +193,23 @@
           "gain": 1835,
           "growth": 0.7567,
           "id": 1339742577,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 4,
           "prev_rank": null,
-          "rank": 6,
+          "rank": 5,
+          "secondary": "ai-apps",
           "stars_end": 4260,
           "start_stars": 2425,
           "topics": [
             "3d-printing-tools",
             "text-to-3d",
             "text-to-cad"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-08-28",
           "days": [
             42,
@@ -229,10 +234,12 @@
           "gain": 1588,
           "growth": 0.6447,
           "id": 1349601607,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 20,
           "prev_rank": null,
-          "rank": 7,
+          "rank": 6,
+          "secondary": "coding-agent",
           "stars_end": 4051,
           "start_stars": 2463,
           "topics": [
@@ -242,9 +249,592 @@
             "mcp",
             "model-context-protocol",
             "oauth"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
+          "created": "2026-08-14",
+          "days": [
+            62,
+            70,
+            57,
+            73,
+            98,
+            76,
+            66
+          ],
+          "description": "The plugin market inside DeepSeek Harness — browse, search, one-click install · DSH 可视化插件市场",
+          "exact": true,
+          "flags": [],
+          "forks": 357,
+          "full_name": "dsh-market/dsh-market",
+          "gain": 502,
+          "growth": 0.1571,
+          "id": 1333807290,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 57,
+          "prev_rank": null,
+          "rank": 7,
+          "secondary": "coding-agent",
+          "stars_end": 3697,
+          "start_stars": 3195,
+          "topics": [
+            "deepseek-harness",
+            "dsh-plugin",
+            "marketplace"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "mcp-tools",
+          "created": "2026-08-14",
+          "days": [
+            4,
+            4,
+            4,
+            0,
+            7,
+            5,
+            3
+          ],
+          "description": "Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99)",
+          "exact": true,
+          "flags": [],
+          "forks": 118,
+          "full_name": "xiaobright/dsh-anchored-standard",
+          "gain": 27,
+          "growth": 0.0074,
+          "id": 1334245678,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 20,
+          "prev_rank": 12,
+          "rank": 8,
+          "secondary": "coding-agent",
+          "stars_end": 3674,
+          "start_stars": 3647,
+          "topics": [
+            "deepseek",
+            "deepseek-harness",
+            "dsh-plugin",
+            "llm-agent"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2026-08-27",
+          "days": [
+            31,
+            24,
+            112,
+            27,
+            74,
+            111,
+            26
+          ],
+          "description": "Autonomous research system for measurable, computer-executable research.",
+          "exact": true,
+          "flags": [],
+          "forks": 734,
+          "full_name": "sapientinc/PRAXIST",
+          "gain": 405,
+          "growth": 0.1256,
+          "id": 1348577064,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 9,
+          "prev_rank": null,
+          "rank": 9,
+          "secondary": "agent-skills",
+          "stars_end": 3629,
+          "start_stars": 3224,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2026-08-17",
+          "days": [
+            23,
+            14,
+            13,
+            9,
+            13,
+            16,
+            16
+          ],
+          "description": "Where agent teams gather. Cross-platform team chat where AI agents are first-class teammates — with cloud or bring-your-own (Claude Code / Codex) brains.",
+          "exact": true,
+          "flags": [],
+          "forks": 531,
+          "full_name": "yetone/cumora",
+          "gain": 104,
+          "growth": 0.0303,
+          "id": 1336933337,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 28,
+          "prev_rank": null,
+          "rank": 10,
+          "secondary": "agent-framework",
+          "stars_end": 3541,
+          "start_stars": 3437,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "coding-agent",
+          "created": "2026-08-23",
+          "days": [
+            6,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1
+          ],
+          "description": "Unofficial source-oriented reconstruction and extension of Grok Bot 0.18.0 for macOS",
+          "exact": true,
+          "flags": [],
+          "forks": 3655,
+          "full_name": "b-nnett/grok-bot-0.18-reconstructed",
+          "gain": 18,
+          "growth": 0.0052,
+          "id": 1344208527,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 14,
+          "prev_rank": 15,
+          "rank": 11,
+          "secondary": "llmops",
+          "stars_end": 3465,
+          "start_stars": 3447,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "mcp-tools",
+          "created": "2026-09-05",
+          "days": [
+            905,
+            616,
+            413,
+            335,
+            227,
+            87,
+            83
+          ],
+          "description": "Open-source 3D anatomy explorer: 2,234 selectable BodyParts3D meshes, system layers, search, and exploded views.",
+          "exact": true,
+          "flags": [],
+          "forks": 1151,
+          "full_name": "ashemag/human-atlas",
+          "gain": 2666,
+          "growth": 4.2862,
+          "id": 1357699236,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 51,
+          "prev_rank": null,
+          "rank": 12,
+          "secondary": null,
+          "stars_end": 3288,
+          "start_stars": 622,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-08-19",
+          "days": [
+            89,
+            73,
+            48,
+            46,
+            27,
+            20,
+            14
+          ],
+          "description": "One-ink editorial print image skill — warm paper, halftone photography, active negative space, and restrained typography.",
+          "exact": true,
+          "flags": [],
+          "forks": 109,
+          "full_name": "yanliudesign/mono-color-skill",
+          "gain": 317,
+          "growth": 0.1174,
+          "id": 1339161831,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 6,
+          "prev_rank": null,
+          "rank": 13,
+          "secondary": "multimodal",
+          "stars_end": 3018,
+          "start_stars": 2701,
+          "topics": [
+            "agent-skill",
+            "ai-agent",
+            "claude-skill",
+            "editorial-design",
+            "generative-art",
+            "halftone",
+            "image-generation",
+            "monochrome",
+            "poster-design",
+            "prompt-engineering",
+            "risograph",
+            "zine"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2026-08-18",
+          "days": [
+            78,
+            104,
+            19,
+            53,
+            21,
+            18,
+            1
+          ],
+          "description": "Sprix AI at 屿智同行 — state-aware SELF/COLLABORATE/HANDOFF routing for A2A agent networks.",
+          "exact": true,
+          "flags": [],
+          "forks": 130,
+          "full_name": "wang2122/sprix-sage-router",
+          "gain": 294,
+          "growth": 0.1107,
+          "id": 1337955304,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 3,
+          "prev_rank": null,
+          "rank": 14,
+          "secondary": null,
+          "stars_end": 2950,
+          "start_stars": 2656,
+          "topics": [
+            "a2a",
+            "agent-orchestration",
+            "agent-routing",
+            "ai-agents",
+            "multi-agent-systems",
+            "python",
+            "sprix-ai",
+            "task-scheduling"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2026-09-01",
+          "days": [
+            178,
+            164,
+            97,
+            88,
+            86,
+            33,
+            31
+          ],
+          "description": "Reference blueprint for building shopping and merchant agents with Claude. Examples in retail, commerce, telecom, and entertainment included.",
+          "exact": true,
+          "flags": [],
+          "forks": 685,
+          "full_name": "anthropics/commerce-agents",
+          "gain": 677,
+          "growth": 0.3245,
+          "id": 1353548665,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 28,
+          "prev_rank": null,
+          "rank": 15,
+          "secondary": "agent-skills",
+          "stars_end": 2763,
+          "start_stars": 2086,
+          "topics": [],
+          "type": "도구/라이브러리"
+        }
+      ],
+      "all": [
+        {
+          "category": "mcp-tools",
+          "created": "2026-08-14",
+          "days": [
+            22,
+            19,
+            10,
+            18,
+            31,
+            9,
+            13
+          ],
+          "description": "dsh-routing-suite — injector + router-standard kit: install the runtime injector first, then the task-aware reasoning-mode router preset (measured P1-P23).",
+          "exact": true,
+          "flags": [],
+          "forks": 193,
+          "full_name": "yjh051108/dsh-routing-suite",
+          "gain": 122,
+          "growth": 0.0185,
+          "id": 1334586481,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 179,
+          "prev_rank": 6,
+          "rank": 1,
+          "secondary": "agent-skills",
+          "stars_end": 6703,
+          "start_stars": 6581,
+          "topics": [
+            "ai-agents",
+            "cordis",
+            "deepseek-harness",
+            "dsh",
+            "dsh-plugin"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-09-02",
+          "days": [
+            473,
+            381,
+            546,
+            265,
+            354,
+            230,
+            166
+          ],
+          "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
+          "exact": true,
+          "flags": [],
+          "forks": 1077,
+          "full_name": "lnkiai/m3e-canvas",
+          "gain": 2415,
+          "growth": 0.6235,
+          "id": 1354310030,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 11,
+          "prev_rank": 13,
+          "rank": 2,
+          "secondary": "coding-agent",
+          "stars_end": 6288,
+          "start_stars": 3873,
+          "topics": [
+            "design-tool",
+            "material-3-expressive",
+            "material-design",
+            "material3",
+            "nextjs",
+            "prompt",
+            "react",
+            "vibe-coding"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": null,
+          "created": "2026-08-21",
+          "days": [
+            72,
+            73,
+            57,
+            71,
+            67,
+            84,
+            53
+          ],
+          "description": "Open-source ThreeUI Community catalog with live interactive components and complete Community source.",
+          "exact": true,
+          "flags": [],
+          "forks": 651,
+          "full_name": "MengTo/threeui",
+          "gain": 477,
+          "growth": 0.0923,
+          "id": 1341759590,
+          "is_ai": false,
+          "language": "HTML",
+          "open_issues": 8,
+          "prev_rank": 7,
+          "rank": 3,
+          "secondary": null,
+          "stars_end": 5644,
+          "start_stars": 5167,
+          "topics": [
+            "react",
+            "shaders",
+            "threejs",
+            "ui-components",
+            "webgl"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-08-18",
+          "days": [
+            30,
+            47,
+            38,
+            22,
+            20,
+            23,
+            41
+          ],
+          "description": "A compact Agent Skill for highly simplified, rounded, subtly neo-skeuomorphic IP mascot logos.",
+          "exact": true,
+          "flags": [],
+          "forks": 305,
+          "full_name": "s1dashu/ip-as-logo-skill",
+          "gain": 221,
+          "growth": 0.045,
+          "id": 1338470635,
+          "is_ai": true,
+          "language": null,
+          "open_issues": 7,
+          "prev_rank": 8,
+          "rank": 4,
+          "secondary": "multimodal",
+          "stars_end": 5133,
+          "start_stars": 4912,
+          "topics": [
+            "codex",
+            "codex-skill",
+            "image-generation",
+            "logo-design",
+            "mascot-design"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2026-08-17",
+          "days": [
+            58,
+            57,
+            62,
+            72,
+            68,
+            108,
+            84
+          ],
+          "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
+          "exact": true,
+          "flags": [],
+          "forks": 985,
+          "full_name": "CopilotKit/OpenBot",
+          "gain": 509,
+          "growth": 0.1195,
+          "id": 1336502227,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 45,
+          "prev_rank": 9,
+          "rank": 5,
+          "secondary": "computer-use",
+          "stars_end": 4770,
+          "start_stars": 4261,
+          "topics": [
+            "ag-ui",
+            "agent-governance",
+            "ai-agents",
+            "browser-automation",
+            "copilotkit",
+            "generative-ui",
+            "mcp"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "multimodal",
+          "created": "2026-08-19",
+          "days": [
+            91,
+            71,
+            163,
+            385,
+            491,
+            352,
+            282
+          ],
+          "description": "Amagine3D: From hardware requirements to editable 3D designs",
+          "exact": true,
+          "flags": [],
+          "forks": 534,
+          "full_name": "amagine-ai/Amagine3D",
+          "gain": 1835,
+          "growth": 0.7567,
+          "id": 1339742577,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 4,
+          "prev_rank": null,
+          "rank": 6,
+          "secondary": "ai-apps",
+          "stars_end": 4260,
+          "start_stars": 2425,
+          "topics": [
+            "3d-printing-tools",
+            "text-to-3d",
+            "text-to-cad"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "mcp-tools",
+          "created": "2026-08-28",
+          "days": [
+            42,
+            197,
+            806,
+            263,
+            119,
+            99,
+            62
+          ],
+          "description": "ChatGPT thinks. Codex works. Use ChatGPT as the planning brain while keeping the Codex harness.",
+          "exact": true,
+          "flags": [
+            {
+              "kind": "peak_day",
+              "label": "하루 몰림 51%",
+              "value": 51
+            }
+          ],
+          "forks": 697,
+          "full_name": "XiaoDuoYa/codex-with-chatgpt",
+          "gain": 1588,
+          "growth": 0.6447,
+          "id": 1349601607,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 20,
+          "prev_rank": null,
+          "rank": 7,
+          "secondary": "coding-agent",
+          "stars_end": 4051,
+          "start_stars": 2463,
+          "topics": [
+            "ai-agents",
+            "chatgpt",
+            "codex",
+            "mcp",
+            "model-context-protocol",
+            "oauth"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": null,
           "created": "2026-08-27",
           "days": [
             107,
@@ -263,10 +853,12 @@
           "gain": 570,
           "growth": 0.1769,
           "id": 1348483831,
+          "is_ai": false,
           "language": "Rust",
           "open_issues": 118,
           "prev_rank": null,
           "rank": 8,
+          "secondary": null,
           "stars_end": 3793,
           "start_stars": 3223,
           "topics": [
@@ -286,9 +878,11 @@
             "spotify-client",
             "spotify-connect",
             "windows"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-08-14",
           "days": [
             62,
@@ -307,19 +901,23 @@
           "gain": 502,
           "growth": 0.1571,
           "id": 1333807290,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 57,
           "prev_rank": null,
           "rank": 9,
+          "secondary": "coding-agent",
           "stars_end": 3697,
           "start_stars": 3195,
           "topics": [
             "deepseek-harness",
             "dsh-plugin",
             "marketplace"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-08-14",
           "days": [
             4,
@@ -338,10 +936,12 @@
           "gain": 27,
           "growth": 0.0074,
           "id": 1334245678,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 20,
           "prev_rank": 14,
           "rank": 10,
+          "secondary": "coding-agent",
           "stars_end": 3674,
           "start_stars": 3647,
           "topics": [
@@ -349,9 +949,11 @@
             "deepseek-harness",
             "dsh-plugin",
             "llm-agent"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-framework",
           "created": "2026-08-27",
           "days": [
             31,
@@ -370,15 +972,19 @@
           "gain": 405,
           "growth": 0.1256,
           "id": 1348577064,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 9,
           "prev_rank": null,
           "rank": 11,
+          "secondary": "agent-skills",
           "stars_end": 3629,
           "start_stars": 3224,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "ai-apps",
           "created": "2026-08-17",
           "days": [
             23,
@@ -397,15 +1003,19 @@
           "gain": 104,
           "growth": 0.0303,
           "id": 1336933337,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 28,
           "prev_rank": null,
           "rank": 12,
+          "secondary": "agent-framework",
           "stars_end": 3541,
           "start_stars": 3437,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "coding-agent",
           "created": "2026-08-23",
           "days": [
             6,
@@ -424,15 +1034,19 @@
           "gain": 18,
           "growth": 0.0052,
           "id": 1344208527,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 14,
           "prev_rank": null,
           "rank": 13,
+          "secondary": "llmops",
           "stars_end": 3465,
           "start_stars": 3447,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-09-05",
           "days": [
             905,
@@ -451,15 +1065,19 @@
           "gain": 2666,
           "growth": 4.2862,
           "id": 1357699236,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 51,
           "prev_rank": null,
           "rank": 14,
+          "secondary": null,
           "stars_end": 3288,
           "start_stars": 622,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-08-19",
           "days": [
             89,
@@ -478,10 +1096,12 @@
           "gain": 317,
           "growth": 0.1174,
           "id": 1339161831,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 6,
           "prev_rank": null,
           "rank": 15,
+          "secondary": "multimodal",
           "stars_end": 3018,
           "start_stars": 2701,
           "topics": [
@@ -497,14 +1117,15 @@
             "prompt-engineering",
             "risograph",
             "zine"
-          ]
+          ],
+          "type": "도구/라이브러리"
         }
       ]
     },
     "gain": {
-      "ai": null,
-      "all": [
+      "ai": [
         {
+          "category": "agent-skills",
           "created": "2026-05-13",
           "days": [
             228,
@@ -523,10 +1144,12 @@
           "gain": 16283,
           "growth": 0.6051,
           "id": 1238120057,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 81,
           "prev_rank": null,
           "rank": 1,
+          "secondary": "coding-agent",
           "stars_end": 43194,
           "start_stars": 26911,
           "topics": [
@@ -536,9 +1159,11 @@
             "claude-skills",
             "developer-tools",
             "productivity"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "ai-apps",
           "created": "2026-06-22",
           "days": [
             493,
@@ -563,10 +1188,12 @@
           "gain": 12289,
           "growth": 0.687,
           "id": 1277471539,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 403,
           "prev_rank": 9,
           "rank": 2,
+          "secondary": "multimodal",
           "stars_end": 30177,
           "start_stars": 17888,
           "topics": [
@@ -582,9 +1209,11 @@
             "spatial-intelligence",
             "webgl",
             "worldview"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-04-15",
           "days": [
             1578,
@@ -603,10 +1232,12 @@
           "gain": 10201,
           "growth": 0.2073,
           "id": 1211139949,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 240,
           "prev_rank": 1,
           "rank": 3,
+          "secondary": "mcp-tools",
           "stars_end": 59411,
           "start_stars": 49210,
           "topics": [
@@ -630,9 +1261,11 @@
             "software-architecture",
             "system-design",
             "visualization"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-framework",
           "created": "2026-08-13",
           "days": [
             1066,
@@ -651,10 +1284,12 @@
           "gain": 8698,
           "growth": 0.0412,
           "id": 1333065091,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 0,
           "prev_rank": 4,
           "rank": 4,
+          "secondary": "coding-agent",
           "stars_end": 220062,
           "start_stars": 211364,
           "topics": [
@@ -662,9 +1297,11 @@
             "cordis",
             "dsh",
             "dsh-plugin"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-06-12",
           "days": [
             1617,
@@ -683,10 +1320,12 @@
           "gain": 8577,
           "growth": 0.0676,
           "id": 1266797999,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 137,
           "prev_rank": 3,
           "rank": 5,
+          "secondary": "coding-agent",
           "stars_end": 135539,
           "start_stars": 126962,
           "topics": [
@@ -700,9 +1339,11 @@
             "llm",
             "prompt-engineering",
             "yagni"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-02-03",
           "days": [
             2100,
@@ -721,15 +1362,19 @@
           "gain": 7709,
           "growth": 0.0307,
           "id": 1148788086,
+          "is_ai": true,
           "language": "Shell",
           "open_issues": 206,
           "prev_rank": 2,
           "rank": 6,
+          "secondary": "coding-agent",
           "stars_end": 259116,
           "start_stars": 251407,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-01-18",
           "days": [
             1671,
@@ -748,10 +1393,12 @@
           "gain": 7236,
           "growth": 0.0292,
           "id": 1136590548,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 235,
           "prev_rank": 7,
           "rank": 7,
+          "secondary": "coding-agent",
           "stars_end": 255162,
           "start_stars": 247926,
           "topics": [
@@ -763,9 +1410,11 @@
             "llm",
             "mcp",
             "productivity"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-04-16",
           "days": [
             890,
@@ -784,10 +1433,12 @@
           "gain": 7095,
           "growth": 0.2252,
           "id": 1212769188,
+          "is_ai": true,
           "language": "HTML",
           "open_issues": 47,
           "prev_rank": null,
           "rank": 8,
+          "secondary": null,
           "stars_end": 38603,
           "start_stars": 31508,
           "topics": [
@@ -799,9 +1450,11 @@
             "drawio",
             "mermaid",
             "svg"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "multimodal",
           "created": "2026-04-09",
           "days": [
             917,
@@ -820,10 +1473,12 @@
           "gain": 5738,
           "growth": 0.3042,
           "id": 1206390571,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 198,
           "prev_rank": 6,
           "rank": 9,
+          "secondary": "local-llm",
           "stars_end": 24602,
           "start_stars": 18864,
           "topics": [
@@ -846,9 +1501,11 @@
             "voice-generation",
             "voicestudio",
             "workflow"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "coding-agent",
           "created": "2026-03-17",
           "days": [
             635,
@@ -867,10 +1524,12 @@
           "gain": 5097,
           "growth": 0.0829,
           "id": 1183888342,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 8411,
           "prev_rank": 8,
           "rank": 10,
+          "secondary": "agent-framework",
           "stars_end": 66602,
           "start_stars": 61505,
           "topics": [
@@ -894,9 +1553,11 @@
             "terminal",
             "worktrees",
             "yc-backed"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "doc-parsing",
           "created": "2024-11-13",
           "days": [
             662,
@@ -915,10 +1576,12 @@
           "gain": 5041,
           "growth": 0.0284,
           "id": 888092115,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 765,
           "prev_rank": null,
           "rank": 11,
+          "secondary": "mcp-tools",
           "stars_end": 182538,
           "start_stars": 177497,
           "topics": [
@@ -929,9 +1592,11 @@
             "microsoft-office",
             "openai",
             "pdf"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-03-10",
           "days": [
             301,
@@ -950,10 +1615,12 @@
           "gain": 5027,
           "growth": 0.1147,
           "id": 1177402105,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 174,
           "prev_rank": null,
           "rank": 12,
+          "secondary": "multimodal",
           "stars_end": 48857,
           "start_stars": 43830,
           "topics": [
@@ -972,45 +1639,11 @@
             "rendering",
             "typescript",
             "video-editor"
-          ]
-        },
-        {
-          "created": "2026-03-12",
-          "days": [
-            675,
-            1294,
-            876,
-            303,
-            291,
-            239,
-            845
           ],
-          "description": "Create polished demo videos without editing skills. Mac/Windows/Linux",
-          "exact": true,
-          "flags": [],
-          "forks": 2875,
-          "full_name": "webadderallorg/Recordly",
-          "gain": 4523,
-          "growth": 0.1946,
-          "id": 1180325220,
-          "language": "TypeScript",
-          "open_issues": 499,
-          "prev_rank": null,
-          "rank": 13,
-          "stars_end": 27763,
-          "start_stars": 23240,
-          "topics": [
-            "electron",
-            "free",
-            "linux",
-            "macos",
-            "open-source",
-            "screen-recorder",
-            "screen-studio",
-            "windows"
-          ]
+          "type": "도구/라이브러리"
         },
         {
+          "category": "ai-apps",
           "created": "2026-03-11",
           "days": [
             542,
@@ -1029,15 +1662,19 @@
           "gain": 4233,
           "growth": 0.1331,
           "id": 1178737655,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 215,
           "prev_rank": 5,
-          "rank": 14,
+          "rank": 13,
+          "secondary": "agent-framework",
           "stars_end": 36041,
           "start_stars": 31808,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2025-10-09",
           "days": [
             397,
@@ -1056,10 +1693,12 @@
           "gain": 3929,
           "growth": 0.014,
           "id": 1073224795,
+          "is_ai": true,
           "language": "Shell",
           "open_issues": 367,
           "prev_rank": null,
-          "rank": 15,
+          "rank": 14,
+          "secondary": "coding-agent",
           "stars_end": 284018,
           "start_stars": 280089,
           "topics": [
@@ -1071,14 +1710,683 @@
             "skills",
             "subagent-driven-development",
             "superpowers"
-          ]
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "computer-use",
+          "created": "2026-08-13",
+          "days": [
+            7,
+            105,
+            285,
+            457,
+            673,
+            981,
+            1277
+          ],
+          "description": "ARTEMIS turns natural-language instructions into reliable Android automation. It automates end-to-end workflows, captures logs, and integrates seamlessly with AI coding assistants such as Antigravity, Codex, and Claude Code.  It also achieves 99%+ success rate on AndroidWorld Benchmark.",
+          "exact": true,
+          "flags": [],
+          "forks": 1651,
+          "full_name": "google/artemis",
+          "gain": 3785,
+          "growth": 23.2209,
+          "id": 1333399642,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 169,
+          "prev_rank": null,
+          "rank": 15,
+          "secondary": "mcp-tools",
+          "stars_end": 3948,
+          "start_stars": 163,
+          "topics": [
+            "ai-agents",
+            "android",
+            "google",
+            "test-automation",
+            "testing"
+          ],
+          "type": "도구/라이브러리"
+        }
+      ],
+      "all": [
+        {
+          "category": "agent-skills",
+          "created": "2026-05-13",
+          "days": [
+            228,
+            428,
+            3691,
+            3955,
+            3526,
+            3261,
+            1194
+          ],
+          "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+          "exact": true,
+          "flags": [],
+          "forks": 3414,
+          "full_name": "ayghri/i-have-adhd",
+          "gain": 16283,
+          "growth": 0.6051,
+          "id": 1238120057,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 81,
+          "prev_rank": null,
+          "rank": 1,
+          "secondary": "coding-agent",
+          "stars_end": 43194,
+          "start_stars": 26911,
+          "topics": [
+            "adhd",
+            "claude-",
+            "claude-code-plugin",
+            "claude-skills",
+            "developer-tools",
+            "productivity"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2026-06-22",
+          "days": [
+            493,
+            428,
+            881,
+            1720,
+            3441,
+            2412,
+            2914
+          ],
+          "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+          "exact": true,
+          "flags": [
+            {
+              "kind": "dormant_burst",
+              "label": "잠잠하다 4주 만에 46배",
+              "value": 46.5
+            }
+          ],
+          "forks": 11742,
+          "full_name": "bilawalsidhu/gods-eye-view",
+          "gain": 12289,
+          "growth": 0.687,
+          "id": 1277471539,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 403,
+          "prev_rank": 9,
+          "rank": 2,
+          "secondary": "multimodal",
+          "stars_end": 30177,
+          "start_stars": 17888,
+          "topics": [
+            "3d-globe",
+            "cesium",
+            "flight-tracking",
+            "geospatial",
+            "geospatial-intelligence",
+            "gis",
+            "osint",
+            "photogrammetry",
+            "satellite-tracking",
+            "spatial-intelligence",
+            "webgl",
+            "worldview"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-04-15",
+          "days": [
+            1578,
+            2227,
+            1592,
+            1273,
+            1310,
+            1067,
+            1154
+          ],
+          "description": "Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more.",
+          "exact": true,
+          "flags": [],
+          "forks": 6047,
+          "full_name": "tt-a1i/archify",
+          "gain": 10201,
+          "growth": 0.2073,
+          "id": 1211139949,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 240,
+          "prev_rank": 1,
+          "rank": 3,
+          "secondary": "mcp-tools",
+          "stars_end": 59411,
+          "start_stars": 49210,
+          "topics": [
+            "agent-skills",
+            "ai-agents",
+            "architecture-diagram",
+            "claude-code",
+            "claude-skills",
+            "codex",
+            "coding-agents",
+            "deepseek-harness",
+            "developer-tools",
+            "diagrams",
+            "diagrams-as-code",
+            "dsh-plugin",
+            "flowchart",
+            "llm",
+            "mermaid",
+            "opencode",
+            "sequence-diagram",
+            "software-architecture",
+            "system-design",
+            "visualization"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2026-08-13",
+          "days": [
+            1066,
+            1074,
+            1192,
+            1370,
+            1743,
+            1259,
+            994
+          ],
+          "description": "DeepSeek Harness: Everything is a Plugin.",
+          "exact": true,
+          "flags": [],
+          "forks": 31634,
+          "full_name": "deepseek-ai/deepseek-harness",
+          "gain": 8698,
+          "growth": 0.0412,
+          "id": 1333065091,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 0,
+          "prev_rank": 4,
+          "rank": 4,
+          "secondary": "coding-agent",
+          "stars_end": 220062,
+          "start_stars": 211364,
+          "topics": [
+            "ai-agents",
+            "cordis",
+            "dsh",
+            "dsh-plugin"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-06-12",
+          "days": [
+            1617,
+            1431,
+            1226,
+            1272,
+            1288,
+            948,
+            795
+          ],
+          "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+          "exact": true,
+          "flags": [],
+          "forks": 9635,
+          "full_name": "DietrichGebert/ponytail",
+          "gain": 8577,
+          "growth": 0.0676,
+          "id": 1266797999,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 137,
+          "prev_rank": 3,
+          "rank": 5,
+          "secondary": "coding-agent",
+          "stars_end": 135539,
+          "start_stars": 126962,
+          "topics": [
+            "agent-skills",
+            "ai-agents",
+            "claude",
+            "claude-code",
+            "claude-code-plugin",
+            "cursor-rules",
+            "developer-tools",
+            "llm",
+            "prompt-engineering",
+            "yagni"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-02-03",
+          "days": [
+            2100,
+            1177,
+            885,
+            937,
+            1022,
+            887,
+            701
+          ],
+          "description": "Skills for Real Engineers. Straight from my .agents directory.",
+          "exact": true,
+          "flags": [],
+          "forks": 25533,
+          "full_name": "mattpocock/skills",
+          "gain": 7709,
+          "growth": 0.0307,
+          "id": 1148788086,
+          "is_ai": true,
+          "language": "Shell",
+          "open_issues": 206,
+          "prev_rank": 2,
+          "rank": 6,
+          "secondary": "coding-agent",
+          "stars_end": 259116,
+          "start_stars": 251407,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-01-18",
+          "days": [
+            1671,
+            1403,
+            1365,
+            844,
+            699,
+            623,
+            631
+          ],
+          "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+          "exact": true,
+          "flags": [],
+          "forks": 42843,
+          "full_name": "affaan-m/ECC",
+          "gain": 7236,
+          "growth": 0.0292,
+          "id": 1136590548,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 235,
+          "prev_rank": 7,
+          "rank": 7,
+          "secondary": "coding-agent",
+          "stars_end": 255162,
+          "start_stars": 247926,
+          "topics": [
+            "ai-agents",
+            "anthropic",
+            "claude",
+            "claude-code",
+            "developer-tools",
+            "llm",
+            "mcp",
+            "productivity"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-04-16",
+          "days": [
+            890,
+            714,
+            2015,
+            1474,
+            1085,
+            547,
+            370
+          ],
+          "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 45 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+          "exact": true,
+          "flags": [],
+          "forks": 3971,
+          "full_name": "cathrynlavery/diagram-design",
+          "gain": 7095,
+          "growth": 0.2252,
+          "id": 1212769188,
+          "is_ai": true,
+          "language": "HTML",
+          "open_issues": 47,
+          "prev_rank": null,
+          "rank": 8,
+          "secondary": null,
+          "stars_end": 38603,
+          "start_stars": 31508,
+          "topics": [
+            "agent-skills",
+            "claude-code",
+            "codex",
+            "data-visualization",
+            "diagrams",
+            "drawio",
+            "mermaid",
+            "svg"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "multimodal",
+          "created": "2026-04-09",
+          "days": [
+            917,
+            800,
+            604,
+            465,
+            382,
+            306,
+            2264
+          ],
+          "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+          "exact": true,
+          "flags": [],
+          "forks": 9661,
+          "full_name": "debpalash/VoiceStudio",
+          "gain": 5738,
+          "growth": 0.3042,
+          "id": 1206390571,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 198,
+          "prev_rank": 6,
+          "rank": 9,
+          "secondary": "local-llm",
+          "stars_end": 24602,
+          "start_stars": 18864,
+          "topics": [
+            "ai",
+            "audiobook",
+            "cuda",
+            "dubbing",
+            "elevenlabs-alternative",
+            "huggingface",
+            "local-first",
+            "mlx",
+            "omnivoice-studio",
+            "speech-to-text",
+            "text-to-speech",
+            "transcription",
+            "translate",
+            "tts",
+            "voice-ai",
+            "voice-cloning",
+            "voice-generation",
+            "voicestudio",
+            "workflow"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "coding-agent",
+          "created": "2026-03-17",
+          "days": [
+            635,
+            787,
+            780,
+            832,
+            845,
+            732,
+            486
+          ],
+          "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+          "exact": true,
+          "flags": [],
+          "forks": 6710,
+          "full_name": "stablyai/orca",
+          "gain": 5097,
+          "growth": 0.0829,
+          "id": 1183888342,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 8411,
+          "prev_rank": 8,
+          "rank": 10,
+          "secondary": "agent-framework",
+          "stars_end": 66602,
+          "start_stars": 61505,
+          "topics": [
+            "ade",
+            "agent-ide",
+            "ai-agents",
+            "automation",
+            "bot",
+            "claude-code",
+            "codex",
+            "ghostty",
+            "grok-bot",
+            "hermes-agent",
+            "mobile-app",
+            "muse",
+            "openclaw",
+            "opencode",
+            "orchestration",
+            "pi",
+            "runtime",
+            "terminal",
+            "worktrees",
+            "yc-backed"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "doc-parsing",
+          "created": "2024-11-13",
+          "days": [
+            662,
+            1799,
+            1096,
+            346,
+            262,
+            273,
+            603
+          ],
+          "description": "Python tool for converting files and office documents to Markdown.",
+          "exact": true,
+          "flags": [],
+          "forks": 14384,
+          "full_name": "microsoft/markitdown",
+          "gain": 5041,
+          "growth": 0.0284,
+          "id": 888092115,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 765,
+          "prev_rank": null,
+          "rank": 11,
+          "secondary": "mcp-tools",
+          "stars_end": 182538,
+          "start_stars": 177497,
+          "topics": [
+            "autogen",
+            "autogen-extension",
+            "langchain",
+            "markdown",
+            "microsoft-office",
+            "openai",
+            "pdf"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "mcp-tools",
+          "created": "2026-03-10",
+          "days": [
+            301,
+            2182,
+            1286,
+            482,
+            347,
+            222,
+            207
+          ],
+          "description": "Write HTML. Render video. Built for agents.",
+          "exact": true,
+          "flags": [],
+          "forks": 6661,
+          "full_name": "heygen-com/hyperframes",
+          "gain": 5027,
+          "growth": 0.1147,
+          "id": 1177402105,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 174,
+          "prev_rank": null,
+          "rank": 12,
+          "secondary": "multimodal",
+          "stars_end": 48857,
+          "start_stars": 43830,
+          "topics": [
+            "ai",
+            "ai-agents",
+            "animation",
+            "claude-code",
+            "ffmpeg",
+            "framework",
+            "gsap",
+            "html",
+            "html-to-video",
+            "mcp",
+            "motion-graphics",
+            "puppeteer",
+            "rendering",
+            "typescript",
+            "video-editor"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": null,
+          "created": "2026-03-12",
+          "days": [
+            675,
+            1294,
+            876,
+            303,
+            291,
+            239,
+            845
+          ],
+          "description": "Create polished demo videos without editing skills. Mac/Windows/Linux",
+          "exact": true,
+          "flags": [],
+          "forks": 2875,
+          "full_name": "webadderallorg/Recordly",
+          "gain": 4523,
+          "growth": 0.1946,
+          "id": 1180325220,
+          "is_ai": false,
+          "language": "TypeScript",
+          "open_issues": 499,
+          "prev_rank": null,
+          "rank": 13,
+          "secondary": null,
+          "stars_end": 27763,
+          "start_stars": 23240,
+          "topics": [
+            "electron",
+            "free",
+            "linux",
+            "macos",
+            "open-source",
+            "screen-recorder",
+            "screen-studio",
+            "windows"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2026-03-11",
+          "days": [
+            542,
+            652,
+            615,
+            855,
+            864,
+            404,
+            301
+          ],
+          "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+          "exact": true,
+          "flags": [],
+          "forks": 6440,
+          "full_name": "THU-MAIC/OpenMAIC",
+          "gain": 4233,
+          "growth": 0.1331,
+          "id": 1178737655,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 215,
+          "prev_rank": 5,
+          "rank": 14,
+          "secondary": "agent-framework",
+          "stars_end": 36041,
+          "start_stars": 31808,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2025-10-09",
+          "days": [
+            397,
+            440,
+            621,
+            685,
+            715,
+            642,
+            429
+          ],
+          "description": "An agentic skills framework & software development methodology that works.",
+          "exact": true,
+          "flags": [],
+          "forks": 27183,
+          "full_name": "obra/superpowers",
+          "gain": 3929,
+          "growth": 0.014,
+          "id": 1073224795,
+          "is_ai": true,
+          "language": "Shell",
+          "open_issues": 367,
+          "prev_rank": null,
+          "rank": 15,
+          "secondary": "coding-agent",
+          "stars_end": 284018,
+          "start_stars": 280089,
+          "topics": [
+            "ai",
+            "brainstorming",
+            "coding",
+            "obra",
+            "sdlc",
+            "skills",
+            "subagent-driven-development",
+            "superpowers"
+          ],
+          "type": "도구/라이브러리"
         }
       ]
     },
     "growth": {
-      "ai": null,
-      "all": [
+      "ai": [
         {
+          "category": "llmops",
           "created": "2026-06-24",
           "days": [
             718,
@@ -1103,42 +2411,19 @@
           "gain": 3259,
           "growth": 2.5089,
           "id": 1279659344,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 151,
           "prev_rank": null,
           "rank": 1,
+          "secondary": "training",
           "stars_end": 4558,
           "start_stars": 1299,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
-          "created": "2020-06-30",
-          "days": [
-            8,
-            450,
-            381,
-            151,
-            74,
-            38,
-            21
-          ],
-          "description": "A decompilation of Super Smash Bros Melee brought to you by a bunch of clever folks.",
-          "exact": true,
-          "flags": [],
-          "forks": 361,
-          "full_name": "doldecomp/melee",
-          "gain": 1123,
-          "growth": 1.0945,
-          "id": 276230427,
-          "language": "C",
-          "open_issues": 24,
-          "prev_rank": null,
-          "rank": 2,
-          "stars_end": 2149,
-          "start_stars": 1026,
-          "topics": []
-        },
-        {
+          "category": "agent-skills",
           "created": "2026-08-07",
           "days": [
             232,
@@ -1157,10 +2442,12 @@
           "gain": 1167,
           "growth": 1.0219,
           "id": 1326531152,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 4,
           "prev_rank": null,
-          "rank": 3,
+          "rank": 2,
+          "secondary": "coding-agent",
           "stars_end": 2309,
           "start_stars": 1142,
           "topics": [
@@ -1174,9 +2461,11 @@
             "copywriting",
             "design-rules",
             "ui-design"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "computer-use",
           "created": "2026-01-04",
           "days": [
             189,
@@ -1195,10 +2484,12 @@
           "gain": 1249,
           "growth": 0.8821,
           "id": 1127761357,
+          "is_ai": true,
           "language": "Rust",
           "open_issues": 34,
           "prev_rank": null,
-          "rank": 4,
+          "rank": 3,
+          "secondary": "agent-framework",
           "stars_end": 2665,
           "start_stars": 1416,
           "topics": [
@@ -1212,9 +2503,11 @@
             "sandbox",
             "virtual-machine",
             "virtualization"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-04-14",
           "days": [
             113,
@@ -1233,10 +2526,12 @@
           "gain": 966,
           "growth": 0.8806,
           "id": 1210670063,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 0,
           "prev_rank": null,
-          "rank": 5,
+          "rank": 4,
+          "secondary": "ai-apps",
           "stars_end": 2063,
           "start_stars": 1097,
           "topics": [
@@ -1260,9 +2555,11 @@
             "prompt-engineering",
             "skill-md",
             "social-media-automation"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "multimodal",
           "created": "2026-08-19",
           "days": [
             91,
@@ -1281,19 +2578,23 @@
           "gain": 1835,
           "growth": 0.7567,
           "id": 1339742577,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 4,
           "prev_rank": 8,
-          "rank": 6,
+          "rank": 5,
+          "secondary": "ai-apps",
           "stars_end": 4260,
           "start_stars": 2425,
           "topics": [
             "3d-printing-tools",
             "text-to-3d",
             "text-to-cad"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "ai-apps",
           "created": "2026-06-22",
           "days": [
             493,
@@ -1318,10 +2619,12 @@
           "gain": 12289,
           "growth": 0.687,
           "id": 1277471539,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 403,
           "prev_rank": null,
-          "rank": 7,
+          "rank": 6,
+          "secondary": "multimodal",
           "stars_end": 30177,
           "start_stars": 17888,
           "topics": [
@@ -1337,9 +2640,11 @@
             "spatial-intelligence",
             "webgl",
             "worldview"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-04-09",
           "days": [
             4,
@@ -1364,10 +2669,12 @@
           "gain": 1219,
           "growth": 0.6571,
           "id": 1206357666,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 30,
           "prev_rank": null,
-          "rank": 8,
+          "rank": 7,
+          "secondary": "rag",
           "stars_end": 3074,
           "start_stars": 1855,
           "topics": [
@@ -1385,9 +2692,11 @@
             "research",
             "research-agent",
             "research-tools"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-06-09",
           "days": [
             200,
@@ -1406,10 +2715,12 @@
           "gain": 1156,
           "growth": 0.6491,
           "id": 1264396304,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 57,
           "prev_rank": null,
-          "rank": 9,
+          "rank": 8,
+          "secondary": "agent-skills",
           "stars_end": 2937,
           "start_stars": 1781,
           "topics": [
@@ -1418,9 +2729,11 @@
             "claude-code-plugin",
             "llm-agents",
             "python"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "mcp-tools",
           "created": "2026-08-28",
           "days": [
             42,
@@ -1445,10 +2758,12 @@
           "gain": 1588,
           "growth": 0.6447,
           "id": 1349601607,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 20,
           "prev_rank": null,
-          "rank": 10,
+          "rank": 9,
+          "secondary": "coding-agent",
           "stars_end": 4051,
           "start_stars": 2463,
           "topics": [
@@ -1458,9 +2773,11 @@
             "mcp",
             "model-context-protocol",
             "oauth"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-09-02",
           "days": [
             473,
@@ -1479,10 +2796,12 @@
           "gain": 2415,
           "growth": 0.6235,
           "id": 1354310030,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 11,
           "prev_rank": null,
-          "rank": 11,
+          "rank": 10,
+          "secondary": "coding-agent",
           "stars_end": 6288,
           "start_stars": 3873,
           "topics": [
@@ -1494,9 +2813,682 @@
             "prompt",
             "react",
             "vibe-coding"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
+          "created": "2026-05-13",
+          "days": [
+            228,
+            428,
+            3691,
+            3955,
+            3526,
+            3261,
+            1194
+          ],
+          "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+          "exact": true,
+          "flags": [],
+          "forks": 3414,
+          "full_name": "ayghri/i-have-adhd",
+          "gain": 16283,
+          "growth": 0.6051,
+          "id": 1238120057,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 81,
+          "prev_rank": null,
+          "rank": 11,
+          "secondary": "coding-agent",
+          "stars_end": 43194,
+          "start_stars": 26911,
+          "topics": [
+            "adhd",
+            "claude-",
+            "claude-code-plugin",
+            "claude-skills",
+            "developer-tools",
+            "productivity"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2026-08-22",
+          "days": [
+            125,
+            241,
+            186,
+            111,
+            86,
+            95,
+            99
+          ],
+          "description": "🧩 FrontierAgent, our agent framework, open-sourced alongside it — native command-line TUI, ReAct and Agent Team modes, one command on macOS and Linux, no preinstall, no hard Docker dependency.",
+          "exact": true,
+          "flags": [],
+          "forks": 326,
+          "full_name": "ApodexAI/FrontierAgent",
+          "gain": 943,
+          "growth": 0.5382,
+          "id": 1342461518,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 7,
+          "prev_rank": null,
+          "rank": 12,
+          "secondary": "llmops",
+          "stars_end": 2695,
+          "start_stars": 1752,
+          "topics": [
+            "agent-orchestration",
+            "agentic-ai",
+            "agentic-framework",
+            "ai-agents",
+            "harness",
+            "multi-agent",
+            "terminal-agent",
+            "tui"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2025-09-05",
+          "days": [
+            1,
+            0,
+            2,
+            5,
+            450,
+            238,
+            184
+          ],
+          "description": "Turn code into clarity. Generate accurate technical docs and AI-ready context in minutes—perfectly structured for human teams and intelligent agents.",
+          "exact": true,
+          "flags": [],
+          "forks": 296,
+          "full_name": "sopaco/deepwiki-rs",
+          "gain": 880,
+          "growth": 0.5195,
+          "id": 1051229663,
+          "is_ai": true,
+          "language": "Rust",
+          "open_issues": 2,
+          "prev_rank": null,
+          "rank": 13,
+          "secondary": "doc-parsing",
+          "stars_end": 2574,
+          "start_stars": 1694,
+          "topics": [
+            "deepseek",
+            "deepwiki",
+            "dsh-plugin",
+            "grok",
+            "okf-format",
+            "openwiki"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "vectordb-memory",
+          "created": "2026-07-16",
+          "days": [
+            8,
+            7,
+            8,
+            385,
+            176,
+            29,
+            6
+          ],
+          "description": "🍙  A personal AI agent & local memory hub for all AI agents, gives every AI one shared, fully controlled memory and persistent context — all AI remember the same you. Now supports Claude Code, Codex, OpenClaw and Hermes Agent etc.",
+          "exact": true,
+          "flags": [],
+          "forks": 212,
+          "full_name": "MemTensor/memmy-agent",
+          "gain": 619,
+          "growth": 0.4924,
+          "id": 1302496224,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 55,
+          "prev_rank": null,
+          "rank": 14,
+          "secondary": "ai-apps",
+          "stars_end": 1876,
+          "start_stars": 1257,
+          "topics": [
+            "agent",
+            "agentic-ai",
+            "ai-agents",
+            "chatgpt",
+            "claude-code",
+            "cli",
+            "codex",
+            "cursor",
+            "desktop-app",
+            "desktop-pet",
+            "dsh-plugin",
+            "hermes-agent",
+            "llm",
+            "long-term-memory",
+            "mcp",
+            "memory",
+            "openai-api",
+            "openclaw",
+            "personal-ai",
+            "tui"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "computer-use",
+          "created": "2026-07-02",
+          "days": [
+            5,
+            7,
+            8,
+            3,
+            6,
+            384,
+            247
+          ],
+          "description": "Self-learning agent browser",
+          "exact": true,
+          "flags": [],
+          "forks": 1540,
+          "full_name": "agentrhq/webcmd",
+          "gain": 660,
+          "growth": 0.4499,
+          "id": 1287114669,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 52,
+          "prev_rank": null,
+          "rank": 15,
+          "secondary": "vectordb-memory",
+          "stars_end": 2127,
+          "start_stars": 1467,
+          "topics": [
+            "ai-agents",
+            "browser-automation",
+            "browser-use",
+            "cli",
+            "developer-tools",
+            "playwright",
+            "self-learning-ai"
+          ],
+          "type": "도구/라이브러리"
+        }
+      ],
+      "all": [
+        {
+          "category": "llmops",
+          "created": "2026-06-24",
+          "days": [
+            718,
+            587,
+            581,
+            578,
+            444,
+            188,
+            163
+          ],
+          "description": "Experiential is the open source, zero markup gateway for BYOK, self-hosted and 1000+ marketplace models. It learns from your traffic to cut costs, recommend better models, and train a specialized model you own.",
+          "exact": true,
+          "flags": [
+            {
+              "kind": "dormant_burst",
+              "label": "잠잠하다 4주 만에 13배",
+              "value": 13.1
+            }
+          ],
+          "forks": 274,
+          "full_name": "experientiallabs/experiential",
+          "gain": 3259,
+          "growth": 2.5089,
+          "id": 1279659344,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 151,
+          "prev_rank": null,
+          "rank": 1,
+          "secondary": "training",
+          "stars_end": 4558,
+          "start_stars": 1299,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": null,
+          "created": "2020-06-30",
+          "days": [
+            8,
+            450,
+            381,
+            151,
+            74,
+            38,
+            21
+          ],
+          "description": "A decompilation of Super Smash Bros Melee brought to you by a bunch of clever folks.",
+          "exact": true,
+          "flags": [],
+          "forks": 361,
+          "full_name": "doldecomp/melee",
+          "gain": 1123,
+          "growth": 1.0945,
+          "id": 276230427,
+          "is_ai": false,
+          "language": "C",
+          "open_issues": 24,
+          "prev_rank": null,
+          "rank": 2,
+          "secondary": null,
+          "stars_end": 2149,
+          "start_stars": 1026,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-08-07",
+          "days": [
+            232,
+            257,
+            79,
+            231,
+            128,
+            120,
+            120
+          ],
+          "description": "Rules for an AI coding agent to filter out generic AI-generated UI designs, text, and code.",
+          "exact": true,
+          "flags": [],
+          "forks": 494,
+          "full_name": "miqdadbadjuber/anti-slop",
+          "gain": 1167,
+          "growth": 1.0219,
+          "id": 1326531152,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 4,
+          "prev_rank": null,
+          "rank": 3,
+          "secondary": "coding-agent",
+          "stars_end": 2309,
+          "start_stars": 1142,
+          "topics": [
+            "accessibility",
+            "agent-skills",
+            "ai-agents",
+            "ai-coding-agent",
+            "ai-slop",
+            "anti-slop",
+            "claude-code",
+            "copywriting",
+            "design-rules",
+            "ui-design"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "computer-use",
+          "created": "2026-01-04",
+          "days": [
+            189,
+            31,
+            89,
+            384,
+            227,
+            163,
+            166
+          ],
+          "description": "Run AI agents on real and isolated machines — own kernel, filesystem, and network — with <100ms boot. Local first, OCI compatible, pure Rust.",
+          "exact": true,
+          "flags": [],
+          "forks": 185,
+          "full_name": "arcboxlabs/arcbox",
+          "gain": 1249,
+          "growth": 0.8821,
+          "id": 1127761357,
+          "is_ai": true,
+          "language": "Rust",
+          "open_issues": 34,
+          "prev_rank": null,
+          "rank": 4,
+          "secondary": "agent-framework",
+          "stars_end": 2665,
+          "start_stars": 1416,
+          "topics": [
+            "ai-agents",
+            "computer-use",
+            "containers",
+            "docker",
+            "firecracker",
+            "microvm",
+            "rust",
+            "sandbox",
+            "virtual-machine",
+            "virtualization"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-04-14",
+          "days": [
+            113,
+            49,
+            68,
+            235,
+            171,
+            91,
+            239
+          ],
+          "description": "Claude skills for LinkedIn. 12 Claude Code and Codex skills that write human-sounding LinkedIn posts, craft comments that get noticed, analyze your feed, and build a publishing cadence, all from your terminal. Content engineering by Creative Content Crafts. MIT.",
+          "exact": true,
+          "flags": [],
+          "forks": 860,
+          "full_name": "sergebulaev/linkedin-skills",
+          "gain": 966,
+          "growth": 0.8806,
+          "id": 1210670063,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 0,
+          "prev_rank": null,
+          "rank": 5,
+          "secondary": "ai-apps",
+          "stars_end": 2063,
+          "start_stars": 1097,
+          "topics": [
+            "agent-skill",
+            "agent-skills",
+            "ai-agents",
+            "ai-content",
+            "ai-marketing",
+            "anthropic",
+            "awesome-claude",
+            "claude-code",
+            "claude-skills",
+            "content-creation",
+            "content-engineering",
+            "linkedin",
+            "linkedin-automation",
+            "linkedin-engineering",
+            "llm-tools",
+            "openclaw-skill",
+            "personal-branding",
+            "prompt-engineering",
+            "skill-md",
+            "social-media-automation"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "multimodal",
+          "created": "2026-08-19",
+          "days": [
+            91,
+            71,
+            163,
+            385,
+            491,
+            352,
+            282
+          ],
+          "description": "Amagine3D: From hardware requirements to editable 3D designs",
+          "exact": true,
+          "flags": [],
+          "forks": 534,
+          "full_name": "amagine-ai/Amagine3D",
+          "gain": 1835,
+          "growth": 0.7567,
+          "id": 1339742577,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 4,
+          "prev_rank": 8,
+          "rank": 6,
+          "secondary": "ai-apps",
+          "stars_end": 4260,
+          "start_stars": 2425,
+          "topics": [
+            "3d-printing-tools",
+            "text-to-3d",
+            "text-to-cad"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2026-06-22",
+          "days": [
+            493,
+            428,
+            881,
+            1720,
+            3441,
+            2412,
+            2914
+          ],
+          "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+          "exact": true,
+          "flags": [
+            {
+              "kind": "dormant_burst",
+              "label": "잠잠하다 4주 만에 46배",
+              "value": 46.5
+            }
+          ],
+          "forks": 11742,
+          "full_name": "bilawalsidhu/gods-eye-view",
+          "gain": 12289,
+          "growth": 0.687,
+          "id": 1277471539,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 403,
+          "prev_rank": null,
+          "rank": 7,
+          "secondary": "multimodal",
+          "stars_end": 30177,
+          "start_stars": 17888,
+          "topics": [
+            "3d-globe",
+            "cesium",
+            "flight-tracking",
+            "geospatial",
+            "geospatial-intelligence",
+            "gis",
+            "osint",
+            "photogrammetry",
+            "satellite-tracking",
+            "spatial-intelligence",
+            "webgl",
+            "worldview"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-04-09",
+          "days": [
+            4,
+            6,
+            7,
+            126,
+            153,
+            615,
+            308
+          ],
+          "description": "Convert Claude Code or Codex into the most intelligent Deep Research Agent. Collect, search, and synthesize web research into a persistent, searchable wiki that builds on itself. Hosted API + MCP: hyperresearch.ai",
+          "exact": true,
+          "flags": [
+            {
+              "kind": "peak_day",
+              "label": "하루 몰림 50%",
+              "value": 50
+            }
+          ],
+          "forks": 411,
+          "full_name": "jordan-gibbs/hyperresearch",
+          "gain": 1219,
+          "growth": 0.6571,
+          "id": 1206357666,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 30,
+          "prev_rank": null,
+          "rank": 8,
+          "secondary": "rag",
+          "stars_end": 3074,
+          "start_stars": 1855,
+          "topics": [
+            "agents",
+            "agentskills",
+            "citations",
+            "claude-code",
+            "codex",
+            "codex-plugin",
+            "codex-skill",
+            "deep-research",
+            "deep-research-agent",
+            "deepresearch",
+            "mcp-server",
+            "research",
+            "research-agent",
+            "research-tools"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "mcp-tools",
+          "created": "2026-06-09",
+          "days": [
+            200,
+            125,
+            68,
+            307,
+            139,
+            200,
+            117
+          ],
+          "description": "Autoharness — a self-learning skill layer for Claude Code — distills skills from your real sessions, updates them as you work, and prunes the ones that stop getting used. No daemon, no benchmark.",
+          "exact": true,
+          "flags": [],
+          "forks": 623,
+          "full_name": "tigerless-labs/autoharness",
+          "gain": 1156,
+          "growth": 0.6491,
+          "id": 1264396304,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 57,
+          "prev_rank": null,
+          "rank": 9,
+          "secondary": "agent-skills",
+          "stars_end": 2937,
+          "start_stars": 1781,
+          "topics": [
+            "agent-skills",
+            "claude-code",
+            "claude-code-plugin",
+            "llm-agents",
+            "python"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "mcp-tools",
+          "created": "2026-08-28",
+          "days": [
+            42,
+            197,
+            806,
+            263,
+            119,
+            99,
+            62
+          ],
+          "description": "ChatGPT thinks. Codex works. Use ChatGPT as the planning brain while keeping the Codex harness.",
+          "exact": true,
+          "flags": [
+            {
+              "kind": "peak_day",
+              "label": "하루 몰림 51%",
+              "value": 51
+            }
+          ],
+          "forks": 697,
+          "full_name": "XiaoDuoYa/codex-with-chatgpt",
+          "gain": 1588,
+          "growth": 0.6447,
+          "id": 1349601607,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 20,
+          "prev_rank": null,
+          "rank": 10,
+          "secondary": "coding-agent",
+          "stars_end": 4051,
+          "start_stars": 2463,
+          "topics": [
+            "ai-agents",
+            "chatgpt",
+            "codex",
+            "mcp",
+            "model-context-protocol",
+            "oauth"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-09-02",
+          "days": [
+            473,
+            381,
+            546,
+            265,
+            354,
+            230,
+            166
+          ],
+          "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
+          "exact": true,
+          "flags": [],
+          "forks": 1077,
+          "full_name": "lnkiai/m3e-canvas",
+          "gain": 2415,
+          "growth": 0.6235,
+          "id": 1354310030,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 11,
+          "prev_rank": null,
+          "rank": 11,
+          "secondary": "coding-agent",
+          "stars_end": 6288,
+          "start_stars": 3873,
+          "topics": [
+            "design-tool",
+            "material-3-expressive",
+            "material-design",
+            "material3",
+            "nextjs",
+            "prompt",
+            "react",
+            "vibe-coding"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": null,
           "created": "2026-03-22",
           "days": [
             47,
@@ -1515,10 +3507,12 @@
           "gain": 652,
           "growth": 0.6059,
           "id": 1188652883,
+          "is_ai": false,
           "language": "Rust",
           "open_issues": 119,
           "prev_rank": null,
           "rank": 12,
+          "secondary": null,
           "stars_end": 1728,
           "start_stars": 1076,
           "topics": [
@@ -1542,9 +3536,11 @@
             "dxf-viewer",
             "dxf-writer",
             "rust"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-05-13",
           "days": [
             228,
@@ -1563,10 +3559,12 @@
           "gain": 16283,
           "growth": 0.6051,
           "id": 1238120057,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 81,
           "prev_rank": null,
           "rank": 13,
+          "secondary": "coding-agent",
           "stars_end": 43194,
           "start_stars": 26911,
           "topics": [
@@ -1576,9 +3574,11 @@
             "claude-skills",
             "developer-tools",
             "productivity"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-framework",
           "created": "2026-08-22",
           "days": [
             125,
@@ -1597,10 +3597,12 @@
           "gain": 943,
           "growth": 0.5382,
           "id": 1342461518,
+          "is_ai": true,
           "language": "Python",
           "open_issues": 7,
           "prev_rank": null,
           "rank": 14,
+          "secondary": "llmops",
           "stars_end": 2695,
           "start_stars": 1752,
           "topics": [
@@ -1612,9 +3614,11 @@
             "multi-agent",
             "terminal-agent",
             "tui"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "ai-apps",
           "created": "2025-09-05",
           "days": [
             1,
@@ -1633,10 +3637,12 @@
           "gain": 880,
           "growth": 0.5195,
           "id": 1051229663,
+          "is_ai": true,
           "language": "Rust",
           "open_issues": 2,
           "prev_rank": null,
           "rank": 15,
+          "secondary": "doc-parsing",
           "stars_end": 2574,
           "start_stars": 1694,
           "topics": [
@@ -1646,164 +3652,15 @@
             "grok",
             "okf-format",
             "openwiki"
-          ]
+          ],
+          "type": "도구/라이브러리"
         }
       ]
     },
     "total": {
-      "ai": null,
-      "all": [
+      "ai": [
         {
-          "created": "2014-07-11",
-          "days": [
-            356,
-            313,
-            323,
-            295,
-            324,
-            308,
-            312
-          ],
-          "description": "😎 Awesome lists about all kinds of interesting topics [NOTE: Pull requests are temporarily disabled until I have a chance to catch up with the existing ones]",
-          "exact": true,
-          "flags": [],
-          "forks": 37759,
-          "full_name": "sindresorhus/awesome",
-          "gain": 2231,
-          "growth": 0.0044,
-          "id": 21737465,
-          "language": null,
-          "open_issues": 105,
-          "prev_rank": 1,
-          "rank": 1,
-          "stars_end": 504186,
-          "start_stars": 501955,
-          "topics": [
-            "awesome",
-            "awesome-list",
-            "lists",
-            "resources",
-            "unicorns"
-          ]
-        },
-        {
-          "created": "2016-03-20",
-          "days": [
-            607,
-            602,
-            546,
-            541,
-            494,
-            399,
-            418
-          ],
-          "description": "A collective list of free APIs",
-          "exact": true,
-          "flags": [],
-          "forks": 54798,
-          "full_name": "public-apis/public-apis",
-          "gain": 3607,
-          "growth": 0.0076,
-          "id": 54346799,
-          "language": "Python",
-          "open_issues": 2375,
-          "prev_rank": 2,
-          "rank": 2,
-          "stars_end": 478120,
-          "start_stars": 474513,
-          "topics": [
-            "api",
-            "apis",
-            "dataset",
-            "development",
-            "free",
-            "list",
-            "lists",
-            "open-source",
-            "public",
-            "public-api",
-            "public-apis",
-            "resources",
-            "software"
-          ]
-        },
-        {
-          "created": "2014-12-24",
-          "days": [
-            67,
-            57,
-            62,
-            40,
-            60,
-            50,
-            51
-          ],
-          "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
-          "exact": true,
-          "flags": [],
-          "forks": 48652,
-          "full_name": "freeCodeCamp/freeCodeCamp",
-          "gain": 387,
-          "growth": 0.0009,
-          "id": 28457823,
-          "language": "TypeScript",
-          "open_issues": 180,
-          "prev_rank": 3,
-          "rank": 3,
-          "stars_end": 454526,
-          "start_stars": 454139,
-          "topics": [
-            "careers",
-            "certification",
-            "community",
-            "curriculum",
-            "d3",
-            "education",
-            "freecodecamp",
-            "javascript",
-            "learn-to-code",
-            "math",
-            "nodejs",
-            "nonprofits",
-            "programming",
-            "react",
-            "teachers"
-          ]
-        },
-        {
-          "created": "2013-10-11",
-          "days": [
-            110,
-            86,
-            99,
-            72,
-            119,
-            94,
-            66
-          ],
-          "description": ":books: Freely available programming books",
-          "exact": true,
-          "flags": [],
-          "forks": 67003,
-          "full_name": "EbookFoundation/free-programming-books",
-          "gain": 646,
-          "growth": 0.0016,
-          "id": 13491895,
-          "language": "Python",
-          "open_issues": 97,
-          "prev_rank": 4,
-          "rank": 4,
-          "stars_end": 395800,
-          "start_stars": 395154,
-          "topics": [
-            "books",
-            "education",
-            "hacktoberfest",
-            "list",
-            "resource"
-          ]
-        },
-        {
+          "category": "ai-apps",
           "created": "2025-11-24",
           "days": [
             146,
@@ -1822,10 +3679,12 @@
           "gain": 1005,
           "growth": 0.0026,
           "id": 1103012935,
+          "is_ai": true,
           "language": "TypeScript",
           "open_issues": 7841,
-          "prev_rank": 5,
-          "rank": 5,
+          "prev_rank": 1,
+          "rank": 1,
+          "secondary": "agent-framework",
           "stars_end": 386841,
           "start_stars": 385836,
           "topics": [
@@ -1836,9 +3695,774 @@
             "openclaw",
             "own-your-data",
             "personal"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
+          "created": "2025-10-09",
+          "days": [
+            397,
+            440,
+            621,
+            685,
+            715,
+            642,
+            429
+          ],
+          "description": "An agentic skills framework & software development methodology that works.",
+          "exact": true,
+          "flags": [],
+          "forks": 27183,
+          "full_name": "obra/superpowers",
+          "gain": 3929,
+          "growth": 0.014,
+          "id": 1073224795,
+          "is_ai": true,
+          "language": "Shell",
+          "open_issues": 367,
+          "prev_rank": 2,
+          "rank": 2,
+          "secondary": "coding-agent",
+          "stars_end": 284018,
+          "start_stars": 280089,
+          "topics": [
+            "ai",
+            "brainstorming",
+            "coding",
+            "obra",
+            "sdlc",
+            "skills",
+            "subagent-driven-development",
+            "superpowers"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-02-03",
+          "days": [
+            2100,
+            1177,
+            885,
+            937,
+            1022,
+            887,
+            701
+          ],
+          "description": "Skills for Real Engineers. Straight from my .agents directory.",
+          "exact": true,
+          "flags": [],
+          "forks": 25533,
+          "full_name": "mattpocock/skills",
+          "gain": 7709,
+          "growth": 0.0307,
+          "id": 1148788086,
+          "is_ai": true,
+          "language": "Shell",
+          "open_issues": 206,
+          "prev_rank": 3,
+          "rank": 3,
+          "secondary": "coding-agent",
+          "stars_end": 259116,
+          "start_stars": 251407,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-01-18",
+          "days": [
+            1671,
+            1403,
+            1365,
+            844,
+            699,
+            623,
+            631
+          ],
+          "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+          "exact": true,
+          "flags": [],
+          "forks": 42843,
+          "full_name": "affaan-m/ECC",
+          "gain": 7236,
+          "growth": 0.0292,
+          "id": 1136590548,
+          "is_ai": true,
+          "language": "JavaScript",
+          "open_issues": 235,
+          "prev_rank": 4,
+          "rank": 4,
+          "secondary": "coding-agent",
+          "stars_end": 255162,
+          "start_stars": 247926,
+          "topics": [
+            "ai-agents",
+            "anthropic",
+            "claude",
+            "claude-code",
+            "developer-tools",
+            "llm",
+            "mcp",
+            "productivity"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2025-07-22",
+          "days": [
+            596,
+            486,
+            438,
+            430,
+            382,
+            405,
+            304
+          ],
+          "description": "The agent that grows with you",
+          "exact": true,
+          "flags": [],
+          "forks": 56451,
+          "full_name": "NousResearch/hermes-agent",
+          "gain": 3041,
+          "growth": 0.0127,
+          "id": 1024554267,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 51411,
+          "prev_rank": 5,
+          "rank": 5,
+          "secondary": "agent-framework",
+          "stars_end": 243397,
+          "start_stars": 240356,
+          "topics": [
+            "ai",
+            "ai-agent",
+            "ai-agents",
+            "anthropic",
+            "chatgpt",
+            "claude",
+            "claude-code",
+            "codex",
+            "hermes",
+            "hermes-agent",
+            "llm",
+            "nous-research",
+            "openai"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2026-08-13",
+          "days": [
+            1066,
+            1074,
+            1192,
+            1370,
+            1743,
+            1259,
+            994
+          ],
+          "description": "DeepSeek Harness: Everything is a Plugin.",
+          "exact": true,
+          "flags": [],
+          "forks": 31634,
+          "full_name": "deepseek-ai/deepseek-harness",
+          "gain": 8698,
+          "growth": 0.0412,
+          "id": 1333065091,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 0,
+          "prev_rank": 6,
+          "rank": 6,
+          "secondary": "coding-agent",
+          "stars_end": 220062,
+          "start_stars": 211364,
+          "topics": [
+            "ai-agents",
+            "cordis",
+            "dsh",
+            "dsh-plugin"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-skills",
+          "created": "2026-01-27",
+          "days": [
+            272,
+            308,
+            666,
+            335,
+            251,
+            291,
+            215
+          ],
+          "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+          "exact": true,
+          "flags": [],
+          "forks": 22505,
+          "full_name": "multica-ai/andrej-karpathy-skills",
+          "gain": 2338,
+          "growth": 0.0112,
+          "id": 1142983825,
+          "is_ai": true,
+          "language": null,
+          "open_issues": 138,
+          "prev_rank": 7,
+          "rank": 7,
+          "secondary": "coding-agent",
+          "stars_end": 211439,
+          "start_stars": 209101,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "coding-agent",
+          "created": "2025-04-30",
+          "days": [
+            634,
+            344,
+            301,
+            247,
+            345,
+            257,
+            189
+          ],
+          "description": "The open source coding agent.",
+          "exact": true,
+          "flags": [],
+          "forks": 29725,
+          "full_name": "anomalyco/opencode",
+          "gain": 2317,
+          "growth": 0.0114,
+          "id": 975734319,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 3847,
+          "prev_rank": 8,
+          "rank": 8,
+          "secondary": null,
+          "stars_end": 205456,
+          "start_stars": 203139,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "agent-framework",
+          "created": "2019-06-22",
+          "days": [
+            105,
+            116,
+            120,
+            120,
+            103,
+            99,
+            97
+          ],
+          "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+          "exact": true,
+          "flags": [],
+          "forks": 61276,
+          "full_name": "n8n-io/n8n",
+          "gain": 760,
+          "growth": 0.0038,
+          "id": 193215554,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 1219,
+          "prev_rank": 9,
+          "rank": 9,
+          "secondary": "ai-apps",
+          "stars_end": 203153,
+          "start_stars": 202393,
+          "topics": [
+            "ai",
+            "apis",
+            "automation",
+            "cli",
+            "data-flow",
+            "development",
+            "integration-framework",
+            "integrations",
+            "ipaas",
+            "low-code",
+            "low-code-platform",
+            "mcp",
+            "mcp-client",
+            "mcp-server",
+            "n8n",
+            "no-code",
+            "self-hosted",
+            "typescript",
+            "workflow",
+            "workflow-automation"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "training",
+          "created": "2015-11-07",
+          "days": [
+            383,
+            62,
+            30,
+            23,
+            386,
+            15,
+            19
+          ],
+          "description": "An Open Source Machine Learning Framework for Everyone",
+          "exact": true,
+          "flags": [],
+          "forks": 78723,
+          "full_name": "tensorflow/tensorflow",
+          "gain": 918,
+          "growth": 0.0046,
+          "id": 45717250,
+          "is_ai": true,
+          "language": "C++",
+          "open_issues": 3438,
+          "prev_rank": 10,
+          "rank": 10,
+          "secondary": "inference",
+          "stars_end": 199267,
+          "start_stars": 198349,
+          "topics": [
+            "deep-learning",
+            "deep-neural-networks",
+            "distributed",
+            "machine-learning",
+            "ml",
+            "neural-network",
+            "python",
+            "tensorflow"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "coding-agent",
+          "created": "2026-03-31",
+          "days": [
+            25,
+            27,
+            18,
+            17,
+            23,
+            24,
+            20
+          ],
+          "description": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention.",
+          "exact": true,
+          "flags": [],
+          "forks": 107697,
+          "full_name": "ultraworkers/claw-code",
+          "gain": 154,
+          "growth": 0.0008,
+          "id": 1197021090,
+          "is_ai": true,
+          "language": "Rust",
+          "open_issues": 1,
+          "prev_rank": 11,
+          "rank": 11,
+          "secondary": null,
+          "stars_end": 193901,
+          "start_stars": 193747,
+          "topics": [],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2023-03-16",
+          "days": [
+            15,
+            19,
+            25,
+            30,
+            19,
+            30,
+            20
+          ],
+          "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+          "exact": true,
+          "flags": [],
+          "forks": 45902,
+          "full_name": "Significant-Gravitas/AutoGPT",
+          "gain": 158,
+          "growth": 0.0008,
+          "id": 614765452,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 731,
+          "prev_rank": 12,
+          "rank": 12,
+          "secondary": "agent-framework",
+          "stars_end": 186649,
+          "start_stars": 186491,
+          "topics": [
+            "agentic-ai",
+            "agents",
+            "ai",
+            "artificial-intelligence",
+            "autonomous-agents",
+            "claude",
+            "gpt",
+            "llama-api",
+            "llm",
+            "openai",
+            "python"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "doc-parsing",
+          "created": "2024-11-13",
+          "days": [
+            662,
+            1799,
+            1096,
+            346,
+            262,
+            273,
+            603
+          ],
+          "description": "Python tool for converting files and office documents to Markdown.",
+          "exact": true,
+          "flags": [],
+          "forks": 14384,
+          "full_name": "microsoft/markitdown",
+          "gain": 5041,
+          "growth": 0.0284,
+          "id": 888092115,
+          "is_ai": true,
+          "language": "Python",
+          "open_issues": 765,
+          "prev_rank": 14,
+          "rank": 13,
+          "secondary": "mcp-tools",
+          "stars_end": 182538,
+          "start_stars": 177497,
+          "topics": [
+            "autogen",
+            "autogen-extension",
+            "langchain",
+            "markdown",
+            "microsoft-office",
+            "openai",
+            "pdf"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "local-llm",
+          "created": "2023-06-26",
+          "days": [
+            90,
+            111,
+            60,
+            72,
+            95,
+            88,
+            60
+          ],
+          "description": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+          "exact": true,
+          "flags": [],
+          "forks": 18668,
+          "full_name": "ollama/ollama",
+          "gain": 576,
+          "growth": 0.0032,
+          "id": 658928958,
+          "is_ai": true,
+          "language": "Go",
+          "open_issues": 4471,
+          "prev_rank": 13,
+          "rank": 14,
+          "secondary": "inference",
+          "stars_end": 179942,
+          "start_stars": 179366,
+          "topics": [
+            "deepseek",
+            "gemma",
+            "glm",
+            "go",
+            "golang",
+            "gpt-oss",
+            "llama",
+            "llm",
+            "llms",
+            "minimax",
+            "mistral",
+            "muse",
+            "ollama",
+            "qwen"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": "doc-parsing",
+          "created": "2024-04-15",
+          "days": [
+            385,
+            398,
+            376,
+            404,
+            446,
+            402,
+            345
+          ],
+          "description": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+          "exact": true,
+          "flags": [],
+          "forks": 10339,
+          "full_name": "firecrawl/firecrawl",
+          "gain": 2756,
+          "growth": 0.0157,
+          "id": 787076358,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 683,
+          "prev_rank": 15,
+          "rank": 15,
+          "secondary": "mcp-tools",
+          "stars_end": 178503,
+          "start_stars": 175747,
+          "topics": [
+            "ai",
+            "ai-agents",
+            "ai-crawler",
+            "ai-scraping",
+            "ai-search",
+            "crawler",
+            "data-extraction",
+            "html-to-markdown",
+            "llm",
+            "markdown",
+            "scraper",
+            "scraping",
+            "web-crawler",
+            "web-data",
+            "web-data-extraction",
+            "web-scraper",
+            "web-scraping",
+            "web-search",
+            "webscraping"
+          ],
+          "type": "도구/라이브러리"
+        }
+      ],
+      "all": [
+        {
+          "category": null,
+          "created": "2014-07-11",
+          "days": [
+            356,
+            313,
+            323,
+            295,
+            324,
+            308,
+            312
+          ],
+          "description": "😎 Awesome lists about all kinds of interesting topics [NOTE: Pull requests are temporarily disabled until I have a chance to catch up with the existing ones]",
+          "exact": true,
+          "flags": [],
+          "forks": 37759,
+          "full_name": "sindresorhus/awesome",
+          "gain": 2231,
+          "growth": 0.0044,
+          "id": 21737465,
+          "is_ai": false,
+          "language": null,
+          "open_issues": 105,
+          "prev_rank": 1,
+          "rank": 1,
+          "secondary": null,
+          "stars_end": 504186,
+          "start_stars": 501955,
+          "topics": [
+            "awesome",
+            "awesome-list",
+            "lists",
+            "resources",
+            "unicorns"
+          ],
+          "type": "큐레이션 목록"
+        },
+        {
+          "category": null,
+          "created": "2016-03-20",
+          "days": [
+            607,
+            602,
+            546,
+            541,
+            494,
+            399,
+            418
+          ],
+          "description": "A collective list of free APIs",
+          "exact": true,
+          "flags": [],
+          "forks": 54798,
+          "full_name": "public-apis/public-apis",
+          "gain": 3607,
+          "growth": 0.0076,
+          "id": 54346799,
+          "is_ai": false,
+          "language": "Python",
+          "open_issues": 2375,
+          "prev_rank": 2,
+          "rank": 2,
+          "secondary": null,
+          "stars_end": 478120,
+          "start_stars": 474513,
+          "topics": [
+            "api",
+            "apis",
+            "dataset",
+            "development",
+            "free",
+            "list",
+            "lists",
+            "open-source",
+            "public",
+            "public-api",
+            "public-apis",
+            "resources",
+            "software"
+          ],
+          "type": "큐레이션 목록"
+        },
+        {
+          "category": null,
+          "created": "2014-12-24",
+          "days": [
+            67,
+            57,
+            62,
+            40,
+            60,
+            50,
+            51
+          ],
+          "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+          "exact": true,
+          "flags": [],
+          "forks": 48652,
+          "full_name": "freeCodeCamp/freeCodeCamp",
+          "gain": 387,
+          "growth": 0.0009,
+          "id": 28457823,
+          "is_ai": false,
+          "language": "TypeScript",
+          "open_issues": 180,
+          "prev_rank": 3,
+          "rank": 3,
+          "secondary": null,
+          "stars_end": 454526,
+          "start_stars": 454139,
+          "topics": [
+            "careers",
+            "certification",
+            "community",
+            "curriculum",
+            "d3",
+            "education",
+            "freecodecamp",
+            "javascript",
+            "learn-to-code",
+            "math",
+            "nodejs",
+            "nonprofits",
+            "programming",
+            "react",
+            "teachers"
+          ],
+          "type": "교육자료"
+        },
+        {
+          "category": null,
+          "created": "2013-10-11",
+          "days": [
+            110,
+            86,
+            99,
+            72,
+            119,
+            94,
+            66
+          ],
+          "description": ":books: Freely available programming books",
+          "exact": true,
+          "flags": [],
+          "forks": 67003,
+          "full_name": "EbookFoundation/free-programming-books",
+          "gain": 646,
+          "growth": 0.0016,
+          "id": 13491895,
+          "is_ai": false,
+          "language": "Python",
+          "open_issues": 97,
+          "prev_rank": 4,
+          "rank": 4,
+          "secondary": null,
+          "stars_end": 395800,
+          "start_stars": 395154,
+          "topics": [
+            "books",
+            "education",
+            "hacktoberfest",
+            "list",
+            "resource"
+          ],
+          "type": "큐레이션 목록"
+        },
+        {
+          "category": "ai-apps",
+          "created": "2025-11-24",
+          "days": [
+            146,
+            161,
+            156,
+            133,
+            162,
+            132,
+            115
+          ],
+          "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 ",
+          "exact": true,
+          "flags": [],
+          "forks": 82621,
+          "full_name": "openclaw/openclaw",
+          "gain": 1005,
+          "growth": 0.0026,
+          "id": 1103012935,
+          "is_ai": true,
+          "language": "TypeScript",
+          "open_issues": 7841,
+          "prev_rank": 5,
+          "rank": 5,
+          "secondary": "agent-framework",
+          "stars_end": 386841,
+          "start_stars": 385836,
+          "topics": [
+            "ai",
+            "assistant",
+            "crustacean",
+            "molty",
+            "openclaw",
+            "own-your-data",
+            "personal"
+          ],
+          "type": "도구/라이브러리"
+        },
+        {
+          "category": null,
           "created": "2017-02-26",
           "days": [
             216,
@@ -1857,10 +4481,12 @@
           "gain": 1500,
           "growth": 0.0041,
           "id": 83222441,
+          "is_ai": false,
           "language": "Python",
           "open_issues": 631,
           "prev_rank": 6,
           "rank": 6,
+          "secondary": null,
           "stars_end": 368823,
           "start_stars": 367323,
           "topics": [
@@ -1877,9 +4503,11 @@
             "web",
             "web-application",
             "webapp"
-          ]
+          ],
+          "type": "교육자료"
         },
         {
+          "category": null,
           "created": "2017-03-15",
           "days": [
             62,
@@ -1898,10 +4526,12 @@
           "gain": 690,
           "growth": 0.0019,
           "id": 85077558,
+          "is_ai": false,
           "language": "TypeScript",
           "open_issues": 6,
           "prev_rank": 7,
           "rank": 7,
+          "secondary": null,
           "stars_end": 366141,
           "start_stars": 365451,
           "topics": [
@@ -1923,9 +4553,11 @@
             "roadmap",
             "software-architect-roadmap",
             "vue-roadmap"
-          ]
+          ],
+          "type": "교육자료"
         },
         {
+          "category": null,
           "created": "2016-06-06",
           "days": [
             64,
@@ -1944,10 +4576,12 @@
           "gain": 465,
           "growth": 0.0013,
           "id": 60493101,
+          "is_ai": false,
           "language": null,
           "open_issues": 129,
           "prev_rank": 8,
           "rank": 8,
+          "secondary": null,
           "stars_end": 359972,
           "start_stars": 359507,
           "topics": [
@@ -1963,9 +4597,11 @@
             "programming-interviews",
             "software-engineering",
             "study-plan"
-          ]
+          ],
+          "type": "교육자료"
         },
         {
+          "category": null,
           "created": "2014-06-27",
           "days": [
             328,
@@ -1984,10 +4620,12 @@
           "gain": 1751,
           "growth": 0.0055,
           "id": 21289110,
+          "is_ai": false,
           "language": "Python",
           "open_issues": 19,
           "prev_rank": 9,
           "rank": 9,
+          "secondary": null,
           "stars_end": 319442,
           "start_stars": 317691,
           "topics": [
@@ -1997,9 +4635,11 @@
             "python-frameworks",
             "python-libraries",
             "python-tools"
-          ]
+          ],
+          "type": "큐레이션 목록"
         },
         {
+          "category": null,
           "created": "2015-06-01",
           "days": [
             188,
@@ -2018,10 +4658,12 @@
           "gain": 1506,
           "growth": 0.0048,
           "id": 36633370,
+          "is_ai": false,
           "language": null,
           "open_issues": 0,
           "prev_rank": 10,
           "rank": 10,
+          "secondary": null,
           "stars_end": 318106,
           "start_stars": 316600,
           "topics": [
@@ -2033,9 +4675,11 @@
             "privacy",
             "self-hosted",
             "selfhosted"
-          ]
+          ],
+          "type": "큐레이션 목록"
         },
         {
+          "category": "agent-skills",
           "created": "2025-10-09",
           "days": [
             397,
@@ -2054,10 +4698,12 @@
           "gain": 3929,
           "growth": 0.014,
           "id": 1073224795,
+          "is_ai": true,
           "language": "Shell",
           "open_issues": 367,
           "prev_rank": 12,
           "rank": 11,
+          "secondary": "coding-agent",
           "stars_end": 284018,
           "start_stars": 280089,
           "topics": [
@@ -2069,9 +4715,11 @@
             "skills",
             "subagent-driven-development",
             "superpowers"
-          ]
+          ],
+          "type": "도구/라이브러리"
         },
         {
+          "category": null,
           "created": "2017-04-12",
           "days": [
             147,
@@ -2090,10 +4738,12 @@
           "gain": 960,
           "growth": 0.0034,
           "id": 88011908,
+          "is_ai": false,
           "language": "Python",
           "open_issues": 238,
           "prev_rank": 11,
           "rank": 12,
+          "secondary": null,
           "stars_end": 282196,
           "start_stars": 281236,
           "topics": [
@@ -2105,9 +4755,11 @@
             "python",
             "tutorial",
             "webdevelopment"
-          ]
+          ],
+          "type": "큐레이션 목록"
         },
         {
+          "category": null,
           "created": "2019-03-26",
           "days": [
             13,
@@ -2126,15 +4778,19 @@
           "gain": 135,
           "growth": 0.0005,
           "id": 177736533,
+          "is_ai": false,
           "language": null,
           "open_issues": 16689,
           "prev_rank": 13,
           "rank": 13,
+          "secondary": null,
           "stars_end": 276515,
           "start_stars": 276380,
-          "topics": []
+          "topics": [],
+          "type": "기타"
         },
         {
+          "category": "agent-skills",
           "created": "2026-02-03",
           "days": [
             2100,
@@ -2153,15 +4809,19 @@
           "gain": 7709,
           "growth": 0.0307,
           "id": 1148788086,
+          "is_ai": true,
           "language": "Shell",
           "open_issues": 206,
           "prev_rank": 14,
           "rank": 14,
+          "secondary": "coding-agent",
           "stars_end": 259116,
           "start_stars": 251407,
-          "topics": []
+          "topics": [],
+          "type": "도구/라이브러리"
         },
         {
+          "category": "agent-skills",
           "created": "2026-01-18",
           "days": [
             1671,
@@ -2180,10 +4840,12 @@
           "gain": 7236,
           "growth": 0.0292,
           "id": 1136590548,
+          "is_ai": true,
           "language": "JavaScript",
           "open_issues": 235,
           "prev_rank": null,
           "rank": 15,
+          "secondary": "coding-agent",
           "stars_end": 255162,
           "start_stars": 247926,
           "topics": [
@@ -2195,13 +4857,14 @@
             "llm",
             "mcp",
             "productivity"
-          ]
+          ],
+          "type": "도구/라이브러리"
         }
       ]
     }
   },
   "notes": {
-    "ai": "Phase 2 분류 뒤에 채운다",
+    "ai": "축 후보(pool) 위에서부터 AI 로 판정된 저장소 — ai_status.pending_above 는 그보다 위에 있는 판정 전 후보 수(0 이 아니면 순위가 바뀔 수 있다)",
     "pool": "축마다 상위 200개 ID — classify 가 위에서부터 AI 15개까지 판정(결정 30)",
     "total": "주간 파일(증가 ≥ 10)과 스냅샷이 있으면 그 값 기준"
   },

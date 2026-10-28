@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "463bda8f4638032c",
+    "is_ai": true,
+    "reason": "A personal LLM-powered multi-agent trading assistant app with backtesting that also exposes an MCP interface.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-01",
   "description": "\"Vibe-Trading: Your Personal Trading Agent\"",
   "first_seen": "2026-04-12",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0838b2fc4508a78e",
+    "is_ai": false,
+    "reason": "A Windows context menu management utility with no AI features; AI was only used to help write the code.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "PLFJY/ContextMenuMgr",
+  "id": 1202214420
+}

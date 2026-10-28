@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b05e58e66b94d5e1",
+    "is_ai": true,
+    "reason": "Channel extension plugins that connect the OpenClaw AI assistant to Chinese IM platforms like DingTalk, WeCom, QQ and Feishu.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-28",
   "description": "OpenClaw中国插件：支持飞书，钉钉，QQ，企业微信，微信",
   "first_seen": "2026-03-01",

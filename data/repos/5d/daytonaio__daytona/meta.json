@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2068c7f974d5bd49",
+    "is_ai": true,
+    "reason": "Daytona is a sandbox runtime infrastructure for executing AI-generated code and agent workflows.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-02-06",
   "description": "Daytona is a Secure and Elastic Infrastructure for Running AI-Generated Code",
   "first_seen": "2025-11-02",
   "full_name": "daytonaio/daytona",
   "id": 753490180,
   "language": null,
-  "last_seen": "2025-11-16",
+  "last_seen": "2026-02-15",
   "topics": [
     "agentic-workflow",
     "ai",

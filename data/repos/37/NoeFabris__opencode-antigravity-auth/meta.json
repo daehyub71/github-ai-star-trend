@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "95ba17f0d761b88c",
+    "is_ai": true,
+    "reason": "An OpenCode plugin that lets the coding agent authenticate via Antigravity OAuth to access Gemini and Claude models, so it is a plugin loaded by a coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-09",
   "description": "Enable Opencode to authenticate against Antigravity (Google's IDE) via OAuth so you can use Antigravity rate limits and access models like gemini-3-pro and claude-opus-4-5-thinking with your Google credentials.",
   "first_seen": "2026-01-11",
   "full_name": "NoeFabris/opencode-antigravity-auth",
   "id": 1113403973,
   "language": "TypeScript",
-  "last_seen": "2026-01-11",
+  "last_seen": "2026-01-18",
   "topics": [
     "claude",
     "gemini",

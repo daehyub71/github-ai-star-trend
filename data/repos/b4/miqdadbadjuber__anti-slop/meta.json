@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "268db87b3806778a",
+    "is_ai": true,
+    "reason": "A rule/skill set installed into AI coding agents to filter generic AI-generated UI, text, and code.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-07",
   "description": "Rules for an AI coding agent to filter out generic AI-generated UI designs, text, and code.",
   "first_seen": "2026-09-06",

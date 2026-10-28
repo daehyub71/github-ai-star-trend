@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3580752ee53ba0f7",
+    "is_ai": true,
+    "reason": "A localization patch for the Claude Desktop AI chat client, supporting third-party API modes.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "javaht/claude-desktop-zh-cn",
+  "id": 1219719583
+}

@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a8a328ad2e6887c2",
+    "is_ai": true,
+    "reason": "A local UI for the ACE-Step AI music generation model, so it belongs to audio generation.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-04",
+  "description": "🎵 The Ultimate Open Source Suno Alternative - Professional UI for ACE-Step 1.5 AI Music Generation. Free, local, unlimited. Stop paying for Suno!",
+  "first_seen": "2026-05-03",
+  "full_name": "fspecii/ace-step-ui",
+  "id": 1149314442,
+  "language": "JavaScript",
+  "last_seen": "2026-05-03",
+  "topics": [
+    "ace-step",
+    "ai",
+    "ai-music",
+    "local-first",
+    "music",
+    "music-generation",
+    "open-source",
+    "react",
+    "suno-alternative",
+    "typescript"
+  ]
+}

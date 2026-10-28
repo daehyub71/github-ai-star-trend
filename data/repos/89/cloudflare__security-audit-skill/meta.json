@@ -1,7 +1,21 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e1f51ba47aedb630",
+    "is_ai": true,
+    "reason": "A coding-agent skill package of prompts and workflow files that turns an agent into a multi-phase security auditor.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-18",
   "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
-  "first_seen": "2026-09-13",
+  "first_seen": "2026-07-05",
   "full_name": "cloudflare/security-audit-skill",
   "id": 1273427276,
   "language": "JavaScript",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7a4c5e970feb11be",
+    "is_ai": true,
+    "reason": "A free hands-on LLM tutorial series covering fine-tuning, prompting, knowledge editing, and safety topics.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "Lordog/dive-into-llms",
+  "id": 783730789
+}

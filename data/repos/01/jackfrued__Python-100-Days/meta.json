@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2780271be7f83445",
+    "is_ai": false,
+    "reason": "A general Python learning course spanning 100 days with only incidental AI/ML content, so it is general education material.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "jackfrued/Python-100-Days",
+  "id": 123458551
+}

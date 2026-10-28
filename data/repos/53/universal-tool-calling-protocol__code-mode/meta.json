@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "54982cacc8769ac0",
+    "is_ai": true,
+    "reason": "A library that lets agents call MCP and UTCP tools through sandboxed code execution, so it is agent tooling infrastructure.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-11-11",
+  "description": "🔌 Plug-and-play library to enable agents to call MCP and UTCP tools via code execution. ",
+  "first_seen": "2025-11-30",
+  "full_name": "universal-tool-calling-protocol/code-mode",
+  "id": 1094122545,
+  "language": "TypeScript",
+  "last_seen": "2025-11-30",
+  "topics": [
+    "ai-agents",
+    "codemode",
+    "mcp",
+    "model-context-protocol",
+    "toolchain",
+    "utcp"
+  ]
+}

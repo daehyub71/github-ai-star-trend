@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "692dad7d3fd2de3d",
+    "is_ai": true,
+    "reason": "Awesome-style curated directory of free LLM API providers with configs for coding tools, best fit to API access/gateway listings.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "created": "2026-05-10",
+  "description": "134+ free LLM APIs & AI API keys from 40+ providers. Google Gemini, NVIDIA NIM, Groq, OpenRouter & more. One-click setup for Claude Code, Cursor and Codex.",
+  "first_seen": "2026-08-02",
+  "full_name": "open-free-llm-api/awesome-freellm-apis",
+  "id": 1234724745,
+  "language": null,
+  "last_seen": "2026-08-02",
+  "topics": [
+    "free-llm-api",
+    "free-llm-models",
+    "free-llm-resources",
+    "free-models",
+    "freellm",
+    "freellmapi"
+  ]
+}

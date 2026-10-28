@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "731c9006fb79a92d",
+    "is_ai": true,
+    "reason": "Lecture materials for Stanford's CS336 course on building language models from scratch.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "stanford-cs336/lectures",
+  "id": 941671021
+}

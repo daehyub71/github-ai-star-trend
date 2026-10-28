@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "local-llm",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "aafe2e3fc2415527",
+    "is_ai": true,
+    "reason": "A CLI/TUI tool that detects local hardware and recommends which LLMs and quantizations will run well, with benchmarking support.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-15",
   "description": "Hundreds of models & providers. One command to find what runs on your hardware.",
   "first_seen": "2026-02-22",

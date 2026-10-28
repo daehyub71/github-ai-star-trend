@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ddc3672b967fae81",
+    "is_ai": true,
+    "reason": "Research release of the VGGT-Omega 3D vision geometry model, with pretrained checkpoints and training code.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2026-05-14",
+  "description": "[CVPR 2026 Oral] VGGT Omega",
+  "first_seen": "2026-05-31",
+  "full_name": "facebookresearch/vggt-omega",
+  "id": 1238391754,
+  "language": "Python",
+  "last_seen": "2026-05-31",
+  "topics": []
+}

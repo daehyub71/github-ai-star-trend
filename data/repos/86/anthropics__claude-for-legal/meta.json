@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ac0500f8aac3b80f",
+    "is_ai": true,
+    "reason": "Claude Code/Cowork plugin suite of legal-workflow skills, agents, and MCP connectors.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-21",
   "description": "A suite of plugins for legal workflows",
   "first_seen": "2026-05-10",

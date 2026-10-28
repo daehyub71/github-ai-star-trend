@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "4726e96599897b14",
+    "is_ai": false,
+    "reason": "A general curated list of Python libraries in which AI is only one section among many.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2014-06-27",
   "description": "The definitive list that answers \"I want to do X in Python, which tool should I use?\"",
   "first_seen": "2025-10-26",

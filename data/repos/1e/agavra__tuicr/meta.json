@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "64fed6754dcb59d0",
+    "is_ai": true,
+    "reason": "A terminal code review TUI tagged ai-tools, used to review and export structured feedback on (often AI-generated) code changes, fitting the coding tooling space.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-08",
   "description": "a code review TUI with vim keybindings",
   "first_seen": "2026-07-26",

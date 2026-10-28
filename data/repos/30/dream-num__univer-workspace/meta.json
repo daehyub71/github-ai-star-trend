@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "603651ef447c1482",
+    "is_ai": true,
+    "reason": "An office workspace built for AI agents to operate, with an agent interface, CLI, skills, and worktree review for agent edits.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "dream-num/univer-workspace",
+  "id": 1334011664
+}

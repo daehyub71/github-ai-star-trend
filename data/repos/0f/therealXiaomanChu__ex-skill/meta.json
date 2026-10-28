@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9ef0dcee8f730596",
+    "is_ai": true,
+    "reason": "A Claude Code agent skill that generates persona skills mimicking an ex-partner from chat logs.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-03-31",
+  "description": "把前任蒸馏成 AI Skill，用ta的方式跟你说话。",
+  "first_seen": "2026-04-05",
+  "full_name": "therealXiaomanChu/ex-skill",
+  "id": 1197055882,
+  "language": "Python",
+  "last_seen": "2026-04-05",
+  "topics": []
+}

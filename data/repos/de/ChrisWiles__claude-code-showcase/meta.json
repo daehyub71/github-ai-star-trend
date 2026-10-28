@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8dbc17c74c4ce4e3",
+    "is_ai": true,
+    "reason": "An example Claude Code configuration showcasing skills, agents, hooks, and commands for others to copy.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-01-06",
   "description": "Comprehensive Claude Code project configuration example with hooks, skills, agents, commands, and GitHub Actions workflows",
   "first_seen": "2026-01-04",
   "full_name": "ChrisWiles/claude-code-showcase",
   "id": 1129202884,
   "language": "JavaScript",
-  "last_seen": "2026-01-18",
+  "last_seen": "2026-01-25",
   "topics": []
 }

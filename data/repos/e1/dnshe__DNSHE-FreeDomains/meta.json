@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7a97c773cb3eb3a7",
+    "is_ai": false,
+    "reason": "This repo introduces a free subdomain and DNS service and has no real AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "dnshe/DNSHE-FreeDomains",
+  "id": 1221522201
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0294035c96f3acbe",
+    "is_ai": true,
+    "reason": "A locally run voice agent pipeline (VAD, STT, LLM, TTS) with an OpenAI Realtime-compatible server built from open models.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-08-07",
   "description": "Build voice agents with open-source models",
   "first_seen": "2026-07-26",

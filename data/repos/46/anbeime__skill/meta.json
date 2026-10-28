@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "114e81f2ce54bf05",
+    "is_ai": true,
+    "reason": "A store collecting and packaging AI agent skill packs, combining original skills with auto-scraped upstream skill collections.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "anbeime/skill",
+  "id": 1147838400
+}

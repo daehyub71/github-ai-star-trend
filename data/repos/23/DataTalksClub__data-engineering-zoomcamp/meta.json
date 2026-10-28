@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "20133ee6b72ffe4f",
+    "is_ai": false,
+    "reason": "A free data engineering course on pipelines with tools like Spark, Kafka and dbt, not focused on AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "DataTalksClub/data-engineering-zoomcamp",
+  "id": 419661684
+}

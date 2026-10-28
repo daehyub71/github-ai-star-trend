@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "bb21ba8ab09724f8",
+    "is_ai": false,
+    "reason": "Browser extension for copying code, downloading articles, and syncing posts across platforms, with no advertised AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "027xiguapi/code-box",
+  "id": 826182693
+}

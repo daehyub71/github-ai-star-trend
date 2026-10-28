@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dd9514f7061d1843",
+    "is_ai": false,
+    "reason": "Sail is a Rust-based Spark replacement for distributed data processing; its mention of AI workloads is marketing, and its core is a general data engine rather than an AI tool.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "lakehq/sail",
+  "id": 734174248
+}

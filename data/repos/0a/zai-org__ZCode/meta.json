@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "fd752c1e88d2d1ad",
+    "is_ai": true,
+    "reason": "ZCode is Z.ai's AI coding agent workbench with desktop, web, and terminal agent interfaces.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-20",
   "description": "Z.ai's coding agent harness. Powerful, intelligent, extensible.",
   "first_seen": "2026-09-20",
   "full_name": "zai-org/ZCode",
   "id": 1378288598,
   "language": "TypeScript",
-  "last_seen": "2026-10-04",
+  "last_seen": "2026-10-11",
   "topics": []
 }

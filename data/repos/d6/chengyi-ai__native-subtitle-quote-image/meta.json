@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b6bd779cfb5d6ad8",
+    "is_ai": true,
+    "reason": "An agent skill for Codex/Claude Code that extracts video frames with subtitles and composes social quote images.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-08-16",
   "description": "保留视频内嵌字幕，精确取帧并生成 3:4 社交长图的 Agent Skill",
   "first_seen": "2026-10-04",

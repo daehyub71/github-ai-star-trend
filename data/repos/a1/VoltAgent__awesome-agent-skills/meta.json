@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1338afa88f9b162e",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of agent skills for coding agents like Claude Code, Codex, and Cursor.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "VoltAgent/awesome-agent-skills",
+  "id": 1084853233
+}

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "27dadcebd655d8d1",
+    "is_ai": false,
+    "reason": "A Rime pinyin input method configuration and dictionary; its AI-optimized dictionary and grammar model are incidental rather than the project's focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "amzxyz/rime-wanxiang",
+  "id": 838849799
+}

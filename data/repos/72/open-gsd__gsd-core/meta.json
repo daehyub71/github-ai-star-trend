@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cdd78b4da55fe67d",
+    "is_ai": true,
+    "reason": "A meta-prompting and spec-driven development system of commands and agent definitions installed into AI coding agents like Claude Code and Codex.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-22",
   "description": "Git. Ship. Done - Core",
   "first_seen": "2026-05-31",

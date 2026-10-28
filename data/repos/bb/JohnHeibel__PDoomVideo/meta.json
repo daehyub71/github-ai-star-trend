@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "52a4c1e4bd50ab1d",
+    "is_ai": true,
+    "reason": "An AI-generated music video project whose code was written by Claude to render p5.js animations, showcasing AI-created video content.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "기타"
+  },
+  "created": "2026-09-22",
+  "description": "Source code for the Claude Opus 5.5 music video for I'm Upping My P(doom)",
+  "first_seen": "2026-09-27",
+  "full_name": "JohnHeibel/PDoomVideo",
+  "id": 1382467199,
+  "language": "JavaScript",
+  "last_seen": "2026-09-27",
+  "topics": []
+}

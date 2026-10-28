@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1152f6de764204e0",
+    "is_ai": false,
+    "reason": "A proxy tunnel deployment tool for PaaS platforms with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2023-09-27",
   "description": "nodejs-argo是一个强大的Argo隧道部署工具，专为PaaS平台和游戏玩具平台设计。它支持多种代理协议(VLESS、VMess、Trojan)等，有直连协议(Socks5、Hysteria2、Reality)可选开启，并集成了哪吒探针功能",
   "first_seen": "2025-11-09",

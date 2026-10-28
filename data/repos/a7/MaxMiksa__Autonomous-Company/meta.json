@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "087324839692a22c",
+    "is_ai": true,
+    "reason": "A multi-agent autonomous company framework orchestrating Claude Code and Codex agents with role definitions and a dashboard.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-12",
   "description": "An autonomous company working 24/7 on your own PC - Windows/Linux/macOS.",
   "first_seen": "2026-07-19",

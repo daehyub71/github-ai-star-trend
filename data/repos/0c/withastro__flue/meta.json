@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2283dc4126b20d83",
+    "is_ai": true,
+    "reason": "Flue is a TypeScript framework and runtime for building autonomous agents with sandboxes, tools, skills, and subagents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-07",
+  "description": "The sandbox agent framework.",
+  "first_seen": "2026-05-03",
+  "full_name": "withastro/flue",
+  "id": 1152451571,
+  "language": "TypeScript",
+  "last_seen": "2026-05-03",
+  "topics": []
+}

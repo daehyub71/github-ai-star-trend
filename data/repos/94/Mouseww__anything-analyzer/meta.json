@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e676eb6f3e7d3240",
+    "is_ai": true,
+    "reason": "A protocol capture and analysis desktop app with AI analysis and a built-in MCP server that exposes its capture tools to agents.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Mouseww/anything-analyzer",
+  "id": 1208430144
+}

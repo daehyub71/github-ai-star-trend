@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e9d7072a5aa44a25",
+    "is_ai": true,
+    "reason": "A simulated bash environment with a virtual filesystem built as a sandboxed tool for AI agents to call.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "vercel-labs/just-bash",
+  "id": 1121859126
+}

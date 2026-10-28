@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "289b86b299623980",
+    "is_ai": true,
+    "reason": "A browser-automation tool for bulk registering Grok AI accounts and feeding tokens into grok2api pools, so it is AI-adjacent account tooling rather than a fit for any specific category.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "AaronL725/grok-register",
+  "id": 1234870142
+}

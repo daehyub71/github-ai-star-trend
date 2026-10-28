@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc9a28d4173f908a",
+    "is_ai": false,
+    "reason": "Bun is a general-purpose JavaScript runtime, bundler, and package manager with no advertised AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2021-04-14",
   "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
   "first_seen": "2025-11-30",

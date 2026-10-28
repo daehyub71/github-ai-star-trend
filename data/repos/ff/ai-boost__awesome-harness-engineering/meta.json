@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "286227a443a7f60c",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of resources for building AI agent harnesses, covering orchestration, evals, and observability.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "ai-boost/awesome-harness-engineering",
+  "id": 1195371847
+}

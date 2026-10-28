@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2323731f8a2dbc22",
+    "is_ai": true,
+    "reason": "Baidu releases OCR vision-language model weights and a benchmark for long-document parsing.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-06-18",
   "description": "Unlimited OCR Works: Welcome the Era of One-shot Long-horizon Parsing.",
   "first_seen": "2026-06-21",

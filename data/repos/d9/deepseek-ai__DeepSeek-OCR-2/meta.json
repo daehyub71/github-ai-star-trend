@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8628945169ea4d35",
+    "is_ai": true,
+    "reason": "DeepSeek-OCR 2 model release with inference code for converting documents and images to markdown.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "deepseek-ai/DeepSeek-OCR-2",
+  "id": 1142957805
+}

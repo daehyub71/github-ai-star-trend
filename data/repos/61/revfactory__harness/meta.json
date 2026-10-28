@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d2e7999ceae1a759",
+    "is_ai": true,
+    "reason": "A Claude Code plugin meta-skill that generates agent team definitions and skills for multi-agent orchestration.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "revfactory/harness",
+  "id": 1193082155
+}

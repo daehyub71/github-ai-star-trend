@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c2c4e0a859f3284c",
+    "is_ai": true,
+    "reason": "A desktop end-user AI assistant that perceives on-screen context and uses multiple LLMs and MCP tools to act across apps.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-04-23",
   "description": "On-screen aware AI assistant for your desktop. Uses current app context, multiple LLMs, and MCP tools to help you act across apps.",
   "first_seen": "2025-11-02",

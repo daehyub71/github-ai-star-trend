@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a61e6240df10bfdc",
+    "is_ai": true,
+    "reason": "Example collection of MCP servers and UI widgets for building ChatGPT apps with the OpenAI Apps SDK.",
+    "secondary": null,
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "openai/openai-apps-sdk-examples",
+  "id": 1070552203
+}

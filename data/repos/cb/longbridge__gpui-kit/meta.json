@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "59f974e82e9b03d9",
+    "is_ai": false,
+    "reason": "A Rust GUI component framework for desktop apps with no AI features at its core; AI-assisted development recipes are only a peripheral development aid.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2024-06-13",
   "description": "Rust GUI components for building fantastic cross-platform desktop application by using GPUI.",
   "first_seen": "2025-10-26",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "849c1a8fef8fb424",
+    "is_ai": true,
+    "reason": "Research code with inference and training for generating 3D assets from images, with released model weights.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "TencentARC/Pixal3D",
+  "id": 1234746825
+}

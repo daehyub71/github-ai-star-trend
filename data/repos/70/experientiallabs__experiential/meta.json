@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c1917bb9103bcaf7",
+    "is_ai": true,
+    "reason": "An open-source OpenAI-compatible LLM gateway and router with spend controls that can also train custom routers or models from captured traffic.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-24",
   "description": "Experiential is the open source, zero markup gateway for BYOK, self-hosted and 1000+ marketplace models. It learns from your traffic to cut costs, recommend better models, and train a specialized model you own.",
   "first_seen": "2026-09-06",

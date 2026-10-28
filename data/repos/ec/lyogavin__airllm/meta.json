@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "90dad8bf5242ba70",
+    "is_ai": true,
+    "reason": "AirLLM is a library for running huge LLM inference on low-VRAM GPUs via layer streaming.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2023-06-12",
   "description": "AirLLM 2.8T LLM inference with single 4GB GPU",
   "first_seen": "2026-08-02",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "53280943040b7075",
+    "is_ai": true,
+    "reason": "An agentic development environment that orchestrates multiple coding agents like Claude Code and Codex across desktop and mobile.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-13",
   "description": "Orchestrate multiple coding agents from desktop and mobile",
   "first_seen": "2026-04-12",

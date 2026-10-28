@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d9fec819eb3d9e54",
+    "is_ai": true,
+    "reason": "Educational NumPy notebook implementations of foundational deep learning papers from Sutskever's reading list.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "pageman/sutskever-30-implementations",
+  "id": 1110978260
+}

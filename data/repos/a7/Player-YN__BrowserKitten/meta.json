@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f3722e0edc4b356c",
+    "is_ai": true,
+    "reason": "A Chrome extension agent that drives the live browser tab and produces office files using a BYOK LLM.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Player-YN/BrowserKitten",
+  "id": 1349507889
+}

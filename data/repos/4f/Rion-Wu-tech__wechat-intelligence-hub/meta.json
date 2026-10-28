@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "617437a361a0f57a",
+    "is_ai": true,
+    "reason": "Local WeChat intelligence app delivered via Codex skills that turns chat history into AI-driven briefings, follow-ups and opportunity tracking.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Rion-Wu-tech/wechat-intelligence-hub",
+  "id": 1357272370
+}

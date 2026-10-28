@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b829313d94910c34",
+    "is_ai": true,
+    "reason": "An agent-native trading platform that AI agents join via a SKILL.md interface to trade and share signals.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-23",
   "description": "\"AI-Trader: 100% Fully-Automated Agent-Native Trading\"  ",
   "first_seen": "2025-10-26",

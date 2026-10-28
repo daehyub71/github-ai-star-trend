@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "be5a42aed9b8c53e",
+    "is_ai": true,
+    "reason": "An installable SKILL.md-based skill suite with controller scripts that guides coding agents through long-horizon reasoning and verification.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Tiger3807861189/J-Space-Cognition-Suite",
+  "id": 1308234922
+}

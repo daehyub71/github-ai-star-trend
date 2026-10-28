@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d8d6e97e700ac186",
+    "is_ai": true,
+    "reason": "An open-source CLI coding and research agent built on a recursive language model harness with subagents and self-improving state.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-05-08",
   "description": "A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
   "first_seen": "2026-08-02",

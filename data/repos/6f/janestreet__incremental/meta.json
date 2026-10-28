@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "21d716415cb0f409",
+    "is_ai": false,
+    "reason": "OCaml library for self-adjusting incremental computation, unrelated to AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2015-07-06",
   "description": "A library for incremental computations",
   "first_seen": "2026-07-19",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2b120029af5d71a2",
+    "is_ai": true,
+    "reason": "An end-user multi-agent interactive classroom app that uses LLM agents to deliver immersive learning experiences.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-11",
   "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
   "first_seen": "2026-03-15",

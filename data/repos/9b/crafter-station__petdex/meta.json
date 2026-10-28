@@ -1,0 +1,41 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3b9554806c187ab7",
+    "is_ai": true,
+    "reason": "Gallery, CLI and desktop app of animated pet companions that plug into AI coding agents like Codex and Claude Code and react to their activity.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-05-02",
+  "description": "A public gallery of animated pets for Codex, Claude Code, DeepSeek Harness, Hermes, OpenCode, Gemini CLI, and more.",
+  "first_seen": "2026-05-24",
+  "full_name": "crafter-station/petdex",
+  "id": 1227102698,
+  "language": "TypeScript",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "claude-code",
+    "clerk",
+    "cli",
+    "codex",
+    "developer-tools",
+    "drizzle-orm",
+    "dsh-plugin",
+    "mascot",
+    "neon",
+    "nextjs",
+    "pixel-art",
+    "postgres",
+    "react",
+    "sprites",
+    "tailwindcss",
+    "vercel"
+  ]
+}

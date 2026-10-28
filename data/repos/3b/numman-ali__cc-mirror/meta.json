@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "60597f6dcfe452ab",
+    "is_ai": true,
+    "reason": "CLI tool that creates isolated Claude Code variants wired to alternative model providers, i.e. AI coding CLI distribution with provider routing.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "numman-ali/cc-mirror",
+  "id": 1126960247
+}

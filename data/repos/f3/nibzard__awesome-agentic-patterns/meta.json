@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f5b1631a47ea259a",
+    "is_ai": true,
+    "reason": "Curated catalogue of agentic AI design patterns for building production agents.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "nibzard/awesome-agentic-patterns",
+  "id": 993717808
+}

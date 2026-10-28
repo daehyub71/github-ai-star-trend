@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ba089228f1bdb5e2",
+    "is_ai": true,
+    "reason": "Open-source book on AI infrastructure covering quantitative design of LLM inference and training systems.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "교육자료"
+  },
   "created": "2026-08-22",
   "description": "《深入理解 AI Infra：量化分析与系统设计》（李博杰 著）开源书稿：从硬件约束和模型架构出发，量化推导 LLM 推理与训练系统设计。含全书正文、PDF、配套计算工具与实验",
   "first_seen": "2026-09-13",

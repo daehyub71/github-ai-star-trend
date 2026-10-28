@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cdcb4c186ac5d6a9",
+    "is_ai": true,
+    "reason": "Releases a family of fine-tuned Qwen-based decision model weights with training and serving code.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-09-17",
   "description": "Jev-like family of decision models built on top of Qwen3.5/3.8 you can train and run on your own",
   "first_seen": "2026-09-20",

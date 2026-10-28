@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1429b28207cfa9bf",
+    "is_ai": true,
+    "reason": "A personal index listing links to the author's ML, deep learning and generative AI project repositories.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2023-12-31",
   "description": "This Repository Contain All the Artificial Intelligence Projects such as Machine Learning, Deep Learning and Generative AI that I have done while understanding Advanced Techniques & Concepts.",
   "first_seen": "2025-12-28",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "740efc496a8c09b1",
+    "is_ai": true,
+    "reason": "Uses SAM 3 and multimodal LLMs to convert static diagram images into editable DrawIO files.",
+    "secondary": "doc-parsing",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "BIT-DataLab/Edit-Banana",
+  "id": 1135605666
+}

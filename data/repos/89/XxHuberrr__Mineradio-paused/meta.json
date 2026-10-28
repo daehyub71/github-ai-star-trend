@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ae32a0d50c2cc648",
+    "is_ai": false,
+    "reason": "An immersive Electron desktop music player with visual effects and lyrics, with no AI features advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-02",
   "description": "一款以电影镜头、粒子视觉和歌词舞台为核心的沉浸式音乐播放器。",
   "first_seen": "2026-06-21",

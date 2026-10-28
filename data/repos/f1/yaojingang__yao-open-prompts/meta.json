@@ -1,0 +1,30 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3c9c878412d0e7b9",
+    "is_ai": true,
+    "reason": "A bilingual collection of AI prompt templates for prompt engineering, work, content and marketing use cases.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "created": "2026-05-06",
+  "description": "Practical bilingual AI prompt library for prompt engineering, work, learning, content, marketing, and everyday use.",
+  "first_seen": "2026-05-24",
+  "full_name": "yaojingang/yao-open-prompts",
+  "id": 1230925393,
+  "language": "Python",
+  "last_seen": "2026-05-24",
+  "topics": [
+    "ai",
+    "chinese-prompts",
+    "geo",
+    "prompt-engineering",
+    "prompts"
+  ]
+}

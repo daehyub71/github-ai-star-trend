@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "60a185014a9a7cd4",
+    "is_ai": true,
+    "reason": "An agent skill for coding agents that generates Chinese software copyright application documents from local project source.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-04-29",
+  "description": "中国软件著作权申请材料 生成器 Skills，本 Skills 通过阅读本地项目，自动生成全套 .docx 软著申请材料，全开源，无须再付费购买任何软著申请服务",
+  "first_seen": "2026-05-17",
+  "full_name": "Fokkyp/SoftwareCopyright-Skill",
+  "id": 1224469725,
+  "language": "Python",
+  "last_seen": "2026-05-17",
+  "topics": []
+}

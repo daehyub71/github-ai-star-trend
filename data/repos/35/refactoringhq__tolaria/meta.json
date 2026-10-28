@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8d61b33baaf67a2b",
+    "is_ai": true,
+    "reason": "Markdown knowledge base desktop app pitched for AI context and storing assistant memory, an end-user app with AI-oriented features.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-14",
   "description": "Desktop app to manage markdown knowledge bases",
   "first_seen": "2026-04-26",

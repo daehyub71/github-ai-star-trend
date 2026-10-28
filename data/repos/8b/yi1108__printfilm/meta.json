@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c066e52343ce419c",
+    "is_ai": true,
+    "reason": "Self-hosted platform that generates AI short videos and short dramas from script to storyboard, images, and video.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-09-10",
   "description": "PRINTFILM: AI short-video marketing and AI short-drama creation platform",
   "first_seen": "2026-09-20",

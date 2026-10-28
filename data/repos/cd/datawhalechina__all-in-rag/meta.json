@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "rag",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "04f561759394e32e",
+    "is_ai": true,
+    "reason": "A full-stack tutorial for building RAG applications with LLMs, covering embeddings, vector databases and retrieval.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "datawhalechina/all-in-rag",
+  "id": 996626040
+}

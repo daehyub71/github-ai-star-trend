@@ -1,0 +1,40 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "304a37e0b78c171d",
+    "is_ai": true,
+    "reason": "Self-hosted AI chat interface supporting Ollama and OpenAI-compatible APIs, with RAG, tools and agents.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2023-10-06",
+  "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+  "first_seen": "2025-10-26",
+  "full_name": "open-webui/open-webui",
+  "id": 701547123,
+  "language": "Python",
+  "last_seen": "2026-03-22",
+  "topics": [
+    "ai",
+    "llm",
+    "llm-ui",
+    "llm-webui",
+    "llms",
+    "mcp",
+    "ollama",
+    "ollama-webui",
+    "open-webui",
+    "openai",
+    "openapi",
+    "rag",
+    "self-hosted",
+    "ui",
+    "webui"
+  ]
+}

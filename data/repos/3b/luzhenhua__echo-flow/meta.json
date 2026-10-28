@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "72addb96fc0543f8",
+    "is_ai": false,
+    "reason": "A static web tool for English audio click-to-read practice using user-imported mp3 and lrc files, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "luzhenhua/echo-flow",
+  "id": 1071282857
+}

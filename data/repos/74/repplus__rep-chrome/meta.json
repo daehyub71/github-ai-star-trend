@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f61cee54b714498b",
+    "is_ai": true,
+    "reason": "A Chrome DevTools HTTP repeater security tool that advertises built-in LLM features to explain requests and suggest attacks.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "repplus/rep-chrome",
+  "id": 1100674035
+}

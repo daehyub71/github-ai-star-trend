@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9985e0b08e8d3614",
+    "is_ai": true,
+    "reason": "A composable skills collection and methodology plugin for coding agents like Claude Code and Codex.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-09",
   "description": "An agentic skills framework & software development methodology that works.",
   "first_seen": "2025-10-26",

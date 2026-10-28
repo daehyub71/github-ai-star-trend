@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "28badcc71cf459eb",
+    "is_ai": true,
+    "reason": "A skill/MCP tool for coding agents that turns codebases into a queryable knowledge graph (GraphRAG-style retrieval).",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-03",
   "description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
   "first_seen": "2026-04-05",
   "full_name": "Graphify-Labs/graphify",
   "id": 1200597263,
   "language": "Python",
-  "last_seen": "2026-07-26",
+  "last_seen": "2026-10-18",
   "topics": [
     "ai-agents",
     "antigravity",

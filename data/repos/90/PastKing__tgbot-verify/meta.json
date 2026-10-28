@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "baa15f1f7deb0a2e",
+    "is_ai": false,
+    "reason": "A Telegram bot that automates SheerID identity verification using generated documents; it targets AI service discounts but builds or uses no AI itself.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "PastKing/tgbot-verify",
+  "id": 1111541748
+}

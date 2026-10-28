@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "617dbc3013602785",
+    "is_ai": true,
+    "reason": "Self-hosted AI trading terminal where LLMs plan and autonomously execute trades for end users.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-10-28",
   "description": "Your AI trading terminal assistant for US stocks, commodities, forex, and crypto.",
   "first_seen": "2025-10-26",

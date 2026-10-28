@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "d287b2599b3d9155",
+    "is_ai": true,
+    "reason": "A Claude Code skill providing hand-drawn style prompt recipes for image generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-06-28",
+  "description": "Claude Code skill：把内容套进内置手绘画风配方,产出可直接复制的生图提示词。内置儿童涂色/极简线条/蜡笔童涂/吉卜力/小豆人涂鸦 5 种已验证画风。",
+  "first_seen": "2026-10-04",
+  "full_name": "threerocks/hand-drawn-styles",
+  "id": 1283138527,
+  "language": "Python",
+  "last_seen": "2026-10-04",
+  "topics": []
+}

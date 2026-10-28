@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0c8af7aa3a8b7c34",
+    "is_ai": true,
+    "reason": "Releases open-source world model weights and inference code built on video generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
   "created": "2026-01-28",
   "description": "Advancing Open-source World Models",
   "first_seen": "2026-02-01",

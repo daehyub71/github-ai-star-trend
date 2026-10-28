@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cc099a31349c75fd",
+    "is_ai": true,
+    "reason": "Releases an open foundation model and dataset for gaming agents that map pixels to gamepad actions, with inference and play scripts.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "MineDojo/NitroGen",
+  "id": 1118380578
+}

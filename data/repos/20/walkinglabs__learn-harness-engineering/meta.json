@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "50e3352ee9d14a79",
+    "is_ai": true,
+    "reason": "A project-based course teaching harness engineering for making AI coding agents work reliably.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "walkinglabs/learn-harness-engineering",
+  "id": 1195243030
+}

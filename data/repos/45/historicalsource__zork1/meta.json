@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "09b0d37fbcf656dd",
+    "is_ai": false,
+    "reason": "Historical source code archive of the Zork I game, unrelated to AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
   "created": "2019-04-14",
   "description": "Zork I (Microcomputer Version) by Infocom",
   "first_seen": "2025-11-16",

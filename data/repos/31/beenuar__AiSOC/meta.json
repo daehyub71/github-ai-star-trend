@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ed9e79eb083858ff",
+    "is_ai": true,
+    "reason": "A self-hostable AI security operations center app using LLM agents for alert triage, and it ships an MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "beenuar/AiSOC",
+  "id": 1226971975
+}

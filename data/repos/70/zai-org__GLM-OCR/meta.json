@@ -1,0 +1,28 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f87723b3cc68e8d6",
+    "is_ai": true,
+    "reason": "GLM-OCR is a multimodal OCR model with an SDK for converting complex documents into structured text, with weights released on Hugging Face.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-02",
+  "description": "GLM-OCR: Accurate ×  Fast × Comprehensive",
+  "first_seen": "2026-03-15",
+  "full_name": "zai-org/GLM-OCR",
+  "id": 1147992203,
+  "language": "Python",
+  "last_seen": "2026-03-15",
+  "topics": [
+    "glm",
+    "image2text",
+    "ocr"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "38b9eb5486237f14",
+    "is_ai": true,
+    "reason": "An agent skill for Claude Code/Codex/Cursor that typesets Markdown into WeChat article HTML.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-01",
+  "description": "把 Markdown 一键排成可直接粘进公众号编辑器的精致 HTML —— 6 套精选主题 + 主题生成器 + 双关卡校验。An AI-agent skill that turns Markdown into paste-ready WeChat article HTML.",
+  "first_seen": "2026-07-12",
+  "full_name": "isjiamu/gzh-design-skill",
+  "id": 1285705904,
+  "language": "HTML",
+  "last_seen": "2026-07-19",
+  "topics": [
+    "agent-skill",
+    "ai-agent",
+    "claude-code",
+    "codex",
+    "cursor",
+    "gongzhonghao",
+    "html",
+    "markdown",
+    "rich-text",
+    "skill",
+    "typesetting",
+    "wechat",
+    "weixin"
+  ]
+}

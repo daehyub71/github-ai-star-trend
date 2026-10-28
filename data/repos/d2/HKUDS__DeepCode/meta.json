@@ -1,0 +1,28 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c0e4e77f6b284fd6",
+    "is_ai": true,
+    "reason": "DeepCode is an open agentic coding system using multi-agent orchestration for code generation.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-05-14",
+  "description": "\"DeepCode: Open Agentic Coding (Agent Harness & Loop Engineering & Multi-Agent Orchestration)\"",
+  "first_seen": "2025-11-02",
+  "full_name": "HKUDS/DeepCode",
+  "id": 983246568,
+  "language": "Python",
+  "last_seen": "2025-11-02",
+  "topics": [
+    "agentic-coding",
+    "harness-engineering",
+    "llm-agent"
+  ]
+}

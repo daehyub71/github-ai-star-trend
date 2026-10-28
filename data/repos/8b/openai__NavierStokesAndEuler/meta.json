@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8f722755fa225ed6",
+    "is_ai": false,
+    "reason": "Lean formal proofs of math results on Navier-Stokes and Euler blowup; the repo itself is not about building or using AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "openai/NavierStokesAndEuler",
+  "id": 1361260630
+}

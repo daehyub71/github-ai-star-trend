@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "59baac57b1478f2d",
+    "is_ai": true,
+    "reason": "A meta-agent harness that autonomously iterates on agent prompts, tools, and orchestration against benchmarks.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "thirdlayerinc/autoagent",
+  "id": 1199906287
+}

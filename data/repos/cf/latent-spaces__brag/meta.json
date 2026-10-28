@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "50740d52f61d1f93",
+    "is_ai": true,
+    "reason": "An agent skill for Claude Code and other agents that generates launch videos for projects.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-16",
   "description": "You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.",
   "first_seen": "2026-09-13",

@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dfa030effca2aeaa",
+    "is_ai": false,
+    "reason": "An archive of livestream transcripts of a content creator, a text dataset not centered on building or using AI models.",
+    "secondary": null,
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "Olcmyk/HuChenFeng",
+  "id": 1070761721
+}

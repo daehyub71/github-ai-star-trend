@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "training",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c4449980dc82bf8a",
+    "is_ai": true,
+    "reason": "A browser MMO game that also ships a headless Gymnasium RL environment for training AI agents to play.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "levy-street/world-of-claudecraft",
+  "id": 1264716916
+}

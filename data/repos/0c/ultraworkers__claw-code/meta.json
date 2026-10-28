@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "45a1c29500f33f20",
+    "is_ai": true,
+    "reason": "Claw Code is a Rust reimplementation of a Claude Code-style AI coding agent CLI, maintained by agent harnesses.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-31",
   "description": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention.",
   "first_seen": "2026-03-29",
   "full_name": "ultraworkers/claw-code",
   "id": 1197021090,
   "language": "Rust",
-  "last_seen": "2026-04-19",
+  "last_seen": "2026-10-18",
   "topics": []
 }

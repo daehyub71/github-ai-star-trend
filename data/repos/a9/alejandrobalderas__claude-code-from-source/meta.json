@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ba56747b175e9a3c",
+    "is_ai": true,
+    "reason": "An educational book explaining the architecture and internals of Claude Code, an AI coding agent.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "교육자료"
+  },
+  "full_name": "alejandrobalderas/claude-code-from-source",
+  "id": 1198636839
+}

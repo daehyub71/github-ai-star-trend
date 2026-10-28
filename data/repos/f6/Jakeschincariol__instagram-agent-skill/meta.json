@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "54a77899a9db5792",
+    "is_ai": true,
+    "reason": "A collection of Claude skills with helper scripts for writing and managing Instagram content.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Jakeschincariol/instagram-agent-skill",
+  "id": 1368447577
+}

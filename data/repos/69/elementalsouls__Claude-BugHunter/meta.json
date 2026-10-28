@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c32dfcfa459faf65",
+    "is_ai": true,
+    "reason": "A Claude Code skill and slash-command bundle for bug hunting, which is a skills/prompts collection for a coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "elementalsouls/Claude-BugHunter",
+  "id": 1229774092
+}

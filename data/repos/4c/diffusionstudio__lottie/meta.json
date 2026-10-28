@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1d2c8de09e2ce12d",
+    "is_ai": true,
+    "reason": "An installable agent skill that lets coding agents like Claude Code or Codex generate Lottie animations, bundled with a live preview player.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-04",
   "description": "Generate production-ready Lottie animations with Claude Code or Codex",
   "first_seen": "2026-06-14",

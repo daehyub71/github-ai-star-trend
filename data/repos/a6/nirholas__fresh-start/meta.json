@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "21ef090d682dfb58",
+    "is_ai": true,
+    "reason": "A placeholder repository documenting the history of a removed Claude Code source leak mirror; it contains no code but concerns an AI coding agent.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "nirholas/fresh-start",
+  "id": 1197057157
+}

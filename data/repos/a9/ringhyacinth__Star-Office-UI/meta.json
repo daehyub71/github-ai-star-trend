@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "llmops",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5ad92cfd2aa83fa7",
+    "is_ai": true,
+    "reason": "A pixel-art dashboard that visualizes the live work states of OpenClaw and other AI agents, with multi-agent status tracking and Gemini-based AI background generation.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ringhyacinth/Star-Office-UI",
+  "id": 1167209519
+}

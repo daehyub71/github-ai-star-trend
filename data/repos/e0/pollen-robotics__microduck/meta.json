@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "other-ai",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7de4d96bcb29b921",
+    "is_ai": true,
+    "reason": "Robot runtime software that runs RL-trained neural policies (ONNX) to control a biped robot.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-29",
   "description": "A Tiny biped duck robot 🦆",
   "first_seen": "2026-08-30",

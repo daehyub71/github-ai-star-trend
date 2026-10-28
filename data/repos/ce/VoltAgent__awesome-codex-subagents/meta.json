@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b4ed5978052fc712",
+    "is_ai": true,
+    "reason": "Awesome-style collection of Codex subagent definition files (prompt/config TOMLs) for the Codex coding agent.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
+  "full_name": "VoltAgent/awesome-codex-subagents",
+  "id": 1184268220
+}

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2b54720b232a6af6",
+    "is_ai": true,
+    "reason": "A sandboxed execution SDK explicitly aimed at running untrusted model output, plugins and tools, serving as agent code-execution infrastructure.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-02-06",
   "description": "Policy-driven, layered isolation and containment ",
   "first_seen": "2026-10-04",

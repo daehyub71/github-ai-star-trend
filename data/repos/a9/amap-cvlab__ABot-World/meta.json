@@ -1,0 +1,26 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0efbbf28a61da3d5",
+    "is_ai": true,
+    "reason": "Releases an interactive world model with weights for real-time video world rollout on a desktop GPU.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2026-04-16",
+  "description": "Infinite Interactive World Rollout on a Single Desktop GPU",
+  "first_seen": "2026-08-02",
+  "full_name": "amap-cvlab/ABot-World",
+  "id": 1212306678,
+  "language": "Python",
+  "last_seen": "2026-08-02",
+  "topics": [
+    "worldmodel"
+  ]
+}

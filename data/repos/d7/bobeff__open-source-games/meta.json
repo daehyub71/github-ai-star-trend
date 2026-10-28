@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dffb157fe4dbf5aa",
+    "is_ai": false,
+    "reason": "A curated awesome-list of open source video games with no AI focus.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2021-09-15",
   "description": "A list of open source games.",
   "first_seen": "2025-11-09",

@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "45c67c9564629e57",
+    "is_ai": true,
+    "reason": "Univer is an office SDK pitched as \"The Office Harness for AI Agents,\" an app runtime built for agents to operate documents and spreadsheets.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2022-09-29",
   "description": "The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational Tables, and PDF in one runtime.",
   "first_seen": "2026-09-20",

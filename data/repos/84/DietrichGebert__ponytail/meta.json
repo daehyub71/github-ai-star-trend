@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2bd01d824f275d07",
+    "is_ai": true,
+    "reason": "A skill/prompt plugin for Claude Code and other coding agents that steers them toward minimal code.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-06-12",
   "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
   "first_seen": "2026-06-14",

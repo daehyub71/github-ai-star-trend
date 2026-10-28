@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3e4d82bf2569fd10",
+    "is_ai": true,
+    "reason": "Open-source terminal coding agent in Rust that edits files and runs commands with any LLM provider.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-19",
   "description": "Open-source agent for the terminal written in Rust. Use any provider or model. Issues & PRs always welcome",
   "first_seen": "2026-05-03",

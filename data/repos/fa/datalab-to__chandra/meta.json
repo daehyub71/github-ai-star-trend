@@ -1,0 +1,27 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "17b75cea22a6d2f2",
+    "is_ai": true,
+    "reason": "An OCR model with a pip-installable CLI that converts PDFs and images into structured Markdown, HTML or JSON for LLM use, and it also releases open weights.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-10-08",
+  "description": "OCR model that handles complex tables, forms, handwriting with full layout.",
+  "first_seen": "2025-11-09",
+  "full_name": "datalab-to/chandra",
+  "id": 1072539730,
+  "language": "Python",
+  "last_seen": "2025-11-09",
+  "topics": [
+    "ai",
+    "ocr"
+  ]
+}

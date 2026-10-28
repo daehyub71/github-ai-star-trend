@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7b63d418e4df34f0",
+    "is_ai": true,
+    "reason": "Self-hosted scraping API that converts websites into LLM-ready markdown and structured JSON for RAG and agents.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "Anakin-Inc/anakin",
+  "id": 1183934088
+}

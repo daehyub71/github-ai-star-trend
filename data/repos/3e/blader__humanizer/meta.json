@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a170cd03cdd3fa7a",
+    "is_ai": true,
+    "reason": "An installable agent skill (SKILL.md) for Claude Code, Codex and other agents that rewrites AI-generated text to sound human.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-18",
   "description": "Agent skill that removes signs of AI-generated writing from text",
   "first_seen": "2026-02-08",

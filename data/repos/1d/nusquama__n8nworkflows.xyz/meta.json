@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "38b6eb8708f397fa",
+    "is_ai": true,
+    "reason": "An archive of thousands of n8n workflow templates, many of which build AI agents and LLM automations, though the collection itself is not explicitly AI-focused.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "기타"
+  },
+  "created": "2025-11-12",
+  "description": "N8N Workflows Catalog",
+  "first_seen": "2025-11-16",
+  "full_name": "nusquama/n8nworkflows.xyz",
+  "id": 1094947467,
+  "language": null,
+  "last_seen": "2025-11-30",
+  "topics": [
+    "n8n",
+    "n8n-automation",
+    "n8n-node",
+    "n8n-nodes",
+    "n8n-template",
+    "n8n-workflow",
+    "n8n-workflows"
+  ]
+}

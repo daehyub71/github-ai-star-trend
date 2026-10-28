@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b26d3c01e8a0d6d3",
+    "is_ai": true,
+    "reason": "An archived dashboard for orchestrating and managing multiple AI agents via the OpenClaw Gateway.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "abhi1693/openclaw-mission-control",
+  "id": 1147379948
+}

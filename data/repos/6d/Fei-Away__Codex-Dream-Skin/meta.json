@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "dc2a26d98f4ce8a6",
+    "is_ai": true,
+    "reason": "A theming/skin tool for the OpenAI Codex desktop coding agent app, extending its UI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-07-15",
   "description": "Codex Dream Skin",
   "first_seen": "2026-07-12",

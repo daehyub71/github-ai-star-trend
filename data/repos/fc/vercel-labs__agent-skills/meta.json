@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a2693ed34a9f7cc8",
+    "is_ai": true,
+    "reason": "A collection of packaged instructions and scripts (skills) for AI coding agents in the Agent Skills format.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-12-08",
   "description": "Vercel's official collection of agent skills",
   "first_seen": "2026-01-11",

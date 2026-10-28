@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "59b38f9b49d2aaf7",
+    "is_ai": true,
+    "reason": "Collection of extracted Claude Code system prompts and tool descriptions, tracked per version.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "Piebald-AI/claude-code-system-prompts",
+  "id": 1099328966
+}

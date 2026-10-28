@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e1bbdc60828bf552",
+    "is_ai": true,
+    "reason": "A Claude Code plugin that orchestrates multiple AI coding models with consensus gates, plus bundled skills and commands.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "nyldn/claude-octopus",
+  "id": 1134819911
+}

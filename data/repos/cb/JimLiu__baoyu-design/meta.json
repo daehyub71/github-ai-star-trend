@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "090afbd825fe8428",
+    "is_ai": true,
+    "reason": "Packages Claude Design as a portable Agent Skill for coding agents to produce UI mockups and prototypes as HTML.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-06-07",
+  "description": "Run Claude Design locally as an Agent Skill — Cursor, Claude Code & more. Produce polished UI mockups, prototypes, decks & wireframes as self-contained HTML, without claude.ai/design. Best with Opus or Claude.",
+  "first_seen": "2026-06-21",
+  "full_name": "JimLiu/baoyu-design",
+  "id": 1261650101,
+  "language": "JavaScript",
+  "last_seen": "2026-06-28",
+  "topics": [
+    "agent-skills",
+    "claude",
+    "claude-code",
+    "claude-design",
+    "cursor",
+    "design",
+    "prototyping",
+    "ui-design"
+  ]
+}

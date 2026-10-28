@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c01873082088376c",
+    "is_ai": true,
+    "reason": "Curated collection of GPT Image 2 prompts for image generation.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2026-04-18",
   "description": "GPT-Image-2 API and Prompts",
   "first_seen": "2026-04-26",

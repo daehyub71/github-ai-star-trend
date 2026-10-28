@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c2aecc1d3e8d3244",
+    "is_ai": true,
+    "reason": "A CLI Office suite purpose-built for AI agents to operate Word/Excel/PowerPoint files, shipping agent skills.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-03-15",
   "description": "OfficeCLI is the first and best Office suite  purpose-built for AI agents to read, edit, and automate Word, Excel, and PowerPoint files. Free, open-source, single binary, no Office installation required.",
   "first_seen": "2026-07-05",
   "full_name": "iOfficeAI/OfficeCLI",
   "id": 1182212878,
   "language": "C#",
-  "last_seen": "2026-07-05",
+  "last_seen": "2026-07-12",
   "topics": [
     "agent",
     "ai",

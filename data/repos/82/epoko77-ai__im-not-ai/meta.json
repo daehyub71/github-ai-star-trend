@@ -1,0 +1,37 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ec7d927c4a7b4ab3",
+    "is_ai": true,
+    "reason": "A Claude/Codex/Gemini CLI skill plugin that detects and rewrites AI-written Korean text to sound human.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-04-24",
+  "description": "AI가 쓴 한글을 사람 글처럼 윤문하는 Claude 스킬 — Korean AI-text humanizer: detects and rewrites translationese, mechanical parallelism, and 71 other AI tells",
+  "first_seen": "2026-06-07",
+  "full_name": "epoko77-ai/im-not-ai",
+  "id": 1220000506,
+  "language": "Python",
+  "last_seen": "2026-06-07",
+  "topics": [
+    "agent-skills",
+    "ai-detection",
+    "claude",
+    "claude-code",
+    "claude-skill",
+    "humanizer",
+    "korean",
+    "korean-nlp",
+    "llm",
+    "nlp",
+    "translationese",
+    "writing"
+  ]
+}

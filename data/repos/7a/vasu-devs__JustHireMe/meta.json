@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7e35aa96ed938d7c",
+    "is_ai": true,
+    "reason": "A local-first desktop AI job search app that ranks roles and generates application materials, also shipping an agent skill and MCP server.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-28",
+  "description": "Local-first AI job intelligence workbench for scraping roles, ranking fit, and generating tailored application materials.",
+  "first_seen": "2026-05-10",
+  "full_name": "vasu-devs/JustHireMe",
+  "id": 1169144801,
+  "language": "Python",
+  "last_seen": "2026-05-10",
+  "topics": [
+    "agents",
+    "ai",
+    "hireme",
+    "hiring",
+    "job",
+    "jobs",
+    "mulytiagent",
+    "rag",
+    "scrape",
+    "semantic-search",
+    "vector-database"
+  ]
+}

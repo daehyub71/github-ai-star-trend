@@ -1,10 +1,24 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0397fed010ff0c3a",
+    "is_ai": true,
+    "reason": "An awesome-style curated list of Claude agent skills.",
+    "secondary": null,
+    "status": "ok",
+    "type": "큐레이션 목록"
+  },
   "created": "2025-10-17",
   "description": "A curated list of Claude Skills.",
   "first_seen": "2025-10-26",
   "full_name": "BehiSecc/awesome-claude-skills",
   "id": 1078332194,
   "language": null,
-  "last_seen": "2025-11-09",
+  "last_seen": "2025-11-30",
   "topics": []
 }

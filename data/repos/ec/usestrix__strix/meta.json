@@ -1,11 +1,25 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5ddccfb3d532cd68",
+    "is_ai": true,
+    "reason": "An open-source autonomous AI agent tool for penetration testing, offered as an end-user security product with multi-agent orchestration.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-08-05",
   "description": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
   "first_seen": "2025-11-02",
   "full_name": "usestrix/strix",
   "id": 1032808806,
   "language": "Python",
-  "last_seen": "2026-06-28",
+  "last_seen": "2026-08-16",
   "topics": [
     "agents",
     "ai-hacking",

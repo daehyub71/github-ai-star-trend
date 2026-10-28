@@ -1,0 +1,42 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "03074000d643091f",
+    "is_ai": true,
+    "reason": "End-user Electron app that uses LLMs to write tender/bid documents with a knowledge base and checking features.",
+    "secondary": "rag",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-08-04",
+  "description": "开箱即用的AI标书编写工具，标书AI生成工具，投标工具箱、知识库、标书查重、废标项检查，完全开源免费，欢迎使用",
+  "first_seen": "2026-07-12",
+  "full_name": "FB208/OpenBidKit_Yibiao",
+  "id": 1031589336,
+  "language": "JavaScript",
+  "last_seen": "2026-07-12",
+  "topics": [
+    "ai",
+    "ai-writing",
+    "bid",
+    "bidding",
+    "document-ai",
+    "electron",
+    "llm",
+    "office-automation",
+    "proposal-generator",
+    "proposal-writing",
+    "rag",
+    "react",
+    "service",
+    "services",
+    "tender",
+    "tender-document",
+    "typescript"
+  ]
+}

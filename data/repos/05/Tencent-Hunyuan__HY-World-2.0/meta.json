@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "6801d11f4670d784",
+    "is_ai": true,
+    "reason": "Tencent releases open weights and inference code for a multimodal world model that generates and reconstructs 3D worlds from text, images and video.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "full_name": "Tencent-Hunyuan/HY-World-2.0",
+  "id": 1206704534
+}

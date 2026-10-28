@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "25cf93d7e50b85a7",
+    "is_ai": true,
+    "reason": "OpenHarness is lightweight agent infrastructure with tool-use, skills, memory and multi-agent coordination, plus a built-in personal agent that writes code and opens PRs.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-04-01",
   "description": "\"OpenHarness: Open Agent Harness with a Built-in Personal Agent--Ohmo!\"",
   "first_seen": "2026-04-05",

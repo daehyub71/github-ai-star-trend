@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b6de361fd9e47b68",
+    "is_ai": true,
+    "reason": "A registry and CLI for publishing, searching, and installing OpenClaw agent skills and plugins.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "openclaw/clawhub",
+  "id": 1127248221
+}

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ecabe77d574438cd",
+    "is_ai": true,
+    "reason": "Kimi Code CLI is a terminal AI coding agent with subagents, MCP and ACP editor integration.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-05-22",
+  "description": "Kimi Code CLI  —  The Starting Point for Next-Gen Agents",
+  "first_seen": "2026-06-14",
+  "full_name": "MoonshotAI/kimi-code",
+  "id": 1246459259,
+  "language": "TypeScript",
+  "last_seen": "2026-07-19",
+  "topics": []
+}

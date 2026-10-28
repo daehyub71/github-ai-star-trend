@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "models",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b7ea33bc7689d733",
+    "is_ai": true,
+    "reason": "Official research implementation of DeepSeek's Engram conditional-memory architecture module for LLMs.",
+    "secondary": "training",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2026-01-12",
   "description": "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models",
   "first_seen": "2026-01-11",

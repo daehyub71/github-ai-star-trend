@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "21bba1a26d0b30ff",
+    "is_ai": true,
+    "reason": "A browser FPS game showcased as built entirely by orchestrated AI coding agents from a single prompt, serving as an AI coding demo.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "full_name": "mshumer/Claude-of-Duty",
+  "id": 1312257227
+}

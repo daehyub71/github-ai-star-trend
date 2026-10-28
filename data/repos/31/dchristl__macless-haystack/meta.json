@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "01350f0e09f5b591",
+    "is_ai": false,
+    "reason": "A custom FindMy/OpenHaystack tracker setup with firmware and server, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "dchristl/macless-haystack",
+  "id": 589547242
+}

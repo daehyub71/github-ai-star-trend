@@ -1,4 +1,18 @@
 {
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a7eaaf1a88d3c43d",
+    "is_ai": true,
+    "reason": "A Python library that uses LLMs to extract structured, source-grounded information from unstructured text documents.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
   "created": "2025-07-08",
   "description": "A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.",
   "first_seen": "2026-02-08",

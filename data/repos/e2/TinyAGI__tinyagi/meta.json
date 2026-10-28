@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "68d396cccc111b39",
+    "is_ai": true,
+    "reason": "A multi-agent team orchestrator runtime that runs collaborating AI agents across chat channels.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-09",
+  "description": "TinyAGI is the agent teams orchestrator for One Person Company. (fka TinyClaw)",
+  "first_seen": "2026-02-15",
+  "full_name": "TinyAGI/tinyagi",
+  "id": 1153146773,
+  "language": "TypeScript",
+  "last_seen": "2026-02-15",
+  "topics": []
+}

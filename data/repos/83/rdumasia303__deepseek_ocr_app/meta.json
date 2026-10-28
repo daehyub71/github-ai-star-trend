@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "73604791b44e188e",
+    "is_ai": true,
+    "reason": "A web app running the DeepSeek-OCR model to convert images and PDFs into Markdown, HTML, DOCX, or JSON.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "rdumasia303/deepseek_ocr_app",
+  "id": 1080153923
+}
