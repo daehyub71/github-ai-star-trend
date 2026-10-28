@@ -245,6 +245,22 @@ def _week_files(tmp_path: Path) -> tuple[Path, Path]:
     return data, work
 
 
+def test_analyze_load_inputs_drops_evidence_dated_after_the_as_of_day(tmp_path):
+    # 사용자 결정(2026-10-28 카드 시범 검토): 카드는 기준일(그 주 끝) 시점의 문서다 — 기준일 뒤 근거는 뺀다
+    data, work = _week_files(tmp_path)
+    late = ev.make(url="https://github.com/o/r/releases/tag/v2.0", source="github", kind="release",
+                   title="o/r v2.0", text="later", fetched_at=T, published_at="2026-10-26T00:00:00Z")
+    edge = ev.make(url="https://blog.example.com/on-the-last-day", source="web", kind="search", title="t",
+                   text="x", fetched_at=T, published_at="Sat, 24 Oct 2026 23:00:00 GMT")
+    t = Target(1, "o/r", since=W, until=date(2026, 10, 24), focus=(date(2026, 10, 20),))
+    ev.write(work, W, [Collected(t, [*_docs(), late, edge], [])])
+    [ci] = an.load_inputs(data, work, W)
+    urls = [d.url for d in ci.docs]
+    assert "https://github.com/o/r/releases/tag/v2.0" not in urls
+    assert "https://blog.example.com/on-the-last-day" in urls        # 날짜를 못 읽으면 남긴다
+    assert "https://github.com/o/r" in urls                           # 날짜 없는 근거(README)는 남긴다
+
+
 def test_analyze_load_inputs_reads_evidence_rankings_and_spikes(tmp_path):
     data, work = _week_files(tmp_path)
     [ci] = an.load_inputs(data, work, W)

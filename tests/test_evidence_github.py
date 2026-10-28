@@ -61,6 +61,18 @@ def test_evidence_github_collects_repo_doc_with_meta_and_releases():
     assert releases[0].text == "notes"
 
 
+def test_evidence_github_release_docs_stop_at_the_week_end():
+    # 회귀(2026-10-28 카드 시범): orca 는 매일 릴리스해서 "최근 5개"가 모두 기준일 뒤였다 →
+    # 카드 타임라인에 주 뒤 사건이 들어갔다. 근거로 남기는 릴리스는 기준일까지의 최근 5개다
+    gh = _gh()
+    gh.add_releases("o/r", [_rel("v2.2", "2026-10-27"), _rel("v2.1", "2026-10-25"),
+                            _rel("v1.2", "2026-10-20"), _rel("v1.1", "2026-10-06"),
+                            _rel("v1.0", "2026-09-22")])
+    repo, *releases = GitHubSource(gh, clock=lambda: NOW).collect(TARGET)
+    assert [d.extra["tag"] for d in releases] == ["v1.2", "v1.1", "v1.0"]
+    assert repo.extra["releases_seen"] == 5 and repo.extra["latest_release"] == "v2.2"   # 메타는 전부로
+
+
 def test_evidence_github_issue_window_is_30_days_before_the_week_end():
     gh = _gh()
     seen: list[date] = []

@@ -96,9 +96,19 @@ def load_inputs(data_dir: Path, work_dir: Path, week_start: date, *,
         e = entries[rid]
         daily = spikes.daily_from_weeks({w: r[rid] for w, r in rows.items() if rid in r})
         created = date.fromisoformat(e["created"]) if e.get("created") else None
-        out.append(CardInput(c.target, e, ranks[rid], c.docs, c.failed_sources,
+        docs = [d for d in c.docs if not _after(d, c.target.until)]
+        out.append(CardInput(c.target, e, ranks[rid], docs, c.failed_sources,
                              spikes.find_spikes(daily, created=created)))
     return out
+
+
+def _after(d: ev.Evidence, as_of: date) -> bool:
+    """기준일 뒤에 나온 근거인가 — 카드는 기준일 시점의 문서다(FR-6.4, 2026-10-28 시범 검토 뒤 사용자 결정).
+    날짜가 없거나 읽을 수 없으면 뒤로 보지 않는다(README 등)."""
+    try:
+        return date.fromisoformat((d.published_at or "")[:10]) > as_of
+    except ValueError:
+        return False
 
 
 # --- 요청 ---

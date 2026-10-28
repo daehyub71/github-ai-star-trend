@@ -85,7 +85,10 @@ class GitHubSource:
         }
         docs = [ev.make(url=f"https://github.com/{repo.full_name}", source="github", kind="repo",
                         title=repo.full_name, text=readme[:README_CHARS], fetched_at=now, extra=extra)]
-        for r in releases[:self.max_releases]:
+        # 근거로 남기는 릴리스는 기준일(그 주 끝)까지의 최근 것 — 매일 릴리스하는 저장소는 "최근 5개"가
+        # 모두 주 뒤일 수 있다(2026-10-28 orca). 메타(주기·최신 릴리스)는 받은 것 전부로 계산했다
+        in_week = [r for r in releases if r.published_at is None or r.published_at.date() <= target.until]
+        for r in in_week[:self.max_releases]:
             docs.append(ev.make(url=r.url, source="github", kind="release",
                                 title=f"{repo.full_name} {r.name}", text=r.body, fetched_at=now,
                                 published_at=_iso(r.published_at),
