@@ -57,6 +57,7 @@ def test_web_sends_basic_search_with_bearer_key():
     assert headers["Authorization"] == f"Bearer {KEY}" and headers["Content-Type"] == "application/json"
     assert body["query"] == "Graphify-Labs/graphify" and body["search_depth"] == "basic"
     assert body["include_answer"] is False and body["include_raw_content"] is False
+    assert body["include_published_date"] is True        # 결정 52 — 급등일 타임라인 재료
     assert 1 <= body["max_results"] <= 20 and KEY not in json.dumps(body)
 
 
@@ -74,8 +75,37 @@ def test_web_results_become_evidence_without_the_repo_itself():
     assert [d.url for d in docs] == ["https://dev.to/a/graphify-review", "https://blog.example.com/t"]
     d = docs[0]
     assert (d.source, d.kind, d.title, d.text) == ("web", "search", "Graphify review", "I tried it")
-    assert d.published_at == "2026-10-20" and d.extra == {"score": 0.8, "query": "Graphify-Labs/graphify"}
+    assert d.published_at == "2026-10-20"
+    assert d.extra == {"score": 0.8, "query": "Graphify-Labs/graphify", "fetchable": True}
     assert src.credits == 3 and len(p.sent) == 3
+
+
+@pytest.mark.parametrize("url, fetchable", [
+    ("https://www.reddit.com/r/LocalLLaMA/comments/1x9gfnb/google_open_sources_harness2", False),
+    ("https://old.reddit.com/r/x/comments/1", False),
+    ("https://redd.it/1x9gfnb", False),
+    ("https://notreddit.com/a", True),
+    ("https://dev.to/a/b", True),
+])
+def test_web_keeps_reddit_links_but_marks_them_not_fetchable(url, fetchable):
+    # 결정 52 — Reddit 링크·스니펫은 남긴다. robots 로 막혀 있어 본문(web_fetch)은 읽지 않는다
+    p = FakePoster([ok([_r(url, "t", "snippet")])])
+    [d] = TavilySource(p, KEY, clock=lambda: NOW, queries=lambda t: ["q"]).collect(TARGET)
+    assert d.url == url and d.extra["fetchable"] is fetchable
+
+
+@pytest.mark.parametrize("raw, want", [
+    ("Mon, 19 Oct 2026 21:49:06 GMT", "2026-10-19T21:49:06Z"),     # 2026-10-28 실호출에서 온 형식
+    ("Sun, 18 Oct 2026 10:18:35 +0900", "2026-10-18T01:18:35Z"),
+    ("2026-10-20", "2026-10-20"),
+    ("2026-10-20T03:00:00Z", "2026-10-20T03:00:00Z"),
+    ("어제", None),
+])
+def test_web_published_dates_become_iso(raw, want):
+    # 다른 출처(HN·GitHub)는 ISO 8601 이다 — 섞어서 날짜순으로 줄 세울 수 있어야 한다(FR-6.3 타임라인)
+    p = FakePoster([ok([_r("https://e.com/x", published_date=raw)])])
+    [d] = TavilySource(p, KEY, clock=lambda: NOW, queries=lambda t: ["q"]).collect(TARGET)
+    assert d.published_at == want
 
 
 def test_web_skips_results_without_a_web_url():
