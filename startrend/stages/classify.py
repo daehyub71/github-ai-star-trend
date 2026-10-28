@@ -30,7 +30,7 @@ from startrend.clients.llm import Usage, cost
 from startrend.core import hashing, io, meta, week, weekfile
 
 NEED = 15
-EXPECTED_AI_RATIO = 0.4   # 묶음 크기를 정하는 가정 — 정답 세트·첫 실행으로 실측해 바꾼다
+EXPECTED_AI_RATIO = 0.7   # 묶음 크기를 정하는 가정 — 52주 첫 실행 실측 71.7%(MEASURE §21, 사용자 결정 10-28)
 MODEL = "claude-opus-5-5"
 MAX_ROUNDS = 20
 

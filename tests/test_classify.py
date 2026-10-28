@@ -38,6 +38,12 @@ def test_classify_next_round_walks_until_enough_ai():
     assert cl.next_round(pool, {1: True, 2: True, 3: True}, need=3, ratio=0.5) == []
 
 
+def test_classify_default_ratio_follows_the_first_full_run():
+    # 52주 첫 전수 분류에서 후보 위쪽의 AI 비율은 71.7% 였다(MEASURE §21) → 가정 0.7 (사용자 결정 2026-10-28).
+    # 아무것도 모를 때 15개를 채우려면 축마다 22개를 판정한다(0.4 였을 때는 38개)
+    assert len(cl.next_round({"w/gain": list(range(1, 201))}, {})) == 22
+
+
 def test_classify_next_round_stops_when_pool_is_exhausted():
     assert cl.next_round({"w/gain": [1, 2]}, {1: False, 2: False}, need=15) == []
 
