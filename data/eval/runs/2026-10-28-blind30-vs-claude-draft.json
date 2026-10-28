@@ -1,0 +1,160 @@
+{
+  "answered": 30,
+  "calibration_error": null,
+  "category": {
+    "accuracy": 0.631578947368421,
+    "macro_f1": 0.6172839506172839,
+    "n": 19,
+    "per_class": {
+      "agent-framework": {
+        "f1": 0.6666666666666666,
+        "precision": 0.5,
+        "recall": 1.0,
+        "support": 1
+      },
+      "agent-skills": {
+        "f1": 0.6666666666666666,
+        "precision": 1.0,
+        "recall": 0.5,
+        "support": 2
+      },
+      "coding-agent": {
+        "f1": 0.6666666666666666,
+        "precision": 0.5,
+        "recall": 1.0,
+        "support": 1
+      },
+      "inference": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      },
+      "mcp-tools": {
+        "f1": 0.888888888888889,
+        "precision": 1.0,
+        "recall": 0.8,
+        "support": 5
+      },
+      "models": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      },
+      "multimodal": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "support": 2
+      },
+      "other-ai": {
+        "f1": 0.6666666666666665,
+        "precision": 0.75,
+        "recall": 0.6,
+        "support": 5
+      },
+      "training": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "support": 1
+      }
+    }
+  },
+  "cost_per_item_usd": null,
+  "disagreements": [
+    {
+      "field": "is_ai",
+      "full_name": "ossrs/srs",
+      "gold": true,
+      "pred": false,
+      "repo_id": 34777562
+    },
+    {
+      "field": "category",
+      "full_name": "ossrs/srs",
+      "gold": "other-ai",
+      "pred": null,
+      "repo_id": 34777562
+    },
+    {
+      "field": "category",
+      "full_name": "MilaNLProc/contextualized-topic-models",
+      "gold": "training",
+      "pred": "other-ai",
+      "repo_id": 253079431
+    },
+    {
+      "field": "is_ai",
+      "full_name": "eternity4719/HowToLiveBetter",
+      "gold": true,
+      "pred": false,
+      "repo_id": 1359648985
+    },
+    {
+      "field": "category",
+      "full_name": "eternity4719/HowToLiveBetter",
+      "gold": "agent-skills",
+      "pred": null,
+      "repo_id": 1359648985
+    },
+    {
+      "field": "type",
+      "full_name": "apimartrkg3agz/nano-banana-reverse-api-ru",
+      "gold": "교육자료",
+      "pred": "기타",
+      "repo_id": 1393270436
+    },
+    {
+      "field": "category",
+      "full_name": "apimartrkg3agz/nano-banana-reverse-api-ru",
+      "gold": "multimodal",
+      "pred": "llmops",
+      "repo_id": 1393270436
+    },
+    {
+      "field": "type",
+      "full_name": "apimartk5h4gmzgk/api-hub-migration-kit",
+      "gold": "교육자료",
+      "pred": "기타",
+      "repo_id": 1401629014
+    },
+    {
+      "field": "category",
+      "full_name": "apimartk5h4gmzgk/api-hub-migration-kit",
+      "gold": "multimodal",
+      "pred": "llmops",
+      "repo_id": 1401629014
+    },
+    {
+      "field": "category",
+      "full_name": "T-Auto/dsh-ops",
+      "gold": "mcp-tools",
+      "pred": "coding-agent",
+      "repo_id": 1409893258
+    },
+    {
+      "field": "category",
+      "full_name": "alonehobo/ai-assistant-1c",
+      "gold": "other-ai",
+      "pred": "agent-framework",
+      "repo_id": 1420856672
+    }
+  ],
+  "gold": "goldset_blind_labels.jsonl",
+  "is_ai": {
+    "accuracy": 0.9333333333333333,
+    "accuracy_strict": 0.9333333333333333,
+    "precision": 1.0,
+    "recall": 0.8947368421052632
+  },
+  "n": 30,
+  "predictions": "goldset_drafts.jsonl",
+  "seconds_per_item": null,
+  "type": {
+    "accuracy": 0.9333333333333333,
+    "n": 30
+  },
+  "unanswered": {}
+}
