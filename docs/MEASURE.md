@@ -346,3 +346,15 @@
 - 남은 카테고리 불일치는 대부분 **"AI 앱·서비스"의 경계**였다: 사용자는 2차 라벨에서 이 카테고리를 한 번도 쓰지 않고 일반 앱 + AI 4개(`nocobase` · `daily_stock_analysis` · `BuilderPulse` · `claude-switcher`)를 "기타 AI"로 골랐고, Claude 는 모두 AI 앱·서비스로 봤다. 에이전트 조작 앱(`storytold/deckcraft` · `figcraft`)은 사용자 MCP · Claude AI 앱.
 - **사용자 결정(2026-10-28):** 일반 앱에 AI 를 더한 것 → AI 앱·서비스(정답 4개 수정) · 에이전트가 조작하도록 만든 앱("Built for agents", MCP) → MCP 서버·도구. README 를 확인해 같은 계열 `storytold/effectcraft` · `filmcraft` · `pdfcraft` · `soundcraft`(비AI → AI) 도 MCP 로 맞췄다(`artcraft` 는 AI 이미지·영상 제작이라 멀티모달 유지). 프롬프트 규칙 1개 추가 · AI 앱 규칙 보완 · 분류 체계 설명 2곳 보완(id 그대로, v2 유지).
 - 정리한 정답으로 같은 판정을 다시 채점(비용 0): **블라인드 60 카테고리 84.2%**(AI 98.3% · 유형 98.3% · macro-F1 70.0%). 남은 8건 — `deckcraft`·`figcraft`(새 규칙 대상) · `coucou`(코딩 에이전트 대 AI 앱) · `srs`(AI 앱 대 멀티모달) · `contextualized-topic-models` · `home-assistant/core`(AI 여부) 등.
+
+**최종 프롬프트 재측정 (2026-10-28, `drafts_v21_blind60` — 일반 호출 $1.15):**
+
+| 정답 묶음 | AI 여부 | 유형 | 카테고리 | macro-F1 |
+|---|---:|---:|---:|---:|
+| 블라인드 60 | 96.7% | 98.3% | **86.8%** | 71.9% |
+| 1차 30 | 100% | 100% | 84.2% | 73.3% |
+| 2차 30(처음 보는 것) | 93.3% | 96.7% | **89.5%** | 83.7% |
+
+- `deckcraft`·`figcraft` 가 MCP 로 고쳐졌다(MCP F1 100%). AI 앱·서비스 F1 50% → 82%.
+- 대신 `claude-switcher` 가 AI → 비AI 로 바뀌었다 — 같은 입력이라도 판정이 1~2건씩 흔들린다(60개에서 1건 = 1.7%p). 남은 불일치 5건(`home-assistant/core` AI 여부 · `srs` AI 앱 대 멀티모달 · `contextualized-topic-models` · `coucou` 코딩 에이전트 대 AI 앱 · `BuilderPulse` 유형)은 모두 경계 사례다.
+- P2-8 에 쓴 돈: $1.11 + $1.15 = **$2.26**. 이 프롬프트(판정기 지문이 바뀜)가 52주 전수 분류(P2-9)와 Claude 대 JEV 비교(D-16)의 기준이다.

@@ -1,0 +1,402 @@
+{
+  "answered": 60,
+  "by_subset": {
+    "1차 30 — 규칙을 만들 때 본 것": {
+      "answered": 30,
+      "calibration_error": null,
+      "category": {
+        "accuracy": 0.8421052631578947,
+        "macro_f1": 0.7333333333333334,
+        "n": 19,
+        "per_class": {
+          "agent-framework": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "agent-skills": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 2
+          },
+          "ai-apps": {
+            "f1": 0.8000000000000002,
+            "precision": 0.8,
+            "recall": 0.8,
+            "support": 5
+          },
+          "coding-agent": {
+            "f1": 0.0,
+            "precision": null,
+            "recall": 0.0,
+            "support": 1
+          },
+          "inference": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "mcp-tools": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 5
+          },
+          "models": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "multimodal": {
+            "f1": 0.8,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "support": 2
+          },
+          "training": {
+            "f1": 0.0,
+            "precision": null,
+            "recall": 0.0,
+            "support": 1
+          }
+        }
+      },
+      "cost_per_item_usd": null,
+      "is_ai": {
+        "accuracy": 1.0,
+        "accuracy_strict": 1.0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "n": 30,
+      "seconds_per_item": null,
+      "type": {
+        "accuracy": 1.0,
+        "n": 30
+      },
+      "unanswered": {}
+    },
+    "2차 30 — 처음 보는 것": {
+      "answered": 30,
+      "calibration_error": null,
+      "category": {
+        "accuracy": 0.8947368421052632,
+        "macro_f1": 0.836734693877551,
+        "n": 19,
+        "per_class": {
+          "agent-skills": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          },
+          "ai-apps": {
+            "f1": 0.8571428571428571,
+            "precision": 1.0,
+            "recall": 0.75,
+            "support": 4
+          },
+          "computer-use": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "llmops": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "mcp-tools": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "models": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 2
+          },
+          "other-ai": {
+            "f1": 0.0,
+            "precision": null,
+            "recall": 0.0,
+            "support": 1
+          }
+        }
+      },
+      "cost_per_item_usd": null,
+      "is_ai": {
+        "accuracy": 0.9333333333333333,
+        "accuracy_strict": 0.9333333333333333,
+        "precision": 1.0,
+        "recall": 0.8947368421052632
+      },
+      "n": 30,
+      "seconds_per_item": null,
+      "type": {
+        "accuracy": 0.9666666666666667,
+        "n": 30
+      },
+      "unanswered": {}
+    },
+    "블라인드 전체": {
+      "answered": 60,
+      "calibration_error": null,
+      "category": {
+        "accuracy": 0.868421052631579,
+        "macro_f1": 0.7186274509803922,
+        "n": 38,
+        "per_class": {
+          "agent-framework": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "agent-skills": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 8
+          },
+          "ai-apps": {
+            "f1": 0.823529411764706,
+            "precision": 0.875,
+            "recall": 0.7777777777777778,
+            "support": 9
+          },
+          "coding-agent": {
+            "f1": 0.0,
+            "precision": null,
+            "recall": 0.0,
+            "support": 1
+          },
+          "computer-use": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "inference": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1
+          },
+          "llmops": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "mcp-tools": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 6
+          },
+          "models": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3
+          },
+          "multimodal": {
+            "f1": 0.8,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "support": 2
+          },
+          "other-ai": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 1
+          },
+          "training": {
+            "f1": 0.0,
+            "precision": null,
+            "recall": 0.0,
+            "support": 1
+          }
+        }
+      },
+      "cost_per_item_usd": null,
+      "is_ai": {
+        "accuracy": 0.9666666666666667,
+        "accuracy_strict": 0.9666666666666667,
+        "precision": 1.0,
+        "recall": 0.9473684210526315
+      },
+      "n": 60,
+      "seconds_per_item": null,
+      "type": {
+        "accuracy": 0.9833333333333333,
+        "n": 60
+      },
+      "unanswered": {}
+    }
+  },
+  "calibration_error": null,
+  "category": {
+    "accuracy": 0.868421052631579,
+    "macro_f1": 0.7186274509803922,
+    "n": 38,
+    "per_class": {
+      "agent-framework": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      },
+      "agent-skills": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 8
+      },
+      "ai-apps": {
+        "f1": 0.823529411764706,
+        "precision": 0.875,
+        "recall": 0.7777777777777778,
+        "support": 9
+      },
+      "coding-agent": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "support": 1
+      },
+      "computer-use": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      },
+      "inference": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 1
+      },
+      "llmops": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 4
+      },
+      "mcp-tools": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 6
+      },
+      "models": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 3
+      },
+      "multimodal": {
+        "f1": 0.8,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "support": 2
+      },
+      "other-ai": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 1
+      },
+      "training": {
+        "f1": 0.0,
+        "precision": null,
+        "recall": 0.0,
+        "support": 1
+      }
+    }
+  },
+  "cost_per_item_usd": null,
+  "disagreements": [
+    {
+      "field": "is_ai",
+      "full_name": "home-assistant/core",
+      "gold": true,
+      "pred": false,
+      "repo_id": 12888993
+    },
+    {
+      "field": "category",
+      "full_name": "home-assistant/core",
+      "gold": "other-ai",
+      "pred": null,
+      "repo_id": 12888993
+    },
+    {
+      "field": "category",
+      "full_name": "ossrs/srs",
+      "gold": "ai-apps",
+      "pred": "multimodal",
+      "repo_id": 34777562
+    },
+    {
+      "field": "category",
+      "full_name": "MilaNLProc/contextualized-topic-models",
+      "gold": "training",
+      "pred": "other-ai",
+      "repo_id": 253079431
+    },
+    {
+      "field": "type",
+      "full_name": "BuilderPulse/BuilderPulse",
+      "gold": "큐레이션 목록",
+      "pred": "기타",
+      "repo_id": 1210412315
+    },
+    {
+      "field": "category",
+      "full_name": "Louis-CFM/coucou",
+      "gold": "coding-agent",
+      "pred": "ai-apps",
+      "repo_id": 1391438314
+    },
+    {
+      "field": "is_ai",
+      "full_name": "YOURSJEYO/claude-switcher",
+      "gold": true,
+      "pred": false,
+      "repo_id": 1418421680
+    },
+    {
+      "field": "category",
+      "full_name": "YOURSJEYO/claude-switcher",
+      "gold": "ai-apps",
+      "pred": null,
+      "repo_id": 1418421680
+    }
+  ],
+  "gold": "goldset_classify.jsonl",
+  "is_ai": {
+    "accuracy": 0.9666666666666667,
+    "accuracy_strict": 0.9666666666666667,
+    "precision": 1.0,
+    "recall": 0.9473684210526315
+  },
+  "n": 60,
+  "predictions": "drafts_v21_blind60.jsonl",
+  "seconds_per_item": null,
+  "type": {
+    "accuracy": 0.9833333333333333,
+    "n": 60
+  },
+  "unanswered": {}
+}
