@@ -11,6 +11,8 @@
              캐시된 Search 응답에서 설명·토픽을 읽는다 — 네트워크 0, 토큰 불필요
 - classify : AI 여부·유형·카테고리 판정 (FR-3) — 기본은 dry-run(호출 0). --run 은 Batch 조각으로 판정(과금)
 - trends   : 카테고리 추이 — 주마다 카테고리(+ALL) 증가 합계·저장소 수·AI 탭 진입 수 (FR-8.1), 호출 0
+- evidence : 근거 수집 (FR-5) — 그 주 AI 탭 저장소의 GitHub·HN·GeekNews·패키지·웹 검색 근거
+             → .work/<주>/evidence.jsonl. 기본은 계획만(호출 0). --run 은 무료 API·Tavily 무료 크레딧
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -31,10 +33,16 @@ from typing import Any
 from startrend.budget import BudgetMeter, run_batch
 from startrend.clients.claude import ClaudeBatch, ClaudeLLM
 from startrend.clients.decision import LLMDecider
+from startrend.clients.evidence import web
+from startrend.clients.evidence.base import EvidenceSource
+from startrend.clients.evidence.geeknews import GeekNewsSource
+from startrend.clients.evidence.github import GitHubSource
+from startrend.clients.evidence.hn import HNSource
+from startrend.clients.evidence.packages import PackagesSource
 from startrend.clients.github_live import LiveGitHub, cacheable_response
 from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_search_page
 from startrend.clients.llm import BatchItem, LLMRequest, MockLLM
-from startrend.clients.transport import CachingTransport, UrllibTransport
+from startrend.clients.transport import CachingTransport, UrllibPoster, UrllibTransport
 from startrend.clients.trending import fetch_trending
 from startrend.core import meta, snapshot, taxonomy, weekfile
 from startrend.core import week as wk
@@ -47,6 +55,7 @@ from startrend.stages import (
     contract,
     discover,
     evaluate,
+    evidence,
     goldset,
     probe,
     rank,
@@ -100,6 +109,12 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p = sub.add_parser("trends", help="카테고리 추이 — 주마다 카테고리(+ALL) 집계 (호출 0, 비용 0)")
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="주간 파일이 있는 모든 주")
+    p = sub.add_parser("evidence",
+                       help="근거 수집(FR-5) — 기본은 계획만(호출 0). --run 은 무료 API·검색 크레딧")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--repos", help="쉼표로 구분 — 그 주 AI 탭에서 이 저장소만")
+    p.add_argument("--run", action="store_true", help="실제로 모은다 — GitHub·HN·GeekNews·패키지·웹 검색")
+    p.add_argument("--no-web", action="store_true", help="웹 검색(Tavily 크레딧)을 쓰지 않는다")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -124,6 +139,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _classify(settings, args)
     if args.cmd == "trends":  # 정본 파일만 읽는다 — 토큰 없이 돈다
         return _trends(settings, args)
+    if args.cmd == "evidence":  # 계획은 토큰 없이, --run 은 스스로 키를 확인한다
+        return _evidence(settings, args)
     if args.cmd == "eval":
         return _eval(settings, args)
     if args.cmd == "goldset-draft":
@@ -431,6 +448,47 @@ def _trends(settings: Settings, args: argparse.Namespace) -> int:
     stats = trends.run_trends(data_dir=settings.data_dir, weeks=weeks, tax=_load_taxonomy(settings),
                               classified=classified, log=lambda m: print(m, flush=True))
     print(dumps_json({**stats, "classified": len(classified)}), end="")
+    return 0
+
+
+def _evidence(settings: Settings, args: argparse.Namespace) -> int:
+    w = _week_arg(args.week, date.today())
+    repos = [r.strip() for r in args.repos.split(",") if r.strip()] if args.repos else None
+    try:
+        targets = evidence.targets_for(settings.data_dir, w, repos=repos)
+    except FileNotFoundError as e:
+        print(e, file=sys.stderr)
+        return 2
+    queries = 0 if args.no_web else len(web.default_queries(targets[0])) if targets else 3
+    if not args.run:
+        est = evidence.plan(targets, web_queries=queries)
+        print(dumps_json({"plan": True, "week": wk.week_name(w), **est}), end="")
+        return 0
+    try:
+        token = settings.require_github_token()
+        tavily_key = None if args.no_web else settings.require_tavily_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+
+    def log(m: str) -> None:
+        print(m, flush=True)
+
+    # 응답 캐시는 주마다 따로 — 다음 주에 지난 주의 저장소 정보·검색 결과를 다시 쓰지 않게
+    cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "evidence" / wk.week_name(w),
+                             cacheable_response)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
+    geeknews = GeekNewsSource(cache)
+    search = web.TavilySource(UrllibPoster(), tavily_key) if tavily_key else None
+    sources: list[EvidenceSource] = [GitHubSource(gh), HNSource(cache), geeknews, PackagesSource(cache)]
+    if search:
+        sources.append(search)
+    t0 = time.monotonic()
+    stats = evidence.run_evidence(sources, targets, work_dir=settings.work_dir, week_start=w, log=log)
+    print(dumps_json({**stats, "week": wk.week_name(w), "tavily_credits": search.credits if search else 0,
+                      "geeknews_requests": geeknews.calls, "github_calls": dict(gh.stats.calls),
+                      "cache_hits": cache.hits, "seconds": round(time.monotonic() - t0),
+                      "file": str(evidence.evidence_path(settings.work_dir, w))}), end="")
     return 0
 
 

@@ -47,6 +47,18 @@ def normalize_url(raw: str) -> str | None:
     return urlunsplit(("https", netloc, path, query, ""))
 
 
+_GITHUB_REPO = re.compile(r"^(?:git\+)?https?://(?:www\.)?github\.com/([^/?#]+)/([^/?#]+)", re.I)
+
+
+def github_repo(url: str) -> str | None:
+    """github.com/<owner>/<repo>(하위 경로 포함)를 가리키는 URL 이면 소문자 "owner/repo". 아니면 None."""
+    m = _GITHUB_REPO.match(url.strip())
+    if not m:
+        return None
+    repo = re.sub(r"(?i)\.git$", "", m.group(2))
+    return f"{m.group(1)}/{repo}".lower()
+
+
 def text_hash(text: str) -> str:
     return hashing.sha256_text(text)[:16]
 

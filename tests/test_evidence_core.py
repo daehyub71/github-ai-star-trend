@@ -78,6 +78,19 @@ def test_evidence_record_round_trip_leaves_full_text_out():
     assert back.url == d.url and back.excerpt == d.excerpt and back.text == ""
 
 
+@pytest.mark.parametrize("url, want", [
+    ("https://github.com/Synth-Lab/Agent-Kit", "synth-lab/agent-kit"),
+    ("https://github.com/o/r.git", "o/r"),
+    ("http://www.github.com/o/r/tree/main/docs?x=1", "o/r"),
+    ("git+https://github.com/o/r.git", "o/r"),
+    ("https://github.com/o", None),
+    ("https://gitlab.com/o/r", None),
+    ("https://github.com.evil.example/o/r", None),
+])
+def test_evidence_github_repo_of_a_url(url, want):
+    assert ev.github_repo(url) == want
+
+
 def test_evidence_dedupe_keeps_first_by_normalized_url():
     a = ev.make(url="https://e.com/x/", source="web", kind="search", title="a", text="1", fetched_at=T)
     b = ev.make(url="http://www.e.com/x#top", source="hn", kind="comment", title="b", text="2", fetched_at=T)

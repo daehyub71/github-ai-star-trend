@@ -195,6 +195,29 @@ def test_cli_goldset_draft_run_needs_the_project_anthropic_key(tmp_path, capsys)
     assert "STARTREND_ANTHROPIC_API_KEY" in capsys.readouterr().err
 
 
+def test_cli_evidence_defaults_to_a_plan_without_calls(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+    from startrend.core import weekfile
+    from startrend.core.weekfile import WeekRow
+
+    w = date(2026, 10, 18)
+    weekfile.write(weekfile.week_path(tmp_path / "d", w),
+                   [WeekRow(1, "o/r1", date(2024, 1, 1), 5000, 100, False, None)])
+    e = {"id": 1, "full_name": "o/r1", "created": "2024-01-01"}
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {"gain": {"all": [e], "ai": [e]}}})
+    assert main(["evidence", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 0    # 키 없이
+    out = json.loads(capsys.readouterr().out)
+    assert out["plan"] is True and out["targets"] == 1 and out["tavily_credits"] == 3
+    assert out["repos"] == ["o/r1"]
+
+
+def test_cli_evidence_run_needs_keys(tmp_path, capsys):
+    assert main(["evidence", "--week", "2026-10-18", "--run"], env=_dirs(tmp_path)) == 2
+
+
 def test_cli_trends_runs_without_token(tmp_path, capsys):
     import json
 
