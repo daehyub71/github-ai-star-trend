@@ -214,6 +214,40 @@ def test_cli_evidence_defaults_to_a_plan_without_calls(tmp_path, capsys):
     assert out["repos"] == ["o/r1"]
 
 
+def test_cli_analyze_defaults_to_dry_run_without_keys(tmp_path, capsys):
+    import json
+    from datetime import UTC, datetime
+
+    from startrend.core import evidence as cev
+    from startrend.core import io as cio
+    from startrend.core import weekfile
+    from startrend.core.weekfile import WeekRow
+
+    w = date(2026, 10, 18)
+    weekfile.write(weekfile.week_path(tmp_path / "d", w),
+                   [WeekRow(1, "o/r1", date(2024, 1, 1), 5000, 100, False, None)])
+    e = {"id": 1, "full_name": "o/r1", "created": "2024-01-01", "rank": 1, "gain": 100, "stars_end": 5000}
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {"gain": {"all": [e], "ai": [e]}}})
+    doc = cev.make(url="https://github.com/o/r1", source="github", kind="repo", title="o/r1", text="# r1",
+                   fetched_at=datetime(2026, 10, 28, tzinfo=UTC))
+    target = cev.Target(1, "o/r1", since=w, until=date(2026, 10, 24))
+    cev.write(tmp_path / "w", w, [cev.Collected(target, [doc])])
+    assert main(["analyze", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["dry_run"] is True and out["cards"] == 1 and out["total_usd"][0] > 0
+    assert main(["analyze", "--week", "2026-10-18", "--run"], env=_dirs(tmp_path)) == 2   # 키 없음
+
+
+def test_cli_analyze_without_evidence_says_what_to_run_first(tmp_path, capsys):
+    from startrend.core import io as cio
+
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {}})
+    assert main(["analyze", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 2
+    assert "evidence" in capsys.readouterr().err
+
+
 def test_cli_evidence_run_needs_keys(tmp_path, capsys):
     assert main(["evidence", "--week", "2026-10-18", "--run"], env=_dirs(tmp_path)) == 2
 

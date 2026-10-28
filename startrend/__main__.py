@@ -13,6 +13,8 @@
 - trends   : 카테고리 추이 — 주마다 카테고리(+ALL) 증가 합계·저장소 수·AI 탭 진입 수 (FR-8.1), 호출 0
 - evidence : 근거 수집 (FR-5) — 그 주 AI 탭 저장소의 GitHub·HN·GeekNews·패키지·웹 검색 근거
              → .work/<주>/evidence.jsonl. 기본은 계획만(호출 0). --run 은 무료 API·Tavily 무료 크레딧
+- analyze  : 심층 카드 (FR-6) — 근거 + 숫자 → 8섹션 카드, 인용 게이트 → .work/<주>/cards/ (D-23 전까지).
+             기본은 dry-run(호출 0). --run 은 일반 호출(과금, --cap 상한)
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -39,6 +41,7 @@ from startrend.clients.evidence.geeknews import GeekNewsSource
 from startrend.clients.evidence.github import GitHubSource
 from startrend.clients.evidence.hn import HNSource
 from startrend.clients.evidence.packages import PackagesSource
+from startrend.clients.github import GitHubError
 from startrend.clients.github_live import LiveGitHub, cacheable_response
 from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_search_page
 from startrend.clients.llm import BatchItem, LLMRequest, MockLLM
@@ -50,6 +53,7 @@ from startrend.core.config import PROJECT_ROOT, ConfigError, Settings, load_sett
 from startrend.core.io import dumps_json, read_json, read_jsonl, write_json, write_jsonl
 from startrend.core.models import Repo
 from startrend.stages import (
+    analyze,
     backfill,
     classify,
     contract,
@@ -115,6 +119,13 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--repos", help="쉼표로 구분 — 그 주 AI 탭에서 이 저장소만")
     p.add_argument("--run", action="store_true", help="실제로 모은다 — GitHub·HN·GeekNews·패키지·웹 검색")
     p.add_argument("--no-web", action="store_true", help="웹 검색(Tavily 크레딧)을 쓰지 않는다")
+    p = sub.add_parser("analyze", help="심층 카드(FR-6) — 기본은 dry-run(호출 0). --run 은 과금")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--repos", help="쉼표로 구분 — 근거를 모은 저장소 중 이것만")
+    p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
+    p.add_argument("--cap", type=float, default=3.0,
+                   help="이번 실행 예산 상한(달러) — 부르기 전 최악 비용으로 막는다")
+    p.add_argument("--effort", default=analyze.EFFORT, choices=["low", "medium", "high"])
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -141,6 +152,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _trends(settings, args)
     if args.cmd == "evidence":  # 계획은 토큰 없이, --run 은 스스로 키를 확인한다
         return _evidence(settings, args)
+    if args.cmd == "analyze":   # dry-run 은 키 없이
+        return _analyze(settings, args)
     if args.cmd == "eval":
         return _eval(settings, args)
     if args.cmd == "goldset-draft":
@@ -490,6 +503,56 @@ def _evidence(settings: Settings, args: argparse.Namespace) -> int:
                       "cache_hits": cache.hits, "seconds": round(time.monotonic() - t0),
                       "file": str(evidence.evidence_path(settings.work_dir, w))}), end="")
     return 0
+
+
+def _analyze(settings: Settings, args: argparse.Namespace) -> int:
+    w = _week_arg(args.week, date.today())
+    repos = [r.strip() for r in args.repos.split(",") if r.strip()] if args.repos else None
+    try:
+        inputs = analyze.load_inputs(settings.data_dir, settings.work_dir, w, repos=repos)
+    except FileNotFoundError as e:
+        print(e, file=sys.stderr)
+        return 2
+    if not inputs:
+        print(f"카드를 만들 근거가 없다 — 먼저 `evidence --week {wk.week_name(w)} --run` 으로 근거를 모은다",
+              file=sys.stderr)
+        return 2
+    names = {c.id: c.name for c in _load_taxonomy(settings).categories}
+    if not args.run:
+        est = analyze.dry_run(analyze.CardWriter(MockLLM([]), effort=args.effort, names=names), inputs)
+        print(dumps_json({"dry_run": True, "week": wk.week_name(w), "cap_usd": args.cap, **est}), end="")
+        return 0
+    try:
+        token = settings.require_github_token()
+        key = settings.require_anthropic_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+    cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "evidence" / wk.week_name(w),
+                             cacheable_response)
+    gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
+
+    def repo_exists(full_name: str) -> bool:
+        # 비교 저장소는 실제로 있어야 링크를 허용한다 — 확인하지 못하면(오류 포함) 허용하지 않는다
+        try:
+            gh.get_repo(full_name)
+            return True
+        except (GitHubError, GitHubFormatError):
+            return False
+
+    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    writer = analyze.CardWriter(meter, effort=args.effort, names=names)
+    t0 = time.monotonic()
+    stats = analyze.run_analyze(writer, inputs, work_dir=settings.work_dir, week_start=w, names=names,
+                                repo_exists=repo_exists, today=date.today(),
+                                log=lambda m: print(m, flush=True))
+    summary = {**stats, "week": wk.week_name(w), "spent_usd": round(meter.spent, 4), "cap_usd": args.cap,
+               "calls": meter.calls, "seconds": round(time.monotonic() - t0),
+               "fingerprint": writer.fingerprint, "dir": str(analyze.card_dir(settings.work_dir, w))}
+    write_json(analyze.card_dir(settings.work_dir, w) / f"run-{date.today().isoformat()}.json",
+               {**summary, "ledger": meter.ledger})
+    print(dumps_json(summary), end="")
+    return 0 if stats["stopped"] is None else 3
 
 
 def _eval_summary(r: Mapping[str, Any], run: Path) -> dict[str, Any]:

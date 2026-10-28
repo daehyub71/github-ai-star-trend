@@ -9,7 +9,6 @@
 """
 
 from collections.abc import Callable, Sequence
-from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
@@ -19,23 +18,14 @@ from startrend.clients.evidence.base import EvidenceSource, Target
 from startrend.core import evidence as ev
 from startrend.core import io, spikes, week, weekfile
 
+# 근거 파일 형식은 core 에 있다(analyze 도 읽는다) — 여기서는 이름만 다시 내보낸다
+from startrend.core.evidence import Collected as Collected
+from startrend.core.evidence import evidence_path as evidence_path
+from startrend.core.evidence import read as read
+from startrend.core.evidence import week_dir as week_dir
+from startrend.core.evidence import write as write
+
 ERROR_CHARS = 300
-
-
-@dataclass
-class Collected:
-    target: Target
-    docs: list[ev.Evidence]
-    failures: list[dict[str, str]] = field(default_factory=list)   # {"source", "error"}
-
-    @property
-    def failed_sources(self) -> list[str]:
-        return [f["source"] for f in self.failures]
-
-    @property
-    def urls(self) -> list[str]:
-        """인용 게이트에 넘길 근거 URL (FR-7.2)."""
-        return [d.url for d in self.docs]
 
 
 def gather(target: Target, sources: Sequence[EvidenceSource], *,
@@ -121,45 +111,3 @@ def run_evidence(sources: Sequence[EvidenceSource], targets: Sequence[Target], *
 
 def week_dir_data(data_dir: Path, week_start: date) -> Path:
     return data_dir / "weekly" / week.week_name(week_start)
-
-
-def week_dir(work_dir: Path, week_start: date) -> Path:
-    return work_dir / week.week_name(week_start)
-
-
-def evidence_path(work_dir: Path, week_start: date) -> Path:
-    return week_dir(work_dir, week_start) / "evidence.jsonl"
-
-
-def _row(c: Collected) -> dict[str, Any]:
-    t = c.target
-    return {"repo_id": t.repo_id, "full_name": t.full_name, "since": t.since.isoformat(),
-            "until": t.until.isoformat(), "focus": [d.isoformat() for d in t.focus],
-            "docs": [d.record() for d in c.docs], "failures": c.failures}
-
-
-def write(work_dir: Path, week_start: date, collected: Sequence[Collected]) -> Path:
-    """목록을 쓰고 원문을 해시 이름으로 남긴다(같은 해시는 다시 쓰지 않는다)."""
-    raw = week_dir(work_dir, week_start) / "raw"
-    for c in collected:
-        for d in c.docs:
-            p = raw / f"{d.content_hash}.txt"
-            if d.text and not p.exists():
-                io.write_text_atomic(p, d.text)
-    path = evidence_path(work_dir, week_start)
-    io.write_jsonl(path, [_row(c) for c in sorted(collected, key=lambda c: c.target.repo_id)])
-    return path
-
-
-def read(work_dir: Path, week_start: date) -> dict[int, Collected]:
-    path = evidence_path(work_dir, week_start)
-    out: dict[int, Collected] = {}
-    if not path.exists():
-        return out
-    for row in io.read_jsonl(path):
-        t = Target(int(row["repo_id"]), row["full_name"], since=date.fromisoformat(row["since"]),
-                   until=date.fromisoformat(row["until"]),
-                   focus=tuple(date.fromisoformat(x) for x in row.get("focus") or ()))
-        docs = [ev.from_record(r) for r in row["docs"]]
-        out[t.repo_id] = Collected(t, docs, list(row.get("failures") or []))
-    return out

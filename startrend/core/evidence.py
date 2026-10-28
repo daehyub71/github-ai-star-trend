@@ -6,13 +6,14 @@
 """
 
 import re
-from collections.abc import Iterable, Mapping
-from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from collections.abc import Iterable, Mapping, Sequence
+from dataclasses import dataclass, field, replace
+from datetime import UTC, date, datetime
+from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit, urlunsplit
 
-from startrend.core import hashing
+from startrend.core import hashing, io, week
 
 EXCERPT_CHARS = 300
 _DROP_PARAMS = ("utm_", "fbclid", "gclid", "mc_cid", "mc_eid")
@@ -118,4 +119,89 @@ def dedupe(docs: Iterable[Evidence]) -> list[Evidence]:
         if d.key not in seen:
             seen.add(d.key)
             out.append(d)
+    return out
+
+
+# --- 근거 파일 (PLAN 1-4: evidence 가 쓰고 analyze 가 읽는다 — 단계끼리 import 하지 않도록 core 에 둔다) ---
+
+
+@dataclass(frozen=True)
+class Target:
+    repo_id: int
+    full_name: str
+    since: date                      # 근거 창 첫날(포함) — 기본은 지난 7일 (FR-5.2)
+    until: date                      # 마지막 날(포함)
+    focus: tuple[date, ...] = ()     # 급등일 — 그 앞뒤 근거를 우선한다 (FR-5.2·6.3)
+
+    @property
+    def owner(self) -> str:
+        return self.full_name.split("/", 1)[0]
+
+    @property
+    def name(self) -> str:
+        return self.full_name.split("/", 1)[1]
+
+
+@dataclass
+class Collected:
+    target: Target
+    docs: list[Evidence]
+    failures: list[dict[str, str]] = field(default_factory=list)   # {"source", "error"}
+
+    @property
+    def failed_sources(self) -> list[str]:
+        return [f["source"] for f in self.failures]
+
+    @property
+    def urls(self) -> list[str]:
+        """인용 게이트에 넘길 근거 URL (FR-7.2)."""
+        return [d.url for d in self.docs]
+
+
+def week_dir(work_dir: Path, week_start: date) -> Path:
+    return work_dir / week.week_name(week_start)
+
+
+def evidence_path(work_dir: Path, week_start: date) -> Path:
+    return week_dir(work_dir, week_start) / "evidence.jsonl"
+
+
+def raw_path(work_dir: Path, week_start: date, content_hash: str) -> Path:
+    return week_dir(work_dir, week_start) / "raw" / f"{content_hash}.txt"
+
+
+def _row(c: Collected) -> dict[str, Any]:
+    t = c.target
+    return {"repo_id": t.repo_id, "full_name": t.full_name, "since": t.since.isoformat(),
+            "until": t.until.isoformat(), "focus": [d.isoformat() for d in t.focus],
+            "docs": [d.record() for d in c.docs], "failures": c.failures}
+
+
+def write(work_dir: Path, week_start: date, collected: Sequence[Collected]) -> Path:
+    """목록을 쓰고 원문을 해시 이름으로 남긴다(같은 해시는 다시 쓰지 않는다)."""
+    for c in collected:
+        for d in c.docs:
+            p = raw_path(work_dir, week_start, d.content_hash)
+            if d.text and not p.exists():
+                io.write_text_atomic(p, d.text)
+    path = evidence_path(work_dir, week_start)
+    io.write_jsonl(path, [_row(c) for c in sorted(collected, key=lambda c: c.target.repo_id)])
+    return path
+
+
+def read(work_dir: Path, week_start: date, *, with_text: bool = False) -> dict[int, Collected]:
+    """with_text: 원문(raw/<해시>.txt)을 다시 붙인다 — analyze 가 README·릴리스 노트를 읽을 때."""
+    path = evidence_path(work_dir, week_start)
+    out: dict[int, Collected] = {}
+    if not path.exists():
+        return out
+    for row in io.read_jsonl(path):
+        t = Target(int(row["repo_id"]), row["full_name"], since=date.fromisoformat(row["since"]),
+                   until=date.fromisoformat(row["until"]),
+                   focus=tuple(date.fromisoformat(x) for x in row.get("focus") or ()))
+        docs = [from_record(r) for r in row["docs"]]
+        if with_text:
+            docs = [replace(d, text=io.read_text(p)) if (p := raw_path(work_dir, week_start, d.content_hash))
+                    .exists() else d for d in docs]
+        out[t.repo_id] = Collected(t, docs, list(row.get("failures") or []))
     return out

@@ -5,28 +5,10 @@
 """
 
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass
-from datetime import date
 from typing import Protocol
 
 from startrend.core.evidence import Evidence
-
-
-@dataclass(frozen=True)
-class Target:
-    repo_id: int
-    full_name: str
-    since: date                      # 근거 창 첫날(포함) — 기본은 지난 7일 (FR-5.2)
-    until: date                      # 마지막 날(포함)
-    focus: tuple[date, ...] = ()     # 급등일 — 그 앞뒤 근거를 우선한다 (FR-5.2·6.3)
-
-    @property
-    def owner(self) -> str:
-        return self.full_name.split("/", 1)[0]
-
-    @property
-    def name(self) -> str:
-        return self.full_name.split("/", 1)[1]
+from startrend.core.evidence import Target as Target  # 근거 파일 형식과 함께 core 에 있다 — 여기서도 쓴다
 
 
 class SourceError(Exception):
