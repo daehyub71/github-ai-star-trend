@@ -4,6 +4,8 @@
 - `index.json` — 주 목록·최신 주·분류 체계 이름
 - `weeks/<주>.json` — 랭킹 8개(4축 × 전체·AI 탭). 화면에 쓰는 필드만 + 최근 12주 스파크라인(FR-9.1)
 - `categories.json` — 카테고리(+ALL) × 주의 증가·저장소 수·AI 탭 진입 수와 커버리지
+- `repos.json` — 저장소 추이(시안 v1.3): 최근 52주 동안 AI 탭 뜨는 축에 든 주(비트열)·연속·
+  최근 4주 증가·12주 스파크
 
 사이트 빌드는 `data/stars/` 원시 시계열을 읽지 않는다(FR-9.2) — 스파크라인은 여기서 미리 계산한다.
 
@@ -13,7 +15,7 @@
 
 import json
 import tomllib
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Mapping, Sequence
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
@@ -25,6 +27,10 @@ ENTRY_FIELDS = ("id", "full_name", "description", "language", "created", "stars_
                 "exact", "days")
 DESC_CHARS = 160
 SPARK_WEEKS = 12
+# 누적 TOP 은 뺀다 — 거대 저장소가 매주 끼어 "꾸준히 뜬다"가 흐려진다
+RISING_AXES = ("gain", "fresh", "growth")
+REPO_WINDOW = 52
+REPO_MIN_WEEKS = 2
 
 
 def _dump(obj: Any) -> str:
@@ -61,13 +67,16 @@ def _entry(e: Mapping[str, Any], spark: list[int]) -> dict[str, Any]:
     return out
 
 
+def _spark(rid: int, w: date, gains: Mapping[date, Mapping[int, int]]) -> list[int]:
+    """w 주까지 12주 증가, 오래된 주 → 이번 주. 주간 파일에 없던 주는 증가가 10 미만이었다 — 0 으로 둔다."""
+    span = [w - timedelta(days=7 * k) for k in range(SPARK_WEEKS - 1, -1, -1)]
+    return [int(gains.get(x, {}).get(rid, 0)) for x in span]
+
+
 def week_payload(ranking: Mapping[str, Any], w: date,
                  gains: Mapping[date, Mapping[int, int]]) -> dict[str, Any]:
-    span = [w - timedelta(days=7 * k) for k in range(SPARK_WEEKS - 1, -1, -1)]   # 오래된 주 → 이번 주
-
     def spark(rid: int) -> list[int]:
-        # 주간 파일에 없던 주는 증가가 10 미만이었다 — 0 으로 둔다
-        return [int(gains.get(x, {}).get(rid, 0)) for x in span]
+        return _spark(rid, w, gains)
 
     axes: dict[str, Any] = {}
     for axis, tabs in (ranking.get("axes") or {}).items():
@@ -75,6 +84,31 @@ def week_payload(ranking: Mapping[str, Any], w: date,
                       for tab, rows in tabs.items()}
     return {"week": w.isoformat(), "week_end": week.week_end(w).isoformat(), "axes": axes,
             "ai_status": ranking.get("ai_status")}
+
+
+def repos_payload(rankings: Sequence[tuple[date, Mapping[str, Any]]],
+                  gains: Mapping[date, Mapping[int, int]]) -> dict[str, Any]:
+    """최근 52주 동안 AI 탭 뜨는 축에 2주 이상 든 저장소. 스파크·4주 증가는 마지막 주에 맞춘다."""
+    window = rankings[-REPO_WINDOW:]
+    seen: dict[int, dict[str, Any]] = {}
+    for i, (_, ranking) in enumerate(window):
+        axes = ranking.get("axes") or {}
+        for axis in RISING_AXES:
+            for e in (axes.get(axis) or {}).get("ai") or []:
+                r = seen.setdefault(int(e["id"]), {"weeks": set()})
+                r["weeks"].add(i)
+                r["full_name"], r["category"] = e["full_name"], e.get("category")   # 뒤의 주가 덮는다
+    latest = window[-1][0] if window else None
+    repos = []
+    for rid, r in seen.items():
+        if len(r["weeks"]) < REPO_MIN_WEEKS or latest is None:
+            continue
+        bits = "".join("1" if i in r["weeks"] else "0" for i in range(len(window)))
+        spark = _spark(rid, latest, gains)
+        repos.append({"id": rid, "full_name": r["full_name"], "category": r["category"], "bits": bits,
+                      "streak": len(bits) - len(bits.rstrip("1")), "gain4": sum(spark[-4:]), "spark": spark})
+    repos.sort(key=lambda x: (-x["bits"].count("1"), -x["gain4"], x["full_name"]))
+    return {"weeks": [w.isoformat() for w, _ in window], "axes": list(RISING_AXES), "repos": repos}
 
 
 def categories_payload(data_dir: Path, weeks: list[date], names: Mapping[str, str]) -> dict[str, Any]:
@@ -142,12 +176,15 @@ def run_export(*, data_dir: Path, work_dir: Path, log: Callable[[str], None] = p
              "taxonomy_version": tax.get("version"), "types": tax.get("types") or [],
              "categories": [{"id": c["id"], "name": c["name"]} for c in tax.get("category") or []]}
     written += io.write_if_changed(site / "index.json", _dump(index))
+    rankings = []
     for w in weeks:
         ranking = io.read_json(data_dir / "weekly" / week.week_name(w) / "rankings.json")
+        rankings.append((w, ranking))
         written += io.write_if_changed(site / "weeks" / f"{week.week_name(w)}.json",
                                        _dump(week_payload(ranking, w, gains)))
     written += io.write_if_changed(site / "categories.json",
                                    _dump(categories_payload(data_dir, weeks, names)))
+    written += io.write_if_changed(site / "repos.json", _dump(repos_payload(rankings, gains)))
     n_cards, n_briefs = _private(work_dir)
     log(f"  사이트 데이터: 주 {len(weeks)}개 · 바뀐 파일 {written}개 · "
         f"비공개 카드 {n_cards} · 브리핑 {n_briefs}")
