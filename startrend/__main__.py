@@ -18,6 +18,7 @@
              다시 들어온 저장소는 변경 기록만(비용 0)
 - brief    : 주간 브리핑 (FR-8) — 랭킹·카테고리 추이·카드 → .work/<주>/briefing.md (결정 53).
              기본은 dry-run(호출 0). --run 은 주 1회 호출(과금)
+- export   : 사이트 파생 데이터 (FR-9) — data/site/(공개) + .work/site-private/(카드·브리핑, 결정 53), 호출 0
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -64,6 +65,7 @@ from startrend.stages import (
     discover,
     evaluate,
     evidence,
+    export,
     goldset,
     probe,
     rank,
@@ -140,6 +142,7 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
+    sub.add_parser("export", help="사이트 파생 데이터(FR-9) — data/site/ + 비공개 카드·브리핑 사본(호출 0)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -170,6 +173,11 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _analyze(settings, args)
     if args.cmd == "brief":     # dry-run 은 키 없이
         return _brief(settings, args)
+    if args.cmd == "export":    # 정본만 읽는다 — 키·네트워크 없이
+        stats = export.run_export(data_dir=settings.data_dir, work_dir=settings.work_dir,
+                                  log=lambda m: print(m, flush=True))
+        print(dumps_json(stats), end="")
+        return 0
     if args.cmd == "eval":
         return _eval(settings, args)
     if args.cmd == "goldset-draft":
