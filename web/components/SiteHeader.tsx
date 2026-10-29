@@ -1,7 +1,7 @@
-// 머리 — 시안 v1.3: 화면마다 어두운(또는 카테고리 색) 띠 위에 얹는다. 주간 아카이브·소개·방법론은 P4-11 뒤에
+// 머리 — 시안 v1.3: 화면마다 어두운(또는 카테고리 색) 띠 위에 얹는다. v1.4: 주간 아카이브·소개·방법론
 import Link from "next/link";
 
-export function SiteHeader({ current }: { current: "week" | "trends" | "card" }) {
+export function SiteHeader({ current }: { current: "week" | "trends" | "card" | "archive" | "about" }) {
   return (
     <header className="site-header">
       <div className="inner">
@@ -16,6 +16,8 @@ export function SiteHeader({ current }: { current: "week" | "trends" | "card" })
         <nav aria-label="주요 화면" className="site-nav">
           <Link href="/" aria-current={current === "week" ? "page" : undefined}>이번 주</Link>
           <Link href="/trends" aria-current={current === "trends" ? "page" : undefined}>저장소 추이</Link>
+          <Link href="/archive" aria-current={current === "archive" ? "page" : undefined}>주간 아카이브</Link>
+          <Link href="/about" aria-current={current === "about" ? "page" : undefined}>소개·방법론</Link>
         </nav>
       </div>
     </header>
