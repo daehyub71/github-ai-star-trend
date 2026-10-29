@@ -5,6 +5,9 @@ English | [한국어](README_KO.md)
 > Weekly GitHub star trends → an **AI trend briefing** plus **evidence-backed repository cards**.
 > A personal, work-in-progress project built with Claude Code. Project documents (`docs/`) are written in Korean.
 
+**Live site: <https://github-ai-star-trend.vercel.app>** — weekly rankings, repository cards and the weekly briefing.
+Cards and briefings are AI-written summaries that no person has reviewed; every claim links to its source, and the numbers come from the GitHub API.
+
 ## Why
 
 AI tooling changes every week. GitHub stars are a cheap, public signal of where attention goes. This project measures, every week, which repositories gained the most stars, and turns that into:
@@ -20,7 +23,7 @@ AI tooling changes every week. GitHub stars are a cheap, public signal of where 
 | 1 · Data core — discover, stars, 52-week backfill, rankings | 🔄 in progress (52-week backfill running) |
 | 2 · Classification — is it AI? type, category | 🔄 cost-free groundwork done; paid runs not started |
 | 3 · Evidence, cards, briefing | planned |
-| 4 · Web UI (Next.js, private Vercel site) · 4b · Notion + blog drafts | design agreed · planned |
+| 4 · Web UI (Next.js on Vercel — public, not indexed by search engines) · 4b · Notion + blog drafts | design agreed · planned |
 | 5 · Weekly GitHub Actions run | planned |
 
 The live progress dashboard is at the top of [`docs/TASK.md`](docs/TASK.md).
