@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "installCommand": "npm ci",
+  "buildCommand": "node scripts/prepare-data.mjs && STARTREND_SITE_DIR=.data/site STARTREND_PRIVATE_DIR=.data/site-private next build"
+}
