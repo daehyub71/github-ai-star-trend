@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { artUrl } from "@/lib/art";
-import { weekCardList } from "@/lib/cards";
+import { cardSlugsForWeek, weekCardList } from "@/lib/cards";
 import { loadBriefing, loadCard, loadCardIndex, loadIndex, loadWeek } from "@/lib/data";
 import { weekRange } from "@/lib/format";
 import { cardSummary, parseBriefing, type CardBrief } from "@/lib/markdown";
@@ -21,8 +21,10 @@ export function WeekView({ week }: { week: string }) {
   const index = loadIndex();
   const data = loadWeek(week);
   const names = Object.fromEntries(index.categories.map((c) => [c.id, c.name]));
+  const shown = cardSlugsForWeek(data);
   const briefs = new Map<string, CardBrief>();
   for (const ref of loadCardIndex()) {
+    if (!shown.has(ref.slug)) continue;
     const md = loadCard(ref.slug);
     if (md) briefs.set(ref.slug, cardSummary(md));
   }

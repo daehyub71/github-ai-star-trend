@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { weekCardList } from "@/lib/cards";
+import { cardSlugsForWeek, weekCardList } from "@/lib/cards";
 import { cardSummary, parseCard, EVIDENCE_TITLE_MAX } from "@/lib/markdown";
 
 import { entry, NAMES, week } from "./helpers";
@@ -50,6 +50,17 @@ describe("weekCardList", () => {
     expect(list.map((c) => c.fullName)).toEqual(["o/r3", "o/r1", "o/r5"]);
     expect(list[0]).toMatchObject({ slug: "o__r3", owner: "o/", repo: "r3", catId: "mcp-tools",
       catName: "MCP 서버·도구", what: "w3", why: "y3", meaning: "m3", href: "/repo/o/r3" });
+  });
+});
+
+describe("cardSlugsForWeek — 그 주 화면에 필요한 카드만 (P4-4)", () => {
+  it("collects the repos shown in any tab of any axis, once each", () => {
+    // 주 화면이 카드를 모두 읽으면 카드가 쌓일수록 화면 하나가 느려진다(합성 5,460장에서 60초 초과)
+    const w = week(1);
+    w.axes.gain!.ai = [entry(1, "o/a"), entry(2, "o/b")];
+    w.axes.gain!.all = [entry(1, "o/a"), entry(9, "x/y")];
+    w.axes.total!.ai = [entry(2, "o/b")];
+    expect([...cardSlugsForWeek(w)].sort()).toEqual(["o__a", "o__b", "o__r1", "x__y"]);
   });
 });
 

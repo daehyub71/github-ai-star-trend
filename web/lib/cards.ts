@@ -16,6 +16,15 @@ export type WeekCard = CardBrief & {
 
 const ORDER: Axis[] = ["gain", "growth", "fresh", "total"];
 
+/** 그 주 화면(랭킹 전체·AI 탭)에 나오는 저장소의 slug — 이 카드만 읽는다(P4-4) */
+export function cardSlugsForWeek(week: WeekData): Set<string> {
+  const out = new Set<string>();
+  for (const tabs of Object.values(week.axes)) {
+    for (const e of [...(tabs?.all ?? []), ...(tabs?.ai ?? [])]) out.add(slugOf(e.full_name));
+  }
+  return out;
+}
+
 export function weekCardList(week: WeekData, briefs: Map<string, CardBrief>,
   names: Record<string, string>): WeekCard[] {
   const out: WeekCard[] = [];
