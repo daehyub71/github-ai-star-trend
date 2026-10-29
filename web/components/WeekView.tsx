@@ -80,7 +80,7 @@ export function WeekView({ week }: { week: string }) {
       <main className="page overlap">
         <section className="panel brief-panel" aria-label="이번 주 핵심">
           <div className="brief-main">
-            <h2>이번 주 핵심 3가지</h2>
+            <h2>이번 주 핵심 3가지 {brief ? <span className="ai-badge">AI 작성</span> : null}</h2>
             <ol>
               {(brief ? brief.whyNow : facts?.items ?? []).slice(0, 3).map((text, k) => (
                 <li key={k}>

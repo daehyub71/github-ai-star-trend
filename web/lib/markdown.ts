@@ -62,6 +62,22 @@ export function cardSummary(md: string): CardBrief {
   return out;
 }
 
+// 근거 목록 제목 길이(결정 56 · NFR-9) — startrend/stages/analyze.py EVIDENCE_TITLE_MAX 와 같다.
+// 2026-10-29 이전에 만든 카드에는 SNS 글 전문이 제목으로 든 것이 있어 화면에서 자른다(카드 파일은 그대로)
+export const EVIDENCE_TITLE_MAX = 120;
+
+function shortTitle(title: string): string {
+  const t = title.split(/\s+/).filter(Boolean).join(" ");
+  return t.length <= EVIDENCE_TITLE_MAX ? t : t.slice(0, EVIDENCE_TITLE_MAX - 1).trimEnd() + "…";
+}
+
+function shortEvidence(evidence: string): string {
+  return evidence.split("\n").map((line) => {
+    const m = /^(- E\d+ \[)(.*)(\]\(https?:\/\/[^)\s]+\).*)$/.exec(line);
+    return m ? m[1] + shortTitle(m[2]) + m[3] : line;
+  }).join("\n");
+}
+
 export type CardSection = { no: string; title: string; id: string; body: string };
 export type Card = { front: Front; title: string; sections: CardSection[]; evidence: string | null };
 
@@ -76,7 +92,7 @@ export function parseCard(md: string): Card {
       const n = idx + 1;
       out.push({ no: String(n).padStart(2, "0"), title: s.head.slice(1).trim(), id: `s${n}`, body: s.body });
     } else if (s.head.trim() === "근거") {
-      evidence = s.body.trim();
+      evidence = shortEvidence(s.body.trim());
     }
   }
   return { front, title, sections: out, evidence };

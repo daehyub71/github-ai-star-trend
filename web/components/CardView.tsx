@@ -10,6 +10,7 @@ import { parseCard } from "@/lib/markdown";
 import { hueVars, paletteOf } from "@/lib/palette";
 import type { Entry } from "@/lib/types";
 
+import { AiNote } from "./AiNote";
 import { Markdown } from "./Markdown";
 import { SiteFooter, SiteHeader } from "./SiteHeader";
 
@@ -122,6 +123,7 @@ export function CardView({ markdown, fullName }: { markdown: string; fullName: s
         </section>
       </div>
       <main className="page" style={hueVars(entry?.category) as CSSProperties}>
+        <AiNote kind="card" />
         <div className="card-layout">
           <div className="card-main">
             {card.sections.map((s) => (

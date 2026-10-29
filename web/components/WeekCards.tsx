@@ -26,7 +26,7 @@ export function WeekCards({ cards }: { cards: CoveredCard[] }) {
           </span>
           이번 주 카드
         </h2>
-        <span className="muted">AI 탭 저장소마다 심층 카드 · 커버는 카테고리 이미지 · 누르면 카드 전체</span>
+        <span className="muted"><span className="ai-badge">AI 작성</span> AI 탭 저장소마다 심층 카드 · 사람 검토 없음, 출처는 카드 안 · 누르면 카드 전체</span>
       </div>
       <div className="card-grid">
         {shown.map((c) => (

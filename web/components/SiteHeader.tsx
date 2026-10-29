@@ -26,7 +26,7 @@ export function SiteFooter({ asOf }: { asOf?: string }) {
   return (
     <footer className="site-footer">
       <span>트렌드 지표는 GitHub 공식 지표가 아닌 자체 산출값입니다 · 데이터: GitHub API{asOf ? ` · 기준 ${asOf}` : ""}</span>
-      <span>스타 ≠ 사용량 · 급등 패턴은 표시만 합니다 · 이미지는 AI 생성 일러스트입니다</span>
+      <span>스타 ≠ 사용량 · 급등 패턴은 표시만 합니다 · 카드·브리핑은 AI 가 쓴 요약(사람 검토 없음, 출처 링크) · 이미지는 AI 생성 일러스트입니다</span>
     </footer>
   );
 }

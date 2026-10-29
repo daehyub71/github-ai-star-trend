@@ -437,6 +437,16 @@ main.page.overlap { margin-top: -84px; padding-top: 0; position: relative; }
 }
 .crumbs { font-size: 13px; color: var(--muted); }
 
+/* AI 작성 안내 — 결정 56 */
+.ai-note {
+  margin: 0; padding: 10px 14px; border-radius: 12px; background: #f5f3ff; border: 1px solid #e4dcff;
+  color: var(--text-2); font-size: 13px; line-height: 1.65;
+}
+.ai-badge {
+  display: inline-flex; align-items: center; height: 20px; padding: 0 8px; margin-right: 8px; border-radius: 999px;
+  background: var(--grad-brand); color: #fff; font-size: 11px; font-weight: 700; vertical-align: 1px; white-space: nowrap;
+}
+
 @media (max-width: 640px) {
   .week-nav { margin-left: 0; }
   .card-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }

@@ -172,6 +172,21 @@ def test_analyze_card_has_eight_sections_in_order():
     assert body.startswith("---\nrepo: o/r\nrepo_id: 1\nweek: 2026-10-18\nas_of: 2026-10-24\n")
 
 
+def test_analyze_evidence_list_keeps_titles_short():
+    # 결정 56(사이트 공개) · NFR-9 — 검색 결과 제목 자리에 SNS 글 전문이 오는 일이 있다(실측 최대 1,252자).
+    # 근거 목록에는 짧은 제목만 — 원문은 링크로
+    ci = _input()
+    long_title = "Agent Kit 후기 " + "아주 긴 게시글 본문 " * 60
+    ci.docs[3] = ev.make(url="https://blog.example.com/agent-kit", source="web", kind="search",
+                         title=long_title, text="We used Agent Kit in production.", fetched_at=T,
+                         published_at="2026-10-21", extra={"fetchable": True})
+    body = _render(ci=ci).markdown
+    line = next(ln for ln in body.split("## 근거")[1].splitlines() if "blog.example.com/agent-kit" in ln)
+    title = line.split("[", 1)[1].rsplit("](", 1)[0]
+    assert len(title) <= an.EVIDENCE_TITLE_MAX and title.endswith("…")
+    assert title.startswith("Agent Kit 후기")
+
+
 def test_analyze_numbers_come_from_code_not_the_llm():
     body = _render().markdown
     assert "| 누적 스타 | 19,218 (2026-10-24 기준) |" in body

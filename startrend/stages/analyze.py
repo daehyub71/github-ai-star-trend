@@ -368,12 +368,22 @@ def _body(ci: CardInput, dr: Draft, names: Mapping[str, str], generated: date) -
              "## 근거"]
     for s in cited:
         d = by_id[s]
-        title = re.sub(r"[\[\]\n]", " ", d.title).strip() or d.url
+        title = _short_title(re.sub(r"[\[\]\n]", " ", d.title).strip() or d.url)
         day = f" · {d.published_at[:10]}" if d.published_at else ""
         lines.append(f"- {s} [{title}]({d.url}) — {_label(d)}{day}")
     if ci.failed_sources:
         lines += ["", f"수집 실패: {' · '.join(ci.failed_sources)} — 이 출처의 근거는 이번 주 카드에 없다."]
     return "\n".join(lines) + "\n"
+
+
+# 근거 목록의 제목 길이(결정 56 · NFR-9)
+# 검색 결과 제목 자리에 SNS 글 전문이 오는 일이 있다(실측 최대 1,252자)
+EVIDENCE_TITLE_MAX = 120
+
+
+def _short_title(title: str) -> str:
+    title = " ".join(title.split())
+    return title if len(title) <= EVIDENCE_TITLE_MAX else title[:EVIDENCE_TITLE_MAX - 1].rstrip() + "…"
 
 
 def _fill_empty(body: str) -> str:
@@ -521,7 +531,7 @@ def _change_lines(stored: StoredCard, ci: CardInput, today: date) -> list[str]:
     if releases:
         lines.append("  - 새 릴리스: " + " · ".join(f"[{_tag(d)}]({d.url})" for d in releases[:MAX_LISTED]))
     for d in fresh[:MAX_LISTED]:
-        title = re.sub(r"[\[\]\n]", " ", d.title).strip() or d.url
+        title = _short_title(re.sub(r"[\[\]\n]", " ", d.title).strip() or d.url)
         day = f" · {d.published_at[:10]}" if d.published_at else ""
         lines.append(f"  - 새 근거: [{title}]({d.url}) — {_label(d)}{day}")
     return lines

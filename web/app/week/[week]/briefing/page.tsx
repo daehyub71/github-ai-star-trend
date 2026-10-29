@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AiNote } from "@/components/AiNote";
 import { Markdown } from "@/components/Markdown";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 import { briefingWeeks, loadBriefing } from "@/lib/data";
@@ -29,6 +30,7 @@ export default async function BriefingPage({ params }: { params: Promise<{ week:
       <SiteHeader current="week" />
       <main className="page">
         <nav aria-label="위치" className="crumbs"><Link href={`/week/${week}`}>{week} 주</Link> › 주간 브리핑</nav>
+        <AiNote kind="briefing" />
         <article className="panel">
           <h1 style={{ margin: 0, fontSize: "clamp(22px, 2.6vw, 30px)", letterSpacing: "-0.4px" }}>{b.title}</h1>
           <Markdown>{b.body}</Markdown>
