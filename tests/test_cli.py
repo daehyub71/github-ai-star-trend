@@ -377,3 +377,71 @@ def test_cli_goldset_draft_never_overwrites_a_paid_drafts_file(tmp_path, capsys)
     cio.write_jsonl(ev / "goldset_drafts.jsonl", [{"repo_id": 1, "status": "ok"}])
     assert main(["goldset-draft", "--run"], env=_dirs(tmp_path)) == 2     # 키 확인보다 먼저 막는다
     assert "덮어쓰지 않는다" in capsys.readouterr().err
+
+
+# --- weekly (P5-2, FR-11) ---
+
+WEEKLY_STEPS = ["contract", "discover", "stars", "rank", "classify", "rank-ai", "trends", "evidence",
+                "analyze", "check", "brief", "export"]
+
+
+def test_cli_weekly_defaults_to_a_plan_without_keys(tmp_path, capsys):
+    # FR-11.3 — dry-run 은 키·네트워크 없이 무엇을 돌릴지와 금액을 보여 준다
+    import json
+
+    assert main(["weekly", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["dry_run"] is True and out["week"] == "2026-10-18" and out["cap_usd"] == 10.0
+    assert [s["name"] for s in out["steps"]] == WEEKLY_STEPS
+    assert {s["name"] for s in out["steps"] if s["llm"]} == {"classify", "analyze", "brief"}
+    assert all(s["will"] == "run" for s in out["steps"])
+
+
+def test_cli_weekly_plan_skips_steps_whose_output_exists(tmp_path, capsys):
+    import json
+
+    from startrend.core import io as cio
+    from startrend.core import snapshot, weekfile
+    from startrend.core.weekfile import WeekRow
+
+    w = date(2026, 10, 18)
+    snapshot.write(tmp_path / "w" / "snapshots" / "2026-10-18.csv", [])
+    weekfile.write(weekfile.week_path(tmp_path / "d", w),
+                   [WeekRow(1, "o/r1", date(2024, 1, 1), 5000, 100, False, None)])
+    e = {"id": 1, "full_name": "o/r1", "created": "2024-01-01", "category": None, "description": "d"}
+    cio.write_json(tmp_path / "d" / "weekly" / "2026-10-18" / "rankings.json",
+                   {"week": "2026-10-18", "axes": {"gain": {"all": [e], "ai": [e]}}})
+    (tmp_path / "w" / "2026-10-18").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "w" / "2026-10-18" / "briefing.md").write_text("# b\n", encoding="utf-8")
+    assert main(["weekly", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 0
+    steps = {s["name"]: s for s in json.loads(capsys.readouterr().out)["steps"]}
+    assert steps["discover"]["will"] == "skip" and steps["stars"]["will"] == "skip"
+    assert steps["brief"]["will"] == "skip" and steps["rank"]["will"] == "run"
+    assert steps["evidence"]["tavily_credits"] == 3      # 랭킹이 있으면 단계 계획을 그대로 보여 준다
+
+
+def test_cli_weekly_run_needs_every_key(tmp_path, capsys):
+    assert main(["weekly", "--run"], env=_dirs(tmp_path)) == 2
+    err = capsys.readouterr().err
+    assert "GITHUB_TOKEN" in err
+    env = _dirs(tmp_path, GITHUB_TOKEN="x")
+    assert main(["weekly", "--run"], env=env) == 2
+    assert "STARTREND_ANTHROPIC_API_KEY" in capsys.readouterr().err
+
+
+def test_cli_weekly_contract_failure_writes_nothing_to_data(tmp_path, capsys, monkeypatch):
+    # FR-11.6 · P5-9 — 계약 점검이 실패하면 뒤 단계는 모두 막히고 정본(data/)에 아무것도 쓰지 않는다
+    import json
+
+    from startrend.stages import contract
+    from startrend.stages.contract import ContractReport, Problem
+
+    bad = ContractReport(problems=(Problem("error", "history", "형식이 바뀌었다"),), calls={})
+    monkeypatch.setattr(contract, "check_github", lambda gh, **kw: bad)
+    env = _dirs(tmp_path, GITHUB_TOKEN="x", STARTREND_ANTHROPIC_API_KEY="k")
+    assert main(["weekly", "--run", "--no-web", "--week", "2026-10-18"], env=env) == 1
+    out = capsys.readouterr().out
+    result = json.loads(out[out.rindex("\n{") + 1:])                      # 마지막 요약 객체
+    assert [s["status"] for s in result["steps"]][:3] == ["failed", "blocked", "blocked"]
+    assert not (tmp_path / "d").exists()                                   # 정본은 그대로
+    assert (tmp_path / "w" / "runs" / "2026-10-18.json").exists()          # 기록은 작업 폴더에만

@@ -19,6 +19,9 @@
 - brief    : 주간 브리핑 (FR-8) — 랭킹·카테고리 추이·카드 → .work/<주>/briefing.md (결정 53).
              기본은 dry-run(호출 0). --run 은 주 1회 호출(과금)
 - export   : 사이트 파생 데이터 (FR-9) — data/site/(공개) + .work/site-private/(카드·브리핑, 결정 53), 호출 0
+- weekly   : 주간 실행 (FR-11) — contract → discover → stars → rank → classify → rank → trends →
+             evidence → analyze → check → brief → export. 기본은 계획만(호출 0).
+             --run 은 LLM 단계들이 예산 하나(기본 주 $10)를 함께 쓴다
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -32,7 +35,7 @@ import json
 import sys
 import time
 from collections.abc import Mapping
-from datetime import date, timedelta
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -71,6 +74,7 @@ from startrend.stages import (
     rank,
     stars,
     trends,
+    weekly,
 )
 
 
@@ -145,6 +149,12 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
     sub.add_parser("export", help="사이트 파생 데이터(FR-9) — data/site/ + 비공개 카드·브리핑 사본(호출 0)")
+    p = sub.add_parser("weekly", help="주간 실행(FR-11) — 기본은 계획만(호출 0). --run 은 과금(주 예산 상한)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주 — discover 는 그 주만 찍는다")
+    p.add_argument("--run", action="store_true", help="실제 실행 — 계획 금액 확인 뒤")
+    p.add_argument("--cap", type=float, default=10.0, help="이번 실행 전체 LLM 예산(달러) — 결정 31 주 $10")
+    p.add_argument("--no-web", action="store_true", help="근거 수집에서 웹 검색(Tavily 크레딧)을 쓰지 않는다")
+    p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -182,6 +192,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return 0
     if args.cmd == "eval":
         return _eval(settings, args)
+    if args.cmd == "weekly":   # 계획은 키 없이, --run 은 스스로 키를 확인한다
+        return _weekly(settings, args)
     if args.cmd == "goldset-draft":
         return _goldset_draft(settings, args)
     try:
@@ -421,7 +433,7 @@ def _load_taxonomy(settings: Settings) -> taxonomy.Taxonomy:
     return taxonomy.load(tax_file if tax_file.exists() else PROJECT_ROOT / "data" / "taxonomy.toml")
 
 
-def _classify(settings: Settings, args: argparse.Namespace) -> int:
+def _classify(settings: Settings, args: argparse.Namespace, meter: BudgetMeter | None = None) -> int:
     if args.all:
         files = sorted((settings.data_dir / "weekly").glob("*/rankings.json"))
         weeks = [wk.parse_week(f.parent.name) for f in files]
@@ -446,7 +458,8 @@ def _classify(settings: Settings, args: argparse.Namespace) -> int:
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / "classify", cacheable_response)
     # 첫 전수 분류는 GitHub 호출이 수천 번이다 — 시간당 한도에 걸리면 풀릴 때까지 기다린다(빠뜨리지 않게)
     gh = LiveGitHub(token, on_wait=_log_wait, transport=cache, max_rate_wait=3700.0, max_rate_waits=100)
-    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)   # 일반 호출(거절 → 대체 모델)도 같은 상한
+    # 일반 호출(거절 → 대체 모델)도 같은 상한. weekly 는 단계들이 계량기 하나를 함께 쓴다(FR-11.2)
+    meter = meter or BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
     decider = LLMDecider(meter, tax)
     batch_client = ClaudeBatch(key)
     states = settings.work_dir / "batches"
@@ -534,7 +547,7 @@ def _evidence(settings: Settings, args: argparse.Namespace) -> int:
     return 0
 
 
-def _analyze(settings: Settings, args: argparse.Namespace) -> int:
+def _analyze(settings: Settings, args: argparse.Namespace, meter: BudgetMeter | None = None) -> int:
     w = _week_arg(args.week, date.today())
     if args.check:
         res = analyze.check_week(settings.data_dir, settings.work_dir, w)
@@ -581,7 +594,7 @@ def _analyze(settings: Settings, args: argparse.Namespace) -> int:
         except (GitHubError, GitHubFormatError):
             return False
 
-    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    meter = meter or BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
     writer = analyze.CardWriter(meter, effort=args.effort, names=names)
     t0 = time.monotonic()
     stats = analyze.run_analyze(writer, inputs, work_dir=settings.work_dir, week_start=w, names=names,
@@ -596,7 +609,7 @@ def _analyze(settings: Settings, args: argparse.Namespace) -> int:
     return 0 if stats["stopped"] is None else 3
 
 
-def _brief(settings: Settings, args: argparse.Namespace) -> int:
+def _brief(settings: Settings, args: argparse.Namespace, meter: BudgetMeter | None = None) -> int:
     w = _week_arg(args.week, date.today())
     names = {c.id: c.name for c in _load_taxonomy(settings).categories}
     store = analyze.CardStore(settings.work_dir / "cards")     # 결정 53 — analyze 와 같은 보관소
@@ -614,7 +627,7 @@ def _brief(settings: Settings, args: argparse.Namespace) -> int:
     except ConfigError as e:
         print(e, file=sys.stderr)
         return 2
-    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    meter = meter or BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
     writer = brief.BriefWriter(meter)
     stats = brief.run_brief(writer, bi, work_dir=settings.work_dir, today=date.today(),
                             log=lambda m: print(m, flush=True))
@@ -748,6 +761,148 @@ def _goldset_draft(settings: Settings, args: argparse.Namespace) -> int:
                {**summary, "ledger": meter.ledger})
     print(dumps_json(summary), end="")
     return 0 if stats["stopped"] is None else 3
+
+
+# --- weekly (FR-11) ---
+
+def _ns(**kw: Any) -> argparse.Namespace:
+    return argparse.Namespace(**kw)
+
+
+def _weekly_steps(settings: Settings, args: argparse.Namespace, w: date, *,
+                  token: str = "", meter: BudgetMeter | None = None) -> list[weekly.Step]:
+    """주간 실행 순서(FR-11.1, PLAN 1-1). 단계 함수는 CLI 의 것을 그대로 부른다 — 따로 쓰는 명령과 같은 길."""
+    name = wk.week_name(w)
+    today = date.today()
+    cap = args.cap
+
+    def contract_step() -> int:
+        report = contract.check_github(LiveGitHub(token), today=today)
+        print(dumps_json(report.to_dict()), end="")
+        return 0 if report.ok else 1
+
+    def discover_step() -> int:
+        if w != _last_full_week(today):   # Search 는 지금 스타 수만 준다 — 지난 주들은 찍을 수 없다
+            print(f"discover 는 막 끝난 주만 찍을 수 있다 — {name} 스냅샷이 없다", file=sys.stderr)
+            return 2
+        return _discover(settings, token, _ns(pool_min=1000, new_days=30, new_min=10))
+
+    def rank_step() -> int:
+        return _rank(settings, token, _ns(week=name, all=False))
+
+    def check_step() -> int:
+        return _analyze(settings, _ns(week=name, check=True))
+
+    def export_step() -> int:
+        stats = export.run_export(data_dir=settings.data_dir, work_dir=settings.work_dir,
+                                  log=lambda m: print(m, flush=True))
+        print(dumps_json(stats), end="")
+        return 0
+
+    return [
+        weekly.Step("contract", contract_step,
+                    what="GitHub API 계약 점검 — 실패하면 아무것도 쓰지 않는다(FR-11.6)"),
+        weekly.Step("discover", discover_step, done=lambda: _snapshot_path(settings, w).exists(),
+                    what="스타 ≥1,000 전체 + 새 저장소 스냅샷"),
+        weekly.Step("stars", lambda: _stars(settings, token, _ns(week=name)),
+                    done=lambda: weekfile.week_path(settings.data_dir, w).exists(),
+                    what="스냅샷 차이 + 상위 후보 히스토리 → 주간 스타 파일(불변)"),
+        weekly.Step("rank", rank_step, what="4축 랭킹 — 전체 탭(판정 전 AI 탭은 비어 있다)"),
+        weekly.Step("classify", lambda: _classify(settings, _ns(
+            week=name, all=False, run=True, cap=cap, chunk=400, poll=args.poll, no_batch=False), meter=meter),
+            llm=True, critical=False, what="랭킹 후보 AI 판정(Batch) — 이미 판정한 것은 다시 하지 않는다"),
+        weekly.Step("rank-ai", rank_step, critical=False, what="판정 결과로 AI 탭 채움"),
+        weekly.Step("trends", lambda: _trends(settings, _ns(week=name, all=False)), critical=False,
+                    what="카테고리 추이(+ALL)"),
+        weekly.Step("evidence", lambda: _evidence(settings, _ns(
+            week=name, repos=None, run=True, no_web=args.no_web, only_missing=True)),
+            critical=False,
+            what="AI 탭 저장소 근거 수집(무료 API · Tavily 무료 크레딧) — 모은 저장소는 건너뛴다"),
+        weekly.Step("analyze", lambda: _analyze(settings, _ns(
+            week=name, repos=None, run=True, cap=cap, effort=analyze.EFFORT, check=False, adopt=False,
+            force_new=False), meter=meter),
+            llm=True, critical=False, what="심층 카드 — 새 저장소만 LLM, 다시 등장하면 변경 기록(비용 0)"),
+        weekly.Step("check", check_step, critical=False, what="카드 품질 검사(호출 0, FR-14.4)"),
+        weekly.Step("brief", lambda: _brief(settings, _ns(week=name, run=True, cap=cap), meter=meter),
+                    done=lambda: (settings.work_dir / name / "briefing.md").exists(),
+                    llm=True, critical=False, what="주간 브리핑 1회 호출"),
+        weekly.Step("export", export_step, critical=False,
+                    what="사이트 파생 데이터 + 비공개 카드·브리핑 사본"),
+    ]
+
+
+def _weekly_estimates(settings: Settings, w: date, *, no_web: bool) -> dict[str, dict[str, Any]]:
+    """dry-run 추정(호출 0). 입력이 이미 있는 단계는 그 단계의 dry-run, 없으면 실측 기준값(MEASURE)."""
+    name = wk.week_name(w)
+    out: dict[str, dict[str, Any]] = {
+        "discover": {"github_calls": "약 1,170회 · 약 1시간 (MEASURE §12)"},
+        "stars": {"github_calls": "상위 후보 히스토리 약 2,000~3,000회 (MEASURE §2)"},
+    }
+    tax = _load_taxonomy(settings)
+    if (settings.data_dir / "weekly" / name / "rankings.json").exists():
+        system = LLMDecider(MockLLM([]), tax).system
+        c = classify.dry_run(data_dir=settings.data_dir, weeks=[w], system_prompt=system)
+        # 첫 묶음이 0 이면 판정할 것이 없다 — 상한(풀 전체)은 첫 묶음 뒤 재질문이 이어질 때만 의미가 있다
+        usd = [0.0, 0.0]
+        if c["first_round"]:
+            usd = [round(c["first_round_usd"][0], 4), round(c["upper_usd"][1], 4)]
+        out["classify"] = {"llm_calls": c["first_round"], "usd": usd}
+        targets = evidence.targets_for(settings.data_dir, w)
+        have = set(evidence.read(settings.work_dir, w))
+        todo = [t for t in targets if t.repo_id not in have]
+        queries = 0 if no_web else 3
+        ev = evidence.plan(todo, web_queries=queries)
+        out["evidence"] = {"targets": ev["targets"], "tavily_credits": ev["tavily_credits"],
+                           "github_calls_max": ev["github_calls_max"]}
+        names = {c2.id: c2.name for c2 in tax.categories}
+        store = analyze.CardStore(settings.work_dir / "cards")
+        inputs = analyze.load_inputs(settings.data_dir, settings.work_dir, w) if have else []
+        if inputs:
+            a = analyze.dry_run(analyze.CardWriter(MockLLM([]), effort=analyze.EFFORT, names=names), inputs,
+                                store=store)
+            out["analyze"] = {"llm_calls": a["llm_calls"], "usd": a["total_usd"]}
+        try:
+            bi = brief.load_input(settings.data_dir, store, w, names=names)
+            b = brief.dry_run(brief.BriefWriter(MockLLM([])), bi)
+            out["brief"] = {"llm_calls": b["llm_calls"], "usd": b["total_usd"]}
+        except FileNotFoundError:
+            pass
+    for step in ("classify", "analyze", "brief", "evidence"):
+        out.setdefault(step, {"note": "앞 단계 뒤에 정해진다 — LLM 은 전체 상한 안에서만"})
+    return out
+
+
+def _weekly(settings: Settings, args: argparse.Namespace) -> int:
+    today = date.today()
+    w = _week_arg(args.week, today)
+    name = wk.week_name(w)
+    if not args.run:
+        steps = _weekly_steps(settings, args, w)
+        plan = weekly.plan_weekly(steps, estimates=_weekly_estimates(settings, w, no_web=args.no_web))
+        print(dumps_json({"dry_run": True, "week": name, "cap_usd": args.cap, **plan,
+                          "note": "usd 는 추정이 있는 단계만의 합 — 실제 LLM 지출은 cap_usd 안(FR-11.2)"}),
+              end="")
+        return 0
+    try:
+        token = settings.require_github_token()
+        key = settings.require_anthropic_key()
+        if not args.no_web:
+            settings.require_tavily_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    started = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    steps = _weekly_steps(settings, args, w, token=token, meter=meter)
+    result = weekly.run_weekly(steps, spent=lambda: meter.spent, log=lambda m: print(m, flush=True))
+    extra = {"cap_usd": args.cap, "llm_calls": meter.calls}
+    # 계약 점검이 실패하면 정본(data/)에 아무것도 쓰지 않는다(FR-11.6) — 기록은 작업 폴더에만
+    contract_failed = result["steps"][0]["status"] == "failed"
+    where = settings.work_dir if contract_failed else settings.data_dir
+    weekly.write_record(weekly.record_path(where, name), name, result, started=started, extra=extra)
+    write_json(settings.work_dir / name / f"weekly-ledger-{today.isoformat()}.json", {"ledger": meter.ledger})
+    print(dumps_json({"week": name, **extra, **result}), end="")
+    return {"ok": 0, "stopped": 3}.get(result["status"], 1)
 
 
 if __name__ == "__main__":
