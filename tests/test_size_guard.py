@@ -73,6 +73,18 @@ def test_size_guard_keeps_llm_cards_out_of_the_public_repo(path):
     assert len(v) == 1 and "결정 53" in v[0]
 
 
+@pytest.mark.parametrize("path", [
+    "data/blog/2026-10-18.md",
+    "data/blog/2026-10-18-images.md",
+    "data/blog/img/rank.png",
+    "data/notion/index.json",
+])
+def test_size_guard_keeps_blog_and_notion_content_out(path):
+    # 결정 59: Phase 4b 는 소스만 올리고 내용(블로그 초안·사진·Notion 대응표)은 올리지 않는다
+    v = sg.check([sg.Entry(path, 0, 100)])
+    assert len(v) == 1 and "결정 59" in v[0]
+
+
 def test_size_guard_allows_public_data_next_to_cards():
     ok = ["data/repos/ab/o__r/meta.json", "data/weekly/2026-10-18/rankings.json", "docs/cards-design.md"]
     assert sg.check([sg.Entry(p, 0, 100) for p in ok]) == []

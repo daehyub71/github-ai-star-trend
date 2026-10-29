@@ -28,6 +28,10 @@
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
+- notion-setup : Notion 데이터베이스 3개(주간 · 저장소 카드 · 블로그 초안) — 한 번만(FR-15.5)
+- notion   : 그 주 카드·주간 페이지를 Notion 에(FR-15). 기본은 계획만(호출 0).
+             상태가 '초안'인 페이지만 고친다.
+             대응표는 .work/notion/index.json(결정 59 — 공개 저장소에 올리지 않는다)
 """
 
 import argparse
@@ -44,6 +48,7 @@ from pathlib import Path
 from typing import Any
 
 from startrend.budget import BudgetMeter, run_batch
+from startrend.clients import repo_images
 from startrend.clients.claude import ClaudeBatch, ClaudeLLM
 from startrend.clients.decision import LLMDecider
 from startrend.clients.evidence import web
@@ -56,7 +61,10 @@ from startrend.clients.github import GitHubError
 from startrend.clients.github_live import LiveGitHub, cacheable_response
 from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_search_page
 from startrend.clients.llm import BatchItem, LLMRequest, MockLLM
-from startrend.clients.transport import CachingTransport, UrllibPoster, UrllibTransport
+from startrend.clients.notion import NotionError
+from startrend.clients.notion import status_name as notion_status
+from startrend.clients.notion_live import LiveNotion
+from startrend.clients.transport import CachingTransport, TransportError, UrllibPoster, UrllibTransport
 from startrend.clients.trending import fetch_trending
 from startrend.core import meta, secrets, snapshot, taxonomy, weekfile
 from startrend.core import week as wk
@@ -67,6 +75,7 @@ from startrend.stages import (
     analyze,
     archive,
     backfill,
+    blog,
     brief,
     classify,
     contract,
@@ -75,6 +84,7 @@ from startrend.stages import (
     evidence,
     export,
     goldset,
+    notion,
     private,
     probe,
     rank,
@@ -167,6 +177,20 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     g = p.add_mutually_exclusive_group(required=True)
     g.add_argument("--pull", metavar="DIR", help="비공개 저장소 체크아웃 → .work/")
     g.add_argument("--push", metavar="DIR", help=".work/ → 비공개 저장소 체크아웃")
+    p = sub.add_parser("blog", help="블로그 초안(FR-16) — 기본은 dry-run(호출 0). --run 은 과금(주 1회 호출)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
+    p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
+    p = sub.add_parser("notion-setup",
+                       help="Notion 데이터베이스 3개(FR-15.5, 한 번만) — 기본은 계획만(호출 0)")
+    p.add_argument("--parent", required=True,
+                   help="부모 페이지 ID — 연결(github-ai-star-trend)을 공유한 페이지")
+    p.add_argument("--run", action="store_true", help="실제로 만든다(Notion API, 비용 0)")
+    p = sub.add_parser("notion",
+                       help="주간·카드·블로그 초안 페이지를 Notion 에(FR-15) — 기본은 계획만(호출 0)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--run", action="store_true",
+                   help="실제로 올린다(Notion API, 비용 0) — 상태가 '초안'인 페이지만 고친다(NFR-16)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -212,6 +236,12 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _archive(settings, args)
     if args.cmd == "private":  # 파일 복사만
         return _private(settings, args)
+    if args.cmd == "notion-setup":   # 계획은 토큰 없이, --run 은 스스로 토큰을 확인한다
+        return _notion_setup(settings, args)
+    if args.cmd == "notion":
+        return _notion(settings, args)
+    if args.cmd == "blog":     # dry-run 은 키 없이
+        return _blog(settings, args)
     if args.cmd == "goldset-draft":
         return _goldset_draft(settings, args)
     try:
@@ -950,6 +980,175 @@ def _private(settings: Settings, args: argparse.Namespace) -> int:
         stats = private.push(settings.work_dir, target)
     print(dumps_json({"direction": "pull" if args.pull else "push", "dir": str(target), **stats}), end="")
     return 0
+
+
+# --- notion (FR-15, 결정 34·38·59) ---
+
+def _notion_index(settings: Settings) -> Path:
+    return settings.work_dir / "notion" / "index.json"     # 결정 59 — 공개 저장소에 올리지 않는다
+
+
+def _notion_setup(settings: Settings, args: argparse.Namespace) -> int:
+    path = _notion_index(settings)
+    idx = notion.load_index(path)
+    site = read_json(settings.data_dir / "site" / "index.json")
+    names = {c["id"]: c["name"] for c in site.get("categories", [])}
+    types = list(site.get("types", []))
+    titles = [t for t, _ in notion.schemas(names, types).values()]
+    if not args.run:
+        print(dumps_json({"dry_run": True, "parent": args.parent, "databases": titles,
+                          "set_up": bool(idx["databases"]), "index": str(path)}), end="")
+        return 0
+    try:
+        token = settings.require_notion_token()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+    try:
+        notion.setup(LiveNotion(token), args.parent, idx, names=names, types=types)
+    except notion.NotionStageError as e:
+        print(e, file=sys.stderr)
+        return 1
+    finally:
+        if idx["databases"]:          # 중간에 멈춰도 만든 DB 는 기록한다 — 같은 DB 를 둘 만들지 않게
+            notion.save_index(path, idx)
+    print(dumps_json({"dry_run": False, "databases": idx["databases"], "index": str(path)}), end="")
+    return 0
+
+
+def _notion(settings: Settings, args: argparse.Namespace) -> int:
+    name = wk.week_name(_week_arg(args.week, date.today()))
+    path = _notion_index(settings)
+    idx = notion.load_index(path)
+    try:
+        wd = notion.load_week(settings.data_dir / "site", settings.work_dir / "site-private", name)
+    except FileNotFoundError as e:
+        print(e, file=sys.stderr)
+        return 2
+    post = _blog_post(settings, name)
+    if not args.run:
+        p = notion.plan(idx, wd)
+        if post:
+            p["create"] += name not in (idx.get("blog") or {})
+            p["pages"] += 1
+        print(dumps_json({"dry_run": True, **p, "blog": post[0] if post else None}), end="")
+        return 0
+    try:
+        token = settings.require_notion_token()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+    client = LiveNotion(token)
+
+    def save(i: dict[str, Any]) -> None:
+        notion.save_index(path, i)
+
+    log = lambda m: print(m, flush=True)  # noqa: E731
+    try:
+        stats = notion.publish_week(client, idx, wd, save=save, log=log)
+        if post:
+            b = notion.publish_blog(client, idx, name, post[0], post[1], save=save, log=log)
+            stats = {k: stats[k] + b[k] for k in stats}
+    except notion.NotionStageError as e:
+        print(e, file=sys.stderr)
+        return 1
+    notion.save_index(path, idx)
+    print(dumps_json({"dry_run": False, "week": name, **stats, "blog": post[0] if post else None,
+                      "requests": client.calls}), end="")
+    return 0
+
+
+# --- blog (FR-16, 결정 36·37·39·59) ---
+
+def _blog_post(settings: Settings, name: str) -> tuple[str, str] | None:
+    """`.work/<주>/blog/post.md` → (제목, 본문). 첫 줄이 `# 제목`."""
+    p = settings.work_dir / name / "blog" / "post.md"
+    if not p.exists():
+        return None
+    head, _, body = p.read_text(encoding="utf-8").partition("\n")
+    return head.removeprefix("# ").strip(), body.lstrip("\n")
+
+
+def _published_posts(settings: Settings, current: str) -> list[tuple[int, str, str]]:
+    """글 모음(FR-16.8) — 블로그 초안 DB 에서 상태가 '게시됨'이고 네이버 주소가 있는 글.
+
+    토큰이 없으면 빈 목록.
+    """
+    idx = notion.load_index(_notion_index(settings))
+    others = {w: v for w, v in (idx.get("blog") or {}).items() if w != current}
+    if not others or not settings.notion_token:
+        return []
+    client = LiveNotion(settings.notion_token)
+    out: list[tuple[int, str, str]] = []
+    for w, ref in sorted(others.items()):
+        try:
+            page = client.get_page(ref["page_id"])
+        except NotionError as e:
+            print(f"  글 모음: {w} 페이지를 읽지 못했다 — {e}", flush=True)
+            continue
+        url = (page.properties.get("네이버 글 주소") or {}).get("url")
+        title = "".join(t.get("plain_text", "") for t in (page.properties.get("제목") or {}).get("title", []))
+        if notion_status(page, notion.STATUS) == "게시됨" and isinstance(url, str) and url:
+            out.append((blog.episode(w), title.split(blog.EMOJI)[-1].strip() or title, url))
+    return out
+
+
+def _blog_images(settings: Settings, bi: blog.BlogInput) -> tuple[dict[str, str], dict[str, str]]:
+    """대표 이미지(결정 60) — 주인이 올린 소셜 미리보기를 찾아 `.work/<주>/blog/img/` 에 받는다(비용 0).
+
+    (저장소 → 그림 URL, 저장소 → 받은 파일 경로). 토큰이 없거나 실패하면 빈 채로 — 생성 프롬프트가 맡는다.
+    """
+    if not settings.github_token:
+        print("  대표 이미지: GITHUB_TOKEN 없음 — 생성 프롬프트만", flush=True)
+        return {}, {}
+    try:
+        found = repo_images.social_previews([r.full_name for r in bi.repos], settings.github_token)
+    except (repo_images.RepoImageError, TransportError) as e:
+        print(f"  대표 이미지: 찾지 못했다 — {e}", flush=True)
+        return {}, {}
+    images: dict[str, str] = {}
+    files: dict[str, str] = {}
+    out = settings.work_dir / bi.week / "blog" / "img"
+    for name, url in found.items():
+        try:
+            data, ext = repo_images.download(url)
+        except (repo_images.RepoImageError, TransportError) as e:
+            print(f"  대표 이미지: {name} 받지 못했다 — {e}", flush=True)
+            continue
+        out.mkdir(parents=True, exist_ok=True)
+        rel = f"img/{name.replace('/', '__')}{ext}"
+        (out.parent / rel).write_bytes(data)
+        images[name], files[name] = url, rel
+    print(f"  대표 이미지: TOP {len(bi.repos)} 중 {len(images)}개(소셜 미리보기) — 나머지는 생성 프롬프트",
+          flush=True)
+    return images, files
+
+
+def _blog(settings: Settings, args: argparse.Namespace) -> int:
+    name = wk.week_name(_week_arg(args.week, date.today()))
+    try:
+        bi = blog.load_input(settings.data_dir / "site", settings.work_dir / "site-private", name)
+    except FileNotFoundError as e:
+        print(e, file=sys.stderr)
+        return 2
+    if not args.run:
+        est = blog.dry_run(blog.BlogWriter(MockLLM([])), bi)
+        print(dumps_json({"dry_run": True, "week": name, "cap_usd": args.cap, **est}), end="")
+        return 0
+    try:
+        key = settings.require_anthropic_key()
+    except ConfigError as e:
+        print(e, file=sys.stderr)
+        return 2
+    images, files = _blog_images(settings, bi)
+    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    writer = blog.BlogWriter(meter)
+    stats = blog.run_blog(writer, bi, work_dir=settings.work_dir, today=date.today(),
+                          published=_published_posts(settings, name), images=images, files=files,
+                          log=lambda m: print(m, flush=True))
+    print(dumps_json({**stats, "week": name, "spent_usd": round(meter.spent, 4), "cap_usd": args.cap,
+                      "ledger": meter.ledger, "fingerprint": writer.fingerprint}), end="")
+    return 0 if stats["written"] else 3
 
 
 if __name__ == "__main__":

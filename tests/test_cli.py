@@ -478,3 +478,83 @@ def test_cli_private_push_and_pull_round_trip(tmp_path, capsys):
     assert main(["private", "--pull", str(priv)], env=_dirs(tmp_path)) == 0
     assert card.read_text(encoding="utf-8") == "카드"
     assert main(["private", "--pull", str(tmp_path / "없음")], env=_dirs(tmp_path)) == 2
+
+
+# --- notion (FR-15, 결정 59) ---
+
+def _notion_src(tmp_path):
+    import shutil
+
+    from tests.test_notion_stage import _src
+
+    site, priv = _src(tmp_path / "src")
+    shutil.copytree(site, tmp_path / "d" / "site")
+    shutil.copytree(priv, tmp_path / "w" / "site-private")
+    return _dirs(tmp_path)
+
+
+def test_cli_notion_plans_without_a_token(tmp_path, capsys):
+    import json
+
+    env = _notion_src(tmp_path)
+    assert main(["notion", "--week", "2026-10-18"], env=env) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["dry_run"] is True and out["create"] == 3 and out["set_up"] is False
+    assert not (tmp_path / "w" / "notion").exists()
+
+
+def test_cli_notion_run_needs_the_token(tmp_path, capsys):
+    env = _notion_src(tmp_path)
+    assert main(["notion", "--week", "2026-10-18", "--run"], env=env) == 2
+    assert "NOTION_TOKEN" in capsys.readouterr().err
+
+
+def test_cli_notion_setup_plans_three_databases(tmp_path, capsys):
+    import json
+
+    env = _notion_src(tmp_path)
+    assert main(["notion-setup", "--parent", "p-1"], env=env) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["dry_run"] is True and out["databases"] == ["주간", "저장소 카드", "블로그 초안"]
+    assert not (tmp_path / "w" / "notion").exists()
+
+
+# --- blog (FR-16, 결정 59) ---
+
+def _blog_src(tmp_path):
+    import shutil
+
+    from tests.test_blog import _src
+
+    site, priv = _src(tmp_path / "src")
+    shutil.copytree(site, tmp_path / "d" / "site")
+    shutil.copytree(priv, tmp_path / "w" / "site-private")
+    return _dirs(tmp_path)
+
+
+def test_cli_blog_dry_run_without_a_key(tmp_path, capsys):
+    import json
+
+    env = _blog_src(tmp_path)
+    assert main(["blog", "--week", "2026-10-18"], env=env) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["dry_run"] is True and out["llm_calls"] == 1 and out["episode"] == 1
+    assert not (tmp_path / "w" / "2026-10-18" / "blog").exists()
+
+
+def test_cli_blog_run_needs_the_key(tmp_path, capsys):
+    env = _blog_src(tmp_path)
+    assert main(["blog", "--week", "2026-10-18", "--run"], env=env) == 2
+    assert "STARTREND_ANTHROPIC_API_KEY" in capsys.readouterr().err
+
+
+def test_cli_notion_plan_counts_the_blog_draft(tmp_path, capsys):
+    import json
+
+    env = _notion_src(tmp_path)
+    post = tmp_path / "w" / "2026-10-18" / "blog" / "post.md"
+    post.parent.mkdir(parents=True)
+    post.write_text("# 🤖 제목\n\n본문\n", encoding="utf-8")
+    assert main(["notion", "--week", "2026-10-18"], env=env) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["blog"] == "🤖 제목" and out["create"] == 4

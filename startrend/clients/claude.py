@@ -16,6 +16,7 @@ from startrend.clients.llm import BatchItem, LLMRequest, LLMResponse, Usage
 
 MODEL = "claude-opus-5-5"
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
+STREAM_OVER = 16_000     # 출력 상한이 이보다 크면 스트리밍(블로그 초안) — 카드·브리핑은 일반 호출 그대로
 
 
 class ClaudeLLM:
@@ -45,11 +46,14 @@ class ClaudeLLM:
 
     def complete(self, req: LLMRequest) -> LLMResponse:
         params = self.params(req)
+        api = self._client.beta.messages if self._fallbacks else self._client.messages
         if self._fallbacks:
-            msg = self._client.beta.messages.create(betas=[FALLBACK_BETA], fallbacks="default", **params)
-        else:
-            msg = self._client.messages.create(**params)
-        return _response(msg)
+            params = {"betas": [FALLBACK_BETA], "fallbacks": "default", **params}
+        if req.max_tokens > STREAM_OVER:
+            # 출력이 길면 일반 호출이 10분을 넘을 수 있다 — SDK 권장대로 스트리밍, 마지막 메시지만 쓴다
+            with api.stream(**params) as stream:
+                return _response(stream.get_final_message())
+        return _response(api.create(**params))
 
 
 class ClaudeBatch:

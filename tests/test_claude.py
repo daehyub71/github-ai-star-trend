@@ -154,3 +154,50 @@ def test_claude_live_tiny_structured_call():
     r = claude.ClaudeLLM(key).complete(llm.LLMRequest(system="Answer with JSON.", user="Say ok=true.",
                                                       max_tokens=256, effort="low", schema=schema))
     assert r.stop_reason == "end_turn" and '"ok"' in r.text
+
+
+class FakeStream:
+    """client.beta.messages.stream(...) — 컨텍스트 관리자 + get_final_message()."""
+
+    def __init__(self, msg: Any):
+        self.msg = msg
+        self.kwargs: dict[str, Any] = {}
+        self.created = False
+
+    def stream(self, **kwargs: Any) -> Any:
+        self.kwargs = kwargs
+        outer = self
+
+        class _Manager:
+            def __enter__(self) -> Any:
+                return SimpleNamespace(get_final_message=lambda: outer.msg)
+
+            def __exit__(self, *exc: Any) -> None:
+                return None
+
+        return _Manager()
+
+    def create(self, **kwargs: Any) -> Any:
+        self.created = True
+        return self.msg
+
+
+def test_claude_long_outputs_stream_with_the_same_request():
+    # 출력 상한이 일반 호출 한도(10분)를 넘을 수 있으면 SDK 권장대로 스트리밍으로 받는다 — 블로그 초안
+    msg = message([SimpleNamespace(type="text", text="{}")])
+    beta = FakeStream(msg)
+    client = SimpleNamespace(beta=SimpleNamespace(messages=beta), messages=FakeStream(msg))
+    req = llm.LLMRequest(system="s", user="u", max_tokens=32_000, effort="medium", schema=None,
+                         purpose="blog")
+    r = claude.ClaudeLLM("k", client=client).complete(req)
+    assert not beta.created and beta.kwargs["max_tokens"] == 32_000
+    assert beta.kwargs["fallbacks"] == "default" and beta.kwargs["betas"] == [claude.FALLBACK_BETA]
+    assert r.text == "{}" and r.usage == llm.Usage(120, 30, 5, 0)
+
+
+def test_claude_short_outputs_do_not_stream():
+    msg = message([SimpleNamespace(type="text", text="{}")])
+    beta = FakeStream(msg)
+    client = SimpleNamespace(beta=SimpleNamespace(messages=beta), messages=FakeStream(msg))
+    claude.ClaudeLLM("k", client=client).complete(REQ)
+    assert beta.created and beta.kwargs == {}

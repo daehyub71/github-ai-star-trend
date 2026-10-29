@@ -19,6 +19,15 @@ class Settings:
     github_token: str | None = field(default=None, repr=False)
     anthropic_key: str | None = field(default=None, repr=False)
     tavily_key: str | None = field(default=None, repr=False)
+    notion_token: str | None = field(default=None, repr=False)
+
+    def require_notion_token(self) -> str:
+        if not self.notion_token:
+            raise ConfigError(
+                "NOTION_TOKEN 환경변수가 없다. Notion 연결 github-ai-star-trend 의 토큰을 "
+                "사용자 환경변수로 설정한다 (채팅·파일에 붙여 넣지 않는다)."
+            )
+        return self.notion_token
 
     def require_github_token(self) -> str:
         if not self.github_token:
@@ -57,4 +66,5 @@ def load_settings(env: Mapping[str, str] | None = None, root: Path | None = None
         github_token=token,
         anthropic_key=key,
         tavily_key=env.get("STARTREND_TAVILY_API_KEY", "").strip() or None,
+        notion_token=env.get("NOTION_TOKEN", "").strip() or None,
     )

@@ -38,6 +38,13 @@ class Poster(Protocol):
     def __call__(self, url: str, headers: Mapping[str, str], body: bytes, timeout: float) -> HttpResponse: ...
 
 
+class Requester(Protocol):
+    """메서드와 본문을 함께 넘기는 요청 (Notion 의 PATCH 등). 응답 규칙은 Transport 와 같다."""
+
+    def __call__(self, method: str, url: str, headers: Mapping[str, str], body: bytes | None,
+                 timeout: float) -> HttpResponse: ...
+
+
 def _send(req: urllib.request.Request, timeout: float) -> HttpResponse:
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -57,6 +64,12 @@ class UrllibTransport:
 class UrllibPoster:
     def __call__(self, url: str, headers: Mapping[str, str], body: bytes, timeout: float) -> HttpResponse:
         return _send(urllib.request.Request(url, data=body, method="POST", headers=dict(headers)), timeout)
+
+
+class UrllibRequester:
+    def __call__(self, method: str, url: str, headers: Mapping[str, str], body: bytes | None,
+                 timeout: float) -> HttpResponse:
+        return _send(urllib.request.Request(url, data=body, method=method, headers=dict(headers)), timeout)
 
 
 def _lower(items: Iterable[tuple[str, str]]) -> dict[str, str]:

@@ -64,6 +64,15 @@ def test_config_require_anthropic_key_names_the_variable(tmp_path):
     assert "STARTREND_ANTHROPIC_API_KEY" in str(e.value)
 
 
+def test_config_reads_notion_token_and_hides_it(tmp_path):
+    s = config.load_settings(env={"NOTION_TOKEN": " ntn_mine "}, root=tmp_path)
+    assert s.require_notion_token() == "ntn_mine"
+    assert "ntn_mine" not in repr(s) and "ntn_mine" not in str(s)
+    with pytest.raises(config.ConfigError) as e:
+        config.load_settings(env={}, root=tmp_path).require_notion_token()
+    assert "NOTION_TOKEN" in str(e.value)
+
+
 def test_config_reads_tavily_key_and_hides_it(tmp_path):
     s = config.load_settings(env={"STARTREND_TAVILY_API_KEY": " tvly-mine "}, root=tmp_path)
     assert s.require_tavily_key() == "tvly-mine"

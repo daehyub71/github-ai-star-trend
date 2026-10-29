@@ -29,6 +29,7 @@ MAX_FILE = MB
 MAX_STAR_FILE = 2 * MB  # 결정 48 — 증가 ≥ 10 행을 모두 두는 주간 스타 파일
 MAX_DATA_GROWTH = 5 * MB  # 주간 실행 한 번(스타 파일 + 랭킹 + 메타)은 약 1.5MB — MEASURE §14
 _LLM_TEXT = re.compile(r"^data/(?:.+/)?(?:card|briefing)\.md$|^data/cards/")   # 결정 53
+_PHASE_4B = re.compile(r"^data/(?:blog|notion)/")   # 결정 59 — 블로그 초안·사진·Notion 대응표
 
 
 @dataclass(frozen=True)
@@ -46,6 +47,8 @@ def check(entries: list[Entry], max_file: int = MAX_FILE,
             violations.append(f"{e.path}: 파일명은 ASCII 만 쓴다")
         if _LLM_TEXT.match(e.path):
             violations.append(f"{e.path}: LLM 카드·브리핑은 공개 저장소에 커밋하지 않는다 (결정 53)")
+        if _PHASE_4B.match(e.path):
+            violations.append(f"{e.path}: 블로그·Notion 내용은 공개 저장소에 올리지 않는다 (결정 59)")
         limit = max_star_file if _is_star_file(e.path) else max_file
         if e.new_size > limit:
             violations.append(
