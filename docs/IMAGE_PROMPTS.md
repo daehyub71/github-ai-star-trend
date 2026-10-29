@@ -15,8 +15,20 @@
 |---|---|---|---|
 | 2026-10-28 | `hero-home.webp` | PNG 1672×940 · 1.9MB | WebP 1600×900 · 83KB |
 | 2026-10-28 | `hero-trends.webp` | PNG 2048×768 · 1.9MB | WebP 2048×768 · 63KB |
+| 2026-10-29 | `cat-multimodal.webp` | PNG 1672×941 · 2.0MB | WebP 1200×675 · 76KB |
+| 2026-10-29 | `cat-inference.webp` | PNG 1672×941 · 2.0MB | WebP 1200×675 · 86KB |
+| 2026-10-29 | `cat-ai-apps.webp` | PNG 1672×941 · 1.6MB | WebP 1200×675 · 34KB |
+| 2026-10-29 | `cat-computer-use.webp` | PNG 1672×941 · 1.6MB | WebP 1200×675 · 40KB |
+| 2026-10-29 | `cat-doc-parsing.webp` | PNG 1672×941 · 1.7MB | WebP 1200×675 · 41KB |
+| 2026-10-29 | `cat-llmops.webp` | PNG 1672×941 · 1.9MB | WebP 1200×675 · 73KB |
+| 2026-10-29 | `cat-local-llm.webp` | PNG 1672×941 · 1.8MB | WebP 1200×675 · 51KB |
+| 2026-10-29 | `cat-models.webp` | PNG 1672×941 · 2.1MB | WebP 1200×675 · 73KB |
+| 2026-10-29 | `cat-rag.webp` | PNG 1672×941 · 2.0MB | WebP 1200×675 · 91KB |
+| 2026-10-29 | `cat-training.webp` | PNG 1672×941 · 2.0MB | WebP 1200×675 · 72KB |
+| 2026-10-29 | `cat-vectordb-memory.webp` | PNG 1672×941 · 2.0MB | WebP 1200×675 · 89KB |
+| 2026-10-29 | `cat-other-ai.webp` | PNG 1672×941 · 1.7MB | WebP 1200×675 · 38KB |
 
-먼저 **1차 6장**만 만들어도 된다. 나머지는 그 카테고리 카드가 생길 때 채운다.
+**18장 모두 넣었다(2026-10-29, 합계 1.1MB).** 바꾸고 싶으면 같은 파일 이름으로 다시 넣는다.
 
 ## 공통 규칙
 
