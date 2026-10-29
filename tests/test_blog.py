@@ -100,12 +100,23 @@ def _part(sentence: str, n: int, sources: list[str]) -> dict[str, Any]:
     return {"text": " ".join([sentence] * n), "sources": sources}
 
 
+SCENE = ("A two-step explainer laid out left to right. On the left, a small friendly robot sits at a desk "
+         "sorting a messy pile of task cards that spill over the edges. On the right, the same cards are "
+         "neatly stacked into three trays of different colors, and the robot leans back looking relaxed. "
+         "A thin curved "
+         "arrow connects the two halves. Place an empty rounded label tag under each half and one above the "
+         "trays, keeping plenty of white space around every element so short labels can be added later.")
+IDEA = {"teaches": "작업을 나눠 맡기는 흐름", "scene": SCENE,
+        "labels": ["어지러운 작업", "나눠 맡기기", "정리된 결과"]}
+COVER = {"teaches": "이번 주 별이 몰린 곳", "scene": SCENE, "labels": ["에이전트", "도구", "별"]}
+
+
 def _repo(ref: str, name: str) -> dict[str, Any]:
     return {"ref": ref, "subtitle": "릴리스 뒤에 몰린 관심",
             "what": _part(f"{name} 는 에이전트를 로컬에서 돌리는 도구입니다.", 5, [ref]),
             "why_now": _part("10월 20일 릴리스 뒤에 별이 몰렸습니다.", 6, [f"{ref}:E1"]),
             "use_cases": _part("개발자는 이 도구로 작업을 나눠 맡깁니다.", 6, [f"{ref}:E2"]),
-            "image_prompt": "A flat illustration of a small robot sorting tasks on a desk, no text"}
+            "image": IDEA}
 
 
 GOOD: dict[str, Any] = {
@@ -115,7 +126,7 @@ GOOD: dict[str, Any] = {
         {"text": "이번 주에는 에이전트를 로컬에서 돌리는 도구가 앞섰습니다.", "sources": ["R1"]},
         {"text": "검색 도구도 함께 올라왔습니다.", "sources": ["R2", "R3"]}]},
     "repos": [_repo("R1", "o/a"), _repo("R2", "o/b"), _repo("R3", "o/c")],
-    "cover_prompt": "A calm isometric scene of many small robots climbing a staircase of stars, no text",
+    "cover": COVER,
     "misreadings": [{"claim": "별이 많으면 좋은 도구일까요?",
                      "answer": "관심의 크기일 뿐, 품질은 직접 확인합니다."}] * 3,
     "summary": "이번 주는 로컬 에이전트 도구가 앞섰습니다.",
@@ -177,6 +188,9 @@ def test_blog_accepts_a_good_draft(bi):
     ("overview.paras.0.text", "이것은 도구다. 좋다. 빠르다. 크다. 작다.", "합쇼체"),
     ("repos.1.ref", "R3", "순서"),
     ("repos.2.what.text", "짧습니다.", "분량"),
+    ("repos.0.image.scene", "A robot at a desk, no text.", "프롬프트"),
+    ("repos.0.image.labels", [], "라벨"),
+    ("cover.labels", ["아주 아주 긴 라벨 이름입니다"], "라벨"),
 ])
 def test_blog_check_rejects(bi, path, value, word):
     errors = blog.check_draft(_draft(_with(path, value)), bi)
@@ -210,8 +224,10 @@ def test_blog_render_follows_the_agreed_layout(bi):
     assert "[v1.2 릴리스](https://github.com/o/a/releases/tag/v1.2)" in body
     assert f"![o/a 대표 이미지]({IMG})" in body and "이미지: o/a 저장소의 소셜 미리보기" in body
     o_b = body[body.index("### 2위 o/b"):body.index("### 3위 o/c")]
-    assert "🎨 이미지 생성 프롬프트 — A flat illustration" in o_b and "![" not in o_b
-    assert "🎨 대표 이미지 생성 프롬프트 — A calm isometric" in body
+    assert ("> 🎨 그림 자리 — 작업을 나눠 맡기는 흐름 · 얹을 라벨: 어지러운 작업 · 나눠 맡기기 · "
+            "정리된 결과") in o_b
+    assert "```text\nA two-step explainer" in o_b and blog.STYLE in o_b and "![" not in o_b
+    assert "> 🎨 대표 이미지 자리 — 이번 주 별이 몰린 곳 · 얹을 라벨: 에이전트 · 도구 · 별" in body
     tags = body.rstrip().splitlines()[-1]
     assert tags.startswith("#깃허브AI트렌드") and "#로컬LLM" in tags and tags.endswith("#50VibeLog")
     assert "vercel.app" not in body                     # FR-16.5 — 사이트 주소는 넣지 않는다
@@ -235,7 +251,10 @@ def test_blog_images_doc_places_found_images_and_prompts(bi):
     doc = blog.images_doc(bi, _draft(), images={"o/a": IMG}, files={"o/a": "img/o__a.png"})
     assert "| 1위 o/a — 릴리스 뒤에 몰린 관심 | img/o__a.png (저장소 소셜 미리보기) |" in doc
     assert "| 2위 o/b — 릴리스 뒤에 몰린 관심 | 생성 프롬프트 2 |" in doc
-    assert "A calm isometric" in doc and "A flat illustration" in doc
+    assert "### 0. 대표 이미지(글 맨 위)" in doc and "### 2. o/b" in doc and "(대안)" in doc
+    assert "- 가르칠 것: 작업을 나눠 맡기는 흐름" in doc
+    assert "- 얹을 라벨: 어지러운 작업 · 나눠 맡기기 · 정리된 결과" in doc
+    assert doc.count(SCENE) == 4 and blog.STYLE in doc
 
 
 def _resp(obj: Any) -> LLMResponse:
@@ -279,3 +298,30 @@ def test_blog_dry_run_makes_no_calls(bi):
     assert llm.requests == [] and est["llm_calls"] == 1 and est["top"] == ["o/a", "o/b", "o/c"]
     lo, hi = est["total_usd"]
     assert 0 < lo < hi
+
+
+def test_blog_rerender_from_the_saved_draft_costs_nothing(bi, tmp_path):
+    # 프롬프트·틀만 고쳤을 때 LLM 을 다시 부르지 않고 저장된 초안으로 다시 그린다
+    w = tmp_path / "w"
+    blog.run_blog(blog.BlogWriter(MockLLM([_resp(GOOD)])), bi, work_dir=w, today=date(2026, 10, 29),
+                  published=(), images={"o/a": IMG}, files={"o/a": "img/o__a.png"}, log=lambda m: None)
+    out = w / W / "blog"
+    before = (out / "post.md").read_text(encoding="utf-8")
+    assert blog.load_draft(out / "draft.json") == _draft()
+    (out / "post.md").unlink()
+    stats = blog.rerender(bi, work_dir=w, published=(), log=lambda m: None)
+    assert stats["written"] is True and (out / "post.md").read_text(encoding="utf-8") == before
+    assert "img/o__a.png" in (out / "images.md").read_text(encoding="utf-8")
+    # 예전 meta.json 에는 받은 파일 경로가 없었다 — img/ 폴더에서 찾는다
+    meta = json.loads((out / "meta.json").read_text(encoding="utf-8"))
+    del meta["files"]
+    (out / "meta.json").write_text(json.dumps(meta), encoding="utf-8")
+    (out / "img").mkdir()
+    (out / "img" / "o__a.jpg").write_bytes(b"x")
+    blog.rerender(bi, work_dir=w, published=(), log=lambda m: None)
+    assert "img/o__a.jpg (저장소 소셜 미리보기)" in (out / "images.md").read_text(encoding="utf-8")
+
+
+def test_blog_rerender_needs_a_saved_draft(bi, tmp_path):
+    stats = blog.rerender(bi, work_dir=tmp_path / "w", published=(), log=lambda m: None)
+    assert stats["written"] is False and "draft.json" in stats["error"]

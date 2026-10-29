@@ -45,6 +45,18 @@ CARD_SECTIONS = ("① 3줄 요약", "③ 왜 지금 떴나", "④ 무엇인가",
 PARTS = (("what", "무엇인가"), ("why_now", "왜 지금 떴나"), ("use_cases", "활용 사례"))
 REPO_CHARS = (350, 750)      # 저장소 하나의 세 부분 합 — 사용자 "한글 500자 정도"
 SMALL = {str(n) for n in range(0, 11)}       # 셈말로 쓰는 작은 수는 허용
+SCENE_MIN = 400              # 그림 장면 프롬프트 최소 글자 수 — 구도·요소·라벨 자리까지 쓰게(결정 60)
+LABELS = (2, 6)              # 그림에 나중에 얹을 한글 라벨 수
+LABEL_MAX = 12
+# 블로그 그림 공통 스타일 — 코드가 모든 장면 뒤에 붙여 한 세트로 보이게 한다
+# (사이트 아트의 공통 문단과 같은 방식)
+STYLE = ("Style: clean educational explainer illustration for a beginner-friendly tech blog, "
+         "flat vector with soft drop shadows, warm off-white background (#F7F4EE), "
+         "limited palette of deep navy (#1F2A44), teal (#2A9D8F), coral (#E76F51) and mustard (#E9C46A), "
+         "thick rounded outlines, friendly simple shapes, generous white space, 16:9 landscape (1600x900). "
+         "Leave every label tag empty so Korean labels can be added later. "
+         "No text, no letters, no numbers, no logos, no brand marks, no real app screenshots, "
+         "no human faces.")
 WEEKDAY = "월화수목금토일"
 
 
@@ -194,14 +206,14 @@ def _obj(props: dict[str, Any]) -> dict[str, Any]:
 _STR = {"type": "string"}
 _STRS = {"type": "array", "items": _STR}
 _CLAIM = _obj({"text": _STR, "sources": _STRS})
+_IDEA = _obj({"teaches": _STR, "scene": _STR, "labels": _STRS})
 SCHEMA: dict[str, Any] = _obj({
     "title_points": _STRS,
     "intro": _STR,
     "overview": _obj({"heading": _STR, "paras": {"type": "array", "items": _CLAIM}}),
     "repos": {"type": "array", "items": _obj({"ref": _STR, "subtitle": _STR, "what": _CLAIM,
-                                              "why_now": _CLAIM, "use_cases": _CLAIM,
-                                              "image_prompt": _STR})},
-    "cover_prompt": _STR,
+                                              "why_now": _CLAIM, "use_cases": _CLAIM, "image": _IDEA})},
+    "cover": _IDEA,
     "misreadings": {"type": "array", "items": _obj({"claim": _STR, "answer": _STR})},
     "summary": _STR,
     "next": _STR,
@@ -216,13 +228,24 @@ class Claim:
 
 
 @dataclass(frozen=True)
+class ImageIdea:
+    """교육용 그림 — 가르칠 것(한국어) · 장면 프롬프트(영어, 스타일 문단은 코드가 붙인다) · 얹을 한글 라벨."""
+    teaches: str
+    scene: str
+    labels: tuple[str, ...]
+
+    def prompt(self) -> str:
+        return f"{self.scene}\n\n{STYLE}"
+
+
+@dataclass(frozen=True)
 class RepoPost:
     ref: str
     subtitle: str
     what: Claim
     why_now: Claim
     use_cases: Claim
-    image_prompt: str
+    image: ImageIdea
 
 
 @dataclass(frozen=True)
@@ -232,7 +255,7 @@ class BlogDraft:
     overview_heading: str
     overview: tuple[Claim, ...]
     repos: tuple[RepoPost, ...]
-    cover_prompt: str
+    cover: ImageIdea
     misreadings: tuple[tuple[str, str], ...]
     summary: str
     next: str
@@ -257,6 +280,13 @@ def _claim(v: Any, name: str) -> Claim:
     return Claim(_str(v.get("text"), f"{name}.text"), _strs(v.get("sources") or [], f"{name}.sources"))
 
 
+def _idea(v: Any, name: str) -> ImageIdea:
+    if not isinstance(v, dict):
+        raise ValueError(f"{name} must be an object with teaches, scene and labels")
+    return ImageIdea(_str(v.get("teaches"), f"{name}.teaches"), _str(v.get("scene"), f"{name}.scene"),
+                     _strs(v.get("labels") or [], f"{name}.labels"))
+
+
 def parse_blog(text: str) -> BlogDraft:
     try:
         d = json.loads(text)
@@ -278,7 +308,7 @@ def parse_blog(text: str) -> BlogDraft:
                               what=_claim(r.get("what"), "what"),
                               why_now=_claim(r.get("why_now"), "why_now"),
                               use_cases=_claim(r.get("use_cases"), "use_cases"),
-                              image_prompt=_str(r.get("image_prompt"), "image_prompt")))
+                              image=_idea(r.get("image"), "image")))
     myths = []
     for m in d.get("misreadings") or []:
         if not isinstance(m, dict):
@@ -286,7 +316,7 @@ def parse_blog(text: str) -> BlogDraft:
         myths.append((_str(m.get("claim"), "claim"), _str(m.get("answer"), "answer")))
     return BlogDraft(points, _str(d.get("intro"), "intro"), _str(ov.get("heading"), "overview.heading"),
                      tuple(_claim(p, "overview.paras") for p in ov["paras"]), tuple(repos),
-                     _str(d.get("cover_prompt"), "cover_prompt"), tuple(myths),
+                     _idea(d.get("cover"), "cover"), tuple(myths),
                      _str(d.get("summary"), "summary"), _str(d.get("next"), "next"),
                      _strs(d.get("tags") or [], "tags"))
 
@@ -328,6 +358,18 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
         for sid in c.sources:
             if sid not in bi.sources:
                 errors.append(f"{where}: {sid} 는 목록에 없는 출처 — use only ids shown in <evidence>")
+    for where, idea in [("cover", dr.cover)] + [(f"{r.ref} image", r.image) for r in dr.repos]:
+        if _URLISH.search(idea.scene):
+            errors.append(f"{where}: URL 을 쓰지 않는다")
+        if len(idea.scene) < SCENE_MIN:
+            errors.append(f"{where}: 그림 프롬프트가 짧다({len(idea.scene)}자) — "
+                          f"가르칠 개념의 단계·비유·구도·요소·빈 라벨 자리까지 {SCENE_MIN}자 이상으로")
+        if not LABELS[0] <= len(idea.labels) <= LABELS[1]:
+            errors.append(f"{where}: 라벨은 {LABELS[0]}~{LABELS[1]}개")
+        for label in idea.labels:
+            if len(label) > LABEL_MAX or "·" in label:
+                errors.append(f"{where}: 라벨 '{label}' 은 {LABEL_MAX}자 이내, 가운뎃점 없이")
+        texts += [(f"{where} teaches", idea.teaches)] + [(f"{where} label", lb) for lb in idea.labels]
     for where, t in texts:
         if _URLISH.search(t):
             errors.append(f"{where}: URL 을 쓰지 않는다 — cite sources by id only")
@@ -335,11 +377,7 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
             errors.append(f"{where}: 마크다운 기호(**, `, #, [ ], 목록 표시)를 쓰지 않는다 — plain text only")
         for num in sorted(_numbers(t) - allowed):
             errors.append(f"{where}: 입력에 없는 숫자 {num} — use only numbers given in the input")
-    for where, t in [("cover_prompt", dr.cover_prompt)] + [(f"{r.ref} image_prompt", r.image_prompt)
-                                                           for r in dr.repos]:
-        if _URLISH.search(t):
-            errors.append(f"{where}: URL 을 쓰지 않는다")
-    polite = [("intro", dr.intro), ("summary", dr.summary), ("next", dr.next)]
+    polite =[("intro", dr.intro), ("summary", dr.summary), ("next", dr.next)]
     polite += [(where, c.text) for where, c in claims] + [("misreadings", a) for _, a in dr.misreadings]
     for where, t in polite:
         sentences = [m.group(0).strip() for m in _SENTENCE.finditer(t)]
@@ -389,13 +427,19 @@ def _heading(r: BlogRepo, p: RepoPost) -> str:
     return f"{r.rank}위 {r.full_name} — {p.subtitle}"
 
 
+def _slot(what: str, idea: ImageIdea) -> list[str]:
+    """그림이 들어갈 자리 — 가르칠 것 · 얹을 라벨 한 줄 + 복사해 쓰는 프롬프트(코드 블록)."""
+    return [f"> 🎨 {what} — {idea.teaches} · 얹을 라벨: {' · '.join(idea.labels)}",
+            f"```text\n{idea.prompt()}\n```"]
+
+
 def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, str]],
            images: Mapping[str, str]) -> tuple[str, str, gate.GateResult]:
     """(제목, 본문 마크다운, 게이트 결과). 소제목은 ### · 주소는 링크(FR-16.5 ④ — R22 시험 B)."""
     n = bi.episode
     posts = {p.ref: p for p in dr.repos}
     out: list[str] = [
-        f"> 🎨 대표 이미지 생성 프롬프트 — {dr.cover_prompt}",
+        *_slot("대표 이미지 자리", dr.cover),
         f"「{SERIES}」의 {n}번째 글입니다. 매주 GitHub 에서 스타가 가장 많이 늘어난 AI 저장소를 "
         "숫자와 근거로 정리합니다.", dr.intro, f"***{SERIES} {n}회 정보***",
         f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · TOP {len(bi.repos)} 저장소"
@@ -418,7 +462,7 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
             out += [f"![{r.full_name} 대표 이미지]({images[r.full_name]})",
                     f"이미지: {r.full_name} 저장소의 소셜 미리보기"]
         else:
-            out.append(f"> 🎨 이미지 생성 프롬프트 — {p.image_prompt}")
+            out += _slot("그림 자리", p.image)
         out += [f"{i}. {label} — {getattr(p, key).text}{_links(getattr(p, key), bi)}"
                 for i, (key, label) in enumerate(PARTS, 1)]
     out.append("### 이번 주 숫자를 읽을 때 주의할 점")
@@ -440,7 +484,13 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
     """사진 배치 문서(FR-16.7) — 소제목 → 이미지, 생성 프롬프트, 대표 이미지."""
     posts = {p.ref: p for p in dr.repos}
     rows = ["| (머리말) | 대표 이미지 — 생성 프롬프트 0 |", f"| 이번 주 흐름 — {dr.overview_heading} | — |"]
-    prompts = [f"0. 대표 이미지(글 맨 위, 글자 없는 그림): {dr.cover_prompt}"]
+
+    def block(head: str, idea: ImageIdea) -> list[str]:
+        return [f"### {head}", "", f"- 가르칠 것: {idea.teaches}",
+                f"- 얹을 라벨: {' · '.join(idea.labels)}", "", "```text", idea.prompt(), "```", ""]
+
+    prompts = block("0. 대표 이미지(글 맨 위)", dr.cover)
+    alternatives: list[str] = []
     for r in bi.repos:
         p = posts.get(r.ref)
         if p is None:
@@ -448,15 +498,24 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
         if r.full_name in images:
             where = f"{files[r.full_name]} (저장소 소셜 미리보기)" if r.full_name in files \
                 else f"{images[r.full_name]} (저장소 소셜 미리보기)"
+            alternatives += block(f"(대안) {r.rank}. {r.full_name} — 소셜 미리보기 대신 교육용 그림을 쓸 때",
+                                  p.image)
         else:
             where = f"생성 프롬프트 {r.rank}"
-            prompts.append(f"{r.rank}. {r.full_name}: {p.image_prompt}")
+            prompts += block(f"{r.rank}. {r.full_name}", p.image)
         rows.append(f"| {_heading(r, p)} | {where} |")
     return "\n".join([
         f"# {title_of(bi, dr)} — 사진 배치 참고", "",
         "> 본문: `post.md` · 이미지: `img/`(저장소 소셜 미리보기를 받아 둔 것). "
         "없는 자리는 아래 생성 프롬프트로 만든다.",
-        "", "## 글", "", "| 소제목 | 이미지 |", "|---|---|", *rows, "", "## 생성 프롬프트", "", *prompts, "",
+        "", "## 글", "", "| 소제목 | 이미지 |", "|---|---|", *rows, "",
+        "## 생성 프롬프트 — 교육용 설명 그림", "",
+        "- 코드 블록을 통째로 복사해 이미지 생성 도구에 붙여 넣습니다. 끝의 스타일 문단은 모든 그림에 같아서 "
+        "한 세트로 보입니다.",
+        "- 그림의 빈 라벨 칸에 '얹을 라벨'을 나중에 글자로 얹습니다(생성 이미지의 글자는 깨집니다).",
+        "- 결과가 마음에 들지 않으면 장면 문단만 고치고 스타일 문단은 그대로 둡니다.", "",
+        *prompts, *alternatives,
+        "## 참고", "",
         "- 소셜 미리보기는 저장소 주인이 링크 미리보기용으로 올린 그림입니다. "
         "글에 쓸 때 출처(저장소 이름)를 함께 적습니다.",
         "- 저장소 README 의 그림은 쓰지 않습니다(NFR-9).",
@@ -521,19 +580,59 @@ def run_blog(writer: BlogWriter, bi: BlogInput, *, work_dir: Path, today: date,
         stats["error"] = str(e)
         log(f"  블로그 초안 실패 — {e}")
         return stats
+    io.write_json(out / "draft.json", asdict(dr))
+    meta = {"week": bi.week, "episode": bi.episode, "generated": today.isoformat(),
+            "fingerprint": writer.fingerprint, "top": [r.full_name for r in bi.repos],
+            "images": dict(images), "files": dict(files)}
+    return _write(out, bi, dr, meta, stats, published=published, log=log)
+
+
+def _write(out: Path, bi: BlogInput, dr: BlogDraft, meta: dict[str, Any], stats: dict[str, Any], *,
+           published: Sequence[tuple[int, str, str]], log: Callable[[str], None]) -> dict[str, Any]:
+    images, files = meta.get("images") or {}, meta.get("files") or {}
     title, body, res = render(bi, dr, published=published, images=images)
     io.write_text_atomic(out / "post.md", f"# {title}\n\n{body}")
     io.write_text_atomic(out / "images.md", images_doc(bi, dr, images=images, files=files))
-    io.write_json(out / "draft.json", asdict(dr))
     io.write_json(out / "gate.json", {"checked": res.checked, "kept_links": res.kept_links,
                                       "excluded": res.log()})
-    io.write_json(out / "meta.json", {"week": bi.week, "episode": bi.episode, "generated": today.isoformat(),
-                                      "fingerprint": writer.fingerprint, "chars": len(body),
-                                      "top": [r.full_name for r in bi.repos], "images": dict(images)})
+    io.write_json(out / "meta.json", {**meta, "chars": len(body)})
     stats.update(written=True, excluded=len(res.excluded), file=str(out / "post.md"), title=title,
                  chars=len(body), images=len(images), prompts=len(bi.repos) - len(images) + 1)
     log(f"  블로그 초안 — {len(body):,}자 · 게이트 제외 {len(res.excluded)}건 · 대표 이미지 {len(images)}개")
     return stats
+
+
+def load_draft(path: Path) -> BlogDraft:
+    """저장한 draft.json(asdict 모양) → BlogDraft."""
+    d = io.read_json(path)
+
+    def claim(c: Mapping[str, Any]) -> Claim:
+        return Claim(c["text"], tuple(c["sources"]))
+
+    def idea(i: Mapping[str, Any]) -> ImageIdea:
+        return ImageIdea(i["teaches"], i["scene"], tuple(i["labels"]))
+
+    return BlogDraft(tuple(d["title_points"]), d["intro"], d["overview_heading"],
+                     tuple(claim(c) for c in d["overview"]),
+                     tuple(RepoPost(r["ref"], r["subtitle"], claim(r["what"]), claim(r["why_now"]),
+                                    claim(r["use_cases"]), idea(r["image"])) for r in d["repos"]),
+                     idea(d["cover"]), tuple((c, a) for c, a in d["misreadings"]), d["summary"], d["next"],
+                     tuple(d["tags"]))
+
+
+def rerender(bi: BlogInput, *, work_dir: Path, published: Sequence[tuple[int, str, str]],
+             log: Callable[[str], None] = print) -> dict[str, Any]:
+    """저장한 초안으로 다시 그린다 — LLM 호출 0(그림 프롬프트·틀만 고쳤을 때). 이미지는 meta.json 그대로."""
+    out = work_dir / bi.week / "blog"
+    stats: dict[str, Any] = {"written": False, "stopped": None, "error": None, "excluded": 0}
+    if not (out / "draft.json").exists():
+        stats["error"] = f"저장한 초안이 없다: {out / 'draft.json'}"
+        return stats
+    meta = io.read_json(out / "meta.json") if (out / "meta.json").exists() else {}
+    if "files" not in meta:     # 예전 meta.json — 받아 둔 그림을 img/ 에서 찾는다
+        meta["files"] = {name: f"img/{hit[0].name}" for name in meta.get("images") or {}
+                         if (hit := sorted((out / "img").glob(f"{name.replace('/', '__')}.*")))}
+    return _write(out, bi, load_draft(out / "draft.json"), meta, stats, published=published, log=log)
 
 
 def dry_run(writer: BlogWriter, bi: BlogInput) -> dict[str, Any]:

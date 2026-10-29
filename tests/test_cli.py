@@ -558,3 +558,9 @@ def test_cli_notion_plan_counts_the_blog_draft(tmp_path, capsys):
     assert main(["notion", "--week", "2026-10-18"], env=env) == 0
     out = json.loads(capsys.readouterr().out)
     assert out["blog"] == "🤖 제목" and out["create"] == 4
+
+
+def test_cli_blog_from_draft_needs_a_saved_draft(tmp_path, capsys):
+    env = _blog_src(tmp_path)
+    assert main(["blog", "--week", "2026-10-18", "--from-draft"], env=env) == 2
+    assert "draft.json" in capsys.readouterr().err

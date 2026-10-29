@@ -181,6 +181,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
+    p.add_argument("--from-draft", action="store_true",
+                   help="저장한 초안(.work/<주>/blog/draft.json)으로 다시 그린다 — 호출 0")
     p = sub.add_parser("notion-setup",
                        help="Notion 데이터베이스 3개(FR-15.5, 한 번만) — 기본은 계획만(호출 0)")
     p.add_argument("--parent", required=True,
@@ -1131,6 +1133,14 @@ def _blog(settings: Settings, args: argparse.Namespace) -> int:
     except FileNotFoundError as e:
         print(e, file=sys.stderr)
         return 2
+    if args.from_draft:      # 저장한 초안으로 다시 그린다 — LLM 호출 0
+        stats = blog.rerender(bi, work_dir=settings.work_dir, published=_published_posts(settings, name),
+                              log=lambda m: print(m, flush=True))
+        if not stats["written"]:
+            print(stats["error"], file=sys.stderr)
+            return 2
+        print(dumps_json({**stats, "week": name, "spent_usd": 0}), end="")
+        return 0
     if not args.run:
         est = blog.dry_run(blog.BlogWriter(MockLLM([])), bi)
         print(dumps_json({"dry_run": True, "week": name, "cap_usd": args.cap, **est}), end="")
