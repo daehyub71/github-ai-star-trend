@@ -382,7 +382,7 @@ def test_cli_goldset_draft_never_overwrites_a_paid_drafts_file(tmp_path, capsys)
 # --- weekly (P5-2, FR-11) ---
 
 WEEKLY_STEPS = ["contract", "discover", "stars", "rank", "classify", "rank-ai", "trends", "evidence",
-                "analyze", "check", "brief", "export"]
+                "analyze", "check", "brief", "export", "archive"]
 
 
 def test_cli_weekly_defaults_to_a_plan_without_keys(tmp_path, capsys):
@@ -445,3 +445,36 @@ def test_cli_weekly_contract_failure_writes_nothing_to_data(tmp_path, capsys, mo
     assert [s["status"] for s in result["steps"]][:3] == ["failed", "blocked", "blocked"]
     assert not (tmp_path / "d").exists()                                   # 정본은 그대로
     assert (tmp_path / "w" / "runs" / "2026-10-18.json").exists()          # 기록은 작업 폴더에만
+
+
+# --- archive · private (P5-1·P5-10, 결정 55) ---
+
+
+def test_cli_archive_packs_the_week_and_blocks_a_leaked_key(tmp_path, capsys):
+    import json
+
+    raw = tmp_path / "w" / "2026-10-25" / "raw"
+    raw.mkdir(parents=True)
+    (raw / "a.txt").write_text("본문", encoding="utf-8")
+    env = _dirs(tmp_path, STARTREND_TAVILY_API_KEY="tvly-real-looking-value")
+    assert main(["archive", "--week", "2026-10-25"], env=env) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["files"] == 1 and out["evidence"].endswith("evidence-2026-10-25.tar.gz")
+    (raw / "b.txt").write_text("키 tvly-real-looking-value 가 섞였다", encoding="utf-8")
+    assert main(["archive", "--week", "2026-10-25"], env=env) == 1
+    err = capsys.readouterr().err
+    assert "raw/b.txt" in err and "tvly-real-looking-value" not in err
+
+
+def test_cli_private_push_and_pull_round_trip(tmp_path, capsys):
+    card = tmp_path / "w" / "cards" / "1.md"
+    card.parent.mkdir(parents=True)
+    card.write_text("카드", encoding="utf-8")
+    priv = tmp_path / "p"
+    priv.mkdir()
+    assert main(["private", "--push", str(priv)], env=_dirs(tmp_path)) == 0
+    assert (priv / "cards" / "1.md").read_text(encoding="utf-8") == "카드"
+    card.unlink()
+    assert main(["private", "--pull", str(priv)], env=_dirs(tmp_path)) == 0
+    assert card.read_text(encoding="utf-8") == "카드"
+    assert main(["private", "--pull", str(tmp_path / "없음")], env=_dirs(tmp_path)) == 2

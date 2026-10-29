@@ -21,7 +21,10 @@
 - export   : 사이트 파생 데이터 (FR-9) — data/site/(공개) + .work/site-private/(카드·브리핑, 결정 53), 호출 0
 - weekly   : 주간 실행 (FR-11) — contract → discover → stars → rank → classify → rank → trends →
              evidence → analyze → check → brief → export. 기본은 계획만(호출 0).
-             --run 은 LLM 단계들이 예산 하나(기본 주 $10)를 함께 쓴다
+             --run 은 LLM 단계들이 예산 하나(기본 주 $10)를 함께 쓴다. 끝에 archive(압축만)
+- archive  : 주간 압축본 (FR-10) — evidence-<주>.tar.gz(근거 원문 + LLM 로그) · snapshot-<주>.csv.gz.
+             시크릿 검사에 걸리면 만들지 않는다. 올리기는 워크플로(결정 55)
+- private  : 비공개 저장소 체크아웃 ↔ .work/ (FR-11.8, 결정 55) — 카드 보관소·주별 카드·브리핑·사이트 사본
 - eval     : 분류 평가 — 정답 세트로 판정 결과를 채점(호출 0) → data/eval/runs/ (FR-14). 결과 없으면 dry-run
 - goldset-draft : 정답 세트 후보의 Claude 초안 (P2-11, 결정 41) — 기본은 dry-run(호출 0).
              --run 은 Batch 로 판정(과금)하고 블라인드 30개와 맞대어 채점한다
@@ -32,6 +35,7 @@ import base64
 import hashlib
 import io as _stdio
 import json
+import os
 import sys
 import time
 from collections.abc import Mapping
@@ -61,6 +65,7 @@ from startrend.core.io import dumps_json, read_json, read_jsonl, write_json, wri
 from startrend.core.models import Repo
 from startrend.stages import (
     analyze,
+    archive,
     backfill,
     brief,
     classify,
@@ -70,6 +75,7 @@ from startrend.stages import (
     evidence,
     export,
     goldset,
+    private,
     probe,
     rank,
     stars,
@@ -155,6 +161,12 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--cap", type=float, default=10.0, help="이번 실행 전체 LLM 예산(달러) — 결정 31 주 $10")
     p.add_argument("--no-web", action="store_true", help="근거 수집에서 웹 검색(Tavily 크레딧)을 쓰지 않는다")
     p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
+    p = sub.add_parser("archive", help="주간 압축본(FR-10) — 시크릿 검사 뒤 .work/archive/<주>/ (호출 0)")
+    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p = sub.add_parser("private", help="비공개 저장소 체크아웃 ↔ .work/ 복사(결정 55, 호출 0)")
+    g = p.add_mutually_exclusive_group(required=True)
+    g.add_argument("--pull", metavar="DIR", help="비공개 저장소 체크아웃 → .work/")
+    g.add_argument("--push", metavar="DIR", help=".work/ → 비공개 저장소 체크아웃")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
     p.add_argument("--gold", help="정답 라벨 jsonl. 기본은 data/eval/goldset_classify.jsonl")
     p.add_argument("--predictions", help="판정 결과 jsonl (goldset-draft 결과 등)")
@@ -173,6 +185,8 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     args = ap.parse_args(argv)
 
     settings = load_settings(env=env)
+    # archive 시크릿 검사용 실제 키 값 — 출력하지 않는다
+    args.secrets = _secret_values(os.environ if env is None else env)
     if args.cmd == "goldset":  # 네트워크를 쓰지 않는다 — 토큰 없이 돈다
         return _goldset(settings, args)
     if args.cmd == "classify":
@@ -194,6 +208,10 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
         return _eval(settings, args)
     if args.cmd == "weekly":   # 계획은 키 없이, --run 은 스스로 키를 확인한다
         return _weekly(settings, args)
+    if args.cmd == "archive":  # 파일만 — 키·네트워크 없이
+        return _archive(settings, args)
+    if args.cmd == "private":  # 파일 복사만
+        return _private(settings, args)
     if args.cmd == "goldset-draft":
         return _goldset_draft(settings, args)
     try:
@@ -828,6 +846,9 @@ def _weekly_steps(settings: Settings, args: argparse.Namespace, w: date, *,
                     llm=True, critical=False, what="주간 브리핑 1회 호출"),
         weekly.Step("export", export_step, critical=False,
                     what="사이트 파생 데이터 + 비공개 카드·브리핑 사본"),
+        weekly.Step("archive", lambda: _archive(settings, _ns(week=name, secrets=args.secrets)),
+                    critical=False,
+                    what="압축본(근거 원문 + LLM 로그 · 스냅샷) — 시크릿 검사, 올리기는 워크플로"),
     ]
 
 
@@ -903,6 +924,40 @@ def _weekly(settings: Settings, args: argparse.Namespace) -> int:
     write_json(settings.work_dir / name / f"weekly-ledger-{today.isoformat()}.json", {"ledger": meter.ledger})
     print(dumps_json({"week": name, **extra, **result}), end="")
     return {"ok": 0, "stopped": 3}.get(result["status"], 1)
+
+
+# --- archive · private (FR-10·11.8, 결정 55) ---
+
+SECRET_ENV = ("GITHUB_TOKEN", "STARTREND_GH_TOKEN", "STARTREND_ANTHROPIC_API_KEY", "STARTREND_TAVILY_API_KEY",
+              "NOTION_TOKEN", "STARTREND_PRIVATE_REPO_TOKEN")
+
+
+def _secret_values(env: Mapping[str, str]) -> list[str]:
+    return [env[k] for k in SECRET_ENV if env.get(k)]
+
+
+def _archive(settings: Settings, args: argparse.Namespace) -> int:
+    name = wk.week_name(_week_arg(args.week, date.today()))
+    try:
+        out = archive.build(settings.work_dir, name, secrets=args.secrets)
+    except (archive.SecretFound, archive.ArchiveTooLarge) as e:
+        print(e, file=sys.stderr)
+        return 1
+    print(dumps_json(out), end="")
+    return 0
+
+
+def _private(settings: Settings, args: argparse.Namespace) -> int:
+    target = Path(args.pull or args.push)
+    if not target.is_dir():
+        print(f"비공개 저장소 체크아웃이 없다: {target}", file=sys.stderr)
+        return 2
+    if args.pull:
+        stats = private.pull(target, settings.work_dir)
+    else:
+        stats = private.push(settings.work_dir, target)
+    print(dumps_json({"direction": "pull" if args.pull else "push", "dir": str(target), **stats}), end="")
+    return 0
 
 
 if __name__ == "__main__":

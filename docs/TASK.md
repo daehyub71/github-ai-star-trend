@@ -17,8 +17,8 @@
 | Phase 3 근거·카드·브리핑 | `█████████░` | 13/15 (87%) | 🔄 근거 수집·카드·품질 검사·재등장·브리핑·인젝션 방어 ✅ · 남은 것: 1주 전체(P3-13, 첫 주간 실행 11-02 뒤) · 게이트 2단계·근거 거르기 시범(P3-15) |
 | Phase 4 화면          | `████████░░` | 9/12 (75%)      | 🔄 착수 2026-10-28 — export · Next.js 골격 · 핵심 3화면 · 번들 점검 ✅ · **시안 v1.3 채택·구현(P4-12) ✅ 2026-10-29** — 남은 것: 5년치 합성 빌드 시간(P4-4) · 아카이브·소개 시안 합의(P4-11) → 구현(P4-8) |
 | Phase 4b Notion·블로그 | `░░░░░░░░░░` | 0/7 (0%)        | 🔜 Phase 3 대기 (D-19·D-20·Notion 토큰 ✅)                                |
-| Phase 5 운영·배포 | `███░░░░░░░` | 4/12 (33%) | 🔄 첫 푸시·저장소 공개 · **weekly(P5-2)·계약 점검 먼저(P5-9) ✅ 2026-10-29** — 다음: 비공개 보관 위치 결정 → archive·스냅샷 Releases · Actions · Vercel · 보안 점검 |
-| **전체 (M5)** | `████████░░` | **72/94 (77%)** | 🔄 착수 전과 Phase 0~5 합계(🅑·🅒 제외) |
+| Phase 5 운영·배포 | `█████░░░░░` | 6/13 (46%) | 🔄 첫 푸시·저장소 공개 · **weekly(P5-2)·계약 점검(P5-9)·archive(P5-1)·워크플로(P5-4) ✅ 2026-10-29**(결정 55: 비공개 저장소) — 다음: 비공개 저장소·토큰(사용자, P5-12) → 보안 점검(P5-6) → 첫 수동 실행(P5-7) · Vercel(P5-5) |
+| **전체 (M5)** | `████████░░` | **74/95 (78%)** | 🔄 착수 전과 Phase 0~5 합계(🅑·🅒 제외) |
 
 > 진도는 완료(`[x]`)만 센다. 취소(`[-]`, 결정으로 필요 없어진 것)는 분모에서 뺀다. 진행 중(`[~]`)은 상태 칸에 적는다 (2026-10-26부터 — 그 전 Phase 1 의 6/10 은 진행 중을 절반으로 센 값).
 
@@ -184,15 +184,16 @@
 
 > 완료 기준: 첫 배포 · Vercel 로그인 없이 열리지 않음 확인 · 크론 2주 연속 무인 성공 🏁M5
 
-- [ ] P5-1 archive → GitHub Release, 업로드 전 시크릿 검사 (FR-10)
+- [x] P5-1 archive → GitHub Release, 업로드 전 시크릿 검사 (FR-10) — **✅ 2026-10-29**(결정 55): `archive`(비용 0) → `.work/archive/<주>/` `evidence-<주>.tar.gz`(근거 원문·근거 목록·카드 초안·게이트·품질·실행 장부·주간 장부) + `snapshot-<주>.csv.gz`. 시크릿 검사 — 토큰 모양 7종 + 환경변수의 실제 키 값, 걸리면 아무것도 만들지 않고 값은 출력하지 않음. 2GiB 한도. weekly 마지막 단계. **올리기는 워크플로**(`gh release`): 압축본 → 비공개 저장소 Release, 스냅샷 → 공개 Release. 실제 10-18 주: 1,329개 · 1.98MB · 오탐 0. 테스트 13개 먼저
 - [x] P5-2 weekly: 순서 실행, 예산 상한, `--dry-run`, 실행 기록 (FR-11.1~11.3·11.5) — **✅ 2026-10-29**: `weekly`(기본 계획만·호출 0, `--run` 은 키 3개 확인) — contract → discover → stars → rank → classify → rank-ai → trends → evidence → analyze → check → brief → export. 실행기 `stages/weekly.py`(단계는 CLI 가 넘김 — 단계끼리 import 금지 유지): 산출물이 있으면 건너뜀(이어 돌리기) · **LLM 단계 셋이 계량기 하나(기본 주 $10, 결정 31)를 함께 씀** — 예산으로 멈추면 뒤 LLM 단계만 건너뛰고 export 는 돈다(FR-11.2) · 핵심 단계(contract·discover·stars·rank) 실패면 뒤를 막음 · 실행 기록 `data/runs/<주>.json`(같은 주는 뒤에 붙임). 계획: 입력이 있는 단계는 그 단계 dry-run, 없으면 실측 기준값(MEASURE). 실제 계획 — 10-18 주: 남은 카드 15장 $1.87~$6.06만, 10-25 주: discover·stars 실측 기준값 + LLM 은 앞 단계 뒤. 테스트 12개 먼저(실행기 8 + CLI 4). **남은 것: archive(P5-1)·스냅샷 Releases(P5-10) 단계 — 비공개 보관 위치 결정 뒤**
 - [x] P5-3 GitHub 저장소 첫 푸시 (사용자 확인 후) — `daehyub71/github-ai-star-trend` 2026-10-27 (백업용으로 앞당김, 그때는 비공개)
-- [ ] P5-4 Actions 워크플로: `contents: write` 만, 외부 Action SHA 고정, Secrets, 크론 시각 (FR-11.4, NFR-8)
+- [x] P5-4 Actions 워크플로: `contents: write` 만, 외부 Action SHA 고정, Secrets, 크론 시각 (FR-11.4, NFR-8) — **✅ 2026-10-29**: `.github/workflows/weekly.yml` — **지금은 손으로만(workflow_dispatch), 크론은 P5-8 에서**. 순서: 공개·비공개 체크아웃 → Python 3.12 → 지난 주 스냅샷 받기 → `private --pull` → `weekly --run` → 압축본·스냅샷 Release → `private --push` + 비공개 push → 크기 가드 → 공개 `data/` push. checkout v7.0.1 · setup-python v7.1.0 을 커밋 SHA 로 고정. 시크릿·입력값·단계 출력은 env 로만(스크립트 주입 방지) — **`tests/test_workflow.py` 가 규칙 4개를 검사**(통제군 5개 포함). `.private/` 는 gitignore
 - [ ] P5-5 Vercel 연결, All Deployments + Vercel Authentication, 루트 디렉토리 확인 (R12)
 - [~] P5-6 **배포 전 보안 점검 4단계** — security-review · 시크릿 점검(코드·히스토리·로그·Releases) · CI 권한 · 발견 사항 해소 — 저장소 공개 전 시크릿 점검(코드·커밋 히스토리 전체: 토큰 패턴 0건·개인 경로 0건) ✅ 2026-10-27 · security-review·CI 권한·Releases 는 첫 배포 전
 - [ ] P5-7 첫 배포 + 수동 실행(workflow_dispatch) 1회
 - [ ] P5-8 크론 활성화 → 2주 연속 무인 성공
 - [x] P5-9 weekly 첫 단계로 `contract` 실행, 오류면 아무것도 쓰지 않고 중단 (FR-11.6) — **✅ 2026-10-29**: 계약 점검이 핵심 단계 맨 앞 — 실패하면 뒤 단계 모두 막고, 실행 기록도 `data/` 가 아니라 `.work/runs/` 에 (회귀 테스트: 정본 폴더가 생기지 않음)
-- [ ] P5-10 전체 스냅샷 Releases 올리기·받기로 전환(`.work/snapshots/` → `snapshot-<주>.csv.gz`) (FR-11.7, 결정 29)
+- [~] P5-10 전체 스냅샷 Releases 올리기·받기로 전환(`.work/snapshots/` → `snapshot-<주>.csv.gz`) (FR-11.7, 결정 29) — 2026-10-29: 압축(`archive`)·워크플로의 받기/올리기 단계 ✅. **남은 것: 첫 실제 실행(P5-7)에서 확인** — 첫 주는 지난 주 스냅샷이 Release 에 없으므로 로컬 `.work/snapshots/2026-10-25.csv` 를 한 번 손으로 올리거나, stars 가 히스토리로 대신 고른다
 - [ ] P5-11 weekly 에 blog·notion 단계 + `NOTION_TOKEN` Secrets + 계약 점검에 Notion 포함 (FR-15·16, R23)
+- [ ] P5-12 **비공개 저장소·토큰 준비(사용자, 결정 55)** — ① 비공개 저장소 `github-ai-star-trend-private` 만들기 ② 세분화 토큰(공개 저장소 읽기 + 비공개 저장소 Contents 읽기·쓰기) ③ 공개 저장소 Secrets `STARTREND_GH_TOKEN` · `STARTREND_ANTHROPIC_API_KEY` · `STARTREND_TAVILY_API_KEY` ④ 지금 로컬의 카드 보관소·브리핑을 첫 내용으로 올리기(`private --push` — Claude) → P5-7 첫 수동 실행의 선행
 - [x] P5-12 저장소 공개 전환(사용자, 결정 47) + README 두 벌(`README.md` 영어 · `README_KO.md` 한국어, 서로 링크, 스크린샷) — 공개 전 시크릿 점검 뒤 2026-10-27. 라이선스는 미정

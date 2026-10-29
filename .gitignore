@@ -25,3 +25,6 @@ web/out/
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
+
+# 비공개 저장소 체크아웃 (결정 55) — 공개 저장소에 커밋하지 않는다
+.private/

@@ -1,0 +1,146 @@
+# 주간 실행 (SPEC FR-11, 결정 32·55) — `python -m startrend weekly --run`
+#
+# 지금은 손으로만 실행한다(workflow_dispatch). 크론(월 00:00 UTC = 09:00 KST)은 P5-8 에서 켠다:
+#   schedule:
+#     - cron: "0 0 * * 1"
+#
+# 보안(NFR-8): 권한은 contents: write 만 · 외부 Action 은 커밋 SHA 고정 · 시크릿은 env 로만 넘긴다(run 에 직접 쓰지 않는다)
+#              · 입력값도 env 로 넘긴다(스크립트 주입 방지). tests/test_workflow.py 가 이 규칙을 검사한다.
+# 필요한 것(사용자): Secrets STARTREND_GH_TOKEN(세분화 토큰 — 공개 저장소 읽기 + 비공개 저장소 내용 읽기·쓰기)
+#                   · STARTREND_ANTHROPIC_API_KEY · STARTREND_TAVILY_API_KEY
+#                   · 변수 STARTREND_PRIVATE_REPO(없으면 "<이 저장소>-private")
+name: weekly
+
+on:
+  workflow_dispatch:
+    inputs:
+      cap:
+        description: "이번 실행 LLM 예산 상한(달러) — 결정 31 주 $10"
+        required: false
+        default: "10"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      PYTHONUTF8: "1"
+      PRIVATE_REPO: ${{ vars.STARTREND_PRIVATE_REPO || format('{0}-private', github.repository) }}
+    steps:
+      - name: 공개 저장소
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: 비공개 저장소 (결정 55)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ env.PRIVATE_REPO }}
+          token: ${{ secrets.STARTREND_GH_TOKEN }}
+          path: .private
+
+      - name: Python 3.12
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: 패키지
+        run: python -m pip install -r requirements.txt
+
+      - name: 이번 주 · 지난 주
+        id: week
+        run: |
+          python - >> "$GITHUB_OUTPUT" <<'PY'
+          from datetime import date
+          from startrend.core import week as wk
+          w = wk.previous_week(wk.week_start(date.today()))
+          print(f"week={wk.week_name(w)}")
+          print(f"prev={wk.week_name(wk.previous_week(w))}")
+          PY
+
+      - name: 지난 주 스냅샷 받기 (FR-11.7, 결정 29)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PREV: ${{ steps.week.outputs.prev }}
+          REPO: ${{ github.repository }}
+        run: |
+          mkdir -p .work/snapshots .work/release-in
+          if gh release download "snapshot-$PREV" -R "$REPO" -D .work/release-in; then
+            gunzip -c ".work/release-in/snapshot-$PREV.csv.gz" > ".work/snapshots/$PREV.csv"
+          else
+            echo "지난 주 스냅샷 없음 — stars 가 증가량 후보를 히스토리 API 로 대신 고른다"
+          fi
+
+      - name: 비공개 저장소 → 작업 폴더 (FR-11.8)
+        run: python -m startrend private --pull .private
+
+      - name: 주간 실행
+        id: run
+        env:
+          GITHUB_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
+          STARTREND_GH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
+          STARTREND_ANTHROPIC_API_KEY: ${{ secrets.STARTREND_ANTHROPIC_API_KEY }}
+          STARTREND_TAVILY_API_KEY: ${{ secrets.STARTREND_TAVILY_API_KEY }}
+          CAP: ${{ inputs.cap }}
+        run: |
+          set +e
+          python -m startrend weekly --run --cap "${CAP:-10}"
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: 근거·LLM 로그 압축본 → 비공개 Release (FR-10, 결정 55)
+        env:
+          GH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
+          W: ${{ steps.week.outputs.week }}
+        run: |
+          f=".work/archive/$W/evidence-$W.tar.gz"
+          if [ ! -f "$f" ]; then echo "압축본 없음 — 건너뜀"; exit 0; fi
+          gh release create "evidence-$W" "$f" -R "$PRIVATE_REPO" --title "evidence $W" --notes "근거 원문 + LLM 로그" \
+            || gh release upload "evidence-$W" "$f" -R "$PRIVATE_REPO" --clobber
+
+      - name: 스냅샷 → 공개 Release (결정 29)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          W: ${{ steps.week.outputs.week }}
+          REPO: ${{ github.repository }}
+        run: |
+          f=".work/archive/$W/snapshot-$W.csv.gz"
+          if [ ! -f "$f" ]; then echo "스냅샷 압축본 없음 — 건너뜀"; exit 0; fi
+          gh release create "snapshot-$W" "$f" -R "$REPO" --title "snapshot $W" --notes "스타 1,000 이상 전체 스냅샷" \
+            || gh release upload "snapshot-$W" "$f" -R "$REPO" --clobber
+
+      - name: 작업 폴더 → 비공개 저장소 push (FR-11.8)
+        env:
+          W: ${{ steps.week.outputs.week }}
+        run: |
+          python -m startrend private --push .private
+          cd .private
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "data: weekly $W"
+          git push
+
+      - name: 공개 데이터 commit · push (크기 가드 먼저)
+        env:
+          W: ${{ steps.week.outputs.week }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          python scripts/size_guard.py --staged
+          git diff --cached --quiet || git commit -m "data: weekly $W"
+          git push
+
+      - name: 결과 — 0 성공 · 3 예산으로 멈춤(정상 종료) · 그 밖은 실패
+        env:
+          CODE: ${{ steps.run.outputs.code }}
+        run: |
+          echo "weekly 종료 코드 $CODE"
+          if [ "$CODE" != "0" ] && [ "$CODE" != "3" ]; then exit 1; fi

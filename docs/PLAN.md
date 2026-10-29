@@ -104,7 +104,8 @@ github-ai-star-trend/
 | blog | 브리핑 + 랭킹 + 주목할 저장소 카드 + 견본(`docs/ref/`) | 주간 블로그 초안 1편 (견본 형식, 인용 게이트 통과) + 사진 배치 문서 + 이미지 PNG | `data/blog/<주>.md` · `<주>-images.md` |
 | export | 정본 | 파생 데이터 | `data/site/` |
 | notion | 랭킹 + 브리핑 + 카드 + 블로그 초안 + Notion 대응표 | 주간·카드·블로그 초안 페이지 (상태 "초안"인 것만 만들고 고침) | Notion · `data/notion/index.json` |
-| archive | `.work/<주>/raw/` + LLM 로그 · 이번 주 스냅샷 | 압축본 | GitHub Release `evidence-<주>` · `snapshot-<주>` |
+| archive | `.work/<주>/raw/` + LLM 로그 · 이번 주 스냅샷 | 압축본(시크릿 검사 통과한 것만) | `.work/archive/<주>/` → 워크플로가 Release `evidence-<주>`(비공개 저장소) · `snapshot-<주>`(공개 저장소)로 올린다(결정 55) |
+| private | 비공개 저장소 체크아웃 ↔ `.work/` | 카드 보관소 · 주별 카드·브리핑 · 사이트용 사본 | `--pull`: 비공개 → `.work/` · `--push`: `.work/` → 비공개(git 은 워크플로) |
 
 ### 1-5. 설계 판단
 
