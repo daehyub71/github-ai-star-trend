@@ -1,6 +1,7 @@
 # 주간 실행 (SPEC FR-11, 결정 32·55) — `python -m startrend weekly --run`
 #
-# 지금은 손으로만 실행한다(workflow_dispatch). 크론(월 00:00 UTC = 09:00 KST)은 P5-8 에서 켠다:
+# 지금은 손으로만 실행한다(workflow_dispatch) — 기본은 점검(check, 비용 0·쓰기 없음), run 을 골라야 실행한다.
+# 크론(월 00:00 UTC = 09:00 KST)은 P5-8 에서 켠다:
 #   schedule:
 #     - cron: "0 0 * * 1"
 #
@@ -14,6 +15,12 @@ name: weekly
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: "check = 점검만(비용 0 · 쓰기 없음) · run = 주간 실행(과금)"
+        required: true
+        default: check
+        type: choice
+        options: [check, run]
       cap:
         description: "이번 실행 LLM 예산 상한(달러) — 결정 31 주 $10"
         required: false
@@ -33,9 +40,13 @@ jobs:
     env:
       PYTHONUTF8: "1"
       PRIVATE_REPO: ${{ vars.STARTREND_PRIVATE_REPO || format('{0}-private', github.repository) }}
+      # 손으로 실행할 때 기본은 점검(check). 크론(schedule)은 실행으로 친다
+      RUN: ${{ github.event_name == 'schedule' || inputs.mode == 'run' }}
     steps:
       - name: 공개 저장소
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false   # 토큰을 .git/config 에 남기지 않는다 — push 단계에서만 넘긴다(P5-6 F2)
 
       - name: 비공개 저장소 (결정 55)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -43,16 +54,49 @@ jobs:
           repository: ${{ env.PRIVATE_REPO }}
           token: ${{ secrets.STARTREND_GH_TOKEN }}
           path: .private
+          persist-credentials: false
 
       - name: Python 3.12
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
 
-      - name: 패키지
-        run: python -m pip install -r requirements.txt
+      - name: 패키지 — 버전·해시 고정(P5-6 F1)
+        run: python -m pip install --require-hashes --no-deps -r requirements-lock.txt
+
+      - name: 점검 — Secrets · 토큰 권한 · 키 유효성 (호출 무료, 값은 출력하지 않는다)
+        env:
+          STARTREND_GH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
+          STARTREND_ANTHROPIC_API_KEY: ${{ secrets.STARTREND_ANTHROPIC_API_KEY }}
+          STARTREND_TAVILY_API_KEY: ${{ secrets.STARTREND_TAVILY_API_KEY }}
+        run: |
+          fail=0
+          for n in STARTREND_GH_TOKEN STARTREND_ANTHROPIC_API_KEY STARTREND_TAVILY_API_KEY; do
+            if [ -n "${!n}" ]; then echo "OK  $n 있음"; else echo "NG  $n 없음"; fail=1; fi
+          done
+          gh_auth="Authorization: Bearer $STARTREND_GH_TOKEN"
+          code=$(curl -s -o /dev/null -w "%{http_code}" -H "$gh_auth" "https://api.github.com/repos/$PRIVATE_REPO")
+          echo "GitHub 토큰 → 비공개 저장소($PRIVATE_REPO) 읽기: HTTP $code"
+          [ "$code" = "200" ] || fail=1
+          limit=$(curl -s -H "$gh_auth" https://api.github.com/rate_limit             | python -c "import json,sys; print(json.load(sys.stdin).get('resources',{}).get('core',{}).get('limit',0))" || echo 0)
+          echo "GitHub 시간당 한도: $limit (기본 토큰은 1000)"
+          [ "$limit" -ge 5000 ] || fail=1
+          if [ -f .private/README.md ]; then echo "OK  비공개 저장소 README 있음"; else echo "--  비공개 저장소 README 없음"; fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://api.anthropic.com/v1/models             -H "x-api-key: $STARTREND_ANTHROPIC_API_KEY" -H "anthropic-version: 2023-06-01")
+          echo "Anthropic 키 — 모델 목록(무료): HTTP $code"
+          [ "$code" = "200" ] || fail=1
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://api.tavily.com/usage             -H "Authorization: Bearer $STARTREND_TAVILY_API_KEY")
+          echo "Tavily 키 — 사용량 조회(무료): HTTP $code"
+          case "$code" in
+            200) ;;
+            401|403) fail=1 ;;
+            *) echo "--  Tavily 는 이 방법으로 확인하지 못했다 — 첫 실행의 근거 수집에서 본다" ;;
+          esac
+          if [ "$fail" = "0" ]; then echo "점검 통과"; else echo "점검 실패 — 위 NG·HTTP 코드를 본다"; fi
+          exit $fail
 
       - name: 이번 주 · 지난 주
+        if: env.RUN == 'true'
         id: week
         run: |
           python - >> "$GITHUB_OUTPUT" <<'PY'
@@ -64,6 +108,7 @@ jobs:
           PY
 
       - name: 지난 주 스냅샷 받기 (FR-11.7, 결정 29)
+        if: env.RUN == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           PREV: ${{ steps.week.outputs.prev }}
@@ -77,9 +122,11 @@ jobs:
           fi
 
       - name: 비공개 저장소 → 작업 폴더 (FR-11.8)
+        if: env.RUN == 'true'
         run: python -m startrend private --pull .private
 
       - name: 주간 실행
+        if: env.RUN == 'true'
         id: run
         env:
           GITHUB_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
@@ -95,6 +142,7 @@ jobs:
           exit 0
 
       - name: 근거·LLM 로그 압축본 → 비공개 Release (FR-10, 결정 55)
+        if: env.RUN == 'true'
         env:
           GH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
           W: ${{ steps.week.outputs.week }}
@@ -105,6 +153,7 @@ jobs:
             || gh release upload "evidence-$W" "$f" -R "$PRIVATE_REPO" --clobber
 
       - name: 스냅샷 → 공개 Release (결정 29)
+        if: env.RUN == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           W: ${{ steps.week.outputs.week }}
@@ -116,8 +165,10 @@ jobs:
             || gh release upload "snapshot-$W" "$f" -R "$REPO" --clobber
 
       - name: 작업 폴더 → 비공개 저장소 push (FR-11.8)
+        if: env.RUN == 'true'
         env:
           W: ${{ steps.week.outputs.week }}
+          PUSH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
         run: |
           python -m startrend private --push .private
           cd .private
@@ -125,20 +176,27 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "data: weekly $W"
-          git push
+          auth=$(printf 'x-access-token:%s' "$PUSH_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" push
 
-      - name: 공개 데이터 commit · push (크기 가드 먼저)
+      - name: 공개 데이터 commit · push (크기·시크릿 가드 먼저)
+        if: env.RUN == 'true'
         env:
           W: ${{ steps.week.outputs.week }}
+          PUSH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data
           python scripts/size_guard.py --staged
           git diff --cached --quiet || git commit -m "data: weekly $W"
-          git push
+          auth=$(printf 'x-access-token:%s' "$PUSH_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" push
 
       - name: 결과 — 0 성공 · 3 예산으로 멈춤(정상 종료) · 그 밖은 실패
+        if: env.RUN == 'true'
         env:
           CODE: ${{ steps.run.outputs.code }}
         run: |

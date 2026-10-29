@@ -6,16 +6,23 @@
 - 한 커밋에 data/ 가 5MB 넘게 늘어나는 것 (주간 실행 한 번은 약 1.5MB)
 - ASCII 가 아닌 파일명 (루트 규칙: NFD/NFC 차이로 Vercel 배포 실패 사례)
 - data/ 아래 LLM 카드·브리핑 (결정 53: 사람이 검토하지 않은 LLM 글은 공개 저장소에 커밋하지 않는다)
+- 시크릿 (P5-6 F3: 무인 실행이 data/ 를 공개 저장소에 커밋한다) — 토큰 모양과 환경변수의 실제 키 값.
+  규칙은 startrend.core.secrets(압축본과 같은 규칙). 보고에 값은 쓰지 않는다
 
     .\\.venv\\Scripts\\python.exe scripts\\size_guard.py --staged
 """
 
 import argparse
+import os
 import re
 import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+# `python scripts/size_guard.py` 로 불려도 startrend 를 찾게
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from startrend.core.secrets import scan_text, secret_values  # noqa: E402
 
 MB = 1_048_576
 MAX_FILE = MB
@@ -69,6 +76,22 @@ def staged_entries(repo: Path) -> list[Entry]:
     return [Entry(p, o, n) for p, o, n in zip(paths, old, new, strict=True)]
 
 
+BINARY = (".webp", ".png", ".jpg", ".jpeg", ".gif", ".ico", ".gz", ".zip", ".pdf", ".woff", ".woff2")
+
+
+def staged_secret_hits(repo: Path, paths: list[str], secrets: list[str]) -> list[str]:
+    """스테이징된 내용(작업 트리가 아니라 인덱스)에서 시크릿을 찾는다 — "파일:줄 (종류)"만."""
+    hits: list[str] = []
+    for p in paths:
+        if p.lower().endswith(BINARY):
+            continue
+        blob = subprocess.run(["git", "show", f":{p}"], cwd=repo, capture_output=True, check=True).stdout
+        for no, line in enumerate(blob.decode("utf-8", errors="ignore").splitlines(), 1):
+            for kind in scan_text(line, secrets=secrets):
+                hits.append(f"{p}:{no} ({kind})")
+    return hits
+
+
 def _sizes(repo: Path, objects: list[str]) -> list[int]:
     out = _git(repo, "cat-file", "--batch-check=%(objectsize)", stdin="\n".join(objects) + "\n")
     return [0 if line.endswith(" missing") else int(line) for line in out.splitlines()]
@@ -89,7 +112,11 @@ def main(argv: list[str]) -> int:
     args = ap.parse_args(argv)
     if not args.staged:
         ap.error("지금은 --staged 만 지원한다")
-    violations = check(staged_entries(Path(args.repo)), max_data_growth=int(args.max_data_growth_mb * MB))
+    repo = Path(args.repo)
+    entries = staged_entries(repo)
+    violations = check(entries, max_data_growth=int(args.max_data_growth_mb * MB))
+    for hit in staged_secret_hits(repo, [e.path for e in entries], secret_values(os.environ)):
+        violations.append(f"{hit}: 시크릿으로 보인다 — 커밋하지 않는다")
     for v in violations:
         print(f"[size_guard] {v}", file=sys.stderr)
     return 1 if violations else 0

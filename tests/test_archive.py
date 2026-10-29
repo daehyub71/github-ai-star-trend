@@ -79,7 +79,7 @@ def test_archive_stops_on_an_exact_key_value_from_the_environment(tmp_path):
     "tvly-" + "d" * 32,
     "ntn_" + "1" * 46,
     "AKIA" + "ABCDEFGHIJKLMNOP",
-    "-----BEGIN OPENSSH PRIVATE KEY-----",
+    "-----BEGIN " + "OPENSSH PRIVATE KEY-----",          # 이어 붙여 둔다 — 이 파일 자체가 검사에 걸리지 않게
 ])
 def test_archive_secret_scan_catches_each_known_shape(sample):
     # 통제군 — 검사기가 실제로 잡는지

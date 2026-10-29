@@ -11,24 +11,14 @@
 
 import gzip
 import io as _bytesio
-import re
 import tarfile
 from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
-MAX_BYTES = 2 * 1024**3 - 64 * 1024**2      # GitHub Release 파일 하나 2GiB 아래(FR-10.2) — 여유 64MiB
+from startrend.core.secrets import scan_text as scan_text  # 규칙은 core 한 곳(크기 가드와 같게)
 
-PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
-    ("GitHub 토큰", re.compile(r"\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{36}\b")),
-    ("GitHub 세분화 토큰", re.compile(r"\bgithub_pat_[A-Za-z0-9_]{60,}")),
-    ("Anthropic 키", re.compile(r"\bsk-ant-[A-Za-z0-9_\-]{20,}")),
-    ("Tavily 키", re.compile(r"\btvly-[A-Za-z0-9_\-]{20,}")),
-    ("Notion 토큰", re.compile(r"\b(?:ntn|secret)_[A-Za-z0-9]{40,}")),
-    ("AWS 키", re.compile(r"\bAKIA[0-9A-Z]{16}\b")),
-    ("개인 키", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
-)
-MIN_SECRET_LEN = 8                           # 너무 짧은 값은 평범한 글자와 겹친다
+MAX_BYTES = 2 * 1024**3 - 64 * 1024**2      # GitHub Release 파일 하나 2GiB 아래(FR-10.2) — 여유 64MiB
 
 
 class SecretFound(RuntimeError):
@@ -37,14 +27,6 @@ class SecretFound(RuntimeError):
 
 class ArchiveTooLarge(RuntimeError):
     """압축본이 Release 파일 한도를 넘는다."""
-
-
-def scan_text(text: str, *, secrets: Sequence[str]) -> list[str]:
-    """찾은 시크릿의 **종류**만 돌려준다(값은 돌려주지 않는다)."""
-    found = [name for name, rx in PATTERNS if rx.search(text)]
-    if any(s and len(s) >= MIN_SECRET_LEN and s in text for s in secrets):
-        found.append("실제 키 값")
-    return found
 
 
 def evidence_files(work_dir: Path, week: str) -> list[Path]:

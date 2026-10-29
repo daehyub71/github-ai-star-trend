@@ -58,7 +58,7 @@ from startrend.clients.github_parse import GitHubFormatError, parse_repo, parse_
 from startrend.clients.llm import BatchItem, LLMRequest, MockLLM
 from startrend.clients.transport import CachingTransport, UrllibPoster, UrllibTransport
 from startrend.clients.trending import fetch_trending
-from startrend.core import meta, snapshot, taxonomy, weekfile
+from startrend.core import meta, secrets, snapshot, taxonomy, weekfile
 from startrend.core import week as wk
 from startrend.core.config import PROJECT_ROOT, ConfigError, Settings, load_settings
 from startrend.core.io import dumps_json, read_json, read_jsonl, write_json, write_jsonl
@@ -186,7 +186,7 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
 
     settings = load_settings(env=env)
     # archive 시크릿 검사용 실제 키 값 — 출력하지 않는다
-    args.secrets = _secret_values(os.environ if env is None else env)
+    args.secrets = secrets.secret_values(os.environ if env is None else env)
     if args.cmd == "goldset":  # 네트워크를 쓰지 않는다 — 토큰 없이 돈다
         return _goldset(settings, args)
     if args.cmd == "classify":
@@ -927,14 +927,6 @@ def _weekly(settings: Settings, args: argparse.Namespace) -> int:
 
 
 # --- archive · private (FR-10·11.8, 결정 55) ---
-
-SECRET_ENV = ("GITHUB_TOKEN", "STARTREND_GH_TOKEN", "STARTREND_ANTHROPIC_API_KEY", "STARTREND_TAVILY_API_KEY",
-              "NOTION_TOKEN", "STARTREND_PRIVATE_REPO_TOKEN")
-
-
-def _secret_values(env: Mapping[str, str]) -> list[str]:
-    return [env[k] for k in SECRET_ENV if env.get(k)]
-
 
 def _archive(settings: Settings, args: argparse.Namespace) -> int:
     name = wk.week_name(_week_arg(args.week, date.today()))

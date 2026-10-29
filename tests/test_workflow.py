@@ -4,6 +4,8 @@
 
 규칙: ① 외부 Action 은 커밋 SHA(40자리)로 고정 ② 권한은 `contents: write` 하나 ③ `pull_request_target` 금지
 ④ `run:` 스크립트 안에 `${{ … }}` 식 금지 — 시크릿·입력값·단계 출력은 env 로 넘긴다(스크립트 주입 방지)
+⑤ 체크아웃은 토큰을 남기지 않는다(`persist-credentials: false`)
+⑥ pip 은 해시 고정 잠금 파일로만 설치 (P5-6 F1·F2)
 """
 
 import re
@@ -64,6 +66,11 @@ def check_workflow(text: str) -> list[str]:
     for no, line in run_blocks(text):
         if "${{" in line:
             v.append(f"{no}: run 안에 식이 있다 — env 로 넘긴다")
+        if "pip install" in line and "--require-hashes" not in line:
+            v.append(f"{no}: pip 은 --require-hashes 로만 설치한다")
+    checkouts = len(re.findall(r"uses:\s*actions/checkout@", text))
+    if text.count("persist-credentials: false") < checkouts:
+        v.append("체크아웃마다 persist-credentials: false — 토큰은 push 단계에서만 넘긴다")
     return v
 
 
@@ -76,6 +83,9 @@ jobs:
   j:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - run: python -m pip install --require-hashes --no-deps -r requirements-lock.txt
       - env:
           T: ${{ secrets.X }}
         run: |
@@ -105,6 +115,26 @@ def test_workflow_checker_catches_expressions_inside_run():
     one_line = GOOD.replace('        run: |\n          echo "$T" > /dev/null',
                             '        run: echo ${{ github.event.issue.title }}')
     assert any("run 안에 식" in x for x in check_workflow(one_line))
+
+
+def test_workflow_checker_catches_persisted_credentials():
+    bad = GOOD.replace("        with:\n          persist-credentials: false\n", "")
+    assert any("persist-credentials" in x for x in check_workflow(bad))
+
+
+def test_workflow_checker_catches_unpinned_pip_install():
+    bad = GOOD.replace("--require-hashes --no-deps -r requirements-lock.txt", "-r requirements.txt")
+    assert any("require-hashes" in x for x in check_workflow(bad))
+
+
+def test_lock_file_pins_every_package_with_a_hash():
+    lock = (PROJECT_ROOT / "requirements-lock.txt").read_text(encoding="ascii")
+    pins = re.findall(r"^([a-z0-9-]+)==(\S+) \\\n    --hash=sha256:[0-9a-f]{64}$", lock, re.M)
+    names = {n for n, _ in pins}
+    assert "anthropic" in names and len(pins) == len(re.findall(r"^[a-z0-9-]+==", lock, re.M))
+    ver = dict(pins)["anthropic"]
+    major, minor = (int(x) for x in ver.split(".")[:2])
+    assert major == 1 and minor >= 17       # requirements.txt 의 anthropic>=1.17,<2 안
 
 
 def test_workflow_checker_catches_pull_request_target():

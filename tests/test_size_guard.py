@@ -143,6 +143,36 @@ def test_size_guard_main_passes_clean_stage(repo):
     assert sg.main(["--staged", "--repo", str(repo)]) == 0
 
 
+FAKE_TOKEN = "ghp_" + "Z9y8X7w6V5u4T3s2R1q0P9o8N7m6L5k4J3i2"      # 형식만 맞춘 가짜 값
+
+
+def test_size_guard_blocks_a_staged_secret_without_printing_it(repo, capsys, monkeypatch):
+    # P5-6 F3 — 무인 실행이 data/ 를 공개 저장소에 커밋한다. 시크릿이 섞이면 커밋 전에 막는다
+    monkeypatch.delenv("STARTREND_TAVILY_API_KEY", raising=False)
+    (repo / "data" / "runs").mkdir(parents=True)
+    (repo / "data" / "runs" / "2026-10-25.json").write_text(f'{{"error": "{FAKE_TOKEN}"}}', encoding="utf-8")
+    _git(repo, "add", ".")
+    assert sg.main(["--staged", "--repo", str(repo)]) == 1
+    err = capsys.readouterr().err
+    assert "data/runs/2026-10-25.json:1" in err and "GitHub" in err and FAKE_TOKEN not in err
+
+
+def test_size_guard_blocks_the_exact_key_value_from_the_environment(repo, capsys, monkeypatch):
+    monkeypatch.setenv("STARTREND_TAVILY_API_KEY", "plain-looking-key-1234")
+    (repo / "note.txt").write_text("값 plain-looking-key-1234 이 들어갔다", encoding="utf-8")
+    _git(repo, "add", ".")
+    assert sg.main(["--staged", "--repo", str(repo)]) == 1
+    assert "plain-looking-key-1234" not in capsys.readouterr().err
+
+
+def test_size_guard_secret_scan_skips_images_and_archives(repo, monkeypatch):
+    monkeypatch.delenv("STARTREND_TAVILY_API_KEY", raising=False)
+    (repo / "web").mkdir()
+    (repo / "web" / "a.webp").write_bytes(b"RIFF" + FAKE_TOKEN.encode())      # 그림 바이트는 글이 아니다
+    _git(repo, "add", ".")
+    assert sg.main(["--staged", "--repo", str(repo)]) == 0
+
+
 def test_size_guard_pre_commit_hook_runs_full_gate():
     hook = (PROJECT_ROOT / "scripts" / "hooks" / "pre-commit").read_text(encoding="utf-8")
     for cmd in ("ruff check", "mypy", "pytest", "size_guard.py --staged"):
