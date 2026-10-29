@@ -147,3 +147,11 @@ def test_workflow_files_follow_the_rules():
     assert files, "워크플로가 없다"
     for f in files:
         assert check_workflow(f.read_text(encoding="utf-8")) == [], f.name
+
+
+def test_workflow_weekly_runs_on_monday_midnight_utc():
+    # 결정 32 · P5-8 — 월 00:00 UTC(09:00 KST). 손으로 점검·실행하는 길(workflow_dispatch)도 남긴다
+    text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
+    on = text[text.index("\non:"):text.index("\npermissions:")]
+    assert re.search(r"^  schedule:\n    - cron: \"0 0 \* \* 1\"$", on, re.M)
+    assert "workflow_dispatch:" in on
