@@ -86,6 +86,9 @@ Python 은 프로젝트 루트(`.venv/`), Next.js 는 `web/`. **npm 명령은 `w
 npm run lint; npm test; npm run build
 ```
 
+맥에서는 `.\.venv\Scripts\python.exe` 대신 `.venv/bin/python`. 맥으로 옮기는 순서(설치 · `.work` 복원 · 키체인 ·
+두 대를 같이 쓸 때 규칙)는 [docs/MIGRATION_MAC.md](docs/MIGRATION_MAC.md).
+
 ## Working Rules (이 프로젝트)
 
 - **`docs/SPEC.md` 를 먼저 읽는다.**
