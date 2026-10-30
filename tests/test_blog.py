@@ -221,8 +221,9 @@ def test_blog_render_follows_the_agreed_layout(bi):
     at = [body.index(h) for h in order]
     assert at == sorted(at)
     assert "1위 [o/a](https://github.com/o/a) — 지난 주 +69,360 스타 · 누적 300,001 · MCP 서버·도구" in body
-    assert "\n1. 무엇인가 — o/a 는" in body and "\n2. 왜 지금 떴나 — 10월 20일" in body
-    assert "\n3. 활용 사례 — 개발자는" in body
+    # 세 부분 이름은 제목 4(굵고 본문보다 조금 크게, 저장소 소제목 ### 보다는 작게) — 설명은 다음 문단
+    assert "\n#### 1. 무엇인가\n\no/a 는" in body and "\n#### 2. 왜 지금 떴나\n\n10월 20일" in body
+    assert "\n#### 3. 활용 사례\n\n개발자는" in body and "무엇인가 —" not in body
     assert "[v1.2 릴리스](https://github.com/o/a/releases/tag/v1.2)" in body
     assert f"![o/a 대표 이미지]({IMG})" in body and "이미지: o/a 저장소의 소셜 미리보기" in body
     o_b = body[body.index("### 2위 o/b"):body.index("### 3위 o/c")]

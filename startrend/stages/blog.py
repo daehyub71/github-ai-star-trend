@@ -644,6 +644,8 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
            ) -> tuple[str, str, gate.GateResult]:
     """(제목, 본문 마크다운, 게이트 결과). 소제목은 ### · 주소는 링크(FR-16.5 ④ — R22 시험 B).
 
+    저장소마다 세 부분 이름(무엇인가 · 왜 지금 떴나 · 활용 사례)은 #### — Notion 제목 4, 설명은 다음 문단.
+
     gen: 사용자가 만든 그림 {번호: 상대 경로}(결정 62) — 그 자리의 프롬프트 칸·소셜 미리보기 대신 들어간다.
     상대 경로는 인용 게이트가 막는 링크라, 게이트를 지난 뒤 코드가 넣는다(LLM 이 쓴 링크가 아니다).
     """
@@ -688,8 +690,8 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
                     f"이미지: {r.full_name} 저장소의 소셜 미리보기"]
         else:
             out += _slot("그림 자리", p.image)
-        out += [f"{i}. {label} — {getattr(p, key).text}{_links(getattr(p, key), bi)}"
-                for i, (key, label) in enumerate(PARTS, 1)]
+        for i, (key, label) in enumerate(PARTS, 1):   # 부분 이름은 제목 4 — 본문보다 굵고 크게
+            out += [f"#### {i}. {label}", f"{getattr(p, key).text}{_links(getattr(p, key), bi)}"]
     out.append("### 이번 주 숫자를 읽을 때 주의할 점")
     out += [f"{c} — {a}" for c, a in dr.misreadings]
     out += ["### 한 장 요약", dr.summary, dr.next, "### 함께 보기",
