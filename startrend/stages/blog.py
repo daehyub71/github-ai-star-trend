@@ -371,6 +371,8 @@ SCHEMA: dict[str, Any] = _obj({
     "summary": _STR,
     "next": _STR,
     "tags": _STRS,
+    "caution_image": _IDEA,
+    "summary_image": _IDEA,
 })
 
 
@@ -414,6 +416,8 @@ class BlogDraft:
     next: str
     tags: tuple[str, ...]
     movers: tuple[Claim, ...] = ()   # 순위 변동 해설(결정 61) — 예전 초안에는 없다
+    caution_image: ImageIdea | None = None   # 주의할 점 · 한 장 요약 그림(결정 65) — 예전 초안에는 없다
+    summary_image: ImageIdea | None = None
 
 
 def _str(v: Any, name: str) -> str:
@@ -473,7 +477,9 @@ def parse_blog(text: str) -> BlogDraft:
                      _idea(d.get("cover"), "cover"), tuple(myths),
                      _str(d.get("summary"), "summary"), _str(d.get("next"), "next"),
                      _strs(d.get("tags") or [], "tags"),
-                     tuple(_claim(p, "movers") for p in d.get("movers") or []))
+                     tuple(_claim(p, "movers") for p in d.get("movers") or []),
+                     caution_image=_idea(d.get("caution_image"), "caution_image"),
+                     summary_image=_idea(d.get("summary_image"), "summary_image"))
 
 
 _NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
@@ -517,7 +523,10 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
         for sid in c.sources:
             if sid not in bi.sources:
                 errors.append(f"{where}: {sid} 는 목록에 없는 출처 — use only ids shown in <evidence>")
-    for where, idea in [("cover", dr.cover)] + [(f"{r.ref} image", r.image) for r in dr.repos]:
+    ideas = [("cover", dr.cover)] + [(f"{r.ref} image", r.image) for r in dr.repos]
+    extra = (("caution_image", dr.caution_image), ("summary_image", dr.summary_image))
+    ideas += [(k, i) for k, i in extra if i]
+    for where, idea in ideas:
         if _URLISH.search(idea.scene):
             errors.append(f"{where}: URL 을 쓰지 않는다")
         if len(idea.scene) < SCENE_MIN:
@@ -620,6 +629,23 @@ def generated_images(out: Path) -> dict[int, str]:
     return found
 
 
+CAUTION_HEAD = "이번 주 숫자를 읽을 때 주의할 점"
+SUMMARY_HEAD = "한 장 요약"
+
+
+def extra_slots(bi: BlogInput) -> tuple[int, int]:
+    """주의할 점 · 한 장 요약 그림 번호(결정 65) — TOP 다음 번호(TOP 10 이면 11 · 12)."""
+    n = max((r.rank for r in bi.repos), default=0)
+    return n + 1, n + 2
+
+
+def _extra(bi: BlogInput, dr: BlogDraft) -> list[tuple[int, str, ImageIdea]]:
+    """(번호, 소제목, 그림) — 예전 초안처럼 그림이 없는 자리는 뺀다."""
+    pairs = zip(extra_slots(bi), (CAUTION_HEAD, SUMMARY_HEAD), (dr.caution_image, dr.summary_image),
+                strict=True)
+    return [(no, head, idea) for no, head, idea in pairs if idea]
+
+
 def _caption(text: str) -> str:
     return re.sub(r"[\[\]]", " ", text).strip()
 
@@ -685,9 +711,10 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
             out += _slot("그림 자리", p.image)
         for i, (key, label) in enumerate(PARTS, 1):   # 부분 이름은 굵은 글씨, 본문과 같은 크기
             out += [f"**{i}. {label}**", getattr(p, key).text]
-    out.append("### 이번 주 숫자를 읽을 때 주의할 점")
+    extra = {head: picture(no, idea, "그림 자리") for no, head, idea in _extra(bi, dr)}
+    out += [f"### {CAUTION_HEAD}", *extra.get(CAUTION_HEAD, [])]
     out += [f"{c} — {a}" for c, a in dr.misreadings]
-    out += ["### 한 장 요약", dr.summary, dr.next, "### 함께 보기",
+    out += [f"### {SUMMARY_HEAD}", *extra.get(SUMMARY_HEAD, []), dr.summary, dr.next, "### 함께 보기",
             f"▶ 주간 트렌드 사이트 : {SITE_URL}", f"▶ 데이터 저장소(GitHub) : {REPO_URL}",
             f"▶ 채널 : {CHANNEL[0]} {CHANNEL[1]}", f"### {SERIES} 글 모음"]
     out += [f"▶ {k}회 {t} : {u}" for k, t, u in published if k != n]
@@ -734,6 +761,14 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
             where = f"생성 프롬프트 {r.rank}"
             prompts += block(f"{r.rank}. {r.full_name}", p.image)
         rows.append(f"| {_heading(r, p)} | {where} |")
+    for no, head, idea in _extra(bi, dr):
+        if no in gen:
+            where = f"{gen[no]} (만든 그림)"
+            prompts += block(f"{no}. {head} — 만든 그림: {gen[no]}", idea)
+        else:
+            where = f"생성 프롬프트 {no}"
+            prompts += block(f"{no}. {head}", idea)
+        rows.append(f"| {head} | {where} |")
     return "\n".join([
         f"# {title_of(bi, dr)} — 사진 배치 참고", "",
         "> 본문: `post.md` · 이미지: `img/`(저장소 소셜 미리보기를 받아 둔 것) · `gen/`(만든 그림 — "
@@ -828,7 +863,7 @@ def _write(out: Path, bi: BlogInput, dr: BlogDraft, meta: dict[str, Any], stats:
                                       "excluded": res.log()})
     io.write_json(out / "meta.json", {**meta, "chars": len(body),
                                       "generated": {str(k): v for k, v in gen.items()}})
-    slots = {0} | {r.rank for r in bi.repos}
+    slots = {0} | {r.rank for r in bi.repos} | {no for no, _, _ in _extra(bi, dr)}
     filled = set(gen) | {r.rank for r in bi.repos if r.full_name in images}
     stats.update(written=True, excluded=len(res.excluded), file=str(out / "post.md"), title=title,
                  chars=len(body), images=len(images), generated=len(gen), prompts=len(slots - filled))
@@ -852,7 +887,9 @@ def load_draft(path: Path) -> BlogDraft:
                      tuple(RepoPost(r["ref"], r["subtitle"], claim(r["what"]), claim(r["why_now"]),
                                     claim(r["use_cases"]), idea(r["image"])) for r in d["repos"]),
                      idea(d["cover"]), tuple((c, a) for c, a in d["misreadings"]), d["summary"], d["next"],
-                     tuple(d["tags"]), tuple(claim(c) for c in d.get("movers") or []))
+                     tuple(d["tags"]), tuple(claim(c) for c in d.get("movers") or []),
+                     caution_image=idea(d["caution_image"]) if d.get("caution_image") else None,
+                     summary_image=idea(d["summary_image"]) if d.get("summary_image") else None)
 
 
 def rerender(bi: BlogInput, *, work_dir: Path, published: Sequence[tuple[int, str, str]],

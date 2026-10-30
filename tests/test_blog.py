@@ -112,6 +112,10 @@ SCENE = ("A two-step explainer laid out left to right. On the left, a small frie
 IDEA = {"teaches": "작업을 나눠 맡기는 흐름", "scene": SCENE,
         "labels": ["어지러운 작업", "나눠 맡기기", "정리된 결과"]}
 COVER = {"teaches": "이번 주 별이 몰린 곳", "scene": SCENE, "labels": ["에이전트", "도구", "별"]}
+CAUTION = {"teaches": "숫자를 읽을 때 빠지기 쉬운 함정", "scene": SCENE.replace("two-step", "four-panel"),
+           "labels": ["별은 관심의 크기", "비율보다 증가량"]}
+SUMMARY = {"teaches": "이번 주를 한 장으로", "scene": SCENE.replace("two-step", "one-page"),
+           "labels": ["에이전트 도구", "작업 스킬"]}
 
 
 def _repo(ref: str, name: str) -> dict[str, Any]:
@@ -135,6 +139,8 @@ GOOD: dict[str, Any] = {
     "summary": "이번 주는 로컬 에이전트 도구가 앞섰습니다.",
     "next": "다음 글에서는 다음 주 흐름을 다룹니다.",
     "tags": ["MCP", "로컬 LLM", "에이전트"],
+    "caution_image": CAUTION,
+    "summary_image": SUMMARY,
 }
 
 
@@ -500,9 +506,61 @@ def test_blog_rerender_picks_up_generated_images(bi, tmp_path):
                   published=(), images={"o/a": IMG}, files={"o/a": "img/o__a.png"}, log=lambda m: None)
     out = _gen(w / W / "blog", "2.png")
     stats = blog.rerender(bi, work_dir=w, published=(), log=lambda m: None)
-    assert stats["generated"] == 1 and stats["prompts"] == 2               # 대표 그림 0 · 3위
+    assert stats["generated"] == 1 and stats["prompts"] == 4    # 대표 0 · 3위 · 4 주의할 점 · 5 한 장 요약
     assert "![작업을 나눠 맡기는 흐름](gen/2.png)" in (out / "post.md").read_text(encoding="utf-8")
     assert "gen/2.png (만든 그림)" in (out / "images.md").read_text(encoding="utf-8")
+
+
+def _between(body: str, start: str, end: str) -> str:
+    return body[body.index(start):body.index(end)]
+
+
+def test_blog_caution_and_summary_get_picture_slots_after_the_top(bi):
+    # 2026-10-30 사용자 — 주의할 점 · 한 장 요약에도 그림. 번호는 TOP 다음(TOP 3 → 4 · 5, TOP 10 → 11 · 12)
+    assert blog.extra_slots(bi) == (4, 5)
+    _, body, _ = blog.render(bi, _draft(), published=(), images={})
+    caution = _between(body, "### 이번 주 숫자를 읽을 때 주의할 점", "### 한 장 요약")
+    assert caution.index("> 🎨 그림 자리 — 숫자를 읽을 때 빠지기 쉬운 함정") < caution.index("별이 많으면")
+    summary = _between(body, "### 한 장 요약", "### 함께 보기")
+    assert summary.index("> 🎨 그림 자리 — 이번 주를 한 장으로") < summary.index(GOOD["summary"])
+    assert "four-panel" in caution and "one-page" in summary
+    _, body, res = blog.render(bi, _draft(), published=(), images={}, gen={4: "gen/4.png", 5: "gen/5.png"})
+    caution = _between(body, "### 이번 주 숫자를 읽을 때 주의할 점", "### 한 장 요약")
+    summary = _between(body, "### 한 장 요약", "### 함께 보기")
+    assert "![숫자를 읽을 때 빠지기 쉬운 함정](gen/4.png)\n" in caution and "```text" not in caution
+    assert "![이번 주를 한 장으로](gen/5.png)\n" in summary and "```text" not in summary
+    assert res.excluded == ()
+
+
+def test_blog_images_doc_lists_caution_and_summary_pictures(bi):
+    doc = blog.images_doc(bi, _draft(), images={}, files={}, gen={5: "gen/5.png"})
+    assert "| 이번 주 숫자를 읽을 때 주의할 점 | 생성 프롬프트 4 |" in doc
+    assert "| 한 장 요약 | gen/5.png (만든 그림) |" in doc
+    assert "### 4. 이번 주 숫자를 읽을 때 주의할 점\n" in doc
+    assert "### 5. 한 장 요약 — 만든 그림: gen/5.png" in doc
+    assert "- 얹을 라벨: 별은 관심의 크기 · 비율보다 증가량" in doc
+    assert doc.index("### 3. o/c") < doc.index("### 4. 이번 주 숫자") < doc.index("### 5. 한 장 요약")
+
+
+def test_blog_checker_and_schema_cover_the_new_pictures(bi):
+    assert {"caution_image", "summary_image"} <= set(blog.SCHEMA["required"])
+    assert blog.check_draft(_draft(), bi) == []
+    errors = blog.check_draft(_draft(_with("caution_image.labels", ["하나"])), bi)
+    assert any(e.startswith("caution_image: 라벨은") for e in errors)
+    errors = blog.check_draft(_draft(_with("summary_image.scene", "too short")), bi)
+    assert any(e.startswith("summary_image: 그림 프롬프트가 짧다") for e in errors)
+
+
+def test_blog_drafts_saved_before_the_new_pictures_still_render(bi, tmp_path):
+    d = asdict(_draft())
+    d.pop("caution_image")
+    d.pop("summary_image")
+    (tmp_path / "draft.json").write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+    dr = blog.load_draft(tmp_path / "draft.json")
+    assert dr.caution_image is None and dr.summary_image is None
+    _, body, _ = blog.render(bi, dr, published=(), images={})
+    assert "> 🎨" not in _between(body, "### 이번 주 숫자를 읽을 때 주의할 점", "### 함께 보기")
+    assert "| 한 장 요약 |" not in blog.images_doc(bi, dr, images={}, files={})
 
 
 def test_blog_opens_with_why_the_series_started(bi):
