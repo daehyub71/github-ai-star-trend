@@ -1,7 +1,8 @@
 # 맥북으로 옮기기 — 설치·복원·확인 가이드
 
 > 2026-10-30 작성. 윈도우 PC 에서 하던 이 프로젝트를 맥북에서 이어서 하기 위한 순서다.
-> 윈도우 쪽 준비(훅 실행 권한 커밋 · `.work` 묶음 파일)는 끝났다. 이 문서는 **맥에서 할 일**만 다룬다.
+> 윈도우 쪽 준비(훅 실행 권한 커밋 · `.work` 묶음 파일)는 끝났다. 키 내보내기(4-1)만 윈도우에서 한 번 하고,
+> 나머지는 **맥에서 할 일**이다.
 
 ## 0. 먼저 알아 둘 것
 
@@ -11,7 +12,7 @@
 |---|---|---|
 | 소스 · 테스트 · 문서 · `data/`(52주 스타 · 랭킹 · 사이트 데이터 · 분류 결과) | 공개 저장소 | `git clone` (2단계) |
 | `.work/` 일부 — Notion 대응표 · 블로그 초안과 그림 · 카드 · 유료 호출 캐시 | 윈도우 PC 에만 | 묶음 파일 풀기 (3단계) |
-| 키 4개 | 윈도우 사용자 환경변수 | 맥 키체인에 다시 등록 (4단계) |
+| 키 4개 | 윈도우 사용자 환경변수 | 암호화 파일로 내보내 맥 키체인에 등록 (4단계) |
 | 워크스페이스 규칙 · Claude Code 메모리 | 윈도우 PC 에만 | 파일 복사 (5단계) |
 
 옮기지 않아도 되는 것:
@@ -80,19 +81,57 @@ cd ~/src_new/github-ai-star-trend && tar -xzf ~/Downloads/startrend-work.tgz
 넣지 않은 것: GitHub API 응답 캐시(`cache/2026-10-18` 593MB · `cache/backfill-*` 14만 개 — 다시 받으면 된다,
 결과는 이미 `data/` 에 있다) · 로그(`*.log`) · 시험 실행(`trial-*`) · `backfill-data/`(이미 `data/` 에 반입됨).
 
-## 4. 키 등록 (키체인)
+## 4. 키 옮기기 — 암호화 파일 → 맥 키체인
 
-키는 평문 파일에 두지 않고 macOS 키체인에 넣는다. 값은 윈도우의 **시스템 환경 변수 편집 → 사용자 변수**에서
-보고 직접 입력한다. 채팅·문서·커밋에 붙여 넣지 않는다.
+키 4개를 윈도우에서 **암호를 건 파일 하나**로 내보내고, 맥에서 풀어 키체인에 바로 넣는다. 평문 키는 양쪽 어디에도
+파일로 남지 않는다(파이프로만 흐른다). 양쪽에 기본으로 있는 `openssl` 을 쓴다 — AES-256-CBC, 암호에서 키를 만드는
+PBKDF2(SHA-256) 60만 회.
+
+> 암호는 파일과 **따로** 옮긴다(외워 두기). 파일과 암호가 같은 곳(같은 메일·같은 클라우드 폴더)에 있으면 암호화한 의미가 없다.
+
+### 4-1. 윈도우에서 내보내기 (한 번)
+
+**Git Bash** 를 열고 그대로 붙여 넣는다. 첫 줄에서 암호를 묻는다(입력은 화면에 보이지 않는다).
 
 ```bash
-# 한 번만 — -w 뒤에 값을 쓰지 않으면 입력 창이 떠서 화면과 셸 기록에 남지 않는다
-for n in GITHUB_TOKEN NOTION_TOKEN STARTREND_ANTHROPIC_API_KEY STARTREND_TAVILY_API_KEY; do
-  security add-generic-password -a "$USER" -s "$n" -w
-done
+cd ~/startrend-migration
+read -rsp "암호(맥에서 풀 때 씀, 12자 이상): " STARTREND_PASS; echo; export STARTREND_PASS
+powershell.exe -NoProfile -Command 'foreach ($n in "GITHUB_TOKEN","NOTION_TOKEN","STARTREND_ANTHROPIC_API_KEY","STARTREND_TAVILY_API_KEY") { "$n=" + [Environment]::GetEnvironmentVariable($n, "User") }' \
+  | tr -d '\r' \
+  | openssl enc -aes-256-cbc -pbkdf2 -iter 600000 -md sha256 -salt -pass env:STARTREND_PASS -out startrend-keys.enc
+# 확인 — 값은 보이지 않고 이름과 길이만 나온다. 4줄 모두 길이가 0 이 아니어야 한다
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -md sha256 -pass env:STARTREND_PASS -in startrend-keys.enc \
+  | awk -F= '{print $1, length($2) "자"}'
+unset STARTREND_PASS
 ```
 
-`~/.zshrc` 에 추가:
+- 만들어지는 파일: `%USERPROFILE%\startrend-migration\startrend-keys.enc` — 묶음 파일과 함께 맥으로 가져간다.
+- 어느 키가 `0자` 로 나오면 그 이름의 사용자 환경변수가 없다는 뜻이다. 윈도우 **시스템 환경 변수 편집 → 사용자 변수**를
+  확인한 뒤 다시 실행한다.
+
+### 4-2. 맥에서 풀어 키체인에 넣기
+
+**터미널(zsh)** 에서 실행한다.
+
+```bash
+cd ~/Downloads
+read -rs "STARTREND_PASS?암호: "; echo; export STARTREND_PASS
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -md sha256 -pass env:STARTREND_PASS -in startrend-keys.enc \
+  | while IFS='=' read -r n v; do
+      [ -n "$v" ] && security add-generic-password -U -a "$USER" -s "$n" -w "$v" && echo "등록: $n"
+    done
+unset STARTREND_PASS
+```
+
+- `등록:` 줄이 4개 나오면 끝이다. 암호가 틀리면 `bad decrypt` 가 나오고 아무것도 등록되지 않는다.
+- `-U` 는 같은 이름이 이미 있으면 덮어쓴다 — 키를 바꿨을 때도 같은 명령을 다시 쓰면 된다.
+- 등록이 끝나면 맥에 남은 `startrend-keys.enc` 는 지워도 된다(`rm ~/Downloads/startrend-keys.enc`). 키 원본은 윈도우에 그대로 있다.
+- `unknown option '-pbkdf2'` 가 나오면 맥 기본 openssl(LibreSSL)이 오래된 것이다. `brew install openssl@3` 뒤
+  위 명령의 `openssl` 을 `$(brew --prefix openssl@3)/bin/openssl` 로 바꿔 실행한다.
+
+### 4-3. 셸이 키를 읽게 하기
+
+`~/.zshrc` 에 추가하고 터미널을 새로 연다.
 
 ```bash
 for n in GITHUB_TOKEN NOTION_TOKEN STARTREND_ANTHROPIC_API_KEY STARTREND_TAVILY_API_KEY; do
@@ -107,6 +146,7 @@ done
 | `STARTREND_ANTHROPIC_API_KEY` | Console 의 github-ai-star-trend 워크스페이스 키 — 분류 · 카드 · 브리핑 · 블로그 |
 | `STARTREND_TAVILY_API_KEY` | 근거 웹 검색 |
 
+- 키 값을 채팅·문서·커밋에 붙여 넣지 않는다. 확인할 때는 길이만 본다: `echo ${#NOTION_TOKEN}`.
 - **`ANTHROPIC_API_KEY` 라는 이름은 쓰지 않는다**(NFR-8). 다른 프로그램이 집어 써서 과금될 수 있다.
 - `GITHUB_TOKEN` 이 설정돼 있으면 `gh` 가 로그인 대신 그 토큰(읽기 전용)을 쓴다. `gh` 로 쓰기 작업을 할 때는
   `GITHUB_TOKEN= gh release upload …` 처럼 비우고 실행한다.
