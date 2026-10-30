@@ -10,6 +10,7 @@
 
 import copy
 import json
+import re
 from dataclasses import asdict
 from datetime import date
 from pathlib import Path
@@ -207,6 +208,7 @@ def test_blog_parse_rejects_wrong_shape():
 
 
 IMG = "https://repository-images.githubusercontent.com/1/abc"
+NO_LINK = re.compile(r"(?<!!)\[[^\]]*\]\(")        # 그림(![…](…))이 아닌 마크다운 링크
 
 
 def test_blog_render_follows_the_agreed_layout(bi):
@@ -220,11 +222,13 @@ def test_blog_render_follows_the_agreed_layout(bi):
              "### 한 장 요약"]
     at = [body.index(h) for h in order]
     assert at == sorted(at)
-    assert "1위 [o/a](https://github.com/o/a) — 지난 주 +69,360 스타 · 누적 300,001 · MCP 서버·도구" in body
-    # 세 부분 이름은 제목 4(굵고 본문보다 조금 크게, 저장소 소제목 ### 보다는 작게) — 설명은 다음 문단
-    assert "\n#### 1. 무엇인가\n\no/a 는" in body and "\n#### 2. 왜 지금 떴나\n\n10월 20일" in body
-    assert "\n#### 3. 활용 사례\n\n개발자는" in body and "무엇인가 —" not in body
-    assert "[v1.2 릴리스](https://github.com/o/a/releases/tag/v1.2)" in body
+    assert "1위 o/a — 지난 주 +69,360 스타 · 누적 300,001 · MCP 서버·도구" in body
+    # 세 부분 이름은 굵은 글씨 문단(본문과 같은 크기 — 제목 4 는 네이버에서 13 으로 줄었다) · 설명은 다음 문단
+    assert "\n**1. 무엇인가**\n\no/a 는" in body and "\n**2. 왜 지금 떴나**\n\n10월 20일" in body
+    assert "\n**3. 활용 사례**\n\n개발자는" in body and "####" not in body and "무엇인가 —" not in body
+    # 링크도, 문단 끝 출처 괄호도 넣지 않는다 — 네이버에 붙이면 링크는 빠지고 밑줄만 남는다(그림은 그대로)
+    assert NO_LINK.search(body) is None and "v1.2 릴리스" not in body and "HN 댓글" not in body
+    assert "releases/tag" not in body and "⭐ 쓰는 방식 : 숫자는 코드가, 글 초안은 AI(Claude)가" in body
     assert f"![o/a 대표 이미지]({IMG})" in body and "이미지: o/a 저장소의 소셜 미리보기" in body
     o_b = body[body.index("### 2위 o/b"):body.index("### 3위 o/c")]
     assert ("> 🎨 그림 자리 — 작업을 나눠 맡기는 흐름 · 얹을 라벨: 어지러운 작업 · 나눠 맡기기 · "
@@ -233,7 +237,10 @@ def test_blog_render_follows_the_agreed_layout(bi):
     assert "> 🎨 대표 이미지 자리 — 이번 주 별이 몰린 곳 · 얹을 라벨: 에이전트 · 도구 · 별" in body
     tags = body.rstrip().splitlines()[-1]
     assert tags.startswith("#깃허브AI트렌드") and "#로컬LLM" in tags and tags.endswith("#50VibeLog")
-    assert "vercel.app" not in body                     # FR-16.5 — 사이트 주소는 넣지 않는다
+    # 사이트 주소는 함께 보기에만(결정 56 공개 뒤 2026-10-30 사용자 — 검색 노출은 여전히 안 함)
+    see_also = body[body.index("### 함께 보기"):body.index("글 모음")]
+    assert "▶ 주간 트렌드 사이트 : https://github-ai-star-trend.vercel.app\n" in see_also
+    assert body.count("vercel.app") == 1
     assert res.excluded == ()
 
 
@@ -245,7 +252,7 @@ def test_blog_collection_lists_published_posts(tmp_path):
     bi2 = blog.load_input(site, priv, "2026-10-25")
     _, body, res = blog.render(bi2, _draft(), published=((1, "첫 글", "https://blog.naver.com/dayhyub/1"),),
                                images={})
-    assert "▶ 1회 첫 글 : [https://blog.naver.com/dayhyub/1](https://blog.naver.com/dayhyub/1)" in body
+    assert "▶ 1회 첫 글 : https://blog.naver.com/dayhyub/1\n" in body and NO_LINK.search(body) is None
     assert "▶ 2회 MCP 도구가 1위 · 새 저장소 셋 · 로컬 에이전트 (이 글)" in body
     assert res.excluded == ()
 
@@ -427,11 +434,11 @@ def test_blog_render_shows_rank_changes_as_a_table(moved):
     assert "⭐ 지난주 TOP 3 중 남은 곳 : 1곳 · 새로 들어온 곳 : 2곳" in body
     assert "⭐ 3위 문턱 : 지난주 +30,000 → 이번 주 +31,000" in body
     assert ("| 순위 | 변동 | 저장소 | 이번 주 | 지난주 |\n|---|---|---|---|---|\n"
-            "| 1위 | – | [o/a](https://github.com/o/a) | +69,360 | 1위 · +100,000 |\n") in body
-    assert "| 3위 | 새로 진입 | [o/c](https://github.com/o/c) | +31,000 | 4위 밖 · +2,028 |" in body
-    assert "지난주보다 31% 줄었습니다. ([o/a](https://github.com/o/a))" in body
-    assert "지난주 2위 [o/d](https://github.com/o/d) — +40,000 → +10,000 · 이번 주 4위" in body
-    assert "지난주 3위 [o/x](https://github.com/o/x) — +30,000 → +1,234\n" in body
+            "| 1위 | – | o/a | +69,360 | 1위 · +100,000 |\n") in body
+    assert "| 3위 | 새로 진입 | o/c | +31,000 | 4위 밖 · +2,028 |" in body
+    assert "지난주보다 31% 줄었습니다.\n" in body and "(o/a)" not in body
+    assert "지난주 2위 o/d — +40,000 → +10,000 · 이번 주 4위" in body
+    assert "지난주 3위 o/x — +30,000 → +1,234\n" in body and NO_LINK.search(body) is None
     assert "### 1위 – o/a — 릴리스 뒤에 몰린 관심" in body and "### 2위 새로 진입 o/b — " in body
     order = ["### TOP 3", "| 순위 |", "지난주보다 31%", "TOP 3 에서 빠진 저장소", "### 1위 – o/a"]
     at = [body.index(h) for h in order]

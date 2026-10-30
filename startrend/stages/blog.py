@@ -6,8 +6,9 @@
   대표 이미지는 저장소 소셜 미리보기(주인이 올린 것), 없으면 LLM 이 쓴 생성 프롬프트.
 - 고정 틀은 코드가 채운다(견본 `docs/ref/blog-sample.md`, 결정 39) — 제목(이모지 + 시리즈 + 회차 + 핵심 3개),
   시리즈 소개, 정보 블록(⭐ 줄), TOP 순위 변동 표(지난주가 없으면 숫자 목록), 함께 보기(▶), 글 모음, 해시태그.
-- LLM 은 정해진 JSON 으로 글만 쓴다. 출처는 번호(R1 · R1:E3)로만 가리키고 링크는 코드가 만든다(FR-16.2) —
-  인용 게이트를 지난다. 형식 검사기(check_draft)가 막는다: 글 안의 URL·마크다운 기호, 목록 밖 출처,
+- LLM 은 정해진 JSON 으로 글만 쓴다. 출처는 번호(R1 · R1:E3)로만 가리킨다 — 주장마다 출처를 검사하지만
+  글에는 적지 않는다(결정 64). 본문은 인용 게이트를 지난다. 형식 검사기(check_draft)가 막는다:
+  글 안의 URL·마크다운 기호, 목록 밖 출처,
   출처 없는 주장, 입력에 없는 숫자(FR-6.5), 합쇼체가 아닌 문장(FR-16.6), TOP 순서, 분량. 걸리면 이유를 붙여
   한 번 다시 묻는다.
 - 결과는 `.work/<주>/blog/`(결정 59 — 공개 저장소에 올리지 않는다). Notion 에는 `notion --run` 이 올린다.
@@ -37,6 +38,7 @@ SERIES = "깃허브 AI 트렌드 주간 동향"        # 2026-10-26 사용자 �
 SERIES_START = date(2026, 10, 18)           # 1회 주
 EMOJI = "🤖"
 REPO_URL = "https://github.com/daehyub71/github-ai-star-trend"
+SITE_URL = "https://github-ai-star-trend.vercel.app"   # 함께 보기에만 — 공개·검색 비노출(결정 56)
 CHANNEL = ("백발개발자의 바이브코딩", "https://www.youtube.com/@50VibeLog")
 SERIES_TAGS = ("#깃허브AI트렌드", "#GitHub트렌드", "#AI트렌드", "#오픈소스", "#AI코딩")
 CHANNEL_TAGS = ("#백발개발자", "#바이브코딩", "#오십로그", "#50Log", "#오십바이브로그", "#50바이브로그",
@@ -560,19 +562,9 @@ def _tag(t: str) -> str:
     return f"#{t}" if t else ""
 
 
-def _links(c: Claim, bi: BlogInput) -> str:
-    out = []
-    for sid in dict.fromkeys(c.sources):
-        if sid in bi.sources:
-            title, url = bi.sources[sid]
-            title = re.sub(r"[\[\]]", " ", title).strip()
-            out.append(f"[{title[:59] + '…' if len(title) > 60 else title}]({url})")
-    return f" ({' · '.join(out)})" if out else ""
-
-
 def _rank_line(e: Mapping[str, Any], names: Mapping[str, str]) -> str:
     name = e["full_name"]
-    return (f"{e.get('rank')}위 [{name}](https://github.com/{name}) — 지난 주 +{_fmt(e.get('gain'))} 스타 · "
+    return (f"{e.get('rank')}위 {name} — 지난 주 +{_fmt(e.get('gain'))} 스타 · "
             f"누적 {_fmt(e.get('stars_end'))} · {_cat(e, names)}")
 
 
@@ -590,13 +582,12 @@ def _change_block(bi: BlogInput, dr: BlogDraft, ch: Changes) -> list[str]:
     if all(isinstance(g, int) for g in ch.cutoff):
         out.append(f"⭐ {ch.top}위 문턱 : 지난주 {_plus(ch.cutoff[0])} → 이번 주 {_plus(ch.cutoff[1])}")
     rows = ["| 순위 | 변동 | 저장소 | 이번 주 | 지난주 |", "|---|---|---|---|---|"]
-    rows += [f"| {m.rank}위 | {m.mark} | [{m.full_name}](https://github.com/{m.full_name}) | "
-             f"{_plus(m.gain)} | {m.was} |" for m in ch.moves]
+    rows += [f"| {m.rank}위 | {m.mark} | {m.full_name} | {_plus(m.gain)} | {m.was} |" for m in ch.moves]
     out.append("\n".join(rows))
-    out += [f"{c.text}{_links(c, bi)}" for c in dr.movers]
+    out += [c.text for c in dr.movers]
     if ch.dropped:
         out.append(f"TOP {ch.top} 에서 빠진 저장소 — 지난주 순위 · 지난주 증가 → 이번 주 증가")
-        out += [f"지난주 {d.prev_rank}위 [{d.full_name}](https://github.com/{d.full_name}) — "
+        out += [f"지난주 {d.prev_rank}위 {d.full_name} — "
                 f"{_plus(d.prev_gain)} → {_plus(d.gain)}" + (f" · 이번 주 {d.rank}위" if d.rank else "")
                 for d in ch.dropped]
     return out
@@ -642,9 +633,11 @@ def _slot(what: str, idea: ImageIdea) -> list[str]:
 def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, str]],
            images: Mapping[str, str], gen: Mapping[int, str] | None = None
            ) -> tuple[str, str, gate.GateResult]:
-    """(제목, 본문 마크다운, 게이트 결과). 소제목은 ### · 주소는 링크(FR-16.5 ④ — R22 시험 B).
+    """(제목, 본문 마크다운, 게이트 결과). 소제목은 ###(FR-16.5 ④ — R22 시험 B) · 링크는 넣지 않는다(결정 64).
 
-    저장소마다 세 부분 이름(무엇인가 · 왜 지금 떴나 · 활용 사례)은 #### — Notion 제목 4, 설명은 다음 문단.
+    저장소마다 세 부분 이름(무엇인가 · 왜 지금 떴나 · 활용 사례)은 굵은 글씨 문단, 설명은 다음 문단 —
+    제목 4(####)는 네이버에 붙이면 글자가 본문보다 작아졌다(결정 64). 문단 끝 출처 괄호도 없다 — 출처 번호는
+    형식 검사기·draft.json 에만 남는다. 데이터 저장소·채널 주소는 글자 그대로.
 
     gen: 사용자가 만든 그림 {번호: 상대 경로}(결정 62) — 그 자리의 프롬프트 칸·소셜 미리보기 대신 들어간다.
     상대 경로는 인용 게이트가 막는 링크라, 게이트를 지난 뒤 코드가 넣는다(LLM 이 쓴 링크가 아니다).
@@ -668,10 +661,10 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         f"⭐ 집계 기간 : {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)}, UTC 기준",
         "⭐ 데이터 기준 : 스타 1,000개 이상 저장소 전체 스냅샷과 상위 후보의 일별 스타 · "
         "AI 여부와 카테고리는 Claude 가 판정 · 숫자는 GitHub API 값을 코드가 계산",
-        "⭐ 쓰는 방식 : 숫자와 링크는 코드가, 글 초안은 AI(Claude)가 쓰고 사람이 검토합니다",
-        f"⭐ 데이터 저장소 : [{REPO_URL}]({REPO_URL})",
+        "⭐ 쓰는 방식 : 숫자는 코드가, 글 초안은 AI(Claude)가 쓰고 사람이 검토합니다",
+        f"⭐ 데이터 저장소 : {REPO_URL}",
         f"### 이번 주 흐름 — {dr.overview_heading}"]
-    out += [f"{c.text}{_links(c, bi)}" for c in dr.overview]
+    out += [c.text for c in dr.overview]
     if bi.changes:
         out.append(f"### TOP {len(bi.repos)} — 지금 뜨는 AI 저장소, 지난주와 비교")
         out += _change_block(bi, dr, bi.changes)
@@ -690,19 +683,20 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
                     f"이미지: {r.full_name} 저장소의 소셜 미리보기"]
         else:
             out += _slot("그림 자리", p.image)
-        for i, (key, label) in enumerate(PARTS, 1):   # 부분 이름은 제목 4 — 본문보다 굵고 크게
-            out += [f"#### {i}. {label}", f"{getattr(p, key).text}{_links(getattr(p, key), bi)}"]
+        for i, (key, label) in enumerate(PARTS, 1):   # 부분 이름은 굵은 글씨, 본문과 같은 크기
+            out += [f"**{i}. {label}**", getattr(p, key).text]
     out.append("### 이번 주 숫자를 읽을 때 주의할 점")
     out += [f"{c} — {a}" for c, a in dr.misreadings]
     out += ["### 한 장 요약", dr.summary, dr.next, "### 함께 보기",
-            f"▶ 데이터 저장소(GitHub) : [{REPO_URL}]({REPO_URL})",
-            f"▶ 채널 : {CHANNEL[0]} [{CHANNEL[1]}]({CHANNEL[1]})", f"### {SERIES} 글 모음"]
-    out += [f"▶ {k}회 {t} : [{u}]({u})" for k, t, u in published if k != n]
+            f"▶ 주간 트렌드 사이트 : {SITE_URL}", f"▶ 데이터 저장소(GitHub) : {REPO_URL}",
+            f"▶ 채널 : {CHANNEL[0]} {CHANNEL[1]}", f"### {SERIES} 글 모음"]
+    out += [f"▶ {k}회 {t} : {u}" for k, t, u in published if k != n]
     out.append(f"▶ {n}회 {' · '.join(dr.title_points)} (이 글)")
     tags = [*SERIES_TAGS, *(_tag(t) for t in dr.tags), *CHANNEL_TAGS]
     out.append(" ".join(t for t in dict.fromkeys(tags) if t))
     body = "\n\n".join(out) + "\n"
-    urls = [u for _, u in bi.sources.values()] + [REPO_URL, CHANNEL[1]] + [u for _, _, u in published]
+    urls = ([u for _, u in bi.sources.values()] + [REPO_URL, SITE_URL, CHANNEL[1]]
+            + [u for _, _, u in published])
     res = gate.check(body, urls + list(images.values()), repos=[r.full_name for r in bi.repos])
     passed = res.body
     for key, line in pictures.items():
