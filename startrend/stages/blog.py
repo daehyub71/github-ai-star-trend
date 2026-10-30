@@ -1,10 +1,11 @@
-"""블로그 초안 (SPEC FR-16, 결정 36·37·39·59·60) — 과금 단계(주 1회 호출). dry-run 이 먼저다.
+"""블로그 초안 (SPEC FR-16, 결정 36·37·39·59·60·61) — 과금 단계(주 1회 호출). dry-run 이 먼저다.
 
-- 글 구성(결정 60, 2026-10-29 사용자): 지금 뜨는 저장소의 흐름 개괄 → **TOP 10 저장소마다 1. 무엇인가 ·
-  2. 왜 지금 떴나 · 3. 활용 사례**(저장소 하나에 한글 500자 안팎) → 주의할 점 · 한 장 요약 · 다음 글 예고.
+- 글 구성(결정 60, 2026-10-29 사용자): 지금 뜨는 저장소의 흐름 개괄 → TOP 10 순위 변동(결정 61 —
+  지난주 대비 표 · 변동 해설 · 빠진 저장소) → **TOP 10 저장소마다 1. 무엇인가 · 2. 왜 지금 떴나 ·
+  3. 활용 사례**(저장소 하나에 한글 500자 안팎) → 주의할 점 · 한 장 요약 · 다음 글 예고.
   대표 이미지는 저장소 소셜 미리보기(주인이 올린 것), 없으면 LLM 이 쓴 생성 프롬프트.
 - 고정 틀은 코드가 채운다(견본 `docs/ref/blog-sample.md`, 결정 39) — 제목(이모지 + 시리즈 + 회차 + 핵심 3개),
-  시리즈 소개, 정보 블록(⭐ 줄), TOP 숫자 목록, 함께 보기(▶), 글 모음, 해시태그.
+  시리즈 소개, 정보 블록(⭐ 줄), TOP 순위 변동 표(지난주가 없으면 숫자 목록), 함께 보기(▶), 글 모음, 해시태그.
 - LLM 은 정해진 JSON 으로 글만 쓴다. 출처는 번호(R1 · R1:E3)로만 가리키고 링크는 코드가 만든다(FR-16.2) —
   인용 게이트를 지난다. 형식 검사기(check_draft)가 막는다: 글 안의 URL·마크다운 기호, 목록 밖 출처,
   출처 없는 주장, 입력에 없는 숫자(FR-6.5), 합쇼체가 아닌 문장(FR-16.6), TOP 순서, 분량. 걸리면 이유를 붙여
@@ -17,14 +18,14 @@ import json
 import re
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
 from startrend import gate
 from startrend.budget import BudgetExceeded
 from startrend.clients.llm import LLMClient, LLMRequest, Usage, cost, request_tokens
-from startrend.core import cards, io, untrusted
+from startrend.core import cards, io, untrusted, weekfile
 
 PROMPT_FILE = Path(__file__).resolve().parents[1] / "prompts" / "blog.md"
 MODEL = "claude-opus-5-5"
@@ -48,6 +49,7 @@ SMALL = {str(n) for n in range(0, 11)}       # 셈말로 쓰는 작은 수는 �
 SCENE_MIN = 400              # 그림 장면 프롬프트 최소 글자 수 — 구도·요소·라벨 자리까지 쓰게(결정 60)
 LABELS = (2, 6)              # 그림에 나중에 얹을 한글 라벨 수
 LABEL_MAX = 12
+MOVER_PARAS = (2, 3)         # 순위 변동 해설 문단 수(결정 61)
 # 블로그 그림 공통 스타일 — 코드가 모든 장면 뒤에 붙여 한 세트로 보이게 한다
 # (사이트 아트의 공통 문단과 같은 방식)
 STYLE = ("Style: clean educational explainer illustration for a beginner-friendly tech blog, "
@@ -80,6 +82,43 @@ class BlogRepo:
     category: str
     facts: tuple[str, ...]           # 코드가 쓴 순위·숫자 줄
     card: str                        # 블로그에 쓰는 카드 섹션 — 링크를 출처 번호로 바꿈
+    mark: str = ""                   # 지난주 대비 변동 표시(결정 61) — 지난주 데이터가 없으면 ""
+
+
+@dataclass(frozen=True)
+class Move:
+    """TOP 표의 한 줄(결정 61)."""
+    rank: int
+    full_name: str
+    gain: int | None
+    prev_rank: int | None
+    mark: str                        # ▲ n · ▼ n · – · 새로 진입 (사이트와 같다)
+    was: str                         # 지난주 칸 — "5위 · +14,990" · "10월 17일 생성" · "15위 밖 · +2,028"
+    new: bool                        # 지난주 시작 뒤에 생긴 저장소
+    change: str                      # 증가 변화 — "-70%" · "8.5배" · ""(비교할 수 없음)
+
+
+@dataclass(frozen=True)
+class Dropped:
+    """지난주 TOP 에 있다가 빠진 저장소."""
+    ref: str                         # 출처 번호 D1, D2 …
+    prev_rank: int
+    full_name: str
+    prev_gain: int | None
+    gain: int | None                 # 이번 주 증가 — 모르면 None
+    rank: int | None                 # 이번 주 AI 탭 순위 — 탭 밖이면 None
+    change: str
+
+
+@dataclass(frozen=True)
+class Changes:
+    prev_week: str
+    top: int                         # 비교하는 TOP 크기
+    kept: int                        # 지난주 TOP 중 남은 곳
+    entered: int                     # 새로 들어온 곳
+    cutoff: tuple[int | None, int | None]                 # TOP 마지막 순위의 증가 (지난주, 이번 주)
+    moves: tuple[Move, ...]                               # 글에 쓰는 TOP 순서 그대로
+    dropped: tuple[Dropped, ...]
 
 
 @dataclass(frozen=True)
@@ -92,6 +131,7 @@ class BlogInput:
     top: tuple[Mapping[str, Any], ...]                    # 지금 뜨는 저장소(AI 탭) — 글에 쓰는 것
     repos: tuple[BlogRepo, ...]
     sources: Mapping[str, tuple[str, str]]                # 출처 번호 → (제목, URL)
+    changes: Changes | None = None                        # 지난주 대비(결정 61) — 지난주 데이터가 없으면 None
 
 
 def _lf(text: str) -> str:
@@ -147,13 +187,100 @@ def _convert_card(md: str, ref: str, full_name: str, sources: dict[str, tuple[st
     return _BARE.sub("(링크)", _LINK.sub(sub, "\n\n".join(parts))).strip()
 
 
-def load_input(site_dir: Path, private_dir: Path, week: str) -> BlogInput:
+def move_mark(prev_rank: int | None, rank: int) -> str:
+    """사이트(web/lib/rankings.ts)와 같은 변동 표시."""
+    if prev_rank is None:
+        return "새로 진입"
+    d = prev_rank - rank
+    return f"▲ {d}" if d > 0 else f"▼ {-d}" if d < 0 else "–"
+
+
+def gain_change(now: Any, prev: Any) -> str:
+    """증가 변화 — 2배 이상은 "8.5배", 그 밖은 "-70%". 비교할 수 없으면 ""."""
+    if not isinstance(now, int) or not isinstance(prev, int) or prev <= 0:
+        return ""
+    r = now / prev
+    return f"{r:.1f}배" if r >= 2 else f"{round((r - 1) * 100):+d}%"
+
+
+def _plus(n: Any) -> str:
+    return f"+{n:,}" if isinstance(n, int) else "—"
+
+
+def _gain_ai(data: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    return list(((data.get("axes") or {}).get("gain") or {}).get("ai") or [])
+
+
+def _week_gains(data_dir: Path | None, start: date) -> dict[int, int]:
+    """주간 스타 파일의 증가 — AI 탭 밖 저장소의 지난주 증가를 여기서 찾는다. 없으면 빈 dict."""
+    p = weekfile.week_path(data_dir, start) if data_dir is not None else None
+    return {rid: r.gain for rid, r in weekfile.read(p).items()} if p is not None and p.exists() else {}
+
+
+def _move(e: Mapping[str, Any], prev_by_id: Mapping[int, Mapping[str, Any]], old_gain: Mapping[int, int],
+          size: int, prev_start: date) -> Move:
+    rid, rank, now, pr = int(e["id"]), int(e.get("rank") or 0), e.get("gain"), e.get("prev_rank")
+    created = date.fromisoformat(e["created"]) if e.get("created") else None
+    if pr is not None:
+        pg = (prev_by_id.get(rid) or {}).get("gain", old_gain.get(rid))
+        return Move(rank, e["full_name"], now, pr, move_mark(pr, rank), f"{pr}위 · {_plus(pg)}", False,
+                    gain_change(now, pg))
+    if created is not None and created >= prev_start:
+        return Move(rank, e["full_name"], now, None, move_mark(None, rank),
+                    f"{created.month}월 {created.day}일 생성", True, "")
+    pg = old_gain.get(rid)
+    was = f"{size}위 밖" + (f" · {_plus(pg)}" if pg is not None else "")
+    return Move(rank, e["full_name"], now, None, move_mark(None, rank), was, False, gain_change(now, pg))
+
+
+def _changes(week: str, gain: list[Mapping[str, Any]], top: list[Mapping[str, Any]],
+             prev: list[Mapping[str, Any]], data_dir: Path | None,
+             sources: dict[str, tuple[str, str]]) -> Changes:
+    """지난주 AI 탭과 비교(결정 61).
+
+    남은 곳·새로 들어온 곳·빠진 곳은 카드 유무와 상관없이 AI 탭 순위로 센다.
+    """
+    start = date.fromisoformat(week)
+    prev_start = start - timedelta(days=7)
+    n = TOP_N
+
+    def within(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+        return [e for e in rows if 1 <= int(e.get("rank") or 0) <= n]
+
+    def gain_at(rows: list[Mapping[str, Any]]) -> int | None:
+        return next((e.get("gain") for e in rows if int(e.get("rank") or 0) == n), None)
+
+    prev_by_id = {int(e["id"]): e for e in prev}
+    now_by_id = {int(e["id"]): e for e in gain}
+    old_gain, new_gain = _week_gains(data_dir, prev_start), _week_gains(data_dir, start)
+    prev_ids = {int(e["id"]) for e in within(prev)}
+    now_ids = {int(e["id"]) for e in within(gain)}
+    dropped: list[Dropped] = []
+    for e in sorted(within(prev), key=lambda x: int(x["rank"])):
+        rid, name = int(e["id"]), e["full_name"]
+        if rid in now_ids:
+            continue
+        ref = f"D{len(dropped) + 1}"
+        sources[ref] = (name, f"https://github.com/{name}")
+        cur = now_by_id.get(rid)
+        g = cur.get("gain") if cur else new_gain.get(rid)
+        dropped.append(Dropped(ref, int(e["rank"]), name, e.get("gain"), g,
+                               int(cur["rank"]) if cur else None, gain_change(g, e.get("gain"))))
+    moves = tuple(_move(e, prev_by_id, old_gain, len(prev), prev_start) for e in top)
+    return Changes(prev_start.isoformat(), n, len(prev_ids & now_ids), len(now_ids - prev_ids),
+                   (gain_at(prev), gain_at(gain)), moves, tuple(dropped))
+
+
+def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path | None = None) -> BlogInput:
+    """data_dir: 주간 스타 파일(`stars/`)이 있는 곳 — AI 탭 밖 저장소의 지난주 증가를 찾는다(없어도 된다)."""
     wfile = site_dir / "weeks" / f"{week}.json"
     if not wfile.exists():
         raise FileNotFoundError(f"사이트 데이터가 없다 — export 를 먼저: {wfile}")
     names = {c["id"]: c["name"] for c in io.read_json(site_dir / "index.json").get("categories", [])}
     data = io.read_json(wfile)
-    gain = list(((data.get("axes") or {}).get("gain") or {}).get("ai") or [])
+    gain = _gain_ai(data)
+    pfile = site_dir / "weeks" / f"{(date.fromisoformat(week) - timedelta(days=7)).isoformat()}.json"
+    prev = _gain_ai(io.read_json(pfile)) if pfile.exists() else []
     ref_file = private_dir / "cards" / "index.json"
     slugs = {int(r["repo_id"]): r["slug"] for r in (io.read_json(ref_file) if ref_file.exists() else [])}
     sources: dict[str, tuple[str, str]] = {}
@@ -166,16 +293,17 @@ def load_input(site_dir: Path, private_dir: Path, week: str) -> BlogInput:
         p = private_dir / "cards" / f"{slugs[rid]}.md" if rid in slugs else None
         if p is None or not p.exists():
             continue
-        ref, name = f"R{len(repos) + 1}", e["full_name"]
+        ref, name, rank = f"R{len(repos) + 1}", e["full_name"], int(e.get("rank") or 0)
         sources[ref] = (name, f"https://github.com/{name}")
         card = _convert_card(_lf(io.read_text(p)), ref, name, sources)
-        repos.append(BlogRepo(ref, int(e.get("rank") or 0), rid, name, _cat(e, names), (_fact(e, names),),
-                              card))
+        repos.append(BlogRepo(ref, rank, rid, name, _cat(e, names), (_fact(e, names),), card,
+                              move_mark(e.get("prev_rank"), rank) if prev else ""))
         top.append(e)
+    changes = _changes(week, gain, top, prev, data_dir, sources) if prev else None
     bpath = private_dir / "briefings" / f"{week}.md"
     briefing = _BARE.sub("", _LINK.sub(r"\1", _body(io.read_text(bpath)))).strip() if bpath.exists() else ""
     return BlogInput(week, data.get("week_end", ""), episode(week), names, briefing, tuple(top), tuple(repos),
-                     sources)
+                     sources, changes)
 
 
 def _kdate(d: str, *, year: bool) -> str:
@@ -183,11 +311,31 @@ def _kdate(d: str, *, year: bool) -> str:
     return f"{f'{x.year}년 ' if year else ''}{x.month}월 {x.day}일({WEEKDAY[x.weekday()]})"
 
 
+def _change_facts(ch: Changes) -> list[str]:
+    out = ["", f"rank changes vs last week ({ch.prev_week} week, AI tab, computed by code):",
+           f"지난주 TOP {ch.top} 중 남은 곳 {ch.kept} · 새로 들어온 곳 {ch.entered}"]
+    if all(isinstance(g, int) for g in ch.cutoff):
+        out.append(f"{ch.top}위 문턱 지난주 {_plus(ch.cutoff[0])} → 이번 주 {_plus(ch.cutoff[1])}")
+    for m in ch.moves:
+        was = m.was if m.new else f"지난주 {m.was}"
+        out.append(f"{m.rank}위 {m.mark} {m.full_name} — 이번 주 {_plus(m.gain)} · {was}"
+                   + (f" · 증가 변화 {m.change}" if m.change else ""))
+    if ch.dropped:
+        refs = ", ".join(f"[{d.ref}]" for d in ch.dropped)
+        out.append(f"dropped out of TOP {ch.top} (cite these as {refs}):")
+        out += [f"[{d.ref}] 지난주 {d.prev_rank}위 {d.full_name} — 지난주 {_plus(d.prev_gain)} → "
+                f"이번 주 {_plus(d.gain)}" + (f" · 증가 변화 {d.change}" if d.change else "")
+                + (f" · 이번 주 {d.rank}위" if d.rank else "") for d in ch.dropped]
+    return out
+
+
 def user_message(bi: BlogInput) -> str:
     facts = [f"series: {SERIES} · episode {bi.episode}",
              f"week: {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)} (UTC)",
              f"TOP {len(bi.repos)} rising AI repositories (numbers computed by code):"]
     facts += [r.facts[0] for r in bi.repos]
+    if bi.changes:
+        facts += _change_facts(bi.changes)
     if bi.briefing:
         facts += ["", "weekly briefing (already published on the site):", bi.briefing]
     items = [f"[{r.ref}] {r.full_name} · {r.category}\n" + "\n".join(r.facts) +
@@ -211,6 +359,7 @@ SCHEMA: dict[str, Any] = _obj({
     "title_points": _STRS,
     "intro": _STR,
     "overview": _obj({"heading": _STR, "paras": {"type": "array", "items": _CLAIM}}),
+    "movers": {"type": "array", "items": _CLAIM},
     "repos": {"type": "array", "items": _obj({"ref": _STR, "subtitle": _STR, "what": _CLAIM,
                                               "why_now": _CLAIM, "use_cases": _CLAIM, "image": _IDEA})},
     "cover": _IDEA,
@@ -260,6 +409,7 @@ class BlogDraft:
     summary: str
     next: str
     tags: tuple[str, ...]
+    movers: tuple[Claim, ...] = ()   # 순위 변동 해설(결정 61) — 예전 초안에는 없다
 
 
 def _str(v: Any, name: str) -> str:
@@ -318,7 +468,8 @@ def parse_blog(text: str) -> BlogDraft:
                      tuple(_claim(p, "overview.paras") for p in ov["paras"]), tuple(repos),
                      _idea(d.get("cover"), "cover"), tuple(myths),
                      _str(d.get("summary"), "summary"), _str(d.get("next"), "next"),
-                     _strs(d.get("tags") or [], "tags"))
+                     _strs(d.get("tags") or [], "tags"),
+                     tuple(_claim(p, "movers") for p in d.get("movers") or []))
 
 
 _NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
@@ -336,6 +487,10 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
     errors: list[str] = []
     allowed = _numbers(user_message(bi)) | SMALL | {str(bi.episode)}
     claims: list[tuple[str, Claim]] = [(f"overview para {i + 1}", c) for i, c in enumerate(dr.overview)]
+    claims += [(f"movers para {i + 1}", c) for i, c in enumerate(dr.movers)]
+    if bi.changes and not MOVER_PARAS[0] <= len(dr.movers) <= MOVER_PARAS[1]:
+        errors.append(f"movers — 지난주 대비 순위 변동 해설을 {MOVER_PARAS[0]}~{MOVER_PARAS[1]}문단으로 "
+                      f"(got {len(dr.movers)})")
     want = [r.ref for r in bi.repos]
     got = [r.ref for r in dr.repos]
     if got != want:
@@ -424,7 +579,25 @@ def title_of(bi: BlogInput, dr: BlogDraft) -> str:
 
 
 def _heading(r: BlogRepo, p: RepoPost) -> str:
-    return f"{r.rank}위 {r.full_name} — {p.subtitle}"
+    return f"{r.rank}위 {f'{r.mark} ' if r.mark else ''}{r.full_name} — {p.subtitle}"
+
+
+def _change_block(bi: BlogInput, dr: BlogDraft, ch: Changes) -> list[str]:
+    """TOP 순위 변동(결정 61) — 요약 줄 · 표 · 변동 해설 · 빠진 저장소."""
+    out = [f"⭐ 지난주 TOP {ch.top} 중 남은 곳 : {ch.kept}곳 · 새로 들어온 곳 : {ch.entered}곳"]
+    if all(isinstance(g, int) for g in ch.cutoff):
+        out.append(f"⭐ {ch.top}위 문턱 : 지난주 {_plus(ch.cutoff[0])} → 이번 주 {_plus(ch.cutoff[1])}")
+    rows = ["| 순위 | 변동 | 저장소 | 이번 주 | 지난주 |", "|---|---|---|---|---|"]
+    rows += [f"| {m.rank}위 | {m.mark} | [{m.full_name}](https://github.com/{m.full_name}) | "
+             f"{_plus(m.gain)} | {m.was} |" for m in ch.moves]
+    out.append("\n".join(rows))
+    out += [f"{c.text}{_links(c, bi)}" for c in dr.movers]
+    if ch.dropped:
+        out.append(f"TOP {ch.top} 에서 빠진 저장소 — 지난주 순위 · 지난주 증가 → 이번 주 증가")
+        out += [f"지난주 {d.prev_rank}위 [{d.full_name}](https://github.com/{d.full_name}) — "
+                f"{_plus(d.prev_gain)} → {_plus(d.gain)}" + (f" · 이번 주 {d.rank}위" if d.rank else "")
+                for d in ch.dropped]
+    return out
 
 
 def _slot(what: str, idea: ImageIdea) -> list[str]:
@@ -442,7 +615,8 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         *_slot("대표 이미지 자리", dr.cover),
         f"「{SERIES}」의 {n}번째 글입니다. 매주 GitHub 에서 스타가 가장 많이 늘어난 AI 저장소를 "
         "숫자와 근거로 정리합니다.", dr.intro, f"***{SERIES} {n}회 정보***",
-        f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · TOP {len(bi.repos)} 저장소"
+        f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · {'지난주 대비 순위 변동 · ' if bi.changes else ''}"
+        f"TOP {len(bi.repos)} 저장소"
         "(무엇인가 · 왜 지금 떴나 · 활용 사례) · 숫자를 읽을 때 주의할 점 · 한 장 요약",
         f"⭐ 집계 기간 : {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)}, UTC 기준",
         "⭐ 데이터 기준 : 스타 1,000개 이상 저장소 전체 스냅샷과 상위 후보의 일별 스타 · "
@@ -451,8 +625,12 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         f"⭐ 데이터 저장소 : [{REPO_URL}]({REPO_URL})",
         f"### 이번 주 흐름 — {dr.overview_heading}"]
     out += [f"{c.text}{_links(c, bi)}" for c in dr.overview]
-    out.append(f"### TOP {len(bi.repos)} — 지금 뜨는 AI 저장소")
-    out += [_rank_line(e, bi.names) for e in bi.top]
+    if bi.changes:
+        out.append(f"### TOP {len(bi.repos)} — 지금 뜨는 AI 저장소, 지난주와 비교")
+        out += _change_block(bi, dr, bi.changes)
+    else:
+        out.append(f"### TOP {len(bi.repos)} — 지금 뜨는 AI 저장소")
+        out += [_rank_line(e, bi.names) for e in bi.top]
     for r in bi.repos:
         p = posts.get(r.ref)
         if p is None:
@@ -617,7 +795,7 @@ def load_draft(path: Path) -> BlogDraft:
                      tuple(RepoPost(r["ref"], r["subtitle"], claim(r["what"]), claim(r["why_now"]),
                                     claim(r["use_cases"]), idea(r["image"])) for r in d["repos"]),
                      idea(d["cover"]), tuple((c, a) for c, a in d["misreadings"]), d["summary"], d["next"],
-                     tuple(d["tags"]))
+                     tuple(d["tags"]), tuple(claim(c) for c in d.get("movers") or []))
 
 
 def rerender(bi: BlogInput, *, work_dir: Path, published: Sequence[tuple[int, str, str]],

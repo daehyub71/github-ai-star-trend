@@ -10,6 +10,7 @@
 
 import copy
 import json
+from dataclasses import asdict
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -18,6 +19,7 @@ import pytest
 
 from startrend.budget import BudgetMeter
 from startrend.clients.llm import LLMResponse, MockLLM, Usage
+from startrend.core import weekfile
 from startrend.stages import blog
 
 W = "2026-10-18"
@@ -325,3 +327,122 @@ def test_blog_rerender_from_the_saved_draft_costs_nothing(bi, tmp_path):
 def test_blog_rerender_needs_a_saved_draft(bi, tmp_path):
     stats = blog.rerender(bi, work_dir=tmp_path / "w", published=(), log=lambda m: None)
     assert stats["written"] is False and "draft.json" in stats["error"]
+
+
+# --- 순위 변동 (결정 61) — 지난주 AI 탭과 비교 ---
+
+PREV = "2026-10-11"
+MOVERS = [{"text": "1위 o/a 는 자리를 지켰지만 증가는 지난주보다 31% 줄었습니다.", "sources": ["R1"]},
+          {"text": "지난주 2위 o/d 는 이번 주 4위로 내려앉았습니다.", "sources": ["D1"]}]
+
+
+def _stars(path: Path, rows: list[tuple[int, str, str, int]]) -> None:
+    weekfile.write(path, [weekfile.WeekRow(i, n, date.fromisoformat(c), 50_000, g, False, None)
+                          for i, n, c, g in rows])
+
+
+def _src_moves(tmp: Path) -> tuple[Path, Path]:
+    """TOP 3 기준(monkeypatch). 이번 주: 1 o/a(지난주 1위) · 2 o/b(지난주 시작 뒤 생성) ·
+    3 o/c(지난주 AI 탭 밖, 주간 스타 +2,028) · 4 o/d(지난주 2위).
+    지난주: 1 o/a · 2 o/d · 3 o/x(이번 주 AI 탭에 없음) · 4 o/y."""
+    site, priv = _src(tmp)
+    wfile = site / "weeks" / f"{W}.json"
+    week = json.loads(wfile.read_text(encoding="utf-8"))
+    week["axes"]["gain"]["ai"] = [
+        _e(1, "o/a", "mcp-tools", prev_rank=1), _e(2, "o/b", gain=50_000, created="2026-10-12"),
+        _e(3, "o/c", gain=31_000), _e(4, "o/d", gain=10_000, prev_rank=2)]
+    wfile.write_text(json.dumps(week, ensure_ascii=False), encoding="utf-8")
+    prev = {"week": PREV, "week_end": "2026-10-17", "axes": {"gain": {"all": [], "ai": [
+        _e(1, "o/a", gain=100_000), _e(4, "o/d", gain=40_000, rank=2), _e(9, "o/x", gain=30_000, rank=3),
+        _e(8, "o/y", gain=8_000, rank=4)]}}}
+    (site / "weeks" / f"{PREV}.json").write_text(json.dumps(prev, ensure_ascii=False), encoding="utf-8")
+    _stars(weekfile.week_path(tmp, date(2026, 10, 11)), [(3, "o/c", "2026-10-01", 2_028)])
+    _stars(weekfile.week_path(tmp, date(2026, 10, 18)), [(9, "o/x", "2026-01-01", 1_234)])
+    return site, priv
+
+
+@pytest.fixture
+def moved(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> blog.BlogInput:
+    monkeypatch.setattr(blog, "TOP_N", 3)
+    site, priv = _src_moves(tmp_path)
+    return blog.load_input(site, priv, W, data_dir=tmp_path)
+
+
+@pytest.mark.parametrize("prev, now, mark", [(1, 1, "–"), (13, 9, "▲ 4"), (4, 8, "▼ 4"),
+                                             (None, 2, "새로 진입")])
+def test_blog_move_mark_matches_the_site(prev, now, mark):
+    assert blog.move_mark(prev, now) == mark          # web/lib/rankings.ts 와 같은 표시
+
+
+@pytest.mark.parametrize("now, prev, out", [(69_361, 231_990, "-70%"), (17_188, 2_028, "8.5배"),
+                                            (19_801, 14_990, "+32%"), (5, None, ""), (5, 0, "")])
+def test_blog_gain_change_reads_as_percent_or_times(now, prev, out):
+    assert blog.gain_change(now, prev) == out
+
+
+def test_blog_moves_compare_with_last_weeks_ai_tab(moved):
+    ch = moved.changes
+    assert ch is not None and ch.prev_week == PREV and ch.top == 3
+    assert (ch.kept, ch.entered, ch.cutoff) == (1, 2, (30_000, 31_000))
+    assert [(m.full_name, m.mark, m.was, m.change) for m in ch.moves] == [
+        ("o/a", "–", "1위 · +100,000", "-31%"),
+        ("o/b", "새로 진입", "10월 12일 생성", ""),
+        ("o/c", "새로 진입", "4위 밖 · +2,028", "15.3배")]
+    assert [(d.ref, d.prev_rank, d.full_name, d.prev_gain, d.gain, d.rank) for d in ch.dropped] == [
+        ("D1", 2, "o/d", 40_000, 10_000, 4), ("D2", 3, "o/x", 30_000, 1_234, None)]
+    assert moved.sources["D1"] == ("o/d", "https://github.com/o/d")
+    assert [r.mark for r in moved.repos] == ["–", "새로 진입", "새로 진입"]
+
+
+def test_blog_moves_need_last_weeks_data(bi):
+    assert bi.changes is None and [r.mark for r in bi.repos] == ["", "", ""]
+
+
+def test_blog_user_message_carries_the_rank_changes(moved):
+    msg = blog.user_message(moved)
+    assert "http" not in msg
+    assert "지난주 TOP 3 중 남은 곳 1 · 새로 들어온 곳 2" in msg
+    assert "3위 문턱 지난주 +30,000 → 이번 주 +31,000" in msg
+    assert "1위 – o/a — 이번 주 +69,360 · 지난주 1위 · +100,000 · 증가 변화 -31%" in msg
+    assert "2위 새로 진입 o/b — 이번 주 +50,000 · 10월 12일 생성\n" in msg
+    assert "3위 새로 진입 o/c — 이번 주 +31,000 · 지난주 4위 밖 · +2,028 · 증가 변화 15.3배" in msg
+    assert "[D1] 지난주 2위 o/d — 지난주 +40,000 → 이번 주 +10,000 · 증가 변화 -75% · 이번 주 4위" in msg
+    assert "[D2] 지난주 3위 o/x — 지난주 +30,000 → 이번 주 +1,234 · 증가 변화 -96%" in msg
+
+
+def test_blog_check_wants_two_or_three_movers_paragraphs(moved):
+    assert any("movers" in e for e in blog.check_draft(_draft(), moved))
+    assert any("movers" in e for e in blog.check_draft(_draft({**GOOD, "movers": MOVERS[:1]}), moved))
+    assert blog.check_draft(_draft({**GOOD, "movers": MOVERS}), moved) == []
+    bad = [{"text": "o/d 는 99% 줄었습니다.", "sources": ["D7"]}, MOVERS[1]]
+    errors = blog.check_draft(_draft({**GOOD, "movers": bad}), moved)
+    assert any("D7" in e for e in errors) and any("99" in e for e in errors)
+
+
+def test_blog_render_shows_rank_changes_as_a_table(moved):
+    _, body, res = blog.render(moved, _draft({**GOOD, "movers": MOVERS}), published=(), images={})
+    assert "⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · 지난주 대비 순위 변동 · TOP 3 저장소" in body
+    assert "### TOP 3 — 지금 뜨는 AI 저장소, 지난주와 비교" in body
+    assert "⭐ 지난주 TOP 3 중 남은 곳 : 1곳 · 새로 들어온 곳 : 2곳" in body
+    assert "⭐ 3위 문턱 : 지난주 +30,000 → 이번 주 +31,000" in body
+    assert ("| 순위 | 변동 | 저장소 | 이번 주 | 지난주 |\n|---|---|---|---|---|\n"
+            "| 1위 | – | [o/a](https://github.com/o/a) | +69,360 | 1위 · +100,000 |\n") in body
+    assert "| 3위 | 새로 진입 | [o/c](https://github.com/o/c) | +31,000 | 4위 밖 · +2,028 |" in body
+    assert "지난주보다 31% 줄었습니다. ([o/a](https://github.com/o/a))" in body
+    assert "지난주 2위 [o/d](https://github.com/o/d) — +40,000 → +10,000 · 이번 주 4위" in body
+    assert "지난주 3위 [o/x](https://github.com/o/x) — +30,000 → +1,234\n" in body
+    assert "### 1위 – o/a — 릴리스 뒤에 몰린 관심" in body and "### 2위 새로 진입 o/b — " in body
+    order = ["### TOP 3", "| 순위 |", "지난주보다 31%", "TOP 3 에서 빠진 저장소", "### 1위 – o/a"]
+    at = [body.index(h) for h in order]
+    assert at == sorted(at)
+    assert "지난 주 +69,360 스타 · 누적" not in body       # 예전 목록 대신 표
+    assert res.excluded == ()
+    doc = blog.images_doc(moved, _draft({**GOOD, "movers": MOVERS}), images={}, files={})
+    assert "| 2위 새로 진입 o/b — 릴리스 뒤에 몰린 관심 | 생성 프롬프트 2 |" in doc
+
+
+def test_blog_load_draft_reads_drafts_saved_before_movers(tmp_path):
+    d = asdict(_draft())
+    d.pop("movers")
+    (tmp_path / "draft.json").write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+    assert blog.load_draft(tmp_path / "draft.json").movers == ()

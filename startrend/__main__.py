@@ -1129,7 +1129,8 @@ def _blog_images(settings: Settings, bi: blog.BlogInput) -> tuple[dict[str, str]
 def _blog(settings: Settings, args: argparse.Namespace) -> int:
     name = wk.week_name(_week_arg(args.week, date.today()))
     try:
-        bi = blog.load_input(settings.data_dir / "site", settings.work_dir / "site-private", name)
+        bi = blog.load_input(settings.data_dir / "site", settings.work_dir / "site-private", name,
+                             data_dir=settings.data_dir)
     except FileNotFoundError as e:
         print(e, file=sys.stderr)
         return 2

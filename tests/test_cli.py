@@ -564,3 +564,25 @@ def test_cli_blog_from_draft_needs_a_saved_draft(tmp_path, capsys):
     env = _blog_src(tmp_path)
     assert main(["blog", "--week", "2026-10-18", "--from-draft"], env=env) == 2
     assert "draft.json" in capsys.readouterr().err
+
+
+def test_cli_blog_reads_last_weeks_stars_for_the_rank_table(tmp_path, capsys):
+    # 결정 61 — AI 탭 밖에서 올라온 저장소의 지난주 증가는 데이터 폴더의 주간 스타 파일에서 찾는다
+    import json
+    import shutil
+    from dataclasses import asdict
+
+    from startrend.stages import blog
+    from tests.test_blog import GOOD, MOVERS, _src_moves
+
+    site, priv = _src_moves(tmp_path / "src")
+    shutil.copytree(site, tmp_path / "d" / "site")
+    shutil.copytree(tmp_path / "src" / "stars", tmp_path / "d" / "stars")
+    shutil.copytree(priv, tmp_path / "w" / "site-private")
+    env = _dirs(tmp_path)
+    out = tmp_path / "w" / "2026-10-18" / "blog"
+    out.mkdir(parents=True)
+    draft = asdict(blog.parse_blog(json.dumps({**GOOD, "movers": MOVERS}, ensure_ascii=False)))
+    (out / "draft.json").write_text(json.dumps(draft, ensure_ascii=False), encoding="utf-8")
+    assert main(["blog", "--week", "2026-10-18", "--from-draft"], env=env) == 0
+    assert "| 4위 밖 · +2,028 |" in (out / "post.md").read_text(encoding="utf-8")
