@@ -3,7 +3,9 @@
 - `setup`: 사용자가 지정한 부모 페이지 아래 데이터베이스 3개(주간 · 저장소 카드 · 블로그 초안). 한 번만.
 - `publish_week`: 그 주 AI 탭 저장소의 카드 페이지(저장소마다 한 장)
   → 주간 페이지(브리핑 + 4축 요약 + 카드 링크).
-- `publish_blog`: 블로그 초안 페이지(주간 페이지와 연결).
+- `publish_blog`: 블로그 초안 페이지(주간 페이지와 연결). 사용자가 만든 그림(`gen/<번호>`, 결정 62)은
+  마크다운에 표시 문단으로 넣고 → 파일 업로드 → 그 문단 뒤에 이미지 블록 → 표시 문단 지우기.
+  올린 파일 ID 는 콘텐츠 해시로 대응표 `uploads` 에 남겨 다시 보내지 않는다(붙인 업로드는 다시 쓸 수 있다).
 - **상태가 "초안"이 아닌 페이지는 속성도 본문도 고치지 않는다**(NFR-16). 휴지통에 있거나 지워진 페이지도
   다시 만들지 않는다 — 사용자가 한 일이다. 로그에만 남긴다.
 - 주·저장소 ↔ Notion 페이지 대응표는 `.work/notion/index.json`(결정 59 — 공개 저장소에 올리지 않는다).
@@ -11,6 +13,7 @@
 - 입력은 사이트 데이터(공개 `data/site/` + 비공개 사본 `.work/site-private/`) — 사이트와 같은 글이 간다.
 """
 
+import hashlib
 import json
 import re
 from collections.abc import Callable, Mapping, Sequence
@@ -30,6 +33,11 @@ AXES = (("gain", "지금 뜨는 저장소"), ("fresh", "새로 뜨는 저장소"
         ("total", "누적 스타 TOP"))
 TOP = 5                     # 주간 페이지의 축별 요약 줄 수
 TEXT_MAX = 2000             # rich_text 한 칸 (부록 C-3)
+LOCAL_IMAGE = re.compile(r"^!\[([^\]]*)\]\((gen/[0-9]+\.[A-Za-z]+)\)$")     # 블로그의 만든 그림 줄(결정 62)
+IMAGE_MARK = "⟦그림 {}⟧"
+IMAGE_TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp",
+               ".gif": "image/gif"}
+UPLOAD_MAX = 20 * 1024 * 1024      # 한 번에 보내는 파일 업로드 한도
 AI_NOTE = ("> **AI 작성** — 브리핑·카드는 AI(Claude)가 공개 자료로 쓴 요약이다. 사람이 검토하지 않았으며, "
            "주장마다 출처 링크를 붙였다. 숫자는 GitHub API 값을 코드가 채운다.")
 
@@ -338,11 +346,70 @@ def publish_week(client: NotionClient, idx: dict[str, Any], wd: WeekDoc, *,
     return stats
 
 
+def _local_images(markdown: str, base_dir: Path | None,
+                  log: Callable[[str], None]) -> tuple[str, list[tuple[str, str, Path]]]:
+    """만든 그림 줄 → 표시 문단. (보낼 마크다운, [(표시, 캡션, 파일)]). 파일이 없거나 너무 크면 뺀다."""
+    lines: list[str] = []
+    found: list[tuple[str, str, Path]] = []
+    for line in markdown.split("\n"):
+        m = LOCAL_IMAGE.match(line.strip())
+        if not m:
+            lines.append(line)
+            continue
+        path = base_dir / m.group(2) if base_dir is not None else None
+        if path is None or not path.is_file() or path.suffix.lower() not in IMAGE_TYPES:
+            log(f"  블로그 그림 파일이 없다 — 빼고 올린다: {m.group(2)}")
+            continue
+        if path.stat().st_size > UPLOAD_MAX:
+            log(f"  블로그 그림이 20MB 를 넘는다 — 빼고 올린다: {m.group(2)}")
+            continue
+        mark = IMAGE_MARK.format(m.group(2))
+        lines.append(mark)
+        found.append((mark, m.group(1), path))
+    return "\n".join(lines), found
+
+
+def _attach_images(client: NotionClient, idx: dict[str, Any], page_id: str,
+                   found: Sequence[tuple[str, str, Path]], save: Callable[[], None],
+                   log: Callable[[str], None]) -> int:
+    """표시 문단 뒤에 이미지 블록을 끼우고 표시 문단을 지운다. 끼운 그림 수."""
+    blocks = {b.text.strip(): b for b in client.list_children(page_id) if b.type == "paragraph"}
+    uploads: dict[str, str] = idx.setdefault("uploads", {})
+    n = 0
+    for mark, caption, path in found:
+        blk = blocks.get(mark)
+        if blk is None:
+            log(f"  그림 자리를 Notion 에서 찾지 못했다: {mark}")
+            continue
+        data = path.read_bytes()
+        key = hashlib.sha256(data).hexdigest()
+        up = uploads.get(key)
+        if up is not None:
+            try:
+                client.insert_image(page_id, blk.id, up, caption)
+            except NotionError as e:
+                if e.status not in (400, 404):
+                    raise
+                up = None                    # 붙이지 못한 채 만료된 업로드 — 다시 올린다
+        if up is None:
+            up = client.upload_file(path.name, data, IMAGE_TYPES[path.suffix.lower()])
+            client.insert_image(page_id, blk.id, up, caption)
+        uploads[key] = up
+        save()
+        client.delete_block(blk.id)
+        n += 1
+    return n
+
+
 def publish_blog(client: NotionClient, idx: dict[str, Any], week: str, title: str, markdown: str, *,
-                 save: Callable[[dict[str, Any]], None],
+                 save: Callable[[dict[str, Any]], None], base_dir: Path | None = None,
                  log: Callable[[str], None] = print) -> dict[str, int]:
-    """블로그 초안 페이지(FR-16.3) — 주간 페이지가 있으면 연결한다."""
+    """블로그 초안 페이지(FR-16.3) — 주간 페이지가 있으면 연결한다.
+
+    base_dir: post.md 가 있는 폴더 — 만든 그림(`gen/<번호>`, 결정 62)을 여기서 찾는다.
+    """
     blog_ds = _db(idx, "blog")
+    markdown, found = _local_images(markdown, base_dir, log)
     weekly = (idx.get("weeks") or {}).get(week)
 
     def props(new: bool) -> dict[str, Any]:
@@ -353,9 +420,12 @@ def publish_blog(client: NotionClient, idx: dict[str, Any], week: str, title: st
             p[STATUS] = {"status": {"name": DRAFT}}
         return p
 
-    stats = {"created": 0, "updated": 0, "kept": 0}
+    stats = {"created": 0, "updated": 0, "kept": 0, "images": 0}
     _upsert(client, idx["blog"], week, blog_ds, f"블로그 {week}", props, markdown, stats, log,
             lambda: save(idx))
+    if found and stats["created"] + stats["updated"]:
+        stats["images"] = _attach_images(client, idx, idx["blog"][week]["page_id"], found,
+                                         lambda: save(idx), log)
     return stats
 
 

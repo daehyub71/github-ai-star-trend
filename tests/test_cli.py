@@ -554,10 +554,11 @@ def test_cli_notion_plan_counts_the_blog_draft(tmp_path, capsys):
     env = _notion_src(tmp_path)
     post = tmp_path / "w" / "2026-10-18" / "blog" / "post.md"
     post.parent.mkdir(parents=True)
-    post.write_text("# 🤖 제목\n\n본문\n", encoding="utf-8")
+    post.write_text("# 🤖 제목\n\n본문\n\n![흐름 그림](gen/2.png)\n", encoding="utf-8")
     assert main(["notion", "--week", "2026-10-18"], env=env) == 0
     out = json.loads(capsys.readouterr().out)
     assert out["blog"] == "🤖 제목" and out["create"] == 4
+    assert out["blog_images"] == 1                    # 결정 62 — 올릴 만든 그림 수
 
 
 def test_cli_blog_from_draft_needs_a_saved_draft(tmp_path, capsys):

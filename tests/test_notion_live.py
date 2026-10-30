@@ -20,7 +20,11 @@ class FakeRequester:
 
     def __call__(self, method: str, url: str, headers: Mapping[str, str], body: bytes | None,
                  timeout: float) -> HttpResponse:
-        self.sent.append((method, url, dict(headers), json.loads(body) if body else None))
+        try:
+            parsed: object = json.loads(body) if body else None
+        except ValueError:             # 파일 보내기(multipart)는 바이트 그대로
+            parsed = body
+        self.sent.append((method, url, dict(headers), parsed))
         r = self.responses.pop(0)
         if isinstance(r, Exception):
             raise r
@@ -144,3 +148,54 @@ def test_notion_live_reads_the_parent_page():
         pytest.skip("NOTION_TOKEN 없음")
     page = LiveNotion(token).get_page("405cb5c3-2bc1-80d1-a8d1-d7da9d11b4c6")
     assert page.id.replace("-", "") == "405cb5c32bc180d1a8d1d7da9d11b4c6"
+
+
+# --- 그림 올리기 (결정 62) — 파일 업로드 → 이미지 블록 끼우기 → 표시 문단 지우기 ---
+
+def test_notion_live_uploads_a_file_in_two_steps():
+    nc, fake, _ = client([ok({"id": "fu-1", "status": "pending"}), ok({"id": "fu-1", "status": "uploaded"})])
+    assert nc.upload_file("2.png", b"\x89PNG-bytes", "image/png") == "fu-1"
+    method, url, headers, body = fake.sent[0]
+    assert (method, url) == ("POST", "https://api.notion.com/v1/file_uploads")
+    assert body == {"filename": "2.png", "content_type": "image/png"}
+    method, url, headers, body = fake.sent[1]
+    assert (method, url) == ("POST", "https://api.notion.com/v1/file_uploads/fu-1/send")
+    assert headers["Content-Type"].startswith("multipart/form-data; boundary=")
+    assert headers["Notion-Version"] == NOTION_VERSION
+    boundary = headers["Content-Type"].split("boundary=", 1)[1]
+    assert isinstance(body, bytes) and body.startswith(f"--{boundary}\r\n".encode())
+    assert b'Content-Disposition: form-data; name="file"; filename="2.png"\r\n' in body
+    assert b"Content-Type: image/png\r\n\r\n\x89PNG-bytes\r\n" in body
+    assert body.endswith(f"--{boundary}--\r\n".encode()) and TOKEN.encode() not in body
+
+
+def test_notion_live_upload_must_end_uploaded():
+    nc, _, _ = client([ok({"id": "fu-1", "status": "pending"}), ok({"id": "fu-1", "status": "failed"})])
+    with pytest.raises(NotionError, match="failed"):
+        nc.upload_file("2.png", b"x", "image/png")
+
+
+def test_notion_live_lists_children_across_pages():
+    para = {"id": "b1", "type": "paragraph",
+            "paragraph": {"rich_text": [{"plain_text": "⟦그림 "}, {"plain_text": "gen/2.png⟧"}]}}
+    image = {"id": "b2", "type": "image", "image": {"type": "external", "external": {"url": "https://x"}}}
+    nc, fake, _ = client([ok({"results": [para], "has_more": True, "next_cursor": "c2"}),
+                          ok({"results": [image], "has_more": False, "next_cursor": None})])
+    blocks = nc.list_children("p1")
+    assert [(b.id, b.type, b.text) for b in blocks] == [("b1", "paragraph", "⟦그림 gen/2.png⟧"),
+                                                        ("b2", "image", "")]
+    assert fake.sent[0][1] == "https://api.notion.com/v1/blocks/p1/children?page_size=100"
+    assert fake.sent[1][1] == "https://api.notion.com/v1/blocks/p1/children?page_size=100&start_cursor=c2"
+
+
+def test_notion_live_inserts_an_image_after_a_block_then_deletes_the_marker():
+    nc, fake, _ = client([ok({"results": [{"id": "b9"}]}), ok({"id": "b1", "in_trash": True})])
+    nc.insert_image("p1", "b1", "fu-1", "흐름 그림")
+    nc.delete_block("b1")
+    method, url, _, body = fake.sent[0]
+    assert (method, url) == ("PATCH", "https://api.notion.com/v1/blocks/p1/children")
+    assert body == {"children": [{"type": "image", "image": {
+        "type": "file_upload", "file_upload": {"id": "fu-1"},
+        "caption": [{"type": "text", "text": {"content": "흐름 그림"}}]}}],
+        "position": {"type": "after_block", "after_block": {"id": "b1"}}}
+    assert fake.sent[1][:2] == ("DELETE", "https://api.notion.com/v1/blocks/b1")

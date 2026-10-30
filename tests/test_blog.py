@@ -446,3 +446,64 @@ def test_blog_load_draft_reads_drafts_saved_before_movers(tmp_path):
     d.pop("movers")
     (tmp_path / "draft.json").write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
     assert blog.load_draft(tmp_path / "draft.json").movers == ()
+
+
+# --- 사용자가 만든 그림 (결정 62) — gen/<번호> · 0 = 대표 그림, 그 밖은 순위 ---
+
+def _gen(out: Path, *names: str) -> Path:
+    (out / "gen").mkdir(parents=True, exist_ok=True)
+    for n in names:
+        (out / "gen" / n).write_bytes(b"\x89PNG fake")
+    return out
+
+
+def test_blog_generated_images_are_found_by_slot_number(tmp_path):
+    out = _gen(tmp_path / "blog", "0.png", "2.JPG", "3.webp", "note.txt", "x.png", "4.bmp")
+    assert blog.generated_images(out) == {0: "gen/0.png", 2: "gen/2.JPG", 3: "gen/3.webp"}
+    assert blog.generated_images(tmp_path / "none") == {}
+
+
+def test_blog_render_puts_generated_images_in_their_slots(bi):
+    gen = {0: "gen/0.png", 1: "gen/1.png", 2: "gen/2.png"}
+    _, body, res = blog.render(bi, _draft(), published=(), images={"o/a": IMG}, gen=gen)
+    assert body.startswith("![이번 주 별이 몰린 곳](gen/0.png)\n") and "대표 이미지 자리" not in body
+    o_a = body[body.index("### 1위 o/a"):body.index("### 2위 o/b")]
+    assert "![작업을 나눠 맡기는 흐름](gen/1.png)" in o_a and IMG not in o_a     # 미리보기보다 먼저
+    o_b = body[body.index("### 2위 o/b"):body.index("### 3위 o/c")]
+    assert "![작업을 나눠 맡기는 흐름](gen/2.png)" in o_b and "```text" not in o_b
+    o_c = body[body.index("### 3위 o/c"):body.index("### 이번 주 숫자")]
+    assert "> 🎨 그림 자리" in o_c and "```text" in o_c                         # 아직 없는 자리는 프롬프트
+    assert res.excluded == ()                         # 로컬 경로는 게이트를 지난 뒤 코드가 넣는다
+
+
+def test_blog_images_doc_marks_generated_images(bi):
+    doc = blog.images_doc(bi, _draft(), images={"o/a": IMG}, files={"o/a": "img/o__a.png"},
+                          gen={0: "gen/0.png", 2: "gen/2.png"})
+    assert "| (머리말) | 대표 이미지 — gen/0.png (만든 그림) |" in doc
+    assert "| 2위 o/b — 릴리스 뒤에 몰린 관심 | gen/2.png (만든 그림) |" in doc
+    assert "| 3위 o/c — 릴리스 뒤에 몰린 관심 | 생성 프롬프트 3 |" in doc
+    assert "### 0. 대표 이미지(글 맨 위) — 만든 그림: gen/0.png" in doc
+    assert "### 2. o/b — 만든 그림: gen/2.png" in doc
+
+
+def test_blog_rerender_picks_up_generated_images(bi, tmp_path):
+    w = tmp_path / "w"
+    blog.run_blog(blog.BlogWriter(MockLLM([_resp(GOOD)])), bi, work_dir=w, today=date(2026, 10, 29),
+                  published=(), images={"o/a": IMG}, files={"o/a": "img/o__a.png"}, log=lambda m: None)
+    out = _gen(w / W / "blog", "2.png")
+    stats = blog.rerender(bi, work_dir=w, published=(), log=lambda m: None)
+    assert stats["generated"] == 1 and stats["prompts"] == 2               # 대표 그림 0 · 3위
+    assert "![작업을 나눠 맡기는 흐름](gen/2.png)" in (out / "post.md").read_text(encoding="utf-8")
+    assert "gen/2.png (만든 그림)" in (out / "images.md").read_text(encoding="utf-8")
+
+
+def test_blog_opens_with_why_the_series_started(bi):
+    # 2026-10-30 사용자 — 머리말 도입부는 연재를 시작한 이유
+    # (오픈소스 흐름 · X 의 개념 → GitHub 구현 · 실무 반영)
+    _, body, _ = blog.render(bi, _draft(), published=(), images={})
+    head = body[:body.index("***")]
+    assert "「깃허브 AI 트렌드 주간 동향」의 1번째 글입니다. 이 연재는 오픈소스의 최근 흐름을" in head
+    assert "X(옛 트위터)" in head and "MCP" in head
+    marks = ("오픈소스의 본고장", "X(옛 트위터)", "업무에 필요한 것", GOOD["intro"][:12])
+    at = [head.index(t) for t in marks]
+    assert at == sorted(at)                           # 연재 소개 → 기획 의도 → 이번 주 질문

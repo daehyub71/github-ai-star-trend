@@ -5,15 +5,19 @@
 - 429 는 `Retry-After`(헤더, 없으면 본문 `additional_data.retry_after`)만큼 쉰다. 409·5xx·연결 오류는
   지터를 섞은 지수 백오프로 6번까지 다시 보낸다. 그 밖의 4xx 는 다시 보내지 않는다.
 - 본문은 마크다운 API 로 넣는다 — 블록을 100개·2,000자로 나눌 일이 없다.
+- 그림(결정 62)은 파일 업로드 API(만들기 → multipart 보내기) 뒤 블록 API 로 끼운다 —
+  마크다운은 업로드를 못 가리킨다.
 """
 
 import json
 import random
+import secrets
 import time
 from collections.abc import Callable, Mapping
 from typing import Any
+from urllib.parse import quote
 
-from startrend.clients.notion import NOTION_VERSION, NotionDatabase, NotionError, NotionPage
+from startrend.clients.notion import NOTION_VERSION, NotionBlock, NotionDatabase, NotionError, NotionPage
 from startrend.clients.transport import HttpResponse, Requester, TransportError, UrllibRequester
 
 MIN_INTERVAL = 0.34      # 초당 3회 미만
@@ -60,11 +64,15 @@ class LiveNotion:
                 continue
         return None
 
-    def _call(self, method: str, path: str, body: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    def _call(self, method: str, path: str, body: Mapping[str, Any] | None = None, *,
+              raw: tuple[bytes, str] | None = None) -> dict[str, Any]:
+        """raw: (본문 바이트, Content-Type) — 파일 보내기처럼 JSON 이 아닌 본문."""
         headers = {"Authorization": f"Bearer {self._token}", "Notion-Version": NOTION_VERSION,
                    "Accept": "application/json"}
         data = None
-        if body is not None:
+        if raw is not None:
+            data, headers["Content-Type"] = raw
+        elif body is not None:
             headers["Content-Type"] = "application/json"
             data = json.dumps(body, ensure_ascii=False).encode("utf-8")
         what = f"{method} {path}"
@@ -125,3 +133,45 @@ class LiveNotion:
         self._call("PATCH", f"/v1/pages/{page_id}/markdown", {
             "type": "replace_content",
             "replace_content": {"new_str": markdown, "allow_deleting_content": False}})
+
+    def list_children(self, block_id: str) -> list[NotionBlock]:
+        out: list[NotionBlock] = []
+        cursor: str | None = None
+        while True:
+            q = "?page_size=100" + (f"&start_cursor={quote(cursor, safe='')}" if cursor else "")
+            d = self._call("GET", f"/v1/blocks/{block_id}/children{q}")
+            for b in d.get("results") or []:
+                kind = str(b.get("type") or "")
+                rich = (b.get(kind) or {}).get("rich_text") or []
+                text = "".join(str(x.get("plain_text", "")) for x in rich)
+                out.append(NotionBlock(str(b["id"]), kind, text))
+            if not d.get("has_more") or not d.get("next_cursor"):
+                return out
+            cursor = str(d["next_cursor"])
+
+    def upload_file(self, filename: str, data: bytes, content_type: str) -> str:
+        """작은 파일(20MB 이하) 올리기 — 만들기 → 보내기. 1시간 안에 블록에 붙여야 한다."""
+        d = self._call("POST", "/v1/file_uploads", {"filename": filename, "content_type": content_type})
+        fid = str(d.get("id") or "")
+        if not fid:
+            raise NotionError(f"파일 업로드 응답에 id 가 없다: {filename}")
+        boundary = secrets.token_hex(16)
+        name = filename.replace('"', "")
+        head = (f"--{boundary}\r\nContent-Disposition: form-data; name=\"file\"; filename=\"{name}\"\r\n"
+                f"Content-Type: {content_type}\r\n\r\n")
+        body = head.encode() + data + f"\r\n--{boundary}--\r\n".encode()
+        r = self._call("POST", f"/v1/file_uploads/{fid}/send",
+                       raw=(body, f"multipart/form-data; boundary={boundary}"))
+        if r.get("status") != "uploaded":
+            raise NotionError(f"파일 올리기 상태가 {r.get('status')}: {filename}")
+        return fid
+
+    def insert_image(self, parent_id: str, after_block_id: str, file_upload_id: str, caption: str) -> None:
+        cap = [{"type": "text", "text": {"content": caption[:2000]}}] if caption else []
+        image = {"type": "file_upload", "file_upload": {"id": file_upload_id}, "caption": cap}
+        self._call("PATCH", f"/v1/blocks/{parent_id}/children", {
+            "children": [{"type": "image", "image": image}],
+            "position": {"type": "after_block", "after_block": {"id": after_block_id}}})
+
+    def delete_block(self, block_id: str) -> None:
+        self._call("DELETE", f"/v1/blocks/{block_id}")

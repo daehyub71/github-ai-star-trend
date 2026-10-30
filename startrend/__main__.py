@@ -1028,11 +1028,13 @@ def _notion(settings: Settings, args: argparse.Namespace) -> int:
         print(e, file=sys.stderr)
         return 2
     post = _blog_post(settings, name)
+    blog_dir = settings.work_dir / name / "blog"
     if not args.run:
         p = notion.plan(idx, wd)
         if post:
             p["create"] += name not in (idx.get("blog") or {})
             p["pages"] += 1
+            p["blog_images"] = sum(bool(notion.LOCAL_IMAGE.match(ln.strip())) for ln in post[1].split("\n"))
         print(dumps_json({"dry_run": True, **p, "blog": post[0] if post else None}), end="")
         return 0
     try:
@@ -1049,8 +1051,9 @@ def _notion(settings: Settings, args: argparse.Namespace) -> int:
     try:
         stats = notion.publish_week(client, idx, wd, save=save, log=log)
         if post:
-            b = notion.publish_blog(client, idx, name, post[0], post[1], save=save, log=log)
-            stats = {k: stats[k] + b[k] for k in stats}
+            b = notion.publish_blog(client, idx, name, post[0], post[1], save=save, base_dir=blog_dir,
+                                    log=log)
+            stats = {**{k: stats[k] + b[k] for k in stats}, "blog_images": b["images"]}
     except notion.NotionStageError as e:
         print(e, file=sys.stderr)
         return 1

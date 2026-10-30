@@ -208,3 +208,73 @@ def test_notion_index_round_trip(tmp_path):
     idx["weeks"][W] = {"page_id": "x", "url": "u"}
     nt.save_index(p, idx)
     assert nt.load_index(p) == idx
+
+
+# --- 블로그 초안의 만든 그림 (결정 62) — 파일 업로드 → 표시 문단 뒤에 이미지 블록 → 표시 문단 지우기 ---
+
+POST = ("머리말\n\n![흐름 그림](gen/2.png)\n\n본문 [o/a](https://github.com/o/a)\n\n"
+        "![o/a 대표 이미지](https://repository-images.githubusercontent.com/1/abc)\n")
+
+
+def _blog_base(tmp: Path) -> Path:
+    base = tmp / "blog"
+    (base / "gen").mkdir(parents=True)
+    (base / "gen" / "2.png").write_bytes(b"\x89PNG-two")
+    return base
+
+
+def _blog(mock: MockNotion, idx: dict[str, Any], base: Path | None, md: str = POST
+          ) -> tuple[dict[str, int], list[str]]:
+    logs: list[str] = []
+    stats = nt.publish_blog(mock, idx, W, "제목", md, base_dir=base, save=lambda i: None, log=logs.append)
+    return stats, logs
+
+
+def test_notion_blog_uploads_generated_images_into_their_slots(ready, tmp_path):
+    mock, idx, wd = ready
+    _publish(mock, idx, wd)
+    stats, _ = _blog(mock, idx, _blog_base(tmp_path))
+    pid = idx["blog"][W]["page_id"]
+    assert stats["images"] == 1 and list(mock.uploads.values()) == [("2.png", b"\x89PNG-two", "image/png")]
+    blocks = mock.pages[pid].blocks
+    i = next(k for k, b in enumerate(blocks) if b.upload == "up-1")
+    assert blocks[i].caption == "흐름 그림" and blocks[i - 1].text == "머리말"
+    assert blocks[i + 1].text.startswith("본문")
+    assert not any("⟦" in b.text for b in blocks)                      # 표시 문단은 지웠다
+    assert "](gen/2.png)" not in mock.pages[pid].markdown       # 상대 경로 링크는 보내지 않는다
+    assert "repository-images.githubusercontent.com/1/abc" in mock.pages[pid].markdown
+
+
+def test_notion_blog_reuses_uploaded_images_by_content_hash(ready, tmp_path):
+    mock, idx, wd = ready
+    _publish(mock, idx, wd)
+    base = _blog_base(tmp_path)
+    _blog(mock, idx, base)
+    stats, _ = _blog(mock, idx, base)
+    pid = idx["blog"][W]["page_id"]
+    assert stats["images"] == 1 and len(mock.uploads) == 1               # 다시 보내지 않는다
+    assert [b.upload for b in mock.pages[pid].blocks if b.upload] == ["up-1"]
+    assert list(idx["uploads"].values()) == ["up-1"]
+    mock.expire_upload("up-1")                                           # 붙이지 못한 채 만료된 업로드
+    _blog(mock, idx, base)
+    assert len(mock.uploads) == 2 and [b.upload for b in mock.pages[pid].blocks if b.upload] == ["up-2"]
+    assert list(idx["uploads"].values()) == ["up-2"]
+
+
+def test_notion_blog_skips_missing_image_files(ready, tmp_path):
+    mock, idx, wd = ready
+    _publish(mock, idx, wd)
+    stats, logs = _blog(mock, idx, _blog_base(tmp_path), POST.replace("gen/2.png", "gen/9.png"))
+    pid = idx["blog"][W]["page_id"]
+    assert stats["images"] == 0 and mock.uploads == {}
+    assert not any("⟦" in b.text for b in mock.pages[pid].blocks)
+    assert any("gen/9.png" in m for m in logs)
+
+
+def test_notion_blog_leaves_reviewed_pages_and_their_images_alone(ready, tmp_path):
+    mock, idx, wd = ready
+    _publish(mock, idx, wd)
+    _blog(mock, idx, None)                                               # 그림 없이 먼저 만든 초안
+    mock.user_sets(idx["blog"][W]["page_id"], "상태", {"status": {"name": "검토 중"}})
+    stats, _ = _blog(mock, idx, _blog_base(tmp_path))
+    assert stats["kept"] == 1 and stats["images"] == 0 and mock.uploads == {}

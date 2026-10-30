@@ -33,6 +33,13 @@ class NotionPage:
     in_trash: bool = False
 
 
+@dataclass(frozen=True)
+class NotionBlock:
+    id: str
+    type: str
+    text: str                        # rich_text 평문을 이어 붙인 것(이미지 등은 "")
+
+
 class NotionClient(Protocol):
     def create_database(self, parent_page_id: str, title: str,
                         properties: Mapping[str, Any]) -> NotionDatabase: ...
@@ -46,6 +53,16 @@ class NotionClient(Protocol):
 
     def replace_markdown(self, page_id: str, markdown: str) -> None: ...
 
+    # 그림 올리기(결정 62) — 마크다운 API 는 올린 파일을 가리킬 수 없어 블록 API 로 끼운다
+    def list_children(self, block_id: str) -> list[NotionBlock]: ...
+
+    def upload_file(self, filename: str, data: bytes, content_type: str) -> str: ...
+
+    def insert_image(self, parent_id: str, after_block_id: str, file_upload_id: str,
+                     caption: str) -> None: ...
+
+    def delete_block(self, block_id: str) -> None: ...
+
 
 def status_name(page: NotionPage, prop: str) -> str | None:
     """status 속성 값의 이름. 비었거나 모양이 다르면 None."""
@@ -56,11 +73,21 @@ def status_name(page: NotionPage, prop: str) -> str | None:
 
 
 @dataclass
+class _Block:
+    id: str
+    type: str
+    text: str
+    upload: str | None = None        # 이미지 블록이 가리키는 업로드 ID
+    caption: str = ""
+
+
+@dataclass
 class _Page:
     data_source_id: str
     properties: dict[str, Any]
     markdown: str
     in_trash: bool = False
+    blocks: list[_Block] = field(default_factory=list)
 
 
 @dataclass
@@ -72,6 +99,20 @@ class MockNotion:
     parents: dict[str, str] = field(default_factory=dict)                # data_source_id → 부모 페이지
     pages: dict[str, _Page] = field(default_factory=dict)
     calls: list[tuple[str, str]] = field(default_factory=list)
+    uploads: dict[str, tuple[str, bytes, str]] = field(default_factory=dict)  # ID → (파일 이름, 내용, 형식)
+    expired: set[str] = field(default_factory=set)
+    _blocks: int = 0
+
+    def _parse(self, markdown: str) -> list[_Block]:
+        """빈 줄로 나눈 덩어리 하나가 블록 하나 — `![` 로 시작하면 이미지."""
+        out = []
+        for chunk in (c.strip() for c in markdown.split("\n\n")):
+            if chunk:
+                self._blocks += 1
+                image = chunk.startswith("![")
+                kind, text = ("image", "") if image else ("paragraph", chunk)
+                out.append(_Block(f"b-{self._blocks}", kind, text))
+        return out
 
     def create_database(self, parent_page_id: str, title: str,
                         properties: Mapping[str, Any]) -> NotionDatabase:
@@ -106,7 +147,8 @@ class MockNotion:
     def create_page(self, data_source_id: str, properties: Mapping[str, Any], markdown: str) -> NotionPage:
         self._check(data_source_id, properties)
         pid = f"page-{len(self.pages) + 1}"
-        self.pages[pid] = _Page(data_source_id, copy.deepcopy(dict(properties)), markdown)
+        self.pages[pid] = _Page(data_source_id, copy.deepcopy(dict(properties)), markdown,
+                                blocks=self._parse(markdown))
         self.calls.append(("create_page", pid))
         return self._view(pid)
 
@@ -129,7 +171,32 @@ class MockNotion:
 
     def replace_markdown(self, page_id: str, markdown: str) -> None:
         self.pages[page_id].markdown = markdown
+        self.pages[page_id].blocks = self._parse(markdown)
         self.calls.append(("replace_markdown", page_id))
+
+    def list_children(self, block_id: str) -> list[NotionBlock]:
+        self.calls.append(("list_children", block_id))
+        return [NotionBlock(b.id, b.type, b.text) for b in self.pages[block_id].blocks]
+
+    def upload_file(self, filename: str, data: bytes, content_type: str) -> str:
+        fid = f"up-{len(self.uploads) + 1}"
+        self.uploads[fid] = (filename, data, content_type)
+        self.calls.append(("upload_file", fid))
+        return fid
+
+    def insert_image(self, parent_id: str, after_block_id: str, file_upload_id: str, caption: str) -> None:
+        if file_upload_id not in self.uploads or file_upload_id in self.expired:
+            raise NotionError(f"쓸 수 없는 파일 업로드: {file_upload_id}", 400, "validation_error")
+        blocks = self.pages[parent_id].blocks
+        at = next(i for i, b in enumerate(blocks) if b.id == after_block_id)
+        self._blocks += 1
+        blocks.insert(at + 1, _Block(f"b-{self._blocks}", "image", "", file_upload_id, caption))
+        self.calls.append(("insert_image", parent_id))
+
+    def delete_block(self, block_id: str) -> None:
+        for p in self.pages.values():
+            p.blocks = [b for b in p.blocks if b.id != block_id]
+        self.calls.append(("delete_block", block_id))
 
     # --- 테스트용: 사용자가 Notion 에서 한 일 ---
     def user_sets(self, page_id: str, prop: str, value: Any) -> None:
@@ -138,5 +205,9 @@ class MockNotion:
     def user_trashes(self, page_id: str) -> None:
         self.pages[page_id].in_trash = True
 
+    def expire_upload(self, file_upload_id: str) -> None:
+        """붙이지 못한 채 1시간이 지나 쓸 수 없게 된 업로드."""
+        self.expired.add(file_upload_id)
+
     def writes(self) -> list[tuple[str, str]]:
-        return [c for c in self.calls if c[0] != "get_page"]
+        return [c for c in self.calls if c[0] not in ("get_page", "list_children")]

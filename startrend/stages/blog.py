@@ -60,6 +60,8 @@ STYLE = ("Style: clean educational explainer illustration for a beginner-friendl
          "No text, no letters, no numbers, no logos, no brand marks, no real app screenshots, "
          "no human faces.")
 WEEKDAY = "월화수목금토일"
+GEN_DIR = "gen"                              # 사용자가 만든 그림 `gen/<번호>.<확장자>`(결정 62)
+GEN_EXTS = (".png", ".jpg", ".jpeg", ".webp", ".gif")
 
 
 class BlogError(Exception):
@@ -600,6 +602,37 @@ def _change_block(bi: BlogInput, dr: BlogDraft, ch: Changes) -> list[str]:
     return out
 
 
+def _series_intro(n: int) -> list[str]:
+    """머리말 — 연재를 시작한 이유(2026-10-30 사용자가 쓴 기획 의도를 다듬은 것). 매 회 같다."""
+    return [f"「{SERIES}」의 {n}번째 글입니다. 이 연재는 오픈소스의 최근 흐름을 파악하려고 시작한 작은 "
+            "프로젝트입니다. 오픈소스의 본고장인 GitHub 에서 스타를 많이 받은 저장소를 매주 모아, "
+            "어떤 흐름이 생기는지 숫자와 근거로 확인합니다.",
+            "요즘 AI 관련 유튜브 영상을 보다 보면 하나의 흐름이 보입니다. 새로운 개념은 보통 X(옛 트위터)의 "
+            "글로 먼저 알려지고, 그 개념을 구체적으로 구현한 결과물은 GitHub 에 공개됩니다. 그중 스타를 많이 "
+            "받은 저장소가 AI 기술 트렌드를 이끄는 프로젝트로 보입니다.",
+            "그래서 실무에 쓰기 좋은 개념과 구현 결과물(MCP, 라이브러리, 도구)을 꾸준히 모아 트렌드를 "
+            "따라가고, 그중 업무에 필요한 것은 먼저 적용해 보려고 이 연재를 기획했습니다."]
+
+
+def generated_images(out: Path) -> dict[int, str]:
+    """사용자가 만든 그림(결정 62) — `gen/<번호>.<확장자>` → {번호: 상대 경로}.
+
+    0 = 대표 그림, 그 밖은 순위(사진 배치 문서의 "생성 프롬프트 N").
+    """
+    d = out / GEN_DIR
+    if not d.is_dir():
+        return {}
+    found: dict[int, str] = {}
+    for f in sorted(d.iterdir()):
+        if f.is_file() and re.fullmatch(r"[0-9]+", f.stem) and f.suffix.lower() in GEN_EXTS:
+            found.setdefault(int(f.stem), f"{GEN_DIR}/{f.name}")
+    return found
+
+
+def _caption(text: str) -> str:
+    return re.sub(r"[\[\]]", " ", text).strip()
+
+
 def _slot(what: str, idea: ImageIdea) -> list[str]:
     """그림이 들어갈 자리 — 가르칠 것 · 얹을 라벨 한 줄 + 복사해 쓰는 프롬프트(코드 블록)."""
     return [f"> 🎨 {what} — {idea.teaches} · 얹을 라벨: {' · '.join(idea.labels)}",
@@ -607,14 +640,26 @@ def _slot(what: str, idea: ImageIdea) -> list[str]:
 
 
 def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, str]],
-           images: Mapping[str, str]) -> tuple[str, str, gate.GateResult]:
-    """(제목, 본문 마크다운, 게이트 결과). 소제목은 ### · 주소는 링크(FR-16.5 ④ — R22 시험 B)."""
+           images: Mapping[str, str], gen: Mapping[int, str] | None = None
+           ) -> tuple[str, str, gate.GateResult]:
+    """(제목, 본문 마크다운, 게이트 결과). 소제목은 ### · 주소는 링크(FR-16.5 ④ — R22 시험 B).
+
+    gen: 사용자가 만든 그림 {번호: 상대 경로}(결정 62) — 그 자리의 프롬프트 칸·소셜 미리보기 대신 들어간다.
+    상대 경로는 인용 게이트가 막는 링크라, 게이트를 지난 뒤 코드가 넣는다(LLM 이 쓴 링크가 아니다).
+    """
     n = bi.episode
     posts = {p.ref: p for p in dr.repos}
+    pictures: dict[str, str] = {}
+
+    def picture(slot: int, idea: ImageIdea, what: str) -> list[str]:
+        if gen and slot in gen:
+            key = f"§gen:{slot}§"
+            pictures[key] = f"![{_caption(idea.teaches)}]({gen[slot]})"
+            return [key]
+        return _slot(what, idea)
+
     out: list[str] = [
-        *_slot("대표 이미지 자리", dr.cover),
-        f"「{SERIES}」의 {n}번째 글입니다. 매주 GitHub 에서 스타가 가장 많이 늘어난 AI 저장소를 "
-        "숫자와 근거로 정리합니다.", dr.intro, f"***{SERIES} {n}회 정보***",
+        *picture(0, dr.cover, "대표 이미지 자리"), *_series_intro(n), dr.intro, f"***{SERIES} {n}회 정보***",
         f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · {'지난주 대비 순위 변동 · ' if bi.changes else ''}"
         f"TOP {len(bi.repos)} 저장소"
         "(무엇인가 · 왜 지금 떴나 · 활용 사례) · 숫자를 읽을 때 주의할 점 · 한 장 요약",
@@ -636,7 +681,9 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         if p is None:
             continue
         out.append(f"### {_heading(r, p)}")
-        if r.full_name in images:
+        if gen and r.rank in gen:
+            out += picture(r.rank, p.image, "그림 자리")
+        elif r.full_name in images:
             out += [f"![{r.full_name} 대표 이미지]({images[r.full_name]})",
                     f"이미지: {r.full_name} 저장소의 소셜 미리보기"]
         else:
@@ -655,25 +702,34 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
     body = "\n\n".join(out) + "\n"
     urls = [u for _, u in bi.sources.values()] + [REPO_URL, CHANNEL[1]] + [u for _, _, u in published]
     res = gate.check(body, urls + list(images.values()), repos=[r.full_name for r in bi.repos])
-    return title_of(bi, dr), res.body, res
+    passed = res.body
+    for key, line in pictures.items():
+        passed = passed.replace(key, line)
+    return title_of(bi, dr), passed, res
 
 
-def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files: Mapping[str, str]) -> str:
-    """사진 배치 문서(FR-16.7) — 소제목 → 이미지, 생성 프롬프트, 대표 이미지."""
+def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files: Mapping[str, str],
+               gen: Mapping[int, str] | None = None) -> str:
+    """사진 배치 문서(FR-16.7) — 소제목 → 이미지, 생성 프롬프트, 대표 이미지. gen: 만든 그림(결정 62)."""
+    gen = gen or {}
     posts = {p.ref: p for p in dr.repos}
-    rows = ["| (머리말) | 대표 이미지 — 생성 프롬프트 0 |", f"| 이번 주 흐름 — {dr.overview_heading} | — |"]
+    cover = f"{gen[0]} (만든 그림)" if 0 in gen else "생성 프롬프트 0"
+    rows = [f"| (머리말) | 대표 이미지 — {cover} |", f"| 이번 주 흐름 — {dr.overview_heading} | — |"]
 
     def block(head: str, idea: ImageIdea) -> list[str]:
         return [f"### {head}", "", f"- 가르칠 것: {idea.teaches}",
                 f"- 얹을 라벨: {' · '.join(idea.labels)}", "", "```text", idea.prompt(), "```", ""]
 
-    prompts = block("0. 대표 이미지(글 맨 위)", dr.cover)
+    prompts = block("0. 대표 이미지(글 맨 위)" + (f" — 만든 그림: {gen[0]}" if 0 in gen else ""), dr.cover)
     alternatives: list[str] = []
     for r in bi.repos:
         p = posts.get(r.ref)
         if p is None:
             continue
-        if r.full_name in images:
+        if r.rank in gen:
+            where = f"{gen[r.rank]} (만든 그림)"
+            prompts += block(f"{r.rank}. {r.full_name} — 만든 그림: {gen[r.rank]}", p.image)
+        elif r.full_name in images:
             where = f"{files[r.full_name]} (저장소 소셜 미리보기)" if r.full_name in files \
                 else f"{images[r.full_name]} (저장소 소셜 미리보기)"
             alternatives += block(f"(대안) {r.rank}. {r.full_name} — 소셜 미리보기 대신 교육용 그림을 쓸 때",
@@ -684,8 +740,8 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
         rows.append(f"| {_heading(r, p)} | {where} |")
     return "\n".join([
         f"# {title_of(bi, dr)} — 사진 배치 참고", "",
-        "> 본문: `post.md` · 이미지: `img/`(저장소 소셜 미리보기를 받아 둔 것). "
-        "없는 자리는 아래 생성 프롬프트로 만든다.",
+        "> 본문: `post.md` · 이미지: `img/`(저장소 소셜 미리보기를 받아 둔 것) · `gen/`(만든 그림 — "
+        "파일 이름은 아래 생성 프롬프트 번호, 0 = 대표 그림). 없는 자리는 아래 생성 프롬프트로 만든다.",
         "", "## 글", "", "| 소제목 | 이미지 |", "|---|---|", *rows, "",
         "## 생성 프롬프트 — 교육용 설명 그림", "",
         "- 코드 블록을 통째로 복사해 이미지 생성 도구에 붙여 넣습니다. 끝의 스타일 문단은 모든 그림에 같아서 "
@@ -768,15 +824,20 @@ def run_blog(writer: BlogWriter, bi: BlogInput, *, work_dir: Path, today: date,
 def _write(out: Path, bi: BlogInput, dr: BlogDraft, meta: dict[str, Any], stats: dict[str, Any], *,
            published: Sequence[tuple[int, str, str]], log: Callable[[str], None]) -> dict[str, Any]:
     images, files = meta.get("images") or {}, meta.get("files") or {}
-    title, body, res = render(bi, dr, published=published, images=images)
+    gen = generated_images(out)               # 사용자가 만든 그림 — 매번 폴더에서 다시 찾는다(결정 62)
+    title, body, res = render(bi, dr, published=published, images=images, gen=gen)
     io.write_text_atomic(out / "post.md", f"# {title}\n\n{body}")
-    io.write_text_atomic(out / "images.md", images_doc(bi, dr, images=images, files=files))
+    io.write_text_atomic(out / "images.md", images_doc(bi, dr, images=images, files=files, gen=gen))
     io.write_json(out / "gate.json", {"checked": res.checked, "kept_links": res.kept_links,
                                       "excluded": res.log()})
-    io.write_json(out / "meta.json", {**meta, "chars": len(body)})
+    io.write_json(out / "meta.json", {**meta, "chars": len(body),
+                                      "generated": {str(k): v for k, v in gen.items()}})
+    slots = {0} | {r.rank for r in bi.repos}
+    filled = set(gen) | {r.rank for r in bi.repos if r.full_name in images}
     stats.update(written=True, excluded=len(res.excluded), file=str(out / "post.md"), title=title,
-                 chars=len(body), images=len(images), prompts=len(bi.repos) - len(images) + 1)
-    log(f"  블로그 초안 — {len(body):,}자 · 게이트 제외 {len(res.excluded)}건 · 대표 이미지 {len(images)}개")
+                 chars=len(body), images=len(images), generated=len(gen), prompts=len(slots - filled))
+    log(f"  블로그 초안 — {len(body):,}자 · 게이트 제외 {len(res.excluded)}건 · "
+        f"대표 이미지 {len(images)}개 · 만든 그림 {len(gen)}개")
     return stats
 
 
