@@ -29,7 +29,7 @@
 
 ```bash
 git --version
-python3.12 --version      # 3.12.x — pyproject 가 >=3.12,<3.13 만 허용한다(3.13·3.14 로는 venv 를 만들지 않는다)
+python3 --version         # 3.12.x 또는 3.13.x — pyproject 가 >=3.12,<3.14 를 허용한다(결정 63). 맥북은 3.13.14
 node --version            # v24.x — 윈도우는 v24.18.0
 npm --version
 openssl version           # 4단계 키 풀기에 쓴다 — LibreSSL 이면 4-2 의 -pbkdf2 주의 참고
@@ -38,7 +38,7 @@ gh --version              # 선택 — Release 올리기 등
 
 | 확인 | 맞지 않을 때 |
 |---|---|
-| `python3.12: command not found` | `brew install python@3.12` — 다른 버전만 있어도 3.12 를 따로 둔다 |
+| 3.14 이상만 있음 | `brew install python@3.13` 으로 3.13 을 따로 둔다(3.12·3.13 만 허용) |
 | Node 가 24 가 아님 | 다른 프로젝트 때문에 바꾸기 어렵다면 `nvm` 이나 `fnm` 으로 이 폴더에서만 24 를 쓴다 |
 | `gh` 없음 | 필요할 때 `brew install gh` (4-3 의 `GITHUB_TOKEN` 주의 참고) |
 
@@ -49,7 +49,7 @@ mkdir -p ~/src_new && cd ~/src_new
 git clone https://github.com/daehyub71/github-ai-star-trend.git
 cd github-ai-star-trend
 
-python3.12 -m venv .venv
+python3.13 -m venv .venv                     # 3.12 를 쓰면 python3.12
 .venv/bin/python -m pip install -r requirements.txt -r requirements-dev.txt
 
 git config core.hooksPath scripts/hooks      # 커밋 전 검사 — ruff → mypy → pytest → 크기·시크릿 가드
