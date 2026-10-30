@@ -23,15 +23,24 @@
 > ⚠ **`.work/notion/index.json`(Notion 대응표)이 가장 중요하다.** 이것 없이 맥에서 `notion --run` 을 하면
 > Notion 데이터베이스와 페이지 50개가 중복으로 새로 만들어진다. 3단계를 끝내기 전에는 `notion --run` 을 하지 않는다.
 
-## 1. 도구 설치
+## 1. 도구 확인
+
+맥북에는 개발 도구가 이미 있다. 이 프로젝트가 요구하는 버전인지만 확인한다.
 
 ```bash
-xcode-select --install                       # git 등 명령줄 도구
-brew install python@3.12 node@24             # Python 은 3.12 만(pyproject: >=3.12,<3.13), Node 는 윈도우와 같은 24
-brew install gh                              # 선택 — Release 올리기 등. 아래 4단계 주의 참고
+git --version
+python3.12 --version      # 3.12.x — pyproject 가 >=3.12,<3.13 만 허용한다(3.13·3.14 로는 venv 를 만들지 않는다)
+node --version            # v24.x — 윈도우는 v24.18.0
+npm --version
+openssl version           # 4단계 키 풀기에 쓴다 — LibreSSL 이면 4-2 의 -pbkdf2 주의 참고
+gh --version              # 선택 — Release 올리기 등
 ```
 
-`node@24` 가 PATH 에 잡히지 않으면 `brew info node@24` 가 알려 주는 `export PATH=…` 줄을 `~/.zshrc` 에 넣는다.
+| 확인 | 맞지 않을 때 |
+|---|---|
+| `python3.12: command not found` | `brew install python@3.12` — 다른 버전만 있어도 3.12 를 따로 둔다 |
+| Node 가 24 가 아님 | 다른 프로젝트 때문에 바꾸기 어렵다면 `nvm` 이나 `fnm` 으로 이 폴더에서만 24 를 쓴다 |
+| `gh` 없음 | 필요할 때 `brew install gh` (4-3 의 `GITHUB_TOKEN` 주의 참고) |
 
 ## 2. 저장소 받기와 파이썬·웹 설치
 
