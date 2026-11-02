@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "ad28db0c52ff9259",
+    "input_hash": "a7c4f9d155f8256e",
     "is_ai": false,
-    "reason": "An ad-free TV launcher app; Claude Code is used only for building/installing, not an AI feature of the product.",
+    "reason": "An ad-free TV home screen launcher with no AI features; Claude Code was only used to build it.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"

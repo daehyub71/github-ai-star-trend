@@ -13,6 +13,29 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-06",
+  "description": "Project Maya - run GLM-5.3-Flash (321B MoE), DeepSeek-V4.1-Flash-1017 (748B MoE) and MiniMax-M3.1-Flash (428B MoE) privately on your own GPU(s), from one card to 16, NVIDIA or AMD, Linux or Windows. Engine, server, dashboard, OpenAI- and Anthropic-compatible API, quant tools.",
+  "first_seen": "2026-10-25",
   "full_name": "mw00/project-maya",
-  "id": 1407997858
+  "id": 1407997858,
+  "language": "Cuda",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "cuda",
+    "deepseek",
+    "deepseek-v4",
+    "glm",
+    "glm-5",
+    "llm",
+    "llm-inference",
+    "local-llm",
+    "minimax",
+    "minimax-m3",
+    "mixture-of-experts",
+    "moe",
+    "openai-api",
+    "quantization",
+    "rocm",
+    "self-hosted"
+  ]
 }

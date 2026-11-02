@@ -1,18 +1,24 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "0f7f80d59583daea",
+    "input_hash": "7c3331913c6f81d8",
     "is_ai": false,
-    "reason": "An Android TV launcher app; suggesting agents for installation does not make the project about AI.",
+    "reason": "An ad-free tvOS-style Android TV launcher; agent-assisted install instructions don't make it an AI project.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-20",
+  "description": "给国产电视的一块干净桌面：参照 tvOS 设计的开源 Android TV 桌面，没有广告，开机自动接管。A tvOS-style launcher for Xiaomi, TCL and other China-market TVs.",
+  "first_seen": "2026-10-25",
   "full_name": "pengchujin/aerial-tv",
-  "id": 1426780056
+  "id": 1426780056,
+  "language": "Kotlin",
+  "last_seen": "2026-10-25",
+  "topics": []
 }

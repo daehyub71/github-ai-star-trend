@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "llmops",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "bdefed95228548d7",
+    "input_hash": "d7c180d6223b67d9",
     "is_ai": true,
-    "reason": "A local gateway and menu bar app that routes coding agents like Claude Code and Codex to different model providers with quota failover.",
+    "reason": "A local gateway app that routes coding agents like Claude Code and Codex to any model provider with quota failover.",
     "secondary": "coding-agent",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "yetone/magpie",
   "id": 1383809012,
   "language": "Go",
-  "last_seen": "2026-10-11",
+  "last_seen": "2026-10-25",
   "topics": [
     "claude-code",
     "codex",

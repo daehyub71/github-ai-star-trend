@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "ai-apps",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "3ea577c3a1fba926",
+    "input_hash": "b2632774dde2f147",
     "is_ai": true,
-    "reason": "An end-user autonomous AI sales agent app that prospects, writes cold emails, and handles replies using Claude Code or Codex subscriptions.",
+    "reason": "An end-user autonomous AI sales agent app that runs on Claude Code or Codex subscriptions to prospect, email, and book meetings.",
     "secondary": "agent-framework",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "ethanplusai/harvey",
   "id": 1179388779,
   "language": "Python",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "ai-agent",
     "autonomous-agent",

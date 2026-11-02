@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "mcp-tools",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "37734f0f2775324f",
+    "input_hash": "50b6e0e0cad32c7f",
     "is_ai": true,
     "reason": "A parametric CAD app that advertises a built-in MCP server so AI agents can model through it.",
     "secondary": null,
@@ -19,7 +19,7 @@
   "full_name": "tangency-labs/solidcraft",
   "id": 1409246014,
   "language": "Rust",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "3d-modeling",
     "brep",

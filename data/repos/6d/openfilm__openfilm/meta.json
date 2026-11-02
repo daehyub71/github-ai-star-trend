@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "08c9fc10e79e6f08",
+    "is_ai": true,
+    "reason": "An AI video agent toolkit, installed as a skill for coding agents, that generates and edits videos as HTML, with a Studio editor.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-04",
+  "description": "The open source AI video agent: turns any coding agent into a video agent, with an editor to change anything it makes.",
+  "first_seen": "2026-10-25",
+  "full_name": "openfilm/openfilm",
+  "id": 1404197626,
+  "language": "TypeScript",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "ai-video",
+    "claude-code",
+    "codex",
+    "coding-agents",
+    "html",
+    "motion-graphics",
+    "video-agent",
+    "video-editor"
+  ]
+}

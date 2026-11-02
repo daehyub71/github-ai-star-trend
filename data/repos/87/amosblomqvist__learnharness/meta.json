@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ee17c639de32890a",
+    "is_ai": true,
+    "reason": "Desktop end-user app that uses AI agents to teach lessons adaptively with a persistent knowledge graph.",
+    "secondary": "vectordb-memory",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-16",
+  "description": "Agent harness for learning difficult things.",
+  "first_seen": "2026-10-25",
+  "full_name": "amosblomqvist/learnharness",
+  "id": 1422597771,
+  "language": "TypeScript",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "multimodal",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "8158b1a4bceca037",
+    "input_hash": "f28d1e8579e9bd07",
     "is_ai": true,
-    "reason": "A fully local voice AI studio for TTS, voice cloning, dubbing and transcription, running speech models on-device.",
+    "reason": "A fully local AI voice app for TTS, voice cloning, dubbing and transcription, which falls under the speech side of multimodal AI.",
     "secondary": "local-llm",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "debpalash/VoiceStudio",
   "id": 1206390571,
   "language": "Python",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "ai",
     "audiobook",

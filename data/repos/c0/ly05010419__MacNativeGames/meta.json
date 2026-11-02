@@ -1,18 +1,37 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "827ea869c0cf2638",
+    "input_hash": "82cf48b874be1680",
     "is_ai": false,
-    "reason": "A native game porting layer for Switch games on Apple silicon, with no AI features.",
+    "reason": "A native game port of Switch titles to Apple silicon via Metal, unrelated to AI.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-17",
+  "description": "Play your own Tears of the Kingdom and Breath of the Wild natively on Apple silicon Mac, iPhone and iPad. Not an emulator: the game's ARM64 code runs directly, NVN rebuilt on Metal. Bring your own game.",
+  "first_seen": "2026-10-25",
   "full_name": "ly05010419/MacNativeGames",
-  "id": 1423689866
+  "id": 1423689866,
+  "language": "C",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "apple-silicon",
+    "arm64",
+    "breath-of-the-wild",
+    "game-port",
+    "ios",
+    "ipados",
+    "macos",
+    "metal",
+    "native-port",
+    "tears-of-the-kingdom",
+    "ultrawide",
+    "zelda"
+  ]
 }

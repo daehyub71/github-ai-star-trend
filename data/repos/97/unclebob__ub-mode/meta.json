@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "19132254bbab1959",
+    "is_ai": true,
+    "reason": "An agent skill (SKILL.md) enforcing software engineering discipline for coding agents.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-25",
+  "description": null,
+  "first_seen": "2026-10-25",
+  "full_name": "unclebob/ub-mode",
+  "id": 1433377156,
+  "language": null,
+  "last_seen": "2026-10-25",
+  "topics": []
+}

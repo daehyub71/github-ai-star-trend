@@ -13,6 +13,17 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-07",
+  "description": "A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats.",
+  "first_seen": "2026-10-25",
   "full_name": "Fei2411/DS-Bot",
-  "id": 1409013846
+  "id": 1409013846,
+  "language": "JavaScript",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "bot",
+    "deepseek-harness",
+    "dsh-plugin",
+    "multi-agent"
+  ]
 }

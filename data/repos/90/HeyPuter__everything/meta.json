@@ -13,6 +13,20 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-13",
+  "description": "We're rebuilding and open-sourcing the world’s software from scratch.",
+  "first_seen": "2026-10-25",
   "full_name": "HeyPuter/everything",
-  "id": 1417456983
+  "id": 1417456983,
+  "language": "JavaScript",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "adobe",
+    "cad",
+    "microsoft",
+    "office",
+    "photoshop",
+    "saas",
+    "spreadsheet"
+  ]
 }

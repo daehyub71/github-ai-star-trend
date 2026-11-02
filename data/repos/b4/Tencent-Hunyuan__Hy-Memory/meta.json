@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "vectordb-memory",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "b20e99055e31e4c6",
+    "is_ai": true,
+    "reason": "A memory engine and SDK for LLM agents, with accompanying Hy-Memory model weights released on Hugging Face.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-15",
+  "description": null,
+  "first_seen": "2026-10-25",
+  "full_name": "Tencent-Hunyuan/Hy-Memory",
+  "id": 1420743720,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

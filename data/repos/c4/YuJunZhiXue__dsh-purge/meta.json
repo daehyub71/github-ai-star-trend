@@ -1,15 +1,15 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
-    "category": "mcp-tools",
+    "category": "agent-skills",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "0d53f9aac059970a",
+    "input_hash": "607697d63c95fba9",
     "is_ai": true,
-    "reason": "A jailbreak plugin for the DeepSeek Harness agent that swaps prompts and loosens the host policy layer, making it an agent-loaded plugin.",
-    "secondary": "agent-skills",
+    "reason": "A plugin providing jailbreak prompts for DeepSeek Harness to swap per-model prompts, essentially a prompt/skill toolkit for LLMs.",
+    "secondary": "llmops",
     "status": "ok",
     "type": "도구/라이브러리"
   },
@@ -19,7 +19,7 @@
   "full_name": "YuJunZhiXue/dsh-purge",
   "id": 1339256252,
   "language": "JavaScript",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "deepseek",
     "deepseek-harness",

@@ -1,0 +1,92 @@
+{
+  "runs": [
+    {
+      "cap_usd": 10.0,
+      "llm_calls": 65,
+      "spent_usd": 3.3296,
+      "started": "2026-11-02T04:48:41Z",
+      "status": "ok",
+      "steps": [
+        {
+          "name": "contract",
+          "seconds": 2.2,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "discover",
+          "seconds": 3450.0,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "stars",
+          "seconds": 943.8,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "rank",
+          "seconds": 29.2,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "classify",
+          "seconds": 325.2,
+          "spent_usd": 0.4294,
+          "status": "ok"
+        },
+        {
+          "name": "rank-ai",
+          "seconds": 3.7,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "trends",
+          "seconds": 0.1,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "evidence",
+          "seconds": 744.4,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "analyze",
+          "seconds": 793.9,
+          "spent_usd": 2.7785,
+          "status": "ok"
+        },
+        {
+          "name": "check",
+          "seconds": 0.1,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "brief",
+          "seconds": 14.5,
+          "spent_usd": 0.1216,
+          "status": "ok"
+        },
+        {
+          "name": "export",
+          "seconds": 4.3,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "archive",
+          "seconds": 1.9,
+          "spent_usd": 0.0,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "week": "2026-10-25"
+}

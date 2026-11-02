@@ -1,0 +1,41 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "cb35e5d9d8d90fac",
+    "is_ai": false,
+    "reason": "A K-12 curriculum knowledge graph and question bank dataset with a diagnostic tool; AI only helped generate the content, so the project itself is not about AI.",
+    "secondary": null,
+    "status": "ok",
+    "type": "모델/데이터"
+  },
+  "created": "2026-10-18",
+  "description": "数学（小学到高中）、英语（三年级到高中）、初中物理的知识图谱：1644 个知识点、2403 条先修边、6723 道题，对齐课标，附自适应前置诊断。",
+  "first_seen": "2026-10-25",
+  "full_name": "xiaoyang111222/cn-math-taxonomy",
+  "id": 1424183124,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "chinese",
+    "curriculum",
+    "diagnostic",
+    "edtech",
+    "education",
+    "elementary-school",
+    "english",
+    "high-school",
+    "junior-high-school",
+    "k12",
+    "knowledge-graph",
+    "math",
+    "mathematics",
+    "middle-school",
+    "open-data",
+    "primary-school"
+  ]
+}

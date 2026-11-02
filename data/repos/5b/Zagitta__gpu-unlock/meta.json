@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "inference",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9abccd26f4ad549f",
+    "is_ai": true,
+    "reason": "A Linux kernel module that unlocks full-rate tensor core throughput on GeForce GPUs to accelerate AI inference and training.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-18",
+  "description": "Your GeForce runs AI at half speed. This fixes it for 20/30/40 series cards. Up to 2× FP16 / BF16 / TF32 tensor throughput",
+  "first_seen": "2026-10-25",
+  "full_name": "Zagitta/gpu-unlock",
+  "id": 1423892373,
+  "language": "C",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

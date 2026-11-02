@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "doc-parsing",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ba5209b0a50c7537",
+    "is_ai": true,
+    "reason": "A small CPU OCR model and tool that converts PDFs and images into markdown/JSON for document parsing.",
+    "secondary": "models",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-13",
+  "description": "1M param OCR model - runs on CPU, 15x faster than tesseract, close to 1B+ param models in accuracy",
+  "first_seen": "2026-10-25",
+  "full_name": "datalab-to/indra",
+  "id": 1416887041,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "ai",
+    "cpu",
+    "document-parsing",
+    "ocr",
+    "onnx",
+    "pdf"
+  ]
+}

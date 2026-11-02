@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "ai-apps",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "2421ab59d54a6444",
+    "input_hash": "757fb4fcb0e55629",
     "is_ai": true,
-    "reason": "DeepTutor is an end-user AI tutoring app built on multi-agent systems and RAG.",
+    "reason": "DeepTutor is an end-user AI tutoring app built on multi-agent and RAG techniques.",
     "secondary": "rag",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "HKUDS/DeepTutor",
   "id": 1124219907,
   "language": "Python",
-  "last_seen": "2026-01-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "ai-agents",
     "ai-tutor",

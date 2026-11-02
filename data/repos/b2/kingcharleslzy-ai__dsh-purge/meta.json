@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0a965d03069dfcf5",
+    "is_ai": true,
+    "reason": "A community-maintained plugin for the DeepSeek Harness agent that patches the host and manages injected prompts to reduce agent confirmations, with backup and rollback.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-16",
+  "description": "dsh-purge Community · DeepSeek Harness 社区维护版：宿主兼容、状态诊断、提示词管理、更新与本机备份回滚。基于小杨 / YuJunZhiXue 的 dsh-purge。",
+  "first_seen": "2026-10-25",
+  "full_name": "kingcharleslzy-ai/dsh-purge",
+  "id": 1421822085,
+  "language": "JavaScript",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "agent-tools",
+    "backup",
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "jailbreak",
+    "prompt-injection",
+    "prompt-management",
+    "purge-community",
+    "rollback"
+  ]
+}

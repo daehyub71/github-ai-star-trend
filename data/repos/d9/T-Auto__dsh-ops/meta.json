@@ -13,6 +13,16 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-08",
+  "description": "A toolkit for low-level operations in DSH, designed to reduce token usage and task execution time / DSH 底层操作工具插件，旨在减少 Token 消耗与任务耗时",
+  "first_seen": "2026-10-25",
   "full_name": "T-Auto/dsh-ops",
-  "id": 1409893258
+  "id": 1409893258,
+  "language": "JavaScript",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugins"
+  ]
 }

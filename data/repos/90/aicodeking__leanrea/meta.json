@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7113306f5313fd56",
+    "is_ai": true,
+    "reason": "A single SKILL.md agent skill guiding coding agents to reverse engineer binaries with CLI tools, replacing an MCP server.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-17",
+  "description": "One 8 KB skill that replaces REA (Reverse Engineer Anything): plain CLI tools, no MCP. Benchmarked: 38% faster, 35% cheaper.",
+  "first_seen": "2026-10-25",
+  "full_name": "aicodeking/leanrea",
+  "id": 1422883896,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

@@ -1,0 +1,30 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "3a620c7ea302354f",
+    "is_ai": true,
+    "reason": "A pack of Claude skills with Python tools for day trading workflows.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-20",
+  "description": "11 Claude skills for day trading: scan thousands of charts, track breaking news, time every entry and exit, and replay every outcome before you risk a dollar.",
+  "first_seen": "2026-10-25",
+  "full_name": "Jakeschincariol/day-trader-skill",
+  "id": 1427126014,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "backtesting",
+    "claude",
+    "claude-skills",
+    "day-trading",
+    "stock-market"
+  ]
+}

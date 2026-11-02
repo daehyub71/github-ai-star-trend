@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "05532c2d4d4c3b93",
+    "is_ai": false,
+    "reason": "A 3D WebGL ergonomics simulation for keyboard navigation with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "기타"
+  },
+  "created": "2026-10-09",
+  "description": null,
+  "first_seen": "2026-10-25",
+  "full_name": "AhmadHassan-BTed/.github",
+  "id": 1411873195,
+  "language": "HTML",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

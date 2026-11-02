@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "94b68426a1897541",
+    "is_ai": true,
+    "reason": "Android debloat tool via adb that advertises AI agent execution through AGENTS.md instructions, making it an agent-operated tool.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-24",
+  "description": "关掉国产安卓手机系统里的广告、热搜、资讯推荐和营销推送。不 root，可还原，支持 AI 智能体一键执行。",
+  "first_seen": "2026-10-25",
+  "full_name": "rddmwmddr/android-ad-cleaner",
+  "id": 1431851693,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "adb",
+    "ai-agent",
+    "android",
+    "coloros",
+    "debloat",
+    "hyperos",
+    "magicos",
+    "originos"
+  ]
+}

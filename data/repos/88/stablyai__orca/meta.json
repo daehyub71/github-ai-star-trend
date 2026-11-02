@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "coding-agent",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "9527528a1de53618",
+    "input_hash": "05a3218bd57db474",
     "is_ai": true,
-    "reason": "Orca is an agent IDE/orchestrator for running multiple coding agents like Claude Code and Codex in parallel worktrees.",
+    "reason": "Desktop/mobile IDE for orchestrating multiple coding agents like Claude Code and Codex in parallel worktrees.",
     "secondary": "agent-framework",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "stablyai/orca",
   "id": 1183888342,
   "language": "TypeScript",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "ade",
     "agent-ide",

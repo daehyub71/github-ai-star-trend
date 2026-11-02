@@ -1,18 +1,24 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "coding-agent",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "c9b85d3401e71e82",
+    "input_hash": "d09470af220fc36f",
     "is_ai": true,
-    "reason": "T3 Code is a desktop/web/mobile control surface for running coding agents like Claude Code and Codex, with an MCP connector.",
-    "secondary": "mcp-tools",
+    "reason": "T3 Code is a desktop/web/mobile control surface for running coding agents like Claude Code, Codex, and Cursor.",
+    "secondary": "ai-apps",
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-02-08",
+  "description": null,
+  "first_seen": "2026-10-25",
   "full_name": "pingdotgg/t3code",
-  "id": 1153130349
+  "id": 1153130349,
+  "language": "TypeScript",
+  "last_seen": "2026-10-25",
+  "topics": []
 }

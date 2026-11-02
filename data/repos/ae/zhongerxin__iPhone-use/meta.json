@@ -13,6 +13,12 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-06",
+  "description": "让 Codex 通过 USB 操作真实 iPhone：引导安装、App 自动化、实时屏幕与截图回退。",
+  "first_seen": "2026-10-25",
   "full_name": "zhongerxin/iPhone-use",
-  "id": 1407504032
+  "id": 1407504032,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": []
 }

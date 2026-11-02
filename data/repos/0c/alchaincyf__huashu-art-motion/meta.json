@@ -13,6 +13,12 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-06",
+  "description": "艺术动画skill：35种艺术风格、9种解说语法，用代码让画动起来。",
+  "first_seen": "2026-10-25",
   "full_name": "alchaincyf/huashu-art-motion",
-  "id": 1406706284
+  "id": 1406706284,
+  "language": "JavaScript",
+  "last_seen": "2026-10-25",
+  "topics": []
 }

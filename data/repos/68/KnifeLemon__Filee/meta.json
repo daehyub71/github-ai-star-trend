@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "6b01f2a4ce99a819",
+    "input_hash": "ea297db67f051b3d",
     "is_ai": false,
-    "reason": "An offline drag-and-drop file converter with no advertised AI features or agent interface.",
+    "reason": "An offline drag-and-drop file converter desktop app with no advertised AI features.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "KnifeLemon/Filee",
   "id": 1396526702,
   "language": "C#",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "audio-converter",
     "avalonia",

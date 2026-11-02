@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ec944d97d8217332",
+    "is_ai": false,
+    "reason": "A static recompilation of a Switch game for PC; it was developed with AI but has no AI features itself.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-16",
+  "description": "Work-in-progress static recompilation of The Legend of Zelda: Breath of the Wild (Switch, v1.9.0) for Windows and Linux. Bring your own dump: no game files, keys or dumping tools included.",
+  "first_seen": "2026-10-25",
+  "full_name": "Revivedx/SavageWindRecomp",
+  "id": 1422474621,
+  "language": "C",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

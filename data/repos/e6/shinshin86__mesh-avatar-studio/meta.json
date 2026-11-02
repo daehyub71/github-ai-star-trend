@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a0f8dcb570a0a86f",
+    "is_ai": true,
+    "reason": "A tool that uses coding agents (Claude Code/Codex) with an agent guide and AI image generation to turn an illustration into an animated 2D avatar.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-04",
+  "description": "Turn one illustration into an animated 2D mesh avatar with a coding agent and a local editor",
+  "first_seen": "2026-10-25",
+  "full_name": "shinshin86/mesh-avatar-studio",
+  "id": 1403847264,
+  "language": "TypeScript",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "2d-animation",
+    "avatar",
+    "claude-code",
+    "codex",
+    "mesh-deformation",
+    "vtuber",
+    "webgl"
+  ]
+}

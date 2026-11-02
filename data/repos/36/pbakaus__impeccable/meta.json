@@ -1,24 +1,30 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "agent-skills",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "7b0dc11b0457630c",
+    "input_hash": "8400d0b642fc8b68",
     "is_ai": true,
-    "reason": "A design skill with commands and detector rules that steers AI coding agents' frontend output.",
+    "reason": "Installable design skill/command pack for coding agents with playbooks and a slop detector.",
     "secondary": "coding-agent",
     "status": "ok",
     "type": "도구/라이브러리"
   },
   "created": "2025-11-16",
-  "description": "The design language that makes your AI harness better at design.",
+  "description": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
   "first_seen": "2026-03-08",
   "full_name": "pbakaus/impeccable",
   "id": 1097346685,
   "language": "Rust",
-  "last_seen": "2026-03-08",
-  "topics": []
+  "last_seen": "2026-10-25",
+  "topics": [
+    "agent-skills",
+    "ai",
+    "anti-slop",
+    "design",
+    "slop"
+  ]
 }

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e8cc479597af473f",
+    "is_ai": false,
+    "reason": "A tool that converts Switch games to run natively on Apple devices, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-13",
+  "description": "Switch games running natively on iPhone, iPad and Mac: an NSP folder becomes an unsigned IPA (NSO rewriter, Horizon HLE host, NVN→Metal)",
+  "first_seen": "2026-10-25",
+  "full_name": "seedds/nxnative",
+  "id": 1416502082,
+  "language": "Python",
+  "last_seen": "2026-10-25",
+  "topics": []
+}

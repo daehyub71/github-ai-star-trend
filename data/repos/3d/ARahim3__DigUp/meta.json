@@ -13,6 +13,27 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-08",
+  "description": "Search your computer by what's in your files: photos, PDFs, documents, recordings, videos and code. On-device on Mac, Windows and Linux, built on Google DeepMind's EmbeddingGemma 2.",
+  "first_seen": "2026-10-25",
   "full_name": "ARahim3/DigUp",
-  "id": 1410929004
+  "id": 1410929004,
+  "language": "Swift",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "embeddinggemma",
+    "embeddings",
+    "file-search",
+    "linux",
+    "llama-cpp",
+    "local-first",
+    "macos",
+    "menubar-app",
+    "multimodal",
+    "on-device",
+    "semantic-search",
+    "swift",
+    "tauri",
+    "windows"
+  ]
 }

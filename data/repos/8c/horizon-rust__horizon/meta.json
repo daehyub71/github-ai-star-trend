@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-11-02",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "454f731d99339fc1",
+    "is_ai": false,
+    "reason": "A Rust reimplementation of Minecraft Java Edition with a launcher, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-03",
+  "description": "Minecraft: Java Edition 26.3 rewritten from scratch in Rust, checked against vanilla with 281 differential harnesses. Get it with the Horizon launcher.",
+  "first_seen": "2026-10-25",
+  "full_name": "horizon-rust/horizon",
+  "id": 1403446451,
+  "language": "Rust",
+  "last_seen": "2026-10-25",
+  "topics": [
+    "differential-testing",
+    "game-engine",
+    "gamedev",
+    "linux",
+    "minecraft",
+    "minecraft-java",
+    "reimplementation",
+    "rust",
+    "voxel",
+    "vulkan",
+    "wgpu"
+  ]
+}

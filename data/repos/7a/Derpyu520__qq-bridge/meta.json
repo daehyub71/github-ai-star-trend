@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-02",
     "attempts": 1,
     "category": "ai-apps",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "5c6368331ed734c3",
+    "input_hash": "423b34ee68ea75e4",
     "is_ai": true,
-    "reason": "A QQ chatbot bridge connecting QQ messages to DeepSeek Harness agents, shipping its own safe MCP servers for QQ actions.",
+    "reason": "A QQ chatbot bridge connecting OneBot to DeepSeek Harness agents, with social simulation and MCP tools.",
     "secondary": "mcp-tools",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "Derpyu520/qq-bridge",
   "id": 1345838715,
   "language": "JavaScript",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-10-25",
   "topics": [
     "ai-agent",
     "chatbot",
