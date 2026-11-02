@@ -177,12 +177,17 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     g = p.add_mutually_exclusive_group(required=True)
     g.add_argument("--pull", metavar="DIR", help="비공개 저장소 체크아웃 → .work/")
     g.add_argument("--push", metavar="DIR", help=".work/ → 비공개 저장소 체크아웃")
+    p.add_argument("--keep-blog", action="store_true",
+                   help="--push 때 비공개 저장소에 이미 있는 블로그 파일을 덮지 않는다(자동 실행용, 결정 66)")
     p = sub.add_parser("blog", help="블로그 초안(FR-16) — 기본은 dry-run(호출 0). --run 은 과금(주 1회 호출)")
     p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
     p.add_argument("--from-draft", action="store_true",
                    help="저장한 초안(.work/<주>/blog/draft.json)으로 다시 그린다 — 호출 0")
+    p.add_argument("--leave-out", action="append", metavar="OWNER/NAME",
+                   help="순위 표에만 남기고 LLM 에 보내지 않을 저장소(결정 67 — 안전 거절 때). "
+                        "여러 번 쓸 수 있다. --from-draft 는 저장한 초안이 뺀 저장소를 그대로 따른다")
     p = sub.add_parser("notion-setup",
                        help="Notion 데이터베이스 3개(FR-15.5, 한 번만) — 기본은 계획만(호출 0)")
     p.add_argument("--parent", required=True,
@@ -849,6 +854,19 @@ def _weekly_steps(settings: Settings, args: argparse.Namespace, w: date, *,
         print(dumps_json(stats), end="")
         return 0
 
+    def blog_step() -> int:                  # 결정 66 — 사이트 사본(export)을 읽으므로 그 뒤
+        return _blog(settings, _ns(week=name, run=True, cap=cap, from_draft=False, leave_out=None),
+                     meter=meter)
+
+    def blog_done() -> bool:                 # 초안이 있으면 다시 쓰지 않는다 — 로컬에서 고친 것을 덮지 않게
+        return (settings.work_dir / name / "blog" / "draft.json").exists()
+
+    def notion_step() -> int:
+        if not settings.notion_token:        # Secrets 가 아직 없으면 이 단계만 건너뛴다
+            print("NOTION_TOKEN 없음 — Notion 단계를 건너뛴다(결정 66)", flush=True)
+            return 0
+        return _notion(settings, _ns(week=name, run=True))
+
     return [
         weekly.Step("contract", contract_step,
                     what="GitHub API 계약 점검 — 실패하면 아무것도 쓰지 않는다(FR-11.6)"),
@@ -878,6 +896,10 @@ def _weekly_steps(settings: Settings, args: argparse.Namespace, w: date, *,
                     llm=True, critical=False, what="주간 브리핑 1회 호출"),
         weekly.Step("export", export_step, critical=False,
                     what="사이트 파생 데이터 + 비공개 카드·브리핑 사본"),
+        weekly.Step("blog", blog_step, done=blog_done, llm=True, critical=False,
+                    what="블로그 초안 1회 호출(결정 66) — 초안이 있으면 다시 쓰지 않는다"),
+        weekly.Step("notion", notion_step, critical=False,
+                    what="Notion 주간·카드·블로그 초안 페이지(비용 0) — 상태가 '초안'인 것만 고친다(NFR-16)"),
         weekly.Step("archive", lambda: _archive(settings, _ns(week=name, secrets=args.secrets)),
                     critical=False,
                     what="압축본(근거 원문 + LLM 로그 · 스냅샷) — 시크릿 검사, 올리기는 워크플로"),
@@ -979,7 +1001,13 @@ def _private(settings: Settings, args: argparse.Namespace) -> int:
     if args.pull:
         stats = private.pull(target, settings.work_dir)
     else:
-        stats = private.push(settings.work_dir, target)
+        stats = private.push(settings.work_dir, target, keep_blog=args.keep_blog)
+    for c in stats.get("conflicts") or []:      # 결정 66 — 받는 쪽 값을 뒀다. 페이지 중복 여부를 사람이 본다
+        print(f"대응표 충돌 — 받는 쪽 값을 둠: {c}", file=sys.stderr)
+    for k in stats.get("kept_local") or []:
+        print(f"로컬 블로그 파일이 달라 덮지 않음: {k}", file=sys.stderr)
+    for k in stats.get("kept_private") or []:
+        print(f"비공개 저장소의 블로그 파일이 달라 덮지 않음: {k}", file=sys.stderr)
     print(dumps_json({"direction": "pull" if args.pull else "push", "dir": str(target), **stats}), end="")
     return 0
 
@@ -1129,12 +1157,15 @@ def _blog_images(settings: Settings, bi: blog.BlogInput) -> tuple[dict[str, str]
     return images, files
 
 
-def _blog(settings: Settings, args: argparse.Namespace) -> int:
+def _blog(settings: Settings, args: argparse.Namespace, meter: BudgetMeter | None = None) -> int:
     name = wk.week_name(_week_arg(args.week, date.today()))
+    leave = tuple(args.leave_out or ())
+    if not leave and args.from_draft:      # 저장한 초안이 뺀 저장소를 그대로 따른다(결정 67)
+        leave = blog.saved_left_out(settings.work_dir, name)
     try:
         bi = blog.load_input(settings.data_dir / "site", settings.work_dir / "site-private", name,
-                             data_dir=settings.data_dir)
-    except FileNotFoundError as e:
+                             data_dir=settings.data_dir, leave_out=leave)
+    except (FileNotFoundError, ValueError) as e:
         print(e, file=sys.stderr)
         return 2
     if args.from_draft:      # 저장한 초안으로 다시 그린다 — LLM 호출 0
@@ -1155,7 +1186,7 @@ def _blog(settings: Settings, args: argparse.Namespace) -> int:
         print(e, file=sys.stderr)
         return 2
     images, files = _blog_images(settings, bi)
-    meter = BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
+    meter = meter or BudgetMeter(ClaudeLLM(key), cap_usd=args.cap)
     writer = blog.BlogWriter(meter)
     stats = blog.run_blog(writer, bi, work_dir=settings.work_dir, today=date.today(),
                           published=_published_posts(settings, name), images=images, files=files,

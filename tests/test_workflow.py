@@ -149,6 +149,31 @@ def test_workflow_files_follow_the_rules():
         assert check_workflow(f.read_text(encoding="utf-8")) == [], f.name
 
 
+def _step(text: str, name: str) -> str:
+    start = text.index(f"- name: {name}")
+    nxt = text.find("\n      - name:", start + 1)
+    return text[start:nxt if nxt > 0 else len(text)]
+
+
+def test_workflow_weekly_hands_the_notion_token_to_the_run_and_check_steps():
+    # 결정 66 · P5-11 — 자동 실행이 블로그 초안·Notion 초안 페이지까지.
+    # 토큰은 env 로만 넘기고, 없으면 Notion 단계만 건너뛴다
+    text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
+    run = _step(text, "주간 실행")
+    assert "NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}" in run
+    check = _step(text, "점검")
+    assert "NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}" in check
+    assert "https://api.notion.com/v1/users/me" in check and "Notion-Version" in check
+
+
+def test_workflow_weekly_takes_in_local_pushes_before_its_own_private_push():
+    # 결정 66 — 실행 도중 로컬이 비공개 저장소에 올린 것을 먼저 받아 합치고(대응표), 블로그 파일은 덮지 않는다
+    push = _step((PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8"),
+                 "작업 폴더 → 비공개 저장소 push")
+    order = [push.index(s) for s in ("pull --ff-only", "private --push .private --keep-blog", " push\n")]
+    assert order == sorted(order)
+
+
 def test_workflow_weekly_runs_on_monday_midnight_utc():
     # 결정 32 · P5-8 — 월 00:00 UTC(09:00 KST). 손으로 점검·실행하는 길(workflow_dispatch)도 남긴다
     text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")

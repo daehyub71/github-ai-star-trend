@@ -12,6 +12,9 @@
   출처 없는 주장, 입력에 없는 숫자(FR-6.5), 합쇼체가 아닌 문장(FR-16.6), TOP 순서, 분량. 걸리면 이유를 붙여
   한 번 다시 묻는다.
 - 결과는 `.work/<주>/blog/`(결정 59 — 공개 저장소에 올리지 않는다). Notion 에는 `notion --run` 이 올린다.
+- 저장소 빼기(결정 67): 안전 거절로 초안을 못 쓸 때 사람이 정한 저장소(`leave_out`)는 순위 표에만
+  남긴다 — LLM 에는 그 카드와 브리핑의 언급 줄을 보내지 않고, 글에서 그 이름을 막는다.
+  `meta.json` 에 남겨 다시 그릴 때 따른다.
 """
 
 import hashlib
@@ -90,6 +93,18 @@ class BlogRepo:
 
 
 @dataclass(frozen=True)
+class LeftOut:
+    """사람이 글에서 빼기로 한 저장소(결정 67) — 순위 표에만 남고 설명·그림은 없다."""
+    rank: int
+    full_name: str
+    mark: str = ""
+
+
+LEFT_OUT_LINE = "이번 글에서는 이 저장소를 다루지 않습니다. 순위와 숫자는 위 표에 있습니다."
+LEFT_OUT_IMAGE = "그림 없음 — 이번 글에서 다루지 않음"
+
+
+@dataclass(frozen=True)
 class Move:
     """TOP 표의 한 줄(결정 61)."""
     rank: int
@@ -136,6 +151,22 @@ class BlogInput:
     repos: tuple[BlogRepo, ...]
     sources: Mapping[str, tuple[str, str]]                # 출처 번호 → (제목, URL)
     changes: Changes | None = None                        # 지난주 대비(결정 61) — 지난주 데이터가 없으면 None
+    left_out: tuple[LeftOut, ...] = ()                    # 순위 표에만 남기는 저장소(결정 67)
+
+
+def top_size(bi: BlogInput) -> int:
+    """글이 다루는 TOP 크기 — 뺀 저장소도 순위 표에는 있으므로 센다."""
+    return len(bi.repos) + len(bi.left_out)
+
+
+def mentions(text: str, full_name: str) -> bool:
+    """글에 그 저장소가 나오나 — 전체 이름, 또는 4자 이상인 저장소 이름(대소문자 무시).
+
+    앞뒤가 영문·숫자·`_`·`-` 가 아니면 낱말로 본다 — 한글 조사가 붙어도("gpu-unlock은") 잡는다.
+    """
+    part = full_name.split("/")[-1]
+    names = [full_name] + ([part] if len(part) >= 4 else [])
+    return any(re.search(rf"(?<![A-Za-z0-9_-]){re.escape(n)}(?![A-Za-z0-9_-])", text, re.I) for n in names)
 
 
 def _lf(text: str) -> str:
@@ -275,8 +306,12 @@ def _changes(week: str, gain: list[Mapping[str, Any]], top: list[Mapping[str, An
                    (gain_at(prev), gain_at(gain)), moves, tuple(dropped))
 
 
-def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path | None = None) -> BlogInput:
-    """data_dir: 주간 스타 파일(`stars/`)이 있는 곳 — AI 탭 밖 저장소의 지난주 증가를 찾는다(없어도 된다)."""
+def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path | None = None,
+               leave_out: Sequence[str] = ()) -> BlogInput:
+    """data_dir: 주간 스타 파일(`stars/`)이 있는 곳 — AI 탭 밖 저장소의 지난주 증가를 찾는다(없어도 된다).
+
+    leave_out: 순위 표에만 남길 저장소(결정 67) — TOP 안에 없으면 ValueError.
+    """
     wfile = site_dir / "weeks" / f"{week}.json"
     if not wfile.exists():
         raise FileNotFoundError(f"사이트 데이터가 없다 — export 를 먼저: {wfile}")
@@ -289,25 +324,36 @@ def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path |
     slugs = {int(r["repo_id"]): r["slug"] for r in (io.read_json(ref_file) if ref_file.exists() else [])}
     sources: dict[str, tuple[str, str]] = {}
     repos: list[BlogRepo] = []
+    left: list[LeftOut] = []
     top: list[Mapping[str, Any]] = []
     for e in gain:
-        if len(repos) >= TOP_N:
+        if len(repos) + len(left) >= TOP_N:
             break
-        rid = int(e["id"])
+        rid, name, rank = int(e["id"]), e["full_name"], int(e.get("rank") or 0)
+        if name in leave_out:          # 결정 67 — 순위 표에만, LLM 에는 보내지 않는다
+            left.append(LeftOut(rank, name, move_mark(e.get("prev_rank"), rank) if prev else ""))
+            top.append(e)
+            continue
         p = private_dir / "cards" / f"{slugs[rid]}.md" if rid in slugs else None
         if p is None or not p.exists():
             continue
-        ref, name, rank = f"R{len(repos) + 1}", e["full_name"], int(e.get("rank") or 0)
+        ref = f"R{len(repos) + 1}"
         sources[ref] = (name, f"https://github.com/{name}")
         card = _convert_card(_lf(io.read_text(p)), ref, name, sources)
         repos.append(BlogRepo(ref, rank, rid, name, _cat(e, names), (_fact(e, names),), card,
                               move_mark(e.get("prev_rank"), rank) if prev else ""))
         top.append(e)
+    missing = sorted(set(leave_out) - {x.full_name for x in left})
+    if missing:
+        raise ValueError(f"AI 탭 TOP {TOP_N} 에 없는 저장소는 뺄 수 없다: {', '.join(missing)}")
     changes = _changes(week, gain, top, prev, data_dir, sources) if prev else None
     bpath = private_dir / "briefings" / f"{week}.md"
     briefing = _BARE.sub("", _LINK.sub(r"\1", _body(io.read_text(bpath)))).strip() if bpath.exists() else ""
+    if left:                           # 뺀 저장소를 언급한 브리핑 줄도 보내지 않는다
+        briefing = "\n".join(ln for ln in briefing.split("\n")
+                             if not any(mentions(ln, x.full_name) for x in left))
     return BlogInput(week, data.get("week_end", ""), episode(week), names, briefing, tuple(top), tuple(repos),
-                     sources, changes)
+                     sources, changes, tuple(left))
 
 
 def _kdate(d: str, *, year: bool) -> str:
@@ -338,6 +384,9 @@ def user_message(bi: BlogInput) -> str:
              f"week: {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)} (UTC)",
              f"TOP {len(bi.repos)} rising AI repositories (numbers computed by code):"]
     facts += [r.facts[0] for r in bi.repos]
+    if bi.left_out:
+        facts.append("left out of this post by the editor — do not mention or describe these anywhere: "
+                     + ", ".join(f"{x.rank}위 {x.full_name}" for x in bi.left_out))
     if bi.changes:
         facts += _change_facts(bi.changes)
     if bi.briefing:
@@ -539,6 +588,9 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
                 errors.append(f"{where}: 라벨 '{label}' 은 {LABEL_MAX}자 이내, 가운뎃점 없이")
         texts += [(f"{where} teaches", idea.teaches)] + [(f"{where} label", lb) for lb in idea.labels]
     for where, t in texts:
+        for x in bi.left_out:
+            if mentions(t, x.full_name):
+                errors.append(f"{where}: {x.full_name} 은 이번 글에서 빼기로 한 저장소 — 언급하지 않는다")
         if _URLISH.search(t):
             errors.append(f"{where}: URL 을 쓰지 않는다 — cite sources by id only")
         if _MARKDOWN.search(t):
@@ -634,9 +686,18 @@ SUMMARY_HEAD = "한 장 요약"
 
 
 def extra_slots(bi: BlogInput) -> tuple[int, int]:
-    """주의할 점 · 한 장 요약 그림 번호(결정 65) — TOP 다음 번호(TOP 10 이면 11 · 12)."""
-    n = max((r.rank for r in bi.repos), default=0)
+    """주의할 점 · 한 장 요약 그림 번호(결정 65) — TOP 다음 번호(TOP 10 이면 11 · 12). 뺀 저장소도 센다."""
+    n = max([r.rank for r in bi.repos] + [x.rank for x in bi.left_out], default=0)
     return n + 1, n + 2
+
+
+def _ranked(bi: BlogInput) -> list[BlogRepo | LeftOut]:
+    """저장소 칸 순서 — 뺀 저장소(결정 67)는 제 순위 자리에 한 줄로 들어간다."""
+    return sorted([*bi.repos, *bi.left_out], key=lambda r: r.rank)
+
+
+def _left_head(x: LeftOut) -> str:
+    return f"{x.rank}위 {f'{x.mark} ' if x.mark else ''}{x.full_name}"
 
 
 def _extra(bi: BlogInput, dr: BlogDraft) -> list[tuple[int, str, ImageIdea]]:
@@ -682,7 +743,7 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
     out: list[str] = [
         *picture(0, dr.cover, "대표 이미지 자리"), *_series_intro(n), dr.intro, f"***{SERIES} {n}회 정보***",
         f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · {'지난주 대비 순위 변동 · ' if bi.changes else ''}"
-        f"TOP {len(bi.repos)} 저장소"
+        f"TOP {top_size(bi)} 저장소"
         "(무엇인가 · 왜 지금 떴나 · 활용 사례) · 숫자를 읽을 때 주의할 점 · 한 장 요약",
         f"⭐ 집계 기간 : {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)}, UTC 기준",
         "⭐ 데이터 기준 : 스타 1,000개 이상 저장소 전체 스냅샷과 상위 후보의 일별 스타 · "
@@ -692,12 +753,15 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         f"### 이번 주 흐름 — {dr.overview_heading}"]
     out += [c.text for c in dr.overview]
     if bi.changes:
-        out.append(f"### TOP {len(bi.repos)} — 지금 뜨는 AI 저장소, 지난주와 비교")
+        out.append(f"### TOP {top_size(bi)} — 지금 뜨는 AI 저장소, 지난주와 비교")
         out += _change_block(bi, dr, bi.changes)
     else:
-        out.append(f"### TOP {len(bi.repos)} — 지금 뜨는 AI 저장소")
+        out.append(f"### TOP {top_size(bi)} — 지금 뜨는 AI 저장소")
         out += [_rank_line(e, bi.names) for e in bi.top]
-    for r in bi.repos:
+    for r in _ranked(bi):
+        if isinstance(r, LeftOut):     # 결정 67 — 설명·그림 자리 없이 한 줄
+            out += [f"### {_left_head(r)}", LEFT_OUT_LINE]
+            continue
         p = posts.get(r.ref)
         if p is None:
             continue
@@ -745,7 +809,10 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
 
     prompts = block("0. 대표 이미지(글 맨 위)" + (f" — 만든 그림: {gen[0]}" if 0 in gen else ""), dr.cover)
     alternatives: list[str] = []
-    for r in bi.repos:
+    for r in _ranked(bi):
+        if isinstance(r, LeftOut):
+            rows.append(f"| {_left_head(r)} | {LEFT_OUT_IMAGE} |")
+            continue
         p = posts.get(r.ref)
         if p is None:
             continue
@@ -797,6 +864,7 @@ class BlogWriter:
         self.max_tokens = max_tokens
         self.system = PROMPT_FILE.read_text(encoding="utf-8")
         self.prompt_hash = hashlib.sha256(self.system.encode("utf-8")).hexdigest()[:16]
+        self.rejected: list[dict[str, Any]] = []      # 형식 검사에 걸린 답 — 과금된 출력을 버리지 않고 남긴다
 
     @property
     def fingerprint(self) -> str:
@@ -822,11 +890,13 @@ class BlogWriter:
                 dr = parse_blog(resp.text)
             except ValueError as e:
                 error = str(e)
+                self.rejected.append({"problems": [error], "text": resp.text})
                 continue
             problems = check_draft(dr, bi)
             if not problems:
                 return dr
             error = "; ".join(problems[:15])
+            self.rejected.append({"problems": problems, "text": resp.text})
         raise BlogError(f"형식 검사 두 번 실패: {error}")
 
 
@@ -840,16 +910,34 @@ def run_blog(writer: BlogWriter, bi: BlogInput, *, work_dir: Path, today: date,
     except BudgetExceeded as e:
         stats["stopped"] = "budget"
         log(f"  예산 상한 — 블로그 초안을 쓰지 않는다: {e}")
-        return stats
+        return _keep_rejected(out, bi, writer, stats, log)
     except BlogError as e:
         stats["error"] = str(e)
         log(f"  블로그 초안 실패 — {e}")
-        return stats
+        return _keep_rejected(out, bi, writer, stats, log)
     io.write_json(out / "draft.json", asdict(dr))
     meta = {"week": bi.week, "episode": bi.episode, "generated": today.isoformat(),
             "fingerprint": writer.fingerprint, "top": [r.full_name for r in bi.repos],
-            "images": dict(images), "files": dict(files)}
+            "left_out": [x.full_name for x in bi.left_out], "images": dict(images), "files": dict(files)}
     return _write(out, bi, dr, meta, stats, published=published, log=log)
+
+
+def _keep_rejected(out: Path, bi: BlogInput, writer: BlogWriter, stats: dict[str, Any],
+                   log: Callable[[str], None]) -> dict[str, Any]:
+    """초안을 못 썼을 때 형식 검사에 걸린 답과 이유를 `rejected.json` 에 남긴다 — 무엇을 고칠지 보려고."""
+    if writer.rejected:
+        io.write_json(out / "rejected.json", {"week": bi.week, "fingerprint": writer.fingerprint,
+                                              "answers": writer.rejected})
+        stats["rejected"] = len(writer.rejected)
+        for i, a in enumerate(writer.rejected, 1):
+            log(f"  걸린 답 {i}: " + "; ".join(a["problems"][:5]))
+    return stats
+
+
+def saved_left_out(work_dir: Path, week: str) -> tuple[str, ...]:
+    """저장한 초안이 뺀 저장소(결정 67) — `--from-draft` 가 같은 입력으로 다시 그리도록."""
+    p = work_dir / week / "blog" / "meta.json"
+    return tuple(io.read_json(p).get("left_out") or ()) if p.exists() else ()
 
 
 def _write(out: Path, bi: BlogInput, dr: BlogDraft, meta: dict[str, Any], stats: dict[str, Any], *,
@@ -915,7 +1003,8 @@ def dry_run(writer: BlogWriter, bi: BlogInput) -> dict[str, Any]:
     lo = cost(MODEL, Usage(typ, TYPICAL_OUTPUT))
     hi = cost(MODEL, Usage(cons, writer.max_tokens))
     return {"llm_calls": 1, "retry_max": 1, "episode": bi.episode, "top": [r.full_name for r in bi.repos],
-            "sources": len(bi.sources), "input_tokens": [typ, cons],
+            "left_out": [x.full_name for x in bi.left_out], "sources": len(bi.sources),
+            "input_tokens": [typ, cons],
             "total_usd": [round(lo, 4), round(hi, 4)], "total_usd_with_retry_max": round(2 * hi, 4),
             "assumptions": {"model": MODEL, "effort": writer.effort,
                             "output_tokens": [TYPICAL_OUTPUT, writer.max_tokens]},

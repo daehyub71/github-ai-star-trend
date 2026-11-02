@@ -7,6 +7,7 @@
 #              · 입력값도 env 로 넘긴다(스크립트 주입 방지). tests/test_workflow.py 가 이 규칙을 검사한다.
 # 필요한 것(사용자): Secrets STARTREND_GH_TOKEN(세분화 토큰 — 공개 저장소 읽기 + 비공개 저장소 내용 읽기·쓰기)
 #                   · STARTREND_ANTHROPIC_API_KEY · STARTREND_TAVILY_API_KEY
+#                   · NOTION_TOKEN(결정 66 — 블로그·Notion 초안 페이지. 없으면 Notion 단계만 건너뛴다)
 #                   · 변수 STARTREND_PRIVATE_REPO(없으면 "<이 저장소>-private")
 name: weekly
 
@@ -69,6 +70,7 @@ jobs:
           STARTREND_GH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
           STARTREND_ANTHROPIC_API_KEY: ${{ secrets.STARTREND_ANTHROPIC_API_KEY }}
           STARTREND_TAVILY_API_KEY: ${{ secrets.STARTREND_TAVILY_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         run: |
           fail=0
           for n in STARTREND_GH_TOKEN STARTREND_ANTHROPIC_API_KEY STARTREND_TAVILY_API_KEY; do
@@ -92,6 +94,15 @@ jobs:
             401|403) fail=1 ;;
             *) echo "--  Tavily 는 이 방법으로 확인하지 못했다 — 첫 실행의 근거 수집에서 본다" ;;
           esac
+          if [ -n "$NOTION_TOKEN" ]; then
+            code=$(curl -s -o /dev/null -w "%{http_code}" https://api.notion.com/v1/users/me \
+              -H "Authorization: Bearer $NOTION_TOKEN" -H "Notion-Version: 2026-03-11")
+            echo "Notion 토큰 — 연결 정보 조회(무료): HTTP $code"
+            # Notion 은 핵심 단계가 아니다 — 토큰이 틀려도 데이터 파이프라인은 돌고 notion 단계만 실패로 남는다
+            [ "$code" = "200" ] || echo "NG  Notion 토큰을 확인한다 — 이번 실행의 Notion 단계는 실패한다"
+          else
+            echo "--  NOTION_TOKEN 없음 — 블로그 초안은 쓰고 Notion 단계만 건너뛴다(결정 66)"
+          fi
           if [ "$fail" = "0" ]; then echo "점검 통과"; else echo "점검 실패 — 위 NG·HTTP 코드를 본다"; fi
           exit $fail
 
@@ -133,6 +144,7 @@ jobs:
           STARTREND_GH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
           STARTREND_ANTHROPIC_API_KEY: ${{ secrets.STARTREND_ANTHROPIC_API_KEY }}
           STARTREND_TAVILY_API_KEY: ${{ secrets.STARTREND_TAVILY_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           CAP: ${{ inputs.cap }}
         run: |
           set +e
@@ -170,14 +182,16 @@ jobs:
           W: ${{ steps.week.outputs.week }}
           PUSH_TOKEN: ${{ secrets.STARTREND_GH_TOKEN }}
         run: |
-          python -m startrend private --push .private
+          auth=$(printf 'x-access-token:%s' "$PUSH_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          # 결정 66 — 실행 도중 로컬이 올린 것(대응표·고친 블로그)을 먼저 받고, 대응표는 합치고 블로그 파일은 덮지 않는다
+          git -C .private -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" pull --ff-only
+          python -m startrend private --push .private --keep-blog
           cd .private
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "data: weekly $W"
-          auth=$(printf 'x-access-token:%s' "$PUSH_TOKEN" | base64 -w0)
-          echo "::add-mask::$auth"
           git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" push
 
       - name: 공개 데이터 commit · push (크기·시크릿 가드 먼저)

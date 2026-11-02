@@ -382,7 +382,7 @@ def test_cli_goldset_draft_never_overwrites_a_paid_drafts_file(tmp_path, capsys)
 # --- weekly (P5-2, FR-11) ---
 
 WEEKLY_STEPS = ["contract", "discover", "stars", "rank", "classify", "rank-ai", "trends", "evidence",
-                "analyze", "check", "brief", "export", "archive"]
+                "analyze", "check", "brief", "export", "blog", "notion", "archive"]   # blog·notion — 결정 66
 
 
 def test_cli_weekly_defaults_to_a_plan_without_keys(tmp_path, capsys):
@@ -393,7 +393,7 @@ def test_cli_weekly_defaults_to_a_plan_without_keys(tmp_path, capsys):
     out = json.loads(capsys.readouterr().out)
     assert out["dry_run"] is True and out["week"] == "2026-10-18" and out["cap_usd"] == 10.0
     assert [s["name"] for s in out["steps"]] == WEEKLY_STEPS
-    assert {s["name"] for s in out["steps"] if s["llm"]} == {"classify", "analyze", "brief"}
+    assert {s["name"] for s in out["steps"] if s["llm"]} == {"classify", "analyze", "brief", "blog"}
     assert all(s["will"] == "run" for s in out["steps"])
 
 
@@ -413,11 +413,28 @@ def test_cli_weekly_plan_skips_steps_whose_output_exists(tmp_path, capsys):
                    {"week": "2026-10-18", "axes": {"gain": {"all": [e], "ai": [e]}}})
     (tmp_path / "w" / "2026-10-18").mkdir(parents=True, exist_ok=True)
     (tmp_path / "w" / "2026-10-18" / "briefing.md").write_text("# b\n", encoding="utf-8")
+    (tmp_path / "w" / "2026-10-18" / "blog").mkdir()
+    (tmp_path / "w" / "2026-10-18" / "blog" / "draft.json").write_text("{}", encoding="utf-8")
     assert main(["weekly", "--week", "2026-10-18"], env=_dirs(tmp_path)) == 0
     steps = {s["name"]: s for s in json.loads(capsys.readouterr().out)["steps"]}
     assert steps["discover"]["will"] == "skip" and steps["stars"]["will"] == "skip"
     assert steps["brief"]["will"] == "skip" and steps["rank"]["will"] == "run"
+    # 초안이 있으면 블로그는 다시 쓰지 않는다(로컬에서 고친 초안을 덮지 않게). Notion 은 매번 — 초안만 고친다
+    assert steps["blog"]["will"] == "skip" and steps["notion"]["will"] == "run"
     assert steps["evidence"]["tavily_credits"] == 3      # 랭킹이 있으면 단계 계획을 그대로 보여 준다
+
+
+def test_cli_weekly_notion_step_skips_without_the_token(tmp_path, capsys):
+    # 결정 66 — Secrets 에 NOTION_TOKEN 이 없으면 Notion 단계만 건너뛰고 실행은 성공으로 남긴다
+    import argparse
+
+    from startrend.__main__ import _weekly_steps
+    from startrend.core.config import load_settings
+
+    args = argparse.Namespace(cap=10.0, poll=1, no_web=True, secrets=False)
+    steps = {s.name: s for s in _weekly_steps(load_settings(env=_dirs(tmp_path)), args, date(2026, 10, 18))}
+    assert steps["notion"].run() == 0 and "NOTION_TOKEN" in capsys.readouterr().out
+    assert steps["blog"].llm and not steps["blog"].critical and not steps["notion"].critical
 
 
 def test_cli_weekly_run_needs_every_key(tmp_path, capsys):
@@ -587,3 +604,33 @@ def test_cli_blog_reads_last_weeks_stars_for_the_rank_table(tmp_path, capsys):
     (out / "draft.json").write_text(json.dumps(draft, ensure_ascii=False), encoding="utf-8")
     assert main(["blog", "--week", "2026-10-18", "--from-draft"], env=env) == 0
     assert "| 4위 밖 · +2,028 |" in (out / "post.md").read_text(encoding="utf-8")
+
+
+def test_cli_blog_leave_out_shows_in_the_dry_run(tmp_path, capsys):
+    # 결정 67 — 사람이 정한 저장소는 LLM 에 보내지 않고 순위 표에만
+    import json
+
+    env = _blog_src(tmp_path)
+    assert main(["blog", "--week", "2026-10-18", "--leave-out", "o/b"], env=env) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["top"] == ["o/a", "o/c"] and out["left_out"] == ["o/b"]
+    assert main(["blog", "--week", "2026-10-18", "--leave-out", "o/zzz"], env=env) == 2
+    assert "o/zzz" in capsys.readouterr().err
+
+
+def test_cli_blog_from_draft_keeps_the_left_out_repo(tmp_path, capsys):
+    import json
+    from dataclasses import asdict
+
+    from startrend.stages import blog
+    from tests.test_blog import LEFT
+
+    env = _blog_src(tmp_path)
+    out = tmp_path / "w" / "2026-10-18" / "blog"
+    out.mkdir(parents=True)
+    draft = asdict(blog.parse_blog(json.dumps(LEFT, ensure_ascii=False)))
+    (out / "draft.json").write_text(json.dumps(draft, ensure_ascii=False), encoding="utf-8")
+    meta = {"left_out": ["o/b"], "images": {}, "files": {}}
+    (out / "meta.json").write_text(json.dumps(meta), encoding="utf-8")
+    assert main(["blog", "--week", "2026-10-18", "--from-draft"], env=env) == 0
+    assert blog.LEFT_OUT_LINE in (out / "post.md").read_text(encoding="utf-8")

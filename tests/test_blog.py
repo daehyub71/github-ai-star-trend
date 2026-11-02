@@ -301,6 +301,20 @@ def test_blog_run_gives_up_after_two_bad_answers(bi, tmp_path):
     assert not (tmp_path / "w" / W / "blog" / "post.md").exists()
 
 
+def test_blog_run_keeps_rejected_answers_for_review(bi, tmp_path):
+    # 2026-11-02 — 과금된 답이 형식 검사에 걸린 뒤 재시도가 예산에 막히자 답도 이유도 남지 않았다
+    bad = _with("overview.paras.0.text", "이것은 도구다. 좋다. 빠르다. 크다. 작다.")
+    llm = MockLLM([_resp(bad), _resp("not json")])
+    stats = blog.run_blog(blog.BlogWriter(llm), bi, work_dir=tmp_path / "w", today=date(2026, 11, 2),
+                          published=(), images={}, files={}, log=lambda m: None)
+    assert stats["written"] is False and stats["rejected"] == 2
+    kept = json.loads((tmp_path / "w" / W / "blog" / "rejected.json").read_text(encoding="utf-8"))
+    assert [len(a["problems"]) > 0 for a in kept["answers"]] == [True, True]
+    assert any("합쇼체" in p for p in kept["answers"][0]["problems"])
+    assert kept["answers"][1]["text"] == "not json"
+    assert json.loads(kept["answers"][0]["text"])["title_points"] == GOOD["title_points"]
+
+
 def test_blog_run_stops_at_the_budget(bi, tmp_path):
     meter = BudgetMeter(MockLLM([]), cap_usd=0.0001)
     stats = blog.run_blog(blog.BlogWriter(meter), bi, work_dir=tmp_path / "w", today=date(2026, 10, 29),
@@ -573,3 +587,77 @@ def test_blog_opens_with_why_the_series_started(bi):
     marks = ("오픈소스의 본고장", "X(옛 트위터)", "업무에 필요한 것", GOOD["intro"][:12])
     at = [head.index(t) for t in marks]
     assert at == sorted(at)                           # 연재 소개 → 기획 의도 → 이번 주 질문
+
+
+# --- 저장소 빼기 (결정 67) — 안전 거절로 초안을 못 쓸 때 사람이 정한 저장소는 순위 표에만 ---
+
+LEFT = {**GOOD, "overview": {"heading": "로컬 에이전트가 앞선 한 주", "paras": [
+    {"text": "이번 주에는 에이전트를 로컬에서 돌리는 도구가 앞섰습니다.", "sources": ["R1"]},
+    {"text": "검색 도구도 함께 올라왔습니다.", "sources": ["R2"]}]},
+    "repos": [_repo("R1", "o/a"), _repo("R2", "o/c")]}
+
+
+@pytest.fixture
+def left(tmp_path: Path) -> blog.BlogInput:
+    site, priv = _src(tmp_path)
+    (priv / "briefings" / f"{W}.md").write_bytes(
+        f"---\nweek: {W}\n---\n# 이번 주 AI 트렌드\n\n로컬 에이전트가 앞섰다.\n"
+        "- [o/b](https://github.com/o/b) — 제한을 푸는 위험한 방법이다.\n- o/c 도 올랐다.\n".encode())
+    return blog.load_input(site, priv, W, leave_out=["o/b"])
+
+
+def test_blog_leave_out_keeps_the_repo_in_the_rank_table_only(left):
+    assert [r.full_name for r in left.repos] == ["o/a", "o/c"] and [r.ref for r in left.repos] == ["R1", "R2"]
+    assert [(x.rank, x.full_name) for x in left.left_out] == [(2, "o/b")]
+    assert [e["full_name"] for e in left.top] == ["o/a", "o/b", "o/c"]      # 순위 표에는 그대로
+    msg = blog.user_message(left)
+    # LLM 에는 그 카드도, 브리핑에서 그 저장소를 언급한 줄도 보내지 않는다 — 빼라는 지시만
+    assert "o/b 는 에이전트 도구다" not in msg and "위험한 방법" not in msg and "o/c 도 올랐다" in msg
+    assert "do not mention or describe" in msg and "2위 o/b" in msg
+    assert blog.check_draft(_draft(LEFT), left) == []
+
+
+def test_blog_checker_rejects_drafts_that_mention_a_left_out_repo(left):
+    bad = copy.deepcopy(LEFT)
+    bad["overview"]["paras"][1]["text"] = "o/b 도 함께 올라왔습니다."
+    errors = blog.check_draft(_draft(bad), left)
+    assert any("overview para 2" in e and "o/b" in e for e in errors)
+    assert blog.mentions("이번 주 gpu-unlock 은 빨랐습니다.", "z/gpu-unlock")
+    assert blog.mentions("Z/GPU-Unlock 을 봅니다.", "z/gpu-unlock")
+    assert not blog.mentions("bob 은 아닙니다.", "o/b") and not blog.mentions("gpu-unlocked", "z/gpu-unlock")
+
+
+def test_blog_render_puts_one_line_where_the_left_out_repo_was(left):
+    _, body, res = blog.render(left, _draft(LEFT), published=(), images={})
+    assert "### TOP 3 — 지금 뜨는 AI 저장소" in body and "TOP 3 저장소(무엇인가" in body
+    assert "2위 o/b — 지난 주 +69,359 스타 · 누적 300,002 · RAG·검색" in body
+    o_b = _between(body, "### 2위 o/b", "### 3위 o/c")
+    assert o_b == f"### 2위 o/b\n\n{blog.LEFT_OUT_LINE}\n\n"            # 설명·그림 자리 없이 한 줄
+    order = ["### 1위 o/a", "### 2위 o/b", "### 3위 o/c", "### 이번 주 숫자를 읽을 때 주의할 점"]
+    at = [body.index(h) for h in order]
+    assert at == sorted(at) and res.excluded == ()
+    doc = blog.images_doc(left, _draft(LEFT), images={}, files={})
+    assert f"| 2위 o/b | {blog.LEFT_OUT_IMAGE} |" in doc and "### 2. o/b" not in doc
+
+
+def test_blog_extra_slots_count_the_left_out_repo(tmp_path):
+    site, priv = _src(tmp_path)
+    last = blog.load_input(site, priv, W, leave_out=["o/c"])          # 마지막 순위를 빼도 TOP 3 → 4 · 5
+    assert blog.extra_slots(last) == (4, 5)
+
+
+def test_blog_leave_out_must_name_a_top_repo(tmp_path):
+    site, priv = _src(tmp_path)
+    with pytest.raises(ValueError, match="o/zzz"):
+        blog.load_input(site, priv, W, leave_out=["o/zzz"])
+
+
+def test_blog_leave_out_is_saved_for_the_rerender(left, tmp_path):
+    w = tmp_path / "w"
+    stats = blog.run_blog(blog.BlogWriter(MockLLM([_resp(LEFT)])), left, work_dir=w, today=date(2026, 11, 2),
+                          published=(), images={}, files={}, log=lambda m: None)
+    assert stats["written"] is True and stats["prompts"] == 5             # 0 · 1 · 3 · 4 · 5 — 2 는 없다
+    assert blog.saved_left_out(w, W) == ("o/b",)
+    assert blog.saved_left_out(tmp_path / "none", W) == ()
+    est = blog.dry_run(blog.BlogWriter(MockLLM([])), left)
+    assert est["top"] == ["o/a", "o/c"] and est["left_out"] == ["o/b"]
