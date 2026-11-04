@@ -1164,7 +1164,8 @@ def _blog(settings: Settings, args: argparse.Namespace, meter: BudgetMeter | Non
         leave = blog.saved_left_out(settings.work_dir, name)
     try:
         bi = blog.load_input(settings.data_dir / "site", settings.work_dir / "site-private", name,
-                             data_dir=settings.data_dir, leave_out=leave)
+                             data_dir=settings.data_dir, leave_out=leave,
+                             told=blog.previous_told(settings.work_dir, name))   # 결정 69 — 지난 회 글
     except (FileNotFoundError, ValueError) as e:
         print(e, file=sys.stderr)
         return 2

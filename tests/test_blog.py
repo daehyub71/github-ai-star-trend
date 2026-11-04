@@ -11,7 +11,7 @@
 import copy
 import json
 import re
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -116,6 +116,10 @@ CAUTION = {"teaches": "숫자를 읽을 때 빠지기 쉬운 함정", "scene": S
            "labels": ["별은 관심의 크기", "비율보다 증가량"]}
 SUMMARY = {"teaches": "이번 주를 한 장으로", "scene": SCENE.replace("two-step", "one-page"),
            "labels": ["에이전트 도구", "작업 스킬"]}
+OVERVIEW = {"teaches": "관심이 옮겨 간 길", "scene": SCENE.replace("two-step", "three-step"),
+            "labels": ["도구 묶음", "작업 스킬"]}
+TOPPIC = {"teaches": "순위표를 읽는 법", "scene": SCENE.replace("two-step", "podium"),
+          "labels": ["남은 곳", "새로 들어온 곳"]}
 
 
 def _repo(ref: str, name: str) -> dict[str, Any]:
@@ -141,6 +145,8 @@ GOOD: dict[str, Any] = {
     "tags": ["MCP", "로컬 LLM", "에이전트"],
     "caution_image": CAUTION,
     "summary_image": SUMMARY,
+    "overview_image": OVERVIEW,
+    "top_image": TOPPIC,
 }
 
 
@@ -520,7 +526,8 @@ def test_blog_rerender_picks_up_generated_images(bi, tmp_path):
                   published=(), images={"o/a": IMG}, files={"o/a": "img/o__a.png"}, log=lambda m: None)
     out = _gen(w / W / "blog", "2.png")
     stats = blog.rerender(bi, work_dir=w, published=(), log=lambda m: None)
-    assert stats["generated"] == 1 and stats["prompts"] == 4    # 대표 0 · 3위 · 4 주의할 점 · 5 한 장 요약
+    # 대표 0 · 3위 · 4 주의할 점 · 5 한 장 요약 · 6 이번 주 흐름 · 7 TOP 순위
+    assert stats["generated"] == 1 and stats["prompts"] == 6
     assert "![작업을 나눠 맡기는 흐름](gen/2.png)" in (out / "post.md").read_text(encoding="utf-8")
     assert "gen/2.png (만든 그림)" in (out / "images.md").read_text(encoding="utf-8")
 
@@ -531,7 +538,7 @@ def _between(body: str, start: str, end: str) -> str:
 
 def test_blog_caution_and_summary_get_picture_slots_after_the_top(bi):
     # 2026-10-30 사용자 — 주의할 점 · 한 장 요약에도 그림. 번호는 TOP 다음(TOP 3 → 4 · 5, TOP 10 → 11 · 12)
-    assert blog.extra_slots(bi) == (4, 5)
+    assert blog.extra_slots(bi)[:2] == (4, 5)
     _, body, _ = blog.render(bi, _draft(), published=(), images={})
     caution = _between(body, "### 이번 주 숫자를 읽을 때 주의할 점", "### 한 장 요약")
     assert caution.index("> 🎨 그림 자리 — 숫자를 읽을 때 빠지기 쉬운 함정") < caution.index("별이 많으면")
@@ -575,6 +582,132 @@ def test_blog_drafts_saved_before_the_new_pictures_still_render(bi, tmp_path):
     _, body, _ = blog.render(bi, dr, published=(), images={})
     assert "> 🎨" not in _between(body, "### 이번 주 숫자를 읽을 때 주의할 점", "### 함께 보기")
     assert "| 한 장 요약 |" not in blog.images_doc(bi, dr, images={}, files={})
+
+
+# --- 이번 주 흐름 · TOP 순위에도 그림 (결정 68) — 내용 소제목마다 그림 하나 ---
+
+OV_HEAD, TOP_HEAD = "### 이번 주 흐름 — 로컬 에이전트가 앞선 한 주", "### TOP 3 — 지금 뜨는 AI 저장소"
+
+
+def test_blog_overview_and_top_get_picture_slots_after_the_others(bi):
+    # 2026-11-04 사용자 — 번호는 주의할 점 · 한 장 요약 다음(TOP 3 → 6 · 7, TOP 10 → 13 · 14).
+    # 이미 만든 그림(gen/11 · gen/12)의 번호를 바꾸지 않으려고 뒤에 붙인다
+    assert blog.extra_slots(bi) == (4, 5, 6, 7)
+    _, body, _ = blog.render(bi, _draft(), published=(), images={})
+    ov = _between(body, OV_HEAD, TOP_HEAD)
+    assert ov.index("> 🎨 그림 자리 — 관심이 옮겨 간 길") < ov.index("이번 주에는 에이전트를")
+    top = _between(body, TOP_HEAD, "### 1위 o/a")
+    assert top.index("> 🎨 그림 자리 — 순위표를 읽는 법") < top.index("1위 o/a — 지난 주")
+    assert "three-step" in ov and "podium" in top
+    _, body, res = blog.render(bi, _draft(), published=(), images={}, gen={6: "gen/6.png", 7: "gen/7.png"})
+    ov = _between(body, OV_HEAD, TOP_HEAD)
+    top = _between(body, TOP_HEAD, "### 1위 o/a")
+    assert f"{OV_HEAD}\n\n![관심이 옮겨 간 길](gen/6.png)\n" in body and "```text" not in ov
+    assert f"{TOP_HEAD}\n\n![순위표를 읽는 법](gen/7.png)\n" in body and "```text" not in top
+    assert res.excluded == ()
+
+
+def test_blog_overview_and_top_pictures_follow_the_rank_changes_heading(moved):
+    _, body, _ = blog.render(moved, _draft({**GOOD, "movers": MOVERS}), published=(), images={},
+                             gen={7: "gen/7.png"})
+    head = "### TOP 3 — 지금 뜨는 AI 저장소, 지난주와 비교"
+    assert f"{head}\n\n![순위표를 읽는 법](gen/7.png)\n\n⭐ 지난주" in body
+
+
+def test_blog_images_doc_lists_overview_and_top_pictures_in_reading_order(bi):
+    doc = blog.images_doc(bi, _draft(), images={}, files={}, gen={7: "gen/7.png"})
+    assert "| 이번 주 흐름 — 로컬 에이전트가 앞선 한 주 | 생성 프롬프트 6 |" in doc
+    assert "| TOP 3 — 지금 뜨는 AI 저장소 | gen/7.png (만든 그림) |" in doc
+    assert doc.index("| 이번 주 흐름") < doc.index("| TOP 3") < doc.index("| 1위 o/a")
+    heads = ["### 0. 대표", "### 6. 이번 주 흐름 — 로컬 에이전트가 앞선 한 주\n",
+             "### 7. TOP 3 — 지금 뜨는 AI 저장소 — 만든 그림: gen/7.png", "### 1. o/a", "### 4. 이번 주 숫자"]
+    at = [doc.index(h) for h in heads]
+    assert at == sorted(at)                           # 그림 만드는 사람은 글 순서대로 따라간다
+    assert "- 얹을 라벨: 도구 묶음 · 작업 스킬" in doc
+
+
+def test_blog_checker_and_schema_cover_the_overview_and_top_pictures(bi):
+    assert {"overview_image", "top_image"} <= set(blog.SCHEMA["required"])
+    errors = blog.check_draft(_draft(_with("overview_image.labels", ["하나"])), bi)
+    assert any(e.startswith("overview_image: 라벨은") for e in errors)
+    errors = blog.check_draft(_draft(_with("top_image.scene", "too short")), bi)
+    assert any(e.startswith("top_image: 그림 프롬프트가 짧다") for e in errors)
+
+
+def test_blog_drafts_saved_before_the_overview_and_top_pictures_still_render(bi, tmp_path):
+    d = asdict(_draft())
+    d.pop("overview_image")
+    d.pop("top_image")
+    (tmp_path / "draft.json").write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+    dr = blog.load_draft(tmp_path / "draft.json")
+    assert dr.overview_image is None and dr.top_image is None
+    _, body, _ = blog.render(bi, dr, published=(), images={})
+    assert "> 🎨" not in _between(body, OV_HEAD, "### 1위 o/a")
+    doc = blog.images_doc(bi, dr, images={}, files={})
+    assert "| 이번 주 흐름 — 로컬 에이전트가 앞선 한 주 | — |" in doc and "| TOP 3" not in doc
+
+
+# --- 지난 회와 같은 내용 빼기 (결정 69) ---
+
+def test_blog_series_intro_is_short_after_the_first_episode(bi):
+    # 2026-11-04 사용자 — 연재 소개 3문단은 1회에만
+    _, body, _ = blog.render(replace(bi, episode=2), _draft(), published=(), images={})
+    head = body[:body.index("***")]
+    assert "「깃허브 AI 트렌드 주간 동향」의 2번째 글입니다." in head and "1회 글" in head
+    assert "X(옛 트위터)" not in head and "업무에 필요한 것" not in head and GOOD["intro"] in head
+
+
+def test_blog_previous_told_reads_last_weeks_draft(bi, tmp_path):
+    w = tmp_path / "w"
+    blog.run_blog(blog.BlogWriter(MockLLM([_resp(GOOD)])), bi, work_dir=w, today=date(2026, 10, 29),
+                  published=(), images={}, files={}, log=lambda m: None)
+    told = blog.previous_told(w, "2026-10-25")
+    assert set(told) == {"o/a", "o/b", "o/c"}
+    assert told["o/a"] == tuple(GOOD["repos"][0][k]["text"] for k in ("what", "why_now", "use_cases"))
+    assert blog.previous_told(w, W) == {} and blog.previous_told(tmp_path / "none", "2026-10-25") == {}
+
+
+TOLD = ("지난 회에 소개한 내용입니다. 별 1,234개를 받았습니다.", "지난 회의 계기입니다.",
+        "지난 회의 사례입니다.")
+
+
+def test_blog_user_message_sends_last_weeks_text_for_repeat_repos(tmp_path):
+    site, priv = _src(tmp_path)
+    again = blog.load_input(site, priv, W, told={"o/a": TOLD})
+    assert again.repos[0].told == TOLD and again.repos[1].told == ()
+    msg = blog.user_message(again)
+    a, rest = msg[msg.index("[R1] o/a"):msg.index("[R2] o/b")], msg[msg.index("[R2] o/b"):]
+    assert "지난 회에 소개한 내용입니다." in a and "do not repeat" in a and "지난 회" not in rest
+    assert blog.check_draft(_draft(), again) == []
+    # 지난 회 글의 숫자는 이번 주 글에 쓸 수 있는 숫자가 아니다(FR-6.5)
+    bad = _with("repos.0.what.text", GOOD["repos"][0]["what"]["text"] + " 별 1,234개를 받았습니다.")
+    assert any("1234" in e for e in blog.check_draft(_draft(bad), again))
+    assert blog.dry_run(blog.BlogWriter(MockLLM([])), again)["told"] == ["o/a"]
+
+
+def test_blog_repeated_finds_spans_copied_from_last_week():
+    assert blog.repeated("ㄱ" * 29 + " 끝", "앞 " + "ㄱ" * 29) == ""            # 29자 — 통과
+    assert blog.repeated("앞" + "ㄱ" * 30, "ㄱ" * 30 + " 뒤") == "ㄱ" * 30
+    assert blog.repeated("가나  다라 " * 8, "가나 다라 " * 8) != ""              # 띄어쓰기 차이는 무시
+
+
+def test_blog_checker_rejects_text_repeated_from_last_week(tmp_path):
+    site, priv = _src(tmp_path)
+    old = GOOD["repos"][0]["use_cases"]["text"]
+    again = blog.load_input(site, priv, W, told={"o/a": ("다른 글입니다.", "다른 글입니다.", old)})
+    errors = blog.check_draft(_draft(), again)
+    assert any(e.startswith("R1 활용 사례: 지난 회 글과 같은 구간") for e in errors), errors
+    assert not any(e.startswith(("R2", "R3")) for e in errors)
+
+
+def test_blog_repeat_repos_may_be_shorter(tmp_path):
+    # 새 사실만 쓰면 짧아질 수 있다 — 하한 200자(처음 소개하는 저장소는 350자)
+    site, priv = _src(tmp_path)
+    short = _draft(_with("repos.0.what.text", "지난 회에 소개한 도구를 다시 짧게 부릅니다."))
+    first = blog.load_input(site, priv, W)
+    again = blog.load_input(site, priv, W, told={"o/a": TOLD})
+    assert any(e.startswith("R1 분량") for e in blog.check_draft(short, first))
+    assert not any(e.startswith("R1 분량") for e in blog.check_draft(short, again))
 
 
 def test_blog_opens_with_why_the_series_started(bi):
@@ -642,8 +775,8 @@ def test_blog_render_puts_one_line_where_the_left_out_repo_was(left):
 
 def test_blog_extra_slots_count_the_left_out_repo(tmp_path):
     site, priv = _src(tmp_path)
-    last = blog.load_input(site, priv, W, leave_out=["o/c"])          # 마지막 순위를 빼도 TOP 3 → 4 · 5
-    assert blog.extra_slots(last) == (4, 5)
+    last = blog.load_input(site, priv, W, leave_out=["o/c"])          # 마지막 순위를 빼도 TOP 3 → 4~7
+    assert blog.extra_slots(last) == (4, 5, 6, 7)
 
 
 def test_blog_leave_out_must_name_a_top_repo(tmp_path):
@@ -656,7 +789,7 @@ def test_blog_leave_out_is_saved_for_the_rerender(left, tmp_path):
     w = tmp_path / "w"
     stats = blog.run_blog(blog.BlogWriter(MockLLM([_resp(LEFT)])), left, work_dir=w, today=date(2026, 11, 2),
                           published=(), images={}, files={}, log=lambda m: None)
-    assert stats["written"] is True and stats["prompts"] == 5             # 0 · 1 · 3 · 4 · 5 — 2 는 없다
+    assert stats["written"] is True and stats["prompts"] == 7             # 0 · 1 · 3 · 4~7 — 2 는 없다
     assert blog.saved_left_out(w, W) == ("o/b",)
     assert blog.saved_left_out(tmp_path / "none", W) == ()
     est = blog.dry_run(blog.BlogWriter(MockLLM([])), left)

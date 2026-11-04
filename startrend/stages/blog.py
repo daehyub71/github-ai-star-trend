@@ -15,6 +15,9 @@
 - 저장소 빼기(결정 67): 안전 거절로 초안을 못 쓸 때 사람이 정한 저장소(`leave_out`)는 순위 표에만
   남긴다 — LLM 에는 그 카드와 브리핑의 언급 줄을 보내지 않고, 글에서 그 이름을 막는다.
   `meta.json` 에 남겨 다시 그릴 때 따른다.
+- 내용 소제목마다 그림 하나(결정 65·68): 대표 · 이번 주 흐름 · TOP 순위 · 저장소마다 · 주의할 점 · 한 장 요약.
+- 지난 회와 같은 내용 빼기(결정 69): 연재 소개 3문단은 1회에만. 지난주 글에도 나온 저장소는 지난 회 세 부분을
+  LLM 에 함께 보내 새 사실만 쓰게 하고, 지난 회 글과 그대로 겹치는 구간을 형식 검사기가 막는다.
 """
 
 import hashlib
@@ -50,6 +53,9 @@ TOP_N = 10
 CARD_SECTIONS = ("① 3줄 요약", "③ 왜 지금 떴나", "④ 무엇인가", "⑥ 활용사례")
 PARTS = (("what", "무엇인가"), ("why_now", "왜 지금 떴나"), ("use_cases", "활용 사례"))
 REPO_CHARS = (350, 750)      # 저장소 하나의 세 부분 합 — 사용자 "한글 500자 정도"
+REPEAT_CHARS = (200, 750)    # 지난 회에 소개한 저장소 — 새 사실만 쓰면 짧아질 수 있다(결정 69, 처음 정한 값)
+REPEAT_SPAN = 30             # 지난 회 글과 이만큼 그대로 겹치면 되풀이(결정 69)
+#                              10-25 실측: 되풀이한 글 17~64자 · 대조군(다른 저장소끼리) 최대 15자
 SMALL = {str(n) for n in range(0, 11)}       # 셈말로 쓰는 작은 수는 허용
 SCENE_MIN = 400              # 그림 장면 프롬프트 최소 글자 수 — 구도·요소·라벨 자리까지 쓰게(결정 60)
 LABELS = (2, 6)              # 그림에 나중에 얹을 한글 라벨 수
@@ -90,6 +96,7 @@ class BlogRepo:
     facts: tuple[str, ...]           # 코드가 쓴 순위·숫자 줄
     card: str                        # 블로그에 쓰는 카드 섹션 — 링크를 출처 번호로 바꿈
     mark: str = ""                   # 지난주 대비 변동 표시(결정 61) — 지난주 데이터가 없으면 ""
+    told: tuple[str, ...] = ()       # 지난 회 글의 세 부분(결정 69) — 지난주 글에 없었으면 ()
 
 
 @dataclass(frozen=True)
@@ -307,11 +314,13 @@ def _changes(week: str, gain: list[Mapping[str, Any]], top: list[Mapping[str, An
 
 
 def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path | None = None,
-               leave_out: Sequence[str] = ()) -> BlogInput:
+               leave_out: Sequence[str] = (), told: Mapping[str, Sequence[str]] | None = None) -> BlogInput:
     """data_dir: 주간 스타 파일(`stars/`)이 있는 곳 — AI 탭 밖 저장소의 지난주 증가를 찾는다(없어도 된다).
 
     leave_out: 순위 표에만 남길 저장소(결정 67) — TOP 안에 없으면 ValueError.
+    told: 지난 회 글의 세 부분 {저장소: (무엇인가, 왜 지금 떴나, 활용 사례)}(결정 69, `previous_told`).
     """
+    told = told or {}
     wfile = site_dir / "weeks" / f"{week}.json"
     if not wfile.exists():
         raise FileNotFoundError(f"사이트 데이터가 없다 — export 를 먼저: {wfile}")
@@ -341,7 +350,7 @@ def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path |
         sources[ref] = (name, f"https://github.com/{name}")
         card = _convert_card(_lf(io.read_text(p)), ref, name, sources)
         repos.append(BlogRepo(ref, rank, rid, name, _cat(e, names), (_fact(e, names),), card,
-                              move_mark(e.get("prev_rank"), rank) if prev else ""))
+                              move_mark(e.get("prev_rank"), rank) if prev else "", tuple(told.get(name, ()))))
         top.append(e)
     missing = sorted(set(leave_out) - {x.full_name for x in left})
     if missing:
@@ -379,7 +388,15 @@ def _change_facts(ch: Changes) -> list[str]:
     return out
 
 
-def user_message(bi: BlogInput) -> str:
+def _told(r: BlogRepo) -> str:
+    """지난 회에 독자가 이미 읽은 세 부분(결정 69) — 같은 사실·사례·문장을 되풀이하지 않게."""
+    parts = "\n".join(f"{label}: {text}" for (_, label), text in zip(PARTS, r.told, strict=False))
+    return ("\nalready covered in last week's post — readers have read this. do not repeat its facts, "
+            "examples or sentences; keep the three parts but write only what is new this week:\n" + parts)
+
+
+def user_message(bi: BlogInput, *, with_told: bool = True) -> str:
+    """with_told=False: 지난 회 글을 뺀 입력 — 형식 검사기의 숫자 허용 목록용(지난 회 숫자는 쓸 수 없다)."""
     facts = [f"series: {SERIES} · episode {bi.episode}",
              f"week: {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)} (UTC)",
              f"TOP {len(bi.repos)} rising AI repositories (numbers computed by code):"]
@@ -392,7 +409,8 @@ def user_message(bi: BlogInput) -> str:
     if bi.briefing:
         facts += ["", "weekly briefing (already published on the site):", bi.briefing]
     items = [f"[{r.ref}] {r.full_name} · {r.category}\n" + "\n".join(r.facts) +
-             f"\ncard (sources marked like [{r.ref}:E3]):\n{r.card}" for r in bi.repos]
+             f"\ncard (sources marked like [{r.ref}:E3]):\n{r.card}"
+             + (_told(r) if with_told and r.told else "") for r in bi.repos]
     doc = untrusted.block("document", "\n".join(facts))
     return f"{doc}\n{untrusted.block('evidence', chr(10).join(items))}"
 
@@ -412,7 +430,9 @@ SCHEMA: dict[str, Any] = _obj({
     "title_points": _STRS,
     "intro": _STR,
     "overview": _obj({"heading": _STR, "paras": {"type": "array", "items": _CLAIM}}),
+    "overview_image": _IDEA,
     "movers": {"type": "array", "items": _CLAIM},
+    "top_image": _IDEA,
     "repos": {"type": "array", "items": _obj({"ref": _STR, "subtitle": _STR, "what": _CLAIM,
                                               "why_now": _CLAIM, "use_cases": _CLAIM, "image": _IDEA})},
     "cover": _IDEA,
@@ -467,6 +487,8 @@ class BlogDraft:
     movers: tuple[Claim, ...] = ()   # 순위 변동 해설(결정 61) — 예전 초안에는 없다
     caution_image: ImageIdea | None = None   # 주의할 점 · 한 장 요약 그림(결정 65) — 예전 초안에는 없다
     summary_image: ImageIdea | None = None
+    overview_image: ImageIdea | None = None  # 이번 주 흐름 · TOP 순위 그림(결정 68) — 예전 초안에는 없다
+    top_image: ImageIdea | None = None
 
 
 def _str(v: Any, name: str) -> str:
@@ -528,7 +550,9 @@ def parse_blog(text: str) -> BlogDraft:
                      _strs(d.get("tags") or [], "tags"),
                      tuple(_claim(p, "movers") for p in d.get("movers") or []),
                      caution_image=_idea(d.get("caution_image"), "caution_image"),
-                     summary_image=_idea(d.get("summary_image"), "summary_image"))
+                     summary_image=_idea(d.get("summary_image"), "summary_image"),
+                     overview_image=_idea(d.get("overview_image"), "overview_image"),
+                     top_image=_idea(d.get("top_image"), "top_image"))
 
 
 _NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
@@ -541,10 +565,23 @@ def _numbers(text: str) -> set[str]:
     return {t.replace(",", "") for t in _NUM.findall(text)}
 
 
+def repeated(text: str, old: str) -> str:
+    """지난 회 글과 그대로 겹치는 구간(REPEAT_SPAN 자 이상, 결정 69) — 없으면 "". 띄어쓰기 차이는 무시한다."""
+    a, b = " ".join(text.split()), " ".join(old.split())
+    for i in range(len(a) - REPEAT_SPAN + 1):
+        if a[i:i + REPEAT_SPAN] in b:
+            j = i + REPEAT_SPAN
+            while j < len(a) and a[i:j + 1] in b:
+                j += 1
+            return a[i:j]
+    return ""
+
+
 def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
     """형식 검사기 — 빈 목록이면 통과. 메시지는 LLM 에게 다시 물을 때 그대로 붙인다."""
     errors: list[str] = []
-    allowed = _numbers(user_message(bi)) | SMALL | {str(bi.episode)}
+    allowed = _numbers(user_message(bi, with_told=False)) | SMALL | {str(bi.episode)}
+    src = {r.ref: r for r in bi.repos}
     claims: list[tuple[str, Claim]] = [(f"overview para {i + 1}", c) for i, c in enumerate(dr.overview)]
     claims += [(f"movers para {i + 1}", c) for i, c in enumerate(dr.movers)]
     if bi.changes and not MOVER_PARAS[0] <= len(dr.movers) <= MOVER_PARAS[1]:
@@ -557,9 +594,16 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
     for r in dr.repos:
         claims += [(f"{r.ref} {label}", getattr(r, key)) for key, label in PARTS]
         n = sum(len(getattr(r, key).text) for key, _ in PARTS)
-        if not REPO_CHARS[0] <= n <= REPO_CHARS[1]:
-            errors.append(f"{r.ref} 분량 — 세 부분 합 {n}자, 저장소 하나에 한글 500자 안팎"
-                          f"({REPO_CHARS[0]}~{REPO_CHARS[1]}자)")
+        told = src[r.ref].told if r.ref in src else ()
+        lo, hi = REPEAT_CHARS if told else REPO_CHARS
+        if not lo <= n <= hi:
+            errors.append(f"{r.ref} 분량 — 세 부분 합 {n}자, 저장소 하나에 한글 500자 안팎({lo}~{hi}자)")
+        old = " ".join(told)
+        for key, label in PARTS if told else ():
+            span = repeated(getattr(r, key).text, old)
+            if span:
+                errors.append(f"{r.ref} {label}: 지난 회 글과 같은 구간 '{span}' — "
+                              "되풀이하지 말고 이번 주의 새 사실로 쓴다")
     texts: list[tuple[str, str]] = [("title_points", t) for t in dr.title_points]
     texts += [("intro", dr.intro), ("summary", dr.summary), ("next", dr.next),
               ("heading", dr.overview_heading)]
@@ -573,7 +617,8 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
             if sid not in bi.sources:
                 errors.append(f"{where}: {sid} 는 목록에 없는 출처 — use only ids shown in <evidence>")
     ideas = [("cover", dr.cover)] + [(f"{r.ref} image", r.image) for r in dr.repos]
-    extra = (("caution_image", dr.caution_image), ("summary_image", dr.summary_image))
+    extra = (("caution_image", dr.caution_image), ("summary_image", dr.summary_image),
+             ("overview_image", dr.overview_image), ("top_image", dr.top_image))
     ideas += [(k, i) for k, i in extra if i]
     for where, idea in ideas:
         if _URLISH.search(idea.scene):
@@ -655,7 +700,14 @@ def _change_block(bi: BlogInput, dr: BlogDraft, ch: Changes) -> list[str]:
 
 
 def _series_intro(n: int) -> list[str]:
-    """머리말 — 연재를 시작한 이유(2026-10-30 사용자가 쓴 기획 의도를 다듬은 것). 매 회 같다."""
+    """머리말 — 연재를 시작한 이유(2026-10-30 사용자가 쓴 기획 의도를 다듬은 것).
+
+    3문단은 1회에만, 2회부터는 세 문장(결정 69 — 지난 회와 같은 내용 빼기).
+    """
+    if n > 1:
+        return [f"「{SERIES}」의 {n}번째 글입니다. GitHub 에서 스타를 많이 받은 AI 저장소를 매주 모아 "
+                "어떤 흐름이 생기는지 숫자와 근거로 확인합니다. "
+                "연재를 시작한 이유는 1회 글에 적어 두었습니다."]
     return [f"「{SERIES}」의 {n}번째 글입니다. 이 연재는 오픈소스의 최근 흐름을 파악하려고 시작한 작은 "
             "프로젝트입니다. 오픈소스의 본고장인 GitHub 에서 스타를 많이 받은 저장소를 매주 모아, "
             "어떤 흐름이 생기는지 숫자와 근거로 확인합니다.",
@@ -685,10 +737,22 @@ CAUTION_HEAD = "이번 주 숫자를 읽을 때 주의할 점"
 SUMMARY_HEAD = "한 장 요약"
 
 
-def extra_slots(bi: BlogInput) -> tuple[int, int]:
-    """주의할 점 · 한 장 요약 그림 번호(결정 65) — TOP 다음 번호(TOP 10 이면 11 · 12). 뺀 저장소도 센다."""
+def extra_slots(bi: BlogInput) -> tuple[int, int, int, int]:
+    """주의할 점 · 한 장 요약(결정 65) · 이번 주 흐름 · TOP 순위(결정 68) 그림 번호 — TOP 다음 번호.
+
+    TOP 10 이면 11 · 12 · 13 · 14. 뺀 저장소도 센다. 결정 68 의 두 번호는 뒤에 붙인다 — 이미 만든 그림
+    (`gen/11` · `gen/12`)의 번호를 바꾸지 않으려고.
+    """
     n = max([r.rank for r in bi.repos] + [x.rank for x in bi.left_out], default=0)
-    return n + 1, n + 2
+    return n + 1, n + 2, n + 3, n + 4
+
+
+def _overview_head(dr: BlogDraft) -> str:
+    return f"이번 주 흐름 — {dr.overview_heading}"
+
+
+def _top_head(bi: BlogInput) -> str:
+    return f"TOP {top_size(bi)} — 지금 뜨는 AI 저장소" + (", 지난주와 비교" if bi.changes else "")
 
 
 def _ranked(bi: BlogInput) -> list[BlogRepo | LeftOut]:
@@ -701,9 +765,13 @@ def _left_head(x: LeftOut) -> str:
 
 
 def _extra(bi: BlogInput, dr: BlogDraft) -> list[tuple[int, str, ImageIdea]]:
-    """(번호, 소제목, 그림) — 예전 초안처럼 그림이 없는 자리는 뺀다."""
-    pairs = zip(extra_slots(bi), (CAUTION_HEAD, SUMMARY_HEAD), (dr.caution_image, dr.summary_image),
-                strict=True)
+    """(번호, 소제목, 그림) — 글 순서(이번 주 흐름 · TOP 순위 · 주의할 점 · 한 장 요약).
+
+    예전 초안처럼 그림이 없는 자리는 뺀다.
+    """
+    caution, summary, overview, top = extra_slots(bi)
+    pairs = ((overview, _overview_head(dr), dr.overview_image), (top, _top_head(bi), dr.top_image),
+             (caution, CAUTION_HEAD, dr.caution_image), (summary, SUMMARY_HEAD, dr.summary_image))
     return [(no, head, idea) for no, head, idea in pairs if idea]
 
 
@@ -740,6 +808,8 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
             return [key]
         return _slot(what, idea)
 
+    extra = {head: picture(no, idea, "그림 자리") for no, head, idea in _extra(bi, dr)}
+    ov_head, top_head = _overview_head(dr), _top_head(bi)
     out: list[str] = [
         *picture(0, dr.cover, "대표 이미지 자리"), *_series_intro(n), dr.intro, f"***{SERIES} {n}회 정보***",
         f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · {'지난주 대비 순위 변동 · ' if bi.changes else ''}"
@@ -750,13 +820,12 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         "AI 여부와 카테고리는 Claude 가 판정 · 숫자는 GitHub API 값을 코드가 계산",
         "⭐ 쓰는 방식 : 숫자는 코드가, 글 초안은 AI(Claude)가 쓰고 사람이 검토합니다",
         f"⭐ 데이터 저장소 : {REPO_URL}",
-        f"### 이번 주 흐름 — {dr.overview_heading}"]
+        f"### {ov_head}", *extra.get(ov_head, [])]
     out += [c.text for c in dr.overview]
+    out += [f"### {top_head}", *extra.get(top_head, [])]
     if bi.changes:
-        out.append(f"### TOP {top_size(bi)} — 지금 뜨는 AI 저장소, 지난주와 비교")
         out += _change_block(bi, dr, bi.changes)
     else:
-        out.append(f"### TOP {top_size(bi)} — 지금 뜨는 AI 저장소")
         out += [_rank_line(e, bi.names) for e in bi.top]
     for r in _ranked(bi):
         if isinstance(r, LeftOut):     # 결정 67 — 설명·그림 자리 없이 한 줄
@@ -775,7 +844,6 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
             out += _slot("그림 자리", p.image)
         for i, (key, label) in enumerate(PARTS, 1):   # 부분 이름은 굵은 글씨, 본문과 같은 크기
             out += [f"**{i}. {label}**", getattr(p, key).text]
-    extra = {head: picture(no, idea, "그림 자리") for no, head, idea in _extra(bi, dr)}
     out += [f"### {CAUTION_HEAD}", *extra.get(CAUTION_HEAD, [])]
     out += [f"{c} — {a}" for c, a in dr.misreadings]
     out += [f"### {SUMMARY_HEAD}", *extra.get(SUMMARY_HEAD, []), dr.summary, dr.next, "### 함께 보기",
@@ -801,7 +869,7 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
     gen = gen or {}
     posts = {p.ref: p for p in dr.repos}
     cover = f"{gen[0]} (만든 그림)" if 0 in gen else "생성 프롬프트 0"
-    rows = [f"| (머리말) | 대표 이미지 — {cover} |", f"| 이번 주 흐름 — {dr.overview_heading} | — |"]
+    rows = [f"| (머리말) | 대표 이미지 — {cover} |"]
 
     def block(head: str, idea: ImageIdea) -> list[str]:
         return [f"### {head}", "", f"- 가르칠 것: {idea.teaches}",
@@ -809,6 +877,26 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
 
     prompts = block("0. 대표 이미지(글 맨 위)" + (f" — 만든 그림: {gen[0]}" if 0 in gen else ""), dr.cover)
     alternatives: list[str] = []
+
+    found = {head: (no, idea) for no, head, idea in _extra(bi, dr)}
+
+    def extra(head: str) -> bool:
+        """소제목 그림(결정 65·68) — 표 한 줄 + 프롬프트. 예전 초안처럼 그림이 없으면 False."""
+        if head not in found:
+            return False
+        no, idea = found[head]
+        if no in gen:
+            where = f"{gen[no]} (만든 그림)"
+            prompts.extend(block(f"{no}. {head} — 만든 그림: {gen[no]}", idea))
+        else:
+            where = f"생성 프롬프트 {no}"
+            prompts.extend(block(f"{no}. {head}", idea))
+        rows.append(f"| {head} | {where} |")
+        return True
+
+    if not extra(_overview_head(dr)):
+        rows.append(f"| {_overview_head(dr)} | — |")
+    extra(_top_head(bi))
     for r in _ranked(bi):
         if isinstance(r, LeftOut):
             rows.append(f"| {_left_head(r)} | {LEFT_OUT_IMAGE} |")
@@ -828,14 +916,8 @@ def images_doc(bi: BlogInput, dr: BlogDraft, *, images: Mapping[str, str], files
             where = f"생성 프롬프트 {r.rank}"
             prompts += block(f"{r.rank}. {r.full_name}", p.image)
         rows.append(f"| {_heading(r, p)} | {where} |")
-    for no, head, idea in _extra(bi, dr):
-        if no in gen:
-            where = f"{gen[no]} (만든 그림)"
-            prompts += block(f"{no}. {head} — 만든 그림: {gen[no]}", idea)
-        else:
-            where = f"생성 프롬프트 {no}"
-            prompts += block(f"{no}. {head}", idea)
-        rows.append(f"| {head} | {where} |")
+    for head in (CAUTION_HEAD, SUMMARY_HEAD):
+        extra(head)
     return "\n".join([
         f"# {title_of(bi, dr)} — 사진 배치 참고", "",
         "> 본문: `post.md` · 이미지: `img/`(저장소 소셜 미리보기를 받아 둔 것) · `gen/`(만든 그림 — "
@@ -977,7 +1059,27 @@ def load_draft(path: Path) -> BlogDraft:
                      idea(d["cover"]), tuple((c, a) for c, a in d["misreadings"]), d["summary"], d["next"],
                      tuple(d["tags"]), tuple(claim(c) for c in d.get("movers") or []),
                      caution_image=idea(d["caution_image"]) if d.get("caution_image") else None,
-                     summary_image=idea(d["summary_image"]) if d.get("summary_image") else None)
+                     summary_image=idea(d["summary_image"]) if d.get("summary_image") else None,
+                     overview_image=idea(d["overview_image"]) if d.get("overview_image") else None,
+                     top_image=idea(d["top_image"]) if d.get("top_image") else None)
+
+
+def previous_told(work_dir: Path, week: str) -> dict[str, tuple[str, ...]]:
+    """지난주 글이 저장소마다 쓴 세 부분(결정 69) — {저장소: (무엇인가, 왜 지금 떴나, 활용 사례)}.
+
+    지난주 `draft.json` · `meta.json`(R 번호 → 저장소)이 없으면 빈 dict — 보통처럼 쓴다.
+    """
+    prev = (date.fromisoformat(week) - timedelta(days=7)).isoformat()
+    out = work_dir / prev / "blog"
+    if not (out / "draft.json").exists() or not (out / "meta.json").exists():
+        return {}
+    top = io.read_json(out / "meta.json").get("top") or []
+    told: dict[str, tuple[str, ...]] = {}
+    for r in io.read_json(out / "draft.json").get("repos") or []:
+        i = int(r["ref"][1:]) - 1
+        if 0 <= i < len(top):
+            told[top[i]] = tuple(r[key]["text"] for key, _ in PARTS)
+    return told
 
 
 def rerender(bi: BlogInput, *, work_dir: Path, published: Sequence[tuple[int, str, str]],
@@ -1003,7 +1105,8 @@ def dry_run(writer: BlogWriter, bi: BlogInput) -> dict[str, Any]:
     lo = cost(MODEL, Usage(typ, TYPICAL_OUTPUT))
     hi = cost(MODEL, Usage(cons, writer.max_tokens))
     return {"llm_calls": 1, "retry_max": 1, "episode": bi.episode, "top": [r.full_name for r in bi.repos],
-            "left_out": [x.full_name for x in bi.left_out], "sources": len(bi.sources),
+            "left_out": [x.full_name for x in bi.left_out], "told": [r.full_name for r in bi.repos if r.told],
+            "sources": len(bi.sources),
             "input_tokens": [typ, cons],
             "total_usd": [round(lo, 4), round(hi, 4)], "total_usd_with_retry_max": round(2 * hi, 4),
             "assumptions": {"model": MODEL, "effort": writer.effort,
