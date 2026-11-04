@@ -426,23 +426,26 @@ _STR = {"type": "string"}
 _STRS = {"type": "array", "items": _STR}
 _CLAIM = _obj({"text": _STR, "sources": _STRS})
 _IDEA = _obj({"teaches": _STR, "scene": _STR, "labels": _STRS})
-SCHEMA: dict[str, Any] = _obj({
+# 같은 모양(주장 · 그림)은 $defs 에 한 번 두고 $ref 로 가리킨다 — 매번 펼치면 API 가 만드는 문법이 커져
+# 400("The compiled grammar is too large")이 난다(2026-11-04, 그림 두 칸을 더했을 때)
+_C, _I = {"$ref": "#/$defs/claim"}, {"$ref": "#/$defs/idea"}
+SCHEMA: dict[str, Any] = {**_obj({
     "title_points": _STRS,
     "intro": _STR,
-    "overview": _obj({"heading": _STR, "paras": {"type": "array", "items": _CLAIM}}),
-    "overview_image": _IDEA,
-    "movers": {"type": "array", "items": _CLAIM},
-    "top_image": _IDEA,
-    "repos": {"type": "array", "items": _obj({"ref": _STR, "subtitle": _STR, "what": _CLAIM,
-                                              "why_now": _CLAIM, "use_cases": _CLAIM, "image": _IDEA})},
-    "cover": _IDEA,
+    "overview": _obj({"heading": _STR, "paras": {"type": "array", "items": _C}}),
+    "overview_image": _I,
+    "movers": {"type": "array", "items": _C},
+    "top_image": _I,
+    "repos": {"type": "array", "items": _obj({"ref": _STR, "subtitle": _STR, "what": _C,
+                                              "why_now": _C, "use_cases": _C, "image": _I})},
+    "cover": _I,
     "misreadings": {"type": "array", "items": _obj({"claim": _STR, "answer": _STR})},
     "summary": _STR,
     "next": _STR,
     "tags": _STRS,
-    "caution_image": _IDEA,
-    "summary_image": _IDEA,
-})
+    "caution_image": _I,
+    "summary_image": _I,
+}), "$defs": {"claim": _CLAIM, "idea": _IDEA}}
 
 
 @dataclass(frozen=True)

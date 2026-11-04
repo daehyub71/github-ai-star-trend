@@ -626,6 +626,17 @@ def test_blog_images_doc_lists_overview_and_top_pictures_in_reading_order(bi):
     assert "- 얹을 라벨: 도구 묶음 · 작업 스킬" in doc
 
 
+def test_blog_schema_defines_each_repeated_shape_once():
+    # 2026-11-04 회귀 — 그림 두 칸을 더하자 API 가 400("The compiled grammar is too large").
+    # 같은 모양(그림 6곳 · 주장 5곳)을 매번 펼치지 않고 $defs 에 한 번 두고 $ref 로 가리키면 통과했다
+    # (확인 호출, 출력 32토큰)
+    text = json.dumps(blog.SCHEMA)
+    assert text.count('"teaches": ') == 1 and text.count('"sources": ') == 1     # 속성 정의는 한 번씩
+    defs = blog.SCHEMA["$defs"]
+    assert set(defs) == {"idea", "claim"} and blog.SCHEMA["properties"]["cover"] == {"$ref": "#/$defs/idea"}
+    assert len(text) < 2_500                          # 400 이 난 모양은 3,541자 · 통과한 모양은 1,967자
+
+
 def test_blog_checker_and_schema_cover_the_overview_and_top_pictures(bi):
     assert {"overview_image", "top_image"} <= set(blog.SCHEMA["required"])
     errors = blog.check_draft(_draft(_with("overview_image.labels", ["하나"])), bi)
