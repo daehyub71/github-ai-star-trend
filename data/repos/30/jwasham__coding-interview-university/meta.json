@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "ad132c8395e2a976",
+    "input_hash": "188196d7e0885051",
     "is_ai": false,
-    "reason": "This is a general computer science study plan for coding interviews, not an AI project.",
+    "reason": "A general computer science interview study plan with no AI focus.",
     "secondary": null,
     "status": "ok",
     "type": "교육자료"
@@ -19,7 +19,7 @@
   "full_name": "jwasham/coding-interview-university",
   "id": 60493101,
   "language": null,
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "algorithm",
     "algorithms",

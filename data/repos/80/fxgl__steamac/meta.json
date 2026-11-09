@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5ce19763ba073866",
+    "is_ai": false,
+    "reason": "A VM launcher for running SteamOS games on Apple Silicon, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-04",
+  "description": "Valve's official ARM64 SteamOS in a lightweight VM on Apple Silicon: libkrun + Venus + MoltenVK, controllers, CoreAudio sound",
+  "first_seen": "2026-11-01",
+  "full_name": "fxgl/steamac",
+  "id": 1404241593,
+  "language": "Swift",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "apple-silicon",
+    "libkrun",
+    "macos",
+    "moltenvk",
+    "proton",
+    "steamos"
+  ]
+}

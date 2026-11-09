@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8ed6b8eefe742481",
+    "is_ai": true,
+    "reason": "A Chinese pose, costume and portrait reference gallery with an AI image-generation studio and ComfyUI custom nodes for character image synthesis.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-27",
+  "description": "中文版 AI 姿势参考图库 · 1439 组 / 2878 张图片 / 完整汉化 · 零依赖静态画廊",
+  "first_seen": "2026-11-01",
+  "full_name": "anhao/ai-pose-gallery-zh",
+  "id": 1435695423,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "ai-art",
+    "chinese",
+    "cloudflare-pages",
+    "gallery",
+    "i18n",
+    "pose",
+    "reference-images",
+    "static-site"
+  ]
+}

@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "a9622bf407322b1f",
+    "input_hash": "2ad761fc304ac249",
     "is_ai": false,
     "reason": "A game compatibility layer porting Diablo II: Resurrected to mobile platforms, with no AI focus.",
     "secondary": null,

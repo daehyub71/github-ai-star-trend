@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c4b7bb559d96130f",
+    "is_ai": true,
+    "reason": "A skill for Claude Code, Codex, and Antigravity that redesigns AI-looking UI into a polished interface.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-29",
+  "description": "A Claude skill that turns vibecoded, AI-looking UI into a designed interface",
+  "first_seen": "2026-11-01",
+  "full_name": "heydamir/unslop",
+  "id": 1438623288,
+  "language": "JavaScript",
+  "last_seen": "2026-11-01",
+  "topics": []
+}

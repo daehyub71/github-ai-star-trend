@@ -1,0 +1,37 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5dba978d5ce12617",
+    "is_ai": true,
+    "reason": "A CLI that lets AI agents see and operate desktop apps via the OS accessibility tree, a computer-use tool.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-02-19",
+  "description": "Computer use CLI for AI agents",
+  "first_seen": "2026-11-01",
+  "full_name": "vercel-labs/agent-desktop",
+  "id": 1161958643,
+  "language": "Rust",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "accessibility",
+    "accessibility-api",
+    "ai-agents",
+    "automation",
+    "cli",
+    "computer-use",
+    "computer-use-agent",
+    "computer-use-agents",
+    "desktop-automation",
+    "macos",
+    "mcp",
+    "rust"
+  ]
+}

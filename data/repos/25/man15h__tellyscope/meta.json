@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "0eaf5dd2bb04657d",
+    "is_ai": false,
+    "reason": "An Android app for debloating and managing Android TVs from a phone, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "man15h/tellyscope",
+  "id": 1430208916
+}

@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "4f300d2b3fd5dbc8",
+    "input_hash": "f8cf5fa82eaef7fc",
     "is_ai": false,
     "reason": "A native Rust launcher for installing and updating Craft suite apps, with no advertised AI features in the excerpt.",
     "secondary": null,

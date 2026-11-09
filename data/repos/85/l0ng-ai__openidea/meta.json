@@ -1,0 +1,40 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "83421be54998fbba",
+    "is_ai": false,
+    "reason": "A native Rust/Tauri IDE with editor, debugger and Git features that does not advertise any AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-21",
+  "description": "The IDE you know, rebuilt in Rust. IntelliJ IDEA–style keymap, tool windows and search-everywhere in a fast native app: editor, code insight, debugger, Git, terminal, database and HTTP clients for 60+ languages.",
+  "first_seen": "2026-11-01",
+  "full_name": "l0ng-ai/openidea",
+  "id": 1428347546,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "code-editor",
+    "cross-platform",
+    "dap",
+    "database-client",
+    "debugger",
+    "desktop-app",
+    "developer-tools",
+    "git",
+    "http-client",
+    "ide",
+    "intellij",
+    "lsp",
+    "rust",
+    "tauri",
+    "terminal"
+  ]
+}

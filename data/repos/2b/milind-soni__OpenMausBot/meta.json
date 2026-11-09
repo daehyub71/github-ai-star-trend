@@ -1,18 +1,36 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": "ai-apps",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "54706338c9d7e9c1",
+    "input_hash": "073bb284587faaac",
     "is_ai": true,
-    "reason": "End-user chat app hosting a team of Claude/Codex agent bots, each with its own cloud computer for computer-use tasks.",
+    "reason": "End-user desktop chat app hosting a team of Claude/Codex agent bots, each with its own cloud computer for computer-use tasks.",
     "secondary": "computer-use",
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-08-11",
+  "description": "Open-source Grok Bot alternative with a virtual machine that bots can use",
+  "first_seen": "2026-11-01",
   "full_name": "milind-soni/OpenMausBot",
-  "id": 1331261687
+  "id": 1331261687,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "computer-use",
+    "docker",
+    "electron",
+    "grok",
+    "grok-bot",
+    "grok-bot-alternative",
+    "self-hosted",
+    "typescript"
+  ]
 }

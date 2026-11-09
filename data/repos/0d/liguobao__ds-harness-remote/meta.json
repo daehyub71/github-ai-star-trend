@@ -1,0 +1,27 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "71c7a289685734dd",
+    "is_ai": true,
+    "reason": "A plugin and remote-access client for DeepSeek Harness and other AI coding agent workspaces like Codex, Cursor and Claude Code.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-08-14",
+  "description": "基于 DeepSeek Harness 插件机制构建的远程访问方案，通过低延迟、端到端加密的 P2P 网络，支持使用 PC、移动端 和 Web 随时访问本地设备上的DSH 、CodeX、Cursor、Claude Code等工作区。 (Built on DeepSeek Harness plugins, this low-latency, end-to-end encrypted P2P solution lets PC, mobile, and web clients access local DSH, Codex, Cursor, and Claude Code workspaces.)",
+  "first_seen": "2026-11-01",
+  "full_name": "liguobao/ds-harness-remote",
+  "id": 1334325657,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "deepseek",
+    "dsh-plugin"
+  ]
+}

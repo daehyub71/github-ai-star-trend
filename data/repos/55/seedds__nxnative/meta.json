@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-02",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "e8cc479597af473f",
+    "input_hash": "ba96462b5e84bfa1",
     "is_ai": false,
-    "reason": "A tool that converts Switch games to run natively on Apple devices, with no AI features.",
+    "reason": "A tool that recompiles Nintendo Switch games to run natively on Apple devices, with no AI features.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,6 +19,6 @@
   "full_name": "seedds/nxnative",
   "id": 1416502082,
   "language": "Python",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": []
 }

@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-02",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": "mcp-tools",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "9c7d2fa5e17455cc",
+    "input_hash": "f2d31c0cfe5240ad",
     "is_ai": true,
-    "reason": "REA is an MCP server and agent skill set connecting agents to reverse engineering tools for binaries and apps.",
+    "reason": "An MCP server and agent skill set that connects coding agents to reverse engineering tools for binaries and apps.",
     "secondary": "agent-skills",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "morluto/rea",
   "id": 1209966933,
   "language": "TypeScript",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "agent-skills",
     "ai",

@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "eabfba18f169b9dc",
+    "input_hash": "957a49577983fd39",
     "is_ai": false,
-    "reason": "Sherlock is an OSINT CLI tool that searches usernames across social networks, with no AI features.",
+    "reason": "Sherlock is an OSINT CLI tool for finding social media accounts by username, with no AI features.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"

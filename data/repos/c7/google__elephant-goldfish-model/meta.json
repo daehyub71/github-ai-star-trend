@@ -1,0 +1,41 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ae30819391323c71",
+    "is_ai": true,
+    "reason": "A plugin of skills and reviewer prompts for coding agents like Claude Code and Codex, supporting spec design and review workflows.",
+    "secondary": "coding-agent",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-13",
+  "description": "Open-source plugin for designing and reviewing software with agents",
+  "first_seen": "2026-11-01",
+  "full_name": "google/elephant-goldfish-model",
+  "id": 1368596582,
+  "language": "Python",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "agent-skills",
+    "ai-agents",
+    "antigravity",
+    "claude-code",
+    "claude-code-plugin",
+    "claude-skills",
+    "codex",
+    "codex-plugin",
+    "coding-agents",
+    "context-engineering",
+    "developer-tools",
+    "gemini",
+    "llm",
+    "multi-agent",
+    "prompt-engineering",
+    "spec-driven-development"
+  ]
+}

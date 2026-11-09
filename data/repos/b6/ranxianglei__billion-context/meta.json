@@ -13,6 +13,14 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-08-06",
+  "description": "A context-compression plugin for month-long single sessions (billions of tokens) ,small context windows (a 100K context is enough) and token savings (5x fewer tokens) .上下文压缩插件，月级长会话会话， 兼顾小窗口(100k上下文足矣)省token(省5倍token) . billion-context is all you need",
+  "first_seen": "2026-11-01",
   "full_name": "ranxianglei/billion-context",
-  "id": 1324949198
+  "id": 1324949198,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "dsh-plugin"
+  ]
 }

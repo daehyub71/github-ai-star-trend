@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "61222abf4bd98531",
+    "is_ai": true,
+    "reason": "An Android AI agent app that operates phone apps and the web on the user's behalf.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-29",
+  "description": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
+  "first_seen": "2026-11-01",
+  "full_name": "wangzan101/Mika",
+  "id": 1438540053,
+  "language": "Kotlin",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "accessibility",
+    "ai-agent",
+    "android",
+    "automation",
+    "jetpack-compose",
+    "kotlin",
+    "llm",
+    "mobile-agent"
+  ]
+}

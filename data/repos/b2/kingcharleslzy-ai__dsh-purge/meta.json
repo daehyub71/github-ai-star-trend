@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-02",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": "mcp-tools",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "0a965d03069dfcf5",
+    "input_hash": "b05a09a565ed1ea5",
     "is_ai": true,
-    "reason": "A community-maintained plugin for the DeepSeek Harness agent that patches the host and manages injected prompts to reduce agent confirmations, with backup and rollback.",
+    "reason": "A plugin for the DeepSeek Harness agent that patches the host and manages injected prompts to reduce confirmations, i.e. an agent-loaded extension.",
     "secondary": "agent-skills",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "kingcharleslzy-ai/dsh-purge",
   "id": 1421822085,
   "language": "JavaScript",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "agent-tools",
     "backup",

@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": "ai-apps",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "b29842a9e532bdd6",
+    "input_hash": "794f5b3d8f1fdce9",
     "is_ai": true,
-    "reason": "OpenClaw is a self-hosted personal AI assistant app that connects to chat channels and runs agents with swappable models.",
+    "reason": "OpenClaw is a self-hosted personal AI assistant that connects to chat platforms and swappable model and agent backends.",
     "secondary": "agent-framework",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "openclaw/openclaw",
   "id": 1103012935,
   "language": "TypeScript",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "ai",
     "assistant",

@@ -1,0 +1,39 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "c79a6188b2aba85a",
+    "is_ai": false,
+    "reason": "A tool that ports Switch games to run natively on iPhone and Mac, with no AI features advertised.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-20",
+  "description": "Play your own Switch games on iPhone/iPad — one-click macOS app, no terminal. | 把 Switch 游戏装进 iPhone：图形界面一键构建，不用命令行。Bring your own game.",
+  "first_seen": "2026-11-01",
+  "full_name": "LNPANDY/NX2Apple",
+  "id": 1427401105,
+  "language": "Swift",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "apple-silicon",
+    "custom-format",
+    "homebrew",
+    "ios",
+    "ipa",
+    "ipad",
+    "ipados",
+    "iphone",
+    "metal",
+    "native-port",
+    "nintendo-switch",
+    "nxnative",
+    "romfs",
+    "switch-games"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ef53b9ec6c6b8aff",
+    "is_ai": true,
+    "reason": "Android client for the DeepSeek Harness coding agent that runs on the phone or remotely controls it on a PC.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-25",
+  "description": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
+  "first_seen": "2026-11-01",
+  "full_name": "ccch1mneyyy/dsh-Go",
+  "id": 1432967563,
+  "language": "Dart",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "ai-agent",
+    "android",
+    "android-app",
+    "coding-agent",
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-tui",
+    "flutter",
+    "llm"
+  ]
+}

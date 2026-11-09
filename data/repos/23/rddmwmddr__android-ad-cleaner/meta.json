@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-02",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": "mcp-tools",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "94b68426a1897541",
+    "input_hash": "c6382c65b258d7bf",
     "is_ai": true,
-    "reason": "Android debloat tool via adb that advertises AI agent execution through AGENTS.md instructions, making it an agent-operated tool.",
+    "reason": "An Android debloat/ad-removal tool via adb that advertises one-click execution by AI agents, so it is an app built to be driven by agents.",
     "secondary": "computer-use",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "rddmwmddr/android-ad-cleaner",
   "id": 1431851693,
   "language": "Python",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "adb",
     "ai-agent",

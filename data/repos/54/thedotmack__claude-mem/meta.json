@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": "vectordb-memory",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "b15d162ad7aded07",
+    "input_hash": "c0e6c70266bcbf0f",
     "is_ai": true,
-    "reason": "A persistent memory compression plugin that gives coding agents like Claude Code long-term context across sessions.",
+    "reason": "Persistent long-term memory plugin for coding agents that compresses and reinjects session context.",
     "secondary": "mcp-tools",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "thedotmack/claude-mem",
   "id": 1048065319,
   "language": "TypeScript",
-  "last_seen": "2026-04-12",
+  "last_seen": "2026-11-01",
   "topics": [
     "ai",
     "ai-agents",

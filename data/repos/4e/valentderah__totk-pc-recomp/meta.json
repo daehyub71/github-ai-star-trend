@@ -1,0 +1,30 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "252b7bf6d660f726",
+    "is_ai": false,
+    "reason": "A static recompilation game port of Zelda TotK with no AI focus; DLSS is only a graphics upscaling option.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-29",
+  "description": "Static recompilation of The Legend of Zelda: Tears of the Kingdom to native Windows and Linux x86-64, with a Vulkan renderer. Game files not included.",
+  "first_seen": "2026-11-01",
+  "full_name": "valentderah/totk-pc-recomp",
+  "id": 1438394948,
+  "language": "C",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "game",
+    "linux",
+    "port",
+    "recompilation",
+    "windows"
+  ]
+}

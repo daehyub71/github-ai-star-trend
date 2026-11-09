@@ -13,6 +13,22 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-05-11",
+  "description": "Run thousands of AI agent sandboxes on the cheapest machines.",
+  "first_seen": "2026-11-01",
   "full_name": "deeplethe/sandstorm",
-  "id": 1235832354
+  "id": 1235832354,
+  "language": "Rust",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "agent-infrastructure",
+    "ai-agents",
+    "checkpoint-restore",
+    "code-execution",
+    "gvisor",
+    "rust",
+    "sandbox",
+    "self-hosted",
+    "snapshot"
+  ]
 }

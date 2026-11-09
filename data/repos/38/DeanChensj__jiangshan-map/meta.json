@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1be3ed196f5353e1",
+    "is_ai": false,
+    "reason": "An interactive historical atlas web app of China with no advertised AI features or agent interface.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-23",
+  "description": "江山时序 · 中国历史交互地图时间轴 (403 BCE – Present) | Interactive Historical Atlas of China across 18 dynasties, 164 territory snapshots, ancient-to-modern place genealogy & classical poetry routes",
+  "first_seen": "2026-11-01",
+  "full_name": "DeanChensj/jiangshan-map",
+  "id": 1310427454,
+  "language": "JavaScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "ancient-china",
+    "cartography",
+    "china-map",
+    "chinese-history",
+    "classical-chinese-poetry",
+    "digital-humanities",
+    "gis",
+    "historical-atlas",
+    "historical-map",
+    "interactive-map"
+  ]
+}

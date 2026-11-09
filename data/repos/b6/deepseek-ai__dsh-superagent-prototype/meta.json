@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7612296f28383743",
+    "is_ai": true,
+    "reason": "A proactive coding agent bundle that handles GitHub work items and opens pull requests autonomously.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-31",
+  "description": "Towards a More Autonomous Agent System",
+  "first_seen": "2026-11-01",
+  "full_name": "deepseek-ai/dsh-superagent-prototype",
+  "id": 1440705679,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": []
+}

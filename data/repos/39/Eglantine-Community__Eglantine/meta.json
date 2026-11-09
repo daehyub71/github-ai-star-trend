@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8a616686c700b2b2",
+    "is_ai": false,
+    "reason": "A Nintendo Switch 2 emulator written in C++ with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-29",
+  "description": "VERY experimental Nintendo Switch 2 emulator",
+  "first_seen": "2026-11-01",
+  "full_name": "Eglantine-Community/Eglantine",
+  "id": 1437774066,
+  "language": "C++",
+  "last_seen": "2026-11-01",
+  "topics": []
+}

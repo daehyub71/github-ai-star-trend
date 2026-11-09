@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-02",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "82cf48b874be1680",
+    "input_hash": "64acbfc2d8250e2f",
     "is_ai": false,
-    "reason": "A native game port of Switch titles to Apple silicon via Metal, unrelated to AI.",
+    "reason": "A native game port of Switch games to Apple platforms via Metal, with no AI focus.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "ly05010419/MacNativeGames",
   "id": 1423689866,
   "language": "C",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "apple-silicon",
     "arm64",

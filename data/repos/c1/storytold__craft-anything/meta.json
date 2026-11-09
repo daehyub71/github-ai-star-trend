@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "12cf19555f64725c",
+    "is_ai": true,
+    "reason": "A Rust app that inspects software and uses a coding agent to build a clean-room recreation, verifying against the original.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-31",
+  "description": "Craft Anything: understand how any software works, and craft your own.",
+  "first_seen": "2026-11-01",
+  "full_name": "storytold/craft-anything",
+  "id": 1440956372,
+  "language": "Rust",
+  "last_seen": "2026-11-01",
+  "topics": []
+}

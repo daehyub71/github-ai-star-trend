@@ -1,4 +1,7 @@
 {
+  "aliases": [
+    "ethanplusai/harvey"
+  ],
   "classify": {
     "at": "2026-11-02",
     "attempts": 1,
@@ -14,19 +17,26 @@
     "type": "도구/라이브러리"
   },
   "created": "2026-03-12",
-  "description": "Autonomous AI sales agent powered by Claude Code or Codex. Finds prospects, writes cold emails, sends campaigns, handles replies, books meetings. No API keys needed — runs on your Claude or Codex subscriptions.",
+  "description": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails, writes personal cold email, sends it and handles the replies.",
   "first_seen": "2026-10-18",
-  "full_name": "ethanplusai/harvey",
+  "full_name": "ethanplusai/sellbird",
   "id": 1179388779,
   "language": "Python",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "ai-agent",
     "autonomous-agent",
     "claude",
+    "claude-code",
+    "codex",
     "cold-email",
+    "email-verification",
+    "harvey",
+    "lead-generation",
+    "outreach",
     "prospecting",
     "python",
-    "sales-automation"
+    "sales-automation",
+    "sellbird"
   ]
 }

@@ -1,0 +1,35 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "1280712839ca1979",
+    "is_ai": true,
+    "reason": "A CLI and MCP server providing defense tools against AI reverse-engineering agents, exposing an agent/MCP interface.",
+    "secondary": "other-ai",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-25",
+  "description": "🛡️ BLA (Blind LLM Agents) — Adversarial defense shield that protects binaries, Electron apps, JS bundles, Python, and WebAssembly against AI reverse-engineering agents like REA. Poison -> Exhaust -> Hallucinate.",
+  "first_seen": "2026-11-01",
+  "full_name": "qybaihe/bla",
+  "id": 1432859403,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "adversarial-ai",
+    "claude-code",
+    "cursor",
+    "electron-security",
+    "llm-security",
+    "mcp",
+    "mcp-server",
+    "obfuscation",
+    "reverse-engineering",
+    "webassembly"
+  ]
+}

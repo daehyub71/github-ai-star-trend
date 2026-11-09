@@ -1,0 +1,41 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "290241a7c3a4e519",
+    "is_ai": true,
+    "reason": "A desktop research workspace with AI PDF Q&A, agent integration via ACP, and a built-in MCP server for the local library.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-07",
+  "description": "Unified research workspace for humans & agents — PDF Q&A with citations, Vault, writing. 为人与 Agent 协作的科研工作台；补齐 Zotero 时代的人机上下文断点。",
+  "first_seen": "2026-11-01",
+  "full_name": "poco-ai/Agentero",
+  "id": 1291896819,
+  "language": "TypeScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "academic",
+    "ai-agents",
+    "citations",
+    "desktop-app",
+    "dsh-plugin",
+    "knowledge-base",
+    "literature-review",
+    "llm",
+    "mcp",
+    "pdf",
+    "rag",
+    "research",
+    "research-assistant",
+    "tauri",
+    "typescript",
+    "writing-assistant"
+  ]
+}

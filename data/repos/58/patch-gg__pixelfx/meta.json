@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f240316387b2d7fb",
+    "is_ai": true,
+    "reason": "A pixel art effects library that ships a Claude Code skill for generating new effects, advertised in its description and topics.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-30",
+  "description": "244 pixel art effects, every one a small piece of code. Plus a Claude Code skill to make your own.",
+  "first_seen": "2026-11-01",
+  "full_name": "patch-gg/pixelfx",
+  "id": 1439372976,
+  "language": "JavaScript",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "agent-skills",
+    "animation",
+    "canvas",
+    "claude-code-plugin",
+    "gamedev",
+    "pixel-art",
+    "sprite-sheet",
+    "vfx"
+  ]
+}

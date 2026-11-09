@@ -1,0 +1,38 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9597c22d4c232f94",
+    "is_ai": true,
+    "reason": "Self-hosted platform bringing AI agent teammates into team chat apps like Slack and Teams, with multi-agent orchestration.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-16",
+  "description": "Open-source AI teammates in Slack, Teams, Discord, Telegram and Mattermost. Self-host it, with any agent harness and any model.",
+  "first_seen": "2026-11-01",
+  "full_name": "sandbox-quantum/switch",
+  "id": 1302612528,
+  "language": "Python",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "agent-orchestration",
+    "ai",
+    "ai-agents",
+    "chatops",
+    "discord",
+    "langchain",
+    "mcp",
+    "microsoft-teams",
+    "multi-agent",
+    "open-source",
+    "openai",
+    "self-hosted",
+    "slack"
+  ]
+}

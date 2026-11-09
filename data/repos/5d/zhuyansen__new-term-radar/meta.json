@@ -13,6 +13,26 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-12",
+  "description": "Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them.",
+  "first_seen": "2026-11-01",
   "full_name": "zhuyansen/new-term-radar",
-  "id": 1415214046
+  "id": 1415214046,
+  "language": "Python",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "agent-skills",
+    "ai",
+    "aisa",
+    "claude-code",
+    "claude-skills",
+    "deepseek-harness",
+    "dsh-plugin",
+    "google-trends",
+    "keyword-research",
+    "mcp",
+    "mcp-server",
+    "seo",
+    "trends"
+  ]
 }

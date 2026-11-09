@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-09",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "09f3546c4a4b421c",
+    "input_hash": "88516c4a3577d477",
     "is_ai": false,
-    "reason": "A monorepo of open-source alternatives to proprietary office and creative software, with no AI features advertised.",
+    "reason": "A monorepo of open-source alternatives to proprietary office and creative software, with no advertised AI features.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "HeyPuter/everything",
   "id": 1417456983,
   "language": "JavaScript",
-  "last_seen": "2026-10-25",
+  "last_seen": "2026-11-01",
   "topics": [
     "adobe",
     "cad",

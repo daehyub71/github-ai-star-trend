@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-09",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "183ccfef4289af43",
+    "is_ai": true,
+    "reason": "Desktop app that runs a local speech recognition model for voice dictation.",
+    "secondary": "local-llm",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-07-17",
+  "description": "Local voice dictation for mac, windows and linux",
+  "first_seen": "2026-11-01",
+  "full_name": "anomalyco/hex",
+  "id": 1304469751,
+  "language": "Rust",
+  "last_seen": "2026-11-01",
+  "topics": [
+    "dictation",
+    "linux",
+    "local-first",
+    "macos",
+    "rust",
+    "speech-recognition",
+    "speech-to-text",
+    "voice-control"
+  ]
+}
