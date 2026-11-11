@@ -18,6 +18,7 @@
 - 내용 소제목마다 그림 하나(결정 65·68): 대표 · 이번 주 흐름 · TOP 순위 · 저장소마다 · 주의할 점 · 한 장 요약.
 - 지난 회와 같은 내용 빼기(결정 69): 연재 소개 3문단은 1회에만. 지난주 글에도 나온 저장소는 지난 회 세 부분을
   LLM 에 함께 보내 새 사실만 쓰게 하고, 지난 회 글과 그대로 겹치는 구간을 형식 검사기가 막는다.
+  "지난 회에 소개한 …" 한 문장은 양쪽 모두 비교에서 뺀다(3주 연속이면 같은 틀이 된다 — 2026-11-09 실패).
 """
 
 import hashlib
@@ -56,6 +57,7 @@ REPO_CHARS = (350, 750)      # 저장소 하나의 세 부분 합 — 사용자 
 REPEAT_CHARS = (200, 750)    # 지난 회에 소개한 저장소 — 새 사실만 쓰면 짧아질 수 있다(결정 69, 처음 정한 값)
 REPEAT_SPAN = 30             # 지난 회 글과 이만큼 그대로 겹치면 되풀이(결정 69)
 #                              10-25 실측: 되풀이한 글 17~64자 · 대조군(다른 저장소끼리) 최대 15자
+RECAP = "지난 회"             # 이 말이 든 문장(지난 회에 소개했다는 한 문장)은 겹침 비교에서 뺀다
 SMALL = {str(n) for n in range(0, 11)}       # 셈말로 쓰는 작은 수는 허용
 SCENE_MIN = 400              # 그림 장면 프롬프트 최소 글자 수 — 구도·요소·라벨 자리까지 쓰게(결정 60)
 LABELS = (2, 6)              # 그림에 나중에 얹을 한글 라벨 수
@@ -515,8 +517,10 @@ def _claim(v: Any, name: str) -> Claim:
 def _idea(v: Any, name: str) -> ImageIdea:
     if not isinstance(v, dict):
         raise ValueError(f"{name} must be an object with teaches, scene and labels")
-    return ImageIdea(_str(v.get("teaches"), f"{name}.teaches"), _str(v.get("scene"), f"{name}.scene"),
-                     _strs(v.get("labels") or [], f"{name}.labels"))
+    # 라벨의 가운뎃점은 띄어쓰기로 — 이것만으로 과금된 답을 버리지 않는다(2026-11-09 자동 실행)
+    labels = tuple(" ".join(lb.replace("·", " ").split())
+                   for lb in _strs(v.get("labels") or [], f"{name}.labels"))
+    return ImageIdea(_str(v.get("teaches"), f"{name}.teaches"), _str(v.get("scene"), f"{name}.scene"), labels)
 
 
 def parse_blog(text: str) -> BlogDraft:
@@ -568,6 +572,11 @@ def _numbers(text: str) -> set[str]:
     return {t.replace(",", "") for t in _NUM.findall(text)}
 
 
+def drop_recap(text: str) -> str:
+    """'지난 회' 가 든 문장을 뺀다 — 프롬프트가 쓰라는 문장이고, 3주 연속이면 지난 회 글도 같은 틀이다."""
+    return " ".join(s for s in re.split(r"(?<=[.!?])\s+", text) if RECAP not in s)
+
+
 def repeated(text: str, old: str) -> str:
     """지난 회 글과 그대로 겹치는 구간(REPEAT_SPAN 자 이상, 결정 69) — 없으면 "". 띄어쓰기 차이는 무시한다."""
     a, b = " ".join(text.split()), " ".join(old.split())
@@ -601,9 +610,9 @@ def check_draft(dr: BlogDraft, bi: BlogInput) -> list[str]:
         lo, hi = REPEAT_CHARS if told else REPO_CHARS
         if not lo <= n <= hi:
             errors.append(f"{r.ref} 분량 — 세 부분 합 {n}자, 저장소 하나에 한글 500자 안팎({lo}~{hi}자)")
-        old = " ".join(told)
+        old = " ".join(drop_recap(t) for t in told)
         for key, label in PARTS if told else ():
-            span = repeated(getattr(r, key).text, old)
+            span = repeated(drop_recap(getattr(r, key).text), old)
             if span:
                 errors.append(f"{r.ref} {label}: 지난 회 글과 같은 구간 '{span}' — "
                               "되풀이하지 말고 이번 주의 새 사실로 쓴다")

@@ -711,6 +711,28 @@ def test_blog_checker_rejects_text_repeated_from_last_week(tmp_path):
     assert not any(e.startswith(("R2", "R3")) for e in errors)
 
 
+def test_blog_recap_sentence_may_match_last_weeks_recap(tmp_path):
+    # 2026-11-09 자동 실행 — 3주 연속 TOP 인 저장소는 지난 회 글도 "지난 회에 소개한 …" 문장으로 시작해
+    # 프롬프트대로 쓴 첫 문장이 30자 넘게 겹쳤다(형식 검사 두 번 실패, $1.50 · 초안 없음)
+    site, priv = _src(tmp_path)
+    recap = "o/a 는 지난 회에 소개한 리버스 엔지니어링 도구입니다."
+    more = "이번에는 설치 명령 하나로 에이전트 다섯 곳에 서버를 등록하는 과정을 살펴봅니다."
+    told = (f"{recap} {more}", "다른 글입니다.", "다른 글입니다.")
+    again = blog.load_input(site, priv, W, told={"o/a": told})
+    ok = _with("repos.0.what.text", f"{recap} {GOOD['repos'][0]['what']['text']}")
+    assert not any(e.startswith("R1 무엇인가") for e in blog.check_draft(_draft(ok), again))
+    copied = _with("repos.0.what.text", f"{recap} {more} {GOOD['repos'][0]['what']['text']}")
+    errors = blog.check_draft(_draft(copied), again)
+    assert any(e.startswith("R1 무엇인가: 지난 회 글과 같은 구간") for e in errors), errors
+
+
+def test_blog_parse_turns_middle_dots_in_labels_into_spaces(bi):
+    # 2026-11-09 자동 실행 — 과금된 둘째 답이 라벨 가운뎃점 두 개로만 버려졌다. 받을 때 고친다
+    d = _draft(_with("repos.1.image.labels", ["웹·데스크톱·모바일", "스펙 · 티켓"]))
+    assert d.repos[1].image.labels == ("웹 데스크톱 모바일", "스펙 티켓")
+    assert blog.check_draft(d, bi) == []
+
+
 def test_blog_repeat_repos_may_be_shorter(tmp_path):
     # 새 사실만 쓰면 짧아질 수 있다 — 하한 200자(처음 소개하는 저장소는 350자)
     site, priv = _src(tmp_path)
