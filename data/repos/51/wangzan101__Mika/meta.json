@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "computer-use",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "61222abf4bd98531",
+    "input_hash": "2fd9700abfe6d9ca",
     "is_ai": true,
     "reason": "An Android AI agent app that operates phone apps and the web on the user's behalf.",
     "secondary": "ai-apps",
@@ -19,7 +19,7 @@
   "full_name": "wangzan101/Mika",
   "id": 1438540053,
   "language": "Kotlin",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "accessibility",
     "ai-agent",

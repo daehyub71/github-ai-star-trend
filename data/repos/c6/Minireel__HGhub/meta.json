@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "48a386e2d9b5d001",
+    "is_ai": false,
+    "reason": "A plugin-based video player app with no AI features; the agent guide only helps develop plugins.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-03",
+  "description": "Plug-in media player",
+  "first_seen": "2026-11-08",
+  "full_name": "Minireel/HGhub",
+  "id": 1444372497,
+  "language": "Rust",
+  "last_seen": "2026-11-08",
+  "topics": [
+    "android",
+    "drama",
+    "free",
+    "movie-web-app",
+    "reels",
+    "windows"
+  ]
+}

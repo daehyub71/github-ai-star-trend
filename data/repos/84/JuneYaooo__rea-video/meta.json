@@ -1,0 +1,43 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e2222c99eb723cfa",
+    "is_ai": true,
+    "reason": "An agent-run CLI/skill that analyzes videos shot by shot with VLMs, detects AI-generated footage, and reverse-engineers generation prompts.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-29",
+  "description": "Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. Breakdowns in the open VIDEO.md format. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻；拆解结果按 VIDEO.md 格式输出。",
+  "first_seen": "2026-11-08",
+  "full_name": "JuneYaooo/rea-video",
+  "id": 1438661890,
+  "language": "Python",
+  "last_seen": "2026-11-08",
+  "topics": [
+    "agent-skills",
+    "ai-video",
+    "aigc-detection",
+    "claude-code",
+    "codex",
+    "ffmpeg",
+    "prompt-engineering",
+    "remotion",
+    "reverse-engineering",
+    "short-video",
+    "shot-detection",
+    "subtitles",
+    "video-analysis",
+    "video-breakdown",
+    "video-editing",
+    "video-generation",
+    "videomd",
+    "vlm"
+  ]
+}

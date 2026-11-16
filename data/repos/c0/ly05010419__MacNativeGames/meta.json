@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "64acbfc2d8250e2f",
+    "input_hash": "72b89cde2f0ead56",
     "is_ai": false,
-    "reason": "A native game port of Switch games to Apple platforms via Metal, with no AI focus.",
+    "reason": "A native game port runtime that translates NVN graphics to Metal, with no AI focus.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"

@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "agent-framework",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "c66dddb17f6db65a",
+    "input_hash": "c3de5b93f02ae13c",
     "is_ai": true,
-    "reason": "n8n is a self-hostable workflow automation platform pitched as a platform to build and deploy AI agents, with native LLM and MCP support.",
+    "reason": "n8n is a workflow automation platform pitched for building and deploying AI agents with visual canvas, LLM integrations, and MCP support.",
     "secondary": "ai-apps",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "n8n-io/n8n",
   "id": 193215554,
   "language": "TypeScript",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "ai",
     "apis",

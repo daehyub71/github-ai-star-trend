@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "6a2dff65b94dde6b",
+    "input_hash": "2c3701691768d6f3",
     "is_ai": false,
-    "reason": "General developer roadmaps collection where AI roadmaps are only a small part of broad educational content.",
+    "reason": "General developer career roadmaps that include only some AI-related roadmaps among many non-AI topics.",
     "secondary": null,
     "status": "ok",
     "type": "교육자료"
@@ -19,7 +19,7 @@
   "full_name": "nilbuild/developer-roadmap",
   "id": 85077558,
   "language": "TypeScript",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "angular-roadmap",
     "backend-roadmap",

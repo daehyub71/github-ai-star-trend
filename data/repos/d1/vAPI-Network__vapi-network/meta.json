@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "27fd3e1e42bd6381",
+    "is_ai": true,
+    "reason": "A payment client for AI agents to pay x402 APIs, exposed via CLI, MCP server and agent skill.",
+    "secondary": "agent-framework",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-02",
+  "description": "Buyer-controlled client for x402 API payments in USDC on Base.",
+  "first_seen": "2026-11-08",
+  "full_name": "vAPI-Network/vapi-network",
+  "id": 1401744296,
+  "language": "TypeScript",
+  "last_seen": "2026-11-08",
+  "topics": [
+    "agent-payments",
+    "ai-agents",
+    "base",
+    "mcp",
+    "usdc",
+    "x402"
+  ]
+}

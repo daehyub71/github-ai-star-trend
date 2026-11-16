@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "mcp-tools",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "4a9427ed8b262cc2",
+    "input_hash": "7613bda9237abbc3",
     "is_ai": true,
     "reason": "A plugin for the dsh agent harness that provides free LLM model providers and an OpenAI-compatible local proxy.",
     "secondary": "llmops",
@@ -19,7 +19,7 @@
   "full_name": "Ebony-Vinyl/dsh-our-free-model",
   "id": 1385896447,
   "language": "JavaScript",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "ai-agents",
     "deepseek",

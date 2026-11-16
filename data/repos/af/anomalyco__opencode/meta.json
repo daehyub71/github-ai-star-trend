@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "coding-agent",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "5052f5b6cb350f3c",
+    "input_hash": "a1c6f1e88f8ba367",
     "is_ai": true,
     "reason": "OpenCode is an open source AI coding agent with a terminal UI and desktop app.",
     "secondary": null,
@@ -19,6 +19,6 @@
   "full_name": "anomalyco/opencode",
   "id": 975734319,
   "language": "TypeScript",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": []
 }

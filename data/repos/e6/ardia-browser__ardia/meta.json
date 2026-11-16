@@ -1,0 +1,18 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9e03e3a0e40e0422",
+    "is_ai": false,
+    "reason": "A Chromium-based Mac browser with no advertised AI features in the description or README excerpt.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "full_name": "ardia-browser/ardia",
+  "id": 1274703665
+}

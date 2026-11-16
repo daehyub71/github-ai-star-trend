@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "5442b69737289e16",
+    "is_ai": false,
+    "reason": "A Node.js browser-automation workbench for SheerID verification flows with no AI model or agent features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-06",
+  "description": null,
+  "first_seen": "2026-11-08",
+  "full_name": "JenkinWoo/sheeridVerify",
+  "id": 1448068371,
+  "language": "JavaScript",
+  "last_seen": "2026-11-08",
+  "topics": []
+}

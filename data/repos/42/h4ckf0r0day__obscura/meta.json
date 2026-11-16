@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "computer-use",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "4d12101f82764b37",
+    "input_hash": "60322d58903ddf5e",
     "is_ai": true,
-    "reason": "A Rust headless browser built for AI agents to automate the web and scrape pages.",
+    "reason": "Obscura is a headless browser built for AI agents to automate and scrape the web.",
     "secondary": "mcp-tools",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "h4ckf0r0day/obscura",
   "id": 1209343409,
   "language": "Rust",
-  "last_seen": "2026-05-03",
+  "last_seen": "2026-11-08",
   "topics": [
     "antidetect",
     "antidetect-browser",

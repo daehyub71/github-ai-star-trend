@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "coding-agent",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "12cf19555f64725c",
+    "input_hash": "e1bda30d48a53f47",
     "is_ai": true,
-    "reason": "A Rust app that inspects software and uses a coding agent to build a clean-room recreation, verifying against the original.",
+    "reason": "An app that inspects existing software and has a coding agent build and refine a clean-room version of it.",
     "secondary": "computer-use",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,6 +19,6 @@
   "full_name": "storytold/craft-anything",
   "id": 1440956372,
   "language": "Rust",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": []
 }

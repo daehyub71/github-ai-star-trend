@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "83421be54998fbba",
+    "input_hash": "4cff9851da7ebf90",
     "is_ai": false,
-    "reason": "A native Rust/Tauri IDE with editor, debugger and Git features that does not advertise any AI features.",
+    "reason": "A native Rust IDE with editor, debugger and Git features, with no advertised AI features or agent interface.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "l0ng-ai/openidea",
   "id": 1428347546,
   "language": "TypeScript",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "code-editor",
     "cross-platform",

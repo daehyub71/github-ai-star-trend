@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "agent-skills",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "ae30819391323c71",
+    "input_hash": "4f4ee29b80943f3e",
     "is_ai": true,
-    "reason": "A plugin of skills and reviewer prompts for coding agents like Claude Code and Codex, supporting spec design and review workflows.",
+    "reason": "A plugin of skills and reviewer prompts for coding agents (Claude Code, Codex, Antigravity) for spec design and review workflows.",
     "secondary": "coding-agent",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "google/elephant-goldfish-model",
   "id": 1368596582,
   "language": "Python",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "agent-skills",
     "ai-agents",

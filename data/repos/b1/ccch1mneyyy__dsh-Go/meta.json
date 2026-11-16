@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "coding-agent",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "ef53b9ec6c6b8aff",
+    "input_hash": "8ddf41f76e407208",
     "is_ai": true,
-    "reason": "Android client for the DeepSeek Harness coding agent that runs on the phone or remotely controls it on a PC.",
+    "reason": "Mobile app for running the DeepSeek Harness coding agent on a phone and remotely controlling it on a PC.",
     "secondary": "ai-apps",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "ccch1mneyyy/dsh-Go",
   "id": 1432967563,
   "language": "Dart",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "ai-agent",
     "android",

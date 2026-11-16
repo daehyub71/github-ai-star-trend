@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "2134ed64d7b8048e",
+    "is_ai": true,
+    "reason": "A toolkit for AI coding agents like Claude Code to script, render, and voice full videos in code, so its main job is AI video creation.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-03",
+  "description": "Films made with code. Short films, long YouTube videos, ads, explainers and music videos: an AI coding agent writes the script, builds every frame in code, designs the sound and hands you an MP4.",
+  "first_seen": "2026-11-08",
+  "full_name": "sarpstar/cinecode",
+  "id": 1444112593,
+  "language": "Python",
+  "last_seen": "2026-11-08",
+  "topics": []
+}

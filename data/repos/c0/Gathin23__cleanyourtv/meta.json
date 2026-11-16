@@ -1,15 +1,15 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "agent-skills",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "9f2cbe9c16b5faf3",
+    "input_hash": "55b050d7d7e2d4a1",
     "is_ai": true,
-    "reason": "An Android TV debloat tool designed to be run by a coding assistant, effectively packaging instructions for agents to execute the cleanup.",
-    "secondary": "mcp-tools",
+    "reason": "A TV debloat tool whose quick start has a coding assistant like Claude Code carry out the work, so it effectively ships agent instructions.",
+    "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
   },
@@ -19,7 +19,7 @@
   "full_name": "Gathin23/cleanyourtv",
   "id": 1423101235,
   "language": "Python",
-  "last_seen": "2026-11-01",
+  "last_seen": "2026-11-08",
   "topics": [
     "adb",
     "adblock",

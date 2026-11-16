@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "11c44b1034318d52",
+    "is_ai": true,
+    "reason": "Source repo for a set of coding-agent skills delivering modern web best-practice guidance, with tooling for authoring and evaluating them.",
+    "secondary": "llmops",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-01-27",
+  "description": "Keep your coding agent up to date with the latest web best practices",
+  "first_seen": "2026-11-08",
+  "full_name": "GoogleChrome/modern-web-guidance-src",
+  "id": 1143633223,
+  "language": "TypeScript",
+  "last_seen": "2026-11-08",
+  "topics": []
+}

@@ -1,18 +1,24 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "207539b4333f128e",
+    "input_hash": "6e948d848a5e1f3d",
     "is_ai": false,
-    "reason": "A Nintendo Switch emulator with no AI features; AI tools are only used to develop it.",
+    "reason": "A Nintendo Switch emulator with no AI features; it is general software rather than an AI project.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-31",
+  "description": "VERY experimental Nintendo Switch 2 emulator",
+  "first_seen": "2026-11-08",
   "full_name": "zortos293/Lichii",
-  "id": 1440927503
+  "id": 1440927503,
+  "language": "C++",
+  "last_seen": "2026-11-08",
+  "topics": []
 }

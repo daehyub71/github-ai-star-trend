@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "agent-framework",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "daa0c77a1860bd30",
+    "is_ai": true,
+    "reason": "LLM-driven multi-agent autonomous penetration testing platform with planner/worker agents.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-08",
+  "description": "ARTEX - AI autonomous penetration testing system (English translation; upstream: Autumn-27/ARTEX, AGPL-3.0)",
+  "first_seen": "2026-11-08",
+  "full_name": "BaaRai/ARTEX",
+  "id": 1410961834,
+  "language": "Go",
+  "last_seen": "2026-11-08",
+  "topics": []
+}

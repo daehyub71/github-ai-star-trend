@@ -1,14 +1,17 @@
 {
+  "aliases": [
+    "facebook/astryx"
+  ],
   "classify": {
-    "at": "2026-10-28",
+    "at": "2026-11-16",
     "attempts": 1,
     "category": "mcp-tools",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "9ac6a59fb3f33025",
+    "input_hash": "c78b8477a0c7f59e",
     "is_ai": true,
-    "reason": "A React design system pitched as agent-ready, with a CLI and docs built so coding agents can use it.",
+    "reason": "A React design system that advertises being agent-ready, with a CLI and docs built so coding agents can use it.",
     "secondary": "agent-skills",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -16,9 +19,9 @@
   "created": "2026-01-09",
   "description": "An open source design system that's fully customizable and agent ready",
   "first_seen": "2026-06-28",
-  "full_name": "facebook/astryx",
+  "full_name": "meta/astryx",
   "id": 1131202426,
   "language": "TypeScript",
-  "last_seen": "2026-07-05",
+  "last_seen": "2026-11-08",
   "topics": []
 }

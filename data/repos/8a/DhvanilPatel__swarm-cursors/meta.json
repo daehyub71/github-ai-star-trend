@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "f54da5371b68f2c0",
+    "is_ai": false,
+    "reason": "A Chrome extension that animates cursors rebuilding a web page, with no AI models or agents involved.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-14",
+  "description": null,
+  "first_seen": "2026-11-08",
+  "full_name": "DhvanilPatel/swarm-cursors",
+  "id": 1419960669,
+  "language": "JavaScript",
+  "last_seen": "2026-11-08",
+  "topics": []
+}

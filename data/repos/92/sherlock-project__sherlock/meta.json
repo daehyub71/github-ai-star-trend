@@ -13,6 +13,29 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2018-12-24",
+  "description": "Hunt down social media accounts by username across social networks",
+  "first_seen": "2026-11-08",
   "full_name": "sherlock-project/sherlock",
-  "id": 162998479
+  "id": 162998479,
+  "language": "Python",
+  "last_seen": "2026-11-08",
+  "topics": [
+    "cli",
+    "cti",
+    "cybersecurity",
+    "forensics",
+    "hacktoberfest",
+    "information-gathering",
+    "infosec",
+    "linux",
+    "osint",
+    "pentesting",
+    "python",
+    "python3",
+    "reconnaissance",
+    "redteam",
+    "sherlock",
+    "tools"
+  ]
 }

@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "computer-use",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "eca9407c82e1c5e4",
+    "is_ai": true,
+    "reason": "Andee is an AI agent app that operates any app on Android phones and Macs like a human, i.e., device-control automation.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-09-17",
+  "description": "Andee lives on your phone or Mac and uses any app like you do—no integrations, no root, any model; memory and passwords never leave your device | Andee 住进你的手机或 Mac，像你一样操作任何 App——无需集成、无需 Root、支持任意模型，记忆和密码绝不离开设备。",
+  "first_seen": "2026-11-08",
+  "full_name": "kuafuai/andee",
+  "id": 1374472673,
+  "language": "Kotlin",
+  "last_seen": "2026-11-08",
+  "topics": [
+    "agent",
+    "ai",
+    "ai-agents",
+    "android-automation",
+    "mobile-agents",
+    "personal-agent",
+    "personal-ai",
+    "phone-automation"
+  ]
+}

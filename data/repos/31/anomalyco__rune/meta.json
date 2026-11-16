@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-16",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "411f4e0b582fb1a5",
+    "is_ai": true,
+    "reason": "A native Rust UI framework that advertises agent-drivable headless rendering, element-tree dumps and scripted input for coding agents.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-22",
+  "description": "Rune: Native UI framework",
+  "first_seen": "2026-11-08",
+  "full_name": "anomalyco/rune",
+  "id": 1429303647,
+  "language": "Rust",
+  "last_seen": "2026-11-08",
+  "topics": []
+}
