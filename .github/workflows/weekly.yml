@@ -10,6 +10,8 @@
 #                   · STARTREND_ANTHROPIC_API_KEY · STARTREND_TAVILY_API_KEY
 #                   · NOTION_TOKEN(결정 66 — 블로그·Notion 초안 페이지. 없으면 Notion 단계만 건너뛴다)
 #                   · 변수 STARTREND_PRIVATE_REPO(없으면 "<이 저장소>-private")
+#                   · RADAR_DISPATCH_TOKEN(결정 70, 있을 때만 — 레이더 저장소 Actions 쓰기만 가진 세분화 토큰). 실행이
+#                     성공하면 맨 끝에 레이더 주간 실행을 시작시킨다. 없으면 레이더는 자기 예약(월 14:00 KST)으로 돈다
 name: weekly
 
 on:
@@ -217,3 +219,17 @@ jobs:
         run: |
           echo "weekly 종료 코드 $CODE"
           if [ "$CODE" != "0" ] && [ "$CODE" != "3" ]; then exit 1; fi
+
+      - name: 레이더 시작 신호 (결정 70 — 공개 데이터 push · 결과 판정 통과 뒤)
+        if: env.RUN == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.RADAR_DISPATCH_TOKEN }}
+          RADAR_REPO: ${{ vars.RADAR_REPO || 'daehyub71/github-ai-trend-radar' }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "RADAR_DISPATCH_TOKEN 없음 — 레이더는 자기 예약(월 14:00 KST)으로 돈다"; exit 0; fi
+          if gh workflow run weekly --repo "$RADAR_REPO" --ref main -f mode=run; then
+            echo "레이더 주간 실행을 시작시켰다 ($RADAR_REPO)"
+          else
+            echo "::error::레이더 시작 신호 실패 — RADAR_DISPATCH_TOKEN 만료·권한(Actions 쓰기)을 본다. 데이터는 이미 올렸고 레이더는 자기 예약으로 돈다"
+            exit 1
+          fi

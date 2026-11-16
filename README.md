@@ -20,11 +20,11 @@ AI tooling changes every week. GitHub stars are a cheap, public signal of where 
 | Phase | State |
 |---|---|
 | 0 · Skeleton + measurement | ✅ done |
-| 1 · Data core — discover, stars, 52-week backfill, rankings | 🔄 in progress (52-week backfill running) |
-| 2 · Classification — is it AI? type, category | 🔄 cost-free groundwork done; paid runs not started |
-| 3 · Evidence, cards, briefing | planned |
-| 4 · Web UI (Next.js on Vercel — public, not indexed by search engines) · 4b · Notion + blog drafts | design agreed · planned |
-| 5 · Weekly GitHub Actions run | planned |
+| 1 · Data core — discover, stars, 52-week backfill, rankings | 🔄 52-week backfill and rankings done; weekly runs ongoing |
+| 2 · Classification — is it AI? type, category | ✅ done (52 weeks, 1,947 repositories) |
+| 3 · Evidence, cards, briefing | 🔄 running in the weekly run; two tasks left |
+| 4 · Web UI (Next.js on Vercel — public, not indexed by search engines) · 4b · Notion + blog drafts | ✅ done |
+| 5 · Weekly GitHub Actions run | 🔄 runs every Monday 03:00 UTC (12:00 KST); when it succeeds it starts the [radar](https://github.com/daehyub71/github-ai-trend-radar) weekly run |
 
 The live progress dashboard is at the top of [`docs/TASK.md`](docs/TASK.md).
 
@@ -38,6 +38,7 @@ The live progress dashboard is at the top of [`docs/TASK.md`](docs/TASK.md).
 - **classify** (Phase 2) — Claude decides is-AI / type / category with schema-constrained output. Code validates the answer, asks once more with the error, and otherwise records "unclassified". Only ranking candidates are classified, walking each axis until it has 15 AI repositories; a repository is re-classified only when its input hash changes.
 - **evidence → analyze → brief** (Phase 3) — our code searches (Hacker News and a search API) and records an evidence list; Claude judges and summarizes only within that list, and a citation gate drops claims without a source.
 - **blog / notion** (Phase 4b) — weekly drafts go to Notion; a person reviews and publishes. Nothing is posted automatically.
+- **radar signal** — this project's public data is the input of [github-ai-trend-radar](https://github.com/daehyub71/github-ai-trend-radar). After the public data push, the last step starts the radar's weekly run (`RADAR_DISPATCH_TOKEN`, a fine-grained token that can only run Actions on that one repository). Without the token the step is skipped and the radar falls back to its own schedule.
 
 | Measure first: 65,922 candidates; history for each would take 13.2 hours a week | Who should search? Claude's server-side search vs. our code |
 |---|---|

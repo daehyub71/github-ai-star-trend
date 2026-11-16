@@ -181,3 +181,19 @@ def test_workflow_weekly_runs_on_monday_noon_kst():
     on = text[text.index("\non:"):text.index("\npermissions:")]
     assert re.search(r"^  schedule:\n    - cron: \"0 3 \* \* 1\"$", on, re.M)
     assert "workflow_dispatch:" in on
+
+
+def test_workflow_weekly_starts_the_radar_after_a_successful_run():
+    # 결정 70 — 공개 데이터 push 와 결과 판정(0·3)을 통과한 뒤에만 레이더 주간 실행을 시작시킨다.
+    # 토큰(레이더 저장소 Actions 쓰기만)은 env 로만 · 없으면 건너뛴다(레이더는 자기 예약으로 돈다)
+    # · 신호 실패는 실패로 남긴다
+    text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
+    names = re.findall(r"^      - name: (.+)$", text, re.M)
+    assert names[-1].startswith("레이더 시작 신호")
+    assert names.index("공개 데이터 commit · push (크기·시크릿 가드 먼저)") < names.index(
+        "결과 — 0 성공 · 3 예산으로 멈춤(정상 종료) · 그 밖은 실패") < len(names) - 1
+    step = _step(text, "레이더 시작 신호")
+    assert "if: env.RUN == 'true'" in step
+    assert "GH_TOKEN: ${{ secrets.RADAR_DISPATCH_TOKEN }}" in step
+    assert 'gh workflow run weekly --repo "$RADAR_REPO" --ref main -f mode=run' in step
+    assert '[ -z "$GH_TOKEN" ]' in step and "exit 1" in step
