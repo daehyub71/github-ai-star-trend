@@ -1,6 +1,7 @@
 # 주간 실행 (SPEC FR-11, 결정 32·55) — `python -m startrend weekly --run`
 #
-# 크론: 월 00:00 UTC = 09:00 KST (결정 32 · P5-8, 2026-10-29 켬) — 크론은 실행(run)으로 친다.
+# 크론: 월 03:00 UTC = 12:00 KST (결정 32 · P5-8, 2026-10-29 켬 · 2026-11-16 00:00 UTC 에서 변경 — 레이더 14:00 KST 앞)
+#       — 크론은 실행(run)으로 친다.
 # 손으로도 돌릴 수 있다(workflow_dispatch) — 기본은 점검(check, 비용 0·쓰기 없음), run 을 골라야 실행한다.
 #
 # 보안(NFR-8): 권한은 contents: write 만 · 외부 Action 은 커밋 SHA 고정 · 시크릿은 env 로만 넘긴다(run 에 직접 쓰지 않는다)
@@ -13,7 +14,7 @@ name: weekly
 
 on:
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 3 * * 1"
   workflow_dispatch:
     inputs:
       mode:

@@ -174,9 +174,10 @@ def test_workflow_weekly_takes_in_local_pushes_before_its_own_private_push():
     assert order == sorted(order)
 
 
-def test_workflow_weekly_runs_on_monday_midnight_utc():
-    # 결정 32 · P5-8 — 월 00:00 UTC(09:00 KST). 손으로 점검·실행하는 길(workflow_dispatch)도 남긴다
+def test_workflow_weekly_runs_on_monday_noon_kst():
+    # 결정 32 · P5-8 — 월 03:00 UTC(12:00 KST, 2026-11-16 변경 — 레이더 14:00 KST 앞).
+    # 손으로 점검·실행하는 길(workflow_dispatch)도 남긴다
     text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
     on = text[text.index("\non:"):text.index("\npermissions:")]
-    assert re.search(r"^  schedule:\n    - cron: \"0 0 \* \* 1\"$", on, re.M)
+    assert re.search(r"^  schedule:\n    - cron: \"0 3 \* \* 1\"$", on, re.M)
     assert "workflow_dispatch:" in on
