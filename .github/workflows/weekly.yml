@@ -1,7 +1,8 @@
 # 주간 실행 (SPEC FR-11, 결정 32·55) — `python -m startrend weekly --run`
 #
-# 크론: 월 03:00 UTC = 12:00 KST (결정 32 · P5-8, 2026-10-29 켬 · 2026-11-16 00:00 UTC 에서 변경 — 레이더 14:00 KST 앞)
-#       — 크론은 실행(run)으로 친다.
+# 시작(결정 71, 2026-11-18): 주간 실행은 로컬 맥이 월 12:00 KST 에 한다(같은 단계를 같은 순서로).
+# 크론: 월 07:00 UTC = 16:00 KST 는 로컬이 돌지 못했을 때를 위한 대비 — 그 주 사이트 데이터가 이미 있으면
+#       뒤 단계를 모두 건너뛴다(과금 0 · 쓰기 0). 없으면 실행(run)으로 친다. (전에는 월 03:00 UTC — 결정 32)
 # 손으로도 돌릴 수 있다(workflow_dispatch) — 기본은 점검(check, 비용 0·쓰기 없음), run 을 골라야 실행한다.
 #
 # 보안(NFR-8): 권한은 contents: write 만 · 외부 Action 은 커밋 SHA 고정 · 시크릿은 env 로만 넘긴다(run 에 직접 쓰지 않는다)
@@ -16,7 +17,7 @@ name: weekly
 
 on:
   schedule:
-    - cron: "0 3 * * 1"
+    - cron: "0 7 * * 1"
   workflow_dispatch:
     inputs:
       mode:
@@ -120,6 +121,19 @@ jobs:
           print(f"week={wk.week_name(w)}")
           print(f"prev={wk.week_name(wk.previous_week(w))}")
           PY
+
+      - name: 이미 끝낸 주면 건너뜀 (결정 71 — 예약 실행은 로컬 실행의 대비)
+        if: env.RUN == 'true' && github.event_name == 'schedule'
+        env:
+          W: ${{ steps.week.outputs.week }}
+        run: |
+          # export 가 맨 뒤에 쓰는 그 주 사이트 데이터가 있으면 이미 끝낸 주다 — 다시 돌리면 브리핑을 새로 쓴다
+          if [ -f "data/site/weeks/$W.json" ]; then
+            echo "$W 주는 이미 끝냈다 — 이번 예약 실행은 건너뛴다"
+            echo "RUN=false" >> "$GITHUB_ENV"
+          else
+            echo "$W 주 데이터 없음 — 대비 실행을 한다"
+          fi
 
       - name: 지난 주 스냅샷 받기 (FR-11.7, 결정 29)
         if: env.RUN == 'true'

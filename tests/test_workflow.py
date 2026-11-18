@@ -174,13 +174,31 @@ def test_workflow_weekly_takes_in_local_pushes_before_its_own_private_push():
     assert order == sorted(order)
 
 
-def test_workflow_weekly_runs_on_monday_noon_kst():
-    # 결정 32 · P5-8 — 월 03:00 UTC(12:00 KST, 2026-11-16 변경 — 레이더 14:00 KST 앞).
+def test_workflow_weekly_schedule_is_a_fallback_at_16_kst():
+    # 결정 71 — 주간 실행은 로컬 맥이 월 12:00 KST 에 시작한다. 예약은 대비로 월 07:00 UTC(16:00 KST).
     # 손으로 점검·실행하는 길(workflow_dispatch)도 남긴다
     text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
     on = text[text.index("\non:"):text.index("\npermissions:")]
-    assert re.search(r"^  schedule:\n    - cron: \"0 3 \* \* 1\"$", on, re.M)
+    assert re.search(r"^  schedule:\n    - cron: \"0 7 \* \* 1\"$", on, re.M)
     assert "workflow_dispatch:" in on
+
+
+def test_workflow_weekly_scheduled_run_skips_a_finished_week():
+    # 결정 71 — 예약 실행은 그 주 사이트 데이터(data/site/weeks/<주>.json, export 가 맨 뒤에 쓴다)가
+    # 이미 있으면
+    # 뒤 단계를 모두 건너뛴다(RUN=false) — 로컬이 끝낸 주를 다시 돌려 브리핑을 새로 쓰지 않는다.
+    # 손으로 돌리는 실행(workflow_dispatch)은 건너뛰지 않는다. 주 이름은 env 로만 넘긴다
+    text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
+    skip = _step(text, "이미 끝낸 주면 건너뜀")
+    assert "if: env.RUN == 'true' && github.event_name == 'schedule'" in skip
+    assert "W: ${{ steps.week.outputs.week }}" in skip
+    assert 'data/site/weeks/$W.json' in skip
+    assert 'echo "RUN=false" >> "$GITHUB_ENV"' in skip
+    assert "${{" not in skip[skip.index("run: |"):]
+    # 주를 계산한 뒤, 과금·쓰기 단계보다 앞에 온다
+    names = ("이번 주 · 지난 주", "이미 끝낸 주면 건너뜀", "지난 주 스냅샷 받기")
+    order = [text.index(f"- name: {n}") for n in names]
+    assert order == sorted(order)
 
 
 def test_workflow_weekly_starts_the_radar_after_a_successful_run():
