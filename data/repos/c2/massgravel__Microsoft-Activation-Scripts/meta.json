@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "f275089584458f36",
+    "input_hash": "a5feb97eaca75300",
     "is_ai": false,
-    "reason": "This is a Windows and Office activation script tool with no AI features.",
+    "reason": "Windows and Office activation scripts with no AI features.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"

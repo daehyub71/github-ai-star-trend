@@ -13,6 +13,24 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-07-05",
+  "description": "94 specialist Blender skills for Cursor, Claude Code, Kiro & Codex -> MCP-powered production pipeline from blockout to engine export.",
+  "first_seen": "2026-11-14",
   "full_name": "arjun988/blender-skills",
-  "id": 1289817225
+  "id": 1289817225,
+  "language": "TypeScript",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "3d-models",
+    "agent",
+    "agent-skills",
+    "blender",
+    "blender-addon",
+    "blender-mcp",
+    "claude-code",
+    "claude-skills",
+    "cursor-ai",
+    "game-development",
+    "mcp"
+  ]
 }

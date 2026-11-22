@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "98a96244301c2632",
+    "is_ai": true,
+    "reason": "A static browser chat client app powered by the DeepSeek API with streaming, search, and voice features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-12",
+  "description": "Chat Demo",
+  "first_seen": "2026-11-14",
+  "full_name": "deepseek-ai/chat-demo",
+  "id": 1455006582,
+  "language": "TypeScript",
+  "last_seen": "2026-11-14",
+  "topics": []
+}

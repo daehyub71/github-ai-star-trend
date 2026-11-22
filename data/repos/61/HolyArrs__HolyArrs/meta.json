@@ -1,0 +1,31 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "a807f1245d6fece9",
+    "is_ai": false,
+    "reason": "A self-hosted media management app for shows, movies and music with no advertised AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-09",
+  "description": "One self-hosted app for your shows, movies and music.",
+  "first_seen": "2026-11-14",
+  "full_name": "HolyArrs/HolyArrs",
+  "id": 1452008226,
+  "language": "Go",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "docker",
+    "homelab",
+    "jellyfin",
+    "media-server",
+    "plex",
+    "self-hosted"
+  ]
+}

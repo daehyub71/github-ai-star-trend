@@ -1,0 +1,43 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "8f122e568ef50449",
+    "is_ai": true,
+    "reason": "A collection of Agent Skills that teach AI coding agents professional Blender 3D workflows.",
+    "secondary": "multimodal",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-14",
+  "description": "Professional Blender 5.3 workflows as Agent Skills for Claude Code, Codex, Gemini CLI, Copilot and Cursor: modeling, UVs, PBR, baking, rigging, animation, export and QA.",
+  "first_seen": "2026-11-14",
+  "full_name": "EL4CTEO/blender-skills",
+  "id": 1419708427,
+  "language": "Python",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "3d",
+    "agent-skills",
+    "ai-agents",
+    "blender",
+    "blender-python",
+    "bpy",
+    "claude-code",
+    "claude-skills",
+    "codex",
+    "game-assets",
+    "gemini-cli",
+    "godot",
+    "mcp",
+    "pbr",
+    "rigging",
+    "roblox",
+    "unity",
+    "unreal-engine"
+  ]
+}

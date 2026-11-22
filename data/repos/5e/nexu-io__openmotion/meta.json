@@ -1,0 +1,48 @@
+{
+  "aliases": [
+    "nexu-io/html-anything"
+  ],
+  "classify": {
+    "at": "2026-10-28",
+    "attempts": 1,
+    "category": "ai-apps",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ab37020ad5e5f615",
+    "is_ai": true,
+    "reason": "An end-user agentic HTML editor that drives local coding-agent CLIs with 75 skill templates to generate shareable HTML content.",
+    "secondary": "agent-skills",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-05-11",
+  "description": "The open-source Claude Motion & CapCut alternative. Turn a reference video into editable motion graphics with your brand kit. Export MP4s for YouTube, YouTube Shorts, Instagram Reels, and TikTok. A full-stack agentic video studio with 300+ Motion.md guides and support for 22 agents, including Claude Code, Codex, DSH, and WorkBuddy.",
+  "first_seen": "2026-05-17",
+  "full_name": "nexu-io/openmotion",
+  "id": 1235403234,
+  "language": "TypeScript",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "agent-skills",
+    "ai",
+    "ai-agents",
+    "animation",
+    "claude-code",
+    "codex",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "ffmpeg",
+    "generative-ai",
+    "html",
+    "javascript",
+    "local-first",
+    "mcp",
+    "motion-graphics",
+    "openmotion",
+    "typescript",
+    "video-editing",
+    "video-generation"
+  ]
+}

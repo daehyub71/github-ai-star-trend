@@ -14,12 +14,12 @@
     "type": "도구/라이브러리"
   },
   "created": "2026-10-04",
-  "description": "The open source AI video agent: turns any coding agent into a video agent, with an editor to change anything it makes.",
+  "description": "The open source AI video agent: turns any coding agent into a video agent, with editors to change anything it makes.",
   "first_seen": "2026-10-25",
   "full_name": "openfilm/openfilm",
   "id": 1404197626,
   "language": "TypeScript",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": [
     "ai-video",
     "claude-code",

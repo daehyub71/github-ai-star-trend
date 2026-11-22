@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "multimodal",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "25511ad24348a7be",
+    "input_hash": "11bb850cedec11d8",
     "is_ai": true,
-    "reason": "Windows video player that advertises AI-powered super resolution, denoising and frame generation for real-time video enhancement.",
+    "reason": "Windows video player that applies AI super resolution and frame generation to video and capture sources in real time.",
     "secondary": "ai-apps",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,6 +19,6 @@
   "full_name": "Likely7/Veyra-NRVideo",
   "id": 1362562155,
   "language": "C++",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": []
 }

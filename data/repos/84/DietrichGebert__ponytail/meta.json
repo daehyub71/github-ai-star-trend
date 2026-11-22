@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-02",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "agent-skills",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "703923d57c7e674f",
+    "input_hash": "2bd01d824f275d07",
     "is_ai": true,
-    "reason": "A skill/prompt plugin for Claude Code and other coding agents that steers them toward minimal code.",
+    "reason": "A skill/prompt plugin that shapes coding agents like Claude Code to write minimal code.",
     "secondary": "coding-agent",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "DietrichGebert/ponytail",
   "id": 1266797999,
   "language": "JavaScript",
-  "last_seen": "2026-10-18",
+  "last_seen": "2026-11-14",
   "topics": [
     "agent-skills",
     "ai-agents",

@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "de8df2069671f74c",
+    "is_ai": true,
+    "reason": "Desktop app using AI human mesh recovery models to turn video into motion capture animation.",
+    "secondary": "ai-apps",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-26",
+  "description": "Native Windows video motion capture with ExMR, FlowHMR and GVHMR, contact correction, humanoid retargeting, and FBX/VMD export.",
+  "first_seen": "2026-11-14",
+  "full_name": "toyxyz/toyxyz_RGBMocap",
+  "id": 1434992606,
+  "language": "Python",
+  "last_seen": "2026-11-14",
+  "topics": []
+}

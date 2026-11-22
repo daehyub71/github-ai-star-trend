@@ -1,0 +1,32 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "284ff5abbb3a6c53",
+    "is_ai": false,
+    "reason": "A lightweight Docker-compatible container runtime with no advertised AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-02",
+  "description": "A small, fast container runtime for macOS, Windows and Linux with free Ngrok alternative",
+  "first_seen": "2026-11-14",
+  "full_name": "libracoder/kiri",
+  "id": 1443186633,
+  "language": "Rust",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "containers",
+    "docker",
+    "kubernetes",
+    "linux",
+    "macos",
+    "oci",
+    "windows"
+  ]
+}

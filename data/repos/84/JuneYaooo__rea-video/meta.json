@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "multimodal",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "e2222c99eb723cfa",
+    "input_hash": "e8a749abcd973072",
     "is_ai": true,
-    "reason": "An agent-run CLI/skill that analyzes videos shot by shot with VLMs, detects AI-generated footage, and reverse-engineers generation prompts.",
+    "reason": "A CLI and agent skill that uses VLMs to analyze videos shot by shot, detect AI-generated footage, and explain how to remake them.",
     "secondary": "agent-skills",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "JuneYaooo/rea-video",
   "id": 1438661890,
   "language": "Python",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": [
     "agent-skills",
     "ai-video",

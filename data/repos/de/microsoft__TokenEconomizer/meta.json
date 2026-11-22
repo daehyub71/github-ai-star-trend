@@ -13,6 +13,32 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-13",
+  "description": "Experience-Driven Black-Box Cost Control for Coding Agents",
+  "first_seen": "2026-11-14",
   "full_name": "microsoft/TokenEconomizer",
-  "id": 1416442720
+  "id": 1416442720,
+  "language": "Python",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "agentic-ai",
+    "agentic-coding",
+    "ai-coding",
+    "ai-coding-assistant",
+    "anthropic",
+    "artificial-intelligence",
+    "claude-code",
+    "codex",
+    "coding-agent",
+    "coding-agents",
+    "cost-optimization",
+    "cost-reduction",
+    "developer-tools",
+    "github-copilot",
+    "llm",
+    "open-source",
+    "openai",
+    "productivity",
+    "token-optimization"
+  ]
 }

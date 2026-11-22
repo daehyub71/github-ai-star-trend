@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "agent-skills",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "e061eae088bb4528",
+    "input_hash": "6b620586f74b2978",
     "is_ai": true,
-    "reason": "A collection of SKILL.md instruction files for AI agents and chatbots, such as a Socratic tutor skill.",
+    "reason": "A collection of SKILL.md agent skills, including a Socratic tutor prompt for LLMs.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,6 +19,6 @@
   "full_name": "janestreet/agent_skills",
   "id": 1444573070,
   "language": null,
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": []
 }

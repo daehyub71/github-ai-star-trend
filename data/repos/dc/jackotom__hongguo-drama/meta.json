@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": null,
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "65498ed41d02dcf9",
+    "is_ai": false,
+    "reason": "A desktop app for searching, playing, and downloading short dramas, with no AI features.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-07",
+  "description": "红果短剧桌面版 · 支持 M 系列 Mac、Intel Mac 和 Windows · 三来源搜索、播放、下载与追剧 · GPL-3.0 开源",
+  "first_seen": "2026-11-14",
+  "full_name": "jackotom/hongguo-drama",
+  "id": 1408042332,
+  "language": "JavaScript",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "apple-silicon",
+    "electron",
+    "hongguo",
+    "macos",
+    "short-drama",
+    "video-downloader",
+    "video-player",
+    "xifan"
+  ]
+}

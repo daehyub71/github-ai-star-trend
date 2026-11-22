@@ -1,0 +1,104 @@
+{
+  "runs": [
+    {
+      "cap_usd": 10.0,
+      "llm_calls": 72,
+      "spent_usd": 2.7847,
+      "started": "2026-11-22T05:41:01Z",
+      "status": "stopped",
+      "steps": [
+        {
+          "name": "contract",
+          "seconds": 2.4,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "discover",
+          "seconds": 3521.1,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "stars",
+          "seconds": 257.4,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "rank",
+          "seconds": 17.8,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "classify",
+          "seconds": 412.6,
+          "spent_usd": 0.552,
+          "status": "ok"
+        },
+        {
+          "name": "rank-ai",
+          "seconds": 2.6,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "trends",
+          "seconds": 0.1,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "evidence",
+          "seconds": 536.5,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "analyze",
+          "seconds": 467.2,
+          "spent_usd": 1.735,
+          "status": "ok"
+        },
+        {
+          "name": "check",
+          "seconds": 0.1,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "brief",
+          "seconds": 15.3,
+          "spent_usd": 0.1188,
+          "status": "ok"
+        },
+        {
+          "name": "export",
+          "seconds": 1.4,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "blog",
+          "seconds": 285.6,
+          "spent_usd": 0.379,
+          "status": "stopped"
+        },
+        {
+          "name": "notion",
+          "seconds": 121.2,
+          "spent_usd": 0.0,
+          "status": "ok"
+        },
+        {
+          "name": "archive",
+          "seconds": 1.0,
+          "spent_usd": 0.0,
+          "status": "ok"
+        }
+      ]
+    }
+  ],
+  "week": "2026-11-14"
+}

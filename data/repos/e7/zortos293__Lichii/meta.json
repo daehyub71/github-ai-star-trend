@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "6e948d848a5e1f3d",
+    "input_hash": "30403ba58c4cc35e",
     "is_ai": false,
-    "reason": "A Nintendo Switch emulator with no AI features; it is general software rather than an AI project.",
+    "reason": "A Nintendo Switch emulator with no AI features.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,6 +19,6 @@
   "full_name": "zortos293/Lichii",
   "id": 1440927503,
   "language": "C++",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": []
 }

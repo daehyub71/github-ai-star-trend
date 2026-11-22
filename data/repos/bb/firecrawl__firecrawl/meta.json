@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "doc-parsing",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "5ebfe517d13e4143",
+    "input_hash": "42076b034e63bff9",
     "is_ai": true,
-    "reason": "Firecrawl is a web scraping API that turns web pages and documents into LLM-ready markdown and structured data for AI agents, with MCP connectivity.",
+    "reason": "Firecrawl converts web pages and documents into LLM-ready markdown/JSON and connects to AI agents via MCP.",
     "secondary": "mcp-tools",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "firecrawl/firecrawl",
   "id": 787076358,
   "language": "TypeScript",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": [
     "ai",
     "ai-agents",

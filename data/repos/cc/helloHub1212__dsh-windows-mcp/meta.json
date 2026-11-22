@@ -1,0 +1,33 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "mcp-tools",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "e00f604bbb7eae5b",
+    "is_ai": true,
+    "reason": "A DeepSeek Harness plugin that mounts the Windows-MCP server so the agent can see the screen and control the Windows desktop.",
+    "secondary": "computer-use",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-11",
+  "description": "Windows desktop automation for DeepSeek Harness: the in-box MCP client bridge mounted against CursorTouch/Windows-MCP, with an off-by-default Computer Use switch and an in-app dependency installer.",
+  "first_seen": "2026-11-14",
+  "full_name": "helloHub1212/dsh-windows-mcp",
+  "id": 1413849053,
+  "language": "JavaScript",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "computer-use",
+    "deepseek-harness",
+    "desktop-automation",
+    "dsh",
+    "dsh-plugin",
+    "mcp",
+    "windows",
+    "windows-mcp"
+  ]
+}

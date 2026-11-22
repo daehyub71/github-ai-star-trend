@@ -1,12 +1,12 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "af70992a719ab478",
+    "input_hash": "44323088d530adcf",
     "is_ai": false,
     "reason": "A general-purpose Rust download manager and torrent client with no advertised AI features.",
     "secondary": null,
@@ -19,7 +19,7 @@
   "full_name": "anefzaoui/misterdownloadmanager",
   "id": 1437814166,
   "language": "Rust",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": [
     "bittorrent-client",
     "debrid",

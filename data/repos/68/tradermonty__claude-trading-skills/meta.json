@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "agent-skills",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "ee85dd43b6d74c15",
+    "is_ai": true,
+    "reason": "A collection of Claude Code skills for trading analysis and investment workflows.",
+    "secondary": null,
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2025-10-19",
+  "description": "Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.",
+  "first_seen": "2026-11-14",
+  "full_name": "tradermonty/claude-trading-skills",
+  "id": 1079356098,
+  "language": "Python",
+  "last_seen": "2026-11-14",
+  "topics": []
+}

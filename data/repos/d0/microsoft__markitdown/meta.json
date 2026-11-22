@@ -1,14 +1,14 @@
 {
   "classify": {
-    "at": "2026-11-09",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "doc-parsing",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "5819501b4e561039",
+    "input_hash": "f2f97574a6a160f5",
     "is_ai": true,
-    "reason": "Converts documents and office files to Markdown for LLM consumption, with an accompanying MCP server.",
+    "reason": "MarkItDown converts documents and files to Markdown for LLM consumption, and the project also provides an MCP server.",
     "secondary": "mcp-tools",
     "status": "ok",
     "type": "도구/라이브러리"
@@ -19,7 +19,7 @@
   "full_name": "microsoft/markitdown",
   "id": 888092115,
   "language": "Python",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": [
     "autogen",
     "autogen-extension",

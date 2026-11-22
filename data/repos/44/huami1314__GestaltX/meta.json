@@ -1,14 +1,17 @@
 {
+  "aliases": [
+    "huamidev/GestaltX"
+  ],
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": null,
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "f0bd5f58b96a5fb1",
+    "input_hash": "49aca574b1c507d9",
     "is_ai": false,
-    "reason": "This is an iOS MobileGestalt editor for tweaking device flags, not an AI tool despite toggling Apple Intelligence capability flags.",
+    "reason": "An iOS MobileGestalt system-flag editor; Apple Intelligence flag toggling is a minor feature, not building or using AI models.",
     "secondary": null,
     "status": "ok",
     "type": "도구/라이브러리"
@@ -16,9 +19,9 @@
   "created": "2026-11-09",
   "description": "An MobileGestalt editor for iOS 27.x, featuring region-code tweaks, device presets, backups.",
   "first_seen": "2026-11-08",
-  "full_name": "huamidev/GestaltX",
+  "full_name": "huami1314/GestaltX",
   "id": 1450963843,
   "language": "Swift",
-  "last_seen": "2026-11-08",
+  "last_seen": "2026-11-14",
   "topics": []
 }

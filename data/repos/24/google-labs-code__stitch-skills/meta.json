@@ -13,6 +13,12 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-01-16",
+  "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
+  "first_seen": "2026-11-14",
   "full_name": "google-labs-code/stitch-skills",
-  "id": 1135847870
+  "id": 1135847870,
+  "language": "TypeScript",
+  "last_seen": "2026-11-14",
+  "topics": []
 }

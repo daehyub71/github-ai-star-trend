@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "coding-agent",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "9e1ae4e91b966ba8",
+    "is_ai": true,
+    "reason": "Desktop app providing an isolated lightweight VM to run Claude Code and Claude Desktop safely, with an MCP plugin marketplace for host capabilities.",
+    "secondary": "mcp-tools",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-10-31",
+  "description": "Cage：为 Claude 特化的轻量化虚拟机，彻底杜绝网络泄露。多平台适配，支持多账号管理、远程部署、移动端操控。",
+  "first_seen": "2026-11-14",
+  "full_name": "Lee-xeo/Claude-Cage",
+  "id": 1440971520,
+  "language": "Go",
+  "last_seen": "2026-11-14",
+  "topics": []
+}

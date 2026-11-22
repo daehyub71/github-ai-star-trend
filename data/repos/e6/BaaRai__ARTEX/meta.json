@@ -1,15 +1,15 @@
 {
   "classify": {
-    "at": "2026-11-16",
+    "at": "2026-11-22",
     "attempts": 1,
     "category": "agent-framework",
     "confidence": null,
     "error": null,
     "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
-    "input_hash": "daa0c77a1860bd30",
+    "input_hash": "d57229c5c0459bf2",
     "is_ai": true,
-    "reason": "LLM-driven multi-agent autonomous penetration testing platform with planner/worker agents.",
-    "secondary": "ai-apps",
+    "reason": "Self-hosted multi-agent LLM-driven autonomous penetration testing platform with planner/worker agents.",
+    "secondary": "computer-use",
     "status": "ok",
     "type": "도구/라이브러리"
   },
@@ -19,6 +19,27 @@
   "full_name": "BaaRai/ARTEX",
   "id": 1410961834,
   "language": "Go",
-  "last_seen": "2026-11-08",
-  "topics": []
+  "last_seen": "2026-11-14",
+  "topics": [
+    "ai",
+    "ai-agents",
+    "autonomous-agents",
+    "bug-bounty",
+    "docker",
+    "golang",
+    "linux",
+    "llm",
+    "mcp",
+    "nextjs",
+    "penetration-testing",
+    "pentest",
+    "postgresql",
+    "rea",
+    "react",
+    "red-team",
+    "security",
+    "security-automation",
+    "sqlite",
+    "typescript"
+  ]
 }

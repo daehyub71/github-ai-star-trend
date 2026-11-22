@@ -1,0 +1,24 @@
+{
+  "classify": {
+    "at": "2026-11-22",
+    "attempts": 1,
+    "category": "multimodal",
+    "confidence": null,
+    "error": null,
+    "fingerprint": "655ac73c4e9ee131:claude-opus-5-5:low",
+    "input_hash": "7bd25a64eb08a87a",
+    "is_ai": true,
+    "reason": "Neural rendering tools for game frame generation, super resolution and denoising, an alternative to DLSS.",
+    "secondary": "inference",
+    "status": "ok",
+    "type": "도구/라이브러리"
+  },
+  "created": "2026-11-11",
+  "description": "Apex Neural Rendering (ANR) by Apex Compute",
+  "first_seen": "2026-11-14",
+  "full_name": "apex-compute/ANR",
+  "id": 1453517867,
+  "language": "C++",
+  "last_seen": "2026-11-14",
+  "topics": []
+}

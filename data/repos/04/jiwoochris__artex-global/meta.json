@@ -13,6 +13,27 @@
     "status": "ok",
     "type": "도구/라이브러리"
   },
+  "created": "2026-10-03",
+  "description": "Global edition of ARTEX — an LLM multi-agent autonomous penetration-testing framework. English default, switchable to Korean/Chinese/Spanish/Japanese. For authorized, defensive and detection use only. (upstream: Autumn-27/ARTEX, AGPL-3.0)",
+  "first_seen": "2026-11-14",
   "full_name": "jiwoochris/artex-global",
-  "id": 1403307052
+  "id": 1403307052,
+  "language": "Go",
+  "last_seen": "2026-11-14",
+  "topics": [
+    "ai-agent",
+    "autonomous-agents",
+    "blue-team",
+    "cybersecurity",
+    "detection-engineering",
+    "i18n",
+    "korean",
+    "llm",
+    "penetration-testing",
+    "security",
+    "security-research",
+    "security-tools",
+    "sigma-rules",
+    "threat-detection"
+  ]
 }
