@@ -175,11 +175,12 @@ def test_workflow_weekly_takes_in_local_pushes_before_its_own_private_push():
 
 
 def test_workflow_weekly_schedule_is_a_fallback_at_16_kst():
-    # 결정 71 — 주간 실행은 로컬 맥이 월 12:00 KST 에 시작한다. 예약은 대비로 월 07:00 UTC(16:00 KST).
+    # 결정 71 · 72 — 주간 실행은 로컬 맥이 일 07:00 KST 에 시작한다(주는 토 ~ 금).
+    # 예약은 대비로 일 07:00 UTC(16:00 KST).
     # 손으로 점검·실행하는 길(workflow_dispatch)도 남긴다
     text = (PROJECT_ROOT / ".github" / "workflows" / "weekly.yml").read_text(encoding="utf-8")
     on = text[text.index("\non:"):text.index("\npermissions:")]
-    assert re.search(r"^  schedule:\n    - cron: \"0 7 \* \* 1\"$", on, re.M)
+    assert re.search(r"^  schedule:\n    - cron: \"0 7 \* \* 0\"$", on, re.M)
     assert "workflow_dispatch:" in on
 
 

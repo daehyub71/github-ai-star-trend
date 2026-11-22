@@ -1,8 +1,10 @@
 # 주간 실행 (SPEC FR-11, 결정 32·55) — `python -m startrend weekly --run`
 #
-# 시작(결정 71, 2026-11-18): 주간 실행은 로컬 맥이 월 12:00 KST 에 한다(같은 단계를 같은 순서로).
-# 크론: 월 07:00 UTC = 16:00 KST 는 로컬이 돌지 못했을 때를 위한 대비 — 그 주 사이트 데이터가 이미 있으면
-#       뒤 단계를 모두 건너뛴다(과금 0 · 쓰기 0). 없으면 실행(run)으로 친다. (전에는 월 03:00 UTC — 결정 32)
+# 시작(결정 71 · 72): 주간 실행은 로컬 맥이 일 07:00 KST 에 한다(같은 단계를 같은 순서로).
+#       주는 토 ~ 금(2026-11-14 주부터, 결정 72) — 일 07:00 KST 에는 금요일 값까지 들어와 있다.
+# 크론: 일 07:00 UTC = 16:00 KST 는 로컬이 돌지 못했을 때를 위한 대비 — 그 주 사이트 데이터가 이미 있으면
+#       뒤 단계를 모두 건너뛴다(과금 0 · 쓰기 0). 없으면 실행(run)으로 친다.
+#       (전에는 월 07:00 UTC = 16:00 KST — 결정 71, 그 전에는 월 03:00 UTC = 12:00 KST — 결정 32)
 # 손으로도 돌릴 수 있다(workflow_dispatch) — 기본은 점검(check, 비용 0·쓰기 없음), run 을 골라야 실행한다.
 #
 # 보안(NFR-8): 권한은 contents: write 만 · 외부 Action 은 커밋 SHA 고정 · 시크릿은 env 로만 넘긴다(run 에 직접 쓰지 않는다)
@@ -12,12 +14,12 @@
 #                   · NOTION_TOKEN(결정 66 — 블로그·Notion 초안 페이지. 없으면 Notion 단계만 건너뛴다)
 #                   · 변수 STARTREND_PRIVATE_REPO(없으면 "<이 저장소>-private")
 #                   · RADAR_DISPATCH_TOKEN(결정 70, 있을 때만 — 레이더 저장소 Actions 쓰기만 가진 세분화 토큰). 실행이
-#                     성공하면 맨 끝에 레이더 주간 실행을 시작시킨다. 없으면 레이더는 자기 예약(월 14:00 KST)으로 돈다
+#                     성공하면 맨 끝에 레이더 주간 실행을 시작시킨다. 없으면 레이더는 자기 예약(일 17:00 KST)으로 돈다
 name: weekly
 
 on:
   schedule:
-    - cron: "0 7 * * 1"
+    - cron: "0 7 * * 0"
   workflow_dispatch:
     inputs:
       mode:
@@ -240,7 +242,7 @@ jobs:
           GH_TOKEN: ${{ secrets.RADAR_DISPATCH_TOKEN }}
           RADAR_REPO: ${{ vars.RADAR_REPO || 'daehyub71/github-ai-trend-radar' }}
         run: |
-          if [ -z "$GH_TOKEN" ]; then echo "RADAR_DISPATCH_TOKEN 없음 — 레이더는 자기 예약(월 14:00 KST)으로 돈다"; exit 0; fi
+          if [ -z "$GH_TOKEN" ]; then echo "RADAR_DISPATCH_TOKEN 없음 — 레이더는 자기 예약(일 17:00 KST)으로 돈다"; exit 0; fi
           if gh workflow run weekly --repo "$RADAR_REPO" --ref main -f mode=run; then
             echo "레이더 주간 실행을 시작시켰다 ($RADAR_REPO)"
           else
