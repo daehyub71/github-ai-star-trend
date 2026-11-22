@@ -9,7 +9,7 @@ const TOC: [string, string][] = [
 ];
 
 const AXES = [
-  { name: "지금 뜨는 저장소", def: "지난 주(일~토) 받은 스타", color: "#F97316" },
+  { name: "지금 뜨는 저장소", def: "지난 주(토~금) 받은 스타", color: "#F97316" },
   { name: "새로 뜨는 저장소", def: "생성 30일 이내 저장소 중 누적 스타 순", color: "#10B981" },
   { name: "규모 대비 급성장", def: "지난 주 증가 ÷ 주 시작 스타 — 주 시작 1,000 이상만", color: "#8B5CF6" },
   { name: "누적 스타 TOP", def: "주 마지막 시점의 총 스타 — 지난 주 대비 순위 변동", color: "#1F5BD8" },
@@ -56,7 +56,7 @@ export function AboutContent() {
       <div className="about-main">
         <section id="s1" className="panel about-sec lift">
           <Head no={1}>이 사이트는</Head>
-          <p className="lead">매주 월요일 09:00 KST 에 지난 주(UTC 일요일~토요일)를 정리합니다. 만드는 것은 세 가지입니다.</p>
+          <p className="lead">매주 일요일 07:00 KST 에 지난 주(토요일~금요일, 하루 경계는 UTC 0시 = KST 09시)를 정리합니다. 2026-11-08 주까지는 일요일~토요일이었습니다. 만드는 것은 세 가지입니다.</p>
           <div className="trio">
             <div className="t-orange"><b>4축 랭킹</b><span>지금 뜨는 · 새로 뜨는 · 규모 대비 급성장 · 누적 TOP — 전체 탭과 AI 탭</span></div>
             <div className="t-violet"><b>저장소 카드</b><span>AI 탭 저장소마다 — 왜 지금 떴나, 무엇인가, 비교, 활용사례, 한계</span></div>

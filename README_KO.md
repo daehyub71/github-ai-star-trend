@@ -24,7 +24,7 @@ AI 도구는 일주일만 지나도 새 이름이 쏟아집니다. GitHub 의 �
 | 2 · 분류 — AI 인가 · 유형 · 카테고리 | ✅ 완료 (52주 · 저장소 1,947개) |
 | 3 · 근거 · 카드 · 브리핑 | 🔄 주간 실행에서 동작, 남은 일 두 가지 |
 | 4 · 화면(Next.js, Vercel — 공개 · 검색 비노출) · 4b · Notion + 블로그 초안 | ✅ 완료 |
-| 5 · GitHub Actions 주간 자동 실행 | 🔄 매주 월 12:00 KST 로컬 실행(GitHub 예약은 월 07:00 UTC 대비 — 끝낸 주는 건너뜀) — 예약 실행이 성공하면 [레이더](https://github.com/daehyub71/github-ai-trend-radar) 주간 실행을 시작시킴 |
+| 5 · GitHub Actions 주간 자동 실행 | 🔄 매주 일 07:00 KST 로컬 실행 — 막 끝난 주(2026-11-14 주부터 토~금, 그 앞은 일~토 · 결정 72). GitHub 예약은 일 07:00 UTC(16:00 KST) 대비 — 끝낸 주는 건너뜀 — 예약 실행이 성공하면 [레이더](https://github.com/daehyub71/github-ai-trend-radar) 주간 실행을 시작시킴 |
 
 진도율 대시보드는 [`docs/TASK.md`](docs/TASK.md) 맨 위에 있습니다.
 

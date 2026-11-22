@@ -2,14 +2,15 @@
 
 1. 이번 주·지난 주 전체 스냅샷의 차이(순증가)로 후보를 고른다
    — 증가량 상위, 성장률 상위, 새 저장소 상위, 추적 저장소.
-2. 후보만 히스토리 API 로 달력 주(UTC 일~토)의 정확한 값과 요일별 수를 받는다.
+2. 후보만 히스토리 API 로 그 주의 정확한 값과 하루 값 7개를 받는다 — 주는 2026-11-14 부터 토 ~ 금(결정 72),
+   API 주(일요일 시작)를 하루 값으로 나눠 다시 묶는다(core.history).
    후보군 전체를 부르면 주 13시간이라 불가(MEASURE §2).
 3. git 주간 파일에는 증가 ≥ 10 인 행만 쓴다 — 후보는 정밀 값, 나머지는 스냅샷 차이.
 """
 
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -20,8 +21,6 @@ from startrend.core.models import HistoryWeek
 from startrend.core.snapshot import SnapRow
 from startrend.core.weekfile import WeekRow
 
-ZERO_DAYS = (0,) * 7
-
 
 @dataclass(frozen=True)
 class Exact:
@@ -31,11 +30,10 @@ class Exact:
 
 
 def exact_week(weeks: list[HistoryWeek], target: date, current_total: int) -> Exact:
-    """히스토리에서 target 주의 값. 주 끝 스타는 core.history.week_end_stars (FR-2.6)."""
-    t = next((w for w in weeks if w.week == target), None)
+    """히스토리(API 주)에서 우리 주 target 의 값. 주 끝 스타는 core.history.week_end_stars (FR-2.6)."""
     return Exact(
-        gain=t.total if t else 0,
-        days=t.days if t else ZERO_DAYS,
+        gain=history.week_gain(weeks, target),
+        days=history.week_days(weeks, target),
         stars_end=history.week_end_stars(weeks, target, current_total=current_total),
     )
 
@@ -85,7 +83,7 @@ def run_stars(gh: GitHubClient, *, cur: dict[int, SnapRow], prev: dict[int, Snap
     if path.exists():
         log(f"이미 있음 — 다시 쓰지 않는다: {path}")
         return {"written": False, "reason": "exists", "path": str(path)}
-    if week_start != week.week_start(today) - timedelta(days=7):
+    if week_start != week.previous_week(week.week_start(today)):
         log(f"주의: {week_start} 는 막 끝난 주가 아니다 — 정밀 값의 주 끝 스타가 어긋날 수 있다")
     cands = select_candidates(cur, prev, top_gain=top_gain, top_growth=top_growth, top_new=top_new,
                               tracked=tracked)

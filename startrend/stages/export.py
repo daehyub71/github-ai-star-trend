@@ -16,7 +16,7 @@
 import json
 import tomllib
 from collections.abc import Callable, Mapping, Sequence
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -69,7 +69,7 @@ def _entry(e: Mapping[str, Any], spark: list[int]) -> dict[str, Any]:
 
 def _spark(rid: int, w: date, gains: Mapping[date, Mapping[int, int]]) -> list[int]:
     """w 주까지 12주 증가, 오래된 주 → 이번 주. 주간 파일에 없던 주는 증가가 10 미만이었다 — 0 으로 둔다."""
-    span = [w - timedelta(days=7 * k) for k in range(SPARK_WEEKS - 1, -1, -1)]
+    span = list(reversed(list(week.iter_weeks_back(w, SPARK_WEEKS))))   # 결정 72 — 주 단위로(날짜 산술 아님)
     return [int(gains.get(x, {}).get(rid, 0)) for x in span]
 
 

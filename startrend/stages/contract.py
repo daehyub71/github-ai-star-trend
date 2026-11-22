@@ -20,6 +20,7 @@ from startrend.core.models import HistoryWeek
 
 DEFAULT_REPO = "python/cpython"  # 크고 오래된 저장소 — 히스토리가 2쪽 이상 있다
 DEFAULT_QUERY = "stars:>=100000"
+WEEKDAY = "월화수목금토일"
 
 Level = Literal["error", "warn"]
 Report = Callable[[str, str], None]  # (check, detail)
@@ -80,7 +81,7 @@ def check_github(gh: GitHubClient, *, repo: str = DEFAULT_REPO, query: str = DEF
             if len(page1) == HISTORY_PER_PAGE_MAX:
                 page2 = _history(gh, repo, 2, error)
                 if page2:
-                    expected = page1[-1].week - timedelta(days=7)
+                    expected = page1[-1].week - timedelta(days=7)   # API 주끼리는 늘 7일
                     if page2[0].week != expected:
                         error("history.pages", f"2쪽 첫 주 {page2[0].week} — 기대값 {expected}")
 
@@ -122,15 +123,20 @@ def _check_weeks(weeks: list[HistoryWeek], today: date, error: Report, warn: Rep
         if prev.week - cur.week != timedelta(days=7):
             error("history.order", f"주 간격이 7일이 아니다: {prev.week} → {cur.week}")
             break
-    if weeks[0].week > week.week_start(today):
-        error("history.future", f"가장 최근 주 {weeks[0].week} 가 이번 주({week.week_start(today)})보다 뒤다")
-    # 주간 실행 시각 안전장치 — 히스토리는 하루 늦게 반영된다(MEASURE §6)
-    last = week.week_start(today) - timedelta(days=7)
-    last_week = next((w for w in weeks if w.week == last), None)
-    if last_week is None:
-        warn("history.saturday", f"막 끝난 주({last})가 응답에 없다")
-    elif last_week.days[6] == 0:
-        warn("history.saturday", f"막 끝난 주({last})의 토요일 값이 0 — 아직 반영 전일 수 있다")
+    # 응답의 주는 API 주(일요일 시작)다 — 우리 주(2026-11-14 부터 토요일 시작, 결정 72)와 비교하지 않는다
+    current = week.api_week_start(today)
+    if weeks[0].week > current:
+        error("history.future", f"가장 최근 주 {weeks[0].week} 가 이번 API 주({current})보다 뒤다")
+    # 주간 실행 시각 안전장치 — 히스토리는 하루 늦게 반영된다(MEASURE §6).
+    # 막 끝난 주의 마지막 날(옛 주 토요일 · 새 주 금요일) 값이 들어왔는지 본다
+    last = week.previous_week(week.week_start(today))
+    end = week.week_end(last)
+    holder = next((w for w in weeks if w.week == week.api_week_start(end)), None)
+    day = f"{end}({WEEKDAY[end.weekday()]})"
+    if holder is None:
+        warn("history.last_day", f"막 끝난 주({last})의 마지막 날 {day} 이 든 API 주가 응답에 없다")
+    elif holder.days[week.api_day_index(end)] == 0:
+        warn("history.last_day", f"막 끝난 주({last})의 마지막 날 {day} 값이 0 — 아직 반영 전일 수 있다")
     mismatched = [w.week for w in weeks if sum(w.days) != w.total]
     if mismatched:
         warn("history.days_sum", f"days 합 ≠ total 인 주 {len(mismatched)}개 (예: {mismatched[0]})")

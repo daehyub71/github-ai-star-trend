@@ -40,9 +40,11 @@ class SearchPage:
 
 @dataclass(frozen=True)
 class HistoryWeek:
-    week: date  # 주 시작일(일요일)
+    """히스토리 API 의 주 하나(API 주). 우리 주의 값은 core.history 가 하루 값으로 다시 묶는다(결정 72)."""
+
+    week: date  # API 주 시작일(일요일) — 우리 주(core.week, 2026-11-14 부터 토 ~ 금)와 다를 수 있다
     total: int
-    days: tuple[int, ...]  # 일요일부터 7개
+    days: tuple[int, ...]  # API 주의 하루 값, 일요일부터 7개
     raw_ts: int  # API 가 준 그대로 — 주 경계 실측(FR-12.7)에 쓴다
     utc_offset_hours: float
 

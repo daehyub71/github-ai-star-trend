@@ -6,7 +6,7 @@ import type { CSSProperties } from "react";
 import { artUrl } from "@/lib/art";
 import { cardSlugsForWeek, weekCardList } from "@/lib/cards";
 import { loadBriefing, loadCard, loadCardIndex, loadIndex, loadWeek } from "@/lib/data";
-import { weekRange } from "@/lib/format";
+import { weekDays, weekRange } from "@/lib/format";
 import { cardSummary, parseBriefing, type CardBrief } from "@/lib/markdown";
 import { hueVars, paletteOf } from "@/lib/palette";
 import { buildSections, catBars, codeFacts, heroStats } from "@/lib/rankings";
@@ -51,7 +51,7 @@ export function WeekView({ week }: { week: string }) {
           <div className="hero-text">
             <div className="hero-meta">
               <span className="pill"><span className="live" />{brief ? "주간 브리핑" : "이번 주 요약 · 코드가 계산한 사실"}</span>
-              <span>{weekRange(data.week, data.week_end)} · UTC 일~토</span>
+              <span>{weekRange(data.week, data.week_end)} · UTC {weekDays(data.week)}</span>
             </div>
             <h1 id="brief-title">{brief ? brief.headline : facts?.headline}</h1>
             <div className="stats">

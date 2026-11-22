@@ -43,7 +43,7 @@ import os
 import sys
 import time
 from collections.abc import Mapping
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -111,23 +111,23 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--new-days", type=int, default=30)
     p.add_argument("--new-min", type=int, default=10)
     p = sub.add_parser("stars", help="주간 스타 — 스냅샷 차이 + 상위 후보 히스토리 (비용 0)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p = sub.add_parser("backfill", help="과거 N주 주간 파일 — 1회성, 오래 걸림 (비용 0)")
     p.add_argument("--weeks", type=int, default=52)
     p.add_argument("--limit", type=int, help="저장소 수 제한 (시험용)")
     p.add_argument("--top", type=int, help="스타가 가장 많은 N개만 (시험용)")
     p.add_argument("--new", type=int, help="새 저장소 중 스타가 가장 많은 N개만 (시험용, --top 과 합친다)")
     p = sub.add_parser("rank", help="주간 파일 → 4축 랭킹 (비용 0)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="주간 파일이 있는 모든 주를 오래된 순으로")
     p = sub.add_parser("goldset", help="분류 정답 세트 후보 200개 (캐시만 읽는다 — 비용 0, 호출 0)")
-    p.add_argument("--week", help="스냅샷 주(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="스냅샷 주(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--ranked-from", help="랭킹 진입 저장소를 읽을 데이터 폴더. 기본은 데이터 폴더")
     p.add_argument("--seed", type=int, default=20261027)
     p.add_argument("--more", type=int, help="블라인드 추가 N개(결정 50) → goldset_blind2_candidates.jsonl. "
                    "기존 후보는 빼고 덮어쓰지 않는다")
     p = sub.add_parser("classify", help="AI 여부·유형·카테고리 판정 — 기본은 dry-run(호출 0)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="랭킹이 있는 모든 주")
     p.add_argument("--run", action="store_true", help="실제 판정(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=10.0,
@@ -137,18 +137,18 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
     p.add_argument("--no-batch", action="store_true", help="Batch 대신 일반 호출 — 빠르지만 할인 없음(2배)")
     p = sub.add_parser("trends", help="카테고리 추이 — 주마다 카테고리(+ALL) 집계 (호출 0, 비용 0)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--all", action="store_true", help="주간 파일이 있는 모든 주")
     p = sub.add_parser("evidence",
                        help="근거 수집(FR-5) — 기본은 계획만(호출 0). --run 은 무료 API·검색 크레딧")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--repos", help="쉼표로 구분 — 그 주 AI 탭에서 이 저장소만")
     p.add_argument("--run", action="store_true", help="실제로 모은다 — GitHub·HN·GeekNews·패키지·웹 검색")
     p.add_argument("--no-web", action="store_true", help="웹 검색(Tavily 크레딧)을 쓰지 않는다")
     p.add_argument("--only-missing", action="store_true",
                    help="그 주 근거 목록에 아직 없는 저장소만 — 이어 모을 때 크레딧을 다시 쓰지 않는다")
     p = sub.add_parser("analyze", help="심층 카드(FR-6) — 기본은 dry-run(호출 0). --run 은 과금")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--repos", help="쉼표로 구분 — 근거를 모은 저장소 중 이것만")
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=3.0,
@@ -161,18 +161,19 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--force-new", action="store_true",
                    help="보관소에 카드가 있어도 새로 쓴다(과금). 기본은 다시 등장하면 변경 기록만(비용 0)")
     p = sub.add_parser("brief", help="주간 브리핑(FR-8) — 기본은 dry-run(호출 0). --run 은 과금(주 1회 호출)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
     sub.add_parser("export", help="사이트 파생 데이터(FR-9) — data/site/ + 비공개 카드·브리핑 사본(호출 0)")
     p = sub.add_parser("weekly", help="주간 실행(FR-11) — 기본은 계획만(호출 0). --run 은 과금(주 예산 상한)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주 — discover 는 그 주만 찍는다")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주"
+                                   " — discover 는 그 주만 찍는다")
     p.add_argument("--run", action="store_true", help="실제 실행 — 계획 금액 확인 뒤")
     p.add_argument("--cap", type=float, default=10.0, help="이번 실행 전체 LLM 예산(달러) — 결정 31 주 $10")
     p.add_argument("--no-web", action="store_true", help="근거 수집에서 웹 검색(Tavily 크레딧)을 쓰지 않는다")
     p.add_argument("--poll", type=float, default=60.0, help="Batch 상태 확인 간격(초)")
     p = sub.add_parser("archive", help="주간 압축본(FR-10) — 시크릿 검사 뒤 .work/archive/<주>/ (호출 0)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p = sub.add_parser("private", help="비공개 저장소 체크아웃 ↔ .work/ 복사(결정 55, 호출 0)")
     g = p.add_mutually_exclusive_group(required=True)
     g.add_argument("--pull", metavar="DIR", help="비공개 저장소 체크아웃 → .work/")
@@ -180,7 +181,7 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--keep-blog", action="store_true",
                    help="--push 때 비공개 저장소에 이미 있는 블로그 파일을 덮지 않는다(자동 실행용, 결정 66)")
     p = sub.add_parser("blog", help="블로그 초안(FR-16) — 기본은 dry-run(호출 0). --run 은 과금(주 1회 호출)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--run", action="store_true", help="실제 생성(과금) — dry-run 금액 승인 뒤")
     p.add_argument("--cap", type=float, default=1.0, help="이번 실행 예산 상한(달러)")
     p.add_argument("--from-draft", action="store_true",
@@ -195,7 +196,7 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None) ->
     p.add_argument("--run", action="store_true", help="실제로 만든다(Notion API, 비용 0)")
     p = sub.add_parser("notion",
                        help="주간·카드·블로그 초안 페이지를 Notion 에(FR-15) — 기본은 계획만(호출 0)")
-    p.add_argument("--week", help="주 시작일(일요일). 기본은 막 끝난 주")
+    p.add_argument("--week", help="주 시작일(토요일 — 2026-11-08 주까지는 일요일). 기본은 막 끝난 주")
     p.add_argument("--run", action="store_true",
                    help="실제로 올린다(Notion API, 비용 0) — 상태가 '초안'인 페이지만 고친다(NFR-16)")
     p = sub.add_parser("eval", help="분류 평가 — 정답 세트로 채점(호출 0). 판정 결과가 없으면 dry-run")
@@ -345,12 +346,12 @@ def _stars(settings: Settings, token: str, args: argparse.Namespace) -> int:
     if not cur_path.exists():
         print(f"이번 주 스냅샷이 없다 — 먼저 discover: {cur_path}", file=sys.stderr)
         return 2
-    prev_path = _snapshot_path(settings, w - timedelta(days=7))
+    prev_path = _snapshot_path(settings, wk.previous_week(w))
     prev = snapshot.read(prev_path) if prev_path.exists() else None
     cache = CachingTransport(UrllibTransport(), settings.work_dir / "cache" / wk.week_name(w),
                              cacheable_response)
     gh = LiveGitHub(token, on_wait=_log_wait, transport=cache)
-    tracked = rank.tracked_names(settings.data_dir, w - timedelta(days=7))
+    tracked = rank.tracked_names(settings.data_dir, wk.previous_week(w))
     stats = stars.run_stars(gh, cur=snapshot.read(cur_path), prev=prev, week_start=w, today=today,
                             data_dir=settings.data_dir, tracked=tracked,
                             log=lambda m: print(m, flush=True))

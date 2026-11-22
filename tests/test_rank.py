@@ -269,3 +269,14 @@ def test_rank_run_writes_deeper_candidate_pool_per_axis(tmp_path):
     assert gain_pool == list(range(20, 10, -1))                      # 증가 큰 순 10개
     assert [e["id"] for e in out["axes"]["gain"]["all"]] == gain_pool[:3]
     assert set(out["pool"]) == set(rank.AXES)
+
+
+def test_rank_prior_gains_and_previous_ranks_cross_the_cutover(tmp_path):
+    # 결정 72 — 11-21 주의 앞 3주는 11-14 · 11-08 · 11-01, 11-14 주의 지난 주는 11-08(6일 차이)
+    for w, g in ((date(2026, 11, 1), 15), (date(2026, 11, 8), 20), (date(2026, 11, 14), 300)):
+        weekfile.write(weekfile.week_path(tmp_path, w), [row(1, 1000, g)])
+    assert rank.prior_gains(tmp_path, date(2026, 11, 21)) == {1: 335}
+    io.write_json(rank.rankings_path(tmp_path, date(2026, 11, 8)),
+                  {"axes": {"gain": {"all": [{"id": 1, "rank": 4}], "ai": [{"id": 1, "rank": 2}]}}})
+    prev = rank._prev_ranks(tmp_path, date(2026, 11, 14))
+    assert prev["all"]["gain"] == {1: 4} and prev["ai"]["gain"] == {1: 2}

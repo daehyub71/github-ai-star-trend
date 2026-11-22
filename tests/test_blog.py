@@ -228,7 +228,7 @@ def test_blog_render_follows_the_agreed_layout(bi):
     assert title == "🤖 깃허브 AI 트렌드 주간 동향 1회 🤖 MCP 도구가 1위 · 새 저장소 셋 · 로컬 에이전트"
     assert "「깃허브 AI 트렌드 주간 동향」의 1번째 글입니다." in body
     assert "***깃허브 AI 트렌드 주간 동향 1회 정보***" in body
-    assert "⭐ 집계 기간 : 2026년 10월 18일(일) ~ 10월 24일(토), UTC 기준" in body
+    assert "⭐ 집계 기간 : 2026년 10월 18일(일) ~ 10월 24일(토), 하루 경계는 UTC 0시(KST 오전 9시)" in body
     order = ["### 이번 주 흐름 — 로컬 에이전트가 앞선 한 주", "### TOP 3 — 지금 뜨는 AI 저장소",
              "### 1위 o/a — 릴리스 뒤에 몰린 관심", "### 3위 o/c", "### 이번 주 숫자를 읽을 때 주의할 점",
              "### 한 장 요약"]
@@ -827,3 +827,40 @@ def test_blog_leave_out_is_saved_for_the_rerender(left, tmp_path):
     assert blog.saved_left_out(tmp_path / "none", W) == ()
     est = blog.dry_run(blog.BlogWriter(MockLLM([])), left)
     assert est["top"] == ["o/a", "o/c"] and est["left_out"] == ["o/b"]
+
+
+# --- 결정 72: 2026-11-14 주부터 토 ~ 금 ---
+
+
+def test_blog_episode_counts_weeks_across_the_cutover():
+    # 11-14 주의 앞 주는 11-08(6일 차이) — 날짜 산술(//7)이면 11-14 도 4회가 되어 회차가 겹친다
+    assert [blog.episode(w) for w in ("2026-11-08", "2026-11-14", "2026-11-21", "2026-11-28")] == [4, 5, 6, 7]
+
+
+def _new_week_src(tmp: Path) -> tuple[Path, Path]:
+    site, priv = _src(tmp)
+    data = json.loads((site / "weeks" / f"{W}.json").read_text(encoding="utf-8"))
+    for w, end in (("2026-11-08", "2026-11-14"), ("2026-11-14", "2026-11-20")):
+        data["week"], data["week_end"] = w, end
+        (site / "weeks" / f"{w}.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    return site, priv
+
+
+def test_blog_new_week_compares_with_the_last_old_week(tmp_path):
+    site, priv = _new_week_src(tmp_path)
+    bi2 = blog.load_input(site, priv, "2026-11-14")
+    assert bi2.changes is not None and bi2.changes.prev_week == "2026-11-08"
+    assert bi2.episode == 5
+    assert "week: 2026년 11월 14일(토) ~ 11월 20일(금)" in blog.user_message(bi2)
+    _, body, _ = blog.render(bi2, _draft(), published=(), images={})
+    assert "⭐ 집계 기간 : 2026년 11월 14일(토) ~ 11월 20일(금), 하루 경계는 UTC 0시(KST 오전 9시)" in body
+
+
+def test_blog_previous_told_reads_the_last_old_week_for_the_first_new_week(tmp_path):
+    out = tmp_path / "w" / "2026-11-08" / "blog"
+    out.mkdir(parents=True)
+    (out / "meta.json").write_text(json.dumps({"top": ["o/a"]}), encoding="utf-8")
+    parts = {k: {"text": f"{k} 지난 글"} for k in ("what", "why_now", "use_cases")}
+    (out / "draft.json").write_text(json.dumps({"repos": [{"ref": "R1", **parts}]}), encoding="utf-8")
+    assert blog.previous_told(tmp_path / "w", "2026-11-14") == {
+        "o/a": ("what 지난 글", "why_now 지난 글", "use_cases 지난 글")}

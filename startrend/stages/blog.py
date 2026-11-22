@@ -26,7 +26,7 @@ import json
 import re
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +34,7 @@ from startrend import gate
 from startrend.budget import BudgetExceeded
 from startrend.clients.llm import LLMClient, LLMRequest, Usage, cost, request_tokens
 from startrend.core import cards, io, untrusted, weekfile
+from startrend.core import week as wk
 
 PROMPT_FILE = Path(__file__).resolve().parents[1] / "prompts" / "blog.md"
 MODEL = "claude-opus-5-5"
@@ -73,6 +74,7 @@ STYLE = ("Style: clean educational explainer illustration for a beginner-friendl
          "No text, no letters, no numbers, no logos, no brand marks, no real app screenshots, "
          "no human faces.")
 WEEKDAY = "월화수목금토일"
+DAY_BOUNDARY = "하루 경계는 UTC 0시(KST 오전 9시)"   # 결정 72 — 표기는 KST, 별 숫자의 하루 경계만 UTC
 GEN_DIR = "gen"                              # 사용자가 만든 그림 `gen/<번호>.<확장자>`(결정 62)
 GEN_EXTS = (".png", ".jpg", ".jpeg", ".webp", ".gif")
 
@@ -82,7 +84,8 @@ class BlogError(Exception):
 
 
 def episode(week: str) -> int:
-    return (date.fromisoformat(week) - SERIES_START).days // 7 + 1
+    """회차 — 1회 주부터 센 주 순번. 날짜 산술(//7)이 아니라 주 단위로 센다(결정 72 — 11-14 앞 주는 11-08)."""
+    return wk.weeks_between(SERIES_START, wk.parse_week(week)) + 1
 
 
 # --- 입력 ---
@@ -285,7 +288,7 @@ def _changes(week: str, gain: list[Mapping[str, Any]], top: list[Mapping[str, An
     남은 곳·새로 들어온 곳·빠진 곳은 카드 유무와 상관없이 AI 탭 순위로 센다.
     """
     start = date.fromisoformat(week)
-    prev_start = start - timedelta(days=7)
+    prev_start = wk.previous_week(start)
     n = TOP_N
 
     def within(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
@@ -329,7 +332,7 @@ def load_input(site_dir: Path, private_dir: Path, week: str, *, data_dir: Path |
     names = {c["id"]: c["name"] for c in io.read_json(site_dir / "index.json").get("categories", [])}
     data = io.read_json(wfile)
     gain = _gain_ai(data)
-    pfile = site_dir / "weeks" / f"{(date.fromisoformat(week) - timedelta(days=7)).isoformat()}.json"
+    pfile = site_dir / "weeks" / f"{wk.week_name(wk.previous_week(wk.parse_week(week)))}.json"
     prev = _gain_ai(io.read_json(pfile)) if pfile.exists() else []
     ref_file = private_dir / "cards" / "index.json"
     slugs = {int(r["repo_id"]): r["slug"] for r in (io.read_json(ref_file) if ref_file.exists() else [])}
@@ -827,7 +830,7 @@ def render(bi: BlogInput, dr: BlogDraft, *, published: Sequence[tuple[int, str, 
         f"⭐ 이 글의 내용 : 이번 주 흐름 한눈에 · {'지난주 대비 순위 변동 · ' if bi.changes else ''}"
         f"TOP {top_size(bi)} 저장소"
         "(무엇인가 · 왜 지금 떴나 · 활용 사례) · 숫자를 읽을 때 주의할 점 · 한 장 요약",
-        f"⭐ 집계 기간 : {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)}, UTC 기준",
+        f"⭐ 집계 기간 : {_kdate(bi.week, year=True)} ~ {_kdate(bi.until, year=False)}, {DAY_BOUNDARY}",
         "⭐ 데이터 기준 : 스타 1,000개 이상 저장소 전체 스냅샷과 상위 후보의 일별 스타 · "
         "AI 여부와 카테고리는 Claude 가 판정 · 숫자는 GitHub API 값을 코드가 계산",
         "⭐ 쓰는 방식 : 숫자는 코드가, 글 초안은 AI(Claude)가 쓰고 사람이 검토합니다",
@@ -1081,7 +1084,7 @@ def previous_told(work_dir: Path, week: str) -> dict[str, tuple[str, ...]]:
 
     지난주 `draft.json` · `meta.json`(R 번호 → 저장소)이 없으면 빈 dict — 보통처럼 쓴다.
     """
-    prev = (date.fromisoformat(week) - timedelta(days=7)).isoformat()
+    prev = wk.week_name(wk.previous_week(wk.parse_week(week)))
     out = work_dir / prev / "blog"
     if not (out / "draft.json").exists() or not (out / "meta.json").exists():
         return {}

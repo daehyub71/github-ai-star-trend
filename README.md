@@ -24,7 +24,7 @@ AI tooling changes every week. GitHub stars are a cheap, public signal of where 
 | 2 · Classification — is it AI? type, category | ✅ done (52 weeks, 1,947 repositories) |
 | 3 · Evidence, cards, briefing | 🔄 running in the weekly run; two tasks left |
 | 4 · Web UI (Next.js on Vercel — public, not indexed by search engines) · 4b · Notion + blog drafts | ✅ done |
-| 5 · Weekly GitHub Actions run | 🔄 runs locally every Monday 12:00 KST (the GitHub schedule at Monday 07:00 UTC is a fallback that skips a finished week); when the scheduled run succeeds it starts the [radar](https://github.com/daehyub71/github-ai-trend-radar) weekly run |
+| 5 · Weekly GitHub Actions run | 🔄 runs locally every Sunday 07:00 KST for the week that just ended (Saturday–Friday from the 2026-11-14 week; Sunday–Saturday before it — decision 72). The GitHub schedule at Sunday 07:00 UTC (16:00 KST) is a fallback that skips a finished week; when the scheduled run succeeds it starts the [radar](https://github.com/daehyub71/github-ai-trend-radar) weekly run |
 
 The live progress dashboard is at the top of [`docs/TASK.md`](docs/TASK.md).
 

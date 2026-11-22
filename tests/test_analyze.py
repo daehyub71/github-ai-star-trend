@@ -529,3 +529,20 @@ def test_analyze_dry_run_prices_without_calls(tmp_path):
 
 def test_analyze_gate_constant_is_card_sections():
     assert gate.CARD_CITED == ("③", "⑤", "⑥")
+
+
+def test_analyze_load_inputs_finds_spikes_across_the_cutover(tmp_path):
+    # 결정 72 — 11-14 주(토 ~ 금)의 급등일은 앞 주(11-08 · 11-01 · 10-25) 곡선과 견준다
+    data, work, new = tmp_path / "d", tmp_path / "w", date(2026, 11, 14)
+    for start in (date(2026, 10, 25), date(2026, 11, 1), date(2026, 11, 8)):
+        weekfile.write(weekfile.week_path(data, start),
+                       [WeekRow(1, "o/r", date(2026, 9, 1), 2000, 700, True, (100,) * 7)])
+    weekfile.write(weekfile.week_path(data, new),
+                   [WeekRow(1, "o/r", date(2026, 9, 1), 19218, 17188, True,
+                            (100, 100, 16588, 100, 100, 100, 100))])
+    io.write_json(data / "weekly" / "2026-11-14" / "rankings.json", {"week": "2026-11-14", "axes": {
+        "gain": {"all": [ENTRY], "ai": [ENTRY]}}})
+    t = Target(1, "o/r", since=new, until=date(2026, 11, 20), focus=())
+    ev.write(work, new, [Collected(t, _docs(), [])])
+    [ci] = an.load_inputs(data, work, new)
+    assert [s.day for s in ci.spikes] == [date(2026, 11, 16)]

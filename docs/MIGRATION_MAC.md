@@ -17,7 +17,7 @@
 
 옮기지 않아도 되는 것:
 
-- **주간 자동 실행**(GitHub Actions, 매주 월요일 00:00 UTC) · **Vercel 사이트** · **Notion** — PC 와 상관없이 돈다.
+- **주간 자동 실행**(로컬 맥 매주 일 07:00 KST · GitHub Actions 예약은 대비로 일 07:00 UTC = 16:00 KST — 결정 71·72) · **Vercel 사이트** · **Notion** — PC 와 상관없이 돈다.
 - **비공개 저장소**(`daehyub71/github-ai-star-trend-private`) — Actions 가 매주 갱신한다. 맥에서 직접 쓸 일은 없다.
 
 > ⚠ **`.work/notion/index.json`(Notion 대응표)이 가장 중요하다.** 이것 없이 맥에서 `notion --run` 을 하면
@@ -188,8 +188,8 @@ cd web && npm run lint && npx vitest run && npm run build && cd ..
 
 ## 7. 두 대를 같이 쓸 때 지킬 것
 
-1. **작업 전에 항상 `git pull`** — 매주 월요일 Actions 가 `data/` 에 커밋을 올린다(첫 실행 2026-11-02).
-2. **Notion 대응표·블로그 초안은 비공개 저장소가 정본이다(결정 66).** 월요일 자동 실행이 블로그 초안과 Notion 초안
+1. **작업 전에 항상 `git pull`** — 매주 일요일 주간 실행이 `data/` 에 커밋을 올린다(첫 실행 2026-11-02, 결정 72 전에는 월요일).
+2. **Notion 대응표·블로그 초안은 비공개 저장소가 정본이다(결정 66).** 주간 자동 실행(일요일)이 블로그 초안과 Notion 초안
    페이지까지 만든다. 어느 컴퓨터에서든 Notion·블로그 작업(`blog --from-draft`, `notion --run`) 전후에 아래를 한다.
    ```bash
    git clone -c core.autocrlf=false https://github.com/daehyub71/github-ai-star-trend-private .private   # 처음 한 번
@@ -203,7 +203,7 @@ cd web && npm run lint && npx vitest run && npm run build && cd ..
    - 받을 때 로컬과 다른 블로그 파일은 덮지 않고 "로컬 블로그 파일이 달라 덮지 않음"으로 알린다. 다른 컴퓨터에서 고친
      것을 가져오려면 그 파일을 지우고 다시 받는다.
    - 만든 그림(`gen/`)은 비공개 저장소에 올리지 않는다(1주 37MB) — 다른 컴퓨터로는 따로 옮긴다.
-   - **월요일 자동 실행 도중(09:00 KST~끝날 때까지 — 첫 실행은 4시간 48분 늦게 시작했다)에는 비공개 저장소에 push
+   - **주간 자동 실행 도중(일 07:00 KST · 대비 예약 16:00 KST ~ 끝날 때까지)에는 비공개 저장소에 push
      하지 않는다.** 자동 실행의 마지막 push 가 거절된다.
 3. **`.work/` 는 커밋하지 않는다**(결정 59 — `.gitignore` 에 있다). 블로그 초안·그림·대응표는 공개 저장소에 올리지 않는다.
 4. **저장소에 들어가는 파일명은 ASCII 만**(워크스페이스 규칙 — 맥 NFD 와 리눅스 NFC 차이). `.work/<주>/blog/gen/` 의

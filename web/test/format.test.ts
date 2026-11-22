@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { fmtInt, fmtPct, fmtSigned, isFresh, mmdd, splitName, weekRange } from "@/lib/format";
+import { dayName, fmtInt, fmtPct, fmtSigned, isFresh, mmdd, splitName, weekDays, weekRange } from "@/lib/format";
 
 describe("format", () => {
   it("formats numbers with thousands separators and signs", () => {
@@ -17,6 +17,15 @@ describe("format", () => {
     expect(weekRange("2026-11-29", "2026-12-05")).toBe("2026년 11월 29일 – 12월 5일");
     expect(weekRange("2026-12-27", "2027-01-02")).toBe("2026년 12월 27일 – 2027년 1월 2일");
     expect(mmdd("2026-09-07")).toBe("09.07");
+  });
+
+  it("names weekdays from the date, not from a fixed Sunday start (decision 72)", () => {
+    expect(dayName("2026-11-08")).toBe("일");
+    expect(dayName("2026-11-14")).toBe("토");
+    expect(dayName("2026-11-14", 6)).toBe("금");
+    expect(dayName("2026-12-27", 6)).toBe("토");
+    expect(weekDays("2026-11-08")).toBe("일~토");   // 옛 주
+    expect(weekDays("2026-11-14")).toBe("토~금");   // 2026-11-14 주부터
   });
 
   it("treats repos created under 30 days before the week end as fresh", () => {

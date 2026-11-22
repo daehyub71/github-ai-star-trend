@@ -92,8 +92,8 @@ def load_inputs(data_dir: Path, work_dir: Path, week_start: date, *,
             entries.setdefault(e["id"], e)
             ranks.setdefault(e["id"], []).append((a, int(e.get("rank") or i)))
     want = {r.lower() for r in repos} if repos else None
-    rows = {w: weekfile.read(p) for k in range(SPIKE_WEEKS)
-            if (p := weekfile.week_path(data_dir, w := week_start - timedelta(days=7 * k))).exists()}
+    rows = {w: weekfile.read(p) for w in week.iter_weeks_back(week_start, SPIKE_WEEKS)
+            if (p := weekfile.week_path(data_dir, w)).exists()}
     out = []
     for rid, c in ev.read(work_dir, week_start, with_text=True).items():
         if rid not in entries or (want is not None and c.target.full_name.lower() not in want):

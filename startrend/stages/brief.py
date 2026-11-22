@@ -13,7 +13,7 @@ import json
 import re
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from statistics import mean
 from typing import Any
@@ -121,7 +121,7 @@ def load_input(data_dir: Path, store: CardStore, week_start: date, *, names: Map
     cur = io.read_json(wdir / "categories.json") if (wdir / "categories.json").exists() else {}
     prev = []
     for k in range(1, MOVE_WEEKS + 1):
-        p = data_dir / "weekly" / week.week_name(week_start - timedelta(days=7 * k)) / "categories.json"
+        p = data_dir / "weekly" / week.week_name(week.weeks_back(week_start, k)) / "categories.json"
         if p.exists():
             prev.append(io.read_json(p))
     rising, cooling = category_moves(cur, prev, names) if cur else ([], [])

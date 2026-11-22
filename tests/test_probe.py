@@ -147,3 +147,11 @@ def test_probe_run_with_mock(tmp_path):
 def test_probe_report_never_has_naive_datetimes():
     # 보고서의 날짜는 모두 ISO 문자열이어야 JSON 으로 남는다
     assert probe.iso(datetime(2026, 10, 26, tzinfo=UTC)) == "2026-10-26T00:00:00+00:00"
+
+
+def test_probe_week_stats_stay_on_api_weeks_after_the_cutover():
+    # probe 는 히스토리 API 의 주(일요일 시작)를 잰다 — 결정 72 의 우리 주(토요일 시작)와 섞지 않는다
+    s = probe.week_stats(_weeks([30, 700, 500, 400, 300], newest=date(2026, 11, 22)), current_total=5000,
+                         today=date(2026, 11, 24))
+    assert s.last_full_week == date(2026, 11, 15) and s.partial == 30 and s.last_full_gain == 700
+    assert s.current_week_present

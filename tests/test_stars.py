@@ -125,3 +125,35 @@ def test_stars_run_skips_when_week_file_exists(tmp_path):
                          data_dir=tmp_path, log=lambda m: None)
     assert stats["written"] is False and stats["reason"] == "exists"
     assert gh.stats.calls.get("history", 0) == 0
+
+
+# --- 결정 72: 2026-11-14 주부터 토 ~ 금 ---
+
+NEW_API = [  # API 주 11-22(일요일만) · 11-15 · 11-08 — days 를 그대로 준다
+    {"week": synth.sunday_ts(date(2026, 11, 22)), "total": 5, "days": [5, 0, 0, 0, 0, 0, 0]},
+    {"week": synth.sunday_ts(date(2026, 11, 15)), "total": 91, "days": [1, 2, 3, 4, 5, 6, 70]},
+    {"week": synth.sunday_ts(date(2026, 11, 8)), "total": 100, "days": [10, 10, 10, 10, 10, 10, 40]},
+]
+
+
+def test_stars_exact_week_new_week_is_saturday_to_friday():
+    e = st.exact_week(gp.parse_history(NEW_API), date(2026, 11, 14), current_total=5000)
+    assert e.days == (40, 1, 2, 3, 4, 5, 6)   # 토(API 11-08 주) + 일 ~ 금(API 11-15 주)
+    assert e.gain == 61
+    assert e.stars_end == 5000 - 70 - 5       # 금요일 뒤(토 70 · 일 5)를 뺀다
+
+
+def test_stars_run_on_the_first_new_week_writes_saturday_first_days(tmp_path):
+    # 2026-11-22(일) 실행 — 막 끝난 주는 11-14(토 ~ 11-20 금). 「막 끝난 주가 아니다」 경고가 없어야 한다
+    cur = {1: snap(1, 5000)}
+    gh = MockGitHub()
+    gh.add_repo(synth.repo("o/r1", id=1, stars=5000))
+    gh.add_history("o/r1", NEW_API)
+    logs: list[str] = []
+    stats = st.run_stars(gh, cur=cur, prev={1: snap(1, 4900)}, week_start=date(2026, 11, 14),
+                         today=date(2026, 11, 22), data_dir=tmp_path, top_gain=1, top_growth=0, top_new=0,
+                         log=logs.append)
+    rows = weekfile.read(weekfile.week_path(tmp_path, date(2026, 11, 14)))
+    assert rows[1].days == (40, 1, 2, 3, 4, 5, 6) and rows[1].gain == 61 and rows[1].stars_end == 4925
+    assert stats["written"] is True
+    assert not any("막 끝난 주가 아니다" in m for m in logs)

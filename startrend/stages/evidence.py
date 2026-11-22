@@ -9,7 +9,7 @@
 """
 
 from collections.abc import Callable, Sequence
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -69,8 +69,8 @@ def targets_for(data_dir: Path, week_start: date, *, repos: Sequence[str] | None
         for e in (axes.get(a) or {}).get("ai") or []:
             if e["id"] not in seen and (want is None or e["full_name"].lower() in want):
                 seen[e["id"]] = e
-    rows = {w: weekfile.read(p) for k in range(SPIKE_WEEKS)
-            if (p := weekfile.week_path(data_dir, w := week_start - timedelta(days=7 * k))).exists()}
+    rows = {w: weekfile.read(p) for w in week.iter_weeks_back(week_start, SPIKE_WEEKS)
+            if (p := weekfile.week_path(data_dir, w)).exists()}
     out = []
     until = week.week_end(week_start)
     for rid, e in seen.items():

@@ -1,7 +1,8 @@
 """git 에 남는 주간 스타 파일 `data/stars/YYYY/<주 시작일>.csv` (SPEC FR-2.2, 결정 29).
 
 - 주간 증가 ≥ min_gain 인 행만 쓴다. 전체 스냅샷은 Releases(Phase 5 전까지는 .work/snapshots/).
-- exact = 1 이면 히스토리 API 의 달력 주 값과 요일별 수(일~토), 0 이면 스냅샷 차이(순증가)다.
+- exact = 1 이면 히스토리 API 로 계산한 그 주 값과 하루 값 7개(d0 = 주 시작일 — 2026-11-08 주까지 일요일,
+  11-14 주부터 토요일, 결정 72), 0 이면 스냅샷 차이(순증가)다.
 - 생성일을 함께 남겨, 스냅샷 없이 이 파일만으로 그 주의 4축 랭킹을 다시 계산할 수 있다.
 - 한 번 쓰면 다시 쓰지 않는다(NFR-5 ②).
 """
@@ -24,7 +25,7 @@ class WeekRow:
     stars_end: int  # 주 마지막 시점 스타 (exact 가 아니면 실행 시점 스냅샷 값)
     gain: int
     exact: bool
-    days: tuple[int, ...] | None  # exact 일 때만, 일요일부터 7개
+    days: tuple[int, ...] | None  # exact 일 때만, 주 시작일부터 7개(옛 주 일요일 · 새 주 토요일)
 
 
 def week_path(data_dir: Path, start: date) -> Path:

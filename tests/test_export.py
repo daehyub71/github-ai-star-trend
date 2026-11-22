@@ -158,3 +158,15 @@ def test_export_site_files_stay_small(tmp_path):
     for p in (data / "site").rglob("*.json"):
         assert p.stat().st_size < 1_048_576
         json.loads(p.read_text(encoding="utf-8"))
+
+
+def test_export_sparkline_crosses_the_cutover():
+    # 결정 72 — 11-21 주의 스파크라인 끝은 11-01 · 11-08 · 11-14 · 11-21
+    # (7일 산술이면 11-07 · 10-31 을 찾는다)
+    gains = {date(2026, 11, 1): {1: 1}, date(2026, 11, 8): {1: 2}, date(2026, 11, 14): {1: 3},
+             date(2026, 11, 21): {1: 4}}
+    ranking = {"axes": {"gain": {"all": [_entry(1, "o/a")], "ai": None}}}
+    out = ex.week_payload(ranking, date(2026, 11, 21), gains)
+    spark = out["axes"]["gain"]["all"][0]["spark"]
+    assert len(spark) == ex.SPARK_WEEKS and spark[-4:] == [1, 2, 3, 4]
+    assert out["week"] == "2026-11-21" and out["week_end"] == "2026-11-27"

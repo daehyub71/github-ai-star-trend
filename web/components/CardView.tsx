@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 
 import { artUrl } from "@/lib/art";
 import { loadIndex, loadWeek } from "@/lib/data";
-import { fmtInt, fmtPct, fmtSigned, mmdd, splitName } from "@/lib/format";
+import { dayName, fmtInt, fmtPct, fmtSigned, mmdd, splitName } from "@/lib/format";
 import { parseCard } from "@/lib/markdown";
 import { hueVars, paletteOf } from "@/lib/palette";
 import type { Entry } from "@/lib/types";
@@ -13,8 +13,6 @@ import type { Entry } from "@/lib/types";
 import { AiNote } from "./AiNote";
 import { Markdown } from "./Markdown";
 import { SiteFooter, SiteHeader } from "./SiteHeader";
-
-const DAY = ["일", "월", "화", "수", "목", "금", "토"];
 
 function findEntry(week: string | undefined, fullName: string): Entry | null {
   if (!week || !loadIndex().weeks.includes(week)) return null;
@@ -65,7 +63,7 @@ function Numbers({ e, asOf, week }: { e: Entry; asOf: string; week: string }) {
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 20 }}>
         <Bars values={e.spark} labels={["12주 전", `${mmdd(week)} 주`]} focusLast caption="주간 스타 · 최근 12주" />
-        {e.days ? <Bars values={e.days} labels={[`${DAY[0]} ${mmdd(week)}`, DAY[6]]} caption="이번 주 일별 스타 (UTC)" /> : null}
+        {e.days ? <Bars values={e.days} labels={[`${dayName(week)} ${mmdd(week)}`, dayName(week, 6)]} caption="이번 주 일별 스타 (UTC)" /> : null}
       </div>
     </>
   );

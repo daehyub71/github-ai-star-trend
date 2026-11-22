@@ -131,3 +131,22 @@ def test_evidence_run_merges_into_the_week_file(tmp_path):
 def test_evidence_urls_feed_the_gate():
     c = st.Collected(TARGET, [_doc("https://e.com/x"), _doc("https://e.com/y")], [])
     assert c.urls == ["https://e.com/x", "https://e.com/y"]
+
+
+def test_evidence_spike_days_use_the_weeks_before_the_cutover(tmp_path):
+    # 결정 72 — 11-14 주의 앞 주는 11-08(6일 차이). 7일 산술이면 앞 주 곡선을 못 찾아 급등일을 놓친다
+    from startrend.core import weekfile
+    from startrend.core.weekfile import WeekRow
+
+    for start in (date(2026, 10, 18), date(2026, 10, 25), date(2026, 11, 1), date(2026, 11, 8)):
+        weekfile.write(weekfile.week_path(tmp_path, start),
+                       [WeekRow(1, "o/a", date(2025, 1, 1), 1000, 70, True, (10,) * 7)])
+    new = date(2026, 11, 14)
+    weekfile.write(weekfile.week_path(tmp_path, new),
+                   [WeekRow(1, "o/a", date(2025, 1, 1), 3000, 2060, True, (10, 10, 2000, 10, 10, 10, 10))])
+    a = {"id": 1, "full_name": "o/a", "created": "2025-01-01"}
+    io.write_json(tmp_path / "weekly" / "2026-11-14" / "rankings.json",
+                  {"week": "2026-11-14", "axes": {"gain": {"all": [a], "ai": [a]}}})
+    [t] = st.targets_for(tmp_path, new)
+    assert (t.since, t.until) == (new, date(2026, 11, 20))
+    assert t.focus == (date(2026, 11, 16),)   # d2 = 일요일 — 주 시작(토)부터 센다

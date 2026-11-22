@@ -200,3 +200,19 @@ def test_brief_dry_run_makes_no_calls(tmp_path):
     est = br.dry_run(br.BriefWriter(m), br.load_input(data, store, W, names=NAMES))
     assert m.requests == [] and est["llm_calls"] == 1 and 0 < est["total_usd"][0] < est["total_usd"][1]
     assert est["repos"] == 3 and est["cards"] == 1
+
+
+def test_brief_category_moves_cross_the_cutover(tmp_path):
+    # 결정 72 — 11-14 주의 앞 4주는 11-08 · 11-01 · 10-25 · 10-18
+    data, new = tmp_path / "d", date(2026, 11, 14)
+    a = _entry(1, "o/a", "mcp-tools")
+    io.write_json(data / "weekly" / "2026-11-14" / "rankings.json",
+                  {"week": "2026-11-14", "axes": {"gain": {"all": [a], "ai": [a]}}})
+    io.write_json(data / "weekly" / "2026-11-14" / "categories.json",
+                  _cats(new, {"mcp-tools": 50, "rag": 10, "agent-skills": 40}))
+    for wk in (date(2026, 11, 8), date(2026, 11, 1), date(2026, 10, 25), date(2026, 10, 18)):
+        io.write_json(data / "weekly" / wk.isoformat() / "categories.json",
+                      _cats(wk, {"mcp-tools": 20, "rag": 40, "agent-skills": 40}))
+    bi = br.load_input(data, CardStore(tmp_path / "cards"), new, names=NAMES)
+    assert [(m.category, round(m.delta, 2)) for m in bi.rising] == [("mcp-tools", 0.3)]
+    assert (bi.week_start, bi.until) == (new, date(2026, 11, 20))

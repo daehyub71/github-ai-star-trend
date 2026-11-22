@@ -68,7 +68,8 @@ class WeekStats:
 
 
 def week_stats(weeks: list[HistoryWeek], current_total: int, today: date) -> WeekStats:
-    cur = week.week_start(today)
+    """히스토리 API 의 주(API 주, 일요일 시작, 7일 간격) 그대로 잰다 — 우리 주(결정 72)와 섞지 않는다."""
+    cur = week.api_week_start(today)
     last = cur - timedelta(days=7)
     by_week = {w.week: w.total for w in weeks}
     partial = by_week.get(cur, 0)
@@ -132,7 +133,7 @@ def percentiles(values: Sequence[float], ps: Iterable[int]) -> dict[int, float |
 def coverage(rows: list[dict[str, Any]], thresholds: Iterable[int], new_days: int,
              today: date) -> dict[int, float]:
     """후보 규칙 '현재 스타 ≥ T 또는 생성 N일 이내' 가 rows 를 얼마나 포함하는가."""
-    cutoff = week.week_start(today) - timedelta(days=new_days)
+    cutoff = week.api_week_start(today) - timedelta(days=new_days)
     out = {}
     for t in thresholds:
         hit = sum(
@@ -353,7 +354,7 @@ def run_probe(
         "week_boundary": {
             "utc_offset_hours": sorted(offsets),
             "current_week_present": bool(current_present) and all(current_present),
-            "current_week": iso(week.week_start(today)),
+            "current_week": iso(week.api_week_start(today)),   # API 주
         },
         "rate_limits": rate,
         "calls": dict(Counter(gh.stats.calls)),

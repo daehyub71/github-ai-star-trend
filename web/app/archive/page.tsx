@@ -28,7 +28,7 @@ export default function ArchivePage() {
         <section className="hero column-hero" aria-labelledby="archive-title">
           <span className="pill sky"><span className="live" />주간 아카이브</span>
           <h1 id="archive-title">지난 <span className="grad-text">{rows.length}주</span>의 흐름</h1>
-          <p className="lede">매주 월요일 09:00 KST 에 지난 주(UTC 일~토)를 정리한다. 막대 하나가 한 주 — 높이는 그 주 AI 탭 &quot;지금 뜨는&quot; 1위의 증가량, 색은 그 저장소의 카테고리.</p>
+          <p className="lede">매주 일요일 07:00 KST 에 지난 주(토~금 — 2026-11-08 주까지는 일~토, 하루 경계는 UTC 0시 = KST 09시)를 정리한다. 막대 하나가 한 주 — 높이는 그 주 AI 탭 &quot;지금 뜨는&quot; 1위의 증가량, 색은 그 저장소의 카테고리.</p>
           <div className="stats narrow">
             <div className="stat"><span className="v v2">{rows.length}주</span><span className="l">{rows[0]?.week} 주부터 · 매주 월 09:00 KST</span></div>
             {big ? <div className="stat"><span className="v v0">+{fmtInt(big.gain)}</span><span className="l">가장 큰 한 주 · {big.top?.split("/")[1]} ({mmdd(big.week)} 주)</span></div> : null}

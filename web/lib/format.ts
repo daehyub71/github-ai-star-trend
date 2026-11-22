@@ -33,6 +33,19 @@ export function weekRange(start: string, end: string): string {
   return `${y1}년 ${m1}월 ${d1}일 – ${d2}일`;
 }
 
+const WEEKDAY = ["일", "월", "화", "수", "목", "금", "토"];
+
+/** 날짜의 요일 — "2026-11-14" → "토". offsetDays 만큼 뒤의 날. 주가 일요일에 시작한다고 가정하지 않는다(결정 72) */
+export function dayName(iso: string, offsetDays = 0): string {
+  const [y, m, d] = parts(iso);
+  return WEEKDAY[new Date(Date.UTC(y, m - 1, d + offsetDays)).getUTCDay()];
+}
+
+/** 주의 요일 범위 — 2026-11-14 주부터 "토~금", 그 앞 주는 "일~토" */
+export function weekDays(start: string): string {
+  return `${dayName(start)}~${dayName(start, 6)}`;
+}
+
 /** 주 끝 기준 생성 30일 이내 (랭킹의 신규 축과 같은 기준 — FRESH_DAYS) */
 export function isFresh(created: string, weekEnd: string): boolean {
   const days = (Date.parse(weekEnd) - Date.parse(created)) / 86_400_000;

@@ -8,7 +8,7 @@ AI 탭(P2-6)은 판정 결과(meta 의 classify)가 있으면 축 후보 순서�
 """
 
 from collections.abc import Callable, Mapping
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -65,7 +65,7 @@ def prior_gains(data_dir: Path, week_start: date, weeks: int = DORMANT_WEEKS - 1
     """
     total: dict[int, int] = {}
     for k in range(1, weeks + 1):
-        p = weekfile.week_path(data_dir, week_start - timedelta(days=7 * k))
+        p = weekfile.week_path(data_dir, week.weeks_back(week_start, k))
         if not p.exists():
             return None
         for rid, r in weekfile.read(p).items():
@@ -101,7 +101,7 @@ def flags_for(r: WeekRow, rows: dict[int, WeekRow], week_start: date,
 
 def _prev_ranks(data_dir: Path, week_start: date) -> dict[str, dict[str, dict[int, int]]]:
     """지난 주 순위 {탭: {축: {ID: 순위}}} — AI 탭은 지난 주 AI 탭과 비교한다."""
-    p = rankings_path(data_dir, week_start - timedelta(days=7))
+    p = rankings_path(data_dir, week.previous_week(week_start))
     if not p.exists():
         return {}
     axes = io.read_json(p).get("axes", {})
